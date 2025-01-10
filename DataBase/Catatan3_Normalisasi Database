@@ -1,0 +1,100 @@
+Database dikatakan buruk apabila
+    1. Data yang sama disimpan di file/folder yg berbeda
+    2. Ketidakmampuan menghasilkan informasi
+    3. Hilang nya informasi/data (baik ketika menyimpan ataupun merancang)
+    4. Redundasi
+    5. Adanya Null Value
+
+Maka perlu dilakukan normalisasi (tujuannya agar menyempurnakan struktur)
+    1. Mengeliminasi Redundasi
+    2. Memudahkan pengubahan struktur tabel
+    3. Memudahkan identifikasi entitas
+    4. Mencegah anomali
+    5. Mencegah Null Value 
+
+Normalisasi ada 5, 
+    1st NF (Normal Form), 2nd NF, 3rd Nf, (berdasarkan key dan kebergantungan fungsional (FD))
+    4th NF (Opsional), 5th NF (Opsional) (berdasarkan key dan kebergantungan multivalue)
+    3NF adalah normalisasi terbaik untuk rancangan database
+    Normalisasi dilakukan hingga database dikatakan baik 
+
+Untuk normalisasi, harus menentukan Functional Dependency (FD)/Ketergantungan fungsional
+    khususnya dalam dekomposisi rancangan Database 
+    FD disimbolkan dengan A -> B, artinya B memiliki ketergantungan dengan A
+        A menentukan B atau B bergantung pada A
+    A biasanya adalah PK/FK
+
+FD terbagi menjadi 3  
+    Full Functional Dependency 
+        Atribut non key bergantung penuh pada PK/FK
+    Partial Functional Dependency 
+        Atribut non key bergantung separuhnya pada PK/FK
+    Transitive Functional Dependency
+        Atribut non key tidak bergantung langsung/samar pada PK/FK 
+    
+Cth : Matkul, NIM, Nama, Nilai 
+    FD1 : NIM->Nama (Nama bergantung pada NIM)
+    FD2 : Matkul,NIM->Nilai (Nilai bergantung pada Matkul dan NIM)
+
+Cara untuk mengetahui FD adalah memahami dengan baik tentang arti dari relationship antar atribut (bukan hanya dengan membaca data saja)
+    NIM (PK), Matkul (PK), Nilai, Keterangan
+    NIM, Matkul -> Nilai, Keterangan
+    NIM, Matkul -> Nilai
+    NIM, Matkul -> Keterangan
+
+    Tetapi,
+    NIM(PK), Matkul (PK), Nama, Nilai, Keterangan (Nama hanya bergantung pada NIM, sehingga terjadi parsial)
+        maka, dibagi menjadi 2 entitas
+        NIM (PK), Nama
+        Matkul (PK), Nilai, Keterangan 
+    
+    Tetapi,
+    karena keterangan tidak bergantung langsung dengan Matkul dan NIM (karena bergantung seutuhnya pada Nilai) (sehingga transitive)
+    maka dibagi menjadi 3 entitas
+
+1 NF
+    Mengubah bentuk tabel tidak normal (unnormalized table) menjadi bentuk normal
+    Suatu DB disebut 1st NF jika semua attribute valuenya simple/atomic (tdk boleh ada yg composite/gabungan atau multivalue)
+        dan tidak boleh ada redundasi 
+            composite key = PK yg terbentuk dri 2 atau lbih kolom, biasanya digunakan ketika tidak ada salah satu kolom yg cukup kuat mengidentifikasi
+                setiap baris data dalam tabel. Sehingga perlu kombinasi 2 atau lebih kolom untuk bisa mengidentifikasi 
+    1 NF menggunakkan Foreign Key sehingga biasanya akan menjadi 2/3 entity    
+    Sehingga, 1 NF menghilangkan redundancy dan multi valued attribute
+
+2 NF 
+    Setelah lolos 1 NF
+    Maka 2nd NF adalah pemilahan berdasarkan Full Functional Dependency
+        artinya, setiap attribute non key bergantung penuh pada PK
+    Sehingga, tidak boleh ada attribute non key yg bergantung hanya setengah pada PK
+    Sehingga, 2 NF menghilangkan Partial Functional Dependency
+
+3 NF 
+    Setelah lolos 2 NF
+    Dipastikan tidak ada attribute non key yg bergantung secara transitive
+    Sehingga, 3 NF menghilangkan Transitive Functional Dependency
+
+4 NF (Opsional)
+    Setelah lolos 3 NF
+    Dipastikan tidak ada Multivalue Dependency (ketergantungan multivalue)
+        MVD adalah kondisi ketika atribut dalam tabel bergantung independen pada PK, tetapi atribut" tidak saling bergantung
+    cth : ID Pegawai(PK), Keahlian, Bahasa
+        Keahlian dan Bahasa merupakan atribut yg tidak saling bergantung
+            sehingga, apabila ingin menambahkan keahlian atau bahasa baru, maka harus dilakukan redudansi data
+        Maka, dibagi menjadi 2 entitas 
+            ID Pegawai, Keahlian
+            ID Pegawai, Bahasa
+    Sehingga, 4 NF menangani multivalue dependency
+
+5 NF (Opsional)
+    Setelah lolos 4 NF   
+    Dipastikan ketergantungan antar atribut dapat direkonstruksi hanya melalui join dependency yg valid
+        artinya jika info dalam tabel dapat direkonstruksi tanpa adanya data hilang/redundansi saat dekomposisi
+    cth : Proyek (PK), Pemasok, Material
+        Terjadi masalah karena kita tdak bisa memastikan apakah pemasok selalu berhubungan langsung dengan proyek/material
+            karena ada kmungkinan transitive FD
+        Jika tabel dipecah, lalu di JOINING lagi, maka bsa terjadi kehilangan data, itulah yg disebut masalah Join Dependeny
+            maka, dipecah menjadi 3 entity
+                Proyek, Pemasok
+                Proyek, Material
+                Pemasok, Material
+    Sehingga, 5 NF menangani Join dependency

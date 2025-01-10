@@ -1,0 +1,143 @@
+Komponen Penyusun Jaringan LAN
+    Software
+        OS : Windows, Linux, MacOS, IOS
+        Driver
+    Hardware
+        Server
+        Workstation
+    Alat Jaringan   
+        NIC (Network Interface Card), Router, Modem, Akses Port, Kabel UTP, Fiber optic
+    USB (Universal Serial Bus) Modem/Wireless Router
+        USB Wireless (agar menerima sinyal wifi pada laptop yg tidak ada wifi), USB Dongle, USB LAN (penghubung LAN dengan Port), Wireless card, Mifi
+    Switch (bekerja pada layer 2), Hub (bekerja di layer 1)
+    Router
+    Kabel UTP (Unshielded Twisted Pair)
+    Kabel STP (Shielded Twister Pair)
+    Kabel Fiber Optic
+    Connector RJ45
+
+    Hub vs Switch vs Router
+    Hub 
+        Physical Layer (Gak ada ARP)
+        Broadcast all port (data dikirim ke semua port tanpa kecuali)
+        Sering terjadi data collision 
+        Gak ada intelligence (tidak ada intelligence, sehingga mengirimkan data ke semua port)
+        Connect ke jaringan yang sama (menghubungkan perangkat ke jaringan yg sama, WIFI)
+        Sudah tidak ada lagi (karena ketinggalan jaman)
+    
+    Switch
+        Datalink Layer (menggunakkan MAC Address/ARP Table untuk memetakan MAC Address)
+        Mengirim data secara unicast (mengirim data ke MAC Address) 
+        Jarang terjadi data collision 
+        Sudahh ada intelligence
+        Connect ke jaringan yang sama 
+    
+    Router 
+        Network Layer (IP Address)
+        Mengirim data secara unicast
+        Jarang terjadi data collision
+        Sudahh ada intelligence
+        Connect ke jaringan yang berbeda (antara jaringan lokal dan jaringan internet)
+
+    Modem 
+        Modem "medemolasi" sinyal yg masuk, sinyal analog mnejadi sinyal digital 
+        Modem "memodulasi" sinyal yg keluar, sinyal digitall menjadi sinyal analog
+    
+    UTP     
+        berisikan 4 pasang kabel dengan warna yg berbeda (oranye, hijau, biru, coklat)
+            yg dipelintir satu dengan yg lain
+        Kabel"" dipelintir untuk mencegah electromagnetic interference (crosstalk) (dimana data bisa terjadi collision)
+    
+    STP 
+        terdapat foil yg melindungi kabel""
+        Foil diberikan layer proteksi agar tidak terjadi electromagnetic imterferemce yg bocor
+    
+    Terdapat 2 tipe susunan kabel
+        Straight (568B) dan Cross over (568A)
+        Kalau Straight, susunan kabelnya antara ujung satu dengan yg lain sama 
+            (Putih oranye, Oranye, Putih Hijau, Biru, Putih Biru, Hijau, Putih Coklat, Coklat)
+        Kalau crossover, susunan kabelnya antara ujung satu dengan yg lain berbeda    
+            (Putih Hijau, HijaU, Putih Oranye, Biru, Putih Biru, Oranye, Putih Coklat, Coklat)
+        Yg digunakan adalah kabel 1,2,3,6 (4,5,7,8 digunakan untuk power, transfer data,dll)
+
+        Kabel Straight menghubungkan device yg berbeda (PC ke Modem, PC ke Switch) (tapi bisa untuk sesama device)
+        Kabel Crossover menghubungkan  device yg sama (PC ke PC)
+    
+    Kabel Twisted Pair memiliki kategori
+        Kategori 3      10 Mbps     (Sudah tidak digunakan lagi)
+        Kategori 5      100 Mbps    (Sudah tidak digunakan lagi)
+        Kategori 5e     1 Gbps      Enchanced
+        Kategori 6      1 Gbps      Kecepatan bisa 10Gbps (jika panjang kabel dibawah 100m)
+        Kategori 6a     10 Gbps     Augmmented
+        Kategori 7      10 Gbps     Ada foil shield untuk melindungi kabel
+        Kategori 8      40 Gbps     Jarak bisa sampe 30 m
+            sudah berupa STP
+            jauh lebih cepat dari kategori 6a dan 7
+
+    Kabel Fiber Optic 
+        Kabel fiber optic adalah kabel yg mengandung fiber optic dan digunakan untuk mentransmisikan cahaya 
+        Kabel fiber optic memberikan hasil yg jauh lebih baik dripada kabel tembaga, seperti kabel koaksial atau kabel twisted pair
+        Kabel fiber optic ada yg single dan multimode
+    
+        Struktur Fiber Optic 
+            Jacket = Bagian paling luar untuk melindungi komponen inner 
+            Buffer = Bagian untuk melindungi fiber optic dari kerusakan 
+            Cladding = Bagian plastik/kaca yg mengelilingi core, memantulkan cahaya ke dalam core dengan pola yg sudah ditentukan (tergantung mode transmisi)
+            Core = bagian silinder plastik/kaca sebagai jalan cahaya 
+        
+        Fiber Optic diusahakn tidak banyak mengalami tekukan/lekukan, karena berpengaruh dengan kecepatan 
+            Untuk Single Mode, cahaya dipantulkan hanya satu dan lebih cepat daripada multimode (bagian corenya lebih tipis/kecil)
+                Biasanya berwarna kuning
+                Harganya lebih mahal untuk pemasangan,bahan,maintenance,sistem
+                Sangat bagus untuk jarak jauh (60km+)
+                Digunakan untuk WAN,MAN,Access,Campus
+                Backbone dri Internet
+                Diameter core dari Singlemode adalah 9 micron, ukuran rambut manusia adalah 20-200 micron
+            Untuk Multimode, cahaya dipantulkan ke semua penjuru tak beraturan, shingga lebih lambat dripada single mode (bagian corenya lebih besar)
+                Biasanya berwarna Oranye
+                Harganya lebih murah untuk pemasangan, bahan, maintenance, sistem
+                Bagus untuk jarak dekat
+                Digunakan untuk LAN,SAN, Data Center,CO
+                Diameter core nya berkisar 50-62.5 micron (OM1 (Optical Multimode) 62.5 micron,OM2 50 micron) (semakin besar OM, semakin cepat transmisinya)
+        
+        Kelebihan Fiber Optic
+            Throughput sangat cepat, 10Gbps
+            Noise resistance (lebih tahan terhadap gangguan)
+            Excellent Security
+            Bagus untuk jarak jauh
+
+        Kekurangan
+            Lebih mahal untuk pemasangan, bahan, bagian, maintenance
+            Membutuhkan kemampuan khusus untuk berurusan dengan fiber optic
+
+        Konektor Fiber Optic
+            ST (Straight-Tip), Couplingnya Bayonet, untuk bangunan, security dan militer
+            FC (Fiber Channel), Couplingnya Screw-On, untuk Datacomm dan Telecom
+            SC (Square Connector), Couplingnya Snap/Push-Pull, untuk Datacomm 
+                SC Duplex, untuk Datacomm
+            LC (Little Connector), Couplingnya Snap, untuk Interkoneksi
+            MT-RJ(Mechanical Transfer-Registered Jack), Couplingnya Snap, untuk Interkoneksi
+            FDDI (Fiber Distributed Data Interface), untuk Fiber Optic Network
+
+    Media Converter            >100 m
+        Ethernet Switch <---------------> Ethernet Switch
+         Kabel Tembaga                      Kabel Tembaga
+         Media Converter                    Media Converter
+                             Kabel Fiber
+        
+        UTP memiliki jarak max 100 m
+        Extending Ethernet LAN memiliki jarak 
+            Multimode 300 m - 2 km
+            Singlemode 5 km - 10 km
+        Untuk menghindari electromagnetic interference (emi)
+
+        GBIC vs SFP/SFP+
+        GBIC (Gigabit Interface Converter)
+            modul transceiver yg digunakan untuk menghubungkan Switch/Router ke media transmisi seperti fiber optic/kabel tembaga
+            fungsinya untuk mengirim dan menerima data
+            terhubung ke Gigabit Ethernet
+            Sekarang banyak digantikan SFP/SFP+ karena ukurannya yg besar
+        SFP (Small Form-Factor Pluggable)
+            versi mini dari GBIC
+            lebih hemat dripada GBIC
+            Menggunakkan teknologi Small Form Factor seperti MT-RJ atau LC 

@@ -1,0 +1,65 @@
+Aplikasi Code Editor atau Integrated Development Environment (IDE) yang dapat digunakan adalah
+    WebStorm (JetBrains) (Berbayar)
+    VSC
+    Brackets (Dapat melihat hasil preview tanpa harus mereload web)
+
+Pengantar Web Programming
+    cara kerja Internet adalah komputer akan saling terhubung dan berkomunikasi satu dengan yang lain melalui jaringan wired or wireless (yang disebut sebagai server)
+    Orang akan mengirimkan input dan output sehingga menerima output yg diinginkan
+    Lalu, ada suatu alat bernama network switch, adalah suatu alat untuk menghubungkan komputer 1 dengan komputer yang lain secara banyak ( dan bisa terhubung dengan network switch lain)
+
+    Semakin banyak orang yang terhubung dengan orang lain, maka akan semakin sulit untuk terhubung dengan semakin banyak orang, maka diciptakan
+        Interconnection Network (internet),
+    Lalu, supaya terhubung dengan internet, maka diperlukan infrastruktur telepon (menara tower) yang harus dihubungkan dengan modem (router). Lalu, langkah terakhir adalah
+        membutuhkan ISP (Internet Service Provider)
+
+    sehingga, bagannya adalah
+
+    A -- Network switch -- Modem -- ISP -- Modem -- Network Switch -- B
+
+Website
+    Halaman Web adalah halaman tunggal yang menampilkan informasi, baik berupa teks, gambar, video, dll. Dan dapat ditambahkan interaktivitas dengan JavaScript
+    Website BERBEDA dengan Halaman Web, Website adalah kumpulan halaman web (webpage). Webpages tersebut saling berhubungan dengan hyperlink baik dalam domain yg sama 
+        maupun domain yang berbeda
+    Website memuat informasi yang disediakan oleh individu, kelompok, organisasi. Semua informasi yang disimpan pada website itu disimpan pada server
+
+    Web awalnya diciptakan untuk memenuhi permintaan tukar informasi antar ilmuwan di universitas atau lembaga di seluruh dunia
+
+Web server
+    Siklus Request dan Response
+        Ketika kita mengakses sesuatu, kita akan disebut sebagai client. Browser akan mengirimkan request (perantara) yang akan dikirimkan ke server. Maka Server akan mengirimkan
+            hasil request berupa response. Hasil responsenya berupa data-data yang kita inginkan dalam bentuk HTML, CSS, JavaScript
+    
+    web server sebenarnya lebih merujuk pada sebuah software yang dapat menghubungkan sebuah komputer dengan komputer lain. 
+        Web server terdiri atas 2 hal, yaitu Hardware dan software
+            Dari sisi hardware = web server adalah komputer dengan spesifikasi tinggi yang dibutuhkan sesuai dengan fungsinya
+            Dari sisi software = web server adalah komputer yang menjalankan program agar dapat mengirimkan data melalui protokol bernama HTTP
+
+            dengan bagannya
+                     HTTP Request
+            Computer ----------- > Web Server (HTTP Server, Files)
+                     <----------- 
+                    HTTP Response
+    
+    DNS Server
+        setiap perangkat punya yg namanya IP Address. Tpi, IP Address akan terus berubah dan sulit untuk diingat, maka dari itu, ada yg namanya Domain name.
+        Domain Name tidak menggantikan fungsi IP Address. Cara kerjanya adalah, ketika kita mengakses suatu web dengan domain name, komputer akan mencari IP Address tersebut.
+        Komputer akan mencari dulu di DNS Cache, bila ada. Maka komputer akan langsung menampilkan IP Address yg sesuai dengan domain tersebut.
+        Jika komputer tidak menemukannya di DNS Cache, maka dia harus mencari di DNS Server dan baru akan mencari IP Address yang sesuai dengan domain tersebut
+
+Web Browser
+    Web Browser adalah program yang menampilkan website atau halaman web. Banyak website bisa diakses oleh Web Browser. 
+    
+    Cara kerja Browser
+        Ketika user mengakses website dengan URL (Uniform Resource Locator), maka browser akan mengirimkan request kepada web server. Kemudian web server akan mengirimkan
+        response berisi konten-konten yg diperlukan. 
+
+            Browser memiliki Address bar, address bar digunakan untuk menginputkan url yang dimasukkan. URL terdiri atas 3 bagian, yaitu protocol (https), domain name (dicoding.com)
+            file path (alamat halaman web yg sedang ditampilkan)
+            https://dicoding.com/academies/123/tutorials
+
+Anatomi Website
+    Website terdiri atas 3 hal, yaitu  :
+        HTML, bahasa markup yang menentukan struktur/kerangka website (kerangka)
+        CSS, bahasa markup yang memberikan gaya atau style pada website (kulit)
+        JavaScript, bahasa pemrograman yang didukung/bisa berjalan di dalam browser untuk meningkatkan interaktivitas website (otak)

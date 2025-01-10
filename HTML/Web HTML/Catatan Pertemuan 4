@@ -1,0 +1,58 @@
+Text styling
+
+ada text align, untuk menaruh teks pada rata kiri, tengah, kanan
+contoh:
+h1{
+    text-align: right;
+}
+
+ada text indent, untuk memberikan identasi pada teks atau paragraf (teks menjorok ke dalam)
+h1{
+    text-indent: 10px;
+}
+
+ada text transform, untuk mengubah jenis huruf menjadi uppercase,lowercase,capitalize (capitalize itu, setiap awal kata ditulis huruf besar)
+h1{
+    text-transform: lowercase;
+}
+
+ada text decoration, untuk memberikan dekorasi pada teks (ada underline,upperline,line-through)
+h1{
+    text-decoration: ;
+}
+
+ada letter-spacing, untuk memberikan space antar huruf
+h1{
+    letter-spacing: 2px;
+}
+
+ada word-spacing, untuk memberikan space antar kata
+h1{
+    word-spacing: 10px;
+}
+
+Background
+untuk memanggil background pada css, hanya menggunakkan * sebagai selector (selector bintang berfungsi untuk memanggil seluruh atau semua selector secara bersamaan) (jadi, title,body,semuanya kena panggil)
+*{
+    
+}
+
+ada background-color, untuk mengubah warna pada background
+*{
+    background-color: red;
+}
+
+ada background-image, untuk mengatur gambar menjadi background
+*{
+    background-image: url('1.jpg');
+}
+
+ada background-repeat, untuk mengatur jenis pengulangan gambar yang menjadi background (bisa no repeat, repeat-x, repeat-y)
+*{
+    background-repeat: no-repeat;
+}
+
+ada background-position, untuk mengatur posisi gambar pada background (ada top,middle, bottom, left,center,right)
+*{
+    background-position: bottom right;
+}

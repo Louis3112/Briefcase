@@ -1,0 +1,89 @@
+Pengenalan DBMS (Database Management System)
+    DBMS adalah aplikasi untuk mengelola data
+    Tanpa DBMS, kita menyimpan data harus menggunakkan file (excel)
+    DBMS berjalan sebagai aplikasi server yg digunakan untuk memanage data
+        sehingga kita tinggal memberi perintah pada DBMS untuk memanage data (seperti menyimpan, menghapus, mengubah)
+        biasanya, perintahnya akan dikirimkan melalui cmd dan melalui cloud 
+    Contoh DBMS yg terkenal adalah MySQL,PostgreSQL,MongoDB,Oracle, dll
+
+Pengenalan Relational Database
+    Ada banyak jenis DBMS, seperti Relational Database, Document Database (MongoDB), Key-Value Database (Redis, Apache Cassandra), dll
+    Tapi yg paling populer adalah Relational Database
+        karena lebih mudah dibaca dan dimengerti, cara penggunaannya sama seperti tabel yg biasa kita baca 
+        lalu RDBMS memiliki perintah standard menggunakkan SQL, sehingga akan mudah apabila berganti ke DBMS selanjutnya
+
+Cara kerja DBMS
+    Database client --> DBMS --> Database file
+    MySQL Client    --> MySQL --> File MySQL
+    Aplikasi Client --> Server --> File server (Aplikasi client bisa berupa apa saja, bisa berupa aplikasi atau web (dan biasanya dibuat sendiri). 
+                                                Kalau DBMS dalam bentuk server (cloud/hosting), maka akan disimpan dalam bentuk server)
+
+Database Client 
+    Apli yg digunakan untuk berkomunikasi dengan DBMS 
+    Untuk MySQL, MySQL sudah menyediakan MySQL Client dalam bentuk terminal (sehingga tidak perlu membuat aplikasinya)
+    Terkadang, DBMS" sudah terdiri atas Database client sederhana agar lebih mudah 
+    Atau kita bisa membuat aplikasi Database client menggunakkan java, PHP, dll
+
+Database File 
+    Mayoritas DBMS menyimpan file dalam Database file, tapi ada juga bbrp database yg menyimpan data di Memory(RAM) (Kalau MySQL dalam bentuk file)
+    File yg disimpan tidak seperti file excel/CSV (Comma Separated Value), tetapi lebih kompleks (menyesuaikan aplikasi DBMS, biasanya dalam bentuk file)
+    Database file akan dioptimasi oleh DBMS sehingga memudahkan DBMS untuk memanage data 
+    Tiap DBMS punya caranya sendiri untuk mengelola data, kita tidak perlu tau prosesnya, tapi perlu tau cara berkomunikasi dengan DBMS (dengan perintah SQL)
+    Beda DBMS, maka Database file yg disimpan juga berbeda (File MySQL akan berbeda dengan File Oracle)
+
+SQL/Structured Query Language 
+    Bahasa yang digunakan untuk berkomunikasi dengan DBMS 
+    SQL adalah bahasa yg mudah karena hanya berisi instruksi untuk menyimpan, mengubah, mmenghapus, mengambil data melalui DBMS 
+    Semua perintah SQL sebenernya sama, namun tiap DBMS punya improvement yg membedakan hal" kecil dalam SQL
+        namun secara garis besar, perintahnya sama 
+
+MySQL 
+    RDBMS open source paling banyak digunakan
+    MySQL juga gratis, diciptakan tahun 1995
+    MySQL sangat populer digunakan oleh programmer web PHP 
+
+    Selain itu, terdapat DBMS yg lain, seperti (paling populer)
+        1. Oracle (Berbayar)
+        2. MySQL (Gratis)
+        3. Microsoft SQL Server (Berbayar)
+        4. PostgreSQL (Gratis)
+        5. IBM Db2
+
+MySQL Community vs MySQL Enterprise
+    MySQL Enterprise adalah versi berbayar dari MySQL 
+    Enterprise memiliki improvement, yaitu menambahkan support (kalau ada bug, MySQL bisa melakukan fixing) dan monitoring (memudahkan penggunaan)
+    Klau pake Community, kita harus mengatasi sendiri (Community yg akan digunakan)
+
+MySQL vs MariaDB 
+    Terkadang, kalau mendownload PHP dalam bentuk XAMPP, terkadang database filenya adalah MariaDB
+    MySQL sempat diakuisisi oleh bbrp perusahaan, menyebbakan 2 founder MySQL memisahkan diri
+    Sehingga terbentuklah MariaDB
+    MariaDB adalah fork (clone) dari MySQL
+    MariaDB dan MySQL sebenernya sama saja (source code sama), hanya saja memiliki perbedaan perintah 
+
+Cara kerja MySQL Server
+    MySQL Client --> MySQL Server --> Database File
+    MySQL Client bisa menggunakkan terminal 
+        untuk cara berkomunikasi tentunya menggunakkan SQL 
+
+Installing MySQL
+    Menginstall MySQL bisa melalui banyak cara, bisa melalui web resminya
+    Bisa menggunakkan apli yg mem-bundle MySQL seperti XAMPP yg banyak digunakan programmer PHP
+    Jika sudah menginstall MySQL/MariaDB, maka jangan install yg lain, karena apabila salah satu bentrok, maka salah satu apli akan error 
+
+MySQL Client 
+    MySQL Client adalah apli berbasis terminal yang disediakan oleh MySQL untuk berkomunikasi dengan MySQL Server (menggunakkan cmd)
+    Karena berbasis terminal, MySQL Client sangat cocok digunakan untuk server production
+        sehingga bisa berkomunikasi dengan DBMS lebih mudah melalui terminal 
+    Tidak perlu menginstall MySQL Client karena sudah tersedia di MySQL yg kita install 
+
+MySQL WorkBench 
+    MySQL WorkBench adalah apli berbasis GUI (versi yg tidak menggunakkan terminal)
+    MySQL WorkBench Gratis
+    Sngat membantu dalam proses manajamen data karena tampilannya lebih dipermudah 
+    Tampilannya hmpir sama seperti VSCode tpi untuk Database
+
+JetBrains DataGrip
+    Versi berbayar dari Database Client 
+    Support untuk semua DBMS, sehingga bisa memanage database file apa saja 
+    Selain mendukung Relational DBMS,DataGrip juga mendukung DBMS yg NoSQL seperti MongoDB,Cassandra

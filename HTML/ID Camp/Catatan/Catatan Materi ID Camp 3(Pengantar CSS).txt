@@ -1,0 +1,60 @@
+    CSS adalah declarative language yang digunakn untuk mendeklarasikan suatu nilai untuk memperindah elemen HTML
+Kelebihan CSS adalah
+    Dapat mengontrol dan menerapkan layout secara presisi
+    Menghindari menghias HTML secara berulang" (jadi, 1 berkas CSS dapat menghias lebih dari 1 HTML)
+    Dapat digunakan di banyak browser\
+
+Untuk menuliskan CSS 
+    style sheet terdiri dari 1 atau lebih aturan styling (disebut rules atau ruleset)
+    contoh
+    h1 {color : green;}
+    p { font-size: small;
+        font-family : sans-serif;
+    }
+
+terdiri atas 2 bagian, yaitu selector dan declaration
+selector adalah elemen yg menerapkan rules (elemen yg akan diedit)
+declaration adalah perintah yg digunakan untuk mengubah selector
+    declaration sendiri masih dibagi lagi;
+    property, yaitu bagian mana yg akan diubah
+    value , nilai atau perintah yg diberikan
+
+setiap rule harus diberikan titik koma, dan bisa diberikan spasi untuk memudahkan pembacaan program
+untuk memasukkan nilai berupa angka, seperti px, emm, rem, jangan diberikan spasi agar bisa terbaca oleh program
+untuk memberikan komen, menggunakkan /* */
+kalau html, menggunakkan <!-- -->
+
+Ada 3 cara untuk menggunakkan CSS, 
+    External style sheet
+        dimana berkas css terpisah dengan html dan formatnya .css . Untuk menyambungkannya harus dengan elemen <link> pada <head> html
+        pada <link>, menggunakkan atribut rel (relationship) yang harus diberi nama bebas dan href = style.css
+        href dapat diisi dengan absolute url maupun relative url
+        dan biasanya org" bnyak menggunakkan bootstraps.min.css (min.css= format berkas .css yang sudah di-minify dengan menghilangkan white space yang tidak digunakan)
+    External style sheet lebih banyak digunakan karena bisa dipakai berkali"
+    Untuk dengan relative url, folder nya juga harus diketik agar bisa mencari letak dari css nya
+
+    Embedded style sheet
+        dimana kumpulan rumus ditulis dalam HTML dengan menggunakkan <
+        >
+        <style> harus diletakkan pada bagian <head>
+
+    Inline style
+        dimana rules diletakkan di elemen html dengan atribut style. Bisa terdiri lebih dari 1 rules, tapi tidak disarankan
+
+CSS Conception
+    terdapat beberapa conception yg harus dimengerti
+    Inheritance
+        properti style tertentu bisa diwariskan dari parent element ke child element
+        contohnya, bila kita ketikkan selector <body>, maka semua yg ada di <bold> akan ikut terganti
+    
+    Group selector
+        jika ada selector yg memiliki style sheet yg sama dengan selector lain, bisa dengan mudah kita ketikkan dua duanya
+        h2, h3{
+            font-family:sans-serif;
+        }
+    
+    Rule Order
+        cascading artinya "mengalir", jadi CSS akan membaca dari awal sampe akhir. berlaku seperti sifat variabel
+        CSS akan membaca perintah yg paling bawah atau perintah yg paling akhir
+
+        Namun, bila kita punya 2 rules yg berbeda dan ingin memilih salah satu diantaranya, bisa mengetikkan property !important

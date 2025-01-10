@@ -1,0 +1,141 @@
+Data merupakan hal yang sangat penting dalam hidup manusia 
+    Manusia memerlukan dan menggunakkan data untuk merencanakan sesuatu,mengambil keputusan
+ 
+Data != Informasi 
+    Data = nilai/value yang merepresentasikan deskripsi dari suatu objek/kejadian 
+        cth: Data penjualan, data pelanggan, data stok, data pasien
+    Informasi = Hasil pengolahan data ke dalam suatu bentuk yg lebih berguna dan digunakan untuk pengambilan keputusan 
+        cth: Produk paling populer, tagihan tertinggi, rata" pembelian
+    Sehingga data perlu diolah menjadi informasi 
+
+Data adalah dasar dari pengambilan keputusan 
+    dimana data akan mengalami aliran fungsi
+        1. Data source              --> Pengolahan data (Database Admin)
+        2. Data Warehousing         --> Pengolahan data (Database Admin)
+        3. Data Exploration         --> Pencarian informasi lebih dalam lagi 
+        4. Data Mining              --> Pemilahan data yang penting (Data Discover/Data Analyst)
+        5. Presentasi Data          --> Pemvisualisasian data (Business Analyst)
+        6. Pengambilan keputusan    --> CEO
+    
+Basis Data
+    Kumpulan data yang saling berhubungan (interrelated data) yang diorganisir sedemikian rupa sehingga dapat diakses, dikelola, dimanipulasi
+    Kumpulan item data yang saling berhubungan, yang diorganisasikan berdasarkan suatu skema/struktur dan disimpan dalam hardware, dan software untuk manipulasi data
+
+Tujuan basis data
+    1. Menyediakan penyimpanan data terstruktur 
+    2. Mengurangi redundasi data (dimasukkan 2x)
+    3. Meningkatkan keamanan data
+    4. Mendukung integritas data (akurat dan konsisten)
+    5. Memudahkan pengambilan data 
+    6. Memfasilitasi pembagian data (mudah diakses pengguna dan mudah kolab)
+    Sehingga, database berfungsi sebagai sistem manajemen informasi yg handal dan efisien, yg mendukung berbagai kebutuhan operasional dalam organisasi
+  
+Penerapan basis data
+    E-Commerce
+        data : deskripsi produk, harga, ulasan, stok
+        manfaat : mengelola inventaris, melacak penjualan,memberi rekomendasi produk kepada pelanggan 
+    Perbankan
+        data : rekening bank, riwayat transaksi,info nasabah
+        manfaat : memproses transaksi dengan cepat dan aman, mengelola data nasabah untuk pelayanan, mencatat riwayat transaksi 
+    Media sosial
+        data : info pengguna, postingan, interaksi, preferensi 
+        manfaat: mengelola data pengguna dalam jumlah besar, memberi pengalaman terbaik sesuai personalisasi pengguna 
+    Transportasi dan Navigasi
+        data: menyimpan peta, data lalin, lokasi pengguna,
+        manfaat: memberi petunjuk arah yg akurat, perkiraan waktu tempuh berdasarkan kondisi lalin secara real time
+    Sistem Pendidikan
+        data: menyimpan informasi mahasiswa, jadwal kuliah, dan materi pembelajaran
+        manfaat: memudahkan pengelolaan admin akademik, memudahkan akses belajar, mendukung pembelajaran online 
+    Pemerintahan
+        data: menyimpan data penduduk, pajak, dan layanan publik
+        manfaat: mempermudah pengelolaan data warga, meningkatkan efisiensi pelayanan publik yg transparan 
+    Sehingga, menunjukkan betapa pentingnya data dalam mendukung efisiensi,efektivitas dan kemudahan akses informasi
+
+Sejarah basis data
+    1. Era awal (1960 an - awal 1970) : Sistem file tradisional 
+        data masih disimpan dalam bentuk file flat sederhana (file teks/biner)
+            sistem ini memiliki kelemahan :  redundasi tinggi, inkonsistensi data, kesulitan dalam mengakses data   
+    2. Model basis data Hierarkis dan Jaringan (1960-1970an)
+        Model hierarkis: diorganisasi dalam bentuk pohon, setiap catatan memiliki satu induk dan banyak anak
+            sama seperti sistem IMS (Information Management System) dari IBM
+        Model jaringan : diusulkan oleh DBTG (Database Task Group) dari CODASYL (Conference on Data System Language)
+            memungkinkan catatan memiliki hubungan induk (multi-parent), sehingga lebih fleksibel dibanding hierarkis
+            digunakan dalam IDMS
+    3. Model relasional (1970 - 1980an)
+        RDBMS : 1970, Edgar F. Codd memperkenalkan RDBMS yang mengubah cara data diorganisir dan diakses
+            data disimpan dalam bentuk tabel (relasi) dan diakses dengan bahasa query berbasis matematika, yaitu SQL
+            Model relasional sangat populer karena sederhana dan fleksibel, serta mengurangi redundasi data dan memastikan integritas data
+    4. RDBMS Komersial (1980)
+        Bermunculan RDBMS Komersial seperti Oracle, IBM DB2, Microsoft SQL Server
+        Menyebabkan RDBMS menjadi standar industri untuk manajemen data
+    5. Perkembangan Model dan Teknologi Database lain (1990an - 2000an)
+        OOP Database : menggabungkan OOP dan database, cocok untuk aplikasi yg membutuhkan kompleksitas data tinggi, seperti CAD/CAM dan apli mulmed
+        Distributed and Parrarel Database : karena kebutuhan, basis data terdistribusi dan pararel digunakan untuk menangani data yg tersebar di berbagai lokasi
+            dan meningkatkan kineerja melalui pemrosesan pararel
+    6. DBMS modern (2000-an sampai sekarang)
+        NoSQL Database : Dengan munculnya big data, NoSQL diminati untuk menangani data tidak terstruktur dan semi terstruktur dengan fleksibilitas tinggi
+        In Memory Database : Dengan meningkatnya kapasitas memori dan kebutuhan akan akses, in memory database menjadi semakin umum
+            sehingga dapat mengakses data lebih cepat daripada penyimpanan tradisional
+        Cloud database : Cloud database populer karena menawarkan skalabilitas, fleksibilitas, penghematan biaya melalui cloud
+        
+        Database akan terus berkembang seiring dengan kemajuan teknologi dan perubahan kebutuhan bisnis
+        Fokus saat ini adalah big data, Machine Learning, Cyber Security
+
+Komponen penyusun data  
+    1. Data
+        Informasi mentah yang disimpan dalam database. Data bisa berupa angka, teks, gambar, atau jenis info lain
+        Fungsi : elemen dasar yang akan diproses dan dianalisis untuk menghasilkan info yg berguna
+    2. Hardware 
+        Komponen fisik untuk menjalankan database, termasuk server, memory, prosesor, jaringan 
+        Fungsi : menyediakan platform untuk menjalankan software dan menyimpan data dengan aman
+    3. Software 
+        Termasuk DBMS itu sendiri, aplikasi database, dan software pendukung lain 
+        Fungsi : mengelola data dengan interface pengguna, memastikan integritas data, melakukan operasi database
+    4. DBMS 
+        Software sebagai penghubung antara user dan database
+        Fungsi : mengelola, menyimpan, memanpulasi data. Memungkinkan pengguna untuk melakukan operasi basis data tanpa harus memahami detail teknis penyimpanan
+    5. Data model
+        Struktur/format untuk mengorganisir data dalam database
+        cth : model relasional, hierarkis, jaringan, OOP
+        Fungsi : menentukan bagaimana data diorganisasi, dihubungkan, diakses dalam database
+    6. Procedure (Prosedur)
+        Serangkaian instruksi/aturan yg mengatur bagaimana database dioperasi/dikelola
+        termasuk prosedur back up data, pemulihan data, pemeliharan database
+        Fungsi : memastikan operasi database berjalan lancar dan aman
+    7. Query Language (Bahasa query)
+        Bahasa yang digunakan untuk melakukan operasi database, seperti menambah, menghapus, mengubah, mengambil data.
+        SQL adalah bahasa query yg digunakan
+        Fungsi : memungkinkan untuk berinteraksi dengan database dan melakukan operasi dengan mudah
+    8. User
+        Individu/Aplikasi yang berinteraksi dengan database. User dapat diklasifikasikan sebagai last user, admin, developer
+        Fungsi : tergantung jobdesk, bisa untuk mengambil keputusan,mengelola basis data
+
+DBMS
+    Software yang memungkinkan user untuk membuat,memelihara,mengontrol akses ke database
+    Bertindak sebagai penghubung antara database fisik dan aplikasi/user yng memanfaatkan data
+    Tujuan utama DBMS adalah menyediakan lingkungan yg efisien dan nyaman bagi pengguna untuk mengakses dan mengelola data 
+
+Fitur utama DBMS    
+    1. Definisi data (Data definition)
+        DBMS menyediakan DDL (Data definition language) yang memungkinkan user untuk mendefinisikan skema database
+        Termasuk pembuatan tabel, penentuan tipe data, pengturan hubungan antar tabel, dan penentuan batasan/aturan
+    2. Manipulasi data (data manipulation)
+        DBMS mendukung manipulasi data dengan DML (Data manipulation language)
+        seperti insert, update, delete, retrieve
+    3. DCL (Data control language)
+        Perintah dasar pada SQL yang berfungsi untuk mengatur hak apa saja yang dimiliki pengguna, penggunaan database, alokasi space dan definisi space
+    4. Protection
+        Menangani kondisi malfunction (crash) pada hardware ataupun software
+        menangani pengaksesan anonymous user
+    5. Maintain
+        Memberikan perawatan pada database akan setiap perubahan yg dibutuhkan
+
+Contoh DBMS : Dbase, Foxpro, Ingres, PostgreSQL, MySQL, MongoDB, Oracle, SQL Server
+
+Environment Database
+    User--------->Application Program/Queries-------->Software to process queries/program------->Software to Access Stored data------>Stored Database Definiton (Meta Data) dan Stored Database  
+        masuk       Database System                         DBMS Software                                                               Meta Data = info yg menjelaskan data itu (key, comment)
+    
+    Atau secara singkat
+
+    User <----> Database Application <----> DBMS <-----> Database

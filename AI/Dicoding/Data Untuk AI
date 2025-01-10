@@ -1,0 +1,78 @@
+Pengenalan Data 
+    Data adalah fondasi penting pada penggunaan AI, Kualitas dan banyaknya data akan mempengaruhi hasil pengembangan AI 
+    Data = info yg benar, fakta, dan nyata/ kenyataan yg apa adanya 
+
+    Perbedaan Data, Dataset, dan Database 
+        Data = info entri tunggal yang dijelaskan/dijabarkan dalam bntuk 1 baris (bagian dari Dataset)
+        Dataset = Kumpulan data yang disusun secara terstruktur (bagian dari Database)
+            biasanya disimpan dlm bentuk tabel berformat (CSV,Excel, JSON)
+            biasanya digunakan untuk ML, analisis statistik, dan visualisasi data 
+            Sumbernya bisa berasal dari database lain atau dari sumber lain
+        Database = Kumpulan data yang disusun secara terstruktur dan terdiri atas Dataset
+    
+    Tipe Data
+        Tipe data akan mempengaruhi hasil dari pengembangan AI, trbgi menjadi 2, data terstruktur dan data tidak terstruktur
+        
+        Data terstruktur
+            Jenis data yg memiliki format dan tata letaknya teratur, sehingga mudah dibaca oleh komputer dan manusia
+            Biasanya digambarkan dalam bentuk tabel atau bidang dalam teks
+            Terbagi menjadi 2, Data kuantitatif dan Data kategorikal  
+
+            Data kuantitatif 
+                Jenis data yg dapat diukur dan diungkapkan dalam bentuk angka 
+                Untuk menggambarkan jumlah, besaran atau atribut lainnya secara numerik 
+                Masih terbagi menjadi 2, Data Kontinu dan Data Diskrit 
+
+                Data Kontinue 
+                    Jenis data yang direpresentasikan dalam bentuk numerik bulat, desimal, pecahan, dll
+                    Biasanya menyimpan data tinggi badan, berat badan, usia, suhu, waktu, dll
+
+                Data Diskrit 
+                    Jenis data yang direpesentasikan hanya dalam bentuk numerik bulat 
+                    Biasanya menyimpan data banyaknya suatu barang atau stok, tidak bisa dipecah/dibagi menjadi bagian kecil
+
+
+            Data kategorikal
+                Jenis data yg dapat disimpan dan diidentifikasi berdasarkan nama dan labelnya 
+                Biasanya dapat dikelompokkan dan terbagi berdasarkan karakteristik dan ciri khasnya 
+                Masih terbagi menjadi 2, data ordinal dan data nominal 
+
+                Data Ordinal            
+                    Jenis data yang memiliki urutan dan harus disusun secara urut dengan peringkat (rating)
+                    
+                Data Nominal 
+                    Jenis data yg tidak memiliki keterkaitan dengan data lainnya/ tidak memiliki arti khusus
+                    Sehingga bisa dibedakan tanpa ada data yg lain (Dapat berdiri sendiri)
+                    Jenis kelamin hny terbagi menjadi 2, jenis kelamin tidak memiliki keterkaitan tetapi dapat diklasifikasikan mnjdi jenis kelamin dan tidak dapat diurutkan/dibandingkan
+
+        Data tidak terstruktur 
+            Jenis data yg tidak memiliki format data yg tidak jelas
+            Cenderung bervariasi bentuknya dan sulit diorganisir dlm bntuk kolom 
+            Sifatnya lebih bebas, tidak terbatas dan lebih kompleks dari data terstruktur 
+            cth : text file, server, data sensor, gambar, video, audio, email, data sosmed
+
+Kriteria Data AI
+    GIGO (Garbage In, Garbage Out) = Output yg keluar tidak akan berbeda jauh dengan Input yg msuk 
+    Jika data yg msuk jelek, maka yg keluar juga jelek
+    Mau sebagus apapun AI, kalau data yg msuk jelek/tidak relevan (salah), maka outputnya juga sperti itu 
+    
+    Masalah Data
+        Data jelek yg dimksud adlaah data yg tidak sesuai kriteria yg diinginkan 
+        ex : Kesalahan dalam pengumpulan data, Data yg diambil secara sembarangan dri sumber tidak jelas bsa disebut data sampah
+            cth : Data yg tidak relevan (incorrect), data yg berbeda dengan yg lain (outlier), data duplikat, data kosong, data salah
+            Jika ada data kosong, maka bisa dihapus atau diinputkan dengan data yg lebih relevan atau data yg benar
+
+Infrastruktur Data di Industri 
+    Data Infrastruktur merujuk pada hardware, software, brainware, dan jaringan yg membantu proses pengelolaan data
+    Tujuan dari infrastruktur data adalah agar menyediakan pengelolaan data yg baik,memproses data dan menganalisa data yg ada
+    Tujuan lainnya adalah :
+    1. Manajemen data
+        Data yg disimpan menjadi lebih tertata, sehingga akan lebih mudah untuk mengaksesnya 
+    2. Pemrosesan Data 
+        Infrastruktur data pada masa kini dapat membantu manusia untuk mengelola data, sehingga kita dapat menganalisis, membuat pemodelan kompleks    
+        sehingga menghasilkan informasi dan keputusan yg tepat 
+    3. Integrasi Data 
+        Dapat mengintegrasikan data dari berbagai sumber 
+    4. Keamanan Data        
+        Data yg disimpan dengna baik akan terhindar dari akses tidak sah, pencurian, atau penyalahgunaan tidak baik (cyber crime)
+        Sehingga data yg ada dapat dipastikan keamanan dan privasinya

@@ -1,0 +1,135 @@
+Untuk memperindah form, bisa gunakan fieldset, lalu legend
+    <form action="">
+        <fieldset>
+            <legend>login</legend>
+                <p>
+                    <label for="">Nama:</label>
+                    <input type="text" name="username">
+                </p>
+        </fieldset>
+Lalu, ada yg namanya placeholder. Jadi semacam penunjuk untuk memberitahu user fungsi dari form tersebut
+<form action="">
+    <fieldset>
+        <legend>login</legend>
+            <p>
+                <label for="">Nama:</label>
+                <input type="text" name="username" placeholder="username">
+            </p>
+            </fieldset>
+
+Kalau untuk membuat password, bisa dengan menggunakkan
+            <p>              
+                <label for="">Password:</label>
+                <input type="password" name="password">
+            </p>
+
+Lalu, untuk membuat fitur remember me 
+            <p>
+                <label for=""><input type="checkbox" name="remember" value="remember">
+                Remember me</label>
+            </p>
+
+            <p>
+                <input type="submit" value="login">
+            </p>
+
+HARUS PAKE <P></P> AGAR KITA TIDAK PERLU MEMAKAI <BR>, KALAU KITA GAK PAKE P, MAKA NANTI AKAN NYAMBUNG LISTNYA
+
+Lalu, untuk membuat fitur memasukkan email
+            <p>
+                <label for="">Email:</label>
+                <input type="email" name="email" placeholder="your email">
+            </p>
+
+Lalu ada fitur select option, untuk memilih salah satu saja dari listnya (PAKE SELECT, BUKAN INPUT)
+            <p>
+                <label for="">Agama :</label>
+                <select name="" id="">
+                    <option value="Islam">Islam</option>
+                    <option value="Kristen Protestan">Kristen Protestan</option>
+                    <option value="Kristen Katolik">Kristen Katolik</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Buddha">Buddha</option>
+                    <option value="Khonghucu">Khonghucu</option>
+                </select>
+            </p>
+
+Lalu ada juga yg benar" memilih menggunakkan dot
+            <p>
+                <label for="">Jenis Kelamin :</label>
+                <label for=""><input type="radio" name="Jenis_Kelamin" id=""   
+                    value="laki-laki">Laki-laki
+            </p>
+
+Lalu, ada juga untuk lebih mudah memasykkan sesuatu yg panjang
+            <p>
+                <label for="">Alamat :</label>
+                <textarea cols="30" rows="10" name="Alamat"></textarea>
+            </p>
+Untuk tanggal
+            <p>
+                <label for="">Tanggal lahir :</label>
+                <input type="date" name="tanggal_lahir" id="">
+            </p>
+Untuk hanya bisa memasukkan angka
+            <p>
+                <label for="">Umur :</label>
+                <input type="number" name="Umur">
+            </p>
+Untuk bisa memasukkan file
+            <p>
+                <label for="">Upload File:</label>
+                <input type="file" name="" id="">
+            </p>
+
+            <p>
+                <input type="submit">
+            </p>
+
+SEMANTIK
+UNTUK MEMBUAT HEADER, FOOTER, ATAU NAVIGATION BAR, menggunakkan <div></div>
+            <div class="header">
+        
+            </div>
+
+            <div class="footer">
+                
+            </div>
+Supata tidak perlu mengetikkan div terus class,maka akan membuat ktia bingung, bisa langsung dengan cara
+<figure></figure>
+<figcaption></figcaption>
+<article></article>
+<nav></nav>
+<header></header>
+<footer></footer>
+
+Atau bisa juga dengan mengetikkan .header
+<div class="header"></div>
+
+contoh penggunaan SEMANTIK
+<header>
+    <h1>Cara menggunakkan Semantik</h1>
+</header>
+
+<nav>
+    <a href="">Home</a>
+    <a href="">About</a>
+    <a href="">Contact</a>
+</nav>
+Navigasi menggunakkan hyperlink atau <a></a>. Jadi fungsi navigasi, biar kita bisa pindah ke web"lainnya
+
+Selain itu, semantik lebih memudahkan kita ketika kita menggunakkan css. Tidak perlu lagi kita harus menggunakkan.header (apabila kita menggunakkan css)
+Karena, banyak kasus ketika menggunakkan.header, terkadang kita masih kelupaan dengan bagian divisi lain sehingga menyebabkan banyak eror
+
+<article>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorum!
+    </p>
+</article>
+
+<footer>
+    <p>
+        Copyright &copy; 2023 by Louis
+    </p>
+</footer>
+

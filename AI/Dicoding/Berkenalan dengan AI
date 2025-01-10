@@ -1,0 +1,81 @@
+Penerapan AI dlm khdpn sehari"
+    AI telah banyak digunakan di era modern saat ini
+    Contohnya pada smart speaker, lalu bagaimana smart speaker bekerja dengan menerima suara kita?
+        1. Memberikan kata pemicu yang telah ditentukan oleh algoritma program (ok google), maka akan mengembalikan nilai true or false padda program 
+        2. Jika true, maka program akan mendeteksi perintah yang diberikan. Lalu melakukan pemetaan audio menjadi teks 
+        3. Program harus mencari tahu maksud dari perintah yg diberikan, sehingga dapat diolah oleh algoritma untuk mendapatkan maksud dari perintah yg diberikan 
+        4. Proses eksekusi program 
+    Teknologi yg digunakan adlah "Natural Language Processing"
+
+    Sedangkan pada Self Driving Car, Mobil dipasangi dengan berbagai sensor di semua sisi mobil dengan nama sensor Light Detection and Ranging (LIDAR)
+    Dengan LIDAR, LIDAR akan memberi input mengenai posisi mobil lain dan objek di jalan. Informasi tersebut digunakan untuk perancangan gerakan pada software
+    Untuk menghindari gerakan, LIDAR memberi input yg kemudian input diolah oleh bbrp algoritma sprti convolutional neural network dan djikstra
+    Algoritma trsbut brfungsi untuk mengolah data input agar memberi respon terhadap jalannya mobil 
+
+Pengenalan AI
+    AI pertama kali ditemukan pada tahun 1950 di MIT, ketika org" brhsil membuat program yang dapat meniru kemampuan manusia, seperti NLP dan bot catur
+    Lalu berkembanglah AI, hingga 1956 dbuatlah konferensi AI Darthmouth Summer Research Project on Artificial Intelligence
+    
+    Sehingga, AI adalah ilmu mengajarkan mesin untuk belajar, bertindak dan berpikir seperti manusia untuk melakukan tindakan sehari"
+    AI dibuat untuk memecahkan masalah kognitif yang umumnya terkait dengan kecerdasan manusia, sperti belajar, problem solving, dan pattern recognition
+    Sehingga AI melakukan itu dengan cara yg cerdas melalui algoritma 
+
+    Cara yg cerdas ini mksudnya adalah cara yg terinspirasi dri kecerdasan manusia dan dengan pendekatan komputasi sehingga komputer dpt menemukan pola yg dimaksud 
+    Sehingga komputer dapat mempelajari data dan menghasilkan output yg diinginkan
+
+Taksonomi AI
+    Kelompok ilmu/Taksonomi AI (dari outer circle)
+    1. AI
+        Teknologi yg menerapkan peniruan perilaku manusia trhadap komputer tanpa batuan eksplisit sehingga dpt berjalan sndiri
+
+    2. Machine Learning (Bagian dari AI)
+        Teknologi yg menggunakkan metode statistika yg membuat komputer dapat mempelajari pola pada suatu data tanpa perlu diprogram secara eksplisit 
+        ML brgntung pada algoritma untuk menganalisa data sehingga dpt meningktkan performa 
+        Proses pembelajaran ML disebut sebagai training algoritma, sehingga AI smkin pintar
+        Output dari ML adalah model yg dpt melakukan tugas berdasarkan data pelatihan yg diberikan 
+
+    3. Deep Learning (Bagian dari ML)
+        Pengolahan dan komputasi yg lebih kompleks dri ML
+        Pembelajaran mesin yg didasari oleh jaringan saraf tiruan (neural network), 
+            Deep Learning lebih kompleks karena proses pembelajarannya trdiri atas beberapa bagian input, hidden layer, dan output 
+        Neural Network menerima input brupa blgn numerik untuk diproses supaya menghasilkan suatu output
+            Semakin banyak hidden layer, maka semakin lama output yg dibrikan, tetapi smkin kompleks masalah yg dpt diselesaikan
+
+    4. Generative AI (Bagian dari Deep Learning)
+        Menghasilkan output/konten mulai dari bahasa, kode, suara, video, dan gambar sesuai deskripsi input 
+        cth : DALL-E
+
+AI Workflow 
+    Tahapan yang ada pada proses pengembangan AI 
+    1. Digitalise n Collect
+        Tahapan pengumpulan dan penyimpanan data pada proses pengembangan AI 
+        Perlu mengumpulkan data dan mengekstrak data dari brbagai sumber untuk pengembangan AI
+        Data yg dikumpulkan ada 
+            Structured Data (Excel file dan Data SQL)
+            Unstructured Data (file, text, video, audio, gambar, data sensor)
+        Trgntg data yg dimasukkan, maka AI juga akan menghasilkan output sesuai dengan data yg dimasukkan 
+    
+    2. Transform
+        Perubahan data yg dikumpulkan, data diproses secara berulang dimulai dari persiapan data, mengubah data menjadi format yg dibutuhkan 
+            hingga mengevaluasi dan mengidentifikasi data yg tidak dibutuhkan 
+        Data disusun menjadi data terstruktur 
+    
+    3. Train 
+        Melatih AI sesuai dengan algoritma yg cocok dengan AI. Tujuannya agar komputer dapat mempelajari data yg diberikan 
+            sehingga komputer dapat melakukan tugas berdasarkan data yg dipelajari
+        Namun faktanya, tidak ada algoritma/model yg cocok dengan data dan tujuan apapun 
+        Sehingga perlu "trial dan error" sendiri agar menemukan algoritma yg paling cocok dengan AI kita 
+    
+    4. Execute 
+        AI dapat dijalankan dan digunakan untuk melakukan hal yg manusia biasa lakukan. Keakuratan model AI perlu dikembangkan 
+        Sehingga proses eksekusi perlu dilaksanakan berulang" agar sistem memenuhi harapan dan AI dapat berkembang 
+    
+    5. Provide Insights to Make Decisions 
+        Ketika model AI dapat berjalan dengan baik, maka perlu melakukan ekstraksi pengetahuan dri model 
+        Sehingga membantu proses pengambilan keputusan serta pemahaman dalam pengembangan AI 
+    
+    Jika model AI nya memiliki data yg terus berubah (mengalami update), maka peru dilakukan pembaruan dataset dan melatih ulang model secra reguler (retrainin model)
+    atau dapat dibuat otomatis sehingga AI dpt berkembang sendiri 
+    
+
+    

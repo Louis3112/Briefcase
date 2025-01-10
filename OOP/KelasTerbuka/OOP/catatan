@@ -1,0 +1,839 @@
+dalam java, ketika membuat 
+class java { --> class adalah keyword untuk membuat class
+    public static void main(string[] args){
+        bla bla bla bla --> ini adalah procedural programming, dimana program akan dijalankan secara berurut dari awal sampai akhir
+    }
+}
+
+kelemahan dari procedural programming adalah, jika kita memiliki banyak tombol atau fitur, maka semakin banyak pula variabel yg dibutuhkan
+
+maka dibuatlah data dan fungsinya (dimana fungsi digunakan untuk mengubah data)
+cth : tombol memiliki double height, double weight, string text, warna (int r, int g, int b, int alpha)
+struktur data tersebut memang bisa disimpan dengan struct, tetapi struct hanya menyimpan data 
+lalu, struktur data tersebut juga mempunyai fungsi yang hanya bisa berpengaruh dengan struktur data itu saja
+
+maka dibuatlah OOP, dengan struktur datanya disebut sebagai object 
+Tombol TombolSelect()
+Tombol adalah tipe data nya, TombolSelect adalah variabelnya
+Tombol adalah classnya, TombolSelect adalah objectnya
+Tombol adalah template, TombolSelect adalah hasil jadinya 
+
+mungkin TombolSelect() memiliki data berupa height, weight, text, warna, dll, yg disebut sebagai atribut (attribute)
+dan fungsi"" nya dapat dikatakan sebagai behavior  
+
+Dalam OOP, terdapat yg namanya instansiasi (instantiation), yaitu pembuatan object dari suatu class
+
+class Mahasiswa{
+    String Nama;
+    String NIM;
+    String Jurusan;
+    double NIM;
+}
+
+public class main(){
+    Mahasiswa m23051204085 = new Mahasiswa();
+    m23051204085.Nama = "Cornelius Louis Nathan";
+    m23051204085.NIM = "23051204085";
+    m23051204085.Jurusan = "Teknik Informatika";
+    m23051204085.IPK = 4.0;
+}
+Mahasiswa m23051204085 = new Mahasiswa(), new Mahasiswa() adalah object yg diberi nama m23051204085
+penggunannya hampir sama seperti struct di C++
+
+tapi, terkadang ada saat dimana kita harus menambahkan atribut yg banyak dengan object yg banyak pula, supaya mempermudah, maka dibuatlah constructor
+caranya dengan memanggil kembali nama class tersebut di dalam class 
+
+class Mahasiswa{
+    String Nama;
+    String NIM;
+    String Jurusan;
+    double NIM;
+
+    Mahasiswa(){
+        System.out.println("Ini adalah constructor");
+    }
+}
+
+fun fact, new Mahasiswa() sebenarnya adalah object, hanya saja object tersebut harus memiliki variabel agar bisa tersimpan
+tapi kalau memang tidak ada variabelnya, maka tetap tidak apa", hanya saja kita tidak bisa menyimpan atribut dari class tersebut
+Mahasiswa m23051204085 = new Mahasiswa();
+new Mahasiswa();
+
+brrti constructor dianggapkan sebagai inisialisasi value attribute di dalam suatu class 
+constructor juga dapat dibuat suatu parameternya 
+
+class Mahasiswa{
+    String Nama;
+    String NIM;
+    String Jurusan;
+    double IPK;
+
+    Mahasiswa(String InputNama, String InputNIM, String InputJurusan, double InputIPK){
+        Nama = InputNama;
+        NIM = InputNIM;
+        Jurusan = InputJurusan;
+        IPK = InputIPK;
+    }
+}
+
+tapi kelemahannya adalah kita harus menyiapkan argumen yg sesuai dengan parameter dri method tersebut, sehingga new Mahasiswa() harus diganti
+constructor harus memiliki nama yg sama dengan class nya, dan juga tidak mengembalikan nilai apapun
+constructor bahkan bisa dibuat lebih dari 1 dengan nama yg sama, sehingga kita bisa membuat constructor khusus dengan new Mahasiswa() yg berisi argumen, maupun gk berisi argumen
+
+access modifier adalah pengaturan akses dari suatu class atau program
+cthnya public pada public static void main(String[] args){}
+untuk classes hanya terbagi menjadi 2, public dan default 
+public artinya class dapat diakses oleh class lain 
+defualt (langsung class aja) artinya class dapat diakses di dalam package/folder yg sama 
+
+sedangkan untuk attribute dan methods terdiri atas 
+public artinya attribute dan model dapat diakses oleh class lain 
+protected artinya attribute dan model dapat diakses di dalam package yg sama dan hanya dapat diakses dan terlihat oleh subclass dan superclass
+private artinya attribute dan model dapat diakses oleh class itu sendiri 
+
+fungsinya untuk menjaga dan mengkapsulasi (encapsulation) data di dalam class, lebih baik apabila untuk menjaga keprivasian dengan menggunakkan private
+untuk mengakses attribute yg private, maka bisa mengunakkan method() getter dan setter 
+method getter untuk mereturn value attribute (nama method ditambahkan "get" didepan)
+method setter untuk mengambil argumen dan parameter, lalu diaplikasikan pada attribute tersebut (nama method ditambahkan "set" didepan)
+
+value dan reference type
+value type adalah tipe data biasa seperti int, char, bool, dll. Sehingga ketika dipanggil pada suatu method, maka method tersebut yg mengubah nilai variabel tersebut, bukan mengubah variabel tersebut 
+reference type adalah tipe data yg menyimpan referensi alamat memori dari suatu data yg disimpan, jd kalau di println secara salah, maka akan print alamat tersebut 
+    ketika kita membuat suatu object dengan constructor, itu adaalah variabel reference.
+    ketika reference type dipanggil pada suatu method, maka method tersebut juga dapat mengubah variabel dan mengubah nilai variabel tersebut, dan dapat mempengaruhi variabel lain yg terhubung dengan variabel reference
+        array, object dan string adalah reference type
+    sehingga perlu hati", karena kalau ktia salah mengganti reference type, walau dia di dalam method, maka akan nilai tetap dapat berganti (pass by reference)
+    assignment pada reference type juga akan mempengaruhi value variabel
+
+constructor dapat mengakses method dalam main 
+Mahasiswa(){
+    Main.Welcome();
+}
+dan method dalam class yg mengalami encapsulation (private semua) (object) tidak dapat menggunakkan static, karena method tersebut adlaah instansi/bagian dari suatu objek (terhubung dengan object)
+kecuali jika dalam class tersebut tidak mengalami encapsulation, maka dapat membuat method yg menggunakkan static
+
+method terdiri atas 4 
+method yg tidak mengembalikan nilai dan tidak memiliki parameter
+method yg tidak mengembalikan nilai dan memiliki parameter
+method yg mengembalikan nilai dan tidak memiliki parameter
+method yg mengembalikan nilai dan memiliki parameter
+
+perlu diketahui bahwa class tidak dapat mengakses method lain kecuali dalam main atau dalam class itu sendiri (OOP)
+
+untuk menampilkan address, kita dapat menggunakkan 
+String nama string = Integer.toHexString(System.identityHashCode(object));
+system.out.println(Nama String);
+
+dan disini juga bersifat reference (pointer), jika kita 
+Mahasiswa m23051204099 = m23051204085;
+maka m23051204099 akan menyimpan data m23051204085, dan addressnya sama 
+
+tapi, kalau misalkan 
+Mahasiswa m23051204099 = new Mahasiswa(dengan semua data sama dengan m23051204085); 
+maka tetap berbeda dan alamatnya jga psti berbeda
+
+Mahasiswa m23051204085 adalah variabel 
+new Mahasiswa() adalah object
+
+Private dan Public access modifier
+    Dalam class, terdapat attribute tipe data yg bisa diberikan access modifier
+    1. default (tanpa keyword), attribute bisa dibaca dan diakses(diubah) dari luar class (biasanya dalam main atau class lain)
+    2. public, attribute bisa dibaca dan diakses(diubah) dari luar class (biasanya dalam main atau class lain)
+    3. private, attribute tidak bisa dibaca dan diakses(diubah) dari luar class, harus melalui method di dalam class 
+
+    untuk method juga dapat diberikan access modifier
+    1. default, method bisa dipanggil dari luar class (biasanya dalam main atau class lain)
+    2. public, method bisa dipanggil dari luar class (biasanya dalam main atau class lain)
+    3. private, method tidak bisa dipanggil dari luar class, harus dipanggil di dalam class (akan sangat baik apabila method yg tidak dipanggil samsek oleh main atau class lain dibuat private)
+    
+    sehingga, untuk private, dibuatlah method getter dan setter 
+    get untuk membaca (READ) value attribute 
+    set untuk menulis (WRITE) value attribute
+    selain itu, getter dan setter tidak selalu harus berhubungan langsung dengan attribute tersebut,
+    bisa jadi kita membuat method getter dan setter yg tidak langsung berhubungan dengan attribute (tidak merubah langsung)
+
+    public void setJariJari(double JariJari){
+        this.Diameter = JariJari*2;
+    }
+    fun fact bahkan tipe datanya bisa diubah menjadi tipe data yg kita inginkan 
+
+Static Variabel/ Static attribute/ Class Variabel 
+    Jika suatu attribute memiliki access modifier static, maka attribute tersebut dapat dipanggil secara langsung tanpa harus menyebutkan objectnya
+        Mahasiswa.Kampus
+    Dan jika attribute static tersebut diganti, maka attribute pada object lain juga berganti (walaupun kita hanya mengganti static attribute pada objectnya saja, bukan pada classnya)
+        karena static attribute tersebut menempel pada classnya
+    static juga bisa dihubungkan dengan access modifier private dan public, hanya saja, kalau private tidak bisa diganti diluar class itu sendiri (hanya bisa dengan setter dan getter)
+    jika suatu variabel adalah static, maka variabel tersebut cenderung dimiliki oleh class, bukan suatu object saja (yaitu Mahasiswa)
+    variabel static digunakan untuk menyimpan atribut nilai yg penting terhadap suatu kelas dan biasanya akan sering berubah (biasanya menyimpan banyaknya nilai banyaknya object yg dbuat)
+
+    jika ingin membuat method set static, maka ada 3 cara untuk merubahnya
+    void setKampus(string InputKampus){
+        Kampus = InputKampus;
+        this.Kampus = InputKampus;
+        Mahasiswa.Kampus = InputKampus; // hanya berlaku pada static 
+    }
+    
+    direkomendasikan untuk menamakan variabel static dengan huruf besar agarr lebih mudah membedakan (tapi tidak wajib)
+
+Static Class/ Class Method 
+    static juga bisa dipakai dengan ArrayList 
+    private static ArrayList<String> NameList = new ArrayList<String>();
+
+    static ArrayList<String> getNIMList(){ // maka menampilkan semua NIM
+        return Mahasiswa.DaftarNIM;
+    }
+        kalau di C++ String NamaList[];
+    
+    static method dapat diakses di main dan dapat memanggil class secara langsung 
+    system.out.println(Mahasiswa.DaftarNim());
+    walaupun bisa saja dengan 
+    system.out.println(m23051204085.DaftarNim()); // tpi tidak direkomendasikan dan harus diakses secara static (yaitu memanggil classnya)
+    
+    untuk memanggil static method, kita tidak perlu membuat objek/memanggil objek, cukup hanya dengan memanggil classnya saja 
+    jika suatu method adalah static, maka variabel tersebut cenderung dimiliki oleh class, bukan suatu object saja (yaitu Mahasiswa)
+
+    fun fact, dengan static method. apabila ktia mengimportkannya ke package lain, kita tidak perlu membuat object untuk memanggil methodnya 
+    cth : 
+    public class Math{
+        public static int sum(int a, int b){
+            return a + b;
+        }
+    }
+    maka method bisa dipanggil dengan cara 
+    Math.sum(1,1);
+
+Multifile 
+    ketika kita mengrun dan mengcompile suatu class, maka Java akan membuat 2 file terpisah (java dan class)
+    kita bisa menghubungkan antara satu file java dengan satu file lain (antara satu class dengan class lain)
+        dengan syarat harus berada dalam 1 folder yg sama dan mengetikkan package "nama package"
+
+    fun fact, kita bisa mengetikkan public static void log(String Message){} tanpa harus mengetikkan main 
+    untuk memasukkan class lain atau untuk menghubungkan class lain ke dalam program utama kita (main), tetapi dia berbeda package, maka kita dapat menggunakkan import 
+    import nama folder.nama class
+
+    untuk mengimport semua class dalam suatu package, maka menggunakkan nama package.*
+
+The Math Class
+    Dalam JDK (Java Development Kit), terdapat static Math class, Math Class berisi method" yg membantu proses penghitungan angka
+    Math.abs(a) untuk mencari nilai absolut
+    Math.ceil(a) untuk membulatkan bil.desimal ke atas
+    Math.floor(a) untuk membulatkan bil.desimal ke bawah
+    Math.round(a) untuk membulatkan bil.desimal ke paling dekat 
+    Math.max(a,b) untuk menemukan bil paling besar dari parameter (sayangnya hanya menerima 2 parameter saja)
+    Math.min(a,b) untuk menemukan bil paling kecil dari parameter
+    Math.pow(a,b) untuk memangkatkan a sebanyak b 
+    Math.sqrt(a) untuk menemukan akar dari a
+    Math.sin(a) untuk menghitung sin
+    Math.cos(a) untuk menghitung cos
+
+Final 
+    const dalam Java adalah final
+    public final double PI = 3.14;
+        sehingga, apabila ada line yg merubah PI, akan terjadi error
+
+Dalam OOP, terdapat 4 core utama yg perlu dipelajari, yaitu encapsulation, inheritance, polymorphism, abstraction
+    encapsulation berfungsi untuk melindungi data attribute class menjadi private, dan data hanya bisa diakses melalui fungssi setter dan getter
+    encapsulation berfungsi agar user tidak dapat mengakses data secara bebas
+
+    inheritance adalah proses menurunkan attribute, variabel, dan method dari satu class ke class lain. Dengan inheritance, data dapat tersimpan dengan baik
+        class yg diturunkan disebut sebagai subclass/child class/derived class
+        class yg menurunkan disebut sebagai superclass/parent class/base class
+        
+        class Dog extends Animal{} // berarti Dog adalah subclass dan Animal adalah superclass
+
+        class Animal{
+            protected int Legs; // artinya variabel hanya dapat diakses dan dilihat oleh superclass dan subclass
+            public void eat(String animal){
+                System.out.println(animal + " eats");
+            }
+        }
+
+        class Dog extends Animal{
+            Dog(){
+                // walaupun kosong, tapi class memiliki semua variabel dan method animal
+            }
+        }
+
+        class Main{
+            public static void main(String[] args){
+                Dog d = new.Dog();
+                d.eats("dog"); // maka outputnya dog eats
+            }
+        }
+
+        untuk inheritance, brrti menggunakkan prinsip "is a", sehingga anggapannya "dog is an animal", "cat is an animal"
+        dan inheritance dilakukan di file yg berbeda. Jadi misalkan Animal di file terpisah, maka dog juga bisa tetap mewarisi method dan variable animal 
+
+        fun fact, jika dalam Animal, protected int legs nya 2, maka nilai Animal.legs nya tetap, sedangkan Dog.legs nya 4.
+        Jika ada class lain yg mengheritance class animal,maka protected int legsnya 2, kecuali emg diubah lgi
+
+        dari subclass, sbnrnya dapat mengakses attribute dari dalam superclass, dengan keyword super
+        cth: super.name (brrti mengakses attribute name di dalam superclass)
+        keyword super juga dapat digunakan untuk mengakses method , super.eat(); // sehingga yg dipanggil adalah method dari dalam super class 
+
+        constructor juga sebenarnya dapat di inheritance, tapi dengan cara yg berbeda
+            jika class animal memiliki constructor, maka subclass akan mengalami error karena constructor Animal memaksa untuk melakukan constructor
+            sehingga ada 2 opsi, membuat constructor di subclass aja (di superclass tidak ada constructor)
+                atau membuat constructor di super class dan juga di sub class
+
+            maka caranya 
+                Dog(String name){ // andaikan dog adalah subclass dari Animal
+                    super(name); // maka disini kita menggunakkan keyword super dan memasukkan argumen sesuai dengan parameter yg ada di dalam constructor superclassnya
+                } // sehingga nantinya super akan mengakses constructor dari superclass
+
+            dan andaikan kita membuat overloading constructor pada superclass, maka constructor pada subclass juga menyesuaikan
+            sebenarnya tidak menggunakkan super juga tidak apa", tetapi itu adalah cara untuk membuat constructor dalam subclass
+
+        ingat, jika menggunakkan inheritance sebaiknya variabel/method menggunakkan access modifier protected, jgn menggunakkan private (karena gak bisa diakses)
+    
+    Final, Public, Private Keyword 
+        1. ketika method/attribute dibuat public dalam superclass, maka access modifier method/attribute pada subclass tidak boleh lebih restrictive dripada yg superclass (harus public juga)
+        2. ketika method/attribute dibuat private dalam superclass, maka subclass tidak dapat mengakses juga (maka harus ada getter/setter pada superclass)
+        3. ketika method/attribute dibuat final dalam superclass, maka subclass akan mendapat warisan method/attribute tersebut. Dan ktia tidak bisa mengoverride method yg final
+            tetapi tetap bisa mengoverload method final (baik dalam super maupun subclass)
+
+    polymorphism dari kata "banyak bentuk", adalah kondisi dimana tiap kelas yg memiliki inheritance saling terhubung satu dengan yg lain 
+        tiap method dalam masing" class memiliki karaktertistiknya sendiri yg telah disesuaikan
+
+        class Animal{
+            public void MakeSound(){
+                System.out.println("Grr...");
+            }
+        }
+        
+        class Cat extends Animal{
+            public void MakeSound(){
+                System.out.println("Meow...");    
+            }
+        }
+
+        class Dog extends Animal{
+            public void MakeSound(){
+                System.out.println("Woof...");    
+            }
+        }
+
+        bahkan, kita bisa menginisialisasi object dengan cara
+        Animal a = new Dog(); // polymorphic instantiation
+        Animal b = new Cat();
+            bisa dilakukan, tpi nnti data attribute nya akan tetep mengikuti akhir dari new, apakah Dog atau Cat 
+            dan masalahnya, tidak semua method dapat diaplikasikan ketika terjadi polymorphic instantiation
+
+        tapi kalau dibalik menjadi 
+        Dog a = new Animal();
+        cat b = new Animal();
+            tidak bisa dilakukan, karena balik ke prinsip "is a", "dog is an animal", tapi bukan brrti "animal is a dog"
+            apalagi kalau Dog a = new Cat(); akan tambah salah 
+
+        ini sangat berguna jika program memiliki banyak subclass dari dalam superclass (bisa untuk class dari suatu karakter RPG)
+        sehingga bisa dikatakan polymorphism adalah penggunaan satu method dengan banyak implementasi
+            misalkan untuk method void Attack(Hero enemy){} // maka kita tidak perlu mengetikkan satu per satu object yg telah dibuat
+
+        dari polymorphism, kita juga dapat membuat arraylist khusus untuk suatu class tertentu 
+            misalkan Animal[] AnimalList = new Animal[4]; 
+                AnimalList[0] = a; // walaupun dia dog
+                AnimalList[1] = b; // walaupun dia cat
+                tidak akan terjadi error, karena anggapannya a dan b melalui proses casting 
+                dan kita dapat menjalankan method" dalam class tersebut, misalkan 
+                AnimalList[0].bark();
+
+            tapi, jika andaikan class Dog/Cat memiliki method tambahan yg sblmnya tdk ada di Class Animal, lalu kita panggil 
+            AnimalList[0].defend(); // method defend hanya ada dalam Dog
+            maka akan terjadi error, karena melalui proses casting (perubahan tipe data) dari dog menjadi Animal
+
+
+    Overriding & Overloading
+        subclass dapat memiliki attribute dan value yg sama dengan subclass lain, tergantung pada superclassnya 
+        yg brrti subclass juga dapat mengedit method, value, attribute dari superclass yg dapat diedit sesuai kebutuhan subclass itu sendiri, yg disebut overriding 
+
+        method overriding memiliki peraturan:
+            1. memiliki tipe return dan argumen yg sama
+            2. access level method tidak boleh lebih restrictive dari superclass Method (agar superclass method tidak ikt teredit jika subclass method diedit)
+            3. method yg final/static tidak bisa di override
+            4. jika method tidak bisa di inherited, maka juga tidak bisa dioverride
+            5. constructor tidak bisa dioverride secara sederhana
+
+            method overriding disebut juga runtime polymorphism/dynamic method dispatch
+        untuk override suatu method, dapat ditambahkan "@Override" untuk memberitahu IDE kalau itu adalah override (VSCode berlaku)
+            
+        jadi, cara kerja overriding adalah program akan menelusuri subclass terlebih dahulu, jika ternyata subclass melakukan overriding suatu method, maka method dri subclass yg ditampilkan
+        tapi kalau memang tidak ada, maka method milik superclass yg ditampilkan 
+        
+        apabila mengoverride suatu method, maka usahakan ketik ulang juga apa yg diketik pada superclass (atau ketik super.nama method())
+            atau sekalian mengganti semua isi dari method
+            karena kalau kita tidak menuliskan secara lengkap, maka method tidak dapat muncul semua seperti yg kita inginkan
+
+        sedangkan overloading adalah kondisi jika kita membuat suatu method yg sama, tetapi memiliki return, parameter yg tipe datanya berbeda
+            cth:
+            public static int sum(int a, int b){
+                return a + b;
+            }
+
+            public static double sum(int a, double b){
+                return (double)a + b; // agar hasil yg diberikan juga double 
+            }
+
+            public static double sum(double a, double b){
+                return a + b;
+            }
+        constructor yg berbeda (Dimana kita membuat constructor untuk menerima argumen dan constructor yg tdk menerima argumen) juga termasuk overloading 
+
+Hierarki Package 
+    suatu class memiliki banyak access modifier, yaitu default (tidak diberi access modifier) dan public (private tidak mungkin, karena kalau private pasti tidak bisa diakses), trdpt abstract dan final jga
+    bedanya, public class dapat terlihat dan dapat diakses oleh beda package, sedangkan default tidak dapat diakses dan terlihat oleh beda package (tpi msih bisa diakses sesama package)
+        dengan syarat harus menggunakkan import dan import static 
+        
+    dengan itu, bahkan kita bisa membuat method atau constructor yg methodnya berasal dari class lain 
+        cth : 
+            void Display(){
+                Console.log("Hello"); // log adalah void static dan Console adalah class diluar Package
+                Console.log("Hi");
+            }
+    fun fact, ketika kita membuat class di dalam suatu file sendiri (tanpa ada main, sehingga kita fokus hanya ingin membuat class tersebut)
+        kita tidak dapat membuat public class tambahan di bawahnya 
+
+        public class Console{
+            public static void Log(string message){
+                System.out.println(message);
+            }
+        }
+
+        public class Terminal{ // maka akan terjadi error, karena JDK bingung mau menginisiasi yg mana 
+            public static void Log(string message){
+                System.out.println(message);
+            }
+        }
+        tpi kalau public class Terminal diubah menjadi class Terminal, maka tidak terjadi error. Tetapi class Terminal hanya visible terhadap console dan tidak dapat digunakan oleh class lain 
+        tetapi, kita tetap bisa menggunakkan method dri class tersebut (class Terminal) melalui public class Console
+
+        public class Console{
+            public static void Log(string message){
+                System.out.println(message);
+                Terminal.Log("Hello World");
+            }
+        }
+
+        class Terminal{ // maka akan terjadi error, karena JDK bingung mau menginisiasi yg mana 
+            public static void Log(string message){
+                System.out.println(message);
+            }
+        }
+
+        hal ini juga berlaku pada main method, jika public class main, maka class yg ada di dalam file main maka tidak boleh menggunakkan public
+            karena JDK akan bingung mau menginisiasi yg mana 
+
+        lalu kita juga bisa mengimportkan static method langsung ke main, dengan cara 
+        import static nama folder.nama file.nama class.nama method (harus static)
+
+Data abstraction
+    Data abstraction artinya mencegah user untuk mengetahui secara detail fitur dan cara kerja dari suatu program. Sehingga user hanya perlu tau cara menjalankan program tanpa mengetahui cara kerja program
+    abstraction bisa diperoleh dengan cara menggunakkan access modifier class abstract dan interface    
+
+    atau bisa dikatakan bahwa abstract adalah sebuah ide/konsep dasar class yg kemudian akan di implementasikan oleh subclass berikutnya (abstract class tidak punya object)
+    sehingga, abstract class akan "memaksa" menginheritade attribute/method ke sub class
+
+    dengan abstract, suatu subclass harus memiliki attribute/method dari superclass
+
+    abstract memiliki syarat
+        jika class ditulis abstract, maka class tersebut tidak dapat dibuat object
+        untuk menjadikan suatu class menjadi absract, maka harus class abstract harus menjadi superclass
+        bahkan, method juga bisa dijadikan abstract, sehingga otomatis class tersebut adalah abstract
+
+    abstract class Animal{
+        int legs = 0;
+        abstract void MakeSound();
+    }
+    class Cat extends Animal{
+        int legs = 4
+        void MakeSound(){
+            System.out.println("Meow");
+        }
+    }
+
+    sehingga pengaplikasiannya itu andaikan suatu class yg disebut Shape dan kita ingin membuat subclass dari Shape. Shape memiliki method untuk menghitung luas, keliling, dll. 
+    Tapi karena tiap bangun memiliki rumus yg berbeda, maka dibuatlah class abstract dan abstract void agar setiap shape memiliki rumusnya masing"
+
+    method juga dapat dibuat sebagai abstract dengan menuliskan 
+    public abstract void method(){} pada superclass
+    
+    sehingga tiap subclass harus membuat method sesuai dengan kebutuhan masing" class
+interface
+    hampir sama dengan abstract, interface adalah abstract class yang hanya berisi abstact method. Kalau abstract method msih bisa terisi oleh variabel yg bisa diubah, tetapi interface tidak
+    interface memiliki syarat
+        class diganti dengan keyword interface
+        tidak boleh mengandung constructor
+        interface bisa extend interface lain 
+        class bisa mengimplementasikan interface lain (dengan cara mengetikkan "implements interface 1, interface 2" (dengan koma)) 
+
+    jadi, bisa diandaikan bahwa interface adalah blueprint dari class, class adalah blueprint dari object, object adlah hasilnya
+    untuk membuat interface, disarankan untuk menambahkan "I" didepan, menjadi IPlayer untuk menandakan itu interface (pada penamaan file)
+        atau menambahkan kata "behavior", contoh nya PlayerBehavior
+    ketika mengimplementasikan interface, maka kita harus mengoverride semua method yg ada
+    
+    interface Animal{
+        public void eat();
+        public void MakeSound();
+    }
+
+    class Cat implements Animal{
+        public void MakeSound(){
+            System.out.println("Meow");
+        }
+        public void eat(){
+            System.out.println("nom");
+        }
+    }
+
+    fun fact, abstract class bisa mengimplement suatu interface, sehingga subclassnya akan ikut mengheritance interface tersebut 
+    
+    jika interface yg kita gunakan berada di luar folder main, maka harus kita import 
+    
+    mengapa interface penting digunakan ?? karena suatu class tidak bisa mengherintace lebih dari 1 class.
+        andaikan kita membuat class khusus untuk suatu skill, lalu subclass ingin memiliki method di dalam abstract class, maka subclass harus mengorbankan salah satu heritance (yg malah akan menjadi error)
+    maka, untuk menggunakkannya harus mengetikkan 
+        public class Dog extends Animal implements ISkill;
+
+    sehingga anggapannya, abstract dan interface saling melengkapi satu dengan yg lain 
+    abstract adalah blueprint dari object , tapi interface adalah blueprint dari abstract
+        dan interface adalah alasan agar object bisa menjadi kompleks tanpa harus mengganggu/ mengubah class abstract
+
+    walaupun memang suatu abstract class bisa memiliki abstract method, sehingga object dari subclass dapat memiliki abstract method
+        tapi jika abstract methodnya sudah semakin banyak jenisnya, maka akan menyebabkan error bagi subclass
+        (terlalu banyak abstract method pada suatu superclass, sangat tidak direkomendasikan)
+        pastikan agar membuat abstract method apabila sudah yakin ingin mengimplementasikan method tersebut ke semua subclass
+    
+    untuk lebih sederhananya
+    GUNAKAN ABSTRACT UNTUK SUBCLASS "IS A" SUPERCLASS (inheritance)
+    GUNAKAN INTERFACE UNTUK SUBCLASS "HAS A" CLASS (implements interface)
+
+    ketika kita membuat suatu method yg parameternya adalah class lain,
+        kita bisa membuat argumen object baru disitu
+        misal 
+        Hero1.setAttackSkill(new AttackMelee());
+Casting 
+    adalah kondisi dimana kita merubah suatu tipe data variabel ke variabel lainnya 
+        misalkan double angka = 5.4;    
+        int angka_int = (int) angka; // maka akan merubah double menjadi int
+
+        kalau di C++, terdapat implisit casting, jadi langsung aja 
+            double angka = 5.4;
+            int angka_int = angka; // maka langsung berubah menjadi double
+    
+    dalam java, terdapat 2 kondisi casting, upcasting dan downcasting 
+        upcasting adalah perubahan tipe data/class dari subclass menjadi superclass
+            
+            Dog a = new Dog();
+            Animal b = (Animal) a;
+
+            maka, b akan menyimpan attribute a (attribute Animal), tetapi tidak dapat mengakses method dog 
+
+            atau bisa ditulis 
+            Dog a = new Dog();
+            Animal b = a;
+
+        downcasting adalah perubahan tipe data/class dari superclass menjadi subclass 
+
+            Animal a = new Animal();
+            Dog b = (Dog) a;
+
+            tapi hal ini akan menyebabkan error, karena terdapat perubahan field/attribute yg kosong sehingga menyebabkan program mengalami bug 
+
+            tetapi, kalau misalkan 
+            Dog a = new Dog();
+            Animal b = (Animal) a;
+            Dog c = (Dog) b;
+
+            maka tidak akan terjadi error, sehingga downcasting dapat dilakukan
+
+            Animal[] AnimalList = new Animal[4]; 
+            AnimalList[0] = a; // walaupun dia class dog
+            AnimalList[1] = b; // walaupun dia class cat
+
+            contoh diatas adalah kasus upcasting 
+                dari Dog/Cat menjadi Animal
+            
+            tapi, kalau misalkan casting dari Dog menjadi Cat, itu tidak akan bisa.. karena tidak berkesinambungan 
+            maka, dalam penggunaan array pada object class, perlu berhati" agar upcasting dan downcasting dapat dilakukan dengan benar 
+
+            berikut adalah ilustrasinya 
+                   
+                Super Class                 
+            /   ^          \ 
+           /   /            \
+          /   /              \
+         v   /                V  
+    Sub Class 1             Sub CLass 2
+
+    ke atas adalah upcasting 
+    ke bawah adalah downcasting
+
+    subclass 1 (upcasting)----> superclass berhasil
+    superclass (downcasting) ----> subclass 1 berhasil (asalkan kembali ke subclass semula)
+    superclass (downcasting) ----> subclass 2 tidak berhasil
+
+Protected keyword
+    protected attribute artinya attribute hanya dapat diakses oleh subclass (kalau protected attribute terdapat pada superclass)
+    tapi masalahnya, protected attribute sangat tidak disarankan karena akan membuat beberapa variabel/attribute nyangkut jika salah satu dihapus
+        dan error tersebut tidak terdeteksi (pada subclass)
+        cth : dalam superclass terdapat attribute/tipe data protected, lalu kita ingin menghapus attribute tersebut
+                maka subclass tidak akan menyadari kalau ada attribute yg terhapus, sehingga bila dijalankan akan mengalami bug
+    maka sekalian saja menggunakkan private 
+
+    sehingga protected direkomendasikan untuk digunakan pada Method
+    selain itu, protected method dapat dioverride di subclass
+
+Object The Superclass
+    fun fact: kita bisa menuliskan seperti ini terhadap superclass
+    public class Animal extends Object { // tapi kalau tidak ditulis demikian juga gpp 
+
+    }
+    sehingga, Object adalah class yg sebenarnya sudah adaa sejak java pertama kali dibuat (anggepannya adalah superclass dari superclass)
+    
+    maka, kita bisa menuliskan 
+    Animal a = new Animal();
+    Object b = a; // polymorphism dan Upcasting 
+
+    sehingga object b akan menyimpan method dan attribute a, tetapi tidak dapat mengakses method Animal
+
+    tpi, dalam class Object, tidak ada method atau attribute yg sama dengan Animal (karena Animal anggapannya adalah subclass dari Object)
+        trdapat method .toString(); dalam class Object, sehingga hasilnya adalah sebagai berikut 
+
+        String string_b = b.toString();
+        String string_a = a.toString();
+        maka bila ditampilkan, akan menampilkan reference dari object 
+
+    ini juga alasan mengapa terdapat tulisan "Object Null" ketika mengerjakan OOP 
+
+    lalu, terdapat method equals();
+    method yg digunakan untuk mengecek apakah 2 object tersebut sama atau tidak 
+        misalkan System.out.println(a.equals(b)); // berdasarkan di atas, maka akan menampilkan true, karena a dan b memiliki referensi yg sama/merupakan object yg sama 
+        
+    tapi, kalau misalkan 
+    Animal c = new Animal();
+    Animal d = new Animal();
+    System.out.println(a.equals(b)); // maka menampilkan false, karena walaupun classnya sama, tapi berbeda object 
+        ingat, classnya sama tetapi referensinya berbeda 
+
+    kita juga bisa mengoverride method yg sebelumnya ada di class Object 
+    public boolean equals(Object OtherObject){ // mengapa parameternya menggunakkan Object, agar argumen apapun dapat diterima oleh method (sehingga, kita bisa mengecek class apapun)
+        if(this == OtherObject){
+            System.out.println("Object memiliki referensi yg sama");
+            return true;
+        } 
+        else if(this.getClass() == OtherObject.getClass()){ // getClass adalah method untuk melihat class dari suatu object 
+            System.out.println("Object memiliki class yg sama, tetapi referensinya berbeda");
+            return true;
+
+            Animal other = (Animal) OtherObject; // mengcasting agar kita bisa mendapatkan namenya, karena class Object tidak memiliki name
+
+            if(this.name == Other.name){
+                System.out.println("Nama sama");
+                return true;
+            }
+            else{
+                System.out.println("Nama beda");
+                return false;
+            }
+        }
+        else{
+            System.out.println("Object tidak memliki referensi yg sama");
+            return false;
+        }
+    }
+
+Generic ArrayList
+    Dalam java, untuk menggunakkan arraylist, kita bisa menggunakkan class bawaan ArrayList yaitu 
+    import java.util.ArrayList
+
+    untuk membuat array sederhana, bisa menggunakkan perintah 
+    Animal[] KumpulanAnimal = new Animal[3]; // kita msih tidak menggunakkan class ArrayList 
+        kalau di C++
+        Animal KumpulanAnimal[] = new Animal[3];
+    
+    array sederhana ini, untuk menampilkan semua tetap hrus menggunakkan for loop
+    for(Animal i: KumpulanAnimal){
+        Animal.Display();
+    }
+    dan jika array yg kita buat itu tidak terisi semua, dan kita ingin menampilkannya, psti akan error 
+    perlu diketahui, bahwa array sederhana ini tidak bisa ditambahkan lagi karena sudah menjadi array fix (jadi klau mau ditambahkan KumpulanAnimal[4], maka tidak bisa)
+
+    sehingga untuk membuat array yg bisa ditambahkan atau dikurangi, barulah menggunakkan class ArrayList
+    ArrayList<tipe data> nama list = new ArrayList<tipe data>();
+        ArrayList<Animal> ListAnimals = new ArrayList<Animal>();
+            atau 
+        ArrayList<Animal> ListAnimals = new ArrayList<>();
+    
+    lalu untuk menambahkan data array, menggunakkan method "add"
+        ListAnimals.add(nama object);
+    
+    jika kita mengubah beberapa attribute pada object yang ada di dalam array (walau kita tidak mengetikkan ListAnimals[3].setName...), maka attribute juga ikut berganti pada semua array
+        karena array" tersebut menyimpan reference/alamat dari masing" object, bukan hanya object" saja 
+    perlu diketahui bahwa array" ini juga berlaku polymorphism, jadi object subclass dari Animal bisa ditambahkan ke dalam array
+
+    tapi kalau misalkan ArrayList<Animal> ListAnimals = new ArrayList<Animal>(); diganti menjadi ArrayList<Dog> ListAnimals = NewArrayList<Dog>();
+        maka akan terjadi error (karena ada beberapa object di dalam array yg bukan bagian dari Dog)
+    tapi bila diganti menjadi ArrayList<Object> ListAnimals = new ArrayList<Object>(); bisa dilakukan  
+        tapi ingat, method di dalam superclass sebelumnya tidak bisa diakses, sehingga kita hanya bisa mengakses method bawaan object, sehingga tidak boleh dilakukan 
+
+Operasi ArrayList
+    banyak sekali Operasi/Method pada ArrayList yang dapat kita gunakan
+    
+    DISCLAIMER: msih ingat kalau array menyimpan reference/alamat dari object?
+        supaya array menampilkan object dengan benar, maka perlu dibuat method toString();
+        
+        public String toString(){
+            return "Animal: " + this.name
+        }
+            disini kita juga bisa mengoverride semaunya kita 
+        public String toString(){
+            return this.name;
+        }
+        karena kalau gak pakai method itu, maka program malah menampilkan reference/alamat dari object"
+    
+    1. add (untuk menambahkan object ke dalam ArrayList)
+        ListAnimals.add(nama object);
+
+        ListAnimals.add(Animal1);
+        ListAnimals.add(UserInputAnimal); 
+        dan tidak terbatas seberapa banyak 
+    
+        jika kita menampilkan ArrayList secara normal, maka setiap menampilkan akan muncul "[]" sebagai penanda bahwa itu array 
+    
+    2. set (untuk merubah member dari Arraylist)
+        ListAnimals.set(index,nama object);
+
+        ListAnimals.set(0, UserInputAnimal); // index selalu dimulai dari 0
+            sehingga, akan merubah member dari ArrayList
+
+        jika kita meng set member pada index terakhir + 1 atau index yg blm tersentuh, maka akan terjadi error 
+        ListAnimals.set(5,UserInputAnimal); // padahal ArrayList msih sampai 4, maka akan error 
+
+    3. remove (untuk menghapus member dari ArrayList)
+        ListAnimals.remove(index);
+
+        ListAnimals.remove(1); 
+            maka member index ke 1 akan terhapus dari ArrayList (dan anggotanya berkurang anggapannya)
+                dan member index yang tersisa akan bergeser indexnya (yg index 1 menjadi 0, dsb)
+    
+    4. get (untuk mengakses member dari ArrayList)
+        ListAnimals.get(index);
+
+        Animal PickedAnimal = ListAnimals.get(0);
+            maka PickedAnimal akan menyimpan data attribute, variabel, method dari member index 0 
+            tapi tidak akan menghapus member index 0 dari Arraylist
+
+    5. size (untuk mengetahui berapa banyak member dalam ArrayList)
+        ListAnimals.size();
+
+    6. isEmpty (untuk mengetahui apakah ArrayList kosong atau tidak)
+        ListAnimals.isEmpty(); // maka menampilkan true or false 
+
+    7. contain (untuk mengecek apakah terdapat member yang kita cari)
+        ListAnimals.contain(nama object); // harus object yg dimasukkan sebagai argumen 
+        ListAnimals.contain(Elephant1);
+
+            jika Elephant1 tidak ada dalam ArrayList, maka program akan menampilkan false 
+    
+    8. indexOf (untuk menampilkan index dari member yg kita cari)
+        ListAnimals.indexOf(nama object);
+        ListAnimals.indexOf(Tiger1);
+
+            jika Tiger1 ada dalam ArrayList, maka akan menampilkan angka dari ArrayList
+            jika tidak ada, maka akan menampilkan angka -1 
+    
+    dan masih banyak lagi 
+    jika ingin mencari tau lebih banyak lagi, tinggal mengetikkan ListAnimals. // maka autofill dari VSCode akan memberitahu method apa saja dari ArrayList
+
+Reflection Field and Attribute (sebenarnya tidak seberapa penting)
+    ketika membuat aplikasi, beberapa object yg kita punya sudah dibuat menjadi private sehingga tidak semua hal bisa kita ubah secara mudah
+    kita harus mengakses setter dan getter
+    tapi terkadang ada beberapa attribute dan field yg kita lupa/tidak tahu apa saja yg diprivate
+
+    tapi dengan Reflection, kita bisa tahu apa field dan attribute tersebut 
+
+    pertama, untuk mengetahui class dari suatu object, kita bisa mengetikkan 
+        Class<?> classAnimal1 = Animal1.getClass(); // ini anggapannya termasuk generic ArrayList
+        System.out.println(classAnimal1);
+            sehingga akan menampilkan class dari Animal1 (dengan memberitahu nama class dan foldernya)
+    bahkan kita bisa mengetahui super class nya 
+        Class<?> classAnimal1 = Animal1.getClass().getSuperClass();
+        System.out.println(classAnimal1);
+            sehingga akan menampilkan superclass dari Animal1 (jikalau ada superclassnya) (dan bisa dispam menjadi .getSuperClass().getSuperClass());
+            jikalau itu adalah superclass, maka dia akan menampilkan "class java.lang.Object"
+
+        untuk menampilkan tanpa ada kata "class", bisa diketikkan 
+        System.out.println(classAnimal1.getClass());
+    
+    untuk mendapatkan info mengenai fieldnya, kita bisa mengetikkan 
+    Field[] Animal1Fields = classAnimal1.getFields(); // dengan kondisi harus mengimport java.lang.reflect.Field
+        mengapa []? karena getFields merefleksikan array dari field"nya
+    lalu dilanjutkan dengan 
+    System.out.println(Animal1Fields[0]);
+        maka menampilkan field/pertama attribute pertama dari Animal1 (dengan menampilkan folder,class, dan filenya), indeks dimulai dari 0
+        untuk menampilkan nama saja, kita bisa mengetikkan System.out.println(Animal1Fields[0].getName());
+
+    sebenarnya bisa aja dengan menampilkan System.out.println(classAnimal1.getFields());
+        tapi kita tidak bisa mengakses indeks dari field" tersebut
+
+    sayangnya, method getFields hanya bisa mengakses attribute/field yang public saja, tidak bisa yg private
+
+    lalu, untuk menampilkan semua field, kita bisa melakukan 
+    Field[] Animal1AllFields = classAnimal1.getDeclaredFields();
+    for(Field i : Animal1AllFields){
+        System.out.println(i.getName());
+    }
+    hal ini juga kita bisa lakukan untuk mengakses semua attribute pada superclass dari class tersebut, sehingga kita bisa mengetahui attribute superclass dan subclassnya
+    
+    bahkan, dengan Reflection kita bisa mengubah beberapa variabel atau attributenya 
+    Animal1AllFields[0].set(Animal1,value:"Mammal"); // dengan kondisi bahwa attribute tersebut public 
+
+    tapi, kalau ingin merubah attribute yang sebelumnya private, ktia bisa merubahnya, tapi dengan syarat harus
+    Animal1AllFields[1].setAccessible(true); 
+    Animal1AllFields[1].set(Animal1,value:"Panthera Tigris"); // dengan syarat kita harus menambahkan exception pada main (public static void main(String[] args) exception...)
+        hal ini juga bisa berlaku untuk superclass, 
+        reflection akan berguna untuk hacking, tapi kalau untuk aplikasi sendiri.. akan sangat merusak program 
+    
+Reflection Method and Constructor 
+    Dengan reflection, kita bisa mengakses suatu method yg private pada class diluar folder main 
+    dengan cara mengetikkan 
+    
+    Method[] methodAnimal = Animal1.getClass().getDeclaredMethod // dengan kondisi harus mengetikkan import java.lang.reflect.Method
+        hampir sama caranya untuk mengakses semua field dari suatu class 
+        lalu dilanjutkan dengan mengetikkan 
+        for(Method i: methodAnimal){
+            System.out.println(i.getName()); // dimana ini akan menampilkan semua nama methodnya saja
+            // tapi kalau kita hanya mengetikkan System.out.println(i); // maka ini akan menampilkan secara rinci method yg digunakan, access modifiernya, return typenya, dan asal method
+            // tapi kalau kita mengetikkan System.out.println(i.getModifiers()); // maka ini akan menampilkan angka access modifier dari tiap method, 1 itu public, 2 itu private 
+                // untuk lebih jelasnya, bisa mengetikkan System.out.println(i.accessFlags()); // maka ini akan menampilkan secara string access modifiernya 
+        }
+    
+    lalu, untuk mencari method yg kita inginkan dan mengganti method dari private menjadi public, kita bisa mengetikkan 
+        for(Method i : methodAnimal){
+            if(i.getName().equals("setAnimalName")){
+                i.setAccessible(true);
+                i.invoke(Animal1."Matthias"); // kita harus menambahkan exception pada method main (public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, InstantiationException)
+                    // dengan kondisi kita harus mengetikkan import java.lang.reflect.InvocationTargetException;   
+                    //invoke artinya memohon, disini argumen yg kita masukkan adalah nama object yg ingin diubah valuenya, lalu masukkan value yg diinginkan
+            }
+        }
+    
+    lalu, untuk mengubah constructor dari suatu object. kita bisa mengetikkan 
+    
+    Obj changeConstructor = new Object(); // membuat object baru untuk bisa memasukkan data baru 
+
+    Constructor<?>[] constructorAnimal = Animal1.getClass().getConstructors(); // denngan kondisi harus mengetikkan import java.lang.reflect.Constructor
+    for(Constructor<?> i : constructorAnimal){
+        System.out.println(i.getName()); // akan menampilkan class dari constructor kita 
+        if(i.getName.equals("nama class")){
+            Object[] obj = {"Tiger",4}; // membuat object tambahan dengan argumen yang kita inginkan
+            changeConstructor = i.newInstance(obj); // kita masukkan object tambahan agar constructor baru bisa tersimpan
+        }
+    }
+
+    jika kita memaksakan 
+        changeConstructor.displayAll(); // maka tidak bisa, karena changeConstructor adalah class object, dan class object tidak bisa mengakses method di bawahnya
+        maka harus di downcasting menjadi 
+        Animal newAnimal = (Animal) changeConstructor;
+    
+    Reflection sebenarnya tidak banyak digunakan pada dunia programming, biasanya hanya digunakan untuk testing aplikasi, seperti untuk mengetes object, method 
+    selain itu, kita jga menggunakkan Reflection apabila kita tidak mengetahui tempat asal dari suatu object (andaikan aplikasinya sudah advanced dan kita adlaah penerus aplikasinya)

@@ -1,0 +1,104 @@
+Langkah-langkah menghubungkan MongoDB ke Aplikasi Java
+1.	Pastikan JDK (Java Development Kit), MongoDB Compass dan MongoShell sudah terinstall 
+2.	Masukkan C:\Program Files\MongoDB\Server\8.0\bin dan C:\Program Files\mongosh-2.3.3-win32-x64 ke dalam list edit Environment Variable 
+        (agar bisa diakses di cmd dimana saja)
+3.	Buat project baru dengan cara klik kanan pada bagian Explorer lalu klik “New Project”, lalu klik “Maven” dan klik “No Architecture”
+4.	Setelah project dibuat, maka akan muncul folder baru.
+    Pada folder baru, terdapat file pom.xml yang perlu diedit
+
+    Diubah dengan menambahkan <dependencies> 
+    <dependencies>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.8.1</version>            
+        </dependency>
+    </dependencies>
+
+    setelah <version>
+
+5.	Pada Main.java, import beberapa library yang dibutuhkan untuk dapat mengakses MongoDB
+import org.bson.Document;                           // mengakses dokumen MongoDB dalam bentuk BSON
+import com.mongodb.MongoClient;                     // membuat koneksi dengan MongoDB
+import com.mongodb.client.MongoCollection;          // mengakses collection dalam MongoDB
+import com.mongodb.client.MongoCursor;              // iterator untuk mencari document hasil ekspresi user 
+import com.mongodb.client.MongoDatabase;            // mengakses database dalam MongoDB
+
+6.	Membuat MongoClient (agar bisa mengkoneksikan aplikasi kita dengan MongoDB) (sekaligus mengakses library MongoClient)
+MongoClient Mongoclient = new MongoClient("localhost",27017);       // localhost menunjukkan alamat host dari MongoDB, 27017 adalah port andalan MongoDB
+
+7.	Membuat database baru 
+MongoDatabase db = mongoclient.getDatabase("DemoDatabase");         // getDatabase adalah fungsi untuk mengakses database yang dicari (jika tidak ada, maka akan otomatis dibuat)
+                                                                    // otomatis dibuat, tetapi tidak langsung muncul, harus menginputkan document baru aakn muncul
+
+8.  Mengakses library MongoCursor (agar bisa melihat list database apa saja yang dimiliki)
+MongoCursor<String> dbsCursor = mongoclient.listDatabaseNames().iterator();         // <String> agar data yg dikembalikan berupa String, listDatabaseNames melist database
+        while(dbsCursor.hasNext()){
+            System.out.println(dbsCursor.next());                                   // mengakses nama Db yg sedang diakses saat ini
+        }
+
+9.	Membuat collection baru                                             
+MongoCollection<Document> collection = db.getCollection("First Document");          // getCollection adalah fungsi untuk mengakses coll yang dicari (jika tidak ada, maka akan otomatis dibuat)
+
+10.	Memasukkan data baru ke dalam collection yang baru saja dibuat
+Document doc = new Document("full_name","Cornelius Louis Nathan");                  // parameter 1 adalah fieldnya, parameter 2 adalah valuenya
+collection.insertOne(doc);
+
+11.	Ketika menambahkan document baru, terkadang kita ingin memasukkan lebih dari satu field, maka kita bisa menggunakkan .append (.append artinya menambahkan) (dengan parameter yang sama ketika membuat document baru)
+ Document doc1 = new Document("nij","20002336")
+                                    .append("nama_lengkap", "Cornelius Louis Nathan")
+                                    .append("tgl_lahir", Instant.parse("2004-12-31T17:00:00.000Z"))               // Instant.parse untuk mengatur tanggal sesuai yg kita inginkan
+                                    .append("no_telp", "082140041315")                                            // mengetik value harus menggunakkan petik
+                                    .append("alamat", "Siwalankerto Permai III F-31")                               
+                                    .append("tgl_mulai_Volunteer", Instant.parse("2023-10-01T17:00:00.000Z"))
+                                    .append("email", "corneliuslouis3112@gmail.com")
+                                    .append("age","20")                                                           // angka bisa tanpa menggunakkan petik, tapi kalau di atas 9 angka, harus menggunakkan petik atau ditambhin huruf L dibelakang (sebagai long)
+                                    .append("nif_penanggung_jawab", "2532143214");
+        collection.insertOne(doc1);
+
+12.	Ketika ingin menambahkan document lebih dari 1, kita harus menyiapkan docuent tersebut, lalu bisa menggunakkan fungsi InsertMany() (dengan tambahan fugnsi yaitu Arrays.asList())
+
+ Document volunteer1 = new Document("nij", 20002336)
+                .append("nama_lengkap", "Cornelius Louis Nathan")
+                .append("tgl_lahir", "2004-12-31T17:00:00.000+00:00")
+                .append("no_telp", "082140041315")
+                .append("alamat", "Siwalankerto Permai III F-31")
+                .append("tgl_mulai_volunteer", "2023-10-01T17:00:00.000+00:00")
+                .append("email", "corneliuslouis3112@gmail.com")
+                .append("age", 20)
+                .append("nif_penanggung_jawab", 2532143214L);
+
+        Document volunteer2 = new Document("nij", 741849032)
+                .append("nama_lengkap", "Celine Natalie Kurniawan")
+                .append("tgl_lahir", "2004-06-02T17:00:00.000+00:00")
+                .append("no_telp", "081320878160")
+                .append("alamat", "Gg. Hikmah III No. 30, Lontar")
+                .append("tgl_mulai_volunteer", "2024-12-14T00:00:00.000+00:00")
+                .append("email", "celnatalie3604@gmail.com")
+                .append("age", 20)
+                .append("nif_penanggung_jawab", 2532143215L);
+
+        collection.insertMany(Arrays.asList(volunteer1, volunteer2));
+
+13.	Ketika ingin memperbarui document yang sudah ada sebelumnya, kita bisa menggunakkan ekspresi $set untuk bisa memperbarui field yang diinginkan, dan fungsi updateOne()
+    
+    Document find = new Document("nij", 20002336);                                                                      // untuk find, field dan valuenya harus benar-benar sama, tidak bisa mendekati
+        Document update = new Document("$set", new Document("nama_lengkap", "Christopher Cornelius Louis Nathan"));
+        collection.updateOne(find,update);
+
+14.	Untuk menghapus document yang sudah ada sebelumnya, kita bisa menggunakkan fungsi deleteOne.
+
+Pertama, kita menentukan document yang ingin dihapus dengan menginputkan salah satu field dan nilainya.
+Lalu, dengan fungsi deleteOne, kita menyebutkan document yang ingin dihapus
+
+Note : Pastikan field dan nilainya harus sesuai agar MongoDB bisa mencari documentnya.
+    Document find = new Document("nij", 20002336);   
+    collection.deleteOne(find);
+
+15.	Untuk menghapus semua document yang sudah ada sebelumnya, kita bisa menggunakkan fungsi deleteMany, dan fungsi new Documentnya dibiarkan kosong.
+    collection.deleteMany(new Document());
+
+16.	Untuk mencari document yang sudah ada sebelumnya dan ingin menampilkannya, kita bisa menggunakkan fungsi find()
+        Document find = new Document("nij", 20002336);
+        Document result = collection.find(find).first();                    //first() artinya menampilkan document pertama yang field dan nilainya sesuai dengan yang dicari
+        System.out.println(result);

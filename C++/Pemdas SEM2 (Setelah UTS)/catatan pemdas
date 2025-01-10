@@ -1,0 +1,4349 @@
+Catatan Pertemuan Pertama (Pointer)
+Setiap variabel punya slot loka pada memori yang ukurannya tergantung pada tipe datanya 
+    lokasi tersebut digunakan untuk menyimpan nilai
+
+Pointer adalah variabel yg digunakan untuk menyimpan alamat dari sel memori itu
+cth : int a = 100; //a disimpan pada memori 1024
+    cout << a; //a = 100
+    cout << &a; // &a = 1024
+
+Kegunaan dari pointer adalah pointer bisa mengakses sebuah nilai melalui alamatnya lgsg tanpa harus mengcopy/menggandakan nilai tersebut
+Kekurangan dari pointer adalah debugging yg lama dan lebih rumit 
+
+& akan memberi alamat memori dari suatu variabel 
+pointer menggunakkan *(Dereferencing operator)
+apabila suatu variabel terdapat *, maka dia otomatis adalah pointer
+int a = 100;
+int *b = &a; // ini pointer
+akan error apabila salah satu tidak ada (saling melengkapi)
+
+pointer juga sebenarnya adalah variabel 
+nilai dari pointer pasti adalah alamat dari variabel tersebut 
+int a = 100;
+int *p = &a;
+int **q = &p;
+kalau misalkan ingin menampilkan nilai sesungguhnya dari suatu variabel (bukan alamat), maka harus cout dengan * (dereferencing operator)
+cout << a << endl;
+cout << *p << endl;
+cout << **q << endl; //pointer dari pointer p
+
+int a = 100;
+int *p = &a; //alamatnya 1024
+cout << a << &a << endl; // 100 1024
+cout << p << *p << &p <<endl; // 1024 100 1034
+deferencing operator tidak bisa digunakan pada variabel yg tidak punya pointer (polos)
+
+pointer bisa menunjuk variabel yg lain
+int a = 100, b = 200, c = 300;
+int *x = &a, *y = &b, *z = &c;
+y = x; //maka pointer y akan menunjuk variabel a
+b = *z // maka pointer b akan mengambil nilai c 
+*y = *z // karena y menunjuk variabel a, maka pointer y mengambil nilai dari pointer z, berarti a mengambil nilai c
+
+kalau misalkan 
+y = z // maka pointer y akan bebarengan dengan pointer z, maka pointer y menunjuk variabel c
+
+contoh fungsi menggunakkan pointer 
+void kali(int x,int *p){
+	*p = 2 * x;
+}
+
+int main(){
+	int a = 16;
+	kali(9, &a); //karena awalnya menggunakkan &a, lalu bertemu dengan pointer, maka menampilkan angka normal
+    cout<< a; // maka a = 18;
+	return 0;
+} 
+
+Ada yg namanya Variabel Reference
+Variabel Reference adalah tambahan variabel yang memiliki alamat yg sama dengan variabel tertentu 
+int a = 100;
+int &ref = a;
+
+cout << ref;// pasti akan sama alamatnya
+cout << &a; // pasti akan sama alamatnya
+
+variabel reference adalah variabel alternatif untuk suatu variabel. Dan apabila nilai dari variabel reference diganti, maka nilai variabel utamanya akan ikut berganti
+int a = 100;
+int &ref = a;
+ref = 200;
+// maka a = 200;
+variabel reference digunakan untuk parameter passing pada suatu fungsi (sama dengan pointer)
+
+Perbedaan fungsi pointer dan variabel reference 
+Pointer 
+void Balik(char *ptr1, char *ptr2){
+    char temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
+}
+
+int main(){
+    char y = 'y';
+    char n = 'n';
+    Balik (&y, &n);
+    cout << y << n;
+}
+
+void kuadrat (int * x){
+    *x = (*x) * (*x);
+}
+atau 
+void kuadrat (int *x){
+    *x *= *x;
+}
+
+Fungsi pointer harus menggunakkan void, karena nilai yang menggunakkan pointer akan digantikan. 
+Sehingga tidak memerlukan return
+dengan pointer, kita tidak perlu membuat variabel baru yg hanya akan dipakai sekali 
+
+Variabel Reference
+void Balik(char &ref1, char &ref2){
+    char temp = ref1;
+    ref1 = ref2;
+    ref2 = temp; 
+}
+
+int main(){
+    char y = 'y';
+    char n = 'n';
+    Balik (y, n);
+    cout << y << n;
+}
+Fungsi reference juga menggunakkan void
+
+void kuadrat (int &x){
+    x = x * x;
+}
+atau 
+void kuadrat (int &x){
+    x *= x;
+}
+
+Pointers dan Array 
+Nama variabel array sebagai pointer adalah alamat elemen pertama array
+    tiap elemen pada array, lokasi memorinya akan berbeda. Tetapi tetap konstan dan konsisten disitu
+Array adalah pointer konstan 
+
+int main(){
+    int a[5] ={1,2,3,4,5};
+    cout << a[0] << endl; 
+    cout << *a << endl; // maka akan mengeluarkan list paling awal, yaitu 1 
+    cout << &a << endl;
+    cout << a << endl; //maka akan mengeluarkan alamat
+}
+terkecuali pada array, apabila kita ingin mengeluarkan output berupa *a, maka bisa (tidak bisa untuk tipe data biasa)
+
+pointer dapat menggantikkan array
+int main(){
+    a[5] = {1,2,3,4,5};
+    int *p = a; //tidak perlu ditambahkan &a
+    cout << a[0] << *p; //maka akan mengeluarkan list paling awal juga 
+}
+
+untuk dereferencing semua elemen array
+menggunakkan *(a + n), karena  *(a+n) == a[n]
+int main(){
+    int a[5] = {1,2,3,4,5};
+    for (int i = 0; i <= 5; i++){
+        cout << *(a + i) << endl;
+    }
+}
+
+int main(){
+    int tgl_lahir[] ={31,12,2004};
+    int *ptgl_lahir = tgl_lahir;
+
+    cout << "diakses dengan pointer" << endl;
+    cout << *ptgl_lahir << endl; // 31
+    cout << *(ptgl_lahir + 1) << endl; // 12
+    cout << *(ptgl_lahir + 2) << endl; //2004
+
+    cout << "diakses dengan array biasa" << endl;
+    cout << tgl_lahir[0] << endl; // 31
+    cout << tgl_lahir[1] << endl; // 12
+    cout << tgl_lahir[2] << endl; // 2004
+}
+
+NULL Pointer 
+NULL adalah pointer kosong 
+jika NULL diakses, maka akan terjadi error
+int *p;
+int p = 0;
+cout << p << endl; // 0
+cout << &p << endl; // alamat
+cout << *p << endl; // error
+atau, kalau diketikkan 
+int *p = nullptr;
+maka bila di cout, akan menampilkan alamat kosong // 0x0
+
+Pointer untuk Array 2D
+table[i] = &table[i][0] mengacu alamat baris ke i
+int table[3][4] = {{1,2,3,4}, 
+{5,6,7,8},{9,10,11,12}};
+
+for (int i = 0; i < 3;i++){
+    for (int j = 0; j < 4; j++)(
+        cout << *(*(table +i)+ j));
+    cout << endl;
+}
+maka output nya 
+1 2 3 4
+5 6 7 8
+9 10 11 12
+
+
+Dynamic Objects/Dynamic Memory/Dynamic Memory Allocation
+
+Memory management terbagi menjadi 2 
+    Static Memory Allocation //digunakan apabila jumlah data yg kita input sudah yakin
+        Memory yg dialokasikan pada saat kompilasi (compile) (pada saat program sedang diproses)
+    Dynamic Memory Allocation // digunakan apabila jumlah data yg kita input masih belum yakin
+        Memory yg dialokasikan saat running time (pada saat program berjalan) (sehingga dapat ditentukan banyaknya nilai yg masuk sesuai keinginan kita )
+
+Static object 
+    variabel dideklarasikan pada saat fungsi dipanggil
+    alokasi memori secara otomatis ketika dicompile 
+    memory dikembalikan otomatis ketika object keluar dari scope 
+
+Dynamic object 
+    alokasi memory berdasarkan operator yg dijalankan, yg disebut new
+    dynamic object bisa terletak di luar fungsi tempat object dialokasikan 
+    memory object yg sudah dialokasikan dapat direturn dengan perintah deallocation mengunakkan operator delete
+
+contoh static object
+    int size[8];
+
+contoh dynamic object
+    int size = 8;
+    int *p = new int [size];
+        maka, p akan menjadi suatu array yg mampu menyimpan 8 nilai
+    
+    int size = 8;
+    int *p = new int [size];
+
+    p[0] = 1;
+    p[1] = 11;
+    p[2] = 111;
+
+    cout << *(p + 1); // maka mengeluarkan angka 11
+
+    delete[] p; //maka akan dihapus 
+    dan bisa dihapus dengan command delete[]
+    maka, semua angka di dalam array akan hilang
+
+dynamic object harus dibuat dengan menggunakkan pointer  
+    int *p = new int [8];
+    atau
+    int *p = new int;
+    *p =  8;
+    
+    menghapus object 
+    delete p;
+    atau
+    delete [] p ; 
+
+pointer bersifat fleksibel dan dapat menjadi array
+    int *p, n = 10;
+    p = new int;
+    p = new int [100];
+    p = new int[n];
+
+contoh 
+    void PrintMean (int*grades, int n){
+    int totalGrades = 0;
+    for(int i = 0; i < n; i++){
+        totalGrades += grades[i];
+    }
+    double mean = totalGrades / n;
+    cout << "The mean of the students are " << mean;
+
+}
+int main(){
+        int n;
+        cout << "How many students? : ";
+        cin >> n;
+
+        int *grades = new int [n];
+        for (int i = 0; i < n; i++){
+            int mark;
+            cout << "input grade for student " << i+1 << ": ";
+            cin >> mark;
+            grades[i] = mark;
+        }
+
+        PrintMean(grades, n);
+        delete [] grades;
+        
+        return 0;
+    }
+setelah menggunakkan new int, maka jangan lupa untuk menghapus isi array, agar memori/data tidak bocor
+
+delete ptr dengan delete [] ptr berbeda
+delete ptr brrti menghapus semua array dan variabelnya
+delete [] ptr hanya menghapus array saja 
+delete ptr [] juga bisa
+
+contoh dynamic memory 
+void initialize (int* list, int size, int value){ // bisa juga menggunakkan int list[]
+    for (int i = 0; i < size; i++){
+        list[i] = value;
+    }
+}
+
+void print (int list[], int size){ // dalam c++, parameter array adalah reference dan tidak perlu &
+    cout << "[ ";
+    for (int i = 0; i < size; i++){
+        cout << list[i] << " ";
+    }
+    cout << "]";
+}
+
+int* addElement(int list[], int& size, int value){ 
+    int* newList = new int [size + 1]; //buat array baru, sebenarnya tanpa +1 juga bisa
+        if (newList == 0){ //perlu dibuat seperti ini agar menghindari error dynamic memory
+            cerr << "Memory allocation error for addElement!" << endl;
+            exit (-1); //kalau error maka akan keluar dari program secara paksa
+        }
+
+    for (int i = 0; i < size; i++){
+        newList[i] = list[i]; // copas ke array baru
+    }
+
+    if (size > 0){
+        delete [] list;// menghapus array lama
+    }
+
+    newList[size] = value; 
+    size++; // size++ harus diletakkan setelah newList, agar angka di array terakhir dapat diubah terlebih dahulu, dan array dimulai dari 0
+    return newList; //kalau ditaruh sebelum, maka angka yg baru tidak bisa dimasukkan ke array terakhir
+}
+
+int* deleteFirst(int *list, int size){
+    
+    if(size <= 1){
+        if (size){
+            delete list; // jika list kurang dari 1, maka akan error
+        }
+        size = 0;
+        return NULL;
+    }
+
+    int *newList = new int [size-1]; //buat array baru lagi
+    if (newList == 0){
+        cerr << "Memory allocation error for deleteFirst";
+        exit (-1);
+    }
+
+    for (int i = 0; i < size-1; i++){
+        newList[i] = list[i+1]; //copas dari array sebelumnya, +1 agar value masuk ke dalam array 
+    }
+
+    delete [] list; //membersihkan memori list yg sudah tidak terpakai
+        size--; //mengurangi ukuran array
+        //sebenarnya tidak perlu size-- itu gpp
+    return newList;
+}
+
+int main(){
+    int n;
+    cin >> n;
+    int *A = new int [n];
+
+    if (n <= 0){
+        cerr << "memory is not enough";
+        return -1;
+    }
+
+    initialize (A, n, 0);
+    print (A, n);
+    A = addElement (A, n, 5);
+    print (A, n);
+    A = deleteFirst(A, n);
+    print (A,n);
+}
+
+fungsi lain dari addElement menggunakkan void 
+void addElement(int* &list, int &size, const int value ){ //menggunakkan * &list agar bisa array bisa langsung diubah, & untuk mengubah nilai dari size dan list 
+    int * newList = new int [size + 1];
+    
+    if(newList == NULL){
+        cerr << "Memory allocation error for addElement!" << endl;
+        exit(-1);
+    }
+ 
+    for(int i = 0; i < size; i++ ){
+        newList[i] = list[i];
+    }
+    
+    if(size >= 0){
+        delete [] list; //menghapus list array yg lama
+    }
+    
+    newList[size] = value;
+    size++;
+    list = newList; // mencopas list array yg baru 
+    //sebenarnya sama aja dengan fungsi sebeumnya, hanya saja ditambah list = newList
+    return; //fun fact, dengan fungsi void, kita bisa mengetikan return tanpa ada nilai untuk mmeberitahu bahwa fungsi selesai
+}
+
+fungsi lain dari deleteFirst menggunakan void
+
+void deleteFirst(int * &list, int &size){
+    int *newList = new int [size-1]; //sebenarnya menggunakkan size biasa sudah cukup 
+    if(size <= 1){
+        if (size){
+            delete list;
+        }
+        list = NULL;
+        size = 0;
+        return;
+    }
+
+    for (int i = 0; i < size; i++){
+        newList[i-1] = list[i]; // newList harus mengurangi agar angka terakhir di dalam array bisa masuk
+    }
+    delete [] list;
+    size--; //size array NewList akan berkurang
+    return;
+}
+
+apabila terjadi
+    int *A = new int [5];
+    A[5] = {1,2,3,4,5};
+    int *B = A;
+    delete [] A;
+    B[1] = 1; //akan terjadi error, karena array dihapus
+
+atau 
+    int *A = new int [5];
+    for (int i = 0; i < 5; i++){
+        A[i] = i;
+    }
+    
+    A = new int [5] // maka, akan terjadi error, karena memori yg dialokasikan sebelumnya tidak dihapus 
+dynamic memory harus menggunakkan pointer, agar program bisa menggunakkan memori tersebut 
+
+Array Dynamic 2d
+    adalah array dari pointer yg memungkinkan setiap baris array memiliki jumlah kolom yg berbeda 
+int *table = new int *[5]; //untuk array 2d, menggunakkan tambahan pointer lagi
+table[0] = new int [3];
+table[1] = new int [4];
+table[2] = new int [5];
+table[3] = new int [6];
+table[4] = NULL;
+
+atau 
+int **table;
+table = new int *[5];
+
+int **table;
+table = new int*[6];
+table[0]= new int[3];
+table[1]= new int[1];
+table[2]= new int[5];
+table[3]= new int[10];
+table[4]= new int[2];
+table[5]= new int[6];
+table[0][0] = 1; table[0][1] = 2; table[0][2] = 3;
+table[1][0] = 4;
+table[2][0] = 5; table[2][1] = 6; table[2][2] = 7;
+table[2][3] = 8; table[2][4] = 9;
+table[4][0] = 10; table[4][1] = 11;
+cout << table[2][5] << endl; //maka, outputnya berupa angka random
+
+Array dynamic 2d, harus menghapus barisnya satu persatu
+for (int i = 0; i < 6; i++){
+    delete[] table[i]; //tergantung berapa banyak array baris sebelumnya
+}
+delete[] table;
+
+contoh
+int m, n;
+cin >> m >> n;
+
+int **matriks;
+matriks = new int *[m];
+for (int i = 0; i < n; i++){
+    matriks[i] = new int[n]; //maka, i = baris, n = kolom 
+}
+
+yg bila dijadikan sebagai fungsi
+int** CreateMatrix(int row, int collumn){
+    int **Matrix;
+    Matrix = new int *[row];
+
+    for (int i =0; i < collumn; i++){
+        Matrix[i] = new int [collumn];
+    }
+
+    return Matrix;
+}
+
+void pointer 
+pointer yang tidak memiliki tipe data yg terkait dengannya 
+dapat menunjuk ke tipe data apa pun dan dapat diubah ke tipe apapun 
+
+int main(){
+    int n = 10;
+    void *m = &n;
+    cout << * (int *)m;
+}
+tapi, void pointer harus ditentukan tipe datanya ketika dereferencing agar tidak error
+
+null pointer 
+pointer yg tidak menunjuk lokasi memori manapun 
+mempresentasikan lokasi memori yg tidak valid
+
+fungsi malloc() adalah fungsi yang digunakan secara dinamis untuk mengalokasikan memori dengan ukuran yg sudah ditentukan 
+    jika berhasil, akan mengembalikan void pointer
+    jika ruang memori tidak cukup, alokasi gagal, akan mengembalikan null
+
+null pointer dapat digunakan untuk menginisialisasi pointer ketika pointer belum diberi alamat memori yg valid
+int main(){
+    int *ptr = null;
+}
+
+null pointer dapat digunakan untuk error handling
+int main(){
+    int *ptr;
+    ptr = (int*)malloc(2*sizeof(int));
+
+    if(ptr == NULL){
+        cerr << "Memory could not be allocated";
+    }
+    else{
+        cout << "Memory allocated successfully" ;
+    }
+    return 0;
+}
+
+int main(){
+    int *ptr, n, i;
+    cout << "Masukkan banyaknya data yg ingin kita input: ";
+    cin >> n;
+
+    ptr = (int *)malloc(n*sizeof(int)); //n * sizeof(int) artinya bahwa sizeof akan memberitahu malloc banyaknya byte yg diperlukan untuk alokasi memori 
+    
+    if (ptr == NULL){
+        cerr << "Memori tidak cukup";
+        return -1;
+    }
+
+    for (i = 0; i < n; i++){
+        cout << "Masukkan data ke- " << i+1 << ": ";
+        cin >> ptr[i]; 
+    }
+
+    cout << "Data yang anda masukkan adalah ";
+    for(i = 0; i < n; i++){
+        cout << ptr[i] << " ";
+    }
+
+    return 0;
+}
+
+nilai dari NULL adalah 0
+sehingga, dapat menggunakan NULL atau 0
+int main(){
+    int *ptr = NULL;
+    cout << ptr; //maka output berupa 0
+}
+0 disini bukan int 
+
+ukuran dari NULL tergantung pada platform dan sama seperti ukuran pointer pada umumnya
+int main(){
+    cout << sizeof(NULL);
+    return 0;
+} //maka outputnya adalah 8
+
+atau bisa menggunakkan nullptr
+karena lebih terjamin 
+
+Dangling pointer 
+pointer yang menunjuk ke beberapa lokasi memori yg tidak pernah ada
+int main(){
+    int *ptr = new int [1000];
+    delete ptr[];
+}
+
+pointer int ptr berisi alamat pertama dari memori yg dialokasikan 
+setelah beberapa operasi, memori dilepaskan menggunakkan delete. Maka semua pointer yang di deallocation akan menjadi dangling pointer
+
+meskipun memori dilepas, pointer tetap menunjuk alamat yang tidak dialokasikan
+contoh :
+    alamat byte pertama dari blok memori pointer adalah 1000
+    setelah deallocation, memori dilepas, tapi alamat di dalam pointer tidak berubah 
+    sehingga pointer alamatnya masih 1000, yaitu lokasi memori yg sudah tidak ada, sehingga disebut sebagai dangling pointer
+
+cara mengatasinya adalah melakukan reinisialisasi pointer dengan nilai tertentu 
+int main(){
+    int *ptr = new int[1000];
+    delete ptr[];
+
+    ptr = NULL; //atau ptr = nullptr;
+    return 0;
+}
+
+wild pointer / pointer yang tidak diinsialisasi 
+menunjuk ke beberapa lokasi memori yg sembarangan dan menyebabkan program crash
+
+int main(){
+    int *ptr; // wild pointer, pointer di deklarasi, tapi tidak dinisialisasi ke variabel lain
+    *ptr = 10; // lalu dereferencingnya diisi nilai 10, maka akan crash karena mengakses lokasi memori yg ilegal
+} // nilai int tidak bisa digunakan pada pointer 
+
+cara mengatasinya adalah
+1. inisialisasi dengan alamat dari suatu variabel
+int main(){
+    int value = 10;
+    int *ptr;
+    *ptr = &value;
+}
+
+2. alokasikan memori dan masukkan nilai ke dalam memori yg dialokasikan 
+int main(){
+    int *ptr = new int;
+    *ptr = 10;
+    delete ptr;
+}
+
+
+Catatan Pertemuan 2 (Struktur)
+Setiap elemen pada 1 array harus memiliki tipe yg sama 
+tapi terkadang, ada saat dimana kita harus membuat array dengan tipe yg berbeda"" (data diri). Dibuatlah record
+
+Record dalam c++ adalah struct, dan tiap elemennya disebut member(kalau record nama membernya field)
+struct dataDiri {
+    string namaLengkap;
+    int tglLahir;
+    int bulanLahir;
+    int tahunLahir;
+}
+
+Struktur = pengelompokan variabel yg berbeda tipe data dalam satu kelompok yg sama 
+struktur adalah user-defined type (tipe data yg dibuat oleh user)
+elemen dari struktur boleh berbeda"" tipenya
+elemennya bisa tipe data primitif, maupun berupa struct lainnya
+struct nilaiMahasiswa {
+    string Nama[20];
+    Tanggal ulangtahun; //tapi sebelumnya, struct Tanggal ulangtahun harus di deklarasikan terlebih dahulu
+    int course[10];
+    int tugas[5];
+    int pr[3];
+    int ujian[2];
+}
+
+ketika membuat struct, nama dari struct itu adalah tipe data dari struct itu sendiri
+struct adalah kata kunci
+
+cara mendeklarasikan struct ada 3 cara:
+1. Deklarasi variabel bertipe struct
+    struct date today ;
+2. Deklarasi struct diikuti dengan variabel setelah memberi member
+    struct date {
+        int tanggal;
+        int bulan;
+        int tahun;
+    } today;
+3. Deklarasi struktur tanpa kata kunci struct
+    date today; // apabila sebelumnya sudah dideklarasikan 
+
+maka, bila selesai. today adalah variabel yg bertipe date
+struct date; dengan struct date today; itu berbeda
+struct date; biasanya dideklarasikan pada awal program dan akan memberitahu bahwa akan ada variabel yg menggunakkan tipe data struct date //dan juga dideklarasikan membernya
+struct date today; biasanya digunakan apabila struct date sudah dideklarasikan sebelumnya //dan tidak akan bisa berjalan apabila sebelumnya struct date tidak dideklarasikan
+
+cara mengakses struct
+struct StudentRecord{
+		char name[50];
+		int id;
+		char dept[30];
+		char gender;
+	};
+StudentRecord Student1, Student2;
+student1.id = 23051204085; //menggunakkan . lalu nama membernya 
+struct bisa digunakan sebagai fungsi (dan bisa mengembalikan nilai)
+
+struct StudentRecord {
+    char name [50];
+    int id;
+    char dept [30];
+    char gender;
+};
+
+int main(){
+    StudentRecord Student1;
+    strcpy (Student1.name , "Cornelius Louis Nathan"); // bisa mengisi data dengan menggunakkan strcpy (variabel.member, nilai);
+    Student1.id = 23051204085;
+    strcpy (Student1.dept , "Engineering Informathics"); // hanya berlaku apabila tipe datanya berupa char 
+    Student1.gender = 'M';
+
+    cout << "The student is ";
+    switch (Student1.gender){
+    case 'M': cout << "Mr. ";
+        break;
+    case 'F': cout << "Ms. ";
+         break;
+    }
+    cout << Student1.name;
+} //output : The student is Mr. Cornelius Louis Nathan
+
+bahkan kita bisa sebenarnya mengcopy semua nilai dari member pada suatu variabel ke variabel lain
+Student2 = Student1;
+strcpy (Student2.name , "Clarine Lucy Nathania");
+Student1.gender = 'F';
+
+Nested struct
+member suatu struct dapat bertipe struct
+struct date{
+    int tanggal;
+    int bulan;
+    int tahun;
+};
+
+struct ultah{
+    string nama;
+    struct date kelahiran; //memang boleh, tapi harus tetap mendeklarasikan variabel baru untuk tipe data struct di dalam nested struct
+}; // nested struct, struct di dalamnya juga bisa diakses 
+
+ultah orang1;
+    orang1.nama = "Louis";
+    orang1.kelahiran.tanggal = 31;
+    orang1.kelahiran.bulan = 12;
+    orang1.kelahiran.tahun = 2004;
+
+cout << orang1.nama << ": " << orang1.kelahiran.tanggal << "-" << orang1.kelahiran.bulan << "-" << orang1.kelahiran.tahun;
+
+inistiasi struct / pemberian nama juga bisa dilakukan dengan cara yg berbeda
+struct date{
+    int tanggal, bulan, tahun;
+} kelahiran = {31,12,2004}; // hanya berlaku untuk struct yg sudah didefinisikan sebelumnya 
+
+struct date{
+    int tanggal, bulan,tahun;
+};
+date kelahiran = {31,12,2004};
+
+struct date kelahiran{
+    int tanggal = 31;
+    int bulan = 12;
+    int tahun = 2004;
+}
+
+contoh :
+struct Point {
+    int x;
+    int y;
+};
+Point P; //maka, P.x = 5, P.y = 6;
+
+struct Line {
+    Point P1, P2;
+};
+Line L; // maka, L.P1.x = 5, L.P1.y = 6, L.P2.x = 12, L.P2.y = 4;
+
+struct Triangle {
+    Point P1,P2,P3;
+};
+Triangle T;
+
+  struct zodiak { 	
+	char nama[11];	
+	int tgl_awal;		
+ 	int bln_awal;	
+	int tgl_akhir;		
+ 	int bln_akhir;	
+}; 
+  	zodiak bintang ={"Sagitarius", 22,11,21,12};
+  	int tgl, bln, thn;
+
+    cin >> tgl >> bln >> thn;
+    if ((tgl >= bintang.tgl_awal && bln == bintang.bln_awal) || (tgl <= bintang.tgl_akhir && bln == bintang.bln_akhir)){ // harus or, agar apabila ada 1 yg salah, maka akan tetap benar
+        cout << "Bintang anda adalah " << bintang.nama;
+    }   
+
+    else{
+        cout << "Bintang anda bukan " << bintang.nama; 
+    }
+
+Array struct
+berbeda dengan array pada umumnya, array struct memiliki elemen yg tiap datanya berbeda""
+elemen dari suatu array bahkan dapat bertipe struct 
+struct date{
+    int tanggal;
+    int bulan;
+    int tahun;
+};
+
+struct ultah{
+    string nama;
+    struct date kelahiran;
+};
+
+int MAKS = 5;
+struct ultah orang[MAKS];
+for (int i = 0; i < MAKS; i++){
+    cout << "Nama : "; 
+    cin >> orang[i].nama; //indeks diletakkan pada variabel yg adalah array
+
+    cout << "tanggal : ";
+    cin >> orang[i].kelahiran.tanggal;
+    
+    cout << "bulan : ";
+    cin >> orang[i].kelahiran.bulan;
+
+    cout << "tahun : ";
+    cin >> orang[i].kelahiran.tahun;
+}
+
+struct StudentRecord{
+		char name[50];
+		int id;
+		char dept[30];
+		char gender;
+	};
+StudentRecord Student[100];
+
+strcpy(Student[85].name, "Cornelius Louis Nathan");
+Student[85].id = 23051204085;
+strcpy(Student[85].dept, "Informathic Engineering");
+Student[85].gender = 'M';
+
+array dapat dijadikan sebagai member struct 
+struct Square {
+    Point P[4];
+};
+Square S;
+
+inisiasi struct array dapat dilakukan dengan cara yg berbeda
+struct abc{
+    int a;
+    char b;
+} arr[2] = {{1,'a'}, {2,'b'}};
+
+atau
+
+struct abc{
+    int a;
+    char b;
+};
+abc arr[2] = {{1,'a'}, {2,'b'}};
+
+struct transkrip{
+    int nim[10];
+    int nilai[20];
+} mhs[50];
+
+for (int i = 0; i < 50; i++){
+    cin >> mhs[i].nim;
+    for(int j = 0; j < 20;j++){
+        cin >> mhs[i].nilai[j];
+    }
+}
+
+berbeda dengan
+struct transkrip{
+    int nim[10];
+    int nilai[20];
+} mhs;
+cin >> mhs.nim;
+for(int i = 0; i < 20;i++){
+    cin>> mhs.nilai[i];
+}
+
+struct dapat dijadikan sebagai pointer (static allocation)
+struct person {
+    long id;
+    float gpa;
+};
+
+struct identity{
+    char name[30];
+    struct person student;
+};
+
+int main(){
+    struct identity js = {"John Smith"},*ptr = &js;//atau menggunakkan identity *ptr = &js; sesuai dengan tipe data struktur 
+    /*selain menggunakkan cara ini
+    struct identity js;
+    strcpy(js.name "Cornelius Louis Nathan");
+    identity *ptr = &js;
+    bisa langsung menggunakkan cara diatas*/
+    
+    js.student.id = 23051204085;
+    js.student.gpa = 4.0;
+
+    cout << js.name << " " << js.student.id << " " << js.student.gpa << endl;
+    cout << ptr->name << " " << ptr->student.id << " " << ptr->student.gpa << endl; //untuk pointer, menggunakkan ptr->member
+}
+berarti, bisa menggunakkan variabel dari tipe data struct itu lgsg (js)
+atau
+bisa menggunakkan variabel pointer yang sudah terhubung dengan alamat struct (ptr->)
+
+struct dapat dijadikan sebagai pointer (dynamic allocation)
+struct anggota {
+    int no;
+    string nama;
+}
+
+int main(){
+    anggota *agt = new anggota; //menggunakkan new tipe data struct
+    cout << "No Anggota: ";
+    cin >> agt->no;
+    cout << "Nama: ";
+    cin >> agt->nama;
+}
+
+struct dan Fungsi
+member dari struct bisa dijadikan sebagai argumen fungsi (pass by value)
+
+void todayDate(int dd, int mm, int yy){
+    string months[] = {"Wrong Months", "January", "February", "March", "April", "May", 
+    "June","July", "August", "September", "October","November", "December"};
+
+    cout << "Today is " << dd << " " << months[mm] << " " << yy;
+}
+int main(){
+    struct date{
+        int day; int month; int year;
+    }today; //kita bisa mendeklarasikan struct dan variabelnya langsung dengan cara seperti ini
+
+    cin >> today.day >> today.month >> today.year;
+    todayDate(today.day,today.month,today.year);
+}
+
+member struct juga bisa digunakan sebagai argument (pass by pointer atau reference)
+struct charset{
+    char s;
+    int i;
+};
+
+void keyValue(char *s, int *i){
+    cout << "Enter key value pair: ";
+    cin >> *s >> *i;
+}
+
+int main(){
+    charset cs;
+    keyValue(&cs.s, &cs.i);
+    cout << cs.s << " " << cs.i;
+}
+
+atau
+
+struct charset{
+    char s;
+    int i;
+}
+
+void keyValue(char &s, int &i){
+    cout << "Enter key value pair: ";
+    cin >> s >> i;
+}
+
+int main(){
+    charset cs;
+    keyvalue(cs.s, cs.i);
+    cout << cs.s << " " << cs.i;
+}
+
+struct variable{
+    int x;
+    int y;
+};
+
+void tukarVariable(int *x, int*y){
+    int temporary;
+    temporary = *x;
+    *x = *y;
+    *y = temporary;
+}
+
+int main(){
+    variable testing;
+    cout << "Masukkan nilai pertama: ";
+    cin >> testing.x;
+    cout << "Masukkan nilai kedua: ";
+    cin >> testing.y;
+
+    tukarVariable(&testing.x, &testing.y);
+    cout << "nilai pertama = " << testing.x;
+    cout << "nilai kedua = " << testing.y;
+
+}
+
+struct variable{
+    int x;
+    int y;
+};
+
+void tukarVariable(int &x, int*y){
+    int temporary;
+    temporary = x;
+    x = y;
+    y = temporary;
+}
+
+int main(){
+    variable testing;
+    cout << "Masukkan nilai pertama: ";
+    cin >> testing.x;
+    cout << "Masukkan nilai kedua: ";
+    cin >> testing.y;
+
+    tukarVariable(testing.x, testing.y);
+    cout << "nilai pertama = " << testing.x;
+    cout << "nilai kedua = " << testing.y;
+}
+
+struct juga bisa untuk parameter (pass by struct)
+apabila struct memiliki banyak field,dan semua fieldnya diubah oleh fungsi 
+    maka, parameter menggunakkan passing dari alamat struct
+
+void tukarVariable(variable *testing){
+    int temporary;
+    temporary = (*testing).x;
+    (*testing).x = (*testing).y;
+    (*testing).y = temporary;
+}
+
+atau menggunakkan << testing->x
+void tukarVariable(variable *testing){
+    int temporary;
+    temporary = testing-> x;
+    testing-> x = testing-> y;
+    testing-> y = temporary;
+}
+
+struct date {int day; int month; int year;};
+void todayDate(struct date now){
+    string months[] = {"Wrong Months", "January", "February", "March", "April", "May", //untuk dibuat jadi parameter, maka tipe data struct harus memiliki variabel
+    "June","July", "August", "September", "October","November", "December"};
+    
+    cout << "Today is " << now.day << " " << now.month << " " << now.year;
+} 
+int main(){
+    struct date today;
+    cin >> today.day >> today.month >> today.year;
+    todayDate(today);
+}
+
+atau 
+
+struct date{int day; int month; int year;};
+void todayDate(date *now){
+    string months[] = {"Wrong Months", "January", "February", "March", "April", "May", //untuk dibuat jadi parameter, maka tipe data struct harus memiliki variabel
+    "June","July", "August", "September", "October","November", "December"};
+    
+    cout << "Today is " << (*now).day << " " << now->month << " " << now->year;
+} 
+
+struct juga bisa menjadi fungsi 
+struct point {
+    int x;
+    int y;
+};
+
+struct point edit(point p){
+    (p.x)++;
+    p.y += 5;
+    return p;
+}
+
+void print(point p){
+    cout << p.x << " " << p.y << endl;
+}
+
+int main(){
+    point p1 = {50,100};
+    point p2 = {20,40};
+
+    p1 = edit(p1);
+    p2 = edit(p2);
+    print(p1);
+    print(p2);
+}
+
+fungsi struct yg menjadi pointer
+struct pointer{
+    int x;
+    int y;
+};
+
+struct pointer *testing(int a, int b){
+    struct pointer *ptr =(struct pointer*) malloc (sizeof(struct pointer));
+    ptr ->x = a;
+    ptr ->y = b + 5;
+    return ptr;
+}
+
+void print(struct pointer *ptr){
+    cout << ptr->x << " " << ptr->y << endl;
+}
+
+int main(){
+struct pointer *ptr1, *ptr2; //bila fungsi struct menjadi pointer, maka untuk menginisiasi struct harus dengan pointer juga 
+ptr1 = testing(10,15);
+ptr2 = testing(20,25);
+
+print(ptr1);
+print(ptr2);
+}
+
+Self referential struct 
+struct yg mempunyai member yg bertipe pointer yg menunjuk pada struct yg sama // walaupun konsepnya sama kayak rekursif, tapi tidak memanggil dirinya sendiri
+
+struct self{
+    int p;
+    struct self *ptr;
+};
+
+contoh 
+struct code{
+    int i;
+    char c;
+    struct code *ptr;
+};
+
+int main(){
+    code var1;
+    code var2;
+
+    var1.i = 50;
+    var1.c = 'A';
+    var1.ptr = NULL;
+
+    var2.i = 100;
+    var2.c = 'B';
+    var2.ptr = NULL;
+
+    var1.ptr = &var2; //pointer var1 menunjuk ke var2
+    cout << var1.ptr->i << " " << var1.ptr->c << " " << var1.ptr; //jadi, nilai var1 mengikuti nilai var2 karena menunjuk var2
+    cout << var2.ptr->i << " " << var2.ptr->c << " " << var2.ptr; //kalau dijalankan, maka hanya menampilkan 1 output
+}
+
+untuk mendefinisikan struct, terkadang bisa menggunakkan typedef //ingat, mendefinisikan struct, bukan variabel dari struct
+typedef struct {
+    int day;
+    int month;
+    int year;
+} date;
+date today = {31,12,2004};
+
+sebenarnya bisa langsung struct date{
+    int day;
+    int month;
+    int year;
+} today;
+date today = {31,12,2004};
+
+definisi struct harus diakhiri dengan ;
+jika member struct adalah array, maka member harus menggunakkan index
+    today.month[i]; 
+jika variable struct adalah array, maka variable harus menggunakkan index juga
+    today[i].day;
+index digunakan untuk variabel yg adalah array 
+
+member struct boleh memiliki nama member yg sama dengan struct lain 
+karena berbeda scope
+
+struct parts{
+    int qty;
+} part;
+
+struct testScores{
+    int qty; //karena berbeda scope
+} scores;
+part.qty = 50;
+scores.qty =50;
+
+tapi, kalau untuk variabel dengan nama yg sama, walaupun tipe data nya berbeda. Tetap tidak bisa
+
+
+Catatan Pertemuan 5 (Single Linked List, Linear)
+int A[5];
+int B[6]; //maka tidak ada 6 lokasi berurutan untuk B
+Maka, untuk menyimpan 6 data secara berurutan, menggunakkan linked list 
+
+Linked List adalah salah satu bentuk struktur data, berisi kumpulan data (node) yang tersusun secara sekuensial (urut), saling menyambung, dinamis, dan terbatas
+Linked list saling terhubung dengan pointer
+Masing"" data dalam linked list disebut sebagai node (simpul) yg menempati alokasi memori secara dinamis
+
+Perbedaan Array dan Linked List 
+Array 
+    Statis 
+    Penambahan/Penghapusan data terbatas
+    Random Access
+    Penghapusan Array tidak memungkinkan
+Linked List 
+    Dinamis
+    Penambahan/Penghapusan data tidak terbatas 
+    Sequential Access
+    Penghapusan Linked List mudah 
+
+Jenis"" Linked List ada 4
+    Single Linked List Linear = A -> B -> C (A adalah head)
+    Single Linked List Circular =  A -> B -> C (C kembali terhubung dengan A)
+    Doubly Linked List Linear = A <-> B <-> C (A adalah head, B adalah prev dan next, C adalah tail)
+    Doubly Linked List Circular = A <-> B <-> C (C terhubung kembali dengan A, dan sebaliknya)
+
+Single : Field Pointernya hanya satu buah dan satu arah saja, node"" nya saling terhubung satu dengan yg lain 
+[data | pointer]
+Komponen pada Single Linked List Linear 
+    Node yang berisi data dan pointer, sehingga didefinisikan dalam bentuk struct 
+    Link untuk menyimpan alamat dari node berikutnya, yg diimplementasikan dalam pointer
+    Head adalah pointer yg menyimpan alamat node pertama, awal dari linked list 
+    Node Terakhir adalah node yg pointernya null untuk kondisi berhenti saat membaca linked list 
+
+[A |] -> [B |] -> [C |] -> [D |] -> null
+FFF1     FFF2      FFF3     FFF4
+[data | pointer ]
+
+Cara mendeklarasikan Linked List Linear 
+typedef struct Tnode{
+    int data;
+    Tnode *next;
+};
+
+ketika mendeklarasikan node, membutuhkan 1 buah variabel pointer : head
+Head akan selalu menunjuk pada node pertama dengan
+    Tnode *head //diletakkan diluar fungsi struct Tnode
+
+Fungsi untuk inisialisasi Single Linked List Linear 
+void initiation(){
+    head = NULL; //sehingga isi  dari head akan kosong
+}
+
+Fungsi untuk mengecek apakah Single Linked List Linear kosong atau tidak (Jika pointer head tidak menunjuk suatu node, maka kosong)
+int isEmpty(){
+    if (head == NULL){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+};
+
+Penambahan data di depan 
+    Penambahan node baru akan dikaitkan di node paling depan 
+        Pada saat data masih kosong, penambahan data dilakukan dengan cara head ditunjukkan ke node baru 
+        Jika data tidak kosong, node baru disambungkan ke node yg ditunjuk oleh head 
+            lalu head akan berpindah (sehingga, node terbaru menjadi head)
+
+void insertDepan(int dataBaru){
+    Tnode *baru = new Tnode;
+    baru =  new Tnode;// dynamic allocation untuk node baru 
+    baru->data = databaru; //data baru dimasukkan ke node baru (yg akan dimasukkan ke linked list )
+    baru->next = NULL; // pointer next akan menjadi null
+    //node baru adalah node yg akan dimasukkan ke dalam linked list 
+
+    if (isEmpty() == 1){
+        head = baru; //head menjadi node terbaru dan langsung masuk ke linked list
+        head->next = NULL;
+    }
+    else {
+        baru->next = head; //pointer baru menunjuk head (sehingga otomatis pointer baru didepan)
+        head = baru; //sehingga, head menjadi node terdepan 
+    }
+        cout << "Data masuk" << endl;
+} 
+
+Penambahan data di belakang
+    Penambahan data di belakang
+    Jika data pertama kali dimasukkan, node langsung ditunjuk di head (sehingga masuk paling awal)
+    membutuhkan pointer baru untuk mengetahui node terbelakang, lalu dikaitkan dengan node baru 
+    untuk mengetahui data paling belakang, diperlukan perulangan
+
+    awalan fungsinya hampir sama dengan void insertDepan
+
+void insertBelakang(int dataBaru){
+    Tnode *baru, *bantu; 
+    baru = new Tnode; //dynamic allocation untuk node terbaru
+    baru->data = databaru; //data baru dimasukkan ke dalam node baru (yg akan dimasukkan ke linked list)
+    baru->next = NULL; //pointer next akan menjadi null
+    //node baru adalah node yg akan dimasukkan ke dalam linked list 
+
+    if(isEmpty() == 1){
+        head = baru; //head menjadi node terbaru dan masuk ke linked list 
+        head->next = NULL; 
+    }
+    else{
+        bantu = head; //pointer bantu menjadi head 
+        while(bantu->next != NULL){ //melakukan looping
+            bantu = bantu->next //pointer bantu berpindah ke node selanjutnya, sampai bantu->next menjadi 0 
+        }
+        bantu->next = baru; //setelah ditemukan node terakhir, maka masukkan node terbaru 
+    }
+    cout << "Data masuk" << endl;
+}
+
+void TampilLinkedList(){
+    Tnode *bantu;
+    bantu = head; //pointer bantu menjadi head
+    if(isEmpty() == 0){
+        while(bantu->next != NULL){
+            cout << bantu->data << " ";
+            bantu = bantu->next;
+        }
+    cout << endl;
+    }
+    else{
+        cout << "data masih kosong" << endl;
+    }
+}
+
+Menghapus data terdepan 
+    menggunakkan pointer lain yang digunakan untuk menunjuk node yg akan dihapus (pointer hapus)
+    sebelum data terdepan dihapus, maka head harus ditunjukkan ke node selanjutnya agar linked list tidak terputus 
+    menghapus pointer hapus dengan perintah delete
+    jika head = NULL, maka dqta masih kosong
+
+void hapusTerdepan(){
+    Tnode *hapus;
+    int d; // untuk menyimpan informasi mengenai data yg akan dihapus 
+
+    if(isEmpty() != 1){
+        if (head->next != NULL){
+            hapus = data; //pointer hapus menunjuk head
+            d = head->data; //d menyimpan nilai head
+            head = head->next; //posisi head dipindah ke node selanjutnya
+            delete hapus; //pengorbanan pointer hapus
+        }
+
+        else{
+            d = head->data;
+            head = NULL; //penghapusan data di head, karena tidak ada node lain di belakang head 
+            //mengapa tidak menggunakkan delete head? agar linked list tidak hilang
+        }
+        
+        cout << d << " terhapus dari linked list" << endl;
+    }
+    else {
+        cout << "linked list msih kosong" << endl;
+    }
+}
+
+Menghapus data terbelakang
+    membutuhkan pointer hapus dan bantu
+        pointer hapus untuk menunjuk node yg kan dihapus 
+        pointer bantu untuk menunjuk node sebelum node yg akan dihapus agar menjadi node terakhir 
+
+    alur :
+        1. menempatkan pointer bantu pada node sebelum node terakhir
+        2. pointer hapus untuk menunjuk node setelah pointer bantu
+        3. pointer hapus dihapus
+        4. pointer bantu menunjukk null dan menjadi node terakhir
+
+void hapusTerbelakang(){
+    Tnode *hapus, *bantu;
+    int d;
+    if (isEmpty == 0){
+        if(head->next != NULL){
+            bantu = head; //pointer bantu menunjuk head
+            while(bantu->next->next != NULL){ //while pointer next masih ada node yg lain sampai menyentuh node kedua paling terakhir 
+                bantu = bantu -> next; // pointer bantu berpindah ke node selanjutnya 
+            }
+            hapus = bantu->next; //pointer hapus menunjuk node setelah pointer bantu
+            d = hapus->data; // d menyimpan informasi data yg akan dihapus 
+            bantu->next = NULL; //node bantu akan menunjuk NULL,agar menjadi node terakhor
+            delete hapus;
+        }
+
+        else{
+            d = head-> data;// d menyimpan informasi data yg akan dihapus
+            head = NULL; //mengapa tidak menggunakkan delete head? agar linked list tidak hilang
+        }
+    cout << d << "telah terhapus" << endl;
+    }
+
+    else{
+    cout << "linked list masih kosong" << endl;
+    }
+}
+
+void deleteSemua(){
+    Tnode *bantu, *hapus;
+    bantu = head;
+    while (bantu != NULL){
+        hapus = bantu;
+        bantu = bantu-> next; //pindah ke node selanjutnya
+        delete hapus;
+    }
+    cout << "Penghapusan semua elemen linked list selesai" << endl;
+    head = NULL; // agar head tidak lagi menunjuk pada alamat memori node terakhir yang dihapus, dan benar" terhapus semua data
+}
+
+Single Linked List Linear dengan Head dan tail
+
+dibutuhkan 2 variabel pointer : head dan tail
+head menunjuk node pertama, tail menunjuk node terakhir
+
+inisiaslisasi Single Linked List Linear dengan Head dan tail
+typedef struct Tnode{
+    int data;
+    Tnode *next;
+}
+Tnode *head;
+Tnode *tail;
+
+Fungsi inisiasi single linked list linear dengan head dan tail
+void init(){
+    head = NULL;
+    tail =  NULL;
+}
+
+Fungsi untuk mengetahui single linked list linear dengan head dan tail kosong atau tidak
+
+Penambahan data di depan 
+Penambahan data baru akan selalu menjadi head
+
+void insertDepan(int dataBaru){
+    Tnode *baru;
+    baru = new Tnode; //dynamic allocation untuk node terbaru
+    baru->data = databaru; //data baru dimasukkan ke dalam node baru (yg akan dimasukkan ke linked list)
+    baru->next = NULL; //pointer next akan menjadi null
+    //node baru adalah node yg akan dimasukkan ke dalam linked list 
+
+    if (isEmpty() == 1){
+        head = tail = baru; // disini, karena linked list kosong, maka nilai dari head dan tail sama, sehingga bisa copas pointer baru
+        tail->next = NULL; //tail menjadi node terakhir
+    }
+    else{
+        baru->next = head; //pointer baru menunjuk head (sehingga otomatis pointer baru didepan)
+        head = baru; //node terbaru menjadi head 
+    }
+    
+    cout << "data masuk" << endl;
+}
+
+Penambahan data di belakang 
+Kelebihan dari Single Linked List Linear dengan Head dan Tail, hanya dibutuhkan tail untuk mengikat node baru, sehingga node baru menjadi tail (tidak perlu pointer bantu)
+void insertBelakang(int dataBaru){
+    Tnode *baru;
+    baru = new Tnode;
+    baru->data = databaru;
+    baru->next = NULL;
+
+    if (isEmpty() == 1){
+        head = tail = baru;
+        tail->next = NULL;
+    }
+    else{
+        tail->next = baru; //pointer tail menunjuk baru (sehingga otomatis pointer baru di belakang)
+        tail = baru; //node terbaru menjadi tail
+    }
+
+    cout << "Data masuk" << endl;
+}
+
+void TampilLinkedList(){
+    Tnode *bantu;
+    bantu = head;
+    if (isEmpty == 0){
+        while (bantu-> next != NULL){
+            cout << bantu->data << " ";
+            bantu = bantu->next;
+        }
+    }
+    else{
+        cout << "data masih kosong" << endl;
+    }
+} //hampir sama dengan yg tanpa head dan tail
+
+void hapusTerdepan(){
+    Tnode *hapus;
+    int d;
+    if(isEmpty == 0){
+        if(head != tail){ //mengecek apakah head sama dengan tail, mengecek apakah linked list hanya 1
+        hapus = head;
+        d = hapus->data;
+        head = head->next;
+        delete hapus; 
+        }
+        else{
+            d = tail->data; // d mengambil informasi dari tail (karena head dan tail sama saja)
+            head = tail = NULL; // head dan tail dikosongkan isinya
+        }
+        cout << d << " telah terhapus" << endl;
+    }
+
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void hapusTerbelakang(){
+    Tnode *bantu, *hapus;
+    int d;
+    if (isEmpty == 0){
+        bantu = head;
+        if (head!= tail){
+            while(bantu->next != tail){ //mengecek sampai menyentuh node sebelum tail
+                bantu = bantu->next;
+            }
+            hapus = tail; //pointer hapus mengambil alih tail
+            tail = bantu; //node sebelum node yg akan dihapus akan menjadi tail
+            d = hapus->data;
+            delete hapus;
+            tail->next = NULL;
+        }
+
+        else{
+            d = tail->data;
+            head = tail = NULL;
+        }
+        cout << d << " sudah dihapus" << endl;
+    }
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void deleteSemua(){
+    Tnode *bantu, *hapus;
+    bantu = head;
+    while(bantu != NULL){
+        hapus = bantu;
+        bantu = bantu->next;
+        delete hapus;
+    }
+    cout << "penghapusan data dalam linked list selesai" << endl;
+    head = NULL;
+    tail = NULL;
+}
+
+Penyisipan List secara urut 
+    1. Cari dimana tempat Penyisipan
+        Untuk melakukan penyisipan, harus diketahui elemen sebelum tempat dimana item akan disisipkan 
+        maka, menggunakkan pointer current  
+            jika nilai yg ingin disisipkan lebih kecil daripada nilai yg sudah ada (current number), maka pindahkan current pointer ke posisi berikut 
+            tambahkan pointer prev, yg selalu ada sebelum current, untuk menandai posisi elemen sebelumnya
+
+            cur = head;
+            prev = NULL;
+            while (x > cur->data){
+                prev = cur;
+                cur = cur-> next;
+            }
+
+            tapi, akan ada masalah. Dimana apabila x lebih besar dari semua nilai dalam list, maka akan terjadi error 
+                karena cur-> next = NULL;
+            
+            solusi :
+            cur = head;
+            prev = NULL;
+            while((cur != NULL) && (x > cur->data)){
+                prev = cur;
+                cur = cur-> next;
+            }
+    
+    2. Buat node baru 
+        Tambahkan satu pointer newItem
+        newItem = new Tnode;
+        newItem->data = x;
+
+    3. Sisipkan node baru ke dalam linked list 
+        Perlu pointer dari [50] ke [66], maka menggunakkan cur 
+            newitem->next = cur;
+        Perlu pointer dari [41] ke [50], maka menggunakkan prev
+            prev->next = newItem;
+        
+        Bagaimana jika penyisipan dilakukan pada awal list (sehingga prev == NULL)
+        Solusi:
+        if (prev != NULL){
+            newItem->next = cur;
+            prev->next = newItem;
+        }
+        else{
+            newiItem->next = head; //maka, newItem ditaruh di depan
+            head = newItem;
+        }
+
+        Bagaimana jika penyisipan dilakukan saat list masih kosong
+        Solusi  : maka head harus diinsialisasikan terlebih dahulu 
+        if (head == Null){
+            head = new Tnode;
+            head->data = x;
+            head->next = NULL;
+        }
+
+        Bagaimana jika x yg dimasukkan memiliki nilai yg sama di dalam list 
+        Solusi : 
+        if ((cur == NULL) || (x != cur->data)){
+            cout << "not duplicate " << endl;
+        }
+        else{
+            cout << "a duplicate" << endl;
+        }
+
+yg bila digabungin adalah
+void insertSorted(int x) {
+    Tnode *cur = head;
+    Tnode *prev = NULL;
+    Tnode *newItem = new Tnode;
+    newItem->data = x;
+
+    while ((cur != NULL) && (x > cur->data)) {
+        prev = cur;
+        cur = cur->next;
+    }
+
+    if (prev != NULL) {
+        newItem->next = cur;
+        prev->next = newItem;
+    } else {
+        newItem->next = head;
+        head = newItem;
+    }
+
+    if (isEmpty() == 1) {
+        head = new Tnode;
+        head->data = x;
+        head->next = NULL;
+    }
+
+    if ((cur == NULL) || (x != cur->data)) {
+        cout << "not duplicate" << endl;
+    } else {
+        cout << "a duplicate" << endl;
+    }
+}
+
+Menghapus dari Linked List terurut 
+1. Cari dimana node yg akan dihapus
+    Gunakan current pointer 
+    Cari node yang mempunyai nilai yg akan dihapus dengan pointer cur //jadi, cur disini yg akan disamakan
+    Tambahkan pointer prev yang selalu berada di posisi sebelum cur untuk menandai elemen sebelumnya 
+
+    cur = head;
+    prev = NULL;
+    while((cur !=NULL) && (x != cur-> data)){
+        prev = cur;
+        cur = cur->next;
+    }
+2. Lewati node tersebut dalam linked list 
+    Lewati node yg akan dihapus 
+    if ((cur != NULL) && (x == cur->data)){
+        prev-> next = cur-> next; //
+        Success = boolean(1);
+    }
+    else{
+        Success = boolean(0);
+    }
+
+    Jika yg dihapus adalah awal list (berarti, angka yg akan dihapus adalah angka awal)
+    if ((cur != NULL) && (x == cur->data)){
+        if(prev!= NULL){
+        prev-> next = cur-> next;
+        }
+        else{
+            head = cur->next;
+        }
+        Success = boolean(1);
+    }
+    else{
+        Success = boolean(0);
+    }
+3. Mengatur node jika diperlukan 
+    Menghapus Node 
+    Setelah dihapus, cur masih menyimpan node yg dihapus 
+    Dari sudut pandang list memang sudah terhapus, tapi di memory blm
+    Sehingga, untuk menghapus dari memori, menggunakkan 
+        delete cur;
+    alokasikan cur untuk proses berikutnya 
+
+yg bila digabungkan, menjadi 
+void deleteSorted (int x){
+    Tnode *cur;
+    Tnode *prev = NULL;
+    bool Success;
+
+    while((cur !=NULL) && (x != cur-> data)){
+        prev = cur;
+        cur = cur->next;
+
+        if ((cur != NULL) && (x == cur->data)){
+        if(prev!= NULL){
+        prev-> next = cur-> next; //maka, prev dan cur next menunjuk node selanjutnya, sehingga cur bisa dihapus
+        }
+        else{
+            head = cur->next;
+        }
+        Success = true;
+        delete cur;
+    }
+    else{
+        Success = false;
+    }
+
+    }
+    return Success; 
+}
+Insertion (cara menyisipkan x pada lokasi setelah current)
+[A |] -> [B |] -> [C |] //andaikan A adalah current
+Newitem->next = cur-> next;
+cur->next = newItem;
+
+Catatan ke 5.2 (Single Linked List Circular)
+SLLC adalah pointer yang nextnya menunjuk ke dirinya sendiri 
+node terakhirnya menunjuk ke node terdepan 
+
+deklarasi node 
+typedef struct Tnode;{
+    int data;
+    Tnode *next;
+} 
+
+Tnode *baru;
+baru = new Tnode;
+baru->data = databaru;
+baru->next = baru; //kalau sebelumnya, baru->next = NULL
+
+SLLC membutuhkan 1 head, dan 1 head menunjuk yg paling depan
+
+Tnode head;
+
+void init(){
+    head = NULL;
+}
+
+int isEmpty(){
+    if (head == NULL){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+Penambahan data di depan 
+ketika menambahkan data, maka otomatis akan menambahkan data di depannya
+    namun saat pertama kali, maka otomatis akan ke head 
+
+Prinspnya 
+    1. mengaitkan data baru dengan head 
+    2. kemudian, menunjuk pada data baru, sehingga head akan selalu di depan 
+    3. Untuk menghubungkan node terakhir, maka membutuhkan pointer bantu untuk mencari node yg paling belakang 
+
+void insertDepan(int databaru){
+    Tnode *baru, *bantu;
+    baru = new Tnode;
+    baru->data = databaru;
+    baru->next = baru;
+    if(isEmpty() == 1){
+        head = baru;
+        head->next = head; //menunjuk dirinya sendiri
+    }
+    else{
+        bantu = head;
+        while(bantu->next != head){
+            bantu = bantu->next; //pointer bantu pergi menuju node terakhir. sehingga akan menjadi node terakhir
+        }
+        baru->next = head;
+        head = baru;
+        bantu->next = head;
+    }
+    cout << "data telah masuk" << endl;
+}
+
+Penambahan data di belakang
+    namun saat pertama kali, maka otomatis akan ke head
+Prinsipnya 
+    1. membutuhkan pointer bantu untuk mengetahui node paling belakang 
+    2. menggunakkan perulangan untuk mencari node terakhir 
+    3. data baru dikaitkan di node paling belakang 
+    4. data baru paling belakang, lalu disambung ke head 
+
+void insertBelakang(int databaru){
+    Tnode *baru, *bantu;
+    baru = new Tnode;
+    baru->data = databaru;
+    baru->next = baru;
+    if(isEmpty() == 1){
+        head = baru;
+        head->next = baru;
+    }
+    else{
+        bantu = head;
+        while (bantu->next != head){
+            bantu = bantu->next;
+        }
+        bantu->next = baru;
+        baru->next = head;
+    }
+    cout << "Data telah masuk" << endl;
+}
+
+void PrintLinkedList(){
+    Tnode *bantu;
+    bantu = head;
+    if(isEmpty()== 0){
+    while (bantu->next != head){
+        cout << bantu ->data << " ";
+        bantu = bantu->next;
+        }
+            cout << endl;
+    }
+    else {
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void HapusDepan(){
+    Tnode *hapus, *bantu;
+    int d;
+    if (isEmpty()==0){
+        hapus = head;
+        d = head->data;
+        if (head->next != head){
+            bantu = head;
+            while (bantu->next != head){
+                bantu = bantu->next;
+            } 
+            head->next = head;
+            delete hapus;
+            bantu->next = head;
+        }
+        
+        else{
+            head = NULL;
+        }
+    }
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void HapusBelakang(){
+    Tnode *hapus, *bantu;
+    int d;
+    if(isEmpty() == 0){
+        hapus = head;
+        if(head->next == head){
+            head == NULL;
+        }
+        else{
+            bantu = head;
+            while (bantu->next->next != head){
+                bantu = bantu->next;
+            }
+            hapus = bantu->next;
+            d = hapus->data;
+            bantu->next = head;
+            delete hapus;
+        }
+        cout << d << "telah terhapus dari linked list" << endl;
+    }
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void DeleteAll(){
+    Tnode *DeleteNode, *Help;
+    Head = Help;
+    while(Help->Next != Head){
+        DeleteNode = Help;
+        Help = Help->Next;
+        delete DeleteNode;
+    }
+    Head = NULL;
+    cout << "Semua data telah dibersihkan" << endl;
+}
+
+Single Linked List Circular dengan Head dan tail
+Dibutuhkan 2 buah variabel, pointer head dan tail
+Head akan selalu menunjuk pada pointer pertama, Tail menunjuk pada pointer terakhir 
+
+struct Tnode{
+    int Data;
+    Tnode *Next;
+};
+
+Tnode *Head;
+Tnode *Tail;
+
+void init(){
+    Head = Tail = NULL;
+}
+
+int isEmpty(){
+    return (Tail == NULL) ? 1 : 0;
+}
+
+void InsertFront(int NewData){
+    Tnode *NewNode, *Help; // Pembuatan node baru dan node bantu
+    NewNode = new Tnode;  //Penambahan node bantu
+    NewNode->Data = NewData; // Node baru menyimpan data yang akan dimasukkan
+    (*NewNode).Next = NewNode; //Pointer next menunjuk dirinya sendiri
+
+    if(isEmpty() == 1){ //Jika linked list kosong
+        Head = NewNode; //Node head menyimpan node baru
+        Tail = NewNode; //Node Tail juga menyimpan node baru
+        Head->Next = Head; //Pointer next pada head menunjuk dirinya sendiri
+        Tail->Next = Tail; //Pointer next pada tail menunjuk dirinya sendiri
+    } //karena masih satu node aja
+    else{ //Jika linked list tidak kosong
+        NewNode->Next = Head; //Node baru dimasukkan di depan head 
+        Head = NewNode; //Node baru menjadi head
+        (*Tail).Next = Head; //Pointer tail menunjuk Head, agar menjadi circular 
+    }
+    cout << (*NewNode).Data << " inserted in front of the linked list" << endl;
+}
+
+void InsertBack(int NewData){
+    Tnode *NewNode, *Help;
+    NewNode = new Tnode;
+    NewNode->Data = NewData;
+    (*NewNode).Next = NewNode;
+
+    if(isEmpty() == 1){
+        Head = NewNode; //Node head menyimpan node baru
+        Tail = NewNode; //Node Tail juga menyimpan node baru
+        Head->Next = Head; //Pointer next pada head menunjuk dirinya sendiri
+        Tail->Next = Tail; //Pointer next pada tail menunjuk dirinya sendiri
+    }
+    else{
+        Tail->Next = NewNode;
+        Tail = NewNode;
+        Tail->Next = Head;  //Pointer tail menunjuk Head, agar menjadi circular
+    }
+    cout << (*NewNode).Data << " inserted in front of the linked list" << endl;
+}
+
+
+void PrintLinkedList(){
+    Tnode *Print;
+    Print = Head;
+    if(isEmpty() == 0){
+        cout << "[ ";
+        do{ 
+            cout << Print->Data << " "; 
+            Print = Print->Next;
+        }while(Print != Tail->Next);
+        cout << "]" << endl << endl;
+    }
+    else{
+        cout << "Linked list is empty" << endl << endl; 
+    }
+}
+
+Menghapus data terdepan brrti menghapus Head
+Tetapi, penghapusan tidak boleh dilakukan jika node sedang ditunjuk oleh head 
+    Maka, Pointer hapus menunjuk head
+    Head digeser ke node selanjutnya agar jadi head baru 
+    Lalu delete deleteNode
+Jika tail masih null, brrti data kosong //karena head dan tail sama
+
+void DeleteFront(){
+    Tnode *DeleteNode; //Membuat pointer hapus 
+    int DeletedData; //untuk memberitahu data yang dihapus 
+    if(isEmpty() == 0){ //jika linked list tidak kosong
+        if(Head != Tail){ //jika node Head dan Tail berbeda
+            DeleteNode = Head;//pointer delete menunjuk Head
+            Head = Head->Next;
+            DeletedData = Head->Data;//data yang dihapus akan disimpan oleh
+            (*Tail).Next = Head; //pointer next Tail menunjuk head, agar circular
+            delete DeleteNode;
+        }
+        else { //jika node Head dan Tail sama
+            DeletedData = Head->Data; 
+            Head = Tail = NULL; //Node head dan tail dikosongkan 
+        }
+        cout << DeletedData << " deleted from the linked list" << endl;
+    }
+    else{
+        cout << "linked list is empty" << endl;
+    }
+}
+
+Menghapus data terakhir adalah menghapus data tail
+Penghapusan node tidak boleh dilakukan jika node tersebut masih tail
+    Maka, tail ditunjuk oleh node hapus
+    Kemudian pointer bantu mencari node sebelum tail 
+    Tail digeser ke node bantu
+    Node bantu menjadi tail 
+    lalu delete DeleteNode;
+Jika tail masih null, maka data kosong
+void DeleteBack(){
+    Tnode *DeleteNode, *Help;
+    int DeletedData;
+    if(isEmpty() == 0){
+        if(Head != Tail){
+            Help = Head;
+            while (Help->Next = Tail){
+                Help = Help->Next;
+            }
+            DeleteNode = Tail;
+            Tail = Help;
+            DeletedData = DeleteNode->Data;
+            Tail->Next = Head;
+            delete DeleteNode;
+        }
+    }
+}
+
+void DeleteAll(){
+    Tnode *Help, *DeleteNode; //membuat pointer hapus untuk menunjuk node yang akan dihapus, dan pointer bantu untuk menelusuri node-node selanjutnya
+    if(isEmpty() == 0){
+        Help = Head; //Pointer help dimulai dari head 
+        while (Help->Next != Head){ //selama pointer help tidak kosong 
+            DeleteNode = Help; //pointer delete bersiap untuk menghapus node tersebut
+            Help = Help->Next; //pointer help bergeser ke node selanjutnya
+            delete DeleteNode; //melakukan penghapusan node 
+
+        }    
+        Head = Tail = NULL; //node head dan tail dikosongkan
+    }
+    else{
+        cout << "linked list is empty" << endl;
+    }
+}
+
+
+Catatan ke 5.3 (Doubly Linked List Linear)
+Doubly Linked List memiliki 2 buah pointer, Pointer prev dan next 
+Pointer next menunjuk node selanjutnya, Pointer prev menunjuk Node sebelumnya
+
+Catatan Keenam (Stack)
+Stack dapat diimplementasikan dengan array dan linked list 
+
+Tipe data abstrak stack 
+Objek : serangkaian elemen yang bertipe sama dimana rangkaian tersebut hanya punya satu akses, yaitu diakhir 
+    sehingga, penambahan atau penghapusan elemen harus dimulai dari akhir rangkaian atau top 
+LIFO (Last in, First Out), contoh tumpukan piring 
+
+Operasi stack ada :
+Initialize :pembentukan stack 
+Push :penambahan item di stack pada tumpukan paling atas
+Pop :pengambilan item di stack pada tumpukan paling atas
+isEmpty:mengecek apakah stack masih kosong
+isFull:mengecek apakah stack penuh 
+
+Implementasi stack pada array:
+    1. Stack adalah tumpukan elemen
+    2. Semua operasi harus dilakukan di akhir Stack
+    3. Harus memeriksa apakah stack masih kosong/sudah penuh
+    4. Harus diketahui tumpukan paling atas 
+
+deklarasi Stack
+#define MAX_STACK_SIZE 100
+typedef struct {
+    int key;
+}element;
+
+element stack [MAX_STACK_SIZE];
+int top;
+
+top = element yg paling atas 
+stack [] = array yg mengimplementasikan rangkaian elemen
+bottom of stack, stack[0] = elemen pertama pada stack
+top of stack, stack[top] = elemen terakhir 
+empty stack : top = -1; //karena stack dimulai dri 0, sehingga -1,
+full stack : top = MAX_STACK_SIZE-1; //brrti 99
+
+inisialisasi stack
+memberi nilai awal pada stack/membentuk stack
+    Precondition: stack blm dikenal
+    Postcondition : stack kosong 
+
+void init(int *top){
+    *top = -1;
+}
+
+Push 
+Push (top, stack, item) : item ditempatkan paling atas (top)
+    Precondition : stack pada kondisi tertentu, item belum memiliki nilai
+    Postcondition : Jika stack penuh, stack tidak berubah. Jika stack tidak penuh, item ditambahkan pada stack (dengan posisi paling atas (top))
+void push(int *top, element stack[], element item){
+    if (!stackfull(*top)){//kalau masih ada slot, stackfull nilainya 0, tapi karena !, sehingga menjadi 1
+        stack[++(*top)] = item;
+    }
+}
+
+Pop
+Pop (item, stack) :  item diambil yg paling atas, posisi stack paling atas dipindahkan 
+    Precondition : stack pada kondisi tertentu
+    Postcondition : Jika stack kosong, stack tidak berubah, item tidak punya nilai. Jika ada, stack berubah, dan item mempunyai nilai 
+element pop(int *top,el6ement stack[], element item){
+    if(!stackempty(*top)){
+        return stack[(*top)--];
+    }
+}
+
+Empty
+Empty (stack) : memeriksa apakah stack punya elemen 
+    Precondition : stack pada kondisi tertentu 
+    Postcondition : True jika stack kosong, false jika stack ada 
+Dengan cara memeriksa top of stack, jika masih -1, brrti kosong 
+int stackempty(int top){
+    return top == -1; // mengecek, kalau misalkan kosong, maka true, karena di init.. nilainya -1
+}
+
+Full 
+Full (stack) :  memeriksa apakah stack penuh 
+    Precondition : stack pada kondisi tertentu 
+    Postcondition : True jika stack kosong, false jka stack ada
+Dengan cara memeriksa top of stack
+int stackfull(int top){
+    return top == MAX_STACK_SIZE - 1; // mengecek, kalau full, maka nilai nya sama dengan max - 1, maka akan mengembalikan nilai true
+} // kalau masih ada slot,  false
+
+Print stack
+untuk menampilkan semua elemen, maka me loop semua nilai array secara terbalik (dari indeks paling besar ke indeks paling rendah)
+int main(){
+    init(&top);
+
+cout << "Input data : ";
+    cin >> item.key;
+    while (item.key != 0){
+        push(&top, stack, item);
+        cout << "input your data (input 0 to stop) : ";
+        cin >> item.key;
+    }
+
+    while(!(stackempty(top))){
+        item = pop (&top, stack);
+        cout << item.key << " ";
+    }
+}
+
+yg bila digabungkan, menjadi 
+#include <iostream>
+using namespace std;
+
+#define MAX_STACK_SIZE 100
+typedef struct {
+    int key;
+}element;
+
+element stack [MAX_STACK_SIZE];
+int top;
+element item;
+
+void init(int *top){
+    *top = -1;
+}
+
+int stackfull(int top){
+    return top == MAX_STACK_SIZE-1;
+}
+
+int stackempty(int top){
+    return top == -1;
+}
+
+
+void push(int *top, element stack[], element item){
+    if (!(stackfull(*top))){
+        stack[++(*top)] = item;
+    }
+}
+
+element pop(int *top,element stack[]){
+    if(!(stackempty(*top))){
+        return stack[(*top)--];
+    }
+}
+
+int main(){
+    init(&top);
+    cout << "Input data : ";
+    cin >> item.key;
+    while (item.key != 0){
+        push(&top, stack, item);
+        cout << "input your data (input 0 to stop) : ";
+        cin >> item.key;
+    }
+
+    while(!(stackempty(top))){
+        item = pop (&top, stack);
+        cout << item.key << " ";
+    }
+return 0;
+}
+
+stack dengan linked list
+implementasi menggunakkan single linked list dengan pointer head sebagai top
+Node 0
+Node 1
+Node 2
+Node 3
+
+Contoh aplikasi stack
+    Polish notation
+    finding a path
+    konversi bilangan desimal ke bilangan bulat
+    mathcing balancing parenthesis
+
+Polish notation 
+    komputer umumnya hanya mengetahui ekspresi matematika yang ditulis dengan notasi postfix
+    ekspresi matematika yang diubah dari notasi infix agar dikenal oleh komputer harus diubah dengan memperhatikan :
+        mengubah notasi infix menjadi notasi postfix lalu dihitung 
+        menggunakkan stack untuk penampung sementara operator dan operandnya 
+    
+    Dalam operasi matematika, ada 3 jenis notasi
+    1. infix (menempatkan operator diantara 2 operand) : A+B, C/D
+    2. prefix (menempatkan operator sebelum 2 operand)  : +AB, /CD
+    3. postfix (menempatkan operator setelah 2 operand): AB+, CD/
+
+    Mengkonversikan notasi yang ditulis secara infix kedalam notasi postfix
+    A * B + (C - D) / E menjadi A B * C D - E / +
+
+    postfix 
+    A B * + C D - / E
+    A B * + C D - E /
+    A B * C D - E / +
+
+    prefix 
+    * A B + - C D / E
+    * A B + / - C D E
+    + * A B / - C D E
+
+Finding a path 
+    mencari jalur dari satu tempat ke tempat lain dan setiap tempat hanya boleh dikunjungi satu kali 
+
+Konversi Desimal ke Biner 
+    cara mengonversi bilangan desimal ke bilangan biner 
+    1. membagi bilangan desimal dengan 2
+    2. menyimpan sisa bagi per setiap pembaginya hingga hasilnya < 2
+    3. hasilnya adalah urutan konversi dari paling akhir ke yg awal
+
+    contoh : konversi 25 ke biner 
+    25 / 2 = 12 sisa 1
+    12 / 2 = 6 sisa 0
+    6 / 2 = 3 sisa 0
+    3 / 2 = 1 sisa 1
+
+    sehingga 25 = 11001
+
+Mathcing Balancing Parenthesis 
+    memeriksa sintax yang menggunakkan ( )
+    Sebuah ( harus berpasangan dengan ), jika tidak maka illegal
+
+    contoh :
+    ()() legal
+    ((())) legal
+    (()() ilegal
+    ((((())))) legal
+    )()( ilegal
+
+Catatan ketujuh (queue)
+implementasi array dan linked list 
+    memasukkan data dan menghapus data
+
+Queue/ antrian 
+Object : serangkaian elemen yang mempunyai tipe sama dengan penambahan elemen lewat akhir rangkaian yg dinamakan back dan penghapusan rangkaian pada ujung rangkaian yg disebut front 
+Back --> --> --> --> Front
+Operasi queue terdiri atas : init, enqueue, dequeue, empty, full 
+
+Karakteristik queue 
+serangkaian nilai, dimana item yg paling awal ditambahkan ke queue merupakan yg paling awal dihapus 
+    FIFO (First in First Out)
+    FCFS (First come first served)
+
+penggunaan queue dilakukan apabila permintaan pelayanan lebih banyak/lebih besar dari kemampuan pelayanan 
+contoh : antrian bank 
+
+Operasi queue 
+    Initialize/ init(queue) : memberi nilai awal pada queue 
+    Precondition : queue tidak dikenal
+    Postcondition : queue kosong 
+    void init(int *front, int *length){
+        *front = *length = 0; //alamat dari first dan length 0
+    }
+
+    Enqueue (item, queue) : item ditempatkan queue paling blkg 
+    Precondition : queue pada kondisi tertentu, item tidak punya nilai 
+    Postcondition : Jika queue penuh, queue tidak berubah, Jika queue kosong, queue bertambah 1 nilai yaitu nilai item 
+    void enqueue(int front, int *length, element queue[], element item){
+        int where;
+        if (!*QueueFull(*length)){
+            where = front + *length; //kalau misalkan 0, where = 0 + 0
+            queue[where % MAX_QUEUE_SIZE] = item; // 0 + 0 = 0, maka item akan msuk kesana
+            (*length)++;
+        }
+    }
+
+    Dequeue (item, queue) : elemen pada queue yg paling depan dihapus dan menjadi nilai untuk item
+    Precondition : queue pada kondisi tertentu, item tidak punya nilai 
+    Postcondition : jika queue kosong, queue tidak berubah dan item tidak punya nilai, Jika queue ada isinya, queue berkurang yg paling depan dan nilai item diambil dari nilai queue yg paling depan 
+    element dequeue(int *front, int *length, element queue[]){
+        int where;
+        if(!*QueueEmpty(*length)){
+            where = *front; //where mengambil lokasi dri front
+            *front = (where+1) % MAX_QUEUE_SIZE; //front pergi ke antrian setelah where
+            (*length)--; //mengurangi panjang 
+            return queue[where]; //mengambil nilai where
+        }
+    }
+
+    Empty (queue) : memeriksa apakah queue kosong atau tidak 
+    Precondition : queue pada kondisi tertentu
+    Postcondition : jika queue kosong, maka true. Jika queue ada nilai, maka false 
+    int QueueEmpty(int length){
+        return length == 0;
+    }
+
+    Full (queue) : memeriksa apakah queue penuh atau tidak
+    Precondition : queue pada kondisi tertentu
+    Postcondition : jika queue penuh, maka true. Jika queue ada nilai, maka false 
+    int QueueFull(int length){
+        return length == MAX_QUEUE_SIZE;
+    }
+
+Queue terbagi menjadi 2, linear queue 
+Linear queue : antrian pada umumnya 
+    A -- B -- C -- D -- E -- F
+    jika dequeue, maka A akan diambil, dan queue di belakangnya maju 
+
+Circular queue 
+    A -- B -- C -- D -- E -- F
+    jika dequeue, maka A akan diambil, tetapi queue sebelumnya tidak maju, tapi tetap ditempat
+    jika slotnya hanya 6 dan dilakukan penambahan terus menerus, maka data yg baru aja dimasukkan akan mengisi tempat yg kosong (sehingga bisa jadi malah di depan)
+
+    G -- H -- I -- D -- E -- F
+
+Deklarasi queue hampir sama dengan stack 
+#define MAX_QUEUE_SIZE 100
+
+typedef struct{
+       int key;
+       /* other fields can go here */
+} element;
+
+element queue[MAX_QUEUE_SIZE];
+int front; 
+int length;
+
+queue[] = elemen dalam queue
+back of queue = elemen paling blkg dalam queue
+    queue [front + length - 1] //front 0, nah supaya diketahui angka paling blkg, menggunakkan length - 1
+front of queue = elemen paling depan
+    queue [front]
+empty queue 
+    queue = 0
+full queue 
+    queue = MAX_QUEUE_SIZE
+
+implementasi queue dengan linked list 
+    Untuk memasukkan data/enqueue 
+    cari node terakhir
+    hubungkan node terakhir dengan node baru 
+    rubah tail ke node terakhir 
+
+    dequeue node
+    ambil data pada linked list dri depan (head)
+
+#include <iostream>
+#define MAX_QUEUE_SIZE 5 //pembatasan maksimal queue
+using namespace std;
+
+typedef struct{ 
+    int Key; //pendefinisian member queue untuk menyimpan data
+}Element;
+Element Queue[MAX_QUEUE_SIZE]; //pendefinisian struct queue 
+
+void Init(int *Front, int *Length){
+    *Front = *Length = 0; //menginisiasi bahwa front dan length dimulai dari 0 
+}
+
+int QueueEmpty(int Length){
+    return Length == 0; //jika panjang dari queue kosong, maka queue kosong
+}
+
+int QueueFull(int Length){
+    return Length == MAX_QUEUE_SIZE; //jika panjang dari queue sama dengan batas maksimal, maka queue penuh
+}
+
+void Enqueue(int Front, int *Length, Element Queue[], Element Item){
+    int Where; //pembuatan variabel where untuk meletakkan data pada queue
+    if (!QueueFull(*Length)) { //jika queue tidak penuh
+        Where = Front + *Length; //where digunakan untuk menghitung letak data dimasukkan, dengan menghitung dari awal dan panjang queue
+        Queue[Where % MAX_QUEUE_SIZE] = Item; //data yang baru diletakkan pada queue, dengan urutan Where % batas maksimal (hasilnya berupa bilangan itu sendiri)
+        (*Length)++; //menambah panjang queue karena dimasukkan data baru
+    }
+}
+
+Element Dequeue(int *Front, int *Length, Element Queue[]){
+    int Where; //pembuatan variabel where untuk mengambil data yang akan diambil
+    if(!(QueueEmpty(*Length))){ //jika queue tidak kosong
+        Where = *Front; //variabel where mengambil alamat front
+        *Front = (Where+1) % MAX_QUEUE_SIZE; //front berpindah posisi ke tempat selanjutnya 
+        (*Length)--; //panjang queue dikurangi
+        return Queue[Where]; //mengembalikan nilai pertama dalam queue
+    }
+}
+
+void PrintQueue(Element Queue[], int Front, int Length){
+    for (int i = 0; i < Length;i++){  
+        cout << Queue[Front + i % MAX_QUEUE_SIZE].Key << " "; //menampilkan semua data pada queue satu per satu 
+    }
+    cout << endl;
+}
+
+int main (){
+    int Front,Length; // mendeklarasikan front dan length, front untuk queue paling depan, length untuk panjang queue
+    Element Item; //mendeklarasikan item.key untuk menyimpan data
+
+    Init(&Front, &Length); //inisiasi front dan length
+    Item.Key = 0;
+
+    for(int i = 0; i < MAX_QUEUE_SIZE; i++){
+        Enqueue(Front, &Length, Queue, Item);
+        Item.Key++;
+        PrintQueue(Queue, Front, Length);
+    }
+    
+    for (int i = 0; i < MAX_QUEUE_SIZE;i++){
+        PrintQueue(Queue, Front, Length);
+        Item = Dequeue(&Front, &Length, Queue);
+    }
+return 0;    
+}
+
+Catatan Pertemuan 7 (Asymptotic Analysis)
+Efisiensi Struktur Data  
+    Struktur data mengorganisasi data agar dapat digunakan secara efisien, sehingga penyimpanannya harus efisien juga
+    Asymptotic Analysis adalah cara untuk menganalisa efisiensi dari struktur data 
+
+    Efisiensi struktur data diukur dari segi ruang (space complexity) (ruang yang digunakan semakin sedikit) dan segi waktu (time complexity) ( waktu yang dibutuhkan semakin cepat)
+
+Dengan konsep time complexity
+    Dapat dilakukan perbandingan struktur data, mana operasi struktur data yang lebih cepat waktu kompilasinya
+    ex : perbandingan time complexity array dengan linked list 
+
+    Time complexity Array (menambah data diawal array)
+        Jika ada array yg menyimpan 100 elemen, dan sudah ada beberapa data yng dimasukkan.
+        Untuk menambahkan data di depan array, maka diperlukan tempat kosong dan elemen paling belakang harus mulai bergeser (sehingga, elemen lain ikut bergeser)
+        Lalu, baru dimasukkan data baru 
+
+        Sehingga, untuk menambah elemen baru di awal array, memerlukan waktu pergeseran data sebanyak jumlah data dalam array
+            Waktu yang dibutuhkan sebanding dengan panjang array
+        Jika ada n elemen dalam array, maka waktunya adalah O(n)
+    
+    Time complexity linked list (menambah elemen baru di awal linked list)
+        Linked list adalah rangkaian node yang saling berhubungan. Setiap node berisi data pada node dan alamat dari node selanjutnya.Linked list menyimpan data secara tidak berurutan
+        Jika ada linked list yang menyimpan 100 elemen,dan sudah ada beberapa data yang dimasukkan.
+        Maka, menammbahkan data di depan linked list, tinggal menunjuk alamat dari node baru menunjuk head dari linked list tersebut, sehingga node baru menjadi head terbaru   
+
+        Waktu yang dibutuhkan untuk menambahkan elemen pada awal linked list sama dengan mengubah address dari node baru 
+        Waktunya konstan dan tidak bergntung apa"" (tidak bergantung pada panjang linked list), sehingga waktunya adalah O(1)
+
+Menentukan time complexity 
+    Salah satu caranya menghitung time complexity adalah menguji running time secara real
+    Diukur secara real sesuai dengan mesin yang digunakan. Langkah""nya sebagai berikut 
+        1. Nyalakan timer pada mesin untuk mencatat waktu eksekusi
+        2. Jalankan atau eksekusi operasi untuk input yng bervariasi pada struktur data yang dibandingkan
+        3. Amati dan catat waktu yang dibutuhkan oleh operasi tertentu dalam suatu struktur data
+    Struktur data yang menghabiskan waktu paling cepat adalah yg terbaik
+    Untuk analisa yang lebih baik, bisa menggunakkan mesin yang berbeda""
+
+    Permasalahan yang muncul:
+        Bisa terjadi kemungkinan, untuk beberapa input, struktur data pertama lebih baik, dan sebaliknya 
+        Dalam suatu mesin dengan beberapa input, struktur data pertama mempunyai performa lebih baik, dan bila menggunakkan mesin dan input yang berbeda, struktur data lain lebih baik
+
+Sehingga,mengukur running time secara real bukan cara terbaik untuk mengukur time complexity karena tidak efektif
+Running time secara umum tergantung pada input 
+
+Model abstrak pengukuran waktu/ruang memori algoritma seharusnya independent, tidak tergantung pada mesin dan compiler
+Besaran yang dipakai untuk menerangkan model abstrak pengukuran waktu/ruang adalah kompleksitas algoritma.
+    Ada 2 macam kompleksitas algoritma, time complexity dan space complexity 
+
+Time Complexity
+    Jika terdapat 3 elemen dalam 1 array,maka membutuhkan 3 satuan waktu 
+    Jika terdapat 10000 elemen dalam 1 array, maka membutuhkan 10000 satuan waktu 
+    Running time secara umum tergantung pada ukuran input. Ukuran input ekuivalen dengan ukuran array
+        Jika ukuran array 3,maka memerlukan 3 satuan waktu
+        Jika ukuran array 10000,maka memerlukan 10000 satuan/unit
+    Jika ukuran input = n, maka f(n)adalah fungsi dari n untuk menunjukkan time complexity 
+    f(n) menggambarkan jumlah perintah yang dieksekusi untuk nilai input n
+
+Time Complexity Loop
+    ex : for(int i = 0; i < n; i++){
+        cout << "Hello World!\n";
+    }
+    jika cout << "Hello World!\n"; dieksekusi dalam 1 satuan waktu 
+    Perulangan dari i = 0 ke i = n-1, maka perulangan dilakukan sebanyak n. Sehingga, cout dilakukan sebanyak n
+    Maka f(n) = n
+    f(n) menghitung jumlah instruksi yang dieksekusi untuk input n
+
+Perbandingan 2 struktur data dapat membandingkan nilai f(n)
+Growth rate f(n) untuk n, mungkin pada suatu struktur data tampak lebih baik untuk ukuran input yg lebih kecil dari yg lain. Tetapi ukuran input yg lebih besar, mungkin tidak
+    sehingga, harus dicoba nilai n yg berbeda dan bukan hanya 1 nilai n yang menentukan f(n)
+Seberapa presisi jumlah operasi sebenarnya tidak terlalu diperlukan, tetapi yang perlu diketahui adalah seberapa cepat fungsi f(n) tumbuh ketika ukuran input data semakin besar.
+Konsep tersebut berlaku untuk membandingkan 2 algoritma 
+
+Carilah growth rate dari f(n) = 5n^2 + 6n + 12
+untuk n = 1
+    Presentase running time 5n^2 = 5/5+6+12 x 100% = 21.74%
+    Presentase running time 6n = 6/5+6+12 x 100% = 26.09%
+    Presentase running time 12 = 12/5+6+12 x 100% = 52.71%
+    
+    Sebagian besar waktu digunakan oleh konstanta 12 (untuk n = 1)
+        Tetapi, kita tidak dapat menentukan growth rate berdasarkan 1 nilai masukan, perlu melihat nilai n yang berbeda untuk menentukan growth rate 
+    
+    Growth rate f(n) dengan nilai n yang berbeda 
+    n = 1,  5n^2 = 21.74%, 6n = 26.09%, 12 = 52.71%
+    n = 10, 5n^2 = 87.41%, 6n = 10.49%, 12 = 2.09%
+    n = 100, 5n^2 = 98.79%, 6n = 1.19%, 12 = 0.02%
+    n = 1000, 5n^2 = 99.88%, 6n = 0.12%, 12 = 0.0002%
+    Waktu yang dibutuhkan untuk 5n^ meningkat dengan cepat bila dibandingkan 6n dan 12 yg semakin berkurang
+    Dari grafik, koefisien kuadrat membutuhkan waktu 99% untuk n yg lebih besar
+
+    Karena kontribusi 6n dan 12 yang tidak signifikan, sehingga bisa diabaikan 
+    Sedangkan 5n^2 bisa berkontribusi sampai 99%, maka f(n) = 5n^2
+
+    Dengan cara perhitungan itu, perkiraan time complexity sangat dekat dengan hasil sebenarnya
+    Pengukuran perkiraan time complexity dinamakan asymptotic complexity 
+
+Notasi Big O
+    Big O adalah notasi asymptotic time complexity untuk mengekspresikan time complexity dari suatu algoritma
+    Big O digunakan untuk mengukur kinerja algoritma dengan pertumbuhan fungsi 
+    Big O menentukan upper bound (batas atas) terkecil pada suatu fungsi, memastikan agar fungsi tersebut tidak akan tumbuh lebih cepat dari upper bound terkecil ini 
+    Karena sulit untuk menentukan running time yang tepat, maka perkiraan runtime menggunakkan Big O
+
+Definisi Formal Big O
+    Jika f(n) dan g(n) adalah 2 fungsi, maka f(n) = O(g(n))
+    Jika terdapat konstanta c dan n0 sedemikian, sehingga f(n) <= c.g(n) untuk semua n >= n0
+
+    f(n) = O(g(n)) artinya bahwa f(n) tidak akan tumbuh lebih cepat dari g(n)
+    g(n) adalah batas atas dari f(n) untuk n yg lebih besar
+    Notasi Big O membantu menghitung worst-case time complexity dari algoritma 
+
+Contoh
+    Jika fungsi f(n) = n dan g(n) = 2n. Apakah f(n) = O(g(n))
+    f(n) = O(g(n)) jika ada ada nilai konstanta (c) dan n0, sehingga f(n) <= c.g(n) untuk semua n >= n0
+
+    Subtitusikan f(n) dan g(n), sehingga 
+    n <= c.2n
+
+    Kondisi diatas terpenuhi untuk c = 1, dan n0 = 1
+        n <= 2n
+        n = O(2n)
+        f(n)= O(2n)
+    
+    Sehingga, f(n)= O(g(n)) dan fungsi f(n) tumbuh secara linear = O(n)
+
+Contoh 
+    Jika fungsi f(n) = 4n+3 dan g(n)=n. Apakah f(n) = O(g(n))
+    f(n) = O(g(n)) jika ada ada nilai konstanta (c) dan n0, sehingga f(n) <= c.g(n) untuk semua n >= n0
+
+    Untuk c = 1, maka 4n+3 !<= n
+    Untuk c = 5, maka 4n+3 <= 5n
+                      3 <= 5n-4n
+                      n >= 3
+    Jadi, f(n) <= c.g(n) untuk n >= 3, dimana c = 5 dan n0 = 3
+        f(n) = O(n)
+    Sehingga, f(n) = O(g(n)) dan growth rate fungsi f(n) adalah linear = O(n)
+
+O(1) = konstan
+O(n) = linear
+
+Observasi
+    Ide dari notasi Big O adalah untuk memberi batas atas pada fungsi tertentu, yang memberi informasi tentang worst case time complexity
+    Dalam semua kasus, notasi Big O menjamin bahwa perilaku fungsi tetap sama terhadap perubahan nilai n 
+
+    Notasi Big O memungkinkan untuk menghitung laju pertumbuhan fungsi tanpa memasukkan nilai n yg berbeda 
+    Memberikan batas atas terkecil ke fungsi, menjamin bahwa fungsi tidak akan pernah tumbuh lebih cepat dari batas atas terkecil
+    Batas atas terkecil menunjukkan seberapa buruk kinerja algoritma (worst case)
+
+Contoh : f(n) = 5n^2 + 4 dan g(n) = n^2. Apakah f(n)= O(g(n))
+    f(n) = O(g(n)) jika ada nilai c dan n0 sehingga f(n) <= c.g(n) untuk semua n >= n0
+
+    untuk c = 6
+    5n^2 + 4 = 6.n^2
+    5n^2 + 4 = 6n^2
+    4 = n^2 
+    2 = n
+
+    maka dengan c = 6 dan n0 = 2: 5.2^2 + 4 <=6.2^2 untuk semua n >= 2.
+    maka f(n) = O(n^2)
+
+    Jadi, fungsi f(n) tumbuh secara kuadratik, dimana g(n) =n^2 menggambarkan batas atas terkecil dari f(n), yaitu worst case time complexity
+
+    Notasi Big O menyederhanakan dengan menghapus semua yang tidak perlu dari fungsi yang tidak memberikan kontribusi signifikan terhadap keseluruhan runtime
+    Sebagai contoh, konstanta 4 tidak memberikan kontribusi yg signifikan terhadap fungsi, sedangkan n^2 banyak berkontribusi pada runtime. Maka 4 dihilangkan dan time compleity O(n^2)
+
+Growth rate dari fungsi Standard
+    Pada tabel untuk nilai n yg berbeda, g(n) = log2(n) memiliki pertumbuhan paling kecil, sementara g(n) = 2n tumbuh secara eksponensial.
+        Untuk n =32, nilai 2n adalah 429x107 dan nilai log2(n) = 5
+    Fungsi standard digunakan sebagai batas atas terkecil untuk fungsi tertentu dan digunakan sebagai pengganti g(n) 
+    Fungsi seperti nlog2n, n^2, n^3 dikenal sebagai fungsi standard
+    atau digunakan sebagai acuan Big O (apakah linear atau konstan)
+Progrm untuk menghitung jumlah n bilangan pertama 
+    int main(){
+        int i, sum = 0, n; //eksekusi 1 kali
+        cin >> n;  //eksekusi 1 kali
+
+        for (i = 1; i <= n; i++){
+            sum = sum + i;  //eksekusi n kali
+        }
+
+        cout << sum; //eksekusi 1 kali
+        return 0; //eksekusi 1 kali
+    }
+Jumlah instruksi yang dijalankan, yang diperlukan untuk menghitung time complexity program adalah f(n) = 1 + 1 + n + 1 + 1 = n + 4
+Apabila g(n) = n,apakah benar f(n) = O(g(n))
+f(n) = O(g(n)) jika ada nilai c dan n0, sehingga f(n) <= c.g(n) untuk semua n >= n0
+
+Karena c = 1, tidak bisa (n+4 <= n <=> 4 !<= 0)
+maka c = 2, n+4 <= 2n <=> 4 <= n
+Maka, 4 + 4 <= 2.4 untuk semua n >= n0, dimana c = 2 dan n0 = 4. Sehingga, f(n)= O(n)
+Fungsi f(n) menunjukkan pertumbuhan linear, yang merupakan worst case time complexity dalam menghitung jumlah n bilangan pertama
+
+Program untuk menghitung jumlah n bilangan pertama dengan cara lain 
+    int main(){
+        int i,sum = 0, n; //eksekusi 1 kali
+        cin >> n; //eksekusi 1 kali
+
+        cout << (n*(n+1)/2); //eksekusi 1 kali
+        return 0; //eksekusi 1 kali
+    }
+    Rumus matematika untuk menghitung jumlah n bilangan pertama adlaah  (n*(n+1)/2)
+    Dengan mengganti perulangan for dengan rumus itu, maka runtime dapat dikurangi secara signifikan, yaitu f(n) = 1 * 4 = 4
+    Sehingga akan tetap konstan 
+
+Untuk menentukan time complexity, misal g(n) = 1,buktikan bahwa f(n) = O(g(n))
+Untuk f(n) <= c.g(n)
+        4 <= c.n, maka c =5
+Maka, f(n) <= c.g(n) untuk semua n >= n0, dimana c =5, dan n0 = 1
+    Sehingga, f(n) = O(1), yang menunjukkan pertumbuhan konstan 
+    f(n) tidak bergantung pada n, yaitu ukuran dari input. Algoritma dengan pertumbuhan konstan lebih cepat daripada algoritma dengan pertummbuhan linear
+    Sehingga, Notasi Big O membantu mengevaluasi laju pertumbuhan fungsi, yang juga memberikan worst case time complexity, sehingga tau mana algoritma yang lebih baik
+
+    O(1) konstan itu yang terbaik
+    O(log2n) itu bagus (lebih cepat dari linear)
+    O(n) itu linear 
+    O(n^2)
+
+Panduan Asymptotic Analysis
+    Contoh perulangan 1 sampai n 
+        Untuk menghitung time complexity, dihitung seberapa sering statement di dalam perulangan dieksekusi
+
+        for(int i = 1;i <= n;i++){
+            statement
+        }
+        maka, statement dieksekusi sebanyak n dengan tingkat pertumbuhan/ worst case time complexitynya linear (O(n))
+    
+    Nested Loop
+        for(int i = 0; i<= n; i++){
+            for(int j = 0;j <= n;j++){
+                statement
+            }
+        }
+        dari kode tersebut, dapat disimpulkan bahwa for i dieksekusi sebanyak n, for j dieksekusi sebanyak n
+        Maka, tingkat pertumbuhannya/ worst case time complexitynya kuadrat (O(n^2))
+
+    Perintah Berturutan 
+        int x = 2; //eksekusi 1 kali
+        int i,j;//eksekusi 1 kali
+        x = x + 1;//eksekusi 1 kali
+
+        for(i = 1;i <= n;i++){//eksekusi n kali
+            statement
+        }
+
+        for(i = 1;i <= n;i++){ //eksekusi n kali 
+            for(j = 1; j <= n; j++){ //eksekusi n kali
+                statement
+            }
+        }
+
+        Baris 1-3 dieksekusi 3x,
+        Baris 5 dieksekusi n kali
+        Bari 9 dieksekusi n x n kali 
+        Sehingga, bila digabung, maka n^2 + n + 3, yg berarti time complexitynya kuadrat(O(n^2)) (n dan konstanta diabaikan)
+
+        f(n) = n^2 + n + 3, dan g(n) = n^2, apakah f(n) = O(g(n))
+        f(n) = O(g(n)) jika ada nilai c dan n0, sehingga f(n) <= c.g(n) untuk semua n >= n0
+
+        untuk c = 2
+        n^2 + n + 3 <= 2n^2
+        n + 3 <= n^2
+        n^2 - n >= 3
+        n(n-1) >= 3
+        maka n >= 3 atau n >= 4
+
+        f(n) <= c.g(n) untuk semua n >= 0 dengan bukti bahwa c = 2 dan n = 3, sehingga f(n) = O(g(n))
+        dengan tingkat pertumbuhan kuadrat O(n^2)
+
+        n^2 adalah suku yg lebih dominan, sehingga suku"" yang lain diabaikan 
+    
+    Kasus if-then-else
+        Dalam kondisi if-then-else, perintah dalam bagian if dan else dieksekusi berdasarkan kondisi benar atau salah 
+
+        cin >> n;
+        if(n == 0){
+            statement
+        }
+        else{
+            for(int i = 0 ; i < n; i++){ // eksekusi sebanyak n kali 
+                statement
+            }
+        }
+
+        Terdapat 2 kasus, 
+            case 1 = if(n == 0) bernilai true, maka statement dalam if akan dieksekusi // sebanyak 1 kali
+            case 2 = if(n == 0) bernilai false, maka loop dalam else akan dieksekusi // sebanyak n kali 
+        
+        Aturan untuk menghitung worst case running time 
+        Worst case running time = waktu test + max (waktu bagian if dan waktu bagian else)
+        Running time dari case 1 dihitung, dijumlahkan dengan case 2 
+
+        Case 1 membutuhkan waktu konstan, dengan tingkat pertumbuhan 0(1)
+        Case 2 membutuhkan waktu linear (bergantung dengan n), dengan tingkat pertumbuhan 0(n)
+
+        Maka, 1 + n = O(n)
+
+    Logarithmic Complexity 
+        2log8 artinya berapa kali 2 (basis logaritma) dikalikan dengan dirinya sendiri untuk menghasilkan 8 
+        yaitu 3, sehingga 2log8 = 3
+        Logarithmic time complexity lebih kecil waktunya dripada linear time complexity
+
+        Berapa kali perulangan tersebut berjalan?
+        for(int i = 1; i <= n){
+            statement
+            i = i*2;
+        }
+        pada kode tersebut, perulangan for berjalan dari 1 sampai n 
+            indeks  i dikalikan 2 setiap iterasi 
+            sehingga tidak ada pertumbuhan normal 
+            statement berada dalam perulangan for 
+
+        iterasi ke 1 == i = 1 = 2^0
+        iterasi ke 2 == i = 2 = 2^1
+        iterasi ke 3 == i = 4 = 2^2
+        iterasi ke 4 == i = 8 = 2^3
+        iterasi ke k == i = n = 2^k-1
+        Jika terdapat iterasi ke-k, pada iterasi terakhir (iterasi ke k), i = n sama dengan 2^k-1
+        sehingga n = 2^k-1
+
+        untuk mengetahui total iterasi, maka perlu dicari k 
+        sehingga 
+        n = 2^k-1
+        2logn = k-1
+        k = 2logn+1
+
+        sehingga total jumlah iterasinya = 2logn+1
+        maka, worst case time complexitynya O(2logn)
+    
+            Berapa kali "Hello" akan dicetak pada program ini
+            for(int i = 1; i <= 32){
+                statement 
+                i = i * 2;
+            }
+            cara mencarinya : n = 32
+            maka k = 2logn+1
+            k = 2log32+1
+            k = 5 + 1
+            k = 6
+            maka, "Hello" dicetak 6 kali 
+
+            Berapa time complexity dari program ini 
+            for(int i = n; i >= 1){
+                statement
+                i = i / 2;
+            }
+            time complexity dri program tersebut berjalan secara logarithmic
+
+            iterasi ke 1 == i = n/2^0
+            iterasi ke 2 == i = n/2^1
+            iterasi ke 3 == i = n/2^2
+            iterasi ke 4 == i = n/2^3
+            iterasi ke k == i = n/2^k-1 = 1
+
+            sehingga
+            n/2^k-1= 1
+            n = 2^k-1
+
+            bila diaplikasikan log, maka
+            k - 1 = 2logn
+            k = 1 + 2logn
+            sehingga, time complexitynya adalah O(2logn) //sama dengan sebelumnya 
+
+
+            Berapa time complexity dari program ini 
+            void fun(int n){
+                int i, j, k ,count = 0; //eksekusi 1 kali
+                for(i = n/2; i <= n;i++){
+                    for(j = 1;j + n/2 <= n;j++){
+                        for(k = 1; k <= n; k = k*2){
+                            count++;
+                        }
+                    }
+                }
+            }
+            fungsi fun hanya menerima 1 parameter, yaitu n dan terdapat 3 nested loop
+            untuk menghitung time complexitynya, perlu menghitung berapa kali pernyataan count++ dieksekusi 
+
+                untuk loop terluar for(i = n/2; i <= n;i++)
+                iterasi ke 1 == i = n/2 + 0
+                iterasi ke 2 == i = n/2 + 1
+                iterasi ke 3 == i = n/2 + 2
+                iterasi ke k == i = n/2 + k-1 = n
+
+                maka
+                n/2 + k-1 = n
+                k-1 = n - n/2
+                k = n/2 + 1
+                
+                loop diiterasi dengan iterasi k 
+                outer loop for berjalan n/2 kali (1 dapat diabaikan), dan batas atasnya dapat dianggap sebagai n (1 diabaikan)
+                sehingga O(n)
+
+                untuk loop kedua for(j = 1;j + n/2 <= n;j++)
+                iterasi ke 1 == j = 1
+                iterasi ke 2 == j = 2
+                iterasi ke 3 == j = 3
+                iterasi ke k == j = k = n/2
+
+                loop berakhir saat j + n/2 <= n
+                j <= n - n/2
+                j <= n/2
+
+                Sehingga, j pada akhirnya kurang dari atau sama dengan n/2. Maka loop dijalankan n/2 kali
+                sehingga, O(n)
+
+                untuk loop ketiga for(k = 1; k <= n; k = k*2)
+                iterasi ke 1 == k = 1 = 2^0
+                iterasi ke 2 == k = 2 = 2^1
+                iterasi ke 3 == k = 4 = 2^2
+                iterasi ke p == k = n = 2^p-1
+
+                loop berakhir saat 2^p-1 = n
+                maka setelah diberikan log
+                p-1 = 2logn
+                p = 2logn-1
+                dengan menghilangkan konstanta, maka diperoleh p =2 logn
+                sehingga O(2logn)
+
+                Dalam kasus perulangan for bersarang 
+                    time complexity waktu keseluruhan sama dengan time complexity waktu individu
+                    sehingga, dikalikan seluruhnya  dengan n x n x 2logn = O(n^2.2logn)
+                    maka, count dieksekusi sebanyak n^2.2logn kali
+            
+            Berapa time complexity dari program tersebut 
+                void fun(int n){ 
+                    if(n <= 1) return; //eksekusi 1 kali
+                    int i , j; //eksekusi 1 kali
+                    for(i = 1; i <= n;i++){
+                        for(j = 1; j <= n; j++){
+                            cout << "Hello\n";
+                            break;
+                        }
+                    }
+                }
+
+                for(i = 1; i <= n;i++) dieksekusi sebanyak n
+                for(j = 1; j <= n; j++) dieksekusi sebanyak n
+                tapi, karena di dalam inner loop terdapat break;, maka iterasi pertama kali, akan membuat inner loop berhenti
+
+                inner loop hanya berjalan sekali untuk stiap nilai i outer loop
+                i = 1 (pada outer loop),inner loop berjalan sekali 
+                i = 2 (pada outer loop),inner loop berjalan dua kali 
+                i = 3 (pada outer loop),inner loop berjalan tiga kali 
+                sehingga,kita dapat mengabaikan inner loop dan menghitung eksekusi seblumnya
+
+                sehingga 1 + 1 + n = n,maka time complexitynya adalah O(n)
+            
+            Berapa time complexity dari program tersebut 
+                void fun(int n){
+                    int i,j; //eksekusi 1 kali
+                    for(i = 1;i <= n/3;i++){
+                        for(j = 1;j <=n; j+=4){
+                            cout << "Hello World\n";
+                        }
+                    }
+                }
+
+                maka, kita dapat menghitung outer dan inner loop 
+
+                outer loop for(i = 1;i <= n/3;i++)
+                iterasi ke 1 == i = 1
+                iterasi ke 2 == i = 2
+                iterasi ke 3 == i = 3
+                iterasi ke k == i = k = n/3
+
+                pada iterasi ke k, i = n/3 = k. Karena perulangan berjalan k kali,maka batas atas terkecil menjadi n
+                sehingga time complexity nya O(n)
+
+                inner loop for(j = 1;j <=n; j+=4)
+                iterasi ke 1 == j = 1 atau j = 1+0*4
+                iterasi ke 2 == j = 1+4 atau j = 1+1*4
+                iterasi ke 3 == j = 1+8 atau j = 1+2*4
+                iterasi ke k == j = n atau j = 1 +(k-1)*4
+
+                maka, n = 1 + (k-1)*4
+                n-1 = (k-1)*4
+                k = (n-1/4)+1
+                loop berjalan (n-1/4)+1 kali 
+                maka, bila diabaikan konstanta lain, sehingga batas atasnya n 
+                maka, time complexitynya O(n)
+
+                lalu ditotalkan, 1*n*n =n^2
+                sehingga,time complexitynya O(n^2)
+
+Catatan Pertemuan 9 (Fungsi Rekursif)
+Fungsi yang memanggil dirinya sendiri 
+
+Ide dasar:
+    Ketika dilakukan pemanggilan fungsi, maka komputer menyimpan 
+        semua argumen dan variabel lokal
+        fungsi yg aktif 
+    penyimpanan akan dilakukan dengan memasukkan fungsi dan variabel ke dalam stack 
+
+cth : 
+int B = 5;
+void fungsiB(){
+    cout << "B = " << B << endl;
+}
+int main(){
+    int a = 1;
+    fungsiB();
+    cout << a << endl;
+}
+
+ketika fungsiB dipanggil, maka main dan variabel a (yg adalah variabel lokal) akan disimpan sampai fungsiB selesai dijalankan
+setelah fungsiB selesai dijalankan, maka main dan variabel a dijalankan kembali 
+sehingga, setiap fungsi rekursif dijalankan, maka nilai yg sebelumnya akan selalu disimpan 
+
+Proses berjalannya fungsi dalam program 
+    Memasukkan fungsi dan variabel ke dalam stack ketika suatu fungsi dipanggil, dan mengeluarkan variabel lokal dan fungsi setelah fungsi selesai dipanggil 
+
+void fungsiA();
+void fungsiB();
+void fungsiC();
+void fungsiD();
+
+void fungsiA(){
+    fungsiC();
+    cout << "A" << " ";
+}
+void fungsiB(){
+    cout << "B" << " ";
+}
+void fungsiC(){
+    fungsiD();
+    cout << "C" << " ";
+}
+void fungsiD(){
+    cout << "D" << " ";
+}
+
+int main(){
+    fungsiA();
+    fungsiB();
+}
+
+maka urutan stacknya adalah 
+int main >> fungsiA >> fungsiC >> int main
+
+tpi proses pengerjaannya adalah 
+int main >> fungsiA >> fungsiC >> fungsiD >> fungsiB
+
+tpi outputnya : D C A B 
+
+Contoh rekursif 
+void a(int i){
+   cout <<"Dalam fungsi a(" << i << ")" << endl;
+   if(i == 10){
+    a(9);
+   }
+   cout <<"Akhir fungsi a(" << i << ")" << endl;
+}
+int main(){
+    a(10);
+}
+maka urutan stacknya adalah 
+int main >> a(10)
+
+tpi proses pengerjaannya adalah 
+int main >> a(10) >> a(9)
+
+maka outputnya adalah 
+Dalam fungsi a(10)
+Dalam fungsi a(9)
+Akhir fungsi a(9)
+Akhir fungsi a(10)
+
+Contoh lain
+void print_back(){
+    char ch;
+    cin >> ch;
+    if(ch != '.'){
+        print_back();
+        cout << ch;
+    }
+}
+int main(){
+    print_back();
+}
+sehingga urutan stacknya adlaah 
+int main >> print_back() dgn ch = h >> print_back() dgn ch = i 
+
+tpi proses pengerjaannya adalah 
+int main >> print_back(h) >> print_back(i) >> print_back(.)
+
+maka outputnya adalah 
+ih
+
+hal ini bisa terjadi karena input sebelumnya sudah disimpan
+bila outputnya terdapat '.', maka baru akan mengeluarkan semua data yg sudah dsisimpan 
+
+Rekursif adalah teknik pemecahan masalah yang disebut sebagai "divide and conquer"
+    Masalah yg tdk bisa diselesaikan secara lgsg, dapat dilakukan dengan cara rekursif, yaitu membagi masalah menjadi sub-masalah
+    Dalam memecahkan masalah kecil, dapat dilakukan dengan cara yg sama 
+    Prinsip dari divide and conquer adalah memecah masalah menjadi 3 bagian 
+        1. Bagi M menjadi sub masalah M1,M2,M3...
+        2. Pecahkan setiap solusi dalam setiap sub masalah S1,S2,S3...
+        3. Gabungkan setiap solusi menjadi 1 untuk mengatasi M  
+
+cth:
+    Cari algoritma untuk X^N, dmn N = int bulat 
+    Untuk menyelesaikan masalah ini, tidak ada solusi langsung untuk mengatasinya, hanya bisa melakukan X*X = X^2
+    Setiap problem yg tdk bisa dipecahkan secara lgsg, hrus dipecah menjadi lebih kecil sampai menjadi base case
+
+    Sehingga, apabila N > 2, masalah dipecah menjadi 2 sub problem 
+        M1 : X^I = S1 (I bisa dianggap 2)
+        M2 : X^N-I = S2
+    Sehingga, S = S1 * S2
+
+    cth : Tentukan algoritma 3^7
+    karena 7 > 2, maka dipecah menjadi sub problem 
+        M1 = 3^2 = 9
+        M2 = 3^5 = S2
+
+        M2 dibagi menjadi sub problem lgi 
+        M2.1 = 3^1 = 3
+        M2.2 = 3^4 = S2.2
+
+        M2.2.1 = 3^2 = 9
+        M2.2.2 = 3^2 = 9
+        yg digabung menjadi S2.2 = 81
+
+        S2 = 3 * 81 = 243
+        
+        Maka, S = 9 * 243 = 2187
+
+yg dibuat menjadi fungsi 
+int Power(int X, int N){
+    if(N == 0){
+        return 1;
+    }
+    else if(N == 1){
+        return X
+    }
+    else{
+        return X * Power(X,N-1);
+    }
+}
+
+Bentuk rekursif pada bahasa pemrograman
+tipe_fungsi nama_fungsi(parameter, parameter){
+    ....
+    return namafungsi(parameter,parameter);
+}
+fungsi rekursif terbagi menjadi 2 
+    base case : mengembalikan nilai secara langsung atau acuan berhentinya rekursif 
+    recursive case : mendefinisikan nilai dengan fungsi 
+
+cth: faktorial 
+4! = 4 * 3 * 2 * 1
+3! = 3 * 2 * 1
+2! = 2 * 1
+1! = 1 
+0! = 1
+
+int FaktorialIterasi(int N){
+    if(N == 0 || N == 1){
+        return 1;
+    }
+    else{
+        int S = 1;
+        for(int i = 2; i <= N; i++){
+            S *= i;
+        }
+        return S;
+    }
+}
+
+int FaktorialRekursif(int N){
+    if (N == 0 || N == 1){
+        return 1;
+    }
+    else{
+        return N * FaktorialRekursif(N-1);
+    }   
+}
+
+FaktorialRekursif(5) =
+5 * FaktorialRekursif(4)
+5 * 4 * FaktorialRekursif(3)
+5 * 4 * 3 * FaktorialRekursif(2)...
+
+base case nya adalah FaktorialRekursif(0) atau FaktorialRekursif(1) yg mengembalikan nilai 1 
+recursive caseny adalah N * FaktorialRekursif(N-1), yg secara tdk langsung memberikan nilai lewat fungsi FaktorialRekursif(N-1)
+
+contoh dari rekursif lain adalah fibonacci 
+0,1,1,2,3,5,8
+Fib(0) = 0
+Fib(1) = 1
+Fib(2) = 1
+Fib(3) = 2
+
+int FibonacciIterasi(int N){
+    int f1 = 0, f2 = 1, fibo;
+    if(N == 0){
+        return 0;
+    }
+    if(N == 1){
+        return 1;
+    }
+    else{
+        for(int i = 0; i < N; i++){
+            fibo = f1 + f2; 
+            f2 = f1; 
+            f1 = fibo;
+        }
+        return fibo;
+    }
+}
+
+bila Fib(2), maka 0 + 1 = 1, lalu 0 + 1 = 1
+bila Fib(3), maka 0 + 1 
+Fib(5) = Fib(4)+ Fib(3)
+Fib(4) = Fib(3) + Fib(2)
+
+Base case dan recursive case boleh lebih dari 1 (terjadi dalam kasus fibonacci)
+
+contoh lain 
+int fibonacci(int n){
+    int s1, s2;
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    else{
+        s1 = fibonacci(n-1);
+        s2 = fibonacci(n-2);
+        return s1 + s2;
+    }
+}
+
+atau simplenya
+int fibonacci(int n){
+    if(n == 0){
+        return 0;
+    }
+    if(n == 1){
+        return 1;
+    }
+    else{
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+}
+
+Catatan Pertemuan 9 (Sorting)
+Sorting ada banyak macamnya 
+1. Bubble Sort 
+2. Insertion Sort 
+3. Selection Sort 
+4. Merge Sort
+5. Heap Sort 
+6. Quick Sort
+7. Shell Sort 
+
+Bubble Sort 
+    Algoritma pengurutan yg paling tua dan paling sederhana dalam penggunaannya 
+    Algoritma yg paling lambat
+
+    Cara kerja :
+    1. Bandingkan masing"" item dalam list dengan item berikutnya (jika ada yg lebih kecil, maka ditukarkan)
+    2. Algoritma berulang sampai tidak terjadi pertukaran lagi 
+    3. Nilai paling besar berada paling belakang
+    menggunakkan 2 looping, dan membandingkan 2 elemen yg bersebelahan. Disebut bubble sort karena elemen paling kecil seperti "mengapung" sedangkan elemmen paling besar akan tenggelam
+
+    void BubbleSort(int Numbers[], int ArraySize){
+        int i, j, temp;
+        for(i = ArraySize - 1; i >= 0; i--){ //sistem decrement, semakin kecil i, maka array yg belakang sudah dicek
+            for(j = 1; j <= i;j++){ //melakukan pengecekan dari depan ke belakang
+                if(Numbers[j-1] > Numbers[j]){ //jika terdapat angka yang lebih besar di depan indeks j
+                    temp = Numbers[j-1]; // maka terjadi pertukaran
+                    Numbers[j-1] = Numbers[j];
+                    Numbers[j] = temp;
+                }
+            }
+        }
+    } 
+    sehingga, ditukar 1 per satu (yg membuat algoritmanya berjalan paling lama)
+
+Insertion Sort 
+    Menyisipkan data ke dalam tempat yg sesuai pada akhir list 
+    Implementasi memerlukan 2 struktur list, source list, dan dmn data yg terurut disisipkan
+
+    void InsertionSort(int Numbers[], int ArraySize){
+        int i, j, index;
+        for(i = 1; i < ArraySize; i++){ // sistem increment
+            index = Numbers[i]; //index menyimpan anggota ke i
+            j = i; // j menyesuaikan urutan ke i
+            while ((j > 0) && (Numbers[j-1] > index)){ //jika nomor sebelum j lebih besar dari angka index
+                Numbers[j] = Numbers[j-1]; //maka nomor yg lebih besar akan "diinsertkan" ke urutan j, sehingga angka yg lebih besar "digeser" ke sebelah kanan
+                j = j - 1; //j dikurangi 1 agar mengecek anggota sebelumnya, siapa tau ada yg lebih besar lagi
+            }
+            Numbers[j] = index; // jika memang tidak ada lagi, maka angka index dimasukkan ke urutan j
+        }
+    }
+    sehingga saling menyisipkan angka yg diperlukan
+
+    insertion sort lebih efektif dan lebih mudah dipahami dari bubble sort. Bubble sort 
+    karena algoritma hanya membandingkan data dengan elemen yg sudah diurutkan sampai menemukan posisi yg tepat
+            kalau selection sort, akan terus melakukan perbandingan walaupun sudah urut 
+        dan juga insertion sort lebih stabil, sama dengan bubble sort
+
+Selection Sort 
+    bekerja dengan menyeleksi data terkecil dari data yang belum terurut dan kemudian ditukar ke posisi terdepan
+
+    void SelectionSort(int Numbers[], int ArraySize){
+        int i,j, min, temp;
+        for(i = 0;i < ArraySize - 1;i++){
+            min = i; // angka min diambil paling depan dulu
+            for(j = i+1; j < ArraySize; j++){ // j mencari angka terkecil
+                if(Numbers[j] < Numbers[min]){ // jika ada angka yg lebih kecil dri min
+                    min = j; // maka angka tersebut ditetapkan sbagai min
+                }
+                    temp = Numbers[i]; //jika sudah, maka dilakukan pertukaran angka
+                    Numbers[i] = Numbers[min]; //angka paling depan dalam array adalah angka terkecil
+                    Numbers[min] = temp;           
+            }
+        }
+    }
+    kelemahan dari selection sort adalah waktu komputasi yg lebih lama, terutama apabila array terlalu besar
+
+
+Merge Sort 
+    membagi data yang terurut menjadi 2 dan ditempatkan dalam array yg terpisah
+    lalu, masing"" array diurutkan secara rekursif dan digabung kembali menjadi data yg urut 
+    
+    Andaikan T1 = 29 56, dan T2 = 35 42
+    29 dan 35 dibandingkan lebih dulu, 29 lebih kecil maka masuk ke T3
+    35 lalu dibandingkan dengan 56, 35 lebih kecil maka masuk ke T3, dst
+
+    //parameter array, array sementara, ukuran array
+    void MergeSort(int Numbers[], int Temp[], int ArraySize){ //fungsi untuk memulai proses pengurutan
+        MSort(Numbers, Temp, 0, ArraySize-1); // 0 7
+    }
+    void MSort(int Numbers[], int Temp[], int Left, int Right){ //parameter array, array sementara, index left, right untuk array
+        int Mid;
+        if(Right > Left){ // pembagian array menjadi setengah, dengan melihat Arraysize dibandingkan dengan Left (0)
+            Mid = (Right + Left)/2; //membagi Array menjadi setengah, 3
+            MSort(Numbers, Temp, Left, Mid); // 0 3
+            MSort(Numbers, Temp, Mid+1, Right); //dilakukan hingga 1 array tersisa 2 member, 4 7 
+            Merge(Numbers, Temp, Left, Mid+1, Right); // 0, 4, 7
+        }
+    }
+    //parameter array, array sementra, index left, mid, right untuk array 
+    void Merge(int Numbers[], int Temp[], int Left, int Mid, int Right){ //penggabungan array
+        int i, Left_End, Num_Elements, Tmp_Pos; 
+        Left_End = Mid - 1; // menandakan bagian akhir dari array kiri, Numbers[3]
+        Tmp_Pos = Left; // 0
+        Num_Elements = Right - Left + 1; // menentukan jumlah elemen yg akan ditulis, 8 
+        while((Left <= Left_End) && (Mid <= Right)){ //melakukan pengurutan
+            if(Numbers[Left] <= Numbers[Mid]){ // jika angka pada array kiri lebih kecil dari angka pada array kanan
+                Temp[Tmp_Pos] = Numbers[Left]; // maka angka yg lebih kecil akan dimasukkan pada array sementara 
+                Tmp_Pos = Tmp_Pos + 1;      
+                Left = Left +1;
+            }
+            else{      
+                Temp[Tmp_Pos] = Numbers[Mid];      
+                Tmp_Pos = Tmp_Pos + 1; // maka angka yg lebih kecil akan dimasukkan pada array sementara (sebagai pengurutan)
+                Mid = Mid + 1;
+            }
+        }  
+        while(Left <= Left_End){ //menggabungkan 2 bagian array menjadi 1 bagian, selama Numbers[0] blm mendekati Numbers[3]    
+            Temp[Tmp_Pos] = Numbers[Left];  
+            Left = Left + 1;  
+            Tmp_Pos = Tmp_Pos + 1;
+            }  
+        while (Mid <= Right){ //menggabungkan 2 bagian array menjadi 1 bagian
+            Temp[Tmp_Pos] = Numbers[Mid];  
+            Mid = Mid + 1 ; 
+            Tmp_Pos = Tmp_Pos + 1;
+            }
+        
+        for (i = 0; i <= Num_Elements; i++){ // pengcopyan array dri Temp[] ke Numbers[]  
+            Numbers[Right] = Temp[right];    
+            Right = Right - 1;  
+            } 
+        }
+
+Heap Sort
+    Sebuah node mempunyai heap property, jika nilai node >= nilai anaknya
+
+    12, 8, 3, maka 12 punya heap property 
+    12, 8, 12, maka 12 punya heap property
+    12, 8, 14, maka 12 tidak punya heap property  
+
+    bentuk heap sama dengan pembuatan pohon faktor 
+
+    Tatacara heap sort 
+    1. Membangun heap data 
+    2. Memindahkan data paling besar pada puncak heap
+    3. Menyusun kembali tumpukan 
+    4. Memindahkan data terbesar ke posisi paling bawah  
+    5. Dibuat secara berurut, dimana paling kecil dimulai dari atas dan berurutan dari sebelah kiri
+    6. Diulangi sampai semua terurut
+    
+    bila hanya memindahkan data paling besar pada puncak heap, maka tidak akan bisa berurutan
+    Sehingga, setelah data terbesar di puncak, hrus diurutkan kembali 
+
+    Implementasi Heap Sort 
+        memerlukan 2 array, satu sebagai heap dan satu sebagai elemen terurut 
+        untuk menghemat tempat, algoritma dapat dibuat dengan menggunakkan array yg sama 
+        ketika data dipindah dari tumpukan, akan membebaskan tempat pada akhir array sehingga data yg dipindah dapat ditempatkan di belakang
+
+        misal : 80 70 50 60 40 30
+        mnjdi : 30 70 50 60 40 80, 30 50 60 40 70 80, 30 40 60 50 70 80, 30 40 50 60 70 80
+
+    //andaikan ArraySize = 13
+    void HeapSort(int Numbers[], int ArraySize){
+        int i, Temp;
+        for(i = (ArraySize/2)-1; i >= 0; i--){ // i = 5 5
+            ShiftDown(Numbers, i, ArraySize); // proses pembuatan heap ke bawah, hingga i = 0
+        } // maka, jumlah anggota paling bawah ada 6 anggota 
+
+        for(i = ArraySize-1; i >= 1; i--){ // i = 12
+            Temp = Numbers[0]; // proses pemindahan anggota heap paling besar ke array paling belakang 
+            Numbers[0] = Numbers[i];
+            Numbers[i] = Temp;
+            ShiftDown(Numbers,0,i); // lalu dirapikan lagi dengan fungsi ShiftDown
+        }
+    }
+
+    void ShiftDown(int Numbers[], int Root, int Bottom){ // Root menunjukkan subtree, bottom menunjukkan akar paling dasar dari subtree
+        int Done, MaxChild, Temp;
+        Done = 0;
+        while ((Root* 2 <= Bottom) && (!Done)){ // selama semua root belum punya anak 2 akar dan iterasi blm selesai,5 * 2 = 10 <= 13 
+            if(Root * 2 == Bottom){ // pengecekkan apakah node root adalah node terakhir yg tdk punya akar atau akarnya hanya 1 
+                MaxChild = Root * 2;
+            }
+            else if(Numbers[Root * 2] > Numbers[Root * 2 + 1]){ // pengecekan perbandingan nilai dari 2 anak akar tersebut 
+                MaxChild = Root * 2; 
+            }
+            else{
+                MaxChild = Root * 2 + 1; // nilai terbawah dalam array akan disimpan dalam MaxChild
+            }
+
+            if(Numbers[Root] < Numbers[MaxChild]){ // jika terdapat nilai anak yg lebih kecil dari nilai parentnya 
+                Temp = Numbers[Root]; // maka terjadi pertukaran nilai
+                Numbers[Root] = Numbers[MaxChild];
+                Numbers[MaxChild] = Temp;
+                Root = MaxChild; //sehingga, nilai yg terkecil akan berada di bawah 
+            }
+
+            else{
+                Done = 1;
+            }
+        }     
+    }
+
+Quick Sort 
+    Algoritma Quick Sort secara teori memang mudah, tetapi proses pembuatan program sangatlah sulit 
+    Algoritma Rekursif terdiri dari 4 cara 
+        1. Jika ada satu atau lebih sedikit elemen dalam array yg diurutkan, kembali 
+        2. Ambil elemen paling kiri dalam array sebagai pivot 
+        3. Bagi array menjadi 2 bagian 
+            1. Elemen yg lebih besar dari pivot 
+            2. Elemen yg lebih kecil dari pivot 
+        4. Rekursif mengurangi algoritma untuk separuh kedua dari array asli 
+    
+    Proses pengurutan Quick Sort 
+        1. Tentukan data tertentu sebagai pivot, anggap sebagai x
+        2. Pivot harus diletakkan pada posisi j, sehingga data 1 sampai (j-1) lebih kecil dari pivot 
+                sedangkan data (j+1) sampai n lebih besar dari pivot 
+        3. Cara pengaturannya adalah menukar data antara 1 sampai (j-1) yg lebih besar dari pivot
+                dengan data (j+1) sampai n yg lebih kecil dari pivot 
+
+    Quick sort terdapat divide : 
+            Tentukan p sebagai pivot 
+            Susun elemen sehingga
+                bagian kiri, < p
+                bagian kanan, > p
+        Secara rekursif, urutkan bagian kiri dan bagian kanan
+
+        terdapat bagian partisi, dimana setelah data diurutkan berdasarkan p
+        maka pivot di taruh di tengah"" bagian tersebut, sehingga terdapat 2 bagian
+
+    Andaikan : 4,8,6,3,5,1,7,2
+    maka diurutkan menjadi 4,3,1,2,8,6,5,7
+    lalu 3,1,2,4,8,6,5,7
+    menjadi 1,2,3,4,5,6,7,8
+
+    void QuickSort(int Numbers[], int ArraySize){ // Fungsi QuickSort
+        QSort(Numbers, 0, ArraySize-1); 
+    }
+
+    void QSort(int Numbers[], int Left, int Right){
+        int Pivot, LeftHold, RightHold; // LeftHold dan RightHold berfungsi untuk menyimpan posisi kiri dan kanan sebelum partisi
+        LeftHold = Left, RightHold = Right, Pivot = Numbers[Left]; // Pivot dimulai angka array paling kiri
+
+        while (Left < Right){ // Proses partisi
+            while ((Numbers[Right] >= Pivot) && (Left < Right)){ // melakukan pengecekan apakah ada angka yg lebih kecil lagi
+                Right--;
+            }   
+            if(Left != Right){ // jika memang ada
+                Numbers[Left] = Numbers[Right]; // maka terjadi pertukaran elemen
+                Left++;
+            }
+
+            while ((Numbers[Left] <= Pivot) && (Left < Right)){ // melakukan pengecekan apakah ada angka yg lebih kecil lagi
+                Left++;
+            }
+            if (Left != Right){  // jika memang ada
+                Numbers[Right] = Numbers[Left]; // maka terjadi pertukaran elemen
+                Right--;
+            }
+        }
+
+        Numbers[Left] = Pivot; // mengembalikan pivot ke posisi semula
+        Pivot = Left; // mengembalikan pivot ke posisi semula
+        Left = LeftHold; // mengembalikan nilai left ke posisi semula
+        Right = RightHold; // mengembalikan nilai right ke posisi semula
+
+        if (Left < Pivot){ // jika msih ada elemen yg lebih kecil
+            QSort(Numbers, Left, Pivot-1);
+        }
+        if (Right > Pivot){ // jika msih ada elemen yg lebih besar
+            QSort(Numbers, Pivot+1, Right);
+        } 
+
+        //base case terjadi apabila Left == Right == Pivot          
+    }
+
+Shell Sort 
+    Algoritma Shell Sort bekerja dengan membagi deretan data dengan jarak tertentu 
+    Selanjutnya, data yg sudah terbagi diurut dengan insertion sort 
+    Lalu, jarak deretan data diperkecil sampai tidak diurutkan lagi 
+        sehingga, anggapannya Shell Sort adalah Next level dari Insertion Sort 
+
+    Jika ada 3 set, lalu set pertama berisi elemen pada posisi 1, 4, 7, dst.
+                    Set kedua berisi elemen pada posisi 2,5,8, dst 
+                    Set ketiga berisi elemen pada posisi 3,6,9, dst.
+
+    Ukuran set digunakan untuk masing"" operasi, mempunyai dampak utama pada efisiensi pengurutan
+
+    cnth : 18, 32, 12, 5, 38, 33, 16, 2 
+    Terdapat 8 angka yg akan diurutkan, jarak ditentukan floor (n/2), brrti 8/2 = 4
+    floor (8/2) -> floor(4) = 4
+    
+    maka, anggota 1 terdiri atas 18,38
+    anggota 2 terdiri atas 32, 33
+    anggota 3 terdiri atas 12, 16
+    anggota 4 terdiri atas 5, 2
+
+    yg diurutkan, menjadi 18, 32, 12, 2, 38, 33, 16, 5 
+
+    lalu dibagi floor lgi, floor(4/2) -> floor(2) = 2
+    maka, anggota 1 terdiri atas 18, 12, 38, 16
+    anggota 2 terdiri atas 32, 2, 33, 5
+
+    HARUS DIBUAT SELANG SELING
+
+    sehingga, 12, 2, 16, 5, 16, 32, 38, 33
+
+    lalu, dibagi floor lgi, floor(2/2) -> floor(1) = 1
+    sehingga 2, 5, 12, 16, 18, 32, 33, 38
+
+    void ShellSort(int Numbers[], int ArraySize){
+        int i, j, Incre, Temp;
+        Incre = 3; // untuk menentukan jarak antar elemen yg dibandingkan 
+
+        while (Incre > 0){
+            for (i = 0; i < ArraySize; i++){ //iterasi untuk semua anggota array 
+                j = i; // variabel j untuk menandai posisi saat ini dalam iterasi
+                Temp = Numbers[i]; 
+
+                while ((j >= Incre) && (Numbers[j-Incre] > Temp)){ // loop untuk membandingkan elemen pada jarak incre
+                    Numbers[j] = Numbers[j - Incre]; // maka terjadi proses pertukaran
+                    j = j - Incre;
+                }
+                
+                Numbers[j] = Temp; // nilai sementara disimpan di posisi yg benar
+            }
+            if (Incre/2 != 0){ // penanda bahwa increment perlu dibagi lagi (karena blm floor (2/2))
+                Incre = Incre / 2;
+            }
+            else if (Incre == 1){ // jika memang incre = 1, maka berhenti
+                Incre = 0;
+            }
+            else{
+                Incre = 1; //apabila jumlah incre nya adlah bilangan ganjil
+            }
+        }
+    }
+
+Catatan Pertemuan ke 10 (Searching)
+    Pada suatu data, dibutuhkan pembacaan kembali informasi (Retrieval Info) dengan cara searching 
+    Searching adalah pencarian data dengan cara menelusuri data tersebut 
+    Tempat pencarian data dapat berupa array dlm memori, bisa juga file pada storage 
+
+Sequential Search
+    Teknik pencarian data dalam array 1D, yang menelusuri semua elemen array dari awal sampai akhir, yg dmn data"" tdk perlu diurutkan terlebih dahulu 
+    Best case nya adalah jika data terletak di indeks array terdepan, sehingga waktu pencarian lebih cepat 
+    Worst casenya adalah jika data terletak di indeks array terakhir, sehingga waktu pencarian lebih lama
+
+    Permasalahan Sequential Search : 
+        Apakah cara tersebut efisien, apabila ada ada 10000 data dan semua data dipastikan unik?
+        Bagaimana cara mengetahui data ditemukan dan pada indeks ke berapa ditemukan?
+    Solusi 
+        Jika data sudah ditemukan, maka loop segera dihentikn 
+        Disebutkan juga indeks ke berapa data ditemukan 
+
+    Sequential Search with Sentinel 
+    Sentinel ada kondisi dimana terdapat indeks array tambahan yang sengaja blm terisi data 
+    Sentinel bertugas untuk menjaga agar indeks data hanya terdapat pada indeks sebelum sentinel 
+    Bila pencarian sudah mencapai sentinel, maka found = false
+    tapi kalau tdk mencapai sentinel, maka found = true 
+
+    //Sequential search dengan patokan
+    int main(){
+        int Data[7] = {1,2,3,4,5,6,7};
+        int Find, i;
+        cout << "Masukkan data yang ingin dicari : ";
+        cin >> Find;
+        Data[6] = Find; // Find dijadikan patokan (ditaruh di array paling terakhir)
+        i = 0; 
+
+        while (Data[i] != Find){ // selama Find blm ditemukan, dilakukan incre 
+            i++;
+        }
+        
+        if(i < 6){ //jika data ditemukan sebelum Find, maka data ditemukan
+            cout << "Data ditemukan";
+        }
+        else{ // jika sudah mencapai Find, maka data tidak ditemukan
+            cout << "Data tidak ditemukan";
+        }  
+    }
+    
+    atau bisa menggunakkan 
+
+    int main(){
+        int Data[7] = {1,2,3,4,5,6,7};
+        int Find, i;
+        cout << "Masukkan data yang ingin dicari : ";
+        cin >> Find;
+        
+        bool Found = false;
+        while(!False){
+            
+            if (Data[i] == Find){
+                cout << "Data ditemukan";
+                Found = true;
+            }
+
+            else if(i >= 7){
+                cout << "Data tidak ditemukan";
+                break;
+            }
+                i++;
+        }
+    return 0;
+    }
+
+Binary Search
+
+    Teknik pencarian data dengan cara membagi data menjadi 2 bagian setiap kali terjadi proses pencarian
+    Data yg ada harus diurutkan terlebih dahulu berdasarkan suatu urutan tertentu yg dijadikan kunci pencarian 
+
+    Ilustrasi 
+    0    1     2     3     4     5      6      7     8
+    3    9     11    12    15    17     23     31    35
+    A                      B                         C
+
+    bila angka yg dicari adalah 17, karena 17 > 15 (Data tengah), maka Awal = Tengah + 1
+    0    1     2     3     4     5      6      7     8
+    3    9     11    12    15    17     23     31    35
+                                 A      B            C
+    
+    karena 17 < 23 (Data tengah), maka Akhir = Tengah - 1
+    0    1     2     3     4     5      6      7     8
+    3    9     11    12    15    17     23     31    35
+                                A=B=C
+    
+    karena 17 = 17 (Data tengah), maka ketemu
+
+    int main(){
+        int Data[9] = {3,9,11,12,15,17,23,31,35};
+        int Left,Right,Mid; // Membuat patokan awalan, pertengahan, akhiran array
+        int ArraySize = 9; 
+        int Find;
+        cin >> Find;
+        Left = 0; // awalan berada di depan array
+        Right = ArraySize - 1; // akhiran berada di akhir array
+        int Found = 0; // patokan Found
+        while (Left <= Right && Found == 0){ // Selama awalan, pertengahan, akhiran tidak berada di data yg sama dan Found msih 0
+            Mid = (Left+Right)/2; // Dibuat patokan mid, dmn akhiran/awalan
+            cout << "Data Tengah = " << Mid;
+            if (Data[Mid] == Find){ // jika Mid menemukan angka yg dicari, maka selesai
+                Found = 1;
+            }
+            else if(Find < Data[Mid]){ // Jika data lebih kecil dari Mid
+                cout << "Cari di sebelah kiri";
+                Right = Mid-1; // maka ruang pencarian diperkecil
+            }
+            else{ // Jika data lebih besar dari Mid
+                cout << "Cari di sebelah kanan";
+                Left = Mid+1; // maka ruang pencarian diperkecil
+            }
+        }
+        
+        if(Found == 1){
+            cout << Find << " ditemukan dalam array\n";
+        }
+        else{
+            cout << Find << " tidak ditemukan dalam array\n";
+        }
+    }
+
+Interpolation Search
+    Teknik dilakukan pada data yg sudah terurut berdasarkan kunci tertentu 
+    Teknik searching dilakukan dengan perkiraan letak data 
+        cth : Jika kita ingin mencari suatu nama di buku telepon yg berawalan huruf T, maka kita lgsg membuka ke 2/3 buku 
+    
+    dengan rumus : 
+    Posisi = Kunci - Data[Low]/Data[High] - Data[Low] * (High - Low) + Low
+    Jika Data[Posisi] > Data yg Dicari, maka High = Pos - 1
+    Jika Data[Posisi] < Data yg Dicari, maka Low = Pos + 1
+
+    #include <cmath>
+    int main(){
+        int Data[9] = {3,9,11,12,15,17,23,31,35};
+        int Low, High; // Low merupaakan awalan array, High merupakan akhiran array
+        int Found = 0; // Found untuk menentukan apakah data sudah ditemukan atau tidak
+        int Find;
+        cin >> Find; // andai 17
+        float Pos1; // Variabel untuk menyimpan hasil perhitungan interpolasi linear 
+        int Pos; // variabel hasil interpolasi yang dibulatkan untuk digunakan untuk mengakses array
+        int ArraySize = 9;
+        Low = 0;
+        High = ArraySize-1;
+
+        do{
+            Pos1 = (float)(Find-Data[Low])/(Data[High]-Data[Low]) * (High-Low) + Low; //(17-3)/(35-3) * (8-0) + 0  = 3.5
+            Pos = floor(Pos1); // 3, maka dimasukkan dalam index
+
+            if(Data[Pos] == Find){
+                Found = 1;
+                break;
+            }
+
+            if (Data[Pos] > Find){ // Jika hasil interpolasi masih lebih besar, maka High dikurangi hasil interpolasi
+                High = Pos - 1;
+            }
+
+            else if(Data[Pos] < Find){ // Jika hasil interpolasi masih lebih kecil, maka Low dijumlahkan hasil interpolasi
+                Low = Pos + 1; // 4
+            }
+        // dilanjut (17-3)/(35-3) * (8-4) + 4 = 5.75, menjadi 5, dimasukkan dalam indeks dan ditemukan
+        }while (Find >= Data[Low] && Find <= Data[High]); //selama Find berada di range array 
+    
+        if (Found == 1){
+            cout << Found << " ditemukan dalam array\n";
+        }
+        else{
+            cout << Found << " tidak ditemukan dalam array\n";
+        }
+    }
+
+Catatan Pertemuan ke 11 (Collision Handling)
+Metode penanganan Collision 
+    Pengamatan terbuka (Open Addressing)
+        Closed Hashing 
+    Pembentukan Rantai (Chaining)
+        Open Hashing
+    Pengalaman Bucket (Bucket Addressing)
+
+Open Addressing (Closed Hashing)
+    Metode ini menempatkan elemen yang bertabrakan pada slot lain yang tersedia pada tabel hash 
+    Saat terjadi tabrakan, pencarian dilakukan dengan menggeser ke slot beriktnya secara berurutan hingga slot kosong ditemukan 
+    
+    Ada beberapa teknik dalam open addressing
+    Linear Probing 
+        Menggeser ke slot berikutnya secara linear jika terjadi tabrakan 
+    Quadratic Probing 
+        Menggeser ke slot berikutnya dengan pola kuadratik jika terjadi tabrakan 
+    Double Hashing 
+        Menggunakkan fungsi hash kedua untuk menentukan jarak langkah yg akan diambil saat terjadi tabrakan 
+
+    cth 
+    Key yg bertabrakan di taruh di slot yg kosong 
+    Hashing(k,m) = k % 100
+
+    Input hashing = 8002, maka didapatkan hash value 2
+    tapi, karena index 2 telah terisi, digeser ke slot kosong, yaitu index 4
+    Dengan menggunakkan Open Addressing, angka 8002 ditaruh di index 4
+
+    0   5000
+    1   4001
+    2   7002
+    3   1003
+    4   8002
+    (cara kerjanya hampir seperti stack, tapi kalau memang ada slot kosong, disisipkan ke index tersebut)
+
+Open Addressing - Linear Probing
+    Fungsi linear yg paling sederhana dan mudah digunakan 
+    Fungsi Linear f(i)=i
+
+    Tabrakan ditangani dengan mencari lokasi terdekat yg masih kosong/dikenal dengan pemeriksaan linear
+    Bila terjadi collision, cari posisi pertama pada tabel yg terdekat dengan posisi seharusnya 
+
+    Linear Probing memiliki kelemahan : primary clustering  
+    Fungsi Hash menjadi menjadi Hash(k,i) = (h'(k)+1) % m, m= 0..n-1 '
+        Cth urutan pencarian : h+1,h+2,h+3,h+i
+    Linear Probing hanya disarankan untuk ukuran hash table yg ukurannya lebih besar 2x dri jumlah data 
+
+    cth:
+    Tabel hash dengan fungsi : Hash(x) = x % 10
+    Input : 89,18,49,58,9
+
+    Hash(89) = 89 % 10 = 9
+    Hash(18) = 18 % 10 = 8
+    Hash(49) = 49 % 10 = 9 (collision)
+        Hash1(49) = (9+1) % 10 = 0 
+    Hash(58) = 58 % 10 = 8 (collision)
+        Hash1(58) = (8+1) % 10 = 9 (collision)
+        Hash2(58) = (8+2) % 10 = 0 (collision)
+        Hash3(58) = (8+3) % 10 = 1 
+    Hash(9) = 9 % 10 = 9 (collision)
+        Hash1(9) = (9+1) % 10 = 0 (collision)
+        Hash2(9) = (9+2) % 10 = 1 (collision)
+        Hash3(9) = (9+3) % 10 = 2
+    sehingga
+
+    0   49
+    1   58
+    2   9
+    3
+    4
+    5
+    6
+    7
+    8   18
+    9   89
+
+    Primary Clustering : kondisi pada linear probing dmn elemen"" yg bertabrakan cenderung mengumpul pada slot yg berdekatan pada tabel hash
+    Sehingga, menyebabkan peningkatan wktu pencarian dan pengurangan efisiensi 
+
+Open Addressing - Quadratic Probing 
+    Dalam Quadratic Probing, jika terjadi tabrakan, pencarian dilakukan dengan menggunakkan pola kuadratik utk menentukan langkah"" yg hrus diambil saat mencari slot kosong 
+    Jika slot awal yg dihasilkan oleh fungsi Hash adalah slot 5 dan sudah terisi, maka pencarian dilakukan dengan memeriksa slot 5 + 1 ^2 - 6
+    5 + 2^2 = 9, 5 + 3^2 = 14, dst nya hingga slot kosong ditemukan 
+    
+    Supaya menghindari primary clustering, maka menggunakkan fungsi f(i) = i^2
+    Tapi, bila hash table telah terisi lebih dari setengahnya, maka akan sulit 
+    Perlu dibuat hash table yg bukan blgn kuadrat 
+
+    Tapi, apabila hash table dibuat adalah blgn prima, dan hash table terisi kurang dri stengahnya, maka akan aman 
+
+    Fungsi Hash menjadi menjadi Hash(k,i) = (h'(k)+1^2) % m, m= 0..n-1 '
+        Cth urutan pencarian : h,h+1,h+4,h+9,h+16 (Dpt melakukan incre apabila terjadi collision)
+    
+    cth :
+    Tabel hash dengan fungsi : Hash(x) = x % 11
+    Input : 20,30,2,13,25,24,10,9
+
+    Hash(20) = 20 % 11 = 9
+    Hash(30) = 30 % 11 = 8
+    Hash(2) = 2 % 11 = 2
+    Hash(13) = 13 % 11 = 2 (Collision)
+        Hash1(13) = 2 + 1^2 = 3
+    Hash(25) = 25 % 11 = 3 (Collision)
+        Hash1(25) = 3 + 1^2 = 4
+    Hash(24) = 24 % 11 =2 (Collision)
+        Hash1(24) = 2 + 1^2 = 3 (Collision)
+        Hash2(24) = 2 + 2^2 = 6
+    Hash(10) = 10 % 11 = 10
+    Hash(9) = 9 % 9 = 9 (Collision)
+        Hash1(9) = 9 + 1^2 = 10 (Collision)
+        Hash2(9) = 9 + 2^2 = 15 % 11 = 4 (Collision)
+        Hash3(9) = 9 + 3^2 = 18 % 11 = 7
+    
+    Sehingga
+    0
+    1
+    2   2
+    3   13
+    4   25
+    5
+    6   24
+    7   9
+    8   30
+    9   20
+    10  10
+
+Open Addressing - Double Hashing 
+    Double Hashing adalah teknik penanganan tabrakan pada tabel hash, dmn pencarian slot kosong dilakukan dengan menambahkan offset
+        yang dihitung berdasarkan nilai hash kunci
+    Teknik ini mengurangi terjadinya primary clustering dan memberi distribusi lebih merata
+    Apabila terjadi tabrakan, pencarian dilakukan dengan menggunakkan fungsi hash kedua untuk menentukan jarak langkah yg akan diambil
+        saat mencari slot kosong
+    
+    Misal, jika terjadi tabrakan pada slot 5, dan fungsi ke2 menghasilkan langkah 3, maka pencarian dilakukan dengan melompati 5 + 3 = 8,
+    5 + 2 * 3 = 11, 5 + 3 * 3 = 14,dst
+
+    Fungsi Hash menjadi menjadi Hash(k,i) = (h1(k)+ih2(k)) mod m, m= 0..n-1 
+        Cth urutan pencarian : h1,h1+h2,h1+2*h2,h1+3*h2,h1+ih2
+    Hash ke2 (offset) memiliki rumus 
+        h2(k) = R - (k mod R)
+        R = bil. prima < ukuran tabel hash 
+    Pada quadratic probing dan double hashing, hash menyatakan alamat hash yg diperoleh melalui fungsi hash dan i dimulai dri 0
+
+    Fungsi f(i) = i * hash2 (x)
+    Setiap saat faktor hash2(x) ditambahkan pada probe
+
+    Harus hati"" dalam memilih fungsi hash kedua untuk menjamin agar tidak menghasilkan nilai 0 dan memprobe ke seluruh sel 
+    Salah satu syarat ukuran hash table haruslah blgn prima
+    
+    Hash kedua(offset) menggunakkan rumus h2(k) = R - ( k % R )
+    R = bil. prima < ukuran tabel hash 
+    
+    cth :
+    Tabel hash dengan fungsi : Hash(x) = x % 10
+    Hash2(x) = 7 - (x % 7)
+    Input : 12,22,32,42,52
+
+    Hash(12) = 12 % 10 = 2
+    Hash(22) = 22 % 10 = 2 (collision)
+        Hash2(22) = 7 - (22 % 7) = 7 - 1 = 6
+        maka, 2 + 6 = 8 
+    Hash(32) = 32 % 10 = 2 (collision)
+        Hash2(32) = 7 - (32 % 7) = 7 - 4 = 3
+        maka, 2 + 3 = 5
+    Hash(42) = 42 % 10 = 2 (collision)
+        Hash2(42) = 7 - (42 % 7) = 7 - 0 = 7
+        maka, 2 + 7 = 9
+    Hash(52) = 52 % 10 = 2 (collision)
+        Hash2(52) = 7 - (52 % 7) = 7 - 3 = 4
+        maka, 2 + 4 = 6
+    sehingga
+
+    0   
+    1
+    2   12
+    3   
+    4
+    5   32
+    6   52
+    7
+    8   22
+    9   42
+    
+    Tabel hash dengan fungsi : Hash(x) = x % 7
+    Hash2(x) = 5 - (x % 5)
+    Input : 76,93,40,47,10,55
+
+    Hash(76) = 76 % 7 = 6
+    Hash(93) = 93 % 7 = 2
+    Hash(40) = 40 % 7 = 5
+    Hash(47) = 47 % 7 = 5 (collision)
+        Hash2(47) = 5 - (47 % 5) = 5 - 2 = 3
+        tapi, ditambah dengan (5+3) % 7 = 8 % 7 = 1
+    Hash(10) = 10 % 7 = 3
+    Hash(55) = 55 % 7 = 6 (collision)
+        Hash2(55) = 5 - (55 % 5) = 5 - 0 = 5
+        tapi, ditambah dengan (6+5) % 7 = 11 % 7 = 4
+    sehingga
+
+    0
+    1   47
+    2   93
+    3   10
+    4   55
+    5   40
+    6   76
+
+    Tabel hash dengan fungsi : Hash(x) = x % 13
+    Hash2(x) = 7 - (x % 7)
+    Input : 19,27,36,10
+
+    Hash(19) = 19 % 13 = 6
+    Hash(27) = 27 % 13 = 1
+    Hash(36) = 36 % 13 = 10 
+    Hash(10) = 10 % 13 = 10 (collision)
+        Hash2(10) = 7 - (10 % 7) = 7 - 3 = 4
+        tapi ditambah dengan (10 + 4) % 13 = 1 (collision)
+        maka ditambah lagi sehingga (10 + 2*4) % 13 = 5 
+    sehingga
+
+    0
+    1   27
+    2
+    3
+    4
+    5   10
+    6   19
+    7
+    8
+    9
+    10  36
+    11
+    12
+
+Chaining - Open Hashing 
+    Permasalahan collision diselesaikan dengan menambahkan seluruh elemen yang memiliki nilai hash yg sama pada suatu set
+        Menyediakan sebuah linked list untuk setiap elemen yg memiliki nilai hash sama
+    Tiap sel pada hash table berisi pointer ke sebuah linked list yg berisi data/elemen
+        Dalam open hashing, setiap slot/bucket dlm table hash berfungsi sebagai head linked list 
+    Ketika terjadi tabrakan, maka elemen dengan nilai yg sama ditambahkan ke linked list
+
+    Menambahkan sebuah elemen ke dalam tabel
+        Dilakukan dengan menambahkan elemen pada akhir/awal linked list sesuai dengan nilai hash 
+    Untuk pencarian 
+        Gunakan fungsi hash untuk menentukan linked list mana yg memiliki elemen yg dicari
+        kemudian membaca linked list 
+    Penghapusan 
+        Dilakukan pada linked list setelah pencarian elemen dilakukan 
+
+    Dapat digunakan struktur data lain selain linked list utk menyimpan elemen yg memiliki fungsi hash yg sama 
+    Kelebihan : dapat menyimpan data tidak terbatas 
+    Kekurangan :  penggunaan memory pada tiap sel
+
+    Contoh :
+    Tabel hash dengan fungsi : Hash(x) = x % 7
+    Input : 21,14,7,8,15,23,13
+
+    Hash(21) = 21 % 7 = 0
+    Hash(14) = 14 % 7 = 0
+    Hash(7) = 7 % 7 = 0
+    Hash(8) = 8 % 7 = 1
+    Hash(15) = 15 % 7 = 1
+    Hash(23) = 23 % 7 = 2
+    Hash(13) = 13 % 7 = 6
+    sehingga,
+
+    0   21 -> 14 -> 7
+    1   8 -> 15
+    2   23
+    3
+    4
+    5
+    6   13
+
+Bucket Addressing 
+    Metode penangaan colliding pada table hash dmn setiap slot/bucket dlm table hash menampung sejumlah item/elemen dlm bntuk bucket/wadah yg lebih besar 
+    Setiap bucket bisa berisi lebih dri 1 elemen yg dpt diakses dengan teknik pencarian internal 
+    Teknik pengalamatan bucket mirip dengan chaining, namun tabrakan tidak ditangani dengan linked list, tpi array 
+    Bucket = block record yg terhubung ke satu alamat pada hash table 
+
+    cth 
+    Jika trdpat bucket hash table berukuran 10 utk menyimpan 5 bucket dan terdapat overflow bucket untuk menyimpan record ketika bucket utama penuh 
+    Input : 18, 30, 38, 48, 20, 25
+    karena terdapat 5 bucket, sehingga Hash(x) = x % 5
+
+    Hash(18) = 18 % 5 = 3 -> B[3][0] (index 6)
+    Hash(30) = 30 % 5 = 0 -> B[0][0] (index 0)
+    Hash(38) = 38 % 5 = 3 -> B[3][1] (index 7)
+    Hash(48) = 48 % 5 = 3 -> B[3][full] (maka masuk Bucket Overflow)
+    Hash(20) = 20 % 5 = 0 -> B[0][1] (index 1)
+    Hash(25) = 25 % 5 = 0 -> B[0][full] (maka masuk Bucket Overflow)
+    sehingga,
+
+    0   B[0][0]  30
+    1   B[0][1]  20
+    2   B[1][0] 
+    3   B[1][1]
+    4   B[2][0]
+    5   B[2][1]
+    6   B[3][0]  18
+    7   B[3][1]  38
+    8   B[4][0]  
+    9   B[4][1] 
+
+    Overflow Bucket 
+    48
+    25
+
+    saat mencari record, pertama"" kita ambil nilai hash yg ingin dicari dan mencari bucket yg diinginkan 
+    Jika kita mencari angka 20, maka dicari B[0], namun di B[0][0] ditemukan 30, dicari ke B[0][1]
+    Jika kita mencari angka 25, maka dicari B[0], namun di B[0][0] ditemukan 30, dicari ke B[0][1] ditemukan 20, dicari ke Overflow bucket ditemukan 25
+
+    Jika bucket utama maupun overflow bucket sudah penuh, maka perlu tindakan slnjutnya 
+        Penggunaan Bucket Tambahan (Double Hashing)
+            Bucket tambahan yg baru dibuat untuk menampung elemen tambahan . Algoritma penggandaan hashing digunakan untuk menentukan lokasi bucket tambahan baru 
+        Penanganan Dinamis (Dynamic Resizing)
+            Table hash diperbesar. Sehingga table hash baru yg lebih besar dibuat. Semua elemen yg ada di table lama di hashing ulang dan ditaruh di table baru yg lbih besar untuk menampung tambahan
+    Ke 2 pilihan tergntg kondisi 
+Catatan Pertemuan ke 12 (Tree)
+Struktur data yang terdiri atas akar (root) dan subpohon yang berhirarki
+Setiap akar membentuk simpul/node/vortex
+
+Parent (internal node)
+    node yang digambarkan di atas node lain (root tidak punya parent)
+Child 
+    node yang digambarkan di bawah node lain (bisa punya lebih dar 1 anak, maupun bisa tidak punya samsek)
+Leaf (eksternal node)
+    node yang tidak memiliki anak
+Sibling
+    node yang memiliki parent yg sama 
+Ancestor dari Node x
+    node yang ditemukan, ketika menyusuri tree ke atas dari node 
+Descendant dari Node x
+    node yang ditemukan, ketika menyusuri tree ke bawah dari node
+
+Tingkat(level) dan kedalaman (depth) pohon
+    Tingkat dimulai dari 0,1,2 
+    Depth dimulai dari 1 (tingkat + 1)
+    Height dihitung dari banyaknya tingkatan
+
+Derajat 
+    jumlah anak yang dimiliki oleh suatu node
+    jika 1 node memiliki 2 anak, disebut derajat 2
+
+Binary Tree
+    Tree kosong juga bisa disebut sebagai binary tree 
+    Binary tree HARUS memenuhi SALAH SATU syarat:
+        1. Tidak memiliki anak 
+        2. Memiliki subtree di sebelah kiri (left subtree)
+        3. Memiliki subtree di sebelah kanan (right subtree)
+        4. Memiliki 2 subtree (left & right subtree)
+    Subtree harus dibuat menurun ke kiri atau kekanan, tidak boleh lurus langsung ke bawah
+
+    Binary tree terbagi menjadi 2 :
+        Full Binary Tree : masing"" node merupakan leaf/internal node dengan 2 child (tidak beraturan)
+        Complete Binary Tree : untuk mengisi level di baawhnya, maka node dalam setiap level hrus diisi lengkap dari kiri ke kanan
+
+    Binary tree dapat dibuat dengan double linked list linear 
+    Data yg pertama kali masuk akan menjadi node root (head)
+    Data yg lebih kecil dari data node root, akan masuk dan menempati node kiri dari node root 
+        sedangkan yang lebih besar dari data node root, akan masuk dan menempati node kanan dari node root
+    
+    struct Tree{
+        int Data;
+        Tree *Left;
+        Tree *Right
+    }
+    Tree *Root; //deklarasi 
+    
+    Operasi yang diperlukan :
+
+    void Create(Tree *Root){ // membentuk sebuah tree baru yang kosong 
+        Root = NULL;
+    }
+    void Clear(Tree *Root){ // menghapus tree yang kosong 
+        Root = NULL;
+    }
+    int IsEmpty(Tree *Root){ //mengecek apakah tree kosong atau tidak
+        if(Root == NULL) return 1;
+        else return 0;
+    }
+    void Insert(Tree **Root, int NewData){ //menambah node dengan teknik rekursif
+        if((*Root) == NULL){ //jika masih blm ada node pertama, maka dibuatlah node pertama sebagai root 
+            Tree *New;
+            New = new Tree;
+            New->Data = NewData;
+            New->Left = NULL;
+            New->Right = NULL;
+            (*Root) = New;
+            (*Root)-> Left = NULL;
+            (*Root)-> Right = NULL;
+        }
+
+        else if(NewData < (*Root)->Data){ //jika sudah ada data sebelumnya dan ternyata lebih kecil
+            Insert(&(*Root)-> Left,NewData); //ditaruh di sebelah kiri
+        }
+        else if(NewData > (*Root)->Data){ //jika sudah ada data sebelumnya dan ternyata lebih besar
+            Insert(&(*Root)-> Right,NewData); //ditaruh di sebelah kanna
+        }
+        else if(NewData == (*Root)->Data){ //jika sudah ada data yang sama
+            cout << "Data is already inserted\n"; //maka data tidak bisa dimasukkan 
+        }
+    }
+    Tree *Find(Tree *Root, int Data){ //mencari node secara rekursif sampai node tersebut berhasil ditemukan 
+        if(Root == NULL) return NULL; //jika memang kosong, maka mengembalikan nilai nol
+        else if(Data < Root->Data) return Find(Root->Left,Data); //jika data yang dicari lebih kecil dari Root yg sekarang, maka pencarian dilakukan di sebelah kiri 
+        else if(Data > Root->Data) return Find(Root->Right,Data); //jika data yang dicari lebih besar dari Root yg sekarang maka pencarian dilakukan di sebelah kanan 
+        else if(Data == Root->Data) return Root; //jika data yang dicari telah ditemukan, maka mengembalikan nilai Root
+    }
+
+    Traverse : operasi kunjungan terhadap node"" dalam tree secara sistematis, setiap node dikunjungi sekali 
+    ada tiga cara traversal 
+
+    void PreOrder(Tree *Root){
+        if(Root == NULL) return; //kalau kosong tidak bisa
+        cout << Root->Data; //cetak dulu Datanya
+        PreOrder(Root->Left); //kunjungi left
+        PreOrder(Root->Right); //kunjungi right
+    } //jadi otomatis akan membaca dari root dulu, langsung ke kiri semua, 
+
+    void InOrder(Tree *Root){
+        if(Root == NULL) return; //kalau kosong tidak bisa
+        InOrder(Root->Left); //kunjungi left
+        cout << Root->Data; //cetak
+        InOrder(Root->Right); //kunjungi right
+    }//jadi otomatis mengurutkan dari yg terkecil sampai terbesar 
+    
+    void PostOrder(Tree *Root){
+        if(Root == NULL); //kalau kosong tidak bisa
+        PostOrder(Root->Left); //kunjungi left
+        PostOrder(Root->Right); //kunjungi right
+        cout << Root->Data; //cetak dulu Datanya
+    }//jadi otomatis ke leaf yang paling kiri, lalu membaca data, lalu bergeser ke leaf yg paling pojok lagi 
+
+    int Count(Tree *Root){ //perhitungan banyaknya node dengan mengunjungi semua root 
+        if(Root == NULL) return 0; //jika kosong maka 0
+        return Count(Root->Left) + Count(Root->Right) + 1; //menghitung node sebelah kiri root, menghitung node sebelah kanan root, lalu ditambah 1, yaitu root utama
+    }
+
+    int Height(Tree *Root){ //perhitungan banyaknya tingkatan atau kedalaman tree
+        if(Root == NULL) return -1;
+        int LeftHeight = Height(Root->Left), RightHeight = Height(Root->Right); //penghitungan dimulai dari setelah root, dimulai dari subtree kiri dan kanan
+        if(LeftHeight > RightHeight) return LeftHeight + 1; //jika subtree paling kiri, gunakan yg paling kiri + 1
+            else return RightHeight + 1;
+    }
+
+    Tree *FindMin(Tree *Root){ //mencari angka terkecil
+        if(Root == NULL) return NULL;
+        else{ //mencari dengan melakukan traverse ke kiri 
+            if(Root->Left == NULL){ //jika sudah mencapai leaf paling kiri (yg otomatis paling kecil)
+                return Root; //mengembalikan nilai Root
+            }
+            else{
+                return FindMin(Root->Left); //jika blm, terus dilakukan pencarian leaf paling kiri 
+            }
+        }
+    }
+
+    Tree *FindMax(Tree *Root){ //mencari angka terbesar
+        if(Root == NULL) return NULL; 
+        else{ //mencari dengan melakukan traverse ke kanan 
+            if(Root->Right == NULL){ //jika sudah mencapai 
+            leaf paling kanan (yg otomatis paling besar)
+                return Root; //mengembalikan nilai Root
+            }
+            else{
+                return FindMin(Root->Right); //jika blm, terus dilakukan pencarian leaf paling kanan
+            }
+        }
+    }
+
+    void FindLeaf(Tree *Root){ //mencari leaf atau node paling ujung yg tidak punya child
+        if(Root == NULL){ 
+            cout << "Tree is empty\n";
+            return;    
+        }
+        if(Root->Left != NULL) FindLeaf(Root->Left); //jika masih ada child di sebelah kiri, maka geser ke kiri
+        if(R
+        oot->Right != NULL) FindLeaf(Root->Right);  //jika masih ada child di sebelah kanan, maka geser ke kanan
+        if(Root->Right == NULL && Root->Left == NULL){ //jika node tdk punya child di sebelah kiri dan kanan
+        
+            cout << "The leaf is " << Root->Data << endl; //maka leaf ditemukan
+        }
+    }
+
+    Tree DeleteNode(Tree *Root, int DeleteData){
+        if (Root == NULL){ 
+            cout << "Tree is empty\n";
+            return;
+        }
+
+        else if(DeleteData < Root->Data) DeleteNode(Root->Left,DeleteData); //jika data yg ingin dihapus lebih kecil dari root, maka geser ke sebelah kiri 
+        else if(DeleteData > Root->Data) DeleteNode(Root->Right,DeleteData);//jika data yg ingin dihapus lebih besar dari root, maka geser ke sebelah kanan 
+        
+        //jika data yg ingin dihapus sudah ketemu,
+        else{
+            //jika root adalah leaf node atau memiliki 1 child
+            if(Root->Left == NULL){
+                Root *Temp = Root->Right; //maka child sebelah kanan disimpan
+                delete Root; //hapus root
+                return Temp; //lalu child disimpan
+            }
+            else if(Root->Right == NULL){
+                Root *Temp = Root->Left; //maka child sebelah kiri disimpan
+                delete Root; //hapus root
+                return Temp; //lalu child disimpan
+            }
+
+            //jika root memiliki 2 child
+            Node *Temp = FindMax(Root->Left); //maka Temp mencari node dengan data terbesar di sebelah subtree kiri
+            Root->Data = Temp->Data; // mengganti nilai dari root yg akan dihapus dengan root terbesar yg dicari
+            Root->Left = DeleteNode(Root->Left,Temp->Data); //setelah diganti, maka dilakukan penghapusan root dengan nilai Temp yg akan dijadikan patokan untuk mencari nilai yg dihapus
+        }
+        return Root;
+    }
+
+Catatan Pertemuan ke 13 (Graph)
+Graph digunakan untuk merepresentasikan objek-objek diskrit dan hubungan antara objek"" tersebut
+Representasi visual dinyatakan dalam bentuk titik/bulatan/noktah, hubungan dinyatakan dalam garis
+
+ex : Peta jejaring Provinsi Jawa Tengah 
+Instalasi suatu bangunan
+
+Graph = kumpulan dari simpul dan busur secara matematis yg dinyatakan dengan G(V,E)
+G = Graph, V = Vertex (simpul/titik), E = Edge (garis)
+
+Banyaknya simpul (V) disebut Order Graf G
+Banyaknya ruas (E) disebut Ukuran Graf G
+
+Contoh persoalan di dunia nyata:
+    Jaringan pertemanan pada FB 
+    Andai, Vertex (Node) = Para pemakai FB
+           Line (Garis) = Garis pertemanan
+    Dapat dijabarkan dengan 
+    V = {Alpha, Bravo, Charlie, Delta, Echo}
+    E = {Alpha, Bravo}, {Bravo, Charlie}, {Delta, Bravo}, {Echo, Alpha}...
+
+Sebuah Graph bisa jadi terdiri atas 1 node
+Sebuah Graph bisa jadi mempunyai node yg tidak terhubung dengan node yg lain 
+Sebuah Graph bisa jadi ada satu node yg tidak terhubung samsek 
+Sebuah Graph bisa jadi semua node nya terhubung satu dengan yg lain
+
+Jenis"" Graph 
+    Directed Graph (DiGraph)
+    Undirected Graph 
+        Complete Undirected Graph
+        Connected Undirected Graph
+    Weight Graph 
+
+Directed Graph 
+    Graph yg memiliki orientasi/arah 
+    Setiap line digambarkan memiliki anak panah yg mengarah ke node tertentu 
+    Secara notasi, ditulis dengan vektor (u,v) 
+        u = origin, v = terminus
+        hanya berlaku 1 arah 
+    ex : 
+    G = {V,E}
+    V = {A,B,C,D,E,F,G,H}
+    E = {(A,B), (A,C), (B,C), (C,D), (E,G), (C,G), (D,G)}
+
+    DiGraph terkadang memiliki edge dari dan menuju ke node itu sendiri lagi (self-edge). Disebut dengan istilah loop (menunjuk dirinya sendiri)
+
+Undirected Graph
+    Graph yg tidak memiliki orientasi/arah
+    Setiap line tidak memiliki anak panah yg mengarah ke node tertentu 
+    Secara notasi, ditulis dengan vektor {u,v}
+        setiap sisi berlaku pada 2 arah, 
+    
+    UnDir Graph (Complete Graph)
+    Setiap node memiliki edge/line ke semua node yg terdapat pada graph (saling terhubung 1 dengan yg lain)
+
+    UnDir Graph (Connected Graph)
+    Setiap node memiliki edge/line setidaknya 1, tapi tidak semua node terhubung 1 dengan yg lain
+
+    UnDir Graph (Not Connected Graph)
+    Terdapat 1 node yg tidak terhubung dengan node lain, sehingga terputus 
+
+    UnDir Graph (Connected Compound)
+    Apabila dalam 1 graph masih terdapat pengelompokan (compound) dan semua nodenya tetap memiliki edge setidaknya 1, maka disebut connected compound 
+
+Weighted Graph 
+    Apabila semua line/edge memiliki weight atau bobot 
+    ex : Peta perjalanan tempat wisata pada 1 kota 
+
+
+Jumlah pasangan edge yg mungkin ada dalam graph (banyak max edge) dapat dilihat dari banyaknya jumlah node (n)
+    Utk UnDir Graph <= n(n-1)/2
+        Dir Graph <= n(n-1)
+ex : 
+    UnDir Graph N = 3
+        3(3-1)/2 = 3(2)/2 = 3(jumlah max edge)
+    Dir Graph N = 3(3-1) 
+        3(2) = 6 (jumlah max edge)
+        apabila dengan loop = 9 
+        yg berarti n(n-1) + n
+    
+Degree : jumlah cabang/jumlah edge yg dimiliki node  (berlaku untuk semua DiGraph/UnDiGraph)
+    Degree(A) = 3 (brrti ada 3 node yang terhubung)
+In-Degree : Jumlah edge yg masuk ke node tersebut (hanya berlaku DiGraph)
+    InDegree(A) = 2 (brrti ada 2 node yg menunjuk oleh A)
+Out-Degree : Jumlah edge yg keluar ke node tersebut (hanya berlaku utk DiGraph)
+    OutDegree(A) = 3 (brrti ada 3 node yg ditunjuk oleh A)
+
+Representasi Graph (cara menggambarkan Graph)
+    dibedakan menjadi 2:
+    1. Adjacency Matrix (dapat direperesentasikan dengan matrix) (array 2D)
+    2. Adjacency Lists (dapat direpersentasikan dengan array/linked list)
+
+Adjacency Matrix 
+    Representasi Graph berupa matrix NxN, dimana n = node
+    Baris berisi node asal, kolom berisi node tujuan 
+
+    Jika graph tidak berbobot, maka nilai matriks diisi dengan 1 atau 0.
+        Nilai 1 jika ada edge, dan 0 jika tidak ada edge antar node
+    A(i,j) = 1 //jika antara i dan j terdapat edge 
+    A(i,j) = N //jika memiliki berat 
+
+    maka, apabila dibuat menjadi Adjancency Matrix, menjadi
+        1   2   3   4   5
+    1   0   1   0   1   0
+    2   1   0   0   0   1
+    3   0   0   0   0   1
+    4   1   0   0   0   1
+    5   0   1   1   1   0
+
+    Dalam UnDi Graph, bila dibuat Adjancecy Matrix, maka 
+        1   2   3   4   5
+    1   0   1   0   1   0
+    2   1   0   0   0   1
+    3   0   0   0   0   1
+    4   1   0   0   0   1
+    5   0   1   1   1   0
+    diagonal = 0 (karena tidak ada loop/node yg menunjuk diri sendiri)
+    A(i,j) = A(j,i)
+
+    Dalam DirGraph, semua bisa terjadi 
+
+Adjancecy Lists
+    apabila dalam Adjancecy Matrix hasilnya :
+        1   2   3   4   5
+    1   0   1   0   1   0
+    2   1   0   0   0   1
+    3   0   0   0   0   1
+    4   1   0   0   0   1
+    5   0   1   1   1   0
+    maka dalam Adjancecy Lists menjadi
+
+    [1][] -> [2][] ->[4][]
+    [2][] -> [1][] ->[5][]
+    [3][] -> [5][]
+    [4][] -> [5][] ->[1][]
+    [5][] -> [2][] ->[4][] ->[3][]
+
+    biasanya, untuk adjancecy lists digunakan pada jarak antar kota
+    [index][weight][*pointer selanjutnya]
+
+Penelusuran Graph 
+    Graph Traversal = Mengunjungi tiap vertex secara sistematis
+    Dimulai dari suatu vertex tertentu menuju vertex lain yg terhubung
+
+    Terbagi menjadi 2 
+    1. Depth First Search (DFS) = Pencarian secara mendalam
+    2. Breadth First Search (BFS) = Pencarian secara melebar
+
+Breadth First Search
+    BFS diawali dri vertex lvl 0
+    Dlm stage pertama, program akan mengakses vertex lvl 1 yg terhubung dgn vertex lvl 0
+    Stage kedua, program akan mengakses vertex lvl 2 yg terhubung dgn vertex lvl 1
+        trs brlnjut sampe semua vertex selesai ditemui 
+    
+    Implementasi BFS menggunakkan Queue 
+        1. Kunjungi vertex awal dan masukkan dalam queue 
+        2. Ambil vertex dari queue (apabila masuk ke level selanjutnya (apabila semua vertex sudah dikunjungi dlm level trsebut ))
+        3. Kunjungi vertex adjacent dan blm dikunjungi 
+        4. Masukkan vertex yg baru dikunjungi dalam queue 
+
+Depth First Search 
+    Pada setiap percabangan, penelusuran secara mendalam dari satu vertex ke vertex lain (sampe selesai)
+    Jadi, hanya berfokus pada 1 trek dan dari 1 trek itu harus bisa menyelusuri vertex lain 
+
+    Implementasi DFS menggunakkan stack 
+        1. Kunjungi vertex A
+        2. Kunjungi vertex B yg bertetanggaan dengan vertex A
+        3. Ulangi DFS dari vertex B 
+        4. Ketika sudah sampai di vertex C smpe tidak ada vertex lagi, maka trackback kembali ke vertex sblmnya atau ke vertex B untuk mencari vertex lain 
+        5. Akan berhenti apabila semua vertex telah berhasil di kunjungi
+    
+    Jadi diletakkan di stack, misalkan 
+    A B C D E F 
+    kalau misalkan trackback, maka harus satu"" di pop kan 
+    A B C D E, A B C D
+    

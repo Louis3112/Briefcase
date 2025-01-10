@@ -1,0 +1,74 @@
+Dynamic Routing
+    Router yang memiliki dan membuat tabel routingnya sendiri 
+        dengan mengatur lalu lintas jaringan dan juga saling berhubungan dengan router lain. 
+    Protokol routing mengatur router"" sehingga dapat berkomunikasi satu dengan yang lain dan saling bertukar info
+        yang dapat mengubah isi forwarding table, tergantung kondisi jaringan 
+    Sehingga, router dapat mengetahui kondisi jaringan yang terakhir dan mampu menentukan arus data yang benar
+
+    Dynamic Router mempelajari sendiri rutenya yang terbaik dan admin tdk perlu menentukan rute"nya
+    Admin hanya menentukan cara router mempelajari paket dan router mempelajari sendiri 
+
+    Apabila jaringan memiliki lebih dari satu kemungkinan rute untuk tujuan yang sama, maka perlu dilakukan dynamic routing 
+    Dynamic Routing dibangun berdasarkan info yg dikumpulkan oleh protocol routing 
+        Protokol ini didesain untuk mendistribusikan info dinamis mengikuti perubahan kondisi jaringan
+        Protokol routing mengatasi situasi routing yang kompleks secara cepat dan akurat 
+
+    Pengisian dan pemeliharaan tabel routing dilakukan oleh router secara otomatis
+
+    Macam" Routing Dynamic 
+        RIP     (Routing Info Protocol)
+        IGRP    (Internal Gateway Routing Protocol)
+        OSPF    (Open Shortest Path First)
+        EIGRP   (Enchanced Internet Gateway Routing Protocol)
+        BGP     (Border Gateway Protocol)
+
+    Kelebihan Routing Dynamic 
+        Hanya mengenalkan alamat network yg terhubung langsung dengan router
+        Tidak perlu mengetahui semua alamat network 
+        Jika ada penambahan network baru, semua router tidak perlu dikonfigurasi, hanya router" yg berhubungan 
+        Lebih mudah mengatur network yg besar (yang banyak subnet/rputer)
+        Akan memilih jalur lain apabila ada jalur yg rusak
+
+    Kekurangan Routing Dynamic
+        Beban kerja router lebih berat karena selalu memperbarui IP table pada tiap waktu 
+        Kecepatan pengenalan network yang lama karena router membroadcast ke semua router hingga ada yg cocok
+        Setelah konfigurasi, harus menunggu beberapa saat agar tiap router mendapat semua IP (convergence) 
+        Susah melakukan troubleshootng
+        Update ARP Table, membutuhkan RAM untuk mencari jalur terbaik (bandwidth jalur ditentukan oleh sistem)
+
+    Routing Static
+        Berfungsi pada protokol IP
+        Router tidak dapat membagi info routing
+        Routing table dibuat dan dihapus manual
+        Tidak menggunakkan routing protocol
+        Microsoft mendukung multihomed system seperti router 
+    
+    Routing Dynamic
+        Berfungsi pada inter-routing protocol
+        Router membagi info routing secara otomatis
+        Routing table dibuat dan dihapus otomatis
+        Terdapat routing protoco, seperti RIP atau OSPF
+        Microsoft mendukung RIP untuk IP dan IPX/SPX (Internetwork Packet Exhange/ Sequenced Packed Exhange)
+    
+RIP (Routing Information Protocol)
+    Protokol Dynamic Routing yg digunakan dalam LAN atau WAN. Sehingga diklasifikasi sebagai IGP (Interior Gateway Protocol)
+    RIP menggunakkan algoritma Distance-Vector Routing 
+    RIP terdiri atas 3 versi, RFC 1058 (1988), RFC 2453/ RIP versi 2, RIPng (RIP Next Gen)/RFC 2080 (1997)
+        Tapi, Versi 1 dan 2 dianggap sudah kuno apabila dibandingkan dengan OSPF dan OSI IS-IS (tapi tetap dipakai)
+        RIPng dipakai untuk IPv6
+    
+    Cara kerja RIP
+        1. Host mendapat pesan dari IP Broadcast kalau ada update routing dari gateway
+        2. Host memeriksa routing table local jika menerima update
+        3. Jika rute belum ada, info segera dimasukkan ke routing table
+        4. Jika rute sudah ada, metric terkecil akan dijadikan acuan 
+        5. Rute melalui suatu gateway akan dihapus jika tidak ada update lagi
+            Khusus gateway, RIP akan mengirim update routing pada IP Broadcast ke setiap network
+    
+    Karakteristik RIP 
+        Distance Vector Routing Protocol
+        Hop Count sebagai metric untuk memilih rute 
+        Maximum Hop count adalah 15, 16 dianggap unaccessible 
+        Routing Update 30 detik sekali
+        RIPv1 (classfull routing protocol) tidak mengirim subnet mask pada update
+        RIPv2 (classless routing protocol) mengirim subnet mask pada update

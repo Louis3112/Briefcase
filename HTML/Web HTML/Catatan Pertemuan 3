@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+Untuk mempersingkat code (supaya tidak memanjang), bisa menggunakkan view > word wrap
+
+Untuk memasukkan video, ketikkan <video> (jika ada muncul src di tag video, maka hapus saja. APABILA VIDEO BERADA DI 1 FOLDER YG SAMA), lalu ketikkan <source>
+    <video controls>
+        <source src="1.mp4" type="video/mp4">
+    </video>
+Jangan lupa ketikkan controls supaya videonya bisa di play atau di stop
+
+Atau bisa ketikkan atribut loop, biar memutar sendiri
+<video loop>
+    <source src="1.mp4" type="video/mp4">
+</video>
+
+juga kita bisa atur ukuran videonya, dengan width
+<video controls width="500px">
+    <source src="1.mp4" type="video/mp4">
+</video>
+(JANGAN PAKAI ATRIBUT AUTOPLAY, VIDEO GAK BAKAL JALAN)
+
+
+CSS
+Ada 3 cara untuk menghubungkan CSS dengan HTML
+1. Inline CSS
+2. Internal CSS
+3. Eksternal CSS
+
+Inline CSS, itu berada di dalam tag, ketikkan style="color:red" (JANGAN LUPA KETIKKAN ; SUPAYA BISA MENAMBAHKAN ATRIBUT SELANJUTNYA)
+<h1 style="color:rgb(29, 161, 80);">Louis</h1>
+
+Bisa juga menggunakkan font, yaitu tinggal ditambahkan font-family
+<h1 style="color:rgb(29, 161, 80); font-family: Arial, Helvetica, sans-serif;">Louis</h1>
+
+Tapi, Inline CSS kurang efektif, karena harus mengetikkan satu", 
+sehingga lebih baik menggunakkan internal CSS
+dengan cara
+<style>
+    selector{
+            properties:values;
+    }
+    </style>
+(di atas adalah pembagian css, sama seperti pembagian di html nametag, attribute,value)
+contoh selector h1,p,label,tab;e,form,tr,td
+
+contoh (internal css)
+<style>
+    h1{
+        color:aqua;
+    }
+</style>
+
+tapi, kalau menggunakkan eksternal css, kita harus membuat file baru (css) dan menghubungkan html kita dengan css tersebut.
+Setelah selesai, baru kita hubungkan dengan css, dengan cara
+<link rel="stylesheet" href="style.css">
+
+(funfact:cara membuat comment di css berbeda dengan di html, html menggunakkan <!---->, tapi kalau css menggunakkan /* */)
+
+Font Styling
+Ada yg namanya font family, digunakan untuk mengubah jenis font
+Ada yg namanya font size, digunakan untuk merubah ukuran font
+Ada yg namanya font weight, digunakan untuk mengatur ketebalan font
+Ada yg namanya font variant, digunakan untuk mengubah huruf menjadi huruf kapital kecil (harus pake huruf kecil ketika mengetikk di html)
+Ada yg namanya font style, digunakan untuk mengubah huruf menjadi italic atau oblique
+(Italic berfungsi untuk memiringkan font dan merubah font nya menjadi sedikit roman (gaya lama))
+(oblique berfungsi untuk memiringkan font, tetapi tidak merubah gaya font)
+Ada yg namanya line height, digunakan untuk memberikan tinggi kepada suatu font (apabila diblock secara penuh, maka akan terlihat tingginya) (mengatur jarak antar paragraf juga bisa)
+
+Memanggil html juga bisa dipanggil sekaligus
+h1, h2 {
+    properties:value;
+}
+
+Tapi, ada cara lain supaya lebih singkat dan tidak panjang, disebut sebagai shorthand
+shorthand contohnya
+h1{
+    font: italic normal bold 40px/50px arial;
+}
+Tapi, harus ada urutanny
+
+selector{
+    font: font-style font-variant font-weight font-size/line height font-family
+}
+
+class:text itu termasuk selector
+
+Cara memasukkan gambar menjadi background
+body{
+    background-image: url ('1.jpg');
+    background-repeat: no-repeat;
+}
+
+margin itu adalah jarak dari frame web browser dengan konten (teks)
+sedangkan padding adalah jarak dari font dengan tabel
+contoh
+h1 {
+    margin: 10px 10px 10px 10px;
+}
+Artinya 10px kiri,bawah,atas,kanan
+tpi bisa disingkat dengan margin:10px
+
+github, fungsinya untuk memasarkan web secara gratis dengan cara kita dapat domain gratis
+adsense dan admob fungsinya untuk mendapatkan uang

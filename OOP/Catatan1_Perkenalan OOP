@@ -1,0 +1,247 @@
+Evolusi Perkembangan OOP
+    Sejarah OOP
+        OOP pertama kali muncul tahun 1960, bahasa yang menggunakkan OOP adalah Simula
+        Nmun, OOP mulai terkenal tahun 80an - 90an karena digunakan oleh C++, Java, C#
+            Sehingga, OOP menjadi mainstream dan digunakan untuk membuat software lebih efisien
+
+    Dominasi OOP di pemrograman
+        OOP semakin dominan di pemrograman
+        Bahasa baru seperti Python, JS, Ruby, PHP semakin mendukung OOP
+        OOP juga semakin laris karena digunakan mulai dari perusahaan, startup, akademisi, penelitian
+
+    Perkembangan OOP
+        OOP mengalami perkembangan dalam sintaks maupun semantik
+        OOP modern lebih user-friendly, karena fokus pada simplicity, readable dan penggunaan kembali.
+        Terdapat fitur dan paradigma baru :
+            1. Garbage collection
+            2. Ekspresi Lambda 
+            3. Pemrograman asinkron
+        
+    Dampak perkembangan OOP 
+        Dengan kemampuan merangkum data dan fungsi dalam objek, OOP memudahkan pengorganisasian dan struktur kode yang lebih baik
+        Sehingga, terjadi peningkatan maintenance dan efisiensi, sehingga mengurangi waktu dan resource yang dibutuhkan 
+
+    Mengapa Java, Python, PHP, C#, Ruby unggul di antara bahasa OOP
+        OOP menyediakan struktur yang jelas dan cara metodis dalam merancang software menggunakkan class dan object 
+        Sehingga, OOP menunjukkan kekuatan dan pengaruhnya dalam perkembangan software
+
+        1. Java
+            Bahasa OOP yang ada sejak pertengahn 90an, bisa bertahan karena filosofi "Write once, run everywhere"
+            Sifatnya yg tidak bergantung pada platform (bisa run dmn saja) dan security yg kuat menjadikanny banyak digunakan
+        2. Python 
+            Python digunakan karena kesederhanaan dan keterbacaan, sehingga ideal untuk pemula (tapi jangan terlena dengan kesederhanaan python)
+            Library dan Framework python menjadikannya ideal untuk banyak aplikasi, mulai dari web dev, ilmu data, AI
+        3. PHP
+            Karena integrasi dengan HTML dan kompatibilitas tinggi dengan server. PHP menjadi favorit untuk web dev
+            Kurva pembelajaran yang mudah dan komunitas solid, menjadikannya tetap pilihan utama
+        4. C#
+            dirancang oleh Microsoft, menjdikannya dominan dalam aplikasi Windows. Integrasi mulus dengan kerangka .NET
+            ditambah pengetikan yg kuat, menjadikannya ideal
+        5. Ruby
+            Meski tidak setenar yg lain, disukai karena penekananya pada kemudahan developer. 
+            Sintaks elegan, framework Rails yg kuat, menjadikannya ideal untuk startup dan development
+
+        Meski berbeda"", tetapi mereka tetap memiliki prinsip OOP yg sama
+            Encapsulation, inheritance, polimorphism, abstraction   
+        Dan bahasa" tersebut terus menglami update dalam paradigma dan pola desain
+
+Paradigma dan Pola Desain/Design Pattern OOP 
+    OOP terus mengalami update dan evolusi dalam paradigma dan pola desain baru yang muncul untuk melengkapi praktik tradisional
+    Sehingga, penting bagi developer untuk terus belajar 
+
+    Paradigma yg muncul di OOP 
+        Terdapat beberapa paradigma baru yg muncul dalam OOP, yang akan mempengaruhi pengembangan software
+
+        Pemrograman Fungsional (FP)
+            adalah paradigma yang mendapatkan perhatian karena menekankan pada penerapan fungsi matematika 
+                berbeda dengan OOP yg fokus pada object dan interaksinya
+            Beberapa bahasa seperti Kotlin dan Scala, telah mendukung FP dan OOP 
+            Sehingga memberikan fleksibilitas untuk menggunakkan keduanya 
+
+        Pemrograman reaktif (Reactive Programming)
+            berfokus pada aliran data dan penyebaran perubahan
+            berguna dalam sistem dengan aliran data asinkron, seperti apli web real-time
+
+    Design Pattern baru di OOP 
+        Design pattern/solusi yang dapat digunakan kembali untuk masalah umum, memainkan peran penting dalam OOP
+        Developer dapat memanfaatkan design pattern untuk meningkatkan keterbacaan, maintenance, ketahanan kode.
+        Banyak pola desain yg muncul di OOP dengan kekuatannya masing"
+
+        Pola pengamat (Observer Pattern)
+            Pola ini memungkinkan objek (pengamat) secara otomatis menerima update dari objek yang diamati (subjek) ketika terjadi perubahan
+            Digunakan dalam Pemrograman berbasis event (Event-Driven Programming) 
+        Pola dekorator (Discover Pattern)
+            Pola ini memungkinkan user menambahkan fungsi baru ke objek yang sudah ada secara dinamis tanpa mengubah strukturnya
+            Sangat berguna dalam situasi dimana subclass akan menghasilkan subclass yg banyak
+        Pola Singleton (Singleton Pattern)
+            Pola ini membatasi instansi kelas ke satu objek. Sering digunakan untuk hal"" seperti file log, 
+            yang mengharuskan hanya memiliki satu instansi di seluruh apps
+
+    Seiring berjalannya waktu, akan muncul paradigma dan pola desain baru 
+    Sehingga kita sebagai developer tidak boleh ketinggalan dan mampu menciptakan aplikasi yg fleksibel 
+
+Peran Kerangka kerja (framework) dan Pola Desain (design pattern) dalam meningkatkan penggunaan kembali software (software reuse) di OOP
+    Aspek yg luar biasa dari OOP adalah peran sentral yang dimainkan oleh framework dan design pattern dalam software reuse
+    Konsep dan alat"" ini sangat membantu dalam efisiensi kode, sehingga menjadi OOP menonjol dalam industri software
+
+    Framework 
+        design yg dapat digunakan kembali untuk sistem/subsistem software (struktur program yang direncanakan sebelumnya)
+            yang memberi landasan untuk membangun app
+        Framework digunakan :
+            mendorong code reuse, mencegah developer untuk "reinventing the wheel"
+            Memandu flowcontrol program, menawarkan perilaku default yang dapat dipilih oleh dev
+
+    Design pattern 
+        Design pattern adalah solusi umum yang dapat diulang untuk masalah umum yang terjadi dalam design software
+        Design pattern dapat mempercepat proses pengembangan dengan menyediakan paradigma pengembangan yg bagus 
+
+        cth :
+        1. Pola Singleton
+            Jika suatu kelas hanya memiliki 1 instance, dan menyediakan titik akses global ke sana.
+            Pola Singleton digunakan untuk hal"" seperti koneksi basis data dan pencatatan log dimana dev menginginkan satu contoh 
+        2. Pola pengamat
+            memungkinkan satu objek (subjek) secara otomatis memberi tahu objek lain (pengamat) tentang perubahan keadaan apapun
+            biasanya digunakan dalam GUI dan merupakan dasar dari pemrograman berbasis peristiwa 
+        3. Pola Strategi 
+            memungkinkan kita untuk mengganti algoritma dan strategi yang digunakan dalam suatu objek saat Runtime
+            mempromosikan fleksibilitas dan enkapsulasi perilaku dalam objek
+
+    Sinergi framework dan design pattern
+        Jika digabung, framework dan design pattern dapat sangat membantu developer
+        Framework yang sudah direncanakan dan solusi terbukti yang ditawarkan design pattern, dapat mempercepat proses pengembangan software
+        
+        Selain mendukung code reuse, juga mendukung dev untuk memanfaatkan coding org lain, sehingga meningkatkan produktivitas
+            codingan yg sering direuse, menunjukkan bahwa coding telah teruji dengan baik
+
+        Sehingga, framework dan design pattern adalah alat yg sangat dibutuhkan dalam coding untuk menghasilkan aplikasi yang baik
+
+Kritik dan Perdebatan OOP
+    OOP tetap tidak luput dari kritik dan perdebatan, meskipun OOP adalah landasan pengembangan software modern 
+    
+    Kompleksitas struktur kode
+        Struktur object dan class yg rumit menjadi hal yang menakutkan bagi pemula
+        Meskipun untuk menyederhanakan struktur kode, tetapi malah menambah kompleksitas
+            Ini terjadi karena hubungan rumit antara object dan lapisan abstraksi di dalamnya
+
+    Abstraksi dan Organisasi kode
+        Abstraksi memang digunakan untuk menyembunyikan kompleksitas data dan fungsi, tetapi bila secara berlebihan dapat membuat bingung 
+        Dalam beberapa kasus, dapat menyebabkan "spaggheti code", dimana interkoneksi antara class dan object menjadi terlalu kompleks
+
+    Manajemen Kinerja dan Memori
+        Karakteristik Kinerja OOP lebih berat apabila dibandingkan pemrograman prosedural
+        Saat objek merangkum data dan fungsi, objek menjadi lebih lambat dan berat
+        Selain itu, OOP mengandalkan pengumpulan sampah untuk manajamen memori, sehingga menimbulkan asalah overhead
+
+    Untuk mengatasi hal tersebut, maka kita dapat melakukan beberapa hal berikut:
+        Menyederhanakan kompleksitas
+            Gunakan struktur yang jelas dengan nama class dan object yang bermakna
+        Keseimbangan Abstraksi
+            Pendekatan abstraksi yang seimbang dan dokumentasi yang jelas
+        Mengoptimalkan kinerja
+            Design yg cermat, teknik manajemen memori yg tepat
+
+Menggali keuntungan utama OOP
+    Setiap paradigma memiliki dampak yang signifikan terhadap efisiensi, fleksibilitas, dan pemeliharaan kode 
+
+    Code Reuse
+        Developer membuat suatu object, class, function yang dapat digunakan di berbagai software, bahkan di project lain
+        Penggunaan berulang ini menghemat waktu dan mengurangi terjadinya kesalahan (karena sudah pasti kebenarannya)
+        Seperti kata John Smith, pakar OOP, "penggunaan OOP sama seperti balok lego, kita merancang dan membangun 1x, lalu digunakan dimanapun kita mau"
+
+    Easy maintenance
+        OOP mendorong dev untuk menggunakkan kode yang bersih dan teroganisir dengan baik
+        Karena jika tidak diatur dengan baik dan rapi, maka dapat menimbulkan kebingungan
+
+        Selain itu, encapsulation menjaga data aman dan mencegah kode luar mengubah object secara sengaja
+        Ditambah dengan penggunaan UI yang jelas dan sederhana, sehingga mempermudah maintenance kode 
+    
+    Modularitas 
+        OOP memungkinkan developer untuk membagi kode mereka menjadi modul/komponen yg terpisah dan independen
+        Komponen tersebut dapat dikembangkan, diuji, sehingga proses pengembangan software menjadi lebih mudah 
+        Juga mempermudah code reuse, karena modul dapat dipakai di projek lain
+
+        Modularitas memungkinkan kita memecah proyek software yang kompleks menjadi bagian yg dapat dikelola, dan menggunakkannya lagi untuk projek lain
+
+Secara keseluruhan, OOP menawarkan pendekatan yg fleksibel dan kuat. Dengan code reuse, maintenance, dan modularitas, developer dapat menciptakan software bagus
+    meskipun menghadapi kritik dan perdebatan, manfaat OOP tetap mengungguli kelemahannya
+Meski dunia programming terus berkembang, OOP tetap menjadi andalan
+    Setiap paradigma memiliki keunggulan dan tantangannya masing"", maka kita harus bisa memanfaatkan keunggulannya dan mampu beradaptasi dengan kemajuan teknologi
+
+Catatan PPT
+    Programming : Proses pembuatan program dari awal sampai selesai (Dimulai dari analisis, perencanaan, flowchart, coding, finishing, launching)
+    Coding : Proses penulisan kode program
+    Scripting : Proses pembuatan algoritma/pengendalian program yang dibuat dengan coding (bagian dari coding) (dapat dirunning tanpa compiler/interpreter)
+    Script Language : Bahasa pemrograman untuk menulis script/aturan,algoritma sederhana (Python, Bash, JS, Ruby)
+    Program : Hasil jadi/Produk dari Coding
+
+    Proses kompilasi program komputer
+    Program Source Code------------->Program------------>Compiler------------>Program Object Code(Bahasa mesin)------------------>Linker-------------->Object File
+                        Input                 dicompile          menghasilkan                                    pergi ke          menambahkan file reference ke
+    Object File--------->.EXE
+              menghasilkan
+
+    Program hasil compiling disimpan dan dibuka di RAM yang berisi Machine Code Instructions(Opcode, Operand)
+    CPU mengexecute machine code instructions(Opcode, Operand) dengan Fetch->Decode->Execute
+
+    Dalam pemrograman, ada 4 bagian penting yang diperlukan 
+        Logika
+            Setiap programmer harus memiliki logika yg kuat
+                Analisis informasi, objektif
+                mampu memecahkan masalah menjadi bagian kecil
+                menemukan solusi
+        Language Programming
+            C++,C,Java,Python,JS, dll
+        Language Designer/Compiler
+            Source code (High level Language) ---> Compiler ----> Object Code (Machine Language)
+            Sekarang, sudah banyak Compiler Modern 
+                sperti:
+                    LLVM (Low Level Virtual Machine) 
+                        C dengan C language dicompile dengan LLVM Compiler di prosesor X86 atau ARM
+                        Swift dengan Swift AST, Swift IL dengan swift dicompile LLVM Compiler di prosesor X86 atau ARM
+                        Atau bahasa pemrograman frontend lain dicompile LLVM Compiler di prosesor X86 atau ARM
+                    VM (Virtual Machine) 
+                    JVM (Java Virtual Machine) 
+                        dimana Source code dicompile berubah menjadi ByteCode lalu dijalankan dengan JVM sehingga bisa dijalankan dimana saja
+                    CLR (Common Language Runtime) (biasanya bahasa .NET)
+                        dimana source code (C#,VB.Net) dicompile dengan .NET Compiler berubah menjadi Bytecode lalu dijalankan dengan CLR sehingga bisa menjadi apk
+                    WebAssembly/WASM
+                        dimana source code berakhiran .wasm bisa dicompile dengan WASM
+        Paradigma Pemrograman 
+            terbagi menjadi 2, Paradigma Imperatif dan Paradigma Deklaratif 
+            Paradigma Imperatif 
+                Fokus menyelesaikan suatu masalah step by step menggunakkan serangkaian instruksi/pernyataan
+                Digunakan pada pengembangan software dan didukung banyak bahasa pemrograman, seperti C, C++, Java, Python   
+                cth :
+                Procedural Programming
+                    Paradigma pemrograman berurut/prosedural untuk mengatur kode menjadi kode modular (bisa digunakan kembali)
+                    Ide utamanya adlh memecah masalah menjadi bagian kecil, yang masing" bertanggung jawab untuk melakukan tugas tertentu 
+                OOP 
+                    Paradigma yang didasarkan pada konsep objek, yang merupakan turunan dari class (dengan data dan perilaku objek)
+                    banyak digunakan pada software PC atau mobile, video game, web programming
+                EDP (Event-Driven Programming) 
+                    Paradigma yang merenspons tindakan user dengan memicu callback/listener untuk menangani masalah tersebut
+                    Digunakan dalam GUI dan pemrograman jaringan, dmn program harus merespon input user/peristia jaringan
+                Imperative Dataflow Programming
+                    Paradigma yang menggabungkan pemrograman imperatif dan Dataflow
+                    Programmer menentukan sekumpulan ketergantungan data, dan program secara auto menentukan urutan pemrosesan data
+                Imperative Parrarel Programing
+                    Paradigma yang berfokus pada eksekusi kode secara bersamaan di bbrp unit pemrosesan
+                    Digunakan untuk mempercepat eksekusi program yang membutuhkan komputasi/pemrosesan data besar
+                        dengan membagi beban kerja ke beberapa unit pemrosesan
+            Paradigma Deklaratif 
+                FP (Functional Programming)
+                    Paradigma pemrograman yang didasarkan pada fungsi matematika
+                    Fungsi diperlakukan sebagai object class 1, berarti fungsi terus dapat diteruskan sebgai argumen dan dikembalikan dengan nilai
+                        disimpan dalam struktur data
+                    Digunakan pada perubahan keadaan global/operasi input, output
+                Logic Programming
+                    Paradigma yang didasarkan pada konsep logika dan aturan
+                    Program ditulis dengn sekumpulan pernyataan logis dan eksekusi melibatkan pencarian solusi yang memenuhi batasan yg telah ditetapkan
+                Constraint Programming
+                Declarative Dataflow Programming
+                Rule-Based Programming
+                Database Approach   
+    
+    OOP bertujuan untuk mengimplementasikan entitas di dunia nyata
+        seperti inheritance, encapsulation, polimorphism, abstraction, UML Design
+    Tujuan utama OOP adalah untuk mengikat data dan fungsi sehingga tidak ada bagian program yg bisa mengakses kecuali fungsi itu sendiri

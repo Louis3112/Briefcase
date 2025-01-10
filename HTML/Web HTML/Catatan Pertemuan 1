@@ -1,0 +1,181 @@
+HTML adalah fondasi/dasar dari sebuah web, setelah HTML ada CSS, dan JavaScript (HTML>CSS>JavaScript)
+HTML yg fundamental itu terdiri atas html, head, dan body
+
+cara untuk menampilkan dasar dari HTML adalah shift+1+enter
+TAG META itu fungsinya agar html bisa menyesuaikan ukurannya apabila dibuka dengan web yang berbeda" (jadi bisa dibuka dengan edge, chrome,dll)
+
+<!-- --> disebut comment, digunakan apabila kita mau ngetikkan sesuatu atau catatan  dan ini gak bakal dibaca oleh web
+Heading itu ada 6, dari h1 sampe h6, tapi kalau sudah pake <style>, maka h1 dan h6 tidak bakal berlaku (apabila <style> {font-size: 20 px}) contoh aja
+
+<b> fungsinya untuk bold, <br> fungsinya untuk membuat line baru, <hr> fungsinya untuk membuat garis, (tapi sudah mulai jarang menggunakkan itu, karena dipake style (css))
+untuk memasukkan image, harus menggunakkan folder yg sama dengan html nya
+
+untuk list, dibagi menjadi 2, yaitu ORDERED LIST <ol>, dan UNORDERED LIST <ul>, ordered itu yg pake angka, dan unordered itu yg titik atau garis. WAJIB menggunakkan tag <li>
+Bahkan, bisa memasukkan ul ke dalam ol atau sebaliknya
+caranya: <ol>
+            <li> Nama Buah :
+                <ul>
+                    <li>Semangka</li>
+                        <ul>
+                            <li>Biji</li>
+                            <li>Buah</li>
+                            <li>Manis</li>
+                        </ul>
+                    <li>Apel</li>
+                    <li>Pisang</li>
+                </ul>
+            </li>
+            <li>Nama Buah :
+                <ul>
+                    <li>Semangka</li>
+                    <li>Apel</li>
+                    <li>Pisang</li>
+                </ul>
+            </li>
+
+Agar mempermudah mengcopas ke bawah, drag dulu code yang akan dicopas, klik alt+shift+down
+
+Ada trik supaya cepat membuat list, yaitu ketik <ul>4*
+    <li>Louis Keren</li>
+    <li>Louis Keren</li>
+    <li>Louis Keren</li>
+    <li>Louis Keren</li>
+</ul> 
+
+
+Ada yang disebut Parent dan Child, Parent itu contohnya <body> dan segala isi di dalamnya adlah child. Dan bisa dibuka tutup
+
+Ada table, dan cara membuatnya <table>
+                                    <tr>
+                                        <td>Judul 1</td>
+                                        <td>Judul 2</td>
+                                        <td>Judul 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Isi 1</td>
+                                        <td>Isi 2</td>
+                                        <td>Isi 3</td>
+                                    </tr>
+                                </table>
+Dan itu gak ada bordernya, cara menambahkan border adalah pake CSS (tr itu table row, td itu table data) 
+Sebenarnya bisa juga dengan cara <table Border="10 px">
+                                    <tr>
+                                        <td>Judul 1</td>
+                                        <td>Judul 2</td>
+                                        <td>Judul 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Isi 1</td>
+                                        <td>Isi 2</td>
+                                        <td>Isi 3</td>
+                                    </tr>
+                                </table>
+Dan, kalau misalkan ingin agar tulisan judul lebih tebal, menggunakkan <th>
+                                <table>
+                                    <thead>
+                                        <th>Judul 1</th>
+                                        <th>Judul 2</th>
+                                        <th>Judul 3</th>
+                                    </thead>
+                                    <tr>
+                                        <td>Isi 1</td>
+                                        <td>Isi 2</td>
+                                        <td>Isi 3</td>
+                                    </tr>
+                                </table>
+                                
+Supaya memudahkan, kita bisa ganti menjadi
+                                <table>
+                                    <thead>
+                                        <th>Judul 1</th>
+                                        <th>Judul 2</th>
+                                        <th>Judul 3</th>
+                                    </thead>
+                                    <tbody>
+                                        <td>Isi 1</td>
+                                        <td>Isi 2</td>
+                                        <td>Isi 3</td>
+                                    </tbody>
+                                </table>
+Lalu, supaya untuk bisa menambahkan border dengan CSS, dibawah title, ketik <style>
+                                                                            table,thead,tbody{
+                                                                                 border: 10px solid black;}
+                                                                             </style>
+
+Untuk memperbesar tabel, caranya dengan cellpadding dan bisa cellspacing (cellpadding itu untuk menentukan jarak dri font ke border) (cellspacing ini untuk menentukan seberapa besar border dari tabel)
+                                    <table Border="10 px" cellpadding="10px">
+                                        <tr>
+                                            <td>Judul 1</td>
+                                            <td>Judul 2</td>
+                                            <td>Judul 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Isi 1</td>
+                                            <td>Isi 2</td>
+                                            <td>Isi 3</td>
+                                        </tr>
+                                    </table>
+
+Lalu, untuk menggabungkan kolom pada tabel. maka menggunakkan colspan (ketika menggunakkan colspan, bagian yg bawah juga harus dimatikan atau bisa menggunakkan comment)
+                                    <table Border="10 px" cellpadding="10px">
+                                        <tr>
+                                            <td colspan="2">Judul 1 </td>
+                                            <!--<td>Judul 2</td>-->
+                                            <td>Judul 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Isi 1</td>
+                                            <td>Isi 2</td>
+                                            <td>Isi 3</td>
+                                        </tr>
+                                    </table>
+
+Selain itu, kita jug bisa menggabungkan baris pada tabel, dengan menggunakkan rowspan (HARUS PAKE TR, GAK BISA PAKE THEAD) (ketika menggunakkan rowspan, bagian yg bawah juga harus dimatikan atau bisa menggunakkan comment)
+                                    <table Border="10 px" cellpadding="10px">
+                                        <tr>
+                                            <td>Judul 1</td>
+                                            <td>Judul 2</td>
+                                            <td rowspan="2">Judul 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Isi 1</td> 
+                                            <td>Isi 2</td>
+                                            <td>Isi 3</td>
+                                        </tr>
+                                    </table>
+
+Kalau ingin menaruh tabel ke tengah, bisa menggunakkan align="center" 
+                                    <table Border="10 px" cellpadding="10px" align="center">
+                                        <tr>
+                                            <td>Judul 1</td>
+                                            <td>Judul 2</td>
+                                            <td rowspan="2">Judul 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Isi 1</td> 
+                                            <td>Isi 2</td>
+                                            <td>Isi 3</td>
+                                        </tr>
+                                    </table>
+
+Form digunakan agar seseorang bisa mengetikkan sesuatu dan terkirim ke database (layaknya google form)
+Form ini childnya ada banyak, dan salah satunya adalah label 
+contoh : <form action="">
+        <label for="Nama">Nama :</label>
+        <input type="text">
+     </form>
+Harus diikuti form action, label (fungsinya agar kita bisa menamai formnya), input (fungsinya agar kita bisa memilih untuk diketik atau memasukkan angka)
+
+Untuk bikin password, sama.. tinggal copas
+<form action="">
+        <label for="Password">Password :</label>
+        <input type="text">
+    </form>
+Untuk membuat seperti memasukkan tanggal, tinggal ganti di <input type="date">
+Untuk membuat checkbox, tinggal ganti di <input type="checkbox">
+<form action="">
+        <label for="Hobi">Hobi :</label>
+        <input type="checkbox" name="" id=""> Renang
+        <input type="checkbox" name="" id=""> Main
+        <input type="checkbox" name="" id=""> Basket
+    </form>

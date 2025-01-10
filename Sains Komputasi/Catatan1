@@ -1,0 +1,43 @@
+Untuk sains komputasi, menggunakkan aplikasi Anaconda Navigator
+    juga jangan lupa install JupyterLab
+
+    Lalu buka environment, lalu klik base (root)
+        untuk mengecek versi anaconda dan python, ketikkan pada cmd
+            conda -V
+            python -V
+        untuk mengupdate anaconda dan python, ketikkan pada cmd
+            conda update conda
+            conda update python
+    
+    Library yg digunakan untuk ML adalah scipy,numpy,matplotlib,pandas,statsmodels,scikit-learn
+
+Pada Anaconda, ketika kita ingin membuat module dalam bahasa python, kita bisa membuat environment terlebih dahulu 
+Lalu menginstall package (library) yg dibutuhkan, seperti numpy
+
+    Perbedaan fungsi dan module
+        Fungsi = rumus/perintah untuk mengerjakan suatu perintah (biasanya hanya 1)
+        Module = FILE yang berisi KUMPULAN rumus/perintah untuk mengerjakan suatu perintah, dan biasanya dipanggil di file lain untuk mengerjakan suatu perintah
+
+Fungsi matriks pada python
+    1. append() = menambahkan satu elemen ke dalam matriks (ditaruh paling belakang)
+    2. insert(x,y) = menambahkan elemen y ke dalam urutan x pada matriks
+    3. ceil() = pembulatan ke atas
+    4. pow(x,y) = pemangkatan x sebanyak y (x dikali sebanyak y)
+    5. len() = panjang suatu matriks
+
+Kita juga bisa memanggil secara spesifik elemen pada matriks
+    Mat[1] = baris ke 1 (matriks dimulai dari 0)
+    Mat[1][2] = baris ke 1, kolom ke 2 (dimulai dari 0)
+
+Jika kita tidak menggunakkan numpy, apabila kita menjumlahkan antar matriks
+    MAT1 + MAT2, maka aakan menggabungkan ke 2 matriks menjadi 1
+Jika kita menggunakkan numpy, maka akan menjumlahkan tiap elemen matriks
+
+Fungsi pada numpy mengenai matriks
+    1. .shape = mengetahui panjang,lebar dari suatu matriks
+    2. .size = banyaknya elemen pada suatu matriks
+    3. .ndim = dimensi suatu matrikss
+    4. type() = mengetahui class dan object suatu matriks
+        output = <class 'numpy.ndarray'>
+    5. .dtype = mengetahui tipe data elemen pada suatu array
+        output = dtype('float64')  // float 64 bit

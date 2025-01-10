@@ -1,0 +1,119 @@
+Dalam proses program, program akan meminta input dari user. User memberi nilai kepada program
+Setelah menerima input, program akan melakukan perhitungan dengan ekspresi
+Setelah itu, program mengeluarkan output
+
+Harga dan Assignment 
+    Harga adalah nilai yang diberikan pada suatu variabel 
+    Harga sangatlah penting penggunaannya, karena digunakan untuk perhitungan matematis, membandingkan nilai, bahkan menjalankan program 
+        Harga juga sebagai batasan agar program berjalan sesuai dengan rencana 
+    
+    Nilai dapat diperoleh dengan banyak cara pada program
+        1. Melalui konstanta yang diberikan pada program
+            food = "mi ayam bakso" / string food = "mi ayam bakso"
+            myMoney = 15000 / int myMoney = 15000
+            foodPrice = 10000 / int foodPrice = 10000
+
+        2. Melalui hasil perhitungan ekspresi
+            change = 15000 - 10000 / int change = 15000 - 10000
+
+        3. Melalui hasil pengembalian fungsi
+            isCounterfeit = counterfeitCheck() #pengecekan uang palsu
+
+        4. Melalui variabel yg sudah ada 
+            foodDiscount = foodPrice * 15%
+
+    Assignment
+        Perubahan nilai pada suatu variabel di tengah atau akhir program, 
+        Yang awalnya x = 1; bisa menjadi x = 2; 
+
+        Apabila suatu variabel blm diberi nilai sebelumnya (belum terdefinisi/belum di inisiasi)
+        maka akan memiliki nilai default (0 untuk numerik, kosong untuk string)
+        Untuk python, dalam proses Assignment, semua variabel harus diberi nilai terlebih dahulu 
+         
+        Pemberian nama variabel pada python ada aturannya
+            1. Boleh diawali dengan underscore (Sama dengan C++)
+            2. Tidak boleh diawali dengan angka (Sama dengan C++)
+            3. Mengandung nama, angka dan underscore
+            4. Case sensitive
+            5. Tidak boleh sama dengan reserved word
+
+Input dan Output 
+    input()
+        untuk menerima input
+        ketika menerima masukan, program akan menerima masukan berupa string (walaupun yg dimasukkan adalah angka) (kalau variabelnya belum di definisikan tipe datanya)
+        cth :
+        hargaMakan = int(input ("Berapa harga Mi Ayam 1 porsi? \n"))
+        jumlahMakan = int(input ("Berapa porsi yang dibeli? \n"))
+        totalMakan = hargaMakan * jumlahMakan
+        print(f"Harga makanan per porsi {hargaMakan}, totalnya {totalMakan}")
+
+            untuk c++
+            int hargaMakan,jumlahMakan,totalMakan;
+            cout << "Berapa harga Mi Ayam 1 porsi? \n";
+            cin >> hargaMakan;
+            cout << "Berapa porsi yang dibeli? \n";
+            cin >> jumlahMakan;
+            totalMakan = hargaMakan * jumlahMakan;
+            cout << "Harga makanan per porsi " << hargaMakan << ", totalnya " << totalMakan;
+
+        kalau diinputkan pada hargaMakan, maka hargaMakan = "10000", tapi karena di deklarasikan tipe datanya dengan int, maka menjadi 10000
+        ini berlaku juga untuk float(), str()
+
+    print()
+        untuk mencetak output
+        print() dapat disematkan teks,variabel, ekspresi dari dalam program dengan menggunakkan koma (,); tambah (+); persen(%);
+        
+        food = str(input("Makanan apa yang dipesan> \n"))
+
+        print("Bima sedang memesan", food) # karakter koma ',' akan menggabungkan seluruh elemen yang dipisahkan oleh spasi
+        print("Bima sedang memesan "+ food) # karakter plus '+' masih memerlukan tambahan spasi
+        print("Bima sedang memesan %s" % (food)) # karakter persen '%' masih memerlukan tambahan operator untuk menyisipkan variabel
+
+        untuk '%', setiap tipe data punya abjad tersendiri
+        Operator %d untuk integer.
+        Operator %f untuk float.
+        Operator %s untuk string.
+        Operator %x untuk hexadesimal.
+        Operator %o untuk octal.
+
+        Tapi karena terlalu ribetm jadinya menggunakkan format string (f-string) atau metode '.format()'
+        totalFood = 2
+        food = Mi Ayam
+        print(f"Bima sedang memesan {totalFood} {food}") #lebih cepet
+        print("Bima sedang memesan {} {}".format(totalFood, food)) #lebih rapi dan dibuat berurut
+
+        formatting f-string juga memiliki fitur untuk menambahkan koma dan titik pada penulisan angka yg banyak
+        koma untuk ribuan, titik untuk desimal
+
+        print(f"Bima sedang memesan {totalFood} {food} dan membayarnya dengan uang sebesar Rp{money:,}") 
+        atau
+        print ("Bima sedang memesan {} {} dam membayarnya dengan uang sebesar Rp{:,}". format(totalFood,food,money))
+
+    Ekspresi 
+        dalam suatu program, terkadang terdapat pernyataan-pernyataan yg harus diubah/diolah oleh program
+        Ekspresi = kombinasi dari nilai, variabel, operasi, assignment yg digunakan untuk melakukan perhitungan, pengambilan keputusan, memanipulasi data
+            dengan ekspresi, bisa membandingkan nilai, melakukan komputasi, membuat alur algoritma
+
+        Setiap ekspresi, umumnya memiliki 2 operan dan 1 operator
+        2 * 10000 (2 dan 10000 adalah operan), (* adalah operator)
+
+        Operator Logika untuk membandingkan 1/2 operan bertipe boolean, operator relasional untuk membandingkan 1/2 operan bertipe numerik/string
+        Operator Logika 
+            menggunakkan and, or,not
+        Operator relasional
+            menggunakkan ==, !=, >, <, >=, <=
+            untuk string, akan dibandingkan berdasarkan leksikografis (urutan karakter dalam alfabet) (dilihat dari huruf pertama)
+            print("Arsitek" > "Pelajar") = false
+                karena, A urutannya lebih dulu dari P, maka A lebih kecil dari P (semakin mendekati z, semakin besar) (berlaku untuk c++)
+        Operator aritmatika
+            menggunakkan +, -, *, /, %, **
+    
+    chocolateBarStock : int = 50
+    chocolateBarCount : int = int(input())
+    newChocolateBarStock : int = (chocolateBarStock - chocolateBarCount)
+    print(f"Stok saat ini adalah {newChocolateBarStock} buah.")
+
+    chocolateBarPrice : int = 3500
+    chocolateBarCount : int = int(input())
+    chocolateBarTotalPrice : int = (chocolateBarPrice * chocolateBarCount)
+    print(f"Harga yang harus dibayar adalah {chocolateBarTotalPrice} rupiah.)

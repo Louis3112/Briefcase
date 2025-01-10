@@ -1,0 +1,164 @@
+OSI VS TCP/IP
+    OSI (Open Systems Inteconnection)
+    Terbagi menjadi 7 layer
+        Layer 7 : Application Layer (berisi data) (Proses komunikasi jaringan ke aplikasi) (Host Layer)
+        Layer 6 : Presentation Layer (berisi data) (Data representation dan enkrispi) (Host Layer)
+        Layer 5 : Session Layer (berisi data) (Membentuk koneksi dan mengirimkan data setelah semua data terkumpul) (Host Layer)
+        Layer 4 : Transport Layer (berisi segment) (Mengatur Flow control dan mengirim ulang jika diperlukan) (Host Layer)
+        Layer 3 : Network Layer (berisi Packet) (Menambah IP Address (Logical Addressing)) (Media Layer)
+        Layer 2 : Data Link Layer (berisi Frames) (Menambah MAC (Media Access Control) Address and LLC (Logical Link Control) (Physical Addressing)) (Media Layer)
+        Layer 1 : Physical Layer (berisi Bits) (Perkabelan dan mengirim data melalui media transmisi) (Media Layer)
+
+    TCP/IP (Transfer Control Protocol/Internet Protocol)
+    Terbagi menjadi 4 Layer
+        Layer 4 : Application Layer (mewakili Layer 5-7 pada OSI)
+        Layer 3 : Host-to-host Layer (mewakili Layer 4 pada OSI) (Data flow layer)
+        Layer 2 : Internet Layer (mewakili Layer 3 pada OSI) (Data flow layer)
+        Layer 1 : Network Access Layer (mewakili Layer 1-2 pada OSI) (Data flow layer)
+    
+    Layer 1 OSI dan TCP IP menggunakkan FIber optic, kabel, wireless
+    Layer 2 OSI dan Layer 1 TCP IP menggunakkan Ethernet, Token Ring, FDDI, WAN Protocol
+    Later 3 OSI dan Layer 2 TCP IP menggunakkan Internet Protocol dan ARP/RARP
+    Layer 4 OSI dan Layer 3 TCP IP menggunakkan TCP atau UDP
+    Layer 5-7 OSI dan Layer 4 TCP IP menggunakkan FTP,TFTP (File transfer), HTTP (Web), IMAP, POP3 (Email), Telnet (Remote Login), DNS (Nama), dan IP Address
+
+Protocol yg bekerja di OSI Layer
+    Application Layer  (Layer 7)
+        HTTP (Hyper Text Transfer Protocol)
+            Protokol untuk transfer dokumen dan web dalam browser, melalui www.
+            HTTP juga protokol yg mendefinisikan bagaimana pesan dapat diformat dan dikirim dari server ke client
+            Termasuk dalam TCP
+        FTP (File Transfer Protocol)
+            Protokol untuk mengirim file komputer antar mesin dalam internet
+            Termasuk dalam TCP
+        NFS (Network File System)
+            Protokol jaringan agar user di computer dapat mengakses file menggunakkan jaringan dengan cara yg sama dengan penyimpanan lokal
+        DNS (Domain Name System)
+            Protokol untuk memberi nama suatu domain atau alamat IP
+            Termasuk dalam UDP
+        POP3 (Post Office Protocol)
+            Protokol untuk mengambil email dri email server
+        MIME (Multipropose Internet Mail Exension)
+            Protokol untuk mengirim file binary dalam bentuk teks
+        SMB (Server Message Block)
+            Protokol untuk mentransfer file server ke DOS dan Windows
+        NNTP (Network News Transfer Protocol) 
+            Protokol untuk menerima dan mengirim newsgroup
+        DHCP (Dynamic Configuration Protocol)
+            Protocol yg memberikan IP kepada komputer yg meminta secara otomatis
+            Termasuk dalam UDP
+
+    Presentation Layer (Layer 6)
+        Telnet (Telecommunication Network)
+            Protocol untuk akses remote masuk ke host
+        SMTP (Simple Mail Transfer Protocol)
+            Protocol untuk mengirim email di Internet atau mengirim data dari email sender ke server email receiver
+            Termasuk dalam TCP
+        SNMP (Simple Network Management Protocol)
+            Protocol untuk manajemen/monitoring device jaringan
+            cth : mrtg, the-dude
+
+    Session Layer (Layer 5)
+        NETBIOS
+            Protocol untuk mengirim pesan tunggal secara serentak ke komputer lain yg terkoneksi
+        NETBEUI (NETBIOS Extended User Interface)
+            Sama seperti NETBIOS, tapi ditambahkan fungsi agar bisa multi device
+        ADSP (AppleTalk Data Stream Protocol)
+            Protocol untuk memantau aliran data diantara 2 komputer agar tidak terputus
+        SPDU (Session Protocol Data Unit)
+            Protocol untuk mendukung hubungan antara 2 session service user
+
+    Transport Layer (Layer 4)
+        TCP (Transfer Control Protocol)
+            Protocol yg mengirim file dengan full service
+        UDP (User Datagram Protocol)
+            Protocol connectionless dan process-to-process yg sama" mengirim file, tpi berbeda Protocol
+        
+    Network Layer (Layer 3)
+        IP (Internetworking Protocol)
+            Mekanisme transmisi untuk mentransportasikan data dalam paket yg disebut Datagram
+        ARP (Address Resolution Protocol)
+            Protocol untuk mengetahui alamat IP berdasarkan alamat fisik dari komputer
+        RARP (Reverse Address Resolution Protocol)
+            Protocol untuk mengetahui alamat fisik berdasarkan alamat IP dari komputer
+        ICMP (Internet Control Message Protocol)
+            Protocol yg digunakan oleh host untuk mengirim notif datagram yg mengalami trouble
+            Protocol untuk mengirim pesan error, cthnya bahwa file tidak daapt terkirim
+        IGMP (Internet Group Message Protocol)
+            Protocol yg digunakan untuk memberi fasilitas message yg simultan ke grup receiver
+    
+    Data Link Layer (Layer 2)
+        PPP (Point to Point Protocol)
+            Protocol untuk point to point pada suatu jaringan
+        SLIP (Serial Line Internet Protocol)
+            Protocol untuk melakukan tf data IP melalui jaringan telepon
+    
+    Physical Layer (Layer 1)
+        Tidak ada protocol, karena hanya mengirim bit data 
+    
+TCP vs UDP  
+    TCP 
+        Connection Oriented (Data terjamin terkirim sempurna)
+        Reliable 
+        Segment Sequencing (TCP memastikan pengiriman data yg terurut)
+        Retransmission (Mengirim ulang File kembali apabila ada trouble)
+        Handshake (Sync) (TCP akan mengirim file jika receiver merespon pesan dari sender)
+        Acknowledge (TCP memberitahu bahwa file telah selesai terkirim)
+        Email, file, Download
+        Lebih lambat tapi dipastikan keamanannya
+        Unicast 
+        HTTP,SMTP,FTP
+        Dan bisa timbal balik
+        
+    UDP 
+        connectionless (Data tidak terjamin terkirim sempurna)
+        Best Effort (UDP berusaha semampu mungkin untuk mengirim pesan, jadi tidak selamanya bagus )
+        No Sequencing
+        No Retransmission
+        No Handshake (UDP tetap mengirim file tidak peduli receiver merespon atau tidak)
+        No Acknowledge
+        Voice Streaming, Video Streaming
+        Cepat, tapi tidak dipastikan keamanannya
+        Unicast, Multicast, Broadcast 
+        DNS, DHCP
+
+Network Protocol
+    SLIP, SMTP, HTTP, Telnet, FTP,
+    LDAP (Lightweight Directory Access Protocol)
+        Protocol untuk semua orang mencari resource organisasi, perorangan, seperti file/printer dalam internet atau Intranet
+    SSL (Secure Socket Layer)
+        Protocol encryption, digunakan juga untuk apli yg memerlukan enkripsi jaringan end-to-end
+        Untuk modif SSL, Apache Linux menggunakkan a2dismod
+    SNMP
+    SSH (Secure Shell)
+        Protocol untuk pertukaran data secara aman antar 2 komputer
+        cth : ssh user@ipserver
+    POP3
+    IMAP (Internet Message Access Protocol)
+        Protocol untuk mengakses/mengambil email dari server 
+        IMAP memungkinkan user memilih pesan email yg akan diambil, membuat folder di server, mencari pesan email, menghapus email
+    ICMP 
+    HTTPS (Hyper Text Transfer Protocol Security)
+        Versi aman dari HTTP (Setiap pesan yg dikirim lewat HTTP dienkripsi)
+
+Well-Known Port/Reserved Port
+    Dimulai dari range 0-1023
+        Adalah port standar yg sudah direseved oleh IANA (Internet Assigned Number Authority)
+        Hanya dapat diakses oleh root account
+            cth :
+            Port number 20, protocol TCP, untuk FTP Data
+            Port 21, TCP, FTP Control
+            Port 22, TCP, SSH
+            53, UDP/TCP, DNS
+            80,TCP,HTTP
+            110,TCP,POP3
+            443,TCP,SSL
+    Range 1024-49151
+        Port yang dapat diakses oleh user account biasa dan dimiliki oleh suatu program
+            cth :
+            1025, TCP, NFS/IIS/Teradata
+            1194, TCP/UDP, OpenVPN
+            1293, TCP/IDP, IPSec
+            1433, TCP, MSSQL (Microsoft SQL Server DBMS) Server
+            3306, TCP, MySQL
+            3389, TCP, Remote Desktop (RDP)

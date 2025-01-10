@@ -1,0 +1,193 @@
+OOP adalah paradigma pemgrograman (bukan bahasa pemgrograman) yg dibangun berdasarkan konsep objek
+    OOP berasal dari kata berorientasi dan objek
+        Orientasi =  tertarik atau cenderung akan sesuatu
+        Object = benda atau object
+        Sehingga, OOP pola pemrograman yg memiliki pendekatan/orientasi object     
+    OOP adalah metodologi pemrograman komputer yg mengatur software dengan pendekatan data atau objek 
+    Objek adalah cara untuk menyimpan data dan operasi yg diperlukan untuk memproses data tersebut, atau yg dikenal sebagai tipe data abstrak.
+        Suatu object direferesikan sebagai bidang data yang memiliki atribut dan perilaku unik 
+
+    OOP didasarkan pada gagasan class dan object, OOP mengatur program menjadi blueprint yg dapat digunakan kembali (Class)
+        Class ini digunakan kembali untuk membuat object baru dengan method serupa
+        Paradigma ini merepresentasikan sistem yg berinteraksi dengan objek di dunia nyata
+
+    OOP sangat cocok untuk program skala besar yang diperbarui dan dimaintenance secara aktif 
+
+    Tahap pertama dalam OOP adalah mengumpulkan semua objek yg ingin dikerjakan dan menentukan relationship antar objek
+        proses yg disebut pemodelan data
+    Data dan fungsi digabungkan untuk membuat suatu object
+    Object dapat memiliki attribute/behavior dari object lain atau mengambil konsep dari makhluk hidup 
+
+    Dalam suatu object, object tersebut memiliki nama dan mungkin memiliki kemampuan tersendiri
+        sehingga, object berfungsi sebagai kerangka kerja untuk pemrograman OOP
+    Setelah object dibuat, object dapat digunakan untuk melakukan interaksi untuk mencapai hasil yg diinginkan
+
+    Cara penggunaan object, contohnya : seseorang dapat mengendarai mobil dan mobil dapat dikendarai    
+        Metode adalah urutan logika tertentu (fungsi)
+    Dengan interface yg tepat, objek juga dapat berkomunikasi dengan user
+
+    Poin penting OOP 
+        Segala sesuatu adalah object
+        Developer memanipulasi object menggunakkan message passing (penyampaian pesan)
+        Setiap object adalah instance (turunan) dari suatu class
+        Class berisi attribute dan behavior yg terkait dengan object
+
+Hubungan antar kelas
+    Dalam OOP, hubungan antar kelas adalah bagian penting bagaimana object berinteraksi satu dengan yg lain
+    Ada 3 hubungan antar kelas, 
+        Asosiasi
+            istilah untuk menunjukkan hubungan antar 2 class independent
+        Agregasi
+            asosiasi khusus dimana 1 kelas brisi kumpulan kelas lain, namun life cycle tidak bergantung seluruhnya
+        Komposisi
+            agregasi yg lebih kuat, dimana life cycle bergantung seluruhnya
+
+Konsep Utama OOP
+    Class
+        unit dasar pemrograman yg membuka jalan bagi OOP
+        Class adalah tipe data yg ditentukan user yg dapat diakses dan digunakan untuk membuat contoh class itu sendiri
+        Class dapat disamakan dengan blueprint dan memiliki data serta fungsi (method)
+        Data dimanipulasi di dalam class
+
+    Object
+        Object = entitas dunia nyata yg memiliki attribute, behavior, property 
+        Pada saat class pertama dibuat, deskripsi adalah objekk pertama yg harus didefinisikan
+        Sistem akan mengalokasikan memori ketika object pertama dibentuk
+        Objek menyembunyikan perilaku dengan method dan menyimpan informasi dengan attribute
+        
+    Encapsulation (membungkus object)
+        Proses pengelompokan fungsi dan data dalam satu entity 
+        Untuk mengakses data, method harus disetting public, sedangkan member data (attribute) harus disetting private
+        Suatu item pasti memiliki info penting, hanya sebagian saja yg dpt diakses publik
+            Sehingga, object yg bersifat privat harus berisi implementasi dan status
+    
+    Polimorphism (banyak bentuk)
+        Selain memiliki bbrp bentuk, object dibuat agar memiliki behavior yg sama 
+        Compilation Time Polimorphism dan Process Time Polimorphism adalah 2 jenis polimorph yg berbeda 
+        Object dibentuk sehingga memiliki beberapa bentuk    
+
+    Inheritance 
+        Inheritance mengacu pada proses pewarisan attribute. Satu object mewarisi object yg lain
+        Dapat digunakan untuk mempertahankan hierarki dan hubungan antara subclass dan superclass.
+        Inheritance mempercepat pengembangan program dan Inheritance melambangkan hubungan superclass dan subclass
+    
+    Abstraction
+        Abstraction = menyembunyikan implementasi
+        Tindakan merepresentasikan fitur, method, attribute utama tanpa ada informasi tambahan (sehingga bisa disesuaikan)
+        Abstraction digunakan untuk mengembangkan tipe data baru sesuai yg dibutuhkan
+        Keuntungan 
+            1. Mengurangi kompleksitas 
+            2. Meringankan maintenance
+            3. Meningkatkan security  
+
+    Coupling
+        Tingkat keterhubungan antara elemen satu dengan elemen lain 
+            Elemennya dapat berupa class, package, component, subsystem, system
+        Ada 2 jenis coupling, loose coupling (kopling longgar) dan tight coupling (kopling ketat)
+            Coupling ketat/tinggi = modul saling terhubung erat dan perubahan 1 elemen akan mempengaruhi modul lain
+            Coupling longgar/loose = modul bersifat independent dan perubahan 1 elemen memiliki dampak kecil
+        Coupling menunjukkan keakraban 1 object dengan object lain
+            Jika 1 class/object diubah attributenya, maka class/object yg memiliki hubungan jga ikt berubah
+            Besarnya ketergantungan akan mempengaruhi perubahannya  
+        Coupling itu hubungan antara 1 elemen dengan elemen lain DILUAR Modul
+
+    Cohesion
+        Mengacu pada tingkat dmn elemen dalam suatu modul/object bekerja sama untuk mencapai 1 goal
+            Serta seberapa besar pengaruh method dan properti terhadap tujuan dibuatnya program
+        Ada 2 jenis Cohesion, High Cohesion dan Low Cohesion
+            Cohesion tinggi = elemen" dalam 1 modul saling terkait erat dan terfokus pada 1 goal 
+                dikaitkan dengan kualitas software yg diperlukan termasuk security,eficiency,comprehesion (pemahaman) 
+            Cohesion rendah = elemen" dalam 1 modul tidak terkait erat dan terfokus pada banyak goal
+                dikaitkan dengan kualitas yg dihindari, sperti sulit dipertahankan, diuji, reuse, dipahami
+            Semakin rendah cohesion suatu class, maka akan sulit dipertahankan (karena method dan propertiny yg tidak terkait dengan baik)
+        Cohesion itu hubungan antara 1 elemen dengan elemen lain DALAM 1 Modul
+
+    Association 
+        Hubungan antara 2 kelas independent yg terbentuk karena adanya object di dalamnya
+        Hubungan Association adalah "use a", dimana satu object berinteraksi (menggunakkan) object lain
+        Class/Object saling terkait, tapi dapat berdiri sendiri
+        Kekuatannya lemah
+        Life cycle independent
+        Tidak ada kepemilikan tersirat
+        menggunakkan referensi langsung
+        Associaton one to one, one to many, many to one, many to many
+        cth : bank dengan karyawan, guru dan murid
+
+
+    Aggregation
+        Hubungan asosiasi dengan kekuatan hubungan yg lebih lemah    
+        Hubungan Aggregation adalah "has a", dimana suatu object memiliki object lain di dalamnya
+            dimana objek yg dikandung (sub object) tidak dikontrol berdasarkan wadah object (super object)
+        Aggregation cukup penting untuk software yg modular dan dapat digunakan kembali
+        Sub object bisa ada tanpa super object, dan sebaliknya
+        Hubungan Aggregation adalah hubungan searah, cth : jurusan dapat memiliki mahasiswa, tetapi mahasiswa tidak memiliki jurusan
+        Kekuatannya sedang
+        Kepemilikan bersama
+        menggunakkan referensi ke object yg terkandung
+        Aggregation one to one, one to many, many to one, many to many
+        cth : Jurusan dengan mahasiswa, Perpus dan buku
+
+    Composition
+        Hubungan Asosiasi yg lebih kuat dimana life cycle sub object dipengaruhi oleh super object  
+        Hubungan Composition adalah "is part of", dimana suatu object saling bergantung dengan wadah yg lain
+        Sub object tidak bisa ada tanpa super object, dan sebaliknya
+        Composition adalah bentuk agregasi terbatas
+        Kekuatannya kuat
+        Berisi contoh object subclass
+        Kekuatannya kuat 
+        Composition one to one, one to many 
+        Manfaat utama composition
+            -Code reuse
+            -Rancangan API yg bersih (clean code)
+            -Mengubah implementasi class dalam composition tanpa mengadaptasi klien 
+        cth : Mobil dengan mesin dan ban
+
+    Modularitas
+        Pembagian program menjadi banyak bagian fungsional (modul) yg dapat digabung untuk menciptakan aplikasi
+        Modularitas dan Encapsulation saling berhubungan erat
+        Saat memetakan abstraction yang dienkapsulasi menjadi modul fisik, cohesion yg tinggi dalam modul dan interaksi atau coupling antar 
+            modul yg terbatas dapat dikatakan definisi modularitas
+    
+    Constructor dan Method 
+        Constructor adalah jenis subrutin (inisialisasi) yg dipanggil ketika membuat object. Constructor menyiapkan object baru dengan variabel yg dibutuhkan
+        Method adalah prosedur yg terhubung antara pesan dan object
+        Status data dan behavior object membentuk interface, yg menjelaskan bagaimana cara penggunaannya
+        Method adalah aktivitas object yg diparameterisasi oleh user (fungsi)
+    
+    Struktur OOP 
+        Class dan Object
+            digunakan untuk reusability
+        Inheritance (Polimorphism) dan Template
+            digunakan untuk reusability, extensibilitas, fleksibilitas
+        Pattern
+            digunakan untuk reusability
+
+Keuntungan OOP
+    Code Reuse (karena adanya inheritance)
+    Meningkatkan produktivitas (dengan code reuse, modularitas, extensibilitas) (karena tidak harus membuat dari 0)
+    Memudahkan pemecahan masalah (encapsulation) (developer hanya perlu melihat di 1 object yg bermasalah, tidak perlu mencari keseluruhan code)
+    Memperkuat keamanan (abstraction dan encapsulation)
+    Memudahkan maintenance (Modularitas) (developer bisa hanya menambahkan update baru dengan mudah dan lebih hemat waktu)
+    Mencegah Redundasi Data (inheritance) (tidak perlu mengetik dari 0 atau melakukan opsi DRY)
+    Hasil kode yg fleksibel (Polimorphism) (developer tinggal mengganti object sesuai dengan kondisi yg diinginkan)
+    Menangani masalah sejak dini (Modularitas) ( memudahkan pemecahan masalah menjadi kecil)
+    Memberikan keuntungan design (meningkatkan produktivitas dan mempersingkat waktu)
+    Menurunkan biaya pengembangan (maintenance dan development) (karena produktivitas lebih mudah dengan OOP)
+
+Intro RPL 
+    SDLC (software development life cycle) (siklus pembuatan software) terdiri atas Planning, Defining, Design, Building, Testing, Deployment
+        terbagi menjadi, Tradisional SDLC terdiri atas Decide, Design, Develop, Demonstrate
+            memiliki perbandingan variabel Features, Time, Cost, tetapi quality blm tentu
+        dan AGILE, terdiri atas Plan, Design, Develop, Test, Deploy, Review, Launch
+            memiliki perbandingan variabel Features, Time, Cost, Quality yg terjamin
+
+    Fullstack development
+        Frontend (HTML,CSS,JS)
+        Backend (Ruby, Python, C++)
+        Database (PostgreSQL, MongoDB)
+    
+    DevOps CI/CD adalah aplikasi/software yg membantu pengembangan software (Development dan Operations)
+        CI (Countinous Integration)
+        CD (Continous Deployment)
+    
+    Software Engineer harus berkutat dengan Framework, Architecture, Design Pattern, Software Testing

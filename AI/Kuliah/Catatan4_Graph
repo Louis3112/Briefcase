@@ -1,0 +1,166 @@
+Graph
+    merepresentasikan objek" diskrit dan hubungan antar objek tersebut
+    representasi visual dinyatakan sebagai node, titik, bulatan; hubungan dinyatakan sebagai garis 
+
+    graph adalah kumpulan dari simpul dan busur yg secara matematis dinyatakan sebagai 
+        G = (V,E)
+        dimana
+            G = Graph
+            V = Vertex, Node, Titik (entitas data)
+            E = Edge (garis)
+    
+    Banyaknya vertex disebut order Graph G, banyaknya edge disebur size Graph G
+    Cth Graph 
+        1. Peta jaringan jalan di GMap
+        2. Peta arah MRT
+        3. Friendlist network di FB 
+            V = user FB
+                V = {Alpha, Bravo, Charlie, Delta} 
+            E = garis penghubung antar user satu yang menggambarkan friendlist 
+                E = {Alpha, Bravo}, {Alpha, Charlie}, {Bravo, Charlie}..
+    
+    Suatu graph mungkin hanya terdiri atas 1 vertex
+    Suatu graph mungkin punya vertex yg tak terhubung dengan vertex yang lain 
+    Suatu graph belum tentu vertexnya terhubung dengan edge 
+    Suatu graph mungkin semua vertexnya terhubung dengan vertex yang lain
+
+    Jenis graph 
+        Directed Graph (DirGraph)
+            Graph yang memiliki arah/orientasi
+            Setiap edge memiliki anak panah yang mengarah ke node tertentu dan berlaku 1 arah
+            
+            Ditulis dengan rumus : (u,v) yg biasanya ditulis u -> v
+                u = origin
+                v = terminus
+            G = {V,E}
+            V = {A,B,C,D}
+            E = {(A,B), (A,D), (B,C), (C,D)}
+            
+            DirGraph dapat memiliki vertex yang edge nya menunjuk dirinya sendiri (self-edge), yg disebut loop
+        
+        Undirected Graph (UndirGraph)
+            Graph yg tidak memiliki arah/orientasi 
+            Setiap sisi edge berlaku 2 arah
+            
+            Ditulis dengan rumus : {u,v} atau {v,u} karena timbal balik
+            G = {V,E}
+            V = {A,B,C,D}
+            E = {{A,B}, {A,D}, {B,C}, {C,D}}
+
+            Terbagi menjadi 2
+                Complete UndirGraph
+                    Graph yang setiap node nya memiliki edge yang terhubung ke semua node dalam satu graph  
+                Connected UndirGraph
+                    Graph yang setiap nodenya setidaknya memiliki 1 pasangan (tidak terhubung ke semua)
+                    Connected UndirGraph yang diputus atau terbagi disebut sebagai Not Connected UndirGraph
+                        Bagian" yang terputus atau terbagi tersebut akan disebut sebagai Connected Components
+        
+        Weighted Graph 
+            Graph yang setiap edgenya memiliki value (biasanya berbicara jarak)
+
+    Graph Property
+        1. Jumlah edge 
+            Jumlah maksimal pasangan edge yang dapat terhubung dari banyaknya vertex dalam satu graph 
+            cth : Graph dengan 3 node 
+                UndirGraph, max jumlah edge = 3
+                DirGraph, max jumlah edge = 6 (karena saling menunjuk satu dengan yg lain), apabila ditambah loop = 9
+        2. Degree
+            Jumlah edge yg dimiliki oleh suatu node 
+            Jika Node A terhubung dengan B dan C pada suatu UndirGraph, maka Degree nya 2
+            Jika Node A menunjuk B saja pada DirGraph (tetapi ada Node C yg menunjuk A), maka degreenya tetap 1 
+        3. Jumlah vertex Degree
+        4. In-Degree (biasanya pada DirGraph)
+            Banyaknya edge yg masuk ke suatu vertex
+            Jika Node A ditunjuk oleh Node B dan C, maka In-Degree nya = 2
+        5. Out-Degree (biasanya pada DirGraph)
+            Banyaknya edge yg keluar dari suatu vertex
+            Jika Node A menunjuk Node D dan E, maka out-Degree nya 2
+        
+    Representasi Graph 
+        dibedakan menjadi 2 
+            Adjacency Matrix 
+                direpresentasikan dalam bentuk matrix (array 2d)
+                Representasi graph berupa matrix N x N 
+                Baris berisi Node Asal, Kolom berisi Node Tujuan
+                
+                Untuk Unweighted Graph, nilai matrix diisi 0 atau 1. 1 Jika ada edge, 0 jika tidak ada
+                    A(i,j) = 1, maka i dengan j terdapat edge
+                Untuk Weighted Graph, nilai matrix diisi 0 atau weight
+                    A(i,j) = w, maka i dengan j terdapat edge
+
+                maka, apabila dibuat menjadi Adjancency Matrix, menjadi
+                1   2   3   4   5
+                1   0   1   0   1   0
+                2   1   0   0   0   1
+                3   0   0   0   0   1
+                4   1   0   0   0   1
+                5   0   1   1   1   0
+
+                Dalam UnDi Graph, bila dibuat Adjancecy Matrix, maka 
+                    1   2   3   4   5
+                1   0   1   0   1   0
+                2   1   0   0   0   1
+                3   0   0   0   0   1
+                4   1   0   0   0   1
+                5   0   1   1   1   0
+                diagonal = 0 (karena tidak ada loop/node yg menunjuk diri sendiri)
+                A(i,j) = A(j,i)
+
+                Dalam DirGraph, semua bisa terjadi 
+
+            Adjacency List
+                direpresentasikan dalam bentuk array ataupun linked list
+                Apabila dalam Adjancecy Matrix hasilnya :
+                        1   2   3   4   5
+                    1   0   1   0   1   0
+                    2   1   0   0   0   1
+                    3   0   0   0   0   1
+                    4   1   0   0   0   1
+                    5   0   1   1   1   0
+
+                    maka dalam Adjancecy Lists menjadi
+                    [1][] -> [2][] ->[4][]
+                    [2][] -> [1][] ->[5][]
+                    [3][] -> [5][]
+                    [4][] -> [5][] ->[1][]
+                    [5][] -> [2][] ->[4][] ->[3][]
+
+                    biasanya, untuk adjancecy lists digunakan pada jarak antar kota
+                    [index][weight][*pointer selanjutnya]  
+
+    Penelusuran Graph 
+        Graph Traversal = Mengunjungi tiap vertex secara sistematis
+            Dimulai dari suatu vertex tertentu menuju vertex lain yg terhubung
+                
+            Terbagi menjadi 2 
+                1. Depth First Search (DFS) = Pencarian secara mendalam
+                2. Breadth First Search (BFS) = Pencarian secara melebar
+        
+            Breadth First Search
+                BFS diawali dri vertex lvl 0
+                Dlm stage pertama, program akan mengakses vertex lvl 1 yg terhubung dgn vertex lvl 0
+                Stage kedua, program akan mengakses vertex lvl 2 yg terhubung dgn vertex lvl 1
+                    trs brlnjut sampe semua vertex selesai ditemui 
+                
+                Implementasi BFS menggunakkan Queue 
+                    1. Kunjungi vertex awal dan masukkan dalam queue 
+                    2. Ambil vertex dari queue (apabila masuk ke level selanjutnya (apabila semua vertex sudah dikunjungi dlm level trsebut))
+                    3. Kunjungi vertex adjacent dan blm dikunjungi 
+                    4. Masukkan vertex yg baru dikunjungi dalam queue 
+            
+            Depth First Search 
+                Pada setiap percabangan, penelusuran secara mendalam dari satu vertex ke vertex lain (sampe selesai)
+                Jadi, hanya berfokus pada 1 trek dan dari 1 trek itu harus bisa menyelusuri vertex lain 
+            
+                Implementasi DFS menggunakkan stack 
+                    1. Kunjungi vertex A
+                    2. Kunjungi vertex B yg bertetanggaan dengan vertex A
+                    3. Ulangi DFS dari vertex B 
+                    4. Ketika sudah sampai di vertex C smpe tidak ada vertex lagi, maka backtrack kembali ke vertex sblmnya atau ke vertex B untuk mencari vertex lain 
+                    5. Akan berhenti apabila semua vertex telah berhasil di kunjungi
+                
+                Jadi diletakkan di stack, misalkan 
+                A B C D E F 
+                kalau misalkan backtrack, maka harus satu"" di pop kan 
+            
+               

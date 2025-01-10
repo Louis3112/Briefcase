@@ -1,0 +1,94 @@
+Paragraf
+    Ketika menggunakan elemen paragraf, browser akan menampilkannya dalam baris baru dan ada jarak (space) antar paragraf. Itu disebut margin pada CSS
+    Paragraf tidak selalu berbicara soal teks, tapi juga gambar, input, dll.
+
+    Teks tanpa elemen paragraf disebut sebagai anonymous text
+
+Heading
+    Heading terdiri atas 6, yaitu dari <h1> sampai <h6>. Heading sangatlah penting karena menjelaskan garis besar halaman pada web browser
+    Heading juga digunakan karena membantu google untuk mencari artikel melalui Heading
+
+List
+    List terdiri dari 3, unordered list (ul), ordered list (ol), description list (daftar yang terbuat dari beberapa istilah yang diikuti dengan deskripsi tersebut)
+    Unordered list menghasilkan list berbentuk bullet (bisa diubah dengan CSS)
+    <ul>
+        <li>Line 1</li>
+        <li>Line 2</li>
+    </ul>
+    kita juga bisa menambahkan heading di dalam unordered list
+
+     <ul>
+        <li><h1>Judul Pertama </h1></li>
+        <li><h2>Judul Kedua </h2></li>
+    </ul>
+
+    bahkan bisa membuat nested list
+    <ul>
+        <li>Line 1
+            <ul>
+                <li> Line 1.1 </li>
+                <li> Line 1.2 </li> 
+            </ul> //harus teliti
+        </li>
+        <li>Line 2 </li>
+    </ul>
+
+    Ordered list menghasilkan list berupa urutan angka
+    <ol>
+        <li> First </li>
+        <li> Second </li>
+    </ol>
+
+    urutan angkanya juga bisa kita ubah
+    <ol type="I">
+        <li>Langkah pertama</li>
+        <li>Langkah kedua</li>
+        <li>Langkah ketiga</li>
+        <li>Langkah selanjutnya</li>
+    </ol>
+
+    type = "1" = Menggunakan angka dalam urutan item (default).
+    type = "a" = menggunakkan huruf kecil dalam urutan item
+    type = "A" = menggunakkan huruf besar dalam urutan item
+    type = "i" = menggunakkan huruf romawi kecil dalam urutan item
+    type = "I" = menggunakkan huruf romawi besar dalam urutan item
+
+    kita juga bisa menetapkan nilai awal pada <ol> dengan atribut start
+    <ol start="7">
+        <li>Langkah ketujuh</li>
+        <li>Langkah kedelapan</li>
+        <li>Langkah kesembilan</li>
+        <li>Langkah selanjutnya</li>
+    </ol>
+
+    kita juga bisa membalikkan angka nilai awal dengan atribut reversed (reversed tidak memerlukan sebuah nilai ketika menggunakannya. atribut ini hanya meminnta list untuk membalikkan urutan angka)
+    <ol start="7" reversed>
+        <li>Langkah ketujuh</li>
+        <li>Langkah keenam</li>
+        <li>Langkah kelima</li>
+        <li>Langkah selanjutnya</li>
+    </ol>
+
+fun fact, div sebenarnya adalah generic element yang sebenarnya tidak memiliki makna, tetapi berfungsi untuk mengelompokkan sejumlah elemen.
+
+Gambar
+    untuk memasukkan gambar, menggunakkan elemen <img>. elemen <img> adalah elemen kosong (tidak memiliki konten dan tidak memiliki elemen penutup)
+    <img> dibarengi dengan atribut <img src ="lorem.jpg" alt = "lorem">.
+    src fungsinya untuk memasukkan sumber gambar, bisa berupa url atau lokasi alamat dari gambar
+    alt fungsinya untuk memasukkan judul alternatif apabila gambar tidak bisa muncul (tidak wajib)
+
+    lalu ada tambahan atribut, yaitu title. yg apabila kita arahkan kursor kita ke arah gambar, maka ada tulisan judul yg menjelaskan gambar tersebut
+
+    Jenis format gambar
+    .gif (Graphics Interchange Format) = untuk gambar animasi, ukuran file biasanya kecil, kualitas gambar terbatas
+    .jpg (Joint Photographic Expert Group image) = untuk foto, biasanya kualitas teks jadi lebih jelek, ukuran file kecil, digunakan pada website untuk gambar yg tidak banyak teks
+    .png (Portable Network Graphics) = untuk foto, kualitas teks lebih bagus, tapi lebih berat dan agak lama ditampilkan pada web
+    .webp (WebP) = untuk foto, bila kualitas gambar jpg,png,webp sama dan dibandingkan, maka ukuran webp dapat menjadi lebih kecil, namun tidak semua browser bisa membaca webp
+    .svg (Scalable Vector Graphics) = kualitas gambar terjaga dan ukurannya kecil, tidak cocok untuk foto, cocok untuk logo atau ikon
+
+    untuk mengatur ukuran gambar, bisa menggunakkan atribut width (lebar) dan height (tinggi)
+    fun fact, kita bisa mengatur lebar atau tingginya saja, maka gambar nya akan menyesuaikan juga dengan rationya 
+
+    ada Absolute URL dan Relative URL
+    Absolute URL = Link asli yang kita copas dari google
+    Relative URL = Link yang berada di dalam komputer kita

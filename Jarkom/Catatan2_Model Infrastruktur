@@ -1,0 +1,92 @@
+Jarkom
+    Kumpulan komputer yg terhubung dengan peralatan lain yg terhubung dalam satu kesatuan
+    Jarkom adalah himpunan interkoneksi komputer autonomous (mandiri)
+    Jarkom terbagi menjadi 2, Jarkom terpusat dan terdistribusi
+
+Jarkom terpusat 
+    Jarkom yg pusat/servernya hnya satu dan berpusat ditengah" di antara user" lain
+    jika mengalami error, maka user lain mengalami error
+
+Jarkom terdistribusi
+    Jarkom yg pusat/servernya lbih dari satu dan berpusat secara merata (terdistribusi)
+    jika mengalami error, maka server yg lain ada yg membackup
+
+    Sistem terdistribusi adalah sistem software yg dibuat di atas jaringan. software yg menentukan keterpaduan dan transparasi suatu jaringan
+    Perbedaan keduanya terletak pada softwarenya, terutama OS
+    User tidak akan menyadari bagaimana sistem bekerja
+    
+Pembagian jaringan berdasarkan luas (jangkauan geografi)
+    PAN (Personal Area Network)
+        Bluetooth, IrDa (Infrared)
+    LAN (Local Area Network)
+        Lab komputer (IP komputer msih tersusun dalam satu kelas)
+    MAN (Metropolitan Area Network)
+        Satu kota/satu wilayah
+    WAN (Wide Area Network)
+        Internet
+    
+Pembagian jaringan berdasarkan aksesnya
+    Intranet = bisa diakses di kalangan internal (hanya bisa diakses di tempat tertentu saja, menggunakkan IP tertentu)
+    Internet = bisa diakses oleh publik
+
+Pembagian jaringan berdasarkan cara membangunnya 
+    Add-hoc
+        yg dibangun secara spontan dan mendadak, contoh hotspot 
+        setelah selesai, akan di matikan
+    Infrastruktur
+        yg dibangun secara terstruktur dan terancang,
+        setelah selesai, maka akan tetap ada dan dibiarkan menyala
+
+Topologi jaringan 
+    Bus Topologi
+        Kelebihan : 
+            Biaya instalasi murah karena hanya menggunakkan sedikit kabel
+            Penambahan client/workstation lebih mudah 
+            Topologi sangat sederhana dan mudah diaplikasikan
+        Kelemahan : 
+            Jika salah satu kabel putus/bermasalah, maka berdampak dengan client lain
+            Proses sending n receiving data kurang efisien karena sering terjadi tabrakan
+            Topologi jadul dan sulit dikembangkan
+        
+    Star Topologi
+        Kelebihan : 
+            Apabila salah satu komputer mengalami trouble, jaringan msih dapat berjalan 
+            Fleksibel
+            Keamanan lebih baik dripada Bus Topologi
+            Kemudahan deteksi problem cukup mudah '
+        Kekurangan : 
+            Jika switch/pusat mengalami trouble, maka semua komputer mengalami trouble
+            Membutuhkan banyak kabel, sehingga cukup mahal
+            Jaringan sangat bergantung pada switch atau pusat
+    
+    Ring Topologi
+        Kelebihan :
+            Performa yg lebih baik dri Bus Topologi
+            Mudah diimplementasikan
+            Konfigurasi ulang dan instal new device cukup mudah 
+            Biaya instalasi murah 
+        Kekurangan :
+            Kinerja komunikasi dihitung dari banyaknya node 
+            Troubleshooting sulit
+            Jika salah satu terputus, maka yg lain ikt terputus
+            Sering terjadi collision data
+        
+    Mesh Topologi 
+        Kelebihan :
+            Jalur pengiriman data yg banyak, sehingga tdk perlu takut collision data
+            Bandwidth yg cukup lebar
+            Keamanan yg baik
+        Kekurangan :
+            Proses instalasi yg rumit
+            Membutuhkan banyak kabel, sehingga mahal
+    
+    Masih ada extended star topologi dan hierarchy topologi
+
+Pembagian jaringan berdasarkan penggunaan kabel
+    Jaringan berkabel (Wired Network)
+    Jaringan nirkabel (Wireless Network)
+
+Jaringan berdasarkan siarannya (casting)
+    Unicast (one to one)
+    Multicast (one to many)
+    Broadcast (one to all)

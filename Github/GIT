@@ -1,0 +1,316 @@
+GIT sama dengan GITHUB, tapi hanya saja kita menggunakkan CLI, bukan GUI
+Sebenarnya, GIT memiliki GIT Client yg menggunakkan GUI 
+
+Contoh dari GIT Client adalah Sourcetree, bahkan sebenarnya Github juga memiliki Git Client
+Ketika mendownloa GIT, GIT akan memberikan Git Bash (Terminal khusus)
+    sehingga kita bisa memberikan command bash/shell (karena sbelumnya, CMD tidak bisa mengirimkan command shell/bash)
+
+Kita bisa memberikan command melalui Git bash, CMD, bahkan melalui IDE yang dimiliki
+
+Command Git 
+    $ git init (menginisiasi/membuat repo)
+    $ git add <files> (menambah file ke dalam staging area)
+    $ git status (mengetahui status dari repo (apakah ada file yg hilang))
+    $ git commit (melakukan commit/save)
+    $ git config (memasukkan config ke dalam git)
+    $ git branch (membuat branch)
+    $ git help (membutuhkan bantuan)
+
+Setelah membuat repo, git akan terbagi menjadi 3 bagian
+    1. Working tree
+        Folder tempat kita mengerjakan proyek
+    2. Staging area 
+        Tempat dimana kita memberitahu git bahwa kita telah melakukan perubahan 
+    3. History
+        Tempat yg menyimpan dan memastikan data commit
+    Staging area dan History akan tersimpan dalam file/folder git 
+
+    Jadi, siklusnya adalah kita mengerjakan proyek di Working tree
+        setelah slesai, kita kirimkan ke Staging area (git add)
+        Lalu akhirnya kita git commit ke History
+
+Pada Git Bash, directory activenya akan berada di atas kiri Git Bash (MINGW64:C/Users/Louis) atau bisa ketikkan $pwd (print working directory)
+
+Untuk melihat isi folder pada directory kita, bisa ketikkan $ls (list)
+Untuk masuk ke suatu folder (yg ada di dlm directory), ketikkan cd <nama folder> (change directory)
+
+setelah menetapkan repo mana yg akan digunakkan, masuk ke dalam folder dan ketik $git init
+    maka akan muncul pemberitahuan 
+    Initialized empty Git repository in C:/Users/asus/RepoTesting/.git/
+    sehingga, repo tersebut akan menjadi master branch
+    
+ketika kita menyimpan suatu project/file ke dalam folder, memang file tersebut akan tersimpan secara biasa di folder
+    tetapi secara repo tidak tersave
+    maka untuk menyimpan dalam repo, hrus di add ke repo secara manual (bahkan di vsc akan dibritau kalau file trsbut untracked (tidak tercommit) (di IDE yg lain, file yg repo akan memiliki tanda))
+
+untuk mengecek apa yg terjadi dengan repo kita, kita bisa mengetikkan $ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+$
+
+sehingga, kita harus add file ke dalam staging area, maka yg muncul setelah $ git status adalah
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   index.html
+$
+
+file tersebut akan tersave ke dalam staging area dan kita bisa memilih untuk meremove 
+    dengan mengetikkan git rm -- cached index.html (rm = remove)
+    ingat, file blm di commit 
+
+setelah kita mengklik $ git commit 
+$
+maka bash tidak bisa meng commit karena bash masih belum mengenali siapa kita
+    sehingga, bash akan meminta nama email dan nama pengguna
+
+setelah selesai, kita bisa langsung mengcommit. Tetapi, kalau kita memasukkan $ git commit
+$ saja, maka bash akan membawa kita ke text editor (atau bash itu snediri) agar kita memasukkan message terhadap commit yg kita memasukkan
+    tapi kalau emang message yg kita commit singkat, maka kita bisa keluar dari menu tersebut dengan klik esc, lalu ketik ":q!"
+
+lalu, untuk menambahkan message singkat bisa dengan $ git commit -m "Menambahkan file index.html" 
+git commit -m "Menambahkan file index.html"
+[master (root-commit) 4bd04d5] Menambahkan file index.html
+ 1 file changed, 11 insertions(+)
+ create mode 100644 index.html
+$
+
+dan ketika kita menambahkan file baru atau baahkan memodifikasi file tersebut, maka IDE akan memberitahu kalau ada file yg blm msuk repo
+    kita bisa memasukkan satu per satu file ke dalam staging area secara satu persatu
+    tapi supaya mempermudah, kita bisa langsung saja mengetikkan
+    $ git add .
+    $ maka bash akan langsung memasukkan semua file yg mengalami perubahan atau blm msuk commit
+
+lalu, andaikan kita menghapus salah satu file, memodifikasi file lain dan membuat file baru 
+    maka sama, kita $ git add .$ dulu
+    lalu kita ketikkan $ git commit -m "melakukan perubahan"$
+
+kita juga bisa melihat history dari semua commit kita dengan mengetikkan
+    $ git log  
+    $ maka semua history commit akan muncul
+    
+    dan kita juga bisa mengetikkan $ git log -2 
+    $ untuk melihat 2 commit terakhir 
+
+kita juga bisa melihat log commit dari file yg kita inginkan
+    $ git log -- style.css
+    $ maka bash akan menunjukkan log yg berhubungan dengan file terssebut
+
+kalau kita ingin melakukan checkout kita bisa mengetikkan $ git checkout <5 char string hash commit yg kita inginkan>
+    $ atau kalau kita ingin mengembalikkan suatu file saja (tanpa harus mengubah semua file yg lain), kita bisa mengetikkan $ git checkout <5 char hash> --style.css
+    $ maka file yg terhapus akan kembali sperti semula
+    
+
+PERLU DICATAT BAHWA GIT ADALAH SPACE-SENSITIVE, JADI SPASI PERLU DIPERHATIKAN 
+DAN CASE SENSITIVE
+
+Branch
+    percabangan pada commit baru, fungsinya adalah apabila kita masih ragu untuk menambahkan suatu fitur baru 
+    
+    Branch yg sedang diakses saat ini akan disebut sebagai head (head dalam git branch akan dilambangkan bintang dan nama branch berwarna hijau)
+    Untuk membuat branch, adalah dengan mengetikkan $ git branch <nama_branch> 
+    $
+
+    Untuk melihat branch apa saja yg ada, maka kita mengetikkan 
+    $ git branch
+    $
+        * master
+        testing1
+        testing2
+    sehingga muncul branch yg pernah dibuat
+        branch yg dibuat, akan disimpann dalam commit yg sama 
+        (Misal, dalam commit 123456789, dan terdapat 2 branch yg dibuat, maka anggapannya commit trsbyt pnya 2 branch)
+
+    Bahkan, kita bisa melihat graph dari branch tersebut sama sperti di Github dengan mengetikkan
+    $ git log --all --decorate --oneline --graph 
+    $
+
+    Kita juga bisa mempersingkat suatu command dengan mengettikkan 
+    $ alias graph="git log --all --decorate --oneline --graph"
+    $ (SYARAT : HANYA 1 SYNTAX DAN DIPERHATIKAN SPASINYA)
+
+    Cara untuk berpindah branch adalah
+    $ git checkout <nama branch>
+    $
+
+Merge 
+menggabungkan branch ke master branch atau commit semula 
+    Jika kita pindah ke branch yg lain, maka file/perubahan file bisa muncul/hilang di file explorer
+        tergantung branch mana yg dipillih
+    Merge perlu diperhatikan, kita harus checkout ke master terlebih dahulu, baru merge ke branch yg diinginkan 
+        jangan checkout ke branch, lalu merge dengan master
+    
+    Merge terbagi menjadi 2 
+    1. Fast Forward
+        Branch yang di merge memiliki direct path dengan master (jadi langsung nyambung)
+    2. Three Way Merge (Merge made by the "recursive" strategy)
+        Branch yang di merge tidak memiliki direct path dengan master branch (tidak berhubungan langsung)
+        sehingga apabila di merge, master akan membuat cabang baru 
+    
+    Terkadang, ketika kita merge suatu branch, maka kita akan disuruh untuk memasukkan commit (opsional)
+
+    Cara menghapus branch adalah dengen mengetikkan
+    $ git branch -d <nama branch>
+    $
+    tapi, untuk memaksa menghapus branch (tanpa melakukan merge), kita bisa mengetikkan 
+    $ git branch -D <nama branch>
+    $ (dengan kondisi $ git config advice.forceDeleteBranch false)
+    $
+
+    untuk melihat branch mana yg sudah di merge, bisa ketikkan
+    $ git branch --merged
+    $
+
+Merge Conflict
+    Kondisi ketika 2 branch mengerjakan 1 file repo yg sama dan line yg sama, sehingga tidak bisa melakukan merge
+    
+    Ketika kita melakukan merge dan terjadi merge conflict
+        Kita harus mengatasi merge conflict terssebut (resolve)
+
+    IDE akan menunjukkan mana line yg berubah dan mengalami konflik, juga disini terserah kita mau memilih yg mana 
+    
+    Ketika kita mengalami merge conflict, git akan menunjukkan bahwa program di dalam tahap merging 
+    asus@Louis MINGW64 /c/Coding (master | MERGING)
+
+    Untuk mengcopy suatu text pada git bash, maka harus dilakukan secara manual (klik kanan, copy, lalu paste)
+    
+    Ketika kita checkout ke suatu cabang branch yg terhapus, maka kita akan masuk dalam fase yg disebut "DETACHED HEAD"
+        DETACHED HEAD adalah kondisi dimanaa pointer head tidak terpasang pada branch, jadinya terpasang pada commit
+    (Bisa dilihat di pojok bawah kiri IDE kita, apakaah kita di branch atau commit)
+Git bash dictionary
+    Pergi ke directory tertentu 
+        cd /c/Users/asus
+    Pergi ke folder atasnya (Parent folder)
+        cd ..
+
+    Pergi ke directory lain (pergi ke C atau D)
+        cd \
+        > Users (folder di dalam directory lain)
+
+    Pergi ke directory sebelumnya
+        cd -
+
+    Mencetak directory yg diakses
+        pwd (print working directory)
+
+    Membuat commit message selain menggunakkan -m
+        $ git commit -am "Bug fixed" (am = all message)
+        (dengan kondisi, bahwa file tersebut aadlah modified, bukan untracked (untracked = blm dimasukkan ke repo))
+        $
+    
+Git Remote 
+    Menyambungkan GIT Lokal denngan Github (Remote)
+    Github Remote terhubung dengan Git local, sehingga terdapat clone 
+    Bila kita membuat commit baru di git lokal, maka kita bisa melakukan push (sehingga commit juga ikt tersimpan di Github)    
+    
+    Tapi, kalau misalkan github terdapat commit baru, kita bisa melakukan fetch/pull ke git lokal 
+
+    git lokal kita bisa terhubung ke gitlab maupun bitbucket (1 git lokal bisa melacak/dilacak ke beberapa remote)
+
+    bahkan, repo yg di fork milik orang lain bisa menjadi remote bagi git lainnya 
+    kita juga bisa menjadikan suatu komputer menjadi remote (misalkan komputer kantor menjadi remote)
+    bahkan juga suatu folder bisa menjadi remote dari folder lain pada 1 komputer yg samaa
+
+    Sehinga, diharapkan bahwa repo dari 1 kom dengan kom lain saling sinkron 
+
+    Syarat agar suatu repo dapat di clone ke repo lain, maka repo tersebut harus dibuatt public (tidak bisa kalau private)
+    lalu, untuk melakukan clone, bisa dilakukan 2 cara, yaitu dengan HTTPS (Hypertext Transfer Protocol Secure) dan SSH (Secure Shell)
+        tapi, akan llebih mudah menggunakkan HTTPS karena SSH harus melakukan konfigurasi key antara lokal dengan remote 
+    kita bisa mendownload semua zip secara lgsg, tpi tidak akan bisa terhubung secara remote 
+
+    ketika ingin mengclone, pilih tempat yg diinginkan pada suatu folder, lalu klik kanan dan klik "GIT BASH HERE" untuk langsung membuka aplikasi tersebut 
+        (atau bisa mengakses melalui terminal)
+        
+    untuk mengetahui remotenya siapa yg mengakses remote, bisa ketik
+        $ git remote
+        $ sehingga akan muncul nama remote (default : origin)
+            (fun fact, kalau blm aad remote sama sekali, maka tidak akan muncul apa")
+    dan untuk mengetahui secara lengkap/panjang, bisa ketikkan 
+        $ git remote -v (verbose)
+        $ sehingga akan muncul
+
+            origin	https://github.com/Louis3112/Briefcase.git (fetch)
+            origin	https://github.com/Louis3112/Briefcase.git (push)
+
+    dan ketika kita ketikkan 
+        $ git status
+        $ maka akan ada yg berbeda, yaitu pemberitahuan bahwa 
+            
+            On branch main
+            Your branch is up to date with 'origin/main'.
+
+            nothing to commit, working tree clean
+        
+    ketika kita mengcommit suatu file di suatu ddevice lokal, maka akan diberitahu bahwa "Your branch is ahead of 'origin/master' by 1 committ"
+        berarti bahwa commit kita melebihi, sehingga blm sync
+        untuk membuat sync, kita bisa mensingkronkan dengan mengetikkan
+        $ git push
+        $
+
+    untuk melihat user name dan user email, bisa diketik 
+        $ git config --list
+        $
+    
+    sebenarnya, kita bisa aja melakukan inisialisasi ulang username dan user email 
+        $ git config --global user.name ""
+          git config --global user.email ""
+        $
+    
+    cara menambahkan folder baru adalah dengan mengetikkan 
+        $ mkdir <nama folder>                                   
+        $                                                         
+    
+    kalau misalkan kita ingin membuat repo baru di github, tetapi.. kita ingin mentransfer repo itu dari git lokal ke github (push lokal)
+    maka pertama, kita buat repo baru di github, dibuat public dan tanpa ada README
+
+    maka akan muncul 3 tampilan yg berbeda,
+        Quick Setup
+            https://github.com/Louis3112/testing123.git
+            (membuat repo yg baru menjadi remote dari git bash)
+        
+        …or create a new repository on the command line
+            echo "# testing123" >> README.md
+            git init
+            git add README.md
+            git commit -m "first commit"
+            git branch -M main
+            git remote add origin https://github.com/Louis3112/testing123.git
+            git push -u origin main
+            (membuat repo sekaligus remote di github melalui git bash)
+    
+        …or push an existing repository from the command line
+            git remote add origin https://github.com/Louis3112/testing123.git
+            git branch 
+            git push -u origin main-M main
+            (menpush/mentransfer repo yg ada di git lokal ke git hub melalui git bash)
+        
+    nah kita pilih pilihan ketiga 
+    git remote add origin https://github.com/Louis3112/testing123.git
+        maka disini kita akan meminta remote dan sekaligus membuat repo baru (dengan syarat, repo sudah dibuat di github dalam keadaan kosong)
+        
+    git push -u origin main-M main (u = upstream, jadi hanya tinggal melakukan push biasa)
+        lalu kita push (mengirim) folder berisikan file" yg ada di dalam repo ke github (melalui git bash)
+
+    nah, kalau misalkan terjadi kasus dimana terjadi merge conflict karena kerja kelompok(karena ada file baru atau terdapat line yg sama yg diubah)
+        maka, sebelum kita push.. kita harus mengfetch terlebih dahulu
+        $ git fetch
+        $
+        fetch ini fungsinya untuk mendapatkan update terbaru dari github ke git lokal kita 
+
+    lalu, kita bisa pull file yg mengalami perubahan 
+        $ git pull
+        $
+        maka, disini IDE akan menunjukkan mana line yg mengalami merge conflict, dan kita bisa melakukan resolve conflict 
+    
+    lalu, kita bisa mengcommit dan melakukan push seperti biasa 
+

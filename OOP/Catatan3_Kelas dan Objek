@@ -1,0 +1,181 @@
+Kelas
+    Struktur data yg ditentukan user untuk menyimpan object dan metode
+    Class adalah cetak biru (blueprint)/tmplate code untuk pembuatan object
+
+object 
+    Turunan dri class
+    Kumpulan dari atribut dan metode 
+    object mempunyai behavior dan condition
+        Attribute mewakili conditionnya
+        Method mewakili behavior
+            Kita bisa mengubah status dengan method
+        
+Object mempunyai properti sebagai berikut :
+    Identitas : setiap object memiliki identitas unik
+    Status : Setiap object memiliki Attribute yg mewakili kondisi dan properti object
+    behavior : setiap object memiliki method yang mewakili behaviornya
+
+Python adalah bahasa pemrograman OOP
+    Sehingga, semua yng ada di dalam python diperlakukan sebagai object 
+    Cth : Kita mendesain class berdasarkan status dan behavior seeorang
+        maka, status dapat direpresentasikan sebagai instance variable (variabel yang dideklarasikan di dalam class, diluar method) 
+            behavior sebagai instance method (method yang dideklarasikan di dalam class, diluar variabel)
+        class Person{
+            String Name; // instance variable
+            char Gender; 
+            String Pekerjaan;
+
+            Bekerja(){}; // instance method
+            Belajar(){};
+        }
+        
+        Person Jessa = new Person();
+            Jessa.Name = Jessa;
+            Gender = P;
+            Pekerjaan = Software Engineer;
+
+            Bekerja(Software Engineering di ABC);
+            Belajar(2 jam sehari);
+    
+    Setiap orang pasti memiliki atribut dan behaviornya masing"", sehingga object dibuat dari class yang sama tapi memiliki status dan behavior yang berbeda
+
+Cara membuat class di python 
+        class Person :
+            """
+                This is docstring, semacam deskripsi singkat tentang class, tidak wajib tpi dianjurkan
+                """;
+            
+                def__init__(self, Name, Sex, Profession):
+                    #Attribute data member (instance variable)
+                    self.Name = name;
+                    self.Sex = sex;
+                    Self.Profession = Profession;
+                
+                #Behavior (instance method)
+                def Show(self):
+                    print('Name: ',self.Name, 'Sex: ', self.Sex, 'Profession:', self.Profession)
+                
+                def Work(self):
+                    print('Name: ',self.Name, 'works as', self.Profession)
+
+Membuat object 
+    Object dibuat menggunakkan nama class, saat kita membuat object, itu disebut instantiasi (instantiation)
+    Constructor adalah metode khusus untuk penginisialisasian object dalam classs. Metode ini dibuat di dalam class
+    Pembuatan object terbagi menjadi 2 (menurut python):
+        Pembuatan Object dan Inisialisasi Object
+            Secara internal, new adalah metode untuk menciptakan object 
+                init() mengimplementasikan konstruktor untuk menginisialisasi object
+
+Class Attribute
+    Saat membuat class, terdapat instance variable dan class variable
+        instance variable = atribut yang melekat pada class
+            dideklarasikan di dalam Constructor
+            terikat pada object
+            setiap object memiliki nilai variable nya masing""
+
+        class variable = variabel yg dideklarasikan di dalam kelas, tetapi di luar metode atau Constructor()
+            dideklarasikan di luar Constructor, tetapi tetap dalam class
+            terikat pada class
+            semua object memiliki nilai yg sama dari dalam 1 class
+            Biasanya menghitung banyaknya object yg dibuat dari suatu class
+
+        cth :
+            Class Car:
+                    wheels : 4      #class variable
+                    engine : true   #class variable
+                    
+                    def__init__(self,brand,model,year,color):
+                        self.brand = brand;      #instance variable
+                        self.model = model;      #instance variable
+                        self.year = year;        #instance variable
+                        self.color = color;      #instance variable
+    Setiap object tidak berbagi instance variable, tetapi berbagi class variable
+    
+Mengakses properti dan menetapkan nilai 
+    instance variable (object) dapat diakses dan dimodif dengan notasi titik
+    class variable dimodif dengan nama kelas
+        cth:
+            Class Student:
+                school_name = 'ABC School'          #class variable
+            
+            def__init__(self,name,age):             #Constructor
+                self.name = name                    #instance variable
+                self.age = age                      #instance variable
+
+            Student1 = Student("Harry",12)
+            print('Student:',Student1.name, Student1.age)  #access instance variable
+            print('School:',Student.school_name)           #access class variable 
+
+            Student1.name = Jessy                   #modify instance variable
+            Student1.age = 18                       #modify instance variable
+
+            Student.school_name = 'DEF School'      #modify class variable
+
+Metode Class 
+    Terbagi menjadi 3 :
+        Instance Method = mengakses/mengubah status object
+            terikat pada object (bekerja hanya pada object)
+            mengakses dan modifikasi class dan instance variable
+            untuk memanggil instance method, harus memanggil nama Object
+
+        Class Method = mengakses/mengubah status class
+            terikat pada variabel class
+            mengakses dan modifikasi status class (Attribute)
+            dapat mengakses class variable
+            untuk memanggil class method, harus memamnggil nama class
+
+        Static Method = method umum yg melakukan tugas secara terpisah. Dalam static method, method tidak menggunakkan instance variable atau class variable 
+            karena static method tidak memiliki askes ke class Attribute
+                terikat pada variabel class
+                tidak dapat memodifikasi status class/object
+                tidak dapat memodifikasi class dan instance variable
+                Biasanya berupa message saja
+
+        #instance method
+        def change_age(self,new_age):
+            self.age = new_age          #modify instance variable
+        
+        #class method 
+        def change_school_name(cls,new_school_name):
+            cls.school_name = new_school_name      #modify class variable
+
+        Student1.change_age(17)
+        Student.change_school_name(XYZ School)
+
+Konvensi Penamaan Class/Object
+    Agar memudahkan pemrograman, maka harus diberikan nama sesuai Konvensi
+    Berikut adalah konvensi untuk penamaan kelas pada python 
+        1. Mengikuti konvensi UpperCase Camel Case
+        2. Kelas pengecualian diakhiri "Error"
+        3. Jika class dapat dipanggil di suatu tempat, maka dapat diberikan nama kelas tersebut sebagai fungsi/method
+        4. Class bawaan python berawalan huruf kecil
+    
+Pass
+    Pada python, terdapat pernyataan pass yg digunakan untuk menskip suatu kode
+    Pass adalah pernyataan nol dan tidak akan menghasilkan apa"
+    Pass digunakan apabila kita membuatt suatu class, tetapi class tersebut msih kosong blm terisi
+        untuk menghindari kebingungan compiler, maka perlu diketikkan Pass
+    
+    cth : 
+        class Demo:
+            pass
+
+Properti Object
+    Setiap object memiliki properti, properti tersebut mengandung nama dan nilai
+    Sperti mobil yg memiliki warna bervariasi, warna adalah nama (Attribute), merah adalah nilainya (value)
+    Properti object addalah instance variable
+
+    Kita dapat mengakses dan memoddifikasi properti suatu object dengan operator titik
+    
+    Kita juga bisa menghapus properti object, HANYA DALAM PYTHON
+        menggunakkan keyword del 
+            cth: del obj.name 
+            yg bila diakses, akan menghasilkan error (AttributeError)
+    untuk java, kita hanya bisa menghapus value nya dengan null value
+
+    Kita juga bisa menghapus object secara keseluruhan, HANYA DALAM PYTHON 
+        menggunakkan keyword del
+            cth: del obj
+            yg bila diakses, akan menghasilkan error (NameError karena tidak di defined)
+    untuk java, kita hanya bisa memberikan nilai null pada object 
+        atau menggunakkan Garbage Collector (system.gc()) untuk mengumpulkan object yg tidak digunakan lagi 

@@ -1,0 +1,125 @@
+Flexbox
+    Sebelumnya,  ada 2 tipe elemen HTML.
+    block dan inline
+        tipe block digunakan untuk penataan secara vertikal (atas bawah, cocok untuk layout web)
+        tipe inline digunakan untuk penataan secara horizontal (kanan kiri, cocok untuk text)
+
+Untuk membuat layout, kita telah mempelajari float untuk membuat multiple collumn, tapi kurang efektif.
+maka dari itu, menggunakkan Flexbox atau flexible box layout
+
+Flexbox adalah model layout 1D untuk menyusun elemen dalam posisi row dan collumn
+Flexbox sering disebut sebagai direction-agnostic atau mengatur tata letak di banyak arah
+Flexbox punya kelebihan, yaitu dapat mengatur penyusunan layout secara flexible, karena Flexbox bisa mengatur flex-elements (child element) di dalamnya dengan mudah
+
+Flex container memperluas flex items untuk mengisi ruang kosong atau menciutkannya sehingga menghindari overflow
+
+Kelemahan dari float dan positioning adalah
+    1. Ketika kita ingin mencentering suatu elemen, kita harus mengukur terlebih dahulu besar elemen tersebut
+    2. Terkadang, kalau ingin membuat layout lebih dari 2, pembagiannya tidak merepresentasikan
+        3 layuout, 33% 33% dan 34%
+    3. Membentuk child element dalam layout multiple-collumn akan membentuk tinggi yg berbeda (tidak estetik), karena isi content berbeda
+Flexbox bisa digunakan pada catalog"
+    Kelebihan Flexbox:
+    1. Gambar bisa diletakkan di tengah
+    2. Ukuran card menjadi responsif, bahkan ketika viewport berubah
+    3. Ukuran height menjadi sama
+    4. Banyak properti pendukung Flexbox
+
+Flexbox tidak bisa bekerja secara sendiri, harus menggunakkan flex container dan flex items
+arah flow didasarkan pada flow dari elemen block dan elemen inline 
+arah layout Flexbox didasarkan pada flex-direction
+
+Flex container : parent element dari flex items (wadah flexbox)
+Flex-items :  child element dair flex container (isi dari flexbox)
+
+flex items akan dijajarkan secara horizontal, dimulai dari main-start dan main-end (main-axis) atau sumbu x (main start dimulai dari kiri)
+main size : ukuran atau panjang dari main-axis
+lalu ada (cross-axis) atau sumbu y
+ada cross-start dan cross end juga (cross start dimulai dari atas)
+ada cross size juga
+
+Properti pada flex container
+    display : flex
+    jadi, membuat elemen block menjadi elemen inline (berjejeran)
+
+    Flex direction 
+        arah dari flexbox dan diatur secara 1 dimensi
+        row : diatur secara berbaris horizontal (berjejer) (default)
+        row-reverse: berkebalikan dari row, dan elemen yg paling belakang dibalik menjadi paling depan
+        collumn : diatur secara berbaris vertikal (berjejer ke bawah)
+        collumn-reverse:  berkebalikan dari collumn, dan elemen yg paling belakang dibalik menjadi paling depan     
+
+    Flex Wrap
+        awalnya flexbox akan diatur menjadi 1 dimensi 
+        dengan flex-wrap, bisa diatur menjadi 2 dimensi
+        nowrap : seluruh items akan ditempatkan dalam 1 baris yg sama meskipun sangat banyak jumlahnya
+        wrap : nilai ini yang menyebabkan flex items akan diletakkan di baris baru sehingga multiple lines
+        wrap-reverse : sama dengan wrap, tapi urutannya kebalik
+
+    Justify content 
+        supaya flex-items bisa disusun posisinya secara baik (diatur jaraknya), menggunakkan justify-content:
+        flex-start : peletakan flex-items akan dimulai dari main-start
+        flex-end : peletakan flex-items akan dimulai dari main-end
+        center : flex-items terletak di tengah
+        space-between : item pertama diletakkan di main-start, item terakhir diletakkan di main-end, maka sisanya akan ditaruh di tengah dengan jarak yg sama
+        space-around : setiap flex-items akan memiliki jarak yg sama satu dengan yg lain di tengah
+        space-evenly : setiap flex-items akan memiliki jarak yg sama satu dengan yg lain di tengah, bahkan dengan main-start dan main-end
+
+    Align-items
+        sama dengan justify-content, hanya saja mengatur flex-items dengan cross-axis
+        stretch : melebar hingga memenuhi flex container (dari atas sampe bawah), walaupun tingginya berbeda
+        flex-start : peletakan flex-items akan dimulai dari cross-start (atas)
+        flex-end : peletakan flex-items akan dimulai dari cross-end
+        center : setiap flex-items diletakkan di tengah dengan tinggi sesuai konten 
+        baseline : sama dengan center, hanya saja tinggi menyeuaikan 
+
+    Align-content 
+        properti yang melakukan perataan terhadap flex items pada stiap baris di cross-axis
+        hampir sama dengan align-items;
+        align-content hanya berlaku jika
+            1. Flex container memiliki multi line
+            2. properti flex-wrap dipakai
+            3. Flex container yg hanya memiliki single line tidak akan berfungsi
+        normal : flex items akan diposisikan secara default
+        flex-start : flex items ditata pada awal flex-container
+        flex-end : flex items ditata pada akhir flex-container
+        Center: flex items diposisikan di tengah flex container
+        space-between : item pertama diletakkan di main-start, item terakhir diletakkan di main-end, maka sisanya akan ditaruh di tengah dengan jarak yg sama
+        space-around :  setiap flex-items akan memiliki jarak yg sama satu dengan yg lain di tengah
+        space-evenly : setiap flex-items akan memiliki jarak yg sama satu dengan yg lain di tengah, bahkan dengan atas dan bawah
+
+    Gap 
+        pemberian celah pada flex items (tidak perlu pake margin)
+        gap : 10px; (berarti jarak vertikal dan horizontal 10 px)
+        gap : 10px 20px; (berarti jarak vertikal 10 px dan horizontal 20 px)
+        row-gap : 10 px (jarak horizontal (baris))
+        collumn-gap : 10px (jarak vertikal (kolom))
+
+Properti pada flex item
+    Order
+        urutan dari flex ites bisa diatur 
+        order : 1; maka posisinya akan ditempatkan di 1
+        bahkan bisa negatif 
+    
+    Flex grow
+        agar flex items bisa selalu memenuhi flex container, bisa menggunakkan flex-grow, sehingga tidak ada ruang kosong pada flex container
+        flex-grow : 1;
+        pemberian nilai hanya menggunakkan angka
+        Jika salah satu child element memiliki flex grow dengan nilai dua, child element tersebut akan mendapatkan pembagian porsi dua kali lebih besar dibanding child element yang hanya memiliki satu porsi. 
+        jika 0, maka tidak dapat tempat sama sekali
+    
+    flex-shrink 
+        jika flex-items ukurannya tidak cukup terhadap flex-container, maka bisa diciutkan dengan flex-shrink
+        pemberian nilai hanya menggunakkan angka
+        jika 0, maka flex-items akan melanjutkan terus tanpa ada baris baru
+
+    Flex basis
+        properti ini akan membagi-bagi flex-items berdasarkan ukuran yg kita masukkan
+        flex-basis : 50px;
+
+    Align self
+        hampir sama dengan align items, tapi ini khusus untuk flex item dan hanya berlaku untuk 1 saja
+        align-self : value
+        nilainya sama dengan align items
+
+Pada flexbox, display : inline dan display : block tidak akan berpengaruh samsek

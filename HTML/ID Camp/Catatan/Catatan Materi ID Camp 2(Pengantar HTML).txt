@@ -1,0 +1,232 @@
+HTML adlaah satu-satunya bahasa markup untuk membangun struktur halaman website.
+Dalam membuat web, ada satu hal yg perlu dibuat, yaitu Root Project Directory (Folder Proyek)
+Folder Proyek digunakan untuk menyimpan semua material atau berkas yg digunakan untuk membuat web
+
+nama Index tercipta karena index adalah nama berkas default dari web server jika tidak ada berkas spesifik pada url 
+Fun fact, pada address bar, akan terlihat alamat dari web kita pada komputer. Bila dihapus dan meninggalkan file::c/. Maka akan terlihat folder C dri laptop kita
+
+untuk membuat HTML, harus menggunakkan elemen-elemen HTML, karena browser tidak bisa membaca seperti apa yg kita baca
+
+basic structure of webpage. Di antaranya ada doctype, html, head, dan body.
+<!DOCTYPE html> = untuk mendeklarasikan bahwa halaman tersebut adalah HTML
+<html> = untuk memulai halaman html
+<head> = letak judul dari web kita dan setting <meta charset="utf-8"> agar website bisa mengikuti ukuran web
+<body> = badan dari webpage
+<h1> = untuk judul utama dari webpage (semakin besar, maka semakin kecil(subjudul, contoh <h2> <h3> <h4>))
+<p> = untuk paragraf
+
+kita bisa melihat adanya ukuran suatu konten pada DevTools pada bagian tab Styles. 
+Kita melihat ada kotak yang berwarna jingga, kuning, hijau, dan biru (bagian kotak terdalam). Warna-warna tersebut merupakan margin, border, padding, dan konten
+
+Elemen html terdiri atas 3, yaitu tag pembuka, konten, tag penutup
+dan di dalam elemen bisa terdapat elemen lain (child element).
+contoh : <p> <strong>HTML</strong> adalah <i>markup language</i> untuk membuat halaman web. </p>
+
+Dalam membuat html, juga menggunakkan atribut, contohnya <img src="Gambar 1.1.png"> atau <img src="/C/Foto/Gambar 1.jpg">
+atribut adalah identitas yang digunakan untuk menargetkan elemen dengan kode styling. Biasanya atribut diletakkan pada tag pembuka
+https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes (referensi atribut)
+
+di dalam <head> terdapat <title> dan <meta charset>, title dan meta charset adalah child element yg jika akan membentuk hierarki elemen atau disebut DOM Tree
+di dalam <head> terdapat child element seperti <title> , <style>, <base>, <link>, <meta>, <script>, <noscript> 
+
+di dalam <body>, semua konten atau elemen akan ditampilkan pada body. Bahkan teks yg tidak dibungkus elemen sekalipun
+
+lalu ada lorem ipsum, fungsinya untuk mendemonstrasikan elemen grafis atau presentasi visual, seperti font, tipografi, dan tata letak.
+tujuannya 
+1. Sebagai pengisi sementara jika belum ada konten teks.
+2. Jika ingin menunjukkan hasil website sementara yang mana audiens diharapkan lebih fokus kepada elemen desain yang dipresentasikan, bukan pada isinya (teks).
+lorem ipsum dapat digunakan pada word, dengan mengetikkan lorem(), kalau kita ketikkan lorem(3,4) maka akan memunculkan lorem ipsum sebanyak 3 paragraf dan 1 paragraf isinya 4 kalimat
+https://id.lipsum.com/ atau bisa menggunakkan link itu
+
+Inline Formatting text (inline teks/baris teks)
+    
+    Ada <blockquote>(Long Quotation). digunakan untuk membuat suatu kutipan atau testimonial. Nantinya, teks akan lebih menjorok ke dalam. blockquote bisa kita tambahkan dengan atribut cite <blockquote cite ="link">. Namun tidak ada tampilan yg berbeda
+    Ada <pre> (preformatted text). digunakan agar program bisa mengoutput codingan kita sesuai dengan apa yg diketik (ngikut kalau misalkan kita enter) (berupa sajak, coding, gambar)
+    Ada <figure> (figure). digunakan untuk mempresentasikan konten tersendiri atau mengelompokkan bagian blog tertentu yang posisinya bisa kita pindahkan tanpa mengubah body dri html (jadi bisa diubah posisinya)
+        Ada <
+        ption> yang memberi caption mengenai apa yg dijelaskan (bisa sajak,gambar)
+
+    Di dalam HTML, ada 2 sifat, yaitu block dan inline.
+        Elemen yang bersifat block, selalu membentuk baris baru ketika dirender (contohnya paragraph, list, heading)
+        Elemen yang bersifat inline, tidak akan membentuk baris baru ketika dirender
+            Contoh inline
+            Ada <a> (anchor), digunakan untuk memasukkan link url dengan menggunakkan atribut href untuk memasukkan link <a href =""></a>
+            Atribut untuk anchor
+                <a download = "nama file">Menyuruh browser untuk mendownload file didalam anchor</a>
+                <a hreflang = "language_code"> Menetapkan bahasa dari dokumen target</a> 
+                <a ping = "list_of_URLs"> Memberikan ping/info kepada link yang dituju</a>
+                <a referrerpolicy = "no-referrer(banyak)"> Memberikan referensi</a>
+                <a rel = "author(banyak)"> Menetapkan hubungan antara webpage dengan web yg dituju</a>
+                <a target ="_blank(banyak)"> Menetapkan lokasi ketika membuka link </a>
+                <a media ="tipe media> Menetapkan tipe media yg digunakan pada linl </a>
+            Ada <em> (Emphasized text), memberikan efek emphasis atau penekanan (italic), bisa menggunakkan <i>
+            Ada <strong> (important Test), memberikan efek penekanan strong pada teks, bisa menggunakkan <b>
+            Ada <q> (Short Quotation). digunakan untuk memberikan tanda petik (biasanya pada percakapan), bisa tinggal mengetikkan "". bisa dimasukkan atribut cite juga
+    
+    Ada <cite> (citation), selain menjadi atribut, juga bisa menjadi elemen. <cite><a href=""></a></cite>. Bedanya, link yg digunakan akan menjadi miring
+    Ada <dfn> (defining term), digunakan untuk mendefinisikan sesuatu. bila digunakan akan membuat teks menjadi miring
+    Ada <sub> dan <sup> (subscript dan superscript). Subscript digunakan untuk membuat angka atau tulisan ada di bawah, superscript diatasnya. Digunakan untuk menulis rumus matematika/kimia
+    Ada <mark> (Highlited text), digunakan untuk memberi highlight atau stabilo tulisan dengan warna kuning
+
+    Cara agar ketika kita menekan link pada <a href>, bisa lgsg membuka bagian yg kita inginkan
+    <a href ="#Sejarah">Sejarah</a>
+
+    maka, bagian yg ingin kita buat shortcut nya harus diberi atribut id =
+    <h2 id ="Sejarah"> Sejarah </h2>
+    maka, program akan lgsg membuka bagian sejarah bila ditekan
+    
+Semantic
+    Setiap website memiliki hierarkinya konten (letak placement suatu konten)
+    Sebelum HTML5, itu masih pake <div> dengan atribut berupa  <div id = "header"> dan <div class ="article"> (semantic meaningless = struktur pada website menjadi hilang)
+    Sedangkan untuk HTML5, tidak perlu menggunakkan <div>, ada beberapa bagian yg sudah tidak perlu dipanggil menggunakkan id atau class (semantic meaning = semantic memiliki arti dan terlihat)
+        yaitu <header> <footer> <main> <nav>
+        <header> biasa digunakan untuk menulis judul atau penulis atau gambar awal
+        <footer> biasa digunakan untuk menulis hak cipta atau bagikan atau alamat atau formulir untuk berlangganan
+        <header> <footer> dapat digunakan di dalam <article> atau <section>
+        <header> <footer> tidak bisa ditulis di dalam <header> <footer> lainnya (tidak bisa bertumpuk) tidak bisa (nested)
+
+        <main> digunakan untuk menampung konten utama dalam body. Jadi di dalam <body>, bisa terdapat <header> <main> <footer>
+        <main> hanya boleh ada 1 di satu website
+
+        <nav> digunakan untuk menampung <li> dan sangat berguna untuk mengakses bagian dari suatu web
+
+        <article> digunakan untuk menjadi wadah/container untuk independent content pada suatu halaman saja.
+        Jika dalam 1 halaman terdapat lebih dri 1 article, maka <article> harus tetap dibedakan masing"
+        <article> dapat digunakan di dalam < article> lagi (nested)
+
+        <aside> memiliki 2 tujuan, 
+        jika diletakkan di dalam <article>, maka berisi info yg ada di dalam <article>, tetapi bukan bagian dari <article> itu sendiri
+        jika diletakkan di luar <article>, maka berisi info yg berhubungan pada keseluruhan halaman
+        <aside> terletak di sebelah elemen yg menampungnys
+
+        <section> digunakan apabila terdapat elemen/bahan yg berisi kesamaan konten atau isi di dalam suatu <article> yg sama
+        Jadi, di dalam satu <article> bisa terdapat lebh dari 1 <section>. Dan setiap <section> diberikan judul
+
+Generic Element
+    Karena sangking banyaknya informasi dalam suatu article, maka terkadang elemen semantic tetap tidak bisa digunakan. Maka ada generic element
+    yaitu ada <div> dan <span>
+
+    <div> digunakan sebagai wadah yang bersifat umum digunakan untuk menampung elemen. Elemen tidak akan memberikan efek apapun kecuali jika digunakan CSS
+    <div> digunakan untuk mempermudah proses pengeditan suatu konten di dalamnya. Biasanya menggunakkan atribut class dan id
+
+    <span> smaa saja seperti <div>. Hanya saja, <span> bisa digunakan di satu baris tanpa line break
+    contohnya, jika kita ingin memberi warna pada suatu kata, maka bisa menggunakkan span untuk ditag dengan CSS.
+    Intinya, <span> digunakan untuk mengedit dan memanggil 1 baris saja
+
+Table
+    Elemen pada <table> mempresentasikan data tabular, yaitu data yg disajikan pada table
+    Table disajikan dalam bentuk 2D (baris dan kolom)
+
+    <Table> terdiri atas 3 elemen, yaitu <tr>, <td>, <th>
+    <tr> (Table row) digunakan untuk membuat sebuah baris baru
+    <td> (Table data) digunakan untuk membuat sebuah data baru
+    <th> (Table head) digunakan untuk membuat header dari table
+
+    contoh pengaplikasian table adlaah
+    <h1>Pemenang Piala Dunia Tiga Tahun Terakhir</h1>
+        <table>
+            <tr>
+                <th>Tahun</th>
+                <th>Juara 1</th>
+                <th>Juara 2</th>
+                <th>Juara 3</th>
+            </tr>
+            <tr>
+                <td>2018</td>
+                <td>Prancis</td>
+                <td>Kroasia</td>
+                <td>Belgium</td>
+            </tr>
+            <tr>
+                <td>2014</td>
+                <td>Jerman</td>
+                <td>Argentina</td>
+                <td>Belanda</td>
+            </tr>
+            <tr>
+                <td>2010</td>
+                <td>Spanyol</td>
+                <td>Belanda</td>
+                <td>Jerman</td>
+            </tr>
+        </table>
+
+    Pada HTML, kita juga bisa menggabungkan suatu kolom dengan atribut colspan (column span), yg disebut sebagai spanning cell atau merging cell
+    dengan cara mengetikkan <td colspan="2">Data</td>
+    colspan merentangkan cell ke samping kanan
+
+    Untuk merentangkan cell ke bawah, menggunakkan <td rowspan ="3">Data</td> 
+    
+    Penggunaan rowspan dan colspan sedikit membingungkan, jadi harus banyak praktek
+
+    Untuk table, terdapat atribut atau elemen yang berbeda", seperti caption, thead, tbody, tfoot, col, colgroup
+    untuk atribtnya, selain colspan, rowspan, headers, scope
+
+Input
+    untuk membuat web yg bisa menerima input, menggunakkan elemen <input>
+    dengan atribut type="text", type="number", type="email", type="password"
+    type="search" untuk mencari sesuatu berdasarkan kata kunci, dan akan terdapat tanda silang di sebelah kanan
+    type="date" untuk memasukkan tanggal
+    type="time" untuk memasukkan jam 
+    type="datetime-local" untuk memasukkan tanggal dan jam
+    type="checkbox" untuk membuat masukkan berupa centang 
+    type="radio" untuk membuat plihan hanya 1 saja pilihannya
+    type="range" untuk memasukkan angka, tapi dengan bentuk yg berbeda
+    type="submit" untuk membuat tombol submit
+    type="color" untuk memasukkan warna, baik dengan color picker atau kode warna
+    type="file" untuk memasukkan file
+
+    Non-Single Line Input Element
+        Jika kita menggunakkan input, maka teks yg dikeluarkan hanya berisi 1 baris saja.
+        Untuk mengatasi hal ini, bisa menggunakkan <textarea>.
+        Fungsi dari <textarea> adalah user bisa menginputkan baris sebanyak apapun
+        dengan menggunakkan atribut rows dan cols, maka itu akan menentukan banyak elemen yg dapat dimasukkan
+
+    Lalu ada yg disebut sebagai label, label berfungsi sebagai caption di atas input
+    kegunaan label adalah agar browser bisa mengetahui fungsi dari input, sekaligus mempermudah user untuk mengisi input
+    <div>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" id="email" />
+    </div>
+    jangan lupa untuk menambahkan atribut id pada input
+
+    Ada atribut placeholder="", untuk memberikan keterangan di dalam input
+    dan ada atribut required. Required tidak perlu ditambahkan apa" 
+    ada value, untuk memberikan data awal di input, jadi tinggal dibiarin atau diganti oleh user
+    ada autocomplete, agar tidak perlu memasukkan data lagi bila di web selanjutnya terdapat input yg sama
+    ada maxlength, maksimal karakter yg boleh diinputkan
+    ada max, maksimal nilai yg boleh diinputkan (terdapat minlength dan min)
+    ada checked, mengaktifkan atau mencentangkan input checkbox secara otomatis
+    ada accept, hanya untuk file, jadi kita bisa membatasi hanya menerima format berkas tertentu
+    ada pattern, jadi terdapat pola tertentu yg harus diikuti agar bisa terisi
+    ada readonly, tidak memiliki akses nilai
+    ada disabled, tidak bisa diisi data 
+
+    TAPI, yg paling penting. Untuk membuat suatu form, maka harus menggunakkan elemen <form> dari awal sampe akhir
+    dan setiap <input> harus diberikan atribut name, agar web server bisa mengetahui fungsi dari input tersebtu dan bisa menyimpan di webserver
+    Karena setiap data dikirimkan dalam bentuk "key dan value"
+    key = identitas/nama dari data yg dikirimkan
+    value = data yg diisi oleh user
+
+Cara membuat formulir yg bisa menyimpan data
+    yg pertama adalah atribut action.
+    Action akan menentukan alamat web dari data yg akan dikirim. Bisa berupa absolute url (url di web) yg mengarah pada suaru server (API) atau relative url 
+    jika tidak menggunakakn atribut action, maka data akan dikirimkan di web yg sedang diisi saat itu
+
+    atribut method.
+    atribut yg akan menentukan cara data dikirim ke server 
+    dan ada 2 method, yaitu method GET dan POST
+    GET, metode ini digunakan untuk mendapatkan data dari server. Data akan dikirimkan melalui HTTP response. Setelah disubmit, maka data akan dikirimkan ke URL Parameter
+    POST, metode ini digunakan untuk mengirimkan data dari browser ke server. Metode ini meminta server menanggapi terhadap data yang telah dikirimkan oleh browser dan mengharapkan response
+
+    Perbedaan GET dan POST
+    GET tidak memiliki body request dan menyebabkan data diletakkan di dalam URL Parameter
+    POST memiliki body request dan tidak memiliki URL Parameter
+
+Special Character
+    Ada beberapa karakter yg tidak termasuk ke dalam standar kelompok ASCII karakter (karakter yg ada di keyboard)
+    karakter diluar dari itu disebut escaped character. Escaping artinya tidak menulis karakter itu sendiri, tetapi digantikan dengan character referensi
+    ada 2 cara untuk memanggil karakter tersebut, yaitu dengan numeric entity(berupa angka) atau dengan named entitiy (berupa singkatan)
+    diawali dengan # dan diakhiri ;
+    

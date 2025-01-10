@@ -1,0 +1,270 @@
+Dalam menyelesaikan masalah, dibutuhkan pengetahuan dan penalaran
+Knowledge Representation
+    merujuk pada info/pengetahuan tentang dunia sehingga direpresentasikan agar dapat diproses oleh AI
+    Tujuannya adalah agar AI dpt menyimpan, memahami, menggunakkan info utk melakukan pemecahan masalah 
+
+    Elemen penting dari Knowledge Representation
+        Knowledge = Info/fakta tentang dunia yg relevan dengan AI 
+        Representation = cara mengkodekan pengetahuan sehingga bisa dipahami AI 
+
+    Prinsip utama dari KR
+        Adequacy (kecukupan)
+            AI harus dapat menyimpan semua ilmu relevan
+        Inferential Efficiency (Efisiensi Inferensi)
+            Info harus dapat digunakan utk menyimpulkan fakta baru dengan cepat
+        Understandability (Keterpahaman)
+            Representation harus jelas dan mudah dipahami AI dan manusia 
+        Scalability (Skalabilitas)
+            AI harus bisa menangani Knowledge dalam skala besar/kompleksitas tinggi 
+        
+    Application dari KR pada AI 
+        Expert System (Sistem pakar)
+            Sistem berbasis aturan yg menggunakkan KR utk memberi saran/diagnosis (cth: MYCIN)
+        Natural Language Processing (NLP)
+            KR yg membantu mesin utk memahami dan menghasilkan bahasa manusia
+        Robotics 
+            KR diberikan pada robot tentang lingkungan agar bisa berinteraksi 
+        Reasoning Systems
+            Sistem yg melakukan inferensi (kesimpulan) dari info yg sudah ada
+
+    Knowledge   
+        diklasifikasi menjadi 3 bagian 
+            Procedural Knowledge 
+                Langkah" memasak mie, langkah" menjalankan mobil, langkah"...
+            Declarative Knowledge
+                Tahu mana pengetahuan yang benar dan salah 
+            Tacit Knowledge
+                Pengetahuan yg tidak dapat dijelaskan dengan kata"
+                Cara menggerakkan lengan, cara membuka mata 
+        
+        Knowledge adalah Primary key dari Expert System
+            karena analoginya, Algorithm + Data Structure = Program 
+                            Knowledge + Inferential = Expert System
+        Knowledge harus bisa direpresentasikan dengan baik
+            agar AI dapat menangkap bagian penting dari problem dan membuat info trsbut dpat diakses oleh problem solver procedure 
+    
+    2 Bagian dasar dari AI (mnrt Turban)
+        Basic Knowledge
+            fakta/info tentang object dalam domain yg dipilih 
+            relationship antar domain"
+        Inference Engine 
+            sekumpulan prosedur 
+            menguji basic knowledge dalam menjawab pertanyaan, menyelesaikan masalah, membuat keputusan 
+        
+        Basic knowledge berisi struktur data yg dapat dimanipulasi oleh inference Engine yg menggunakkan searching dan teknik pencocokan pola pada basic knowledge  
+            tujuannya agar bisa menjawab pertanyaan, membuat kesimpulan, sebagai fungsi kecerdasan 
+    
+    Karakteristik KR 
+        Dapat diprogram dengan bahasa komputer dan disimpan dalam memori 
+        Info lain yg terkandung di dalam dapat digunakan utk penalaran 
+    
+    Dalam menyelesaikan masalah, perlunya knowledge yg memadai dan kemampuan menalar
+
+    Pengetahuan dapat direpresentasikan dlm bentuk sederhana atau kompleks, tergantung masalahnya (Schnupp, 1989)
+
+    Model KR terbagi menjadi banyak bentuk 
+        1. Logic 
+            Bentuk KR yg paling tua 
+            
+            Proses Logika 
+                Proses membentuk kesimpulan/menarik inferensi dari suatu fakta yg ada   
+
+                Input            --->   Proses Logika    --->    Output
+                Premis/Fakta     --->                    --->    Inferensi/Konklusi
+
+                Ada 2 penalaran yg dapat dilakukan utk mendapat konklusi 
+                    Penalaran deduktif  
+                        bergerak dari penalaran umum menuju konklusi khusus 
+                        terdiri atas 
+                            Premis Mayor : jika hujan, saya tidak akan kuliah 
+                            Premis Minor : pagi ini sedang hujan 
+                            Konklusi : Maka pagi ini, saya tidak kuliah 
+
+                    Penalaran induktif 
+                        bergerak dari penalaran khusus menuju konklusi umum
+                        menggunakkan sejumlah fakta/premis utk membuat konklusi umum
+                        terdiri atas
+                            Premis 1 : Aljabar sulit 
+                            Premis 2 : Geometri sulit 
+                            Premis 3 : Integral sulit 
+                            Konklusi : Matematika sulit
+
+                            Konklusi dapat berubah jika ada premis baru
+                            Premis 4 : AI sulit
+
+                            Penalaran induktif sangat dimungkinkan adanya uncertainty (ketidakpastian)
+
+                Ada 2 Logika komputasional 
+                    Logika proporsional 
+                        Logika yg berisi statement benar/salah 
+                        terdiri atas 
+                            AND/Konjungsi dilambangkan ^ atau .
+                            OR/Disjungsi dilambangkan v atau +    
+                            NOT/Negasi dilambangkan ¬ atau ~
+                            IMPLIES(if then)/Implikasi dilambangkan ->
+                            Bi-Implikasi(if and only if)/Ekuivalensi dilambangkan <->
+
+                            A   B   ~A  ~B  A∧B  AVB  A→B  A↔B
+                            T   T   F   F   T    T    T    T
+                            T   F   F   T   F    T    F    F
+                            F   T   T   F   F    T    T    F
+                            F   F   T   T   F    F    T    T
+                    
+                        Pada logika proporsional, terdapat resolusi 
+                            resolusi adalah aturan utk melakukan inferensi dalam bentuk CNF (Conjunctive Normal Form)
+                                CNF
+                                    setiap kalimat adalah Disjungsi literal
+                                    setiap kalimat terkonjungsi secara implisit
+                                
+                                    Langkah" mengonversi kalimat menjadi CNF
+                                        1. Hilangkan implikasi dan Ekuivalensi
+                                            x -> y menjadi ¬ x v y 
+                                            x <-> y menjadi (¬ x v y) ^ (¬ y v x) 
+                                        2. Kurangi lingkup Negasi
+                                            ¬ (¬ x) menjadi x 
+                                            ¬ (x v y) menjadi (¬ x ^ ¬ y) 
+                                            ¬ (x ^ y) menjadi (¬ x v ¬ y) 
+                                        3. Gunakan asosiatif dan distributif untuk convert menjadi Conjunction of Disjunction
+                                            asosiatif : (A v B) v C menjadi A v (B v C) 
+                                            distributif : (A ^ B) v C menjadi (A v C) ^ (B v C)
+                                        4. Buat 1 kalimat terpisah utk tiap konjungsi
+                                cth :
+                                Untuk membuktikan proposisi P dengan aksioma" F menggunakan resolusi
+                                    1. Konversi proposisi F ke dalam bentuk CNF
+                                    2. Negasikan P, konvert hasil negasi ke bentuk klausa lalu tambahkan ke himpunan klausa dari langkah 1
+                                    3. Kerjakan hingga terjadi kontradiksi (tidak ada kemajuan)
+                                        a. Pilih dua klausa sebagai parent, lalu resolve.
+                                        b. Jika hasil resolvent memiliki pasangan literal L dan ¬L, hilangkan mereka
+                                        c. Jika resolvent berupa klausa kosong, kontradiksi ditemukan, maka P benar
+                                        d. Jika tidak kosong, tambahkan resolvent ke himpunan klausa.
+                                
+                                cth implementasi :
+                                    P : Ani anak cerdas
+                                    Q : Ani rajin belajar 
+                                    R : Ani menjadi juara kelas
+                                    S : Ani makan banyak 
+                                    T : Ani istirahat cukup
+ 
+                                    Kalimat yang terbentuk :
+                                        1. Ani anak yang cerdas (P) 
+                                        2. Jika ani anak yang cerdas dan ani rajin belajar, maka ani akan menjadi juara kelas ((P ^ Q) -> R)
+                                        3. Jika ani makannya banyak atau ani istirahatnya cukup, maka ani rajin belajar       ((S v T) -> Q)
+                                        4. Ani istirahatnya cukup  (T)
+                                        5. Buktikan bahwa Ani menjadi juara kelas (dengan mencari R)   
+
+                                    maka hasil CNF nya :
+                                        1. Konversi proposisi F ke dalam bentuk CNF
+                                            a. Ani anak yang cerdas (P) 
+                                            b. Ani tidak cerdas atau ani tidak rajin belajar atau ani akan menjadi juara kelas (hasil konversi (P ^ Q) -> R menjadi (¬P v ¬Q v R))
+                                            c. Ani tidak makan banyak atau ani rajin belajar,  Ani tidak istirahat cukup atau ani rajin belajar(hasil konversi (S v T) -> Q menjadi ¬S v Q dan ¬T v Q)
+                                            d. Ani istirahatnya cukup (T)
+                                            e. Ani tidak jadi juara kelas (¬R)
+
+                                        2. Sekarang, kita akan melakukan proses resolusi langkah demi langkah:
+                                            a. Dari konversi a (P) dan b (¬P v ¬Q v R)
+                                               hasil resolvent menghasilkan ¬Q v R, karena P dan ¬P dicoret
+                                            b. Dari konversi d (T) dan c (¬T v Q)
+                                               hasil resolvent menghasilkan Q, karena T dan ¬T dicoret
+                                            c. Dari Q sbeelumnya dan ¬Q v R
+                                               hasil resolvent menghasilkan R, karena Q dan ¬Q dicoret
+                                            d. Sehingga didapat R dan konversi e (¬R), maka terjadi kontradiksi 
+                                    sehingga, pernyataan di atas benar semua
+                    Logika predikat
+                        representasi fakta sederhana, 
+                        cth :
+                            A : Andi adalah laki"
+                            B : Budi adalah laki"
+                            C : Charlie adalah laki"
+                            D : Dito adalah laki"
+                            E : Erga adalah laki"
+                        jika kalimat tersebut dengan proporsi, maka terjadi pemborosan. Dimana pernyataan dengan predikat yg sama akan dibuat dengan proporsi berbeda
+                        Akan lebih ringkas menggunakan satu predikat umum, misalnya L(x), di mana x mewakili nama. Cth : L(A), L(B), dst
+  
+                        Logika predikat merepresentasikan hal-hal yang tidak dapat diwakili oleh logika proposisi
+                            dengan menggunakan pernyataan yang disebut Well-Formed Formula (WFF)
+                        
+                        Dalam logika predikat, premis terdiri dari:
+                           Argumen(object)      : individu/object yg membuat keterangan
+                           Predikat(keterangan) : keterangan yg menjelaskan argumen/predikat
+
+                        Dalam logika predikat, predikat bisa berupa kata kerja yang menjelaskan hubungan antara object. 
+                        Bentuk umum nya PREDIKAT(objek1, objek2)
+                            cth: Kalimat "Mobil berada dalam garasi" dinyatakan sebagai:
+                            DiDalam(mobil, garasi)
+                                DiDalam = Predikat (keterangan)
+                                Mobil = Argumen (objek)
+                                Garasi = Argumen (objek)
+
+                            cth lain :
+                            Jika besok tidak hujan, Tommy pergi ke gunung
+                                ¬ cuaca(hujan,besok) -> pergi(tommy, gunung)
+                                ¬ turun(hujan,besok) -> pergi(tommy, gunung)
+
+                            Diana adalah nenek dari ibu Amir
+                                nenek(Diana,ibu(Amir))
+                            
+                            Rojali suka Juleha
+                                suka (Rojali, Juleha)
+                        
+                            Pintu Terbuka
+                                buka (pintu)
+                        
+                        Dalam logika predikat, pengetahuan diekspresikan dengan menggunakan variabel untuk mewakili object sehingga bisa diambil inferensi 
+                            cth : 
+                                x = Johan,
+                                y = Maria,
+                                z = Ramon
+
+                                dinyatakan dengan 
+                                suka(x,y) ^ suka(z,y) -> tidak suka(x,z)
+                                
+                                yg artinya : 
+                                Jika Johan suka Maria dan Ramon suka Maria, maka Johan tidak suka Ramon
+                        
+                        Dalam Logika predikat memungkinkan penggunaan fungsi" sebagai simbol,
+                            yang bisa digunakan untuk menjelaskan relasi antar objek lebih kompleks 
+                            
+                            ayah(Juleha) = Adi        : Ayah Juleha adalah Adi
+                            ibu(Rojali) = Ani         : Ibu Rojali adalah Ani
+                                bahkan fungsi bisa digunakan bersama dengan predikat 
+                                teman(ayah(Juleha),ibu(Rojali))=teman(Adi,Ani)
+                        
+                        Pengukuran kuantitas 
+                            Logika predikat menggunakan simbol kuantor untuk mengungkapkan kuantitas atau cakupan suatu pernyataan
+                            Pengukuran kuantitas tersebut terdiri atas :
+                                Kuantitas universal (∀) (untuk semua)
+                                    (∀x)[Sapi(x)→berkaki_empat(x)]
+                                    berarti semua sapi berkaki empat 
+                                
+                                Kuantitas eksistensial (E terbalik) (untuk beberapa saja)
+                                    (Ex)[Sapi(x), berwarna putih(x)]
+                                    berarti beberapa sapi berwarna putih 
+                            
+                        cth Logika Predikat : 
+                            a. Andi adalah mahasiswa                                                       Mahasiswa(Andi)
+                            b. Andi masuk jurusan Informatika                                              masuk(Andi, jurusan Informatika)
+                            c. Setiap mahasiswa Informatika pasti mahasiswa teknik                         (∀ mahasiswa) : informatika(mahasiswa) -> teknik(mahasiswa)
+                            d. Kalkulus adalah matakuliah yang sulit                                       sulit(Kalkulus)
+                            e. Setiap mahasiswa teknik pasti akan suka kalkulus atau akan membencinya      (∀ mahasiswa) : teknik(mahasiswa) -> suka(mahasiswa,kalkulus) v benci(mahasiswa,kalkulus)
+                            f. Setiap mahasiswa pasti akan suka terhadap suatu matakuliah                  (∀ mahasiswa) : (E matkul) : suka(mahasiswa,matkul)
+                            g. Mahasiswa yang tidak pernah hadir pada kuliah matakuliah sulit, maka mereka pasti tidak suka terhadap matakuliah tersebut      ∀ mahasiswa : E matkul : mahasiswa(mahasiswa) ^ sulit(matkul) ^ ¬hadir(mahasiswa,matkul) → ¬suka(mahasiswa,matkul)
+                            h. Andi tidak pernah hadir kuliah matakuliah kalkulus                          ¬hadir(Andi,kalkulus)
+                            
+                            apakah andi suka kalkulus? Dari penalaran backward, jawabannya tidak.
+
+        2. List & Tree
+            List
+                Struktur sederhana untuk KR
+                Daftar dari rangkaian materi yang terkait
+                List digunakan untuk objek yang dikelompokkan, dikategorikan atau digabungkan sesuai dengan urutan atau hubungannya 
+            
+            Tree
+                Struktur sederhana untuk representasi pengetahuan
+                Struktur grafik hierarki
+            
+        3. Semanthic Nets (Jaringan Semantik)
+        4. Frame (Bingkai)
+        5. Decision Table (Tabel Keputusan)
+        6. Decision Tree 
+        7. Script 
+        8. Production rule (Kaidah/Sistem Produksi)

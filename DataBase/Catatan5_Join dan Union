@@ -1,0 +1,60 @@
+Join 
+    Untuk membutuhkan data dari beberapa tabel yg saling berhubungan, maka digunakanlah operator join
+    Fungsinya untuk menggabungkan data dari 2 tabel atau lebih
+    Join berlaku pada tabel biasa maupun view
+    Join adalah salah satu operasi dasar dari RDBMS
+    Join tidak dapat berdiri sendiri, tetapi bagian dari SELECT, UPDATE, DELETE
+
+    Join terdiri atas 2,
+        Inner Join
+            menampilkan data pada 2 tabel yang berelasi (irisan) dengan kondisi tertentu (jika tidak ada yg sama, maka data tidak ditampilkan (null)) 
+                SELECT * FROM tabel-1 INNER JOIN tabel-2 ON tabel-1.field = tabel-2.field; -- pastikan tabel-1.field dan tabel-2.field adalah FK/berhubungan  
+            apabila ingin menggabungkan lebih dari 2 tabel
+                SELECT * FROM tabel-1 INNER JOIN tabel-2 ON tabel-1.field = tabel-2.field INNER JOIN tabel-3 ON tabel-2.field = tabel-3.field;
+
+        Outer Join
+            tipe join yang mencari referensi data dari tabel sumber ke tabel lain tanpa menghilangkan data sumber apabila referensi tidak ketemu
+            Kondisi ketika menggunakkan Outer Join 
+                Perlu dibedakan tabel sumber dan tabel referensi, ditentukan dengan cara menspesifikan kedudukan tabel sumber apakah dikiri atau kanan
+                Jika tidak ada data referensi yg cocok, maka data pada tabel sumber yg ditampilkan tetapi tabel referensi akan berisi null
+        
+            Left Outer Join 
+                tipe join yang menampilkan semua data pada tabel pertama untuk digabung dengan tabel kanan, meskipun data tidak ada pada ruas kanan (null tetap ditampilkan)
+                    SELECT * FROM tabel-1 LEFT OUTER JOIN tabel-2 ON tabel-1.field = tabel-2.field;
+
+            Right Outer Join 
+                tipe join yang menampilkan semua data pada tabel kedua untuk digabung dengan tabel kiri, meskipun data tidak ada pada ruas kiri (null tetap ditampilkan)
+                    SELECT * FROM tabel-1 RIGHT OUTER JOIN tabel-2 ON tabel-1.field = tabel-2.field;
+
+            Full Outer Join (Tidak didukung pada MySQL)
+                tipe join yang menampilkan semua data pada kedua tabel, meskipun data tidak ada pada ruas kiri (null tetap ditampilkan)
+                    SELECT * FROM tabel-1 FULL OUTER JOIN tabel-2 ON tabel-1.field = tabel-2.field;
+
+            Cross Join 
+                tipe join yang menampilkan semua kemungkinan kombinasi baris dalam kedua tabel (menggabungkan semua baris pada tabel pertama dan kedua)
+                    SELECT * FROM tabel-1 CROSS JOIN tabel-2;
+
+Subqueries 
+    Perintah SQL SELECT,FROM,WHERE yg terdapat pada perintah SQL lain
+    Digunakan untuk mengambil/mencari data yang berelasi lebih dari 1 tabel
+
+    Subqueries terdiri atas 2 atau lebih perintah SQL
+        SELECT tabel-1.field FROM tabel-1
+            WHERE tabel-1.field lain IN (SELECT tabel-2.field (yg Foreign key dengan tabel-1.field lain) FROM tabel-2.field WHERE data_tabel-2.field lain)     
+    
+    tabel-1.field lain pada WHERE harus sama dengan tabel-2.field (FK) agar bisa ketemu datanya 
+    
+Union 
+    untuk mendapatkan tabel gabungan dari 2 tabel yang ada 
+    maka akan menampilkan semua field pada tiap tabel 
+        SELECT tabel-1.field FROM tabel-1 UNION SELECT tabel-2.field FROM tabel-2;
+
+Intersect 
+    operator untuk memperoleh data dari 2 tabel dimana data yg ditampilkan adalah yg memenuhi 2 perintah dengan ketentuan data yg hrusnya sama/sesuai 
+        SELECT tabel-1.field, tabel-1.field,... FROM tabel-1 INTERSECT SELECT tabel-2.field, tabel-2.field,... tabel-n.field FROM tabel-2.field;
+
+    pastikan SELECT nama field yang harus sama dengan INTERSECT SELECT (FK) agar bisa ketemu datanya
+
+Except 
+    operator untuk memperoleh data dari tabel pertama dimana data yg ditampilkan adalah data yg tidak memenuhi 2 perintah sebelumnya
+        SELECT tabel-1.field, tabel-1.field,.. FROM tabel-1 EXCEPT SELECT tabel-2.field,tabel-2.field,... tabel-n.field FROM tabel-2.field;

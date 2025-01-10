@@ -1,0 +1,197 @@
+Pengenalan Deep Learning
+    Akan belajar mengenai artificial neural network dan multi layer perceptron 
+    Deep Learn biasanya dipakai dalam bidang yg rumit dikerjakan oleh ML, yaitu computer vision atau speech recognition
+    Deep Learn bagian dari bidang keilmuan AI yg mengajarkan komputer untuk memproses data yg teriinspirasi dari cara kerja otak manusia 
+    Deep Learn dpt mengenrjakn tugas yg lebih kompleks dri ML 
+    Deep Learn dpt mengerti gambar, teks, suara (apabila Deep Learn canggih)
+
+    Dengan Deep Learn, kita dapat mengotomatiskan tugas" yg biasanya membutuhkan kecerdasan manusia seperti mendeskripsikan gambar/mengubah file suara ke dalam teks 
+    cth : 
+    Machine Learning :
+    Input --> Ektstrasi --> Klasifikasi --> Output 
+
+    Deep Learning : 
+    Input --> Ektstrasi + Klasifikasi --> Output
+
+    Deep Learning dapat mengotomatiskan tugas" manusia seperti mengidentifikasi gambar atau mengubah file suara ke dalam teks 
+    Deep Learn penting karena model yg dapat melatih komputer untuk berpikir seperti manusia sehingga dapat menggantikan tugas manusia 
+    Deep Learn terdiri atas 3 layer, sama seperti jaringan syaraf yang membuat komputer dpt belajar
+
+Mengenal ANN (artificial neural network)
+    Model ML yg teriinspirasi dari jaringan syaraf manusia
+    ANN adalah salah satu model ML yg paling berguna dan dipakai untuk mengatasi masalah ML yg kompleks (mengklarifikasi gambar, mengenal bahasa lain, video algoritma)
+    
+    ANN memiliki suatu komponen yg disebut sebagai perceptron, perceptron sendiri dapat dianggap sebagai neuron 
+    Cara kerjanya sebagai berikut:
+        Input --> Weights --> Sum --> Non-Linearity --> Output
+        1. Input menerima masukan berupa angka
+        2. Setiap input memiliki bobotnya masing", yg akan menjadi parameter dari perceptron untuk mempelajari input 
+        3. Lalu penjumlahan input, input dikalikan dengan weight masing". Lalu ditambahkan dengan bias dari suatu angka/konstanta 
+            Nilai bias dapat mengubah kurva fungsi aktivasi ke atas/ke bawah sehingga dapat meminimalisir error (Sehingga Program dapat mencari data lebih leluasa)
+            Hasil penjumlahan ini akan disebut weighted sum 
+        4. Aplikasikan weighted sum pada suatu fungsi aktivasi/Non-Linearity function. Fungsi ini digunakan untuk memetakan nilai yg dihasilkan menjadi nilai yg diperlukan 
+            Sehingga membantu perceptron menyesuaikan pola untuk data non linear 
+        5. Maka muncullah output berupa hasil perhitungan sebuah perceptron dlm bentuk numerik 
+
+    Deep Layer memiliki 3 layer, yaitu input layer, hidden layer dan output layer
+    Hidden layer adalah dense layer antara input dan output layer, dan bisa terdiri dari 0  atau bahken lebih dari 5 hidden layer
+    Hidden layer dan output layer memiliki perceptron, sedangkan input layer hanya berisi angka 
+
+    Input dan output layer dapat terlihat, sedangkan hidden tidak 
+    Semakin banyak hidden layernya, maka semakin lama ANN menghasilkan output, tetapi juga semakin kompleks masalah yg dapat terpecahkan 
+
+Gambaran Deep Learn pada industri 
+    Data tidak terstruktur sangat banyak digunakan, sehingga deep learning sangat dibutuhkan 
+    Sebelum deep learn ada, pendekatan dilakukan dengan menjelaskan suatu karakteristik/fitur dari objek tertentu, lalu dirancang filter pemrosesan gambar agar sesuai dengan
+        karakteristik/fitur dari objek tertentu
+        Contohnya seperti edge detection untuk mengidentifikasi edge atau titik" tertentu. Bisa juga dengan teknik lain 
+        Sehingga, program akan menghasilkan output berupa berapa banyak skor kemiripan input dengan objek tertentu
+    
+    Custom Vision
+        Ketika kita melihat sesuatu, terdapat 2 sistem yg bekerja pada tubuh kita, yaitu mata dan sistem kognitif. Mata untuk merepresentasikan input yg diterima 
+            sedangkan sistem kognitif menjelaskan apa yg dilihat oleh mata (memahami apa yg sedang terjadi)
+        Komputer juga dibuat dan memiliki pandangan yg hampir sama dengan manusia, yg disebut computer vision (bahkan lebih canggih dri manusia)
+        
+        Computer vision dibuat dengan membangun metode untuk pembentukan gambar (meniru mata) dan persepsi mesin (meniru sistem kognitif)
+        Pembentukan gambar (Image Generative) dibuat dengan menggunakkan sistem sensor, kamera pengaturan design, layout
+        Persepsi Mesin (Machine Perception) dibuat dengan menggunakkan deep learning dan ML 
+        
+        Sehingga, cara kerjanya adalah 
+        Input --> Sensing Device --> Interpreting Device --> Output
+
+        Maka, computer vision memungkinkan komputer untuk mendapatkan info dari gambar, video, input visual yg lain 
+        Tapi, computer vision cukup sulit karena membutuhkan sistem pemrosesan pararel untuk memproses data dan sistem kontrol yg kompleks 
+
+        Sebelum ada AI, program mengekstrak info dari denoising, edge detection, texture detection, morphological operation (shape-based)
+        tapi skrg, menggunakkan CNN (Convulational Neural Network)
+        AI perlu diberikan banyak data gambar dan solusi sehingga AI dapat mengklarifikasi gambar baru 
+    
+        Medical Imaging Data juga menggunakkan custom vision 
+            dengan memberikan diagnosis, pengobatan, dan prediksi penyakit. 
+        Custom vision dapat menafsirkan gambar x-ray, CT Scan, MRI lebih jelas, sehingga mempermudah kerja dokter 
+
+        Computer vision juga digunakan untuk memprediksi dan menganalisa gejala gangguan gigi, neurologis, dan neuropathy, memantau kehilangan darah, mendeteksi covid
+        COVID-Net dgn teknologi deep neural network mendeteksi akurasi 90 persen dalam mendeteksi covid melalui rontgen dada
+        Lalu, Gauss Surgical memproduksi alat untuk memonitori darah secara RT, aplikasi sederhana computer vision berbasis cloud 
+            Alat ini memprediksi banyaknya darah yg hilang, memaksimalkan proses tranfusi darah , mendeteksi adanya pendarahan 
+
+    Pengolahan Text 
+        Digital Assistent pada google 
+        Digital Assistent dibangun dengan menggunakkan NLP (Natural Language Processing), dimana kita dapat berkomunikasi dengan AI menggunakkan bahasa alami 
+            tidak perlu menggunakkan bahasa pemrograman
+        NLP adalah subbidang AI untuk memproses, menganalisa, memahami, dan menghasilkan bahasa manusia 
+        NLP trmsuk bidang AI karena pemrosesan bahasa adlah bagian dari kecerdasan manusia (sehingga, hanya manusia yg dapat berbahasa)
+
+        NLP mencakup algoritma, metode, pemecahan masalah yg menggunakkan text sebagai input 
+        NLP akan menghasilkan output berupa label, representasi semantik dan sebagainya
+        NLP banyak digunakan di aplikasi AI 
+
+        NLP makin banyak digunakan sehingga menjadi prospek yg bagus untuk belajar AI 
+        NLP dapat digunakan untuk analisis sentimen untuk social media monitoring 
+        
+        NLP juga digunakan pada search engine
+        Search engine menggunakkan query analisis, query analisis akan mengidentifikasi intensitas user mencari suatu kata
+            jadi, jika mencari suatu kata,benda,dll, maka akan muncul informasi dan identitas dari kata trsbut 
+        Search engine juga menggunakkan fungsi koreksi dan rekomendasi query 
+
+Latihan membuat Deep Learning
+    Secara sederhana, dapat dengan menggunakkan teachable machine website
+    teachable machine adalah website untuk membuat model DL secara sederhana, sangat cocok untuk beginner 
+    teachable machine dapat mengajari komputer untuk mengenal gambar, suara, pose tanpa menulis kode 
+        lalu dimasukkan ke dalam projek aplikasi apapun.
+    ekstensinya seperti TensorFlow, TensorFlow.js, TensorFlow Lite
+
+    langkahnya:
+        1. membuat project baru, 
+        2. memilih model machine learning, apakah image, audio, atau pose project.
+        3. untuk image project, ada 2 pilihan.. standard image model/embedded image model (standard untuk gambar biasa, embedded untuk gambar hitam putih (mikroskopis))
+        4. lalu disediakan label kelas dan dataset yg sesuai dengan permasalahan kita 
+        5. masukkan dataset dalam label tersebut (semakin banyak dataset, semakin bagus)
+        6. setelah itu, kita train model AI 
+        7. lalu kita dapat menguji AI dan lakukan export model sesuai dengan extention yg diperlukan 
+
+    TensorFlow.js 
+        digunakan untuk AI website 
+        framwork yg kompatibel dengan TensorFlow API, mengubah format menjadi JSON file 
+
+        Terdapat tingkatan pada API 
+                Layers API  --->    Keras Model 
+                Core API    --->    TensorFlow, SavedModel
+        Browser             Node.js 
+        Web GL              TF CPU , TF GPU, TF TPU 
+
+        Untuk Layers API, harus banyak belajar layer-layer pada Keras 
+        Core API untuk menangani model TensorFlow, Core API mengimplementasikan operasi graf pada level yg kompleks 
+            seperti deklarasi tensor (data input), operasi pada tensor, memori, eksekusi fungsi 
+        Core API bekerja dengan browser menggunakkan WebGL untuk menggunakkkan resource yg mendukung proses training dan pengambilan prediksi 
+            untuk Node.js, bisa membuat aplikasi server-side dengan resource CPU, GPU, TPU
+        
+        TensorFlow.js memiliki keuntungan
+            1. memudahkan integrasi dengan teknologi web seperti UI 
+            2. TensorFlow.js dapat ditulis dengan bahasa script
+            3. Dapat mengimport bbrp file, seperti DOM (document object model) canvas sehingga kita dapat import data lgsg dri input user di internet 
+
+        Kekurangan
+            1. penggunaan web browser sebagai platform akan mempengaruhi performa (karena website merupakan aplikasi single proses dan tidak bekerja dengan CPU)
+                Namun, web browser modern sdh menyediakan API yg bisa menggunakkan local hardware akselerator dengan Web GL dan Web GPU, sehingga TensorFlow.js dapat performa yg baik 
+        sehingga, TensorFlow.js sangat cocok untuk website
+    
+    TensorFlow Lite
+        TF-Lite adalah framework yg dapat menjalankan model TF pada mobile dan IoT (internet of things)
+        ML pada mobile dapat digunakan untuk membantu proses manusia 
+
+        Keuntungan TF-Lite
+            1. tidak memerlukan server, sehingga tidak perlu internet (dan dapat menjaga privasi manusia)
+            2. memiliki latency dan ukuran binary yg kecil, sehingga tidak perlu bekerja berat
+
+        cth ML:
+            1. Traveloka OCR dapat mengenal identitas seseorang dari KTP 
+            2. Google Translate Instant Camera yg langsung menerjemahkan bahasa asing dengan foto 
+
+        Ilustrasi sederhana mengenai TF-Lite
+                Trained TensorFlow Model
+                TensorFlow Lite Converter
+                TensorFlow Lite Model 
+
+        Android         IOS             Linux
+        Java/C++ API    Swift/C API     Python/Java/C++ API
+        Kernel/Ops      Kernels/Ops     Kernels/Ops
+
+        TF-Lite dilengkapi dengan API untuk berbagai bahasa, seperti C++,C, Swift, Java, dan Python
+
+Proses di balik Deep Learning 
+    Cth kode pemrograman dari sebuah AI baju yg menggunakkan TensorFlow Keras
+
+    mnist = tf.keras.datasets.fashion_mnist                     // dataset 10 kelas berisi baju, sepatu, tas, dll dari Keras
+    (x_train, y_train),(x_test, y_test) = mnist.load_data()     // mengload data, menyiapkan data dan membagi data menjadi data uji dan data latih 
+    X_train, x_test = x_train / 255.0, x_test / 255.0           // membagi tiap pixel pada gambar dengan 255 (karena tiap pixel memiliki nilai 0 sampe 255)
+    model = tf.keras.models.Sequential([                        // arsitektur jaringan saraf yg dilatih (membuat model AI di Keras)
+        tf.keras.layers.Flatten(input_shape=(28, 28)),          // input layer (resolusi 1 gambar itu 28 x 28, lalu diflatten kan dri yg matrix 2d mnjdi array 1d, shingga menjadi array 1d 784 elemen)
+        tf.keras.layers.Dense(512, activation=tf.nn.relu),      // hidden layer (dense layer pada Keras dapat giunakan sebagai hidden dan output layer, 512 adalah banyak perceptron, relu (rectified linear unit) adalah fungsi aktivasi)
+        tf.keras.layers.Dense(10, activation=tf.nn.softmax)     // output layer (membuat dense layer dan jumlah unit menyesuaikan jumlah label pada dataset, softma digunakan karena terdapat 10 kelas)
+    ])                                                          // sigmoid untuk 2 kelas, softmax untuk 3 keatas
+    model.compile(optimizer=tf.optimizers.Adam()),              // fungsi compile agar model belajar dan mengspesifikasikan optimizer dan loss (optimizer yg dipakai adalah Adam)
+                loss='sparse_categorical_crossentropy',         // loss untuk menghitung perbedaan output prediksi dan output sesungguhnya, optimizer untuk menyesuaikan nilai parameter sehingga meminimalisir kesalahan saat model belajar (sparce categorical untuk klasifikasi 3 kelas/lebih, dibawah itu pakai binary cross entropy)
+                metrics=['accuracy'])                           // untuk menampilkan metrik yg dipilih saat model belajar 
+    model.fit(x_train, y_train, epochs=10)                      // model dapat belajar, epochs adalah berapa kali model melakukan propagasi balik
+
+    perhitungan dari sebuah perceptron
+    y = ⎰ (W0 + ∑ xi wi)
+    
+    y = output
+    ⎰ = fungsi aktivasi (non linear function)
+    w0 = bias
+    ∑ = penjumlahan (sum)
+    xi = input 
+    wi = beban (weight)
+
+    fungsi aktivasi pada perceptron bertugas agar jaringan saraf mampu menyesuaikan pola pada data non-linear 
+    tanpa fungsi aktivasi, jaringan saraf hanya bisa mengenal pola linear berupa garis
+        dengan fungsi aktivasi, jaringan saraf dapat mengenali pola non linear sehingga jaringan saraf dapat mencari data yg sesuai 
+
+    hardware yg digunakan untuk AI bljr adalah menggunakkan CPU (Central Processing Unit), GPU (Graphical Processing Unit), dan TPU (Tensor)
+    jika hardware canggih, maka tidak perlu khawatir karena GPU akan mendukung proses AI 
+    tetapi kalau misalkan AI digunakan pada hardware terbatas atau menggunakkan cloud
+
+    Jika AI butuh belajar secara instens dan perlu pelatihan masif, maka dapat menggunakkan GPU dan TPU 
+    Tapi jika AI lebih sederhana tanpa melibatkan neural network seperti Decision tree, k-means clustering, dll, maka cukup CPU 

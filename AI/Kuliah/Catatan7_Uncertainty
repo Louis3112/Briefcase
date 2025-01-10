@@ -1,0 +1,346 @@
+Uncertainty 1
+    Penalaran Non Monoton 
+        pada penalaran induktif, terdapat 4 contoh premis
+            terdiri atas
+            Premis 1 : Aljabar sulit 
+            Premis 2 : Geometri sulit 
+            Premis 3 : Integral sulit 
+            Konklusi : Matematika sulit
+             
+            Konklusi dapat berubah jika ada premis baru
+            Premis 4 : AI sulit
+
+            Penalaran induktif sangat dimungkinkan adanya uncertainty (ketidakpastian), sehingga konklusi "matematika sulit" menjadi salah 
+            
+            Penalaran dmn adanya tambahan fakta baru mengakibatkan uncertainty yg disebut penalaran non motonis
+                ciri" :
+                    1. mengandung uncertainty
+                    2. adanya perubahan pada knowledge
+                    3. adanya penambahan fakta dapat mengubah konklusi yg sudah ada
+                    4. jika S adalah konklusi dari D, bisa jadi S tidak akan dibutuhkan lagi 
+            Penalaran non motonis memiliki ciri" : konsisten dan pengetahuan lengkap
+            utk mengetahui uncertainty pada penalaran non motonis, digunakan penalaran statistik 
+        
+    Probabilitas 
+        Bentuk Theorme Bayes 
+            p(Hi | E) = (p(E | Hi) * p(Hi)) / (Σ{k=1}^{n} p(E | Hk) * p(Hk))
+                p(Hi | E)	= probabilitas hipotesis Hi benar jika diberi bukti E
+                p(E | Hi)	= probabilitas munculnya evidence E, jika diketahui hipotesis Hi benar
+                p(Hi)	= probabilitas hipotesis Hi tanpa memandang bukti apapun.
+                n       = jumlah hipotesis yg mungkin ada 
+        
+        cth : 
+        Si Ani mengalami gejala ada bintik-bintik di wajahnya. Dokter menduga bahwa Si Ani terkena: 
+            Cacar, dengan:
+                Probabilitas munculnya bintik-bintik di wajah, jika Si Ani terkena cacar; 
+                    p(Bintik2|Cacar) = 0,8. 
+                Probabilitas Si Ani terkena cacar tanpa gejala apapun; 
+                    p(Cacar) = 0,4.
+            Alergi, dengan
+                Probabilitas munculnya bintik-bintik di wajah, jika Si Ani alergi;
+                    p(Bintik2|Alergi) = 0,3.
+                Probabilitas Si Ani terkena alergi tanpa gejala apapun; 
+                    p(Alergi) = 0,7.
+            Jerawat, dengan
+                Probabilitas munculnya bintik-bintik di wajah, jika Si Ani jerawatan; 
+                    p(Bintik2|Jerawatan) = 0,9.
+                Probabilitas Si Ani jerawatan tanpa gejala apapun; 
+                    p(Jerawatan) = 0,5.
+            
+            Probabilitas Si Ani terkena cacar karena ada bintik-bintik di wajahnya adalah:
+                p(Cacar | Bintik2) = (p(Bintik2 | Cacar) * p(Cacar)) / (p(Bintik2 | Cacar) * p(Cacar) + p(Bintik2 | Alergi) * p(Alergi) + p(Bintik2 | Jerawat) * p(Jerawat))
+                p(Cacar | Bintik2) = (0.8 * 0.4) / ((0.8 * 0.4) + (0.3 * 0.7) + (0.9 * 0.5)) = 0.32 / 0.98 = 0.327
+                    
+            Probabilitas Si Ani terkena alergi karena ada bintik-bintik di wajahnya adalah:
+                p(Alergi | Bintik2) = (p(Bintik2 | Alergi) * p(Alergi)) / (p(Bintik2 | Cacar) * p(Cacar) + p(Bintik2 | Alergi) * p(Alergi) + p(Bintik2 | Jerawat) * p(Jerawat))
+                p(Alergi | Bintik2) = (0.3 * 0.7) / ((0.8 * 0.4) + (0.3 * 0.7) + (0.9 * 0.5)) = 0.21 / 0.98 = 0.214
+            
+            Probabilitas Si Ani jerawatan karena ada bintik-bintik di wajahnya adalah :
+                p(Jerawatan | Bintik2) = (p(Bintik2 | Jerawatan) * p(Jerawatan)) / (p(Bintik2 | Cacar) * p(Cacar) + p(Bintik2 | Alergi) * p(Alergi) + p(Bintik2 | Jerawat) * p(Jerawat))
+                p(Jerawatan | Bintik2) = (0.9 * 0.5) / ((0.8 * 0.4) + (0.3 * 0.7) + (0.9 * 0.5)) = 0.45 / 0.98 = 0.459
+            
+            Setelah pengujian probabilitas, muncul satu atau lebih evidence baru, maka 
+                p(H | E, e) = p(H | E) * p(e | E , H) / p(e | E)
+                    e = evidence lama 
+                    E = evidence baru 
+                    p(H | E,e) = probabilitas hipotesis H benar jika muncul evidence baru dari evidence lama
+                    p(H | E)   = probabilitas hipotesis H benar jika ada evidence E 
+                    p(e | E , H) = kaitan antara e dan E jika hipotesis H benar
+                    p(e | E)   = kaitan antara e dan E tanpa memandang hipotesis apapun
+           
+            cth :
+                Bintik-bintik di wajah merupakan gejala bahwa seseorang terkena cacar. 
+                Observasi baru menunjukkan bahwa selain adanya bintik-bintik di wajah, panas badan juga merupakan gejala orang terkena cacar. 
+                Antara munculnya bintik-bintik di wajah dan panas badan juga memiliki keterkaitan satu sama lain.
+             
+                Bintik" <----> Panas 
+                    |->  Cacar <-|
+    
+    Jaringan Bayes 
+        Pengembangan lebih jauh dari Theorema Bayes 
+        cth":
+            1. Munculnya PHK karena banyak pengangguran 
+            2. Munculnya pengangguran dapat menjadi evidence karena banyaknya gelandangan 
+            3. Dari PHK dan gelandangan, bisa jadi bisa diakibatkan karena adanya krisis moneter 
+            
+                        Krisis Moneter 
+            PHK                             Gelandangan
+                        Pengangguran                        
+            
+            | Atribut                                 | Prob | Keterangan                                                                                  |
+            |-----------------------------------------|------|---------------------------------------------------------------------------------------------|
+            | p(Pengangguran | PHK, Gelandangan)      | 0.95 | Keterkaitan antara pengangguran & PHK, jika muncul gelandangan.                             |
+            | p(Pengangguran | PHK, ¬Gelandangan)     | 0.20 | Keterkaitan antara pengangguran & PHK, jika tidak muncul gelandangan.                       |
+            | p(Pengangguran | ¬PHK, Gelandangan)     | 0.75 | Keterkaitan antara pengangguran & tidak ada yang diPHK, jika muncul gelandangan.            |
+            | p(Pengangguran | ¬PHK, ¬Gelandangan)    | 0.40 | Keterkaitan antara pengangguran & tidak ada yang diPHK, jika tidak muncul gelandangan.      |
+
+            | p(PHK | Krismon)                        | 0.50 | Probabilitas orang diPHK jika terjadi krismon.                                              |
+            | p(PHK | ¬Krismon)                       | 0.10 | Probabilitas orang diPHK jika tidak terjadi krismon.                                        |
+            
+            | p(Pengangguran | Krismon)               | 0.90 | Probabilitas muncul pengangguran jika terjadi krismon.                                      |
+            | p(Pengangguran | ¬Krismon)              | 0.30 | Probabilitas muncul pengangguran jika tidak terjadi krismon.                                |
+            | P(Krismon)                              | 0.80 |                                   
+
+    Faktor Kepastian (Certainty Factor)
+        ukuran kepastian dari suatu fakta 
+
+        CF[h,e] = MB[h,e] - MD[h,e]
+            CF[h,e] = Certainty Factor 
+            MB[h,e] = Measure of Belief (ukuran kepercayaan terhadap hipotesis jika diberi evidence)
+            MD[h,e] = Measure of Disbelief (ukuran ketidakpercayaan terhadap hipotesis jika diberi evidence)
+        
+        3 hal yg mungkin terjadi pada Certainty Factor 
+            e1 ---> h <--- e2
+            Beberapa evidence dikombinasikan utk menentukan CF dari suatu hipotesis
+                MB[h, e1 ∧ e2] = {                      0                    }   MD[h, e1 ∧ e2] = 1
+                                 {  MB[h, e1] + MB[h, e2] * (1 - MB[h, e1])  }       lainnya
+                MD[h, e1 ∧ e2] = {                      0                    }   MB[h, e1 ∧ e2] = 1
+                                 {  MD[h, e1] + MD[h, e2] * (1 - MD[h, e1])  }       lainnya
+                cth:
+                    Ani menderita bintik-bintik di wajahnya. Dokter memperkirakan Si Ani terkena cacar dengan kepercayaan, 
+                        MB[Cacar,Bintik2] = 0,80 dan MD[Cacar,Bintik2] = 0,01
+                     
+                    Maka:
+                        CF[Cacar,Bintik2] = 0,80 - 0,01 = 0,79
+                
+                    Jika ada observasi baru bahwa Si Ani juga panas badan dengan kepercayaan, 
+                        MB[Cacar,Panas] = 0,70 dan MD[Cacar,Panas] = 0,08; 
+                    
+                    Maka:
+                        MB[Cacar,Bintik2 ^ Panas]	= 	0,8 + 0,7 * (1-0,8) 	= 	0,94
+                        MD[Cacar,Bintik2 ^ Panas]	= 	0,01 + 0,08 * (1-0,01)  = 	0,0892
+                        CF[Cacar,Bintik2 ^ Panas]	=	0,94 - 0,0892       	= 	0,8508
+
+                    Diyakini Ani terkena cacar diliat dari bintiknya adalah 0,79
+                    tapi, setelah ada gejala lain yaitu panas, certainty nya menjadi 0,8508
+
+                    Semula faktor kepercayaan bahwa Si Ani terkena cacar kalau dilihat dari gejala munculnya bintik-bintik di wajah adalah 0,79. 
+                    Setelah muncul gejala baru yaitu panas badan, maka faktor kepercayaan Si Ani terkena cacar menjadi berubah (lebih besar) yaitu 0,8508. 
+                    
+                cth lain :
+                    Tahun 2002, turunnya devisa diakibatkan karena kasus TKI di malay   
+                        MB[Devisa turun, TKI] = 0,8 dan MD[Devisa turun,TKI] = 0,3
+                        CF[Devisa turun, TKI] = 0,8 - 0,3 = 0,5
+
+                    Ternyata, kemarau berkepanjangan juga mengakibatkan gagal panen sehingga devisa turun juga
+                        MB[Devisa turun, gagal panen] = 0,75 dan MD[Devisa turun, gagal panen] = 0,1 
+                        CF[Devisa turun, gagal panen] = 0,75 - 0,1 = 0,65   
+
+                    maka kalkulasinya adalah 
+                        MB[DevisaTurun,TKI ^ EksporTurun]	
+                        = 	MB[DevisaTurun,TKI] + MB[DevisaTurun,EksporTurun]*(1-MB[DevisaTurun,TKI])
+                        =	0,8 + 0,75 * (1-0,8) 
+                        = 	0,95
+
+                        MD[DevisaTurun,TKI ^ EksporTurun]	
+                        = 	MD[DevisaTurun,TKI] + MD[DevisaTurun,EksporTurun]*(1-MD[DevisaTurun,TKI])
+                        =	0,3 + 0,1 * (1-0,3)
+                        =	0,37
+
+                        CF[DevisaTurun,TKI ^ EksporTurun]	
+                        =	MB[DevisaTurun,TKI ^ EksporTurun]- 	MD[DevisaTurun,TKI ^ EksporTurun]
+                        =	0,95 - 0,37
+                        =	0,58
+
+                    ternyata, isu terorisme bom bali juga mempengaruhi devisa turun 
+                        MB[DevisaTurun,BomBali] = 0,5 dan MD[DevisaTurun,BomBali] = 0,3; 
+                        CF[DevisaTurun,BomBali] = 0,5 - 0,3 = 0,2 
+
+                    maka kalkulasi terbarunya 
+                    MB[DevisaTurun,TKI ^ EksporTurun ^ BomBali]	
+                        = 	MB[DevisaTurun,TKI ^ EksporTurun] + MB[DevisaTurun,BomBali]* (1-MB[DevisaTurun, TKI ^ EksporTurun])
+                        =	0,95 + 0,5 * (1-0,95) = 0,975
+                    
+                    MD[DevisaTurun,TKI ^ EksporTurun ^ BomBali]	
+                        = 	MD[DevisaTurun,TKI ^ EksporTurun] + MD[DevisaTurun,BomBali]* (1-MD[DevisaTurun, TKI ^ EksporTurun])
+                        =	0,37 + 0,3 * (1-0,37) = 0,559
+                    
+                    CF[DevisaTurun,TKI ^ EksporTurun ^ BomBali]	
+                        =	MB[DevisaTurun,TKI ^ EksporTurun ^ BomBali] - MD[DevisaTurun,TKI ^ EksporTurun ^ BomBali]
+                        =	0,975 - 0,559 = 0,416
+            
+            h1 AND h2 
+                CF dihitung dari banyaknya hipotesis 
+                    MB[h₁ ∧ h₂,e] = min(MB[h₁,e],MB[h₂,e])
+                    MB[h₁ ∨ h₂,e] = max(MB[h₁,e],MB[h₂,e])
+                
+                    MD[h₁ ∧ h₂,e] = min(MD[h₁,e],MD[h₂,e])
+                    MD[h₁ ∨ h₂,e] = max(MD[h₁,e],MD[h₂,e])    
+
+                    cth :
+                        Ani menderita bintik-bintik di wajahnya. Dokter memperkirakan Ani kena cacar dengan certainty 
+                            MB[Cacar,Bintik2] = 0,80 dan MD[Cacar,Bintik2] = 0,01. 
+                            CF[Cacar,Bintik2] = 0,80 - 0,01 = 0,79. 
+                        Jika observasi tersebut juga memberikan kepercayaan bahwa Si Ani mungkin juga terkena alergi dengan certainty
+                            MB[Alergi,Bintik2] = 0,4 dan MD[Alergi,Bintik2] = 0,3; 
+                            CF[Alergi,Bintik2] = 0,4 - 0,3 = 0,1. 
+                        
+                        Untuk mencari CF[Cacar ^ Alergi, Bintik2] dapat diperoleh dari:
+                            MB[Cacar ^ Alergi, Bintik2]	= min(0,8; 0,4) = 0,4
+                            MD[Cacar ^ Alergi, Bintik2]	= min(0,01; 0,3) = 0,01
+                            CF[Cacar ^ Alergi, Bintik2]	=	0,4 - 0,01 = 0,39
+                        
+                        Untuk mencari CF[Cacar  Alergi, Bintik2] dapat diperoleh dari:
+                            MB[Cacar V Alergi, Bintik2]	= 	max(0,8; 0,4) = 0,8
+                            MD[Cacar V Alergi, Bintik2]	= 	max(0,01; 0,3) = 0,3
+                            CF[Cacar V Alergi, Bintik2]	=	0,8 - 0,3 = 0,5
+
+                        Awalnya, CF Ani terkena cacar dari gejala bintik" adalah 0,79 
+                        CF Ani alergi dari gejala bintik" adalah 0,1 
+
+                        Dengan ada 2 gejala tersebut, mempengaruhi 2 hipotesis yg berbeda 
+                            CF Ani menderita cacar dan alergi adalah 0,39
+                            CF Ani menderita cacar atau alergi adalah 0,5
+            A <---> B <---> C
+                Beberapa aturan saling bergandengan, uncertainty dari suatu aturan menjadi input utk aturan lain 
+                    MB[h,s] = MB'[h,s] * max(0,CF[s,e])
+                    MB'[h,s] = ukuran kepercayaan h berdasarkan keyakinan penuh terhadap validitas s
+                
+                    IF terjadi PHK
+                    THEN muncul banyak pengangguran 
+                    (CF[Pengangguran,PHK]=0,9)
+                    
+                    IF muncul banyak pengangguran
+                    THEN muncul banyak gelandangan 
+                    (MB[Gelandangan,Pengangguran]=0,7)
+                
+                    Maka:
+                        MB[Gelandangan, Pengangguran] = (0,7)*(0,9)= 0,63
+                
+Uncertainty 2  
+
+    Teori Dempster Shafer 
+        teori matematika untuk pembuktian belief functions and plausible reasoning (fungsi kepercayaan dan pemikiran masuk akal)
+        digunakan untuk mengkombinasikan potongan info utk mengkalkulasi kemungkinan terjadi 
+        dikembangkan Arthur P.Dempster dan Glenn Shafer
+
+        dengan rumus 
+        [Belief, Plausibility]
+            Belief (Bel) adalah kekuatan evidence utk mendukung himpunan proposisi 
+                jika nilai 0, tidak ada evidence
+                jika nilai 1, menunjukkan evidence 
+            Plausibility (Pl) dinotasikan :
+                Pl(s) = 1 - Bel(not s)
+                bernilai 0 sampai 1
+                Jika yakin dengan not s, maka Bel(not s) = 1, Pl(not s) = 0
+        
+        Adanya frame of discernment yg dinotasikan dengan theta  -> semua kumpulan hipotesis yg ada
+             = {A,F,D,B}
+                A = Alergi
+                F = Flu 
+                D = Demam
+                B = Bronkitis
+        Perlu diketahui masing"" elemen theta, karena tidak semua evidence secara langsung mendukung tiap elemen
+            cth, panas hanya mendukung {F,D,B}
+        
+        Sehingga, perlu probabilitas fungsi densitas (m)
+            Nilai m tidak mendefinisikan elemen theta , namun juga subsetnya 
+            Jika theta berisi n elemen, maka subset dari theta semuanya berjumlah 2n 
+        Jumlah semua m dalam subset theta = 1
+        Jika tidak ada info apapun utk memilih hipotesis, maka nilai m{theta} = 1,0
+            Jika diket panas adalah gejala flu, demam, bronkitis dengan m{F,D,B} = 0.8
+            maka m{theta} = 1 - 0.8 = 0.2
+        
+        Jika diket 
+            X adlah subset dari theta, dengan m1 sebagai fungsi densitas
+            Y adlah subset dari theta, dengan m2 sebagai fungsi densitas
+            maka fungsi kombinasinya 
+            m3(z) = Sigma X irisan Y = Z, m1(X).m2(Y)/ 1- Sigma X irisan Y  = phi, m1(X).m2(Y)
+
+        Cth Soal :
+            1. Ani mengalami gejala panas, dari diagnosa.. kemungkinan dia menderita flu, demam, bronkitis
+                    Gejala panas
+                        Setelah diobservasi, Diket bahwa m1{F,D,B} = 0.8 
+                        maka m1{theta} = 1 - 0.8 = 0.2
+                Tapi, esoknya ani datang dengan gejala baru, hidung buntu 
+                    Gejala Hidung buntu 
+                        Setelah diobservasi, Diket bahwa m2{A,F,D} = 0.9 
+                        maka m2{theta} = 1 - 0.9 = 0.1
+                
+                Jika muncul gejala baru, maka harus dihitung densitas baru utk kombinasi baru (m3)
+                |                    |   {A,F,D}   |     (0.9)    |  theta    |  (0.1)   
+                | {F,D,B}    (0.8)   |   {F,D}     |     (0.72)   |  {F,D,B}  |  (0.08)
+                |   theta    (0.2)   |   (A,F,D)   |     (0.18)   |  theta    |  (0.02)
+
+                Kolom pertama berisi himp bagian pada gejala pertama (panas) dengan m1 sebagai fungsi densitas (F,D,B)
+                Baris pertama berisi semua himp bagian pada gejala kedua (hidung buntu) dengan m2 sebagai fungsi densitas (A,F,D)
+                Baris kedua dan ketiga pada kolom kedua adalah irisan dari 2 himpunan ((F,D) dan (A,F,D))
+
+                Maka dihitunglah densitas baru utk m3 dengan rumus sbeelumnya
+                    m3{F,D} = 0.72 / 1 - 0 = 0.72
+                    m3{A,F,D} = 0.18 / 1 - 0 = 0.18
+                    m3{F,D,B} = 0.08 / 1 - 0 = 0.08
+                    m3{theta} = 0.02 / 1 - 0 = 0.02
+
+                    Keterangan 
+                        m{F,D,B} awalnya 0,8, tapi karena ada gejala baru yaitu hidung buntu, menjadi 0.08 
+                        m{A,F,D} awalnya 0.9, tapi karena ada gejala baru yaitu panas, menjadi 0.18
+                        Dengan adanya 2 gejala, maka nilai densitas paling kuat adalah m{F,D}
+
+                Tapi, ternyata Ani blg kalau dia baru makan udang 
+                    Makan udang
+                        Setelah diobservasi, Diket bahwa m4{A} = 0.6 
+                        maka m4{theta} = 1 - 0.6 = 0.4
+                    
+                    Sehingga, perlu dihitung densitas barunya
+                        |           |           |   {A}   |   (0.6)    |  theta    |  (0.4)   
+                        | {F,D}     |  (0.72)   |    ∅    |   (0.432)  |  {F,D}    |  (0.288)
+                        | {A,F,D}   |  (0.18)   |   {A}   |   (0.108)  |  {A,F,D}  |  (0.072)
+                        | {F,D,B}   |  (0.08)   |    ∅    |   (0.048)  |  {F,D,B}  |  (0.032)
+                        | theta     |  (0.02)   |   {A}   |   (0.012)  |  theta    |  (0.008)   
+
+                        Kolom pertama berisi himp bagian hasil kombinasi gejala 1 dan gejala 2 dengan fungsi densitas m3
+                        Baris pertama berisi himp bagian pada gejala 3 dengan fungsi densitas m4
+
+                    Maka dihitunglah densitas baru utk m3 dengan rumus sbeelumnya
+                        m5{A} = 0.108 + 0.012 / 1 - (0.432 + 0.048) = 0.231
+                        m5{F,D} = 0.288 / 1 - (0.432 + 0.048) = 0.554
+                        m5{A,F,D} = 0.072 / 1 - (0.432 + 0.048) = 0.138
+                        m5{F,D,B} = 0.032 / 1 - (0.432 + 0.048) = 0.062
+                        m5{theta} = 0.008 / 1 - (0.432 + 0.048) = 0.015    
+                    
+                Ternyata dengan gejala baru ini, diket ani alergi udang dengan nilai densitas m5{F,D} = 0.554
+                Sehingga dari 3 gejala tersebut, Ani kemungkinan paling kuat terkena flue dan demam (udang hanya memperparah)
+
+            2. Terdapat 3 jurusan yg diminati oleh Tomy, yaitu TI, Psikologi (P), Hukum (H), lalu dia mengikuti bbrp tes 
+                Tes pertama yaitu tes logika menunjukkan probabilitas densitas m1{TI,P} = 0.75
+                Tes kedua yaitu tes mtk menunjukkan probabilitas densitas m1{TI,H} = 0.8
+                Tentukan jurusan yg akan diambil Tomy
+
+                    Tes Logika 
+                        m1{TI,P} = 0.75
+                        m1{theta} = 1 - 0.75 = 0.25
+                    Tes Matematika 
+                        m1{TI,H} = 0.8
+                        m1{theta} = 1 - 0.8 = 0.2
+
+                        |           |           |   {TI,H}   |   (0.8)  |  theta    |  (0.2)   
+                        | {TI,P}    |  (0.75)   |    {TI}    |   (0.6)  |  {TI,P}   |  (0.15)
+                        | theta     |  (0.25)   |   {TI,H}   |   (0.2)  |  theta    |  (0.05)
+
+                    Sehingga diperoleh m3 merupakan kombinasi m1 dan m2
+                        m3{TI} = 0.6
+                        m3{TI,P} = 0.15
+                        m3{TI,H} = 0.2
+                        m3{theta} = 0.05
+                    maka, jurusan yg akan diambil adalah TI 

@@ -1,0 +1,190 @@
+Dasar-Dasar Simulasi (Pemodelan dan Simulasi Sistem)
+    Pendahuluan
+        Simulasi akan bermanfaat bila kita mengetahui apa yg terjadi
+        Memahami simulasi membantu kita untuk menerapkannya dengan benar dan memahami output yg dihasilkan
+    
+    Tipe Simulasi
+        Statis
+            Tidak didasarkan oleh waktu 
+            Mencakup sample acak yg diambil agar ada hasil statistik 
+                cth : Simulasi Monte Carlo 
+            cth : memilih portofolio saham
+        vs 
+        Dinamis
+            Didasarkan oleh waktu   
+            Terdapat clock mechanism yg menggerakkan waktu, sehingga variabel status berubah saat waktu berubah 
+            cth : sistem manufaktur dan jasa 
+        
+        Stokastik
+            Satu/lebih variabel input adalah variabel acak
+            Outputnya acak dengan sendirinya (self random)
+            Memberi satu titik data utk mengetahui bagaimana sistem bekerja, tiap percobaan berbeda" secara statistik 
+            
+            Input                      Output
+            Random  \              /   Random
+            Random  --> Simulasi  -->  
+            Random  /              \   Random
+
+            Stokastik memiliki waktu/kuantitas nilai yg bervariasi dlm suatu range dan berdasarkan densitas tertentu, didefinisikan oleh distribusi probabilitas
+            Nilai yg dihasilkan dari suatu distribusi disebut random variate    
+        vs
+        Deterministik 
+            Tidak ada variabel input acak 
+            Tidak ada keacakan (randomness)
+            Semua status/state yg datang dapat ditentukan setelah data input dan status awal (early state) didefinisikan
+            
+            Input                      Output
+            7  \              /   12.3
+            3.4  --> Simulasi  -->  
+            5  /              \   106
+        
+        Event-Diskrit
+            Sejumlah nilai yg mungkin (a countable number of possible values)
+            cth : jumlah item dalam 1 lot, jumlah individu dalam sekelompok org 
+        vs
+        Continue
+            Sebuah kontinum dari suatu nilai
+            cth : mesin dengan siklus waktu yg uniform-distributed antara 1.2-1.8 menit 
+    
+    Simulasi Perilaku Acak/Simulating Random Behavior
+        Random Behavior ditiru oleh simulasi dengan random number generator 
+        Bilangan yg dihasilkan random number generator sebenarnya tidak acak dalam arti sesungguhnya
+            cth psuedo random number generator yg menghasilkan urutan blgn yg sama 
+
+            fx = 1 atau 0 (maka f(1.0) = 1.0)
+            mean =  1/2
+            variance = a^2 = 1/12 
+                Distribusi (0,1) adalah random number generator
+        
+        Linear Congruential Generators (LCG)
+            Suatu urutan int Z1,Z2, Z3 didefinisikan dengan rumus rekursif 
+            Zi = (aZi-1 + c) mod m
+                a = multipler 
+                c = incre
+                m = modulus 
+
+            cth : utk menghasilkan pseudo number generator
+                a = 21 
+                c = 3 
+                m = 16  
+
+                shingga Zi = (21*Zi-1 + 3) mod 16
+                Z0 = 13 (diambil dari antara 0 sampai m-1 (15)) -> seed value, starting value 
+                
+                Z1 = (21*13 + 3) mod 16
+                   = 276 mod 16 = 4
+                
+                Ui = Zi/m
+                shingga U1 = Z1/16
+                        U1 = 4/16
+                        U1 = 0.25
+
+                utk Z2 = (21*4 + 3) mod 16
+                       = 87 mod 16 = 7
+                U2 = Z2/16
+                   = 7/16
+                   = 0.4375
+            yg dimana, jika kita lakukan penghitungan sampai i = 17 (diatas m), maka Zi dan Ui nya akan berulang dari awal
+                sehingga, Z1 = Z17 dan U1 = U17, Z2 = Z18 dan U2 = U18
+            
+            Kita melakukan lima replikasi dari suatu simulasi 
+                Untuk menjalankan model simulasi, 1 replikasi butuh 1000 x penggunaan psuedo number generator selama simulasi dilakukan 
+                Kita butuh pseudo number generator dengan cycle length 5000 x
+
+            Panduan utk memilih a,c,m utk mewujudkan maximum cycle length 
+                m = 2b, b ditentukan dari jumlah bit/kata dlm komputer yg digunakan 
+                        banyak komputer menggunakkan 32 bit/kata , sehingga angka 31 adalah pilihan terbaik
+                c dan m sedemikian sehingga greatest common factor adalah 1 (int positif satu"nya yg membagi m dan c)
+                a = 1 + 4k, k adalah blgn int 
+                Panjang siklus max dari LCG adalah m (kalau sudah m+1, kembali dari awal)
+                LCG dapat memiliki max cycle length lebih dari 2,1 milyar (2^31) blgn acak 
+            
+            Simulasi random events dalam resto drive thru 
+                1. Waktu tiba mobil di jendela resto drive thru 
+                2. Waktu yg diperlukan utk memesan 
+                3. Jumlah burger, kentang, minuman yg diorder 
+                4. Waktu yg diperlukan utk menyiapkan order 
+
+        Stream 
+            Retetan bilangan acak yg dapat dibagi dalam bagian kecil"
+            cth :
+                Stream 1 : Waktu tiba mobil di jendela resto drive thru 
+                Stream 2 : Waktu yg diperlukan utk memesan  
+            
+            Penerapannya pada LCG 
+                1. Memutuskan berapa banyak blgn acak dalam tiap stream 
+                2. Bagi urutan pseudo number generator dalam tiap stream 
+                3. Bangkitkan cycle length tiap generator
+                4. Catat nilai Zi yg menandai awal tiap stream 
+                5. Tiap stream memiliki start value yg disebut seed value
+            
+        Dua tipe LCG 
+            Mixed Congruential Generators : c > 0 
+            Multiplicative Congruential Generators : c = 0 
+                lebih efisien dari Mixed Generators, tidak perlu menambahkan c 
+                
+                Promodel Multiplicative
+                    Zi = (630,360,016.Zi-1) mod (2^31-1)
+        
+        Menguji pseudo number generator 
+            Bilangan yg dihasilkan harus independen, terdistribusi uniform antara 0 dan 1 (Uniform (0,1))
+
+            Tentukan urutan bilangan acak U1,U2,U3
+                Hipotesis utk menguji independensi 
+                H0 : Nilai Ui dari generator independen
+                H1 : Nilai Ui dari generator non independen
+                -> Uji dijalankan 
+
+                Hipotesis utk menguji uniformity 
+                H0 : Nilai Ui seragam(0,1)
+                H1 : Nilai Ui non seragam(0,1)
+                -> Uji Kolmogorov-Smirnov, Uji chi-square
+        
+        Cara membangkitkan random variate 
+            Cara membangkitkan observasi (random variates) dari distribusi selain distribusi uniform(0,1)
+            adalah dengan transformasikan observasi yg dihasilkan pseudo number generator ke distribusi yg diinginkan 
+                Nilai yg ditransformasikan adalah variate dari distribusi yg dimaksud 
+            
+            Tipe method utk membangkitkan random variate dari distribusi yg diinginkan 
+                Inverse transformation method 
+                The acceptance/rejection method 
+                The composition method 
+                The convolution method 
+                Methods employing special properties 
+
+            Distribusi continue 
+                Jika fungsi densitas probabilitas adalah f(x)
+                Cari fungsi distribusi kumulatif dari X-> F(x) = P(X<=x)
+                U = F(x), dmn U adalah uniform(0,1)
+                Hitung utk x -> x = F^-1(U) -> transformasikan U ke nilai utk x sesuai dengan distribusi yg ditentukan f(x)
+                Tidak mungkin menyelesaikan persamaan sederhana utk membangkitkan variabel yg terdistribusi normal 
+
+                Cth : Waktu kedatangan mobil ke jendela restoran drivethrough terdistribusi eksponensial, 
+                      waktu yang dibutuhkan oleh pengemudi untuk memesan makanan mengikuti distribusi lognormal
+    
+    Simulasi Spreadsheet Sederhana 
+        cth utk model Dinamik dan Stokastik
+            Pelanggan tiba menggunakkan ATM dengan waktu interval rata" 3 menit yg terdistribusi eksponensial
+            Pelanggan datang ke ATM hrus mengantri dan tidak ada limit utk mengantri ATM 
+            Pelanggan menghabiskan rata" 2.4 menit terdistribusi eksponensial utk menyelesaikan transaksinya (service time)
+
+            Simulasikan sistem kedatangan dan pemrosesan 25 pelanggan 
+                1. Perkirakan expected waiting time pelanggan dalam queue (waktu rata" menunggu dalam antrian)
+                2. Perkirakan expected service time (waktu rata" menggunakkan ATM)
+            jawaban 
+                Sistem : ATM 
+                Entity : Pelanggan yg tiba di ATM utk bertransaksi
+                Resource : ATM yg melayani 1 per 1 pelanggan 
+                Control system yg mengatur bagaimana, kapan, dimana aktivitas dilakukan dalam ATM
+
+                Customer arriving (Entity)          ATM Queue     ATM Server          Departure Customer
+                8    7   6                          5 4 3           2                   1
+
+                dengan rumus 
+                Zi = (aZi-1 + c) mod m
+
+                didapat jawaban 
+                Replication             Average time in queue           Average time in system
+                    1                       1.94 minutes                    4.26 minutes
+                    2                       0.84 minutes                    2.36 minutes
+                 Average                    1.39 minutes                    3.31 minutes

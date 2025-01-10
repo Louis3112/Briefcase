@@ -1,0 +1,66 @@
+GIT dan GITHUB adalah aplikasi yg berbeda
+GIT adalah Version Control System/Revision Control System/Source Code Management 
+    sistem yg mengelola perubahan dari dokumen, program komputer, web, source Code 
+
+Mengapa harus menggunakkan github?
+    1. kita terkadang harus membuat file sedemikian rupa banyaknya karena revisi, dengan VCS ini, kita tidak perlu membuat banyak file 
+        sehingga, kita bisa melacak perubahan/history dri suatu versi  (menyimpan snapshot suatu codingan)
+    2. memudahkan kolaborasi dengan programmer lain 
+    3. bisa share hasil kerja kita
+    4. mengetahui siapa dan kapan melakukan perubahan terhadap file 
+    5. memungkinkan untuk kembali ke checkpoint sebelumnya/commit sebeluimnya (checkout)
+        contohnya adalah drive, google docs, tapi tidak sefleksibel dengan github 
+        kalau VCS untuk coding ada Git, Github, Apache Subversion, Mercurial, CVS (Concurrent Version Systems)
+
+    Folder yg disimpan dalam Git akan disebut repository/repo
+    Riwayat perubahan file disebut commit, sehingga git akan merekam commit dalam bentuk snapshot 
+
+    dalam bentuk commit, terdapat 
+        commit 42e12342134h23gsag231h4213f (ini adalah HASH yg berfungsi sebagai penanda unik pada commit)
+        author Cornelius Louis Nathan 
+        Date : 17 August 1945
+
+        Membuat login page (pesan commit)
+    
+    dalam perjalanan coding, terkadang kita merasa ragu untuk menambah suatu fitur dalam program
+        agar tidak mengganggu commit utama (master branch), kita bisa membuat BRANCH, sehingga yg lain bisa fokus terhadap projek utama
+        sehingga, apabila branch yg satu sudah fix, maka kita bisa menjadikan branch tersebut commit utama
+
+    tapi, kalau memang ingin menggabungkan branch dengan commit utama, kita bisa menggunakkan merge 
+
+    Perbedaan Git dan Github adalah Github bisa dilakukan secara online dan Github bisa dikatakan sebagai IG nya programmer
+    Bila digabungkaan, kita bisa mengirimkan hasill repo/commit kita dari Git ke Github (push) atau menerima repo/commit dari Github ke Git (pull)
+        tapi, github harus di REMOTE, yg menjadi sumber repo kita, sehingga bisa kita mengclonekan (mengambil repo dari remote) reponya ke git 
+
+    sehingga, akan sangat membantu apabila beberapa org memiliki Git, tetapi terhubung dallam Github untuk mengirimkan hasil reponya 
+
+    sebenarnya, ada juga Bitbucket dan Gitlab
+
+    Dictionary
+        Version Control System/Revision Control System/Source Code Managgement(VCS)
+            Sistem yang mengelola rekaman perubahan dari source code
+        Git
+            Salah satu software yang bisa melakukan VCS
+        Github
+            Website yg mengelola project git maupun melakukan VCS
+        
+        Repository/Repo
+            Folder project
+        Commit
+            Rekaman/Snapshot perubahan dari repo 
+        Hash
+            Kode string unik pada suatu commit 
+        Checkout 
+            Pergi ke suatu commit tertentu
+        Branch 
+            Cabang dari suatu commit
+        Merge
+            Menggabungkaan commit 
+        Remote
+            Sumber yang memiliki repo
+        Clone 
+            Menyalin repo dari remote 
+        Push
+            Mengirimkan commit ke repo
+        Pull
+            Menerima commit ke repo

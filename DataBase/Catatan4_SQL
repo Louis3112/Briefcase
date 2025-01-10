@@ -1,0 +1,168 @@
+Structured Query Language
+    Dari PDM (Physical Data Model) yang sudah dibuat, dibuatlah database 
+        Entitas berubah menjadi tabel
+        Atrbut berubah menjadi kolom/field
+    
+    SQL adalah bahasa pemrograman yg digunakan untuk mengelola dan memanipulasi data dalam RDBMS (Relational Database Managemeny System)
+    SQL memungkinkan user untuk melakukan CRUD dari database
+    SQL dari kata "SEQUEL" dari System R Prototype oleh IBM
+        Structured English Query Language   
+        Lalu diadopsi oleh Oracle tahun 1970
+    ANSI Standard pada tahun 1986, ISO tahun 1987
+        berubah nama mnjadi SQL 
+    RDBMS yg populer antara lain MySQL, PostgreSQL, SQL Server, Oracle
+
+WampServer
+    web server yg memiliki 3 service, yaitu Apache, MySQL, PHP (yg digunakan untuk pengolahan database)
+        MySQL berfungsi sebagai database
+        Apache berfungsi sebagai web server 
+        PHP berfungsi sebagai pelaksana script di sisi server
+    phpMyAdmin (dalam WampServer) berfungsi untuk pengolahan database MySQL/MariaDB secara grafis (GUI) ataupun menulis query secara langsung
+    SQL digunakan untuk komunikasi dengan MySQL melalui perintah dalam phpMyAdmin/web aplikasi yg dibangun menggunakkan PHP pada WampServer
+
+    Setelah di install, klik icon WampServer dan muncul service yg dibutuhkan
+        Lalu pilih LocalHost untuk membuka local server
+            LocalHost digunakan untuk menjalankan web app berbasis local server
+        Lalu klik phpMyAdmin untuk service nya
+
+Operasi Dasar SQL
+    terbagi menjadi 3 
+    DDL (Data Definition Language)
+        Bagian SQL yg digunakan untuk mendefinisikan data dan object Database
+        Jika dijalankan, maka entri akan dibuat dalam data SQL 
+
+        CREATE DATABASE namadatabase; 
+        CREATE TABLE namatable{...};
+        ALTER TABLE namatable....;
+        DROP TABLE namatable;
+            
+        Ketika membuat table, kita bisa mengatur properties dari tiap field/attribute yg telah digenerate
+
+        Tipe data adalah bentuk pemodelan data yg dideklarasikan saat pembuatan tabel 
+        Tipe data akan mempengaruhi setiap data yg masuk dalam tabel 
+        Data yang dimasukkan harus sinkron dengan tipe data
+        cth :
+            TINYINT                 bil.bulat dari -128 sampai 127, utk UNSIGNED sampai 255 (2^8)
+            SMALLINT                bil.bulat dari -32768 sampai 32767, utk UNSIGNED sampai 65535 (2^16)
+            MEDIUMINT               bil.bulat dari -83388608 sampai 83388608, utk UNSIGNED sampai 16777215 (2^24)
+            INT                               dari -2147483648 sampai 214748347, utk UNSIGNED sampai 4294967295 (2^32)
+            BIGINT                            dari -9....                                                       (2^40)
+            FLOAT,REAL,DOUBLE       bil. pecahan/desimal
+            DECIMAL,NUMERIC         bil.pecahan, dapat menyimoan -99.99 sampai 99.99
+            DATETIME                kombinasi tgl dan jam (YYYY-MM-DD   HH:MM:SS)
+            DATE                    tgl
+            TIMESTAMP               kombinasi tgl dan jam (sama dengan DATETIME, TIMESTAMP jangkauannya lebih kecil (thun 1970 - 2038))
+            TIME                    waktu (HH:MM:SS) (HH bisa sampai ratusan)
+            YEAR                    tahun
+            CHAR                    karakter huruf 255 karakter
+            VARCHAR                 karakter huruf dan angka 255 karakter
+            TINYBLOB,TINYTEXT       text dengan panjang 2^8-1
+            BLOB,TEXT               text dengan panjang 2^16-1
+            MEDIUMBLOB,MEDIUMTEXT   text dengan panjang 2^24-1
+            LONGBLOB,LONGTEXT       text dengan panjang 2^32-1 (bisa menyimpan sampai GB)
+            ENUM(nilai1,nilai2)     enumerasi suatu nilai, tergantung jumlah nilai enumerasinya (max 65535 nilai)
+            SET(nilai1,nilai2)      enumerasi suatu nilai, tergantung jumlah anggota himpunan (max 64 anggota)
+
+    
+        Constraint
+            batasan/aturan pada suatu attribute/field
+            cth:
+                NOT NULL            data tidak boleh kosong
+                UNIQUE              data tidak boleh sama
+                PRIMARY KEY         key unik dari suatu tabel
+                FOREIGN KEY         key yg mengambil PRIMARY KEY atau attribute non key dri tabel lain
+                CHECK               mengecek suatu kondisi data (data harus memenuhi syarat yg diberikan)
+                DEFAULT             jika tidak diisi, maka data akan terisi secara default (bisa null, bisa nilai yg ktia masukkan)
+            cth pengaplikasian:
+                Penggunaan Foreign key 
+                    customer_id INT,
+                    CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+                    );
+
+                Penggunaan Unique 
+                    email VARCHAR(100) NOT NULL,
+                    CONSTRAINT uq_email UNIQUE (email)
+                    );
+
+                Penggunaan check 
+                    age INT,
+                    CONSTRAINT chk_age CHECK (age >= 18)
+                    );
+                
+                Penggunaan default
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    );
+            
+        Alter
+            modifikasi field pada tabel yg telah dibuat 
+            cth:
+                ALTER TABLE admin ADD alamat VARCHAR(50);
+                    menambahkan field baru 
+                
+                ALTER TABLE admin CHANGE COLUMN alamat alamat_lengkap TINYTEXT;
+                    mengubah nama field dan propertiesnya
+
+                ALTER TABLE admin DROP COLUMN alamat_lengkap;
+                    menghapus field
+                
+        Drop
+            menghapus tabel atau database
+            cth:    
+                DROP DATABASE namadatabase;
+                DROP TABLE namatable;
+    
+    DML (Data Manipulation Language)
+        Bagian SQL untuk mengakses/memanipulasi data dalam tabel
+        Tipe akses data pada DML adalah 
+            1. Pengambilan informasi
+            2. Penempatan informasi baru
+            3. Penghapusan informasi 
+            4. Modifikasi informasi 
+        
+        Perintah" yg digunakan ada 
+            INSERT, menyisipkan data(tuple) baru ke dalam table
+            SELECT, mengambil atau menampilkan data dari table
+            UPDATE, memperbarui data yg lama dengan yg baru
+            DELETE, menghapus data dalam 
+        
+        PASTIKAN TABEL DAN DATABASE SUDAH DIBUAT BESERTA DENGAN CONSTRAINT"NYA 
+
+        cth:    
+            Penggunaan INSERT untuk memasukkan data baru
+                INSERT INTO users (user_id, username, email) VALUES
+                (1, 'louis', 'louis@gmail.com'),
+                (2, 'gtw', 'gtw@gmail.com'),
+                (3, 'yntkts', 'yntkts@gmail.com');
+
+                    Jika ingin menginputkan suatu data yang merupakan foreign key
+                    pastikan bagian data foreign key harus sama 
+
+                    INSERT INTO fulltimer_tanggung_jawab (nif, nij) VALUES
+                    (1865257929, 450931839),
+                    (1865257929, 741849032),
+                    (1865257929, 592810938);
+            
+                    INSERT INTO fulltimer_tanggung_jawab (nif, nij) VALUES -- akan terjadi error
+                    (2532143214, 20002336),
+                    (1992907491, 100234912),
+                    (1992907491, 106464348),
+            Penggunaan INSERT dan SELECT untuk mengcopy data yg udh ada ke dalam tabel baru  (syaratnya jumlah kolom, tipe data nya harus sama) 
+                INSERT INTO new_users (user_id,username, email) VALUES
+                SELECT user_id, username, email FROM users;
+
+            Penggunaan UPDATE untuk modifikasi data pada tabel
+                UPDATE users                                            // pilih tabel yg akan diupdate 
+                SET username = 'fauzia', email = 'fauzia@gmail.com'     // atur data yg benar
+                WHERE user_id = 4;                                      // acuan baris data yg akan diganti
+            
+            Penggunaan DELETE untuk menghapus isi data
+                DELETE FROM users WHERE user_id = 4;                    // menghapus data yg memiliki ciri data yg sama 
+                DELETE FROM users;                                      // menghapus semua isi data 
+            
+            Penggunaan SELECT untuk mencari data yg diinginkan 
+                SELECT * FROM new_users WHERE user_id = 4;              // select * artinya mencari keseluruhan isi tabel
+                                                                        // maka mencari data yg memiliki ciri data yg sama
+                
+                SELECT * FROM new_users WHERE username LIKE '%han%';    // mencari data dengan kriteria yg tidak sama persis (mencari data dari sepotong informasi yg diketahui)
+        
+            

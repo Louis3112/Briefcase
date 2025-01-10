@@ -1,0 +1,51 @@
+Oracle Virtual Box 
+    Setelah instalasi VirtualBox, maka akan muncul network adaptor baru (VirtualBox Host-Only Network) pada Network Connections. Digunakan sebgai loopback interface 
+    Toolbar pada VB
+        1. Create New VM (Virtual Machine)
+        2. Setting Profile VM 
+        3. Discard (Stop VM)
+        4. Start VM
+        5. Details (Detail info hardware VM)
+        6. Snapshots (Version state VM)
+    
+    Kita bisa import appliance 
+        appliance = image/file siap pakai (virtual Machine) dan extention OVA (Open Virtual Appliance)
+    
+    Kita bisa clone VM, pastikan untuk memilih linked clone (clone type) dengan Snapshots Current Machine Stats
+    Kita bisa merubah jenis network VM, 
+        NAT (Network Address Translation) 
+            Guest OS terhubung internet melalui Host OS, tetapi tidak bisa diakses oleh perangkat lain
+        Bridged Adaptor
+            Guest OS terhubung ke jaringan fisik (dengan perangkat yg terhubung langsung, bukan wireless)
+            Guest OS menerima IP dari jaringan fisik dan memungkinkan komunikasi dengan perangkat lain
+        Host Only
+            Guest OS hanya bisa berkomunikasi dengan Host OS, tdak bisa terhubung dengan jaringan internet
+        Internal 
+            Guest OS hanya bisa berkomunikasi antar Guest OS, tdak bisa berkomunikasi dengan Host OS maupun internet
+
+    Pada kasus kali ini, kita akan mencoba menghubungkan antara 3 PC dengan 1 Router NAT 
+        dimana Router NAT memiliki 2 ethernet, yaitu ether 1 dan ether 2 
+        Ether 1 utk DHCP Client 
+        Ether 2 utk DHCP Server dengan IP 192.168.1.1/24, out interface nya ether 1
+    Gambarannya sebagai berikut 
+
+        Internet 
+            |
+            |       Ethernet 2 : DHCP Server, 192.168.1.1/24
+        Router NAT  
+            |       Ethernet 1 : DHCP Client 
+            |
+     PC 1, PC 2, PC 3
+
+        1. Setelah import RouterOS dan Windows VM, atur RouterOS Network menjadi 2 adapter
+        2. Adapter 1 disetting NAT, Adapter 2 disetting Internal Network dengan nama Switch 
+        3. Jalankan RouterOS dan PC 1 secara bersamaan 
+        4. Pada PC 1, Klik Mikrotik Winbox Loader lalu klik 3 titik di sebelah Connect To 
+        5. Maka akan muncul MAC Address RouterOS dan kita klik untuk terhubung dengan RouterOS 
+        6. Buat DHCP Client untuk Ether 1 lalu apply dan klik Ok
+        7. Lalu klik addresses untuk mensetting IP Address Ether 2 pada 
+        8. Buat NAT dengan mengklik Firewall, chain atur menjadi SCRNAT, dan pada tab action setting menjadi masquerade
+        9. Pergi ke DNS lalu centang Allow Remote Access
+        10. Buat DHCP Server dengan mengklik DNS Setup, lalu atur addresses to give out sampai 50
+        11. Lalu cek IP Address di cmd dengan ipconfig, maka pastikan punya IP Address
+        12. Coba ping ke 8.8.8.8

@@ -1,0 +1,288 @@
+Database
+        Tempat kita menyimpan data tabel di MySQL 
+        Jika table adalah filenya, maka database adalah foldernya, kita bisa menyimpan banyak tabel dalam sebuah database
+        Satu aplikasi biasanya membutuhkan 1 database, sebenernya bisa lebih dari 1 database, tpi umumnya hanya butuh 1 saja 
+
+    Bahasa SQL menggunakkan titik koma di akhir perintah (;)
+        karena dengan ;, maka perintah akan baru terkirim 
+        Bahasa SQL tidak sensitif dengan spasi
+        sehingga kita dapat memberikan tab atau spasi tambahan ketika mengetikkan perintah 
+        selain itu, perlu diketahui bahwa SQL adalah incase sensitive, sehingga huruf besar huruf kecil tidak berpengaruh 
+
+    Untuk mengakses MySQL, hanya perlu menggunakkan terminal, lalu ketikkan 
+        "mysql -uroot -p"
+        lalu masukkan password
+
+    Menampilkan database apa saja di MySQL
+        show databases; 
+            atau
+        show databases
+        ;   < --- menunjukkan bahwa dengan ;, perintah baru terkirim ke MySQL
+
+        maka akan muncul
+
+        +--------------------+
+        | Database           |
+        +--------------------+
+        | information_schema |
+        | mysql              |
+        | performance_schema |
+        | sys                |
+        +--------------------+
+        4 rows in set (0.04 sec)
+
+        dan 4 database itu adalah database bawaan dari MySQL
+
+    Membuat database 
+        create database nama_Database;
+        create database mulia_mebel;
+
+        bila sukses akan menampilkan 
+        Query OK, 1 row affected (0.01 sec)
+            1 row affected artinya bahwa ada 1 perubahan data 
+
+        jika gagal karena typo, maka akan menampilkan 
+        ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'created database mulia_mebel' at line 1
+
+    Menghapus database
+        drop database nama_Database;
+        drop database mulia_mebel;
+
+        perlu diawasi untuk penghapusan database, karena semua tabel dalam database akan terhapus 
+
+    Memilih database yg ingin digunakan 
+        use nama_Database;
+        use mulia_mebel;
+
+    Menampilkan semua tabel yang ada di dalam database
+        show tables;
+
+
+Tipe Data
+    Saat membuat tabel, kita bisa menentukan tipe data apa yg kita masukkan ke dalam excel
+    Di MySQL, kita bisa menentukan tipe data tiap kolom dalam suatu tabel 
+        Jika 1 kolom isinya angka, maka semuanya harus angka 
+    Ada banyak tipe data dalam MySQL, mulai dari sederhana (angka, teks) sampai kompleks (tanggal, jam)
+    Kita menggunakkan tipe data yg hanya diperlukan saja 
+
+    cth :
+    Id (number)             Nama (text)             Harga(number)           Jumlah(number)
+    123                     Apel                    5000                    100
+    456                     Jeruk                   2000                    50
+    789                     Semangka                10000                   20
+
+
+    Tipe Data Number 
+        Number terbagi menjadi 2, integer (bulat) dan floating point (pecahan)
+        Integer terbagi menjadi banyak tipe 
+            TINYINT = 1 byte
+            SMALLINT = 2 byte 
+            MEDIUMINT = 3 byte  
+            INT = 4 byte 
+            BIGINT = 8 byte 
+            
+            dan ada signed dan unsigned (unsigned untuk blgn mutlak positif)
+        
+        Float terbagi menjadi 2 tipe    
+            FLOAT = 4 byte 
+            DOUBLE = 8 byte
+
+        Decimal, tipe data number khusus yg bisa ditentukan precision dan scale nya (precision itu banyaknya jumlah angka yg bisa diinputkan, scale itu banyaknya angka di belakang koma)
+                            Min             Max 
+            DECIMAL(5,2)    -999.99         999.99          (berarti, ada 5 angka yang dapat diinputkan, dengan 2 angka di belakang koma )
+            DECIMAL(5,0)    -99999          99999
+            DECIMAL(3,1)    -99.9           99.9
+            DECIMAL(3)      -999            999
+    
+        Number attribute (atribut tambahan untuk tiap tipe data)
+        TYPE(N), dmn TYPE dapat berisi INT,FLOAT, DOUBLE, DECIMAL lalu N dapat diinputkan maximal banyaknya angka yg dapat diinputkan 
+            cth: INT(3), berarti banyaknya angka ada 3, Min = -999, Max = 999
+        ZEROFILL, dmn apabila terdapat space yang kosong, maka mysql akan otomatis menambahkan space yg kosong dengan 0, 
+            cth : INT(3) ZEROFILL, 7 akan berubah menjadi 007 
+    
+    Tipe Data String 
+        String terbagi menjadi 2, CHAR dan VARCHAR
+        Kita bisa menentukan jumlah panjang maksimal karakter yg dapat ditampung oleh CHAR dan VARCHAR dengan ()
+            cth: CHAR(10) atau VARCHAR(10)
+            maksimal ukuran CHAR dan VARCHAR adalah 65535 karakter
+
+        VARCHAR artinya Variable character 
+        Perbedaan CHAR dan VARCHAR adalah bagaimana kedua tipe data tersebut menyimpan data 
+        
+        Value         CHAR(4)       Storage      VARCHAR(4)     Storage
+        ''            '    '        4 bytes      ''             1 bytes
+        'ab'          'ab  '        4 bytes      'ab'           3 bytes
+        'abcd'        'abcd'        4 bytes      'abcd'         5 bytes
+        'abcdefg'     'abcd'        4 bytes      'abcd'         5 bytes
+        sehingga, storage VARCHAR akan mengikuti variable angka yg diinputkan, alasan mengapa lebih 1 byte, karena VARCHAR memerlukan informasi internal tambahan mengenai VARCHAR tersebut
+
+        direkomendasikan untuk menggunakkan VARCHAR, karena nilai akan disimpan sesuai dengan pnjangnya huruf. Karena kalau VARCHAR, kita pasti memberikan batas maksimal untuk suatu nilai \
+            sehingga, dripada menggunakkan CHAR, lebih baik menggunakkan VARCHAR    
+
+        Terdapat TEXT, TEXT sudah memiliki maksimum panjang, tidak seperti CHAR atau VARCHAR 
+            TEXT terbagi menjadi 4
+                TINYTEXT = max 255 karakter (256 byte)
+                TEXT = max 65535 karakter (6 kb)
+                MEDIUMTEXT = (16 MB)
+                LONGTEXT = (4 GB)
+
+        ENUM adalah tipe data Sttring yang bisa ditentukan pilihannya 
+            ENUM('Pria','Wanita'), berarti hanya bisa menerima data Pria atau Wanita 
+            ENUM('Programmer','Zaman','Now'), berarti hanya bisa menerima data Progrramer, Zaman, atau Now
+
+    Tipe Data Date dan Time 
+        Tipe data untuk menyimpan tanggal dan waktu, sebenarnya bisa menggunakkan string, tetapi tidak direkomendasikan, karena akan kesulitan untuk mengekstrak atau memanipulasi data 
+            waktu ketika diperlukan 
+        Jenisny aterbagi menjadi 5
+            DATE            YYYY-MM-DD              2004-12-31
+            DATETIME        YYYY-MM-DD HH:MM:SS     2004-12-31 20:04:13
+            TIMESTAMP       YYYY-MM-DD HH:MM:SS     2004-12-31 20:04:13
+            TIME            HH:MM:SS                20:04:13
+            YEAR            YYYY                    2004    
+        Perbedaan Timestamp dan Datetime adalah, Timestamp digunakan apabila kita benar"" membutuhkan data perubahan waktu (created at, last update)
+    
+    Tipe Data Boolean 
+        Tipe data kebenaran, true or false 
+
+    Tipe Data lain 
+        Sebenarnya ada tipe data lain yg didukung MySQL, seperti BLOB, SPATIAL, JSON, SET, tapi tipe data tersebut jarang digunakan 
+        BLOB = Binary Large Object 
+        SPATIAL = Berhubungan dengan geolocation 
+        
+    Tabel 
+        Data yg disimpan dalam MySQL harus disimpan dalam bentuk tabel 
+        Tiap tabel digunakan untuk menyimpan 1 jenis data, misalkan tabel pelanggan, tabel barang, tabel toko, dll 
+        Untuk menentukan tabelnya, kita harus menentukan kolom"" dan tipe data tiap"" kolom     
+        Kita bisa menambah kolom baru, mengubah kolom yg sudah ada, atau menghapus kolom 
+
+    Storage Engines 
+        MySQL memiliki berbagai cara untuk pengolahan data, yg disebut storage engines 
+        Storage engines yg biasa dipakai adalah InnoDB, karena fitur InnoDB lebih lengkap dripada storage engines 
+        Untuk melihat storage engines yg dipakai MySQL, bisa menggunakkan command SHOW ENGINES;
+        
+        berikut adalah outputnya :
+        +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+        | Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
+        +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+        | MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+        | MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+        | CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+        | FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+        | PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+        | MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+        | InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+        | ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+        | BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+        | ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+        | ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
+        +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+        11 rows in set (0.02 sec)
+        
+        tiap storage engines memiliki fiturnya masing"", sebagai contoh, jika engine MEMORY dipakai, maka data akan disimpan dalam memory (RAM) dan bukan Harddisk,     
+            karena menyimpan data dalam memory lebih cepat diakses dripada di harddisk  
+
+    cara membuat tabel 
+        CREATE TABLE barang
+        (
+            kode INT, //kolom pertama 
+            nama VARCHAR(100), //kolom kedua 
+            harga INT,
+            jumlah INT 
+        ) ENGINE = InnoDB;
+
+        setelah itu, maka MySQL akan membuat tabel sesuai dengan perintah di atas. 
+        Untuk melihat apakah tabel sudah dibuat atau tidak, bisa melihat dengan show tables;
+
+    melihat struktur tabel 
+        DESCRIBE nama_tabel;
+        DESC nama_tabel;
+        SHOW CREATE TABLE nama_tabel;
+
+        sehingga memunculkan 
+        +--------+-------------+------+-----+---------+-------+
+        | Field  | Type        | Null | Key | Default | Extra |
+        +--------+-------------+------+-----+---------+-------+
+        | kode   | int         | YES  |     | NULL    |       |
+        | nama   | varchar(50) | YES  |     | NULL    |       |
+        | jumlah | int         | YES  |     | NULL    |       |
+        | harga  | int         | YES  |     | NULL    |       |
+        +--------+-------------+------+-----+---------+-------+
+        4 rows in set (0.02 sec)
+
+        untuk SHOW CREATE TABLE nama_tabel; akan menampilkan syntax dari tabel yg dibuat 
+    
+    Mengubah/memodifikasi tabel 
+        ALTER TABLE nama_tabel;
+            ADD COLUMN nama_kolom TEXT,                             // menambah kolom baru, TEXT dapat diganti dengan tipe data yg dibutuhkan (INT, CHAR, VARCHAR)
+            DROP COLUMN nama_kolom,                                 // menghapus kolom
+            RENAME COLUMN nama_kolom TO nama_kolom_baru,            // mengubah nama kolom 
+            MODIFY nama_kolom VARCHAR(200),                         // mengubah tipe data kolom menjadi tipe data lain
+            MODIFY nama_kolom VARCHAR(100) AFTER nama_kolom_lain,   // mengubah tipe data kolom menjadi tipe data lain, lalu diubah posisinya ke sebelah kolom lain 
+            MODIFY nama_kolom VARCHAR(100) FIRST;                   // mengubah posisi kolom ke posisi paling depan 
+        
+        untuk memodifikasi, kita harus memulai dengan perintah ALTER TABLE, lalu ketikkan perintah yg diinginkan 
+        jika perintah yg diinginkan belum selesai, bisa diberikan tanda koma lalu dienter untuk mengetikkan perintah selanjutnya 
+        setelah selesai, akhiri dengan ;
+
+    Null
+        Null artinya kosong, apabila kita tidak memberi nilai apapun ke suatu kolom 
+        Saat kita membuat kolom, otomatis nilai dalam kolom akan bernilai null, tapi kita bisa menambahkan nilai NOT NULL pada proses pembuatan kolom 
+
+        Pada MYSQL, pada kolom NULL, apabila ada tulisan YES, maka artinya kolom trsbut boleh kosong 
+        untuk menyetting agar kolom tidak boleh NULL (NOT NULL), maka setiap membuat kolom baru, ditambahkan kata NOT NULL 
+
+        CREATE TABLE barang
+        (
+            kode INT NOT NULL, //kolom pertama 
+            nama VARCHAR(100) NOT NULL, //kolom kedua 
+            harga INT NOT NULL,
+            jumlah INT NOT NULL 
+        ) ENGINE = InnoDB;
+
+        jika suatu kolom memiliki nilai NOT NULL, maka apabila kita memasukkan data baru ke dalam tabel, maka bagian kolom yg NOT NULL harus selalu diisi.
+        Jika bagian kolom tersebut tidak diisi, maka MySQL akan menolak data tersebut 
+
+        untuk memodifikasi suatu kolom menjadi NOT NULL 
+        tinggal ketikkan 
+
+        ALTER TABLE nama_tabel
+        MODIFY nama_kolom TIPE_DATA NOT NULL;
+
+    Default Value 
+        Saat menyimpan data ke dalam tabel, tapi ada beberapa kolom yg dikosongi, maka nilai DEFAULT nya adalh NULL 
+        Kita bisa mengubah nilai DEFAULT nya dengan menambahkan perintah DEFAULT nilai_yang_diinginkan dalam proses pembuatan kolom 
+        Khusus untuk DATETIME/TIMESTAMP, untuk menetapkan nilai default di waktu itu juga, kita dapat menambahkan kata CURRENT_TIMESTAMP 
+        
+        cth :
+        ALTER TABLE barang
+            MODIFY harga INT NOT NULL DEFAULT 0,
+            MODIFY jumlah INT NOT NULL DEFAULT 0,
+            MODIFY nama VARCHAR(100) NOT NULL DEFAULT '';
+
+        ALTER TABLE barang 
+            ADD waktu_input TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+    
+    Menghapus data dalam Tabel
+        TRUNCATE nama_tabel;
+
+        jadi, data" di bersihkan semua, tapi tabel nya tidak terhapus 
+    
+    Menghapus tabel secara permanen 
+        DROP TABLE nama_tabel;
+        
+    
+    Insert Data
+        Sebelum memasukkan data, kita harus memastikan tabel sudah dibuat terlebih dahulu 
+        lalu dengan perintah INSERT, kita bisa memasukkan data. Dan disebutkan kolom apakah yang akan diisi, jika ada kolom yang tidak disebut, maka kolom tersebut akan berisi nilai null atau default 
+
+        CREATE TABLE product
+        (
+            id              VARCHAR(10)  NOT NULL,
+            name            VARCHAR(50)  NOT NULL,
+            description     TEXT,
+            price           INT UNSIGNED NOT NULL,
+            quantity        INT UNSIGNED NOT NULL DEFAULT 0,
+            time_input      TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )
+
+    

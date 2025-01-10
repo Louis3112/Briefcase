@@ -1,0 +1,96 @@
+Internet terbentuk pada saat perang dingin (1969). DARPA (Defense Advanced Research Projects Agency) memutuskan untuk mengadakan riset cara menghubungkan komputer dengan komputer lain 
+    Project ini disebut ARPANET, dan lebih dari 10 komputer yg berhasil terhubung. Sehingga bisa berkomunikasi satu dengan yg lain
+    Software dan Hardware yg digunakan adalah UNIX (yg merupakan asal usul LINUX)
+    Tujuan diciptakannya ARPANET adalah mengantisipasi apabila terjadi perang nuklir dan mengantisipasi kendala informasi karena efek perang
+
+ARPANET hanya bisa menghubungi 4 situs (Stanford University of California, Research Institiute, Univ of Utah, Santa Barbara )pada 1969, dan baru diperkenalkan ke publik 1972
+    lalu karena banyaknya pihak ygg tertarik, maka proyek ARPANET terbuka secara umum dan karena masifnya perkembangan, Manajemen ARPANET mengalami kesulitan
+    Sehingga, ARPANET terbagi menjadi 2, "ARPANET dan "MILNET"
+        ARPANET berfokus pada kasus non militer, univ, perusahaan
+        MILNET berfokus pada kasus militer 
+
+    Sehingga, bergabunglah 2 jaringan tersebut yg disebut sebagai DARPA Internet, atau lebih dikenal Internet
+
+Timeline Singkat Internet 
+    1960-an, DARPA melalui Advanced Research Project Agency menciptakan sistem jaringan yg disebut ARPANET
+    1980-an, Internet mulai digunakan secara terbatas untuk menghubungkan antara 1 kmpus dengan kmpus lain 
+    1982, Protokol standard TCP/IP (Transmission Control Protocol/Internet Protocol) baru dipublikasikan secara umum
+    1984, Sistem nama Domain mulai digunakan 
+    1986, National Science Foundation Network (NSFNET) dibangun dan mulai menggantikan ARPANET sebagai jaringan riset di US
+        bbrp jaringan internet internasional juga dihubungkan dengan NSFNET
+    1990, ARPANET dibubarkan, tetapi internet tetap berkembang 
+    1990, WWW mulai dikembangkan oleh CERN, (Sblmnya, internet masih informasi berbasis teks)
+    1993, InterNIC didirikan untuk melayani pendaftaran nama domain 
+    1994, internet mulai digunakan di indonesia
+
+Sejarah Internet di Indo 
+    Dimulai tahun 1990-an, jaringan internet di Indo lebih dikenal dengan nama paguyuban network
+        dimana kekeluargaan, gotong royong terasa hangat di antara para anggotanya
+        Jaman sekarang, internet sudah mulai menjadi ladang bisnis dan terasa invidualisnya 
+    RMS Ibrahim, Adisoemarta, Suryono, Muhammad Ihsan, Putu, Robby Soebiakto, Firman Siregar, Adi Idrayanto, dan Ono W. Purbo  
+        adalah nama" orang yg berpengaruh terhadap jalannya internet di Indo tahun 1992-1994 (tiap orang sudah menulis bukunya msing")
+
+    Internet awalnya terbentuk dari jaringan radio, khususnya terbentuk oleh Amateur Radio Club (ARC ITB) tahun 1986 
+        Dengan Transceiver HF SSB Kenwood TS430 (Trannsceiver radio), komp. Apple II dan beberapa orang penting lainnya, akhirnya bisa memancarkan internet
+        Robby Soebiakto adalah salah satu ahli pada komunikasi data paket radio yang mengembangkan teknologi radio paket TCP/IP
+            Paket Radio ini terdiri atas 
+            Komputer --->   Transceiver Radio  ---> Pemancar Radio
+                     <---                      <---
+        Sehingga teknologi radio paket TCP/IP diadopsi oleh BPPT (Badan Pengkajian dan Penerapan teknologi), LAPAN (Lembaga Penerbangan dan Antariksa Nasional), UI, 1TB
+    
+    Robby Soebiakto menjadi koordinator IP pertama dari AMPR-Net (Amatir Paket Radio Network) yg dikenal dengan domain AMPR.ORG dan IP 44.132
+        lalu, tahun 2000an berpindah tangan ke Ono W. Purbo
+        Hanya anggota ORARI (Organisasi Amatir Radio Indonesia) yang bisa berkomunikasi dan berkoodinir disana, dengan mailing list ORARI, seperti orari-news@yahoogroups.com
+        
+    Tahun 1986-1987 adalah tahun jaringan paket radio pertama kali berkembang di indonesia  
+        Robby Soebiakto adalah pelopor yg mengaitkan jaringan amatir Bulletin Board System (BBS) yg adalah jaringan email store dan forward yg mengaitkan banyak
+            BBS amatir ke seluruh dunia sehingga email dapat berjalan dengan baik 
+    
+ISP Indonesia era 1994 
+    ISP (Internet Service Provider) pertama di Indo adalah Ipteknet pada 1994, di tahun yg sama juga ada PT. IndoInternet atau IndoNet yg dikomandoi Sanjaya
+    Indonet juga adalah ISP komersial pertama yg mendapat lisensi dari PT. Lintas Arta
+        Karena masih minimnya pengguna dan minimnya pengetahuan internet, maka untuk terhubung dengan internet, Indonet masih menggunakkan sistem Dial Up dengan telepon
+            Dial Up adalah sistem dimana kita hanya bisa menggunakan salah satu fungsi saja, jika dibuat telepon, maka tidak bisa internetan, dan sebaliknya (One Way)
+
+Warnet 
+    Tidak diketahui pasti, tapi 1996-1998 an adalah tahun munculnya internet di Indonesia. Ada bbrp tokoh pelopor berdirinya warnet, salah staunya adalah Wasantara dari PT Pos Indonesia
+    1997-1998, beberapa org memiliki bbrp komputer yg terhubung internet dan disewakan kepada org", Warnet istilah asalnya adalah WarIn, tpi lebih dikenal Warnet
+    25 Mei 2000, dibentuklah Asosiasi Warnet Indonesia (AWARI) di kantor DikMenJur dan diketuai Rudi Rusdiah
+        tapi karena adanya konflik, terbentuk lagi Asosiasi Pengawas Warnet Komunitas Telematika (APWKomiTel atau APW)
+    APW bersifat komersial, pengusaha, sedangkan AWARI untuk komunitas saja 
+
+Internet
+    Internet adlah jaringan komputer yg menyediakan informasi dan komunikasi bersifat global 
+    Internet tidak mengenal batas geografi dan jangkauan informasinya tidak terbatas 
+    Internet semakin banyak digunakan karena 
+        1. Internet adalah sarana komunikasi murah
+        2. Sumber informasi yg luas 
+        3. Tantangan baru untuk berusaha 
+        4. Informasi tanpa batas/tanpa sensor 
+
+Aplikasi Internet 
+    1. Resource File 
+        Sharing File (Data,Program) : Suatu data yg bisa kita bacakan/akses oleh user lain yg terhubung 
+        Sharing Device (CD, Hard disk, Printer) : Penggunan device bersama untuk menyimpan dan mengirim file bersama 
+    2. Komunikasi dan Informasi 
+        Email : Metode pengiriman dokumen/file melalui internet 
+        WWW : Bagian internet yg menyediakan resource yg diakses user 
+    3. FTP (File Transfer Pratocol)
+        cara mudah, murah dan cepat untuk men tf file/arsip data dari server internet ke kom atau sebaliknya menggunakkan TCP/IP
+        melalui program FTP yg disebut FTP Client, user dapat mengatur pertukaran data dengan komputer lain
+    4. Chat 
+        fasilitas untuk berkomunikasi dengan orang lain dimanapun kita berada, secara personal maupun banyak 
+            secara online dan realtime. Chat ini mirip dengan telepon yg berfasilitas party line, namun kita hanya tinggal mengetik saja 
+    5. SMS (Short Message System)
+        fasilitas pengiriman pesan dari internet ke HP dan tidak bisa dilakukan 2 arah 
+    6. WAP (Wireless Application Protocol) 
+        fasilitas pengaksesan internet melalui HP dan terbatas untuk website yg menggunakkan protokol yg sama, tetapi akan terus berkembang
+        (protokol komunikasi pada HP untuk berinternet)
+        dan biasanya pada hp lama
+    7. VOIP (Voice Over Internet Protocol)
+        penggunaan telepon melalui internet (lebih murah daripada pulsa), dan teknologi penggabungan antara suara, data
+    8. Tele Conference
+        penggunaan telepon tatap muka melalui internet dan teknologi penggabungan antara suara, data, dan gambar (zoom, gmeet)
+    9. Mailing lists
+        pengembangan dari email, dimana kita bisa membentuk suatu grup tertentu untuk menggabungkan alamat" email org"
+        

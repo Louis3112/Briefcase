@@ -1,0 +1,238 @@
+Fungsi 
+    Fungsi pada program = proses instruksi yang memiliki nama/label untuk mengembalikan nilai 
+
+    Fungsi memiliki sifat 
+        1. Modular (Aksi dalam fungsi memiliki tugas dan tujuan yg berbeda dengan tugas utama)
+        2. Reusable (Bisa dipanggil kembali)
+
+    Ciri khas fungsi   
+        1. Memiliki tujuan khusus
+        2. Serangkaian instruksi
+        3. Menghasilkan output
+
+Parameter dalam Fungsi
+    Terkadang, suatu fungsi membutuhkan komponen penting yg belum ada di dalam fungsi tersebut
+        tanpa komponen tersebut (tanpa input), fungsi tidak dapat berjalan dengan baik
+    komponen tersebut adalah Parameter
+
+    Parameter = komponen opsional pada fungsi untuk menghasilkan output yg diinginkan
+        Parameter juga harus memiliki tipe data yg sesuai dengan kebutuhan fungsi
+    
+Penggunaan fungsi di python #sama dengan fungsi int
+    menggunakkan def, dan mengeluarkan output berupa return
+
+    def f(x):
+        return x + 1
+
+    y = f(4)
+    print(y)
+
+Argumen 
+    Argumen = nilai atau ekspresi yang dikirim ke fungsi untuk mengisi Parameter
+    Bila suatu fungsi memiliki Parameter, maka harus punya argumen juga
+
+    def bayar_makan(jumlah,harga_per_porsi = 10000):
+        total_bayar = jumlah * harga_per_porsi
+        return total_bayar
+
+    total = bayar_makan(2)
+    print(total)
+
+    tapi, kita tidak harus memberikan argumen secara lengkap kepada fungsi (apabila Parameter sudah memiliki nilai) (berlaku untuk c++)
+
+    tapi, juga bisa berganti apabila
+    def bayar_makan(jumlah,harga_per_porsi = 10000):
+        total_bayar = jumlah * harga_per_porsi
+        return total_bayar
+
+    total = bayar_makan(2,15000)
+    print(total)
+
+    Argumen dapat diletakkan dengan 2 cara(pada python)
+        1. Positional Argument
+
+            total = bayar_makan(2,15000)
+            print(total)
+
+            urut, dan harus sesuai dengan Parameter
+
+        2. keyword Argument
+
+            total - bayar_makan(
+                harga_per_porsi= 13000
+                jumlah= 5
+            )
+
+            tidak harus urut, tapi harus memanggil nama Parameter
+
+    Semakin banyak Parameter, maka akan semakin ribet suatu fungsi
+    maka, harus dipertimbangkan ketika membuat Fungsi
+        1. fungsi akan semakin rumit dengan parameter yg banyak
+        2. sulit memahami Fungsi
+        3. kemungkinan salah mengirimkan argumen tinggi
+        4. fleksibilitas fungsi yang rendah
+
+    cara agar mendeklarasikan parameter dengan lebih mudah di python
+    1. Positional-or-keyword
+        def greeting(nama, pesan):
+        return f"Halo, nama saya {nama}. {pesan}"
+ 
+        print(greeting("Bima", "Selamat pagi!"))
+        print(greeting(pesan="sup", nama="homie"))
+
+        bisa menggunakkan argumen berupa positional atau keyword Argument
+
+    2. Positional-Only
+        def greeting(nama, pesan, /):
+    return f"Halo, nama saya {nama}. {pesan}"
+
+        ada slash diakhir Parameter terakhir
+        jadi, hanya bisa menggunakkan argumen berupa positional
+    
+    3. Keyword-Only
+        def greeting(*,nama, pesan):
+    return f"Halo, nama saya {nama}. {pesan}"
+
+        ada asterisk (*) di awal Parameter pertama
+        jadi hanya bisa menggunakkan argumen berupa keyword
+
+    4. Var-positional
+        def greeting(*args):
+    return f"Halo, nama saya {args[0]}. {args[1]}"
+
+        konsepnya sama dengan list
+        disimpan dalam variabel *args (sehingga, tidak perlu sulit untuk mengetikkan Parameter yg panjang)
+        hanya bisa menerima argumen berupa positional
+
+    5. Var-Keyword
+        def greeting(**kwargs):
+    return f"Halo, nama saya {kwargs ['nama'], {kwargs ['pesan']}}"
+
+        disimpan dalam variabel **kwargs 
+        hanya bisa menerima argumen berupa keyword
+
+Prosedur #sama dengan void 
+    Prosedur = blok program yang menjalankan serangkaian interuksi 
+    sama dengan fungsi, hanya saja fungsi menghasilkan output (return), sedangkan prosedur tidak (print)
+
+    Prosedur mempunyai Parameter, dan harus memiliki argumen untuk mengisi Parameter
+
+Penggunaan Prosedur di python   
+    def eatSomething(food):
+        print(f"makan {food}")
+
+    eatSomething("Mi Ayam")
+    
+Prosedur tidak mengembalikan nilai
+    kita bisa mengecek, apakah prosedur mengembalikan nilai atau tidak dengan proses assignment, perintah type dan print
+
+     def eatSomething(food):
+        print(f"makan {food}")
+
+    valueOfProcedure =  eatSomething("Mi Ayam")
+
+    print(f"Fungsi eatSomething akan mengembalikan nilai {valueOfProcedure}")
+    print(f"tipe dari eatsomething adalah {type(valueOfProcedure)}")
+
+    maka
+    "Fungsi eatSomething akan mengembalikan nilai None"
+    "tipe dari eatsomething adalah <class 'NoneType>"
+
+    walaupun di dalam prosedur tetap ditambahi kata return
+
+     def eatSomething(food):
+        print(f"makan {food}")
+        return
+
+    maka tidak berefek apa-apa, prosedur akan dianggap sebagai None (dengan kondisi return tidak ditambahkan nilai apa-apa)
+
+Type Annotation pada Fungsi dan Prosedur
+    Menulis annotation sangatlah penting karena sebagai dokumentasi dan sekaligus mempercepat pengetikan fungsi dengan autocomplete
+    cara penulisan annotation pada fungsi adalah dengan mengetikkan tipe data pada fungsi
+
+    def bayar_makan(jumlah,harga_per_porsi = 10000):
+        total_bayar : int = jumlah * harga_per_porsi
+        return total_bayar
+
+    dengan begitu, program tidak akan mengalami error dan bisa mendeteksi error apabila argument tidak sesuai dengan Parameter
+    lalu, dengan menambahkan annotation pada Parameter
+
+    def bayar_makan(jumlah:int, harga_per_porsi:int = 10000) -> int :
+        total_bayar : int = jumlah * harga_per_porsi
+        return total_bayar
+
+    tanda panah dengan tipe data, menandakan tipe data apa yg akan di return 
+    sehingga 
+
+    def bayar_makan(jumlah:int, harga_per_porsi:int = 10000) -> int :
+        total_bayar : int = jumlah * harga_per_porsi
+        return total_bayar
+
+    total:int = bayar_makan(2,13000)
+    print(total)
+
+    sehingga, apabila terjadi kesalahan argument. Maka mypy akan memberitahu 
+
+    Sedangkan untuk prosedur, hanya perlu memberikan annotation pada parameter
+    def eatSomething(food:str):
+        print(f"makan {food}")
+
+    eatSomething("Mi Ayam")
+
+    atau, bisa jadi dengan 
+    def eatSomething(food:str) -> None: #karena mengembalikan nilai none 
+        print(f"makan {food}")
+
+    eatSomething("Mi Ayam")
+
+Melihat Daftar Anotasi 
+    pada python, menyediakan atribut __annotations__ untuk melihat annotation yang sudah dibuat sebelumnya 
+
+    def bayar_makan(jumlah:int, harga_per_porsi:int = 10000) -> int :
+        total_bayar : int = jumlah * harga_per_porsi
+        return total_bayar
+
+    total:int = bayar_makan(2,13000)
+
+    print(__annotations__)
+    print(bayar_makan.__annotations__)
+    
+    dengan output 
+    #{'total': <class 'int'>}
+    #{'jumlah': <class 'int'>, 'harga_per_porsi': <class 'int'>, 'return': <class 'int'>}    
+
+    ketika mengetikkan __annotations__, maka program akan mencetak semua __annotations__ yg sudah dibuat
+    khusus untuk fungsi, maka hanya mencetak __annotations__ dari Parameter dan return, variabel di dalam tidak akan di cetak
+
+    tapi, kalau sebelumnya kita tidak membuat __annotations__, maka __annotations__ tidak akan mencetak tipe data tersebut 
+
+    panjangRuang: float = float(input("Masukkan panjang ruang: "))
+    lebarRuang: float = float(input("Masukkan lebar ruang: "))
+    tinggiRuang: float = float(input("Masukkan tinggi ruang: "))
+
+    def hitungCat(panjangRuang: float, lebarRuang: float, tinggiRuang: float) -> float:
+        kelilingRuang: float = 2 * (panjangRuang + lebarRuang)
+        jumlahLiter: float = (kelilingRuang * tinggiRuang) / 12
+        return jumlahLiter
+
+    jumlahLiter: float = hitungCat(panjangRuang, lebarRuang, tinggiRuang)
+    print(f"Jumlah cat yang Anda perlukan adalah {jumlahLiter} liter.")
+
+
+    landArea : float = float(input())
+    width : float = float(input())
+    length : float = float(input())
+
+    def checkArea(landArea: float, width: float, length: float) -> bool:
+        buildingArea: float = width * length
+        if buildingArea > landArea:
+            return False
+        else:
+            return True
+        
+    check : bool = checkArea(landArea,width,length)
+
+    if check == False: 
+        print("Rumah tidak dapat dibangun berdasarkan ketiga nilai tersebut.")
+    else:
+        print("Rumah dapat dibangun berdasarkan ketiga nilai tersebut.")

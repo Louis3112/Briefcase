@@ -1,0 +1,192 @@
+Program berbeda dengan bahasa pemrograman
+    Program = instruksi untuk melakukan suatu perintah
+    Bahasa Pemrograman = bahasa yang digunakan untuk mengkomunikasikan instruksi tersebut
+    cth : Langkah-langkah memotong bayam = Program
+    pisau = bahasa pemrograman
+
+Paradigma Pemrograman
+    Paradigma = kerangka berpikir yagg mendasari suatu bidang pengetahuan 
+    Paradigma pemrograman = kerangka kerja untuk merancang, membentuk, memahami suatu program komputer
+                            cara berpikir seorang programmer untuk menemukan solusi pada program
+
+    Paradigma Prosedural = pendekatan pemrograman dimana program terdiri atas langkah/instruksi yang urut
+        Setiap instruksi dilakukan secara sekuensial (urut), dan beberapa instruksi akan menentukan instruksi yg lainnya
+        Didasari atas konsep mesin Von Neumann (stored program concept), dimana terdapat 2 memori, memori instruksi dan memori data
+        2 memori tersebut bisa diberikan nama (variabel) dan diberikan harga (value)
+    Paradigma Prosedural sangat direkomendasikan agar dapat membuat program yang runtut, serta dapat memecahkan masalah menjadi masalah yang lebih kecil
+    cth : langkah-langkah memasak sop
+
+    Paradigma Fungsional = didasari oleh konsep pemetaan dan fungsi matematika (rumus). Fungsi dapat berbentuk fungsi "primitif" (dasar) atau fungsi kompleks (terdiri atas banyak fungsi)
+        Program dengan paradigma fungsional, menerima input dan mengeluarkan output sesuai dengan cara fungsi tanpa melihat keadaan di luar fungsi tersebut
+        Fungsi tersebut dapat disisipkan ke fungsi lainnya sebagai argumen dan dianggap sebagai objek utama seperti variabel
+        Sehingga, bila ingin menyelesaikan suatu masalah, kita bisa tinggal memanggil fungsi, yang mengeluarkan output yg diinginkan
+    cth : kitchen set terdiri atas wastafel (mencuci sayur, buah-buahan), talenan (memotong sayur, buah-buahan), kompor (memasak)
+
+    Paradigma Deklaratif = pendekatan yang mengedepankan logika tanpa melihat Prosedural
+        Berbeda dengan paradigma Prosedural, program ini berisi kumpulan pernyataan untuk mengeluarkan output yg diinginkan, bukan berisi langkah-langkah
+        Paradigma Deklaratif hanya fokus pada permasalahan dan logikanya saja, terkadang tidak peduli caranya bagaimana
+    cth : ibu meminta tolong ART untuk memasak makanan, dengan resep yang diberikan, sehingga makanan sudah siap (output)
+
+    Paradigma Berorientasi Objek (Object Oriented Programming (OOP)) = didasari oleh Objek
+        Objek memiliki atribut (kumpulan sifat) dan properti (kumpulan reaksi/metode)
+        Atribut berfungsi menyimpan informasi tentang objek 
+        Properti berfungsi informasi mengenai perilaku apa saja yang dapat dilakukan terhadap objek
+
+        dalam paradigma ini, satu objek dapat mengirimkan pesan dengan objek lainnya. Pesannya bisa berupa permintaan untuk melakukan suatu tindakan atau operasi tertentu
+        sehingga, tergantung objek penerima pesan yang menanggapi hal tersebut
+    cth : tiap buah memiliki nama, warna, dan harga (atribut), juga punya cara mengolahnya, seperti dipotong, dikupas (properti)
+
+        paradigma ini menawarkan beberapa konsep, seperti class, generic, inheritance,  polymorphism, dan encapsulation
+        konsep tersebut ditujukan untuk memudahkan pembuatan program yang lebih efisien 
+
+    Masih terdapat paradigma lain, seperti 
+        Paradigma Konkuren = paradigma yang berhubungan dengan hardware , sehingga memudahkan mengerjakan tugas secara bersamaan
+        Paradigma Relasional = paradigma yang didasari dengan pengolahan dan manajemen data menggunakkan entitas dan relasi
+
+    Suatu permasalahan dapat diselesaikan dengan suatu paradigma. Sehingga, bisa lebih fokus untuk menyelesaikan masalah tersebut. 
+    Tetapi, satu paradigma belum tentu bisa menyelesaikan semua masalah
+
+Bahasa Pemrograman berdasarkan Paradigma Pemrograman
+    Satu paradigma belum tentu cocok dengan semua masalah
+    Ada banyak bahasa pemrograman di dunia, mulai dari bahasa tingkat rendah (biner), bahasa assembly, bahasa tingkat tinggi, bahasa generasi ke empat (4GL) 
+        bahkan listnya ada dari A-Z, bahasa pemrograman berkembang dari tahun 60-an
+    
+    Bahasa pemrograman juga dikelompokkan berdasarkan paradigmanya 
+        Prosedural: Algol, Pascal, Fortran, Basic, Cobol, C, dll.
+        Fungsional: Charity, Curry, F#, Haskel, Joy, dll.
+        Deklaratif: Prolog, Datalog, dll.
+        Berorientasi Objek: Smalltalk, Eiffel, Cobra, dll.
+        Konkuren: Occam, Ada, Java, dll.
+        Relasional: SQL pada basis data relasional.
+
+    Tetapi, juga sudah mulai banyak bahasa pemrograman yang multi-paradigma, contohnya python. 
+    Bahasa pemrograman yg multi-paradigma ini sama seperti pisau serbaguna, bisa digunakan sesuai dengan masalah atau kondisi apapun
+    Python sudah mengusung berbagai paradigma, seperti 
+        Paradigma Prosedural = fungsi, control flow, dan variabel.
+        Paradigma Fungsional = higher-order function, mapping, dan filtering data
+        Paradigma Berorientasi Objek =  class, inheritance, dan polymorphism.
+    Tidak hanya python, tapi ada juga Kotlin, Swift, Dart, dan Javascript
+
+    Keuntungan lain dari multi-paradigma adalah kita lebih mudah mencari Paradigma yang efisien sesuai dengan kemauan kita.
+    Kode juga lebih mudah terbaca dengan multi-paradigma program.
+
+    Kerugiannya adalah programmer pemula akan mengalami kesulitan dalam menggunakkan/menggabungkan paradigma yg ada
+    Kalau program dikerjakan secara kolaboratif, maka tiap programmer harus bisa menguasai konsep paradigma yg dipakai
+
+    Dalam memilih bahasa pemrograman, perlu diperhatikan kondisi anggota tim dan proyek kerja. 
+    Apakah bahasa pemrograman yg dipilih sangat membantu atau tidak
+
+Program Tidak Sama Dengan Bahasa Pemrograman
+    Program = instruksi
+    Bahasa Pemrograman = alat untuk melakukan instruksi
+
+    Mempelajari pemrograman sebanding dengan belajar strategi pemecahan masalah, pemahaman, analisis, 
+    Sehingga, program adalah instruksi yang dibuat untuk menyelesaikan suatu masalah. Dengan cara menyusun strategi dan menguraikan masalah
+    Belajar bahasa pemrograman adalah belajar memanfaatkan instruksi yang ada dalam bahasa itu
+
+    cth bahasa pemrograman mengenai penjumlahan :
+    
+    C 
+    #include <stdio.h>
+    void main(){
+    int nilai1 = 1;
+    int nilai2 = 2;
+
+    int hasil = nilai1 + nilai2;
+    printf ("Hasil dari penjumlahan nilai %d dan %d adalah %d", nilai1, nilai2, hasil);
+    }
+
+
+    Python
+    nilai1 = 1;
+    nilai2 = 2;
+
+    hasil = nilai1 + nilai2
+    print ("Hasil penjumlahan dari nilai",nilai1, "dan nilai", nilai2, "adalah", hasil)
+
+    Java
+    class Add{
+        public static void main(String[] args){
+            
+            int nilai1 = 1;
+            int nilai2 = 2;
+
+            int hasil = nilai1 + nilai2;
+
+            System.out.println("Hasil penjumlahan dari nilai " + nilai1 + "dan nilai " + nilai2 + "adalah " + hasil)
+        }
+    }
+
+
+    Kotlin
+    fun main(){
+
+        val nilai1 = 1;
+        val nilai2 = 2;
+
+        val hasil: Int = nilai1 + nilai2;
+        println("Hasil penjumlahan dari nilai $nilai1 dan $nilai2 adalah $hasil")
+    }
+
+
+    Swift
+    let nilai1 = 1;
+    let nilai2 = 2;
+
+    let hasil = nilai1 + nilai2;
+    print ("Hasil penjumlahan dari nilai ", nilai1, "dan nilai", nilai2,"adalah",hasil)
+
+
+    Dart
+    void main(){
+        int nilai1 = 1;
+        int nilai2 = 2;
+
+        int hasil = nilai1 + nilai2;
+        print("Hasil penjumlahan dari nilai $nilai1 dan $nilai2 adalah $hasil")
+    }
+
+    C++
+    #include <iotream>
+    using namespace std;
+
+    int main(){
+        int nilai1 = 1;
+        int nilai2 = 2;
+
+        int hasil = nilai1 + nilai2;
+        cout << "Hasil penjumlahan dari nilai" << nilai1 << "dan nilai" << nilai2 << "adalah " << hasil;
+    }
+
+    Belajar pemrograman dan bahasa pemrograman memiliki kesulitan tersendiri, 
+    terkadang sulit mencari solusi permasalahan dan sulit menerjemahkan solusi tersebut ke dalam bahasa pemrograman
+    cth : Bima bisa saja mengerti cara mengerjakan instruksi (program) memotong bayam, tapi kesulitan untuk melakukannya dengan pisau (bahasa pemrograman)
+    Sehingga, kita harus bisa menulis, menganalisa program, dan mengeksekusinya
+
+    Program yg baik adalah
+        1. punya metodologi dan sistem yg baik
+        2. dapat dieksekusi oleh komputer
+        3. dapat berfungsi dengan baik
+        4. ada dokumentasi
+
+Perspektif Holistis tentang Pemrograman
+    Program yg dibuat haruslah memiliki solusi untuk sekarang maupun di masa depan, sehingga tidak boleh asal-asalan
+
+    Produk vs Proses
+        Produk dan Proses sama-samalah penting untuk programmer
+        Bila kode dibangun melalui proses yang baik dan benar dengan tujuan meminimalkan kemungkinan error yang muncul di masa mendatang.
+        Program harus dibuat terstruktur dan rapi, agar apabila ada kesalahan atau ada perubahan terhadap program, maka akan cepat dilakukan
+            sama seperti rumah, bila dibuat dengan struktur yg baik, maka apabila ingin direnov atau ada yg rusak, mudah untuk diperbaiki
+
+    Skalabilitas Program
+        Program lama kelamaan akan semakin berkembang, entah dari banyaknya user, data, sampai fitur. Program yg dibuat harus bisa mengikuti perkembangan dengan baik
+        Skalabilitas program adalah program dapat menangani beban kerja yg makin berat tanpa mengurangi kualitas atau performa
+            sehingga program punya fungsi, waktu respon cepat, dan dapat menyelesaikan masalah dengan baik
+        Program yg besar dimulai dari program yg kecil, selangkah demi selangkah
+        Program harus memiliki fondasi dan dasar yg kuat, sehingga apabila dikembangkan, dapat dikembangkan dengan lebih mudah
+
+    Kolaborasi Tim  
+        Kerjasama sanagat diperlukan apabila kita ingin membuat program yg besar
+        Dengan bekerjasama, program dapat dibuat dengan lebih cepat, masalah lebih cepat teratasi, dan banyak pengalaman/cerita/cara yg membuat program semakin berkembang
+        Adanya tim peneliti, desainer, coder, reviewer, dan quality control (QC) yang saling berkomunikasi satu sama lain. 
+        

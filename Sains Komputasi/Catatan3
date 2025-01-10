@@ -1,0 +1,10 @@
+Pada python, kita bisa hanya mengimmportkan beberapa fungsi saja pada suatu module 
+    from numpy import array,zeros
+Untuk penggunaan for loop pada python cukup berbeda 
+    for i in range(0,n) 
+        berarti i dimulai dari 0 sampai i menyentuh n 
+    for i in range(len(x))
+        berarti i dimulai dari 0 sampai i menyentuh n
+Kita bisa mengconvert ipynb (notebook python pada jupyter) ke python
+    dengan menggunakkan command di cmd (pastikan cmd sudah terinstal jupyter)
+        jupyter nbconvert --to script 'namaFile.ipnyb'

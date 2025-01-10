@@ -1,0 +1,525 @@
+Kumpulan data termasuk dalam tipe data non-primitif
+    Sama seperti tiap orang, memiliki datanya masing-masing yang berbeda-berbeda
+
+Data Variatif 
+    Umumnya, suatu kumpulan data mengandung elemen dengan tipe data yg sama. Kalau numerik, brrti numerik aja 
+    Di python, dapat membuat kumpulan data dengan tipe data yg variatif
+
+    mejaKelas = [30, "cokelat", True] ini list
+    infoBima = (17, "lulusan sekolah negeri") ini tuple
+    dataSet = {1, 3.14, 'hello', True} ini set
+    detailKelas = {"jumlahMeja": 30, "mejaGuru": True, "namaKelas": "11-A"} ini dict
+
+    Kelemahan dari dengan banyaknya variasi data
+        1. Data tidak konsisten (harus dicek kembali elemen dari data tersebut)
+        2. Kesulitan dalam mengelola data
+        3. Keterbatasan operasi (tiap tipe data, punya cara tersendiri untuk mengoperasikannya)
+
+Data Bersarang
+    untuk pengaksesan data, diusahakan untuk membuat data homogen (bila numerik, numerik aja)
+    Kalau misalkan data yg dimasukkan banyak, maka harus membuat data bersarang (tidak mungkin menyimpan ribuan data dalam 1 wadah)
+    
+    Kegunaan menyimpan kumpulan data secara bersarang 
+        1. Lebih mudah mengelompokkan data yg serupa
+        2. Mempermudah akses dan memanipulasi data
+        3. Lebih mudah mengatasi data yg kompleks
+    Dalam python, bisa membuat list dalam list, tuple dalam tuple, bahkan tidak hanya membuat satu tingkatan saja. Satu nilai bisa berisi banyak tingkatan
+    Tapi, semakin banyak elemen, maka semakin banyak memori yg digunakan
+
+    nilaiBimaList = [[98, 82], [78, 89], [84, 92]]
+    nilaiBimaTuple = ((98,82), (78,89), (84,92))
+
+    lalu cara mengaksesnya adlaah sama dengan penggunaan array
+    nilaiBimaList[1][0] = 78
+    nilaiBimaTuple[1][0] = 78
+
+    bahkan, bisa juga menampilkan semua angka dalam list atau tuple
+    dengan menggunakkan looping for (perulangan berdasarkan pencacah)
+    nilaiBimaList = [[98, 82], [78, 89], [84, 92]]
+
+    for sublist in nilaiBimaList:
+        for nilai in sublist:
+            print(nilai, end = ' ')
+        print()
+    
+        sama dengan c++
+    int nilaiBimaList[3][2] = {{98,82}, {78,89}, {84,92}}
+
+    for int i = 0; i < 3; i++{
+        for int j = 0; i < 2; i++{
+            cout << [i][j] << endl;
+        }
+    }
+
+    maka output
+        98   82
+        78   89
+        84   92
+
+Dictionary Bersarang
+    keluargaFajar = {
+        "bapak": {
+            "nama" : "pak fajar",
+            "pekerjaan" : "arsitek"
+        },
+
+        "ibu" : {
+            "nama" : "ibu fika",
+            "pekerjaan" : "ibu rumah tangga"
+        },
+
+        "anak": {
+            "nama" : "bima",
+            "pekerjaan" : "pelajar"
+        }
+    }
+
+    pekerjaanIbu = keluargaFajar ["ibu"]["pekerjaan"] = ibu rumah tangga
+
+    lebih panjang dari list dan tuple, dict mengandalkan "key" 
+    sehingga, kita harus mengetahui nama dari "key" tersebut
+
+    untuk menampilkan semua, maka 
+
+    for anggotaKeluarga, data in keluargaFajar.items():
+        print(anggotaKeluarga)
+        for kategori, nilai in data.items():
+            print(f"{kategori}: {nilai}" )
+
+    kita bisa memecah "key" dan "value" dalam 2 item yg berbeda dengan method .items()
+    .items() akan mengurai dictionary menjadi 2 variabel. Variabel pertama adalah "anggotaKeluarga" yg berisi "key", variabel kedua adalah "data" yg berisi "value" 
+    sehingga, perlu diuraikan dictionary data supaya bisa mengambil "key" dan "value" dari masing" poin ", lalu, variabel kategori dan nilai akan mencetak "value"
+
+Set Bersarang 
+    Nested set tidak bisa dilakukan, walaupun mutable. Karena set harus berisi data yg hashable (bisa diubah), sedangkan set adalah unhashable object (set tidak bisa diubah dan diutak atik seperti lainnya)
+    
+    set1 = {1, 2, 3}
+    set2 = {4, 5, 6}
+    set3 = {set1, set2}
+
+    print(set3)
+
+    tapi bisa diakali dengan menggunakkan nested tuple 
+
+    set1 = (1,2,3)
+    set2 = (4,5,6)
+    set3 = {set1, set2}
+
+    print(set3) 
+    maka, {(4,5,6), (1,2,3)}
+
+    dan dapat diuraikan dengan menggunakkan forloop
+
+    for subset in set3:
+        for nilai in subset:
+            print(nilai, end = ' ')
+        print()
+
+Kombinasi Kumpulan Data yg Bersarang 
+    Data non primitif bisa digabung menjadi kumpulan data bersarang, bahkan bisa dicrossover. List dengan Dict, List dengan tuple
+
+    List dalam List = True
+    List dalam Tuple = True
+    List dalam set = False
+    List dalam dict = True
+
+    Tuple dalam List = True
+    Tuple dalam Tuple = True
+    Tuple dalam set = True 
+    Tuple dalam dict = True
+
+    set dalam List = True
+    set dalam Tuple = True
+    set dalam set = False
+    set dalam dict = True
+
+    dict dalam List = True
+    dict dalam Tuple = True
+    dict dalam set = False
+    dict dalam dict = True
+
+Pencarian Data
+    Untuk mencari data pada sekumpulan data, kita harus mengetahui informasi yang ada di dalam atau terkait dengan data tersebut
+    Pencarian data juga dilakukan dengan cara 
+
+    Pencarian Sekuensial (Pencarian secara berurut)
+
+    Program akan melakukan pencarian dari elemen awal sampai elemen akhir dengan cara membandingkan elemen tersebut 
+    bisa disebut linear search
+    pencarian sekuensial pun masih dibagi lagi
+
+        Pencarian Sekuensial Tanpa bool
+        pencarian ini menggunakkan while looping, kalau tanpa bool brrti harus menggunakkan 2 kondisi
+            kondisi 1 : state untuk melakukan looping
+            kondisi 2 : ekspresi pembanding  
+        perulangan akan berlangsung terus menerus apabila kondisi true 
+
+        numbers = [23,99,55,49,89,72,9,13,42,62]
+        targetedNumber = 42
+        i = 0
+
+        while i < len(numbers) and numbers[i] != targetedNumber: #len menghitung banyaknya data di dalam suatu array, brrti i < 10
+            if numbers[i] == targetedNumber:
+                print(f"angka ditemukan pada indeks ke {i}")
+            else:
+                print(f"angka tidak ditemukan")
+
+        tapi jika targetedNumber diganti menjadi angka lain, maka akan terjadi error   
+        Traceback (most recent call last):
+        File "main.py", line 9, in <module>
+        IndexError: list index out of range
+
+        error karena list kehabisan index, bila diteruskan maka akan terjadi infinite loop 
+        untuk mengatasi hal ini,
+            Menggunakkan fungsi 
+            def findNumber (arr:list, target:any) -> int:
+                i = 0
+                while i < len(numbers):
+                    if numbers[i] == targetedNumber:
+                        return i
+                    i + 1
+                return -1
+
+            numbers = [23,99,55,49,89,72,9,13,42,62]
+            targetedNumber = 52
+
+            output = findNumber(numbers,targetedNumber):
+            if output != -1:
+                print(f"angka ditemukan pada indeks ke {i}")
+            else
+                print(f"angka tidak ditemukan")
+            
+            dengan fungsi, maka fungsi tersebut akan mengembalikan nilai dari indeks tersebut. Kalau memang tidak ketemu, maka mengembalikan nilai -1
+    
+        Pencarian Sekuensial dengan bool
+            sama dengan cara di atas, tapi kondisi ke 2 menggunakkan bool
+
+            numbers = [23,99,55,49,89,72,9,13,42,62]
+            targetedNumber = 42
+            i = 0
+            ketemu = False
+
+            while i < len(numbers) and not ketemu:
+                if numbers[i] == targetedNumber:
+                    ketemu = true
+                else:
+                    i = i + 1
+                    
+            if ketemu :
+                print(f"angka ditemukan pada indeks ke {i}")
+            else :
+                print(f"angka tidak ditemukan")
+
+            cara ini lebih direkomendasikan karena lebih mudah dan juga sangat disarankan apabila data yg dicari tidak terlalu banyak
+
+        Pencarian Sekuensial dengan Sentinel 
+
+            menggunakkan elemen fiktif yang disebut "sentinel", untuk menggantikkan elemen terakhir pada array 
+            sentinel ini nilainya sama dengan targetedNumber.  
+            sentinel dianggap sebagai penjaga while loop dengan harapan bahwa data yg dicari ketemu
+            
+            dan mencari menggunakkan 2 kondisi
+                1. data yang dicari berada di array, dicari dari indeks 0 sampai n-1
+                2. nilai pada elemen terakhir/ sentinel sama dengan data yg dicari
+            kalau salah satu ketemu, maka angka berada di dalam list
+
+            numbers = [23,99,55,49,89,72,9,13,42,62]
+            targetedNumber = 42
+            i = 0
+
+            last = numbers.pop()
+            numbers.append(targetedNumber)
+
+            while numbers[i] != targetedNumber
+            i = i + 1
+
+            numbers[-1] = last
+
+            if i < len(numbers) - 1 or numbers[-1] == targetedNumber:
+                print(f"Angka {targetedNumber} ditemukan pada indeks ke-{i}.")
+            else:
+                print("Angka tidak ditemukan dalam kumpulan data.")    
+
+            atau bisa diganti dengan  #lebih masuk akal 
+            if i < len(numbers) - 1 or numbers[i] == targetedNumber:
+                print(f"Angka {targetedNumber} ditemukan pada indeks ke-{i}.")
+            else:
+                print("Angka tidak ditemukan dalam kumpulan data.")    
+
+            elemen terakhir perlu disimpan dan digantikan dengan targetedNumber untuk mengubahnya menjadi sentinel 
+            last = numbers.pop()
+            numbers.append(targetedNumber)
+
+            pop untuk menghilangkan elemen terakhir
+            append untuk menyisipkan angka ke urutan terakhir
+
+            nah, data dalam last akan diletakkan pada numbers[-1] / array paling awal (lebih depan dari 23)
+                sehingga, angka terakhir tidak akan hilang begitu saja 
+
+            sentinel bisa diletakkan di awal maupun di akhir array, tergantung kebutuhan 
+            jika pencarian data dilakukan secara maju, atau dari indeks terkecil sampai ke terbesar
+                maka, sentinel diletakkan di akhir array 
+
+            pencarian dengan sentinel memiliki kelebihan, yaitu mengurangi pengujian banyak kondisi pada satu iterasi
+            cukup sentinel yg berperan sebagai penghenti perulangan
+
+            tapi memiliki kekurangan, yaitu tidak efektif apabila digunakan untuk data yg banyak. Karena sentinel diletakkan paling belakang
+
+        Pencarian Data dengan sorted list
+            dengan sorted list, bisa digabungkan dengan cara tidak menggunakkan bool, menggunakkan bool, atau dengan sentinel 
+            array di awal harus di sorted terlebih dahulu 
+
+            numbers = [23,99,55,49,89,72,9,13,42,62]
+            targetedNumber = 42
+            i = 0
+
+            numbers = sorted(numbers)
+
+            last = numbers.pop()
+            numbers.append(targetedNumber)
+
+            while numbers[i] != targetedNumber
+            i = i + 1
+
+            numbers[-1] = last
+
+            if i < len(numbers) - 1 or numbers[i] == targetedNumber:
+                print(f"Angka {targetedNumber} ditemukan pada indeks ke-{i}.")
+            else:
+                print("Angka tidak ditemukan dalam kumpulan data.")    
+
+            sorted list memiliki waktu komputasi yg lebih cepat sedikit daripada dengan sentinel ataupun dengan bool.
+            sorted list memang unggul di bagian pencarian data yg urut, tetapi tidak cukup cepat apabila untuk mencari data yg banyak
+
+Binary Search
+    binary search adalah metode yg digunakan untuk mencari data di kumpulan data yg banyak 
+    konsepnya sama dengan sorted list, mengurutkan data dan mencari
+    tapi, metode ini menggunakkan pendekatan pembagian dan pengecekan dari elemen tengah 
+
+    Jadi, anggap aja x = 6, lalu ada urutan angka 1-10 (tapi tidak urut)
+        1. urutkan angka terlebih dahulu
+        2. x diletakkan di tengah
+        3. bila x lebih besar dari angka di tengah, maka angka yg dicari berada di antara elemen tengah sampai elemen n
+        4. bila x lebih kecil dari angka di tengah, maka angka yg dicari berada di antara elemen 1 sampai elemen tengah
+        5. bila x ditemukan, maka selesai
+        6. ulangi terus
+
+    numbers = [23,99,55,49,89,72,9,13,42,62]
+    targetedNumber = 42
+    i = 0
+
+    numbers = sorted(numbers)
+
+    low = 0
+    high = len(numbers) - 1
+
+    ketemu = False
+    mid = 0
+
+    while low <= high and not ketemu:
+        mid = (low + high)
+        nilaiMid = numbers[mid]
+
+        if nilaiMid == targetedNumber:
+            ketemu = True
+        elif nilaiMid < targetedNumber:
+            low = mid + 1
+        else :
+            high = mid - 1
+
+    if ketemu :
+        print(f"angka ditemukan pada indeks ke {mid}")
+    else :
+        print(f"angka tidak ditemukan")
+
+    Binary search adalah metode yg sangat direkomendasikan karena tidak memakan waktu lebih banyak 
+
+Pengurutan Data
+    Mengurutkan data sangat penting kegunaannya dalam pembuatan program 
+    Pengurutan data ada banyak metodenya 
+
+    Counting Sort
+    Mengurutkan data dimulai dari elemen terkecil sampai elemen terbesar
+        cara kerjanya adalah membuat slot kosong, lalu dihitung berapa kali data tersebut muncul , memasukkan data sesuai dengan slotnya,lalu diurut
+
+        numbers = [1,3,2,5,1,6,1,3,2,1]
+        max_values =  max(numbers)
+        min_values = min(numbers)
+        range_values = max_values - min_values + 1
+
+        count = [0] * range_values
+                
+        for num in numbers:
+            count[num - min_values] += 1
+                
+        for i in range(1, range_values):
+            count[i] += count[i - 1]
+                
+        sorted_numbers = [0] * len(numbers)
+
+        for num in numbers:
+            index = count[num - min_values] - 1
+            sorted_numbers[index] = num
+            count[num - min_values] -= 1
+
+        print(numbers)
+        print(sorted_numbers)
+
+        1. menentukan angka maksimal dan minimal dari array tersebut, lalu menghitung jarak dari angka minimal dan angka maksimal
+        2. membuat variabel count, gunanya untuk membuat slot kosong untuk angka-angka yg ada
+        3. dengan for loop, count memasukkan berapa kali data tersebut masuk ke masing-masing slot (angka 1 masuk 4 kali, angka 2 masuk 2 kali)
+        4. dengan for loop i in range, menghitung akumulasi jumlah list tersebut. Tujuannya untuk mengetahui ada berapa indeks di dalam array dan mengetahui indeks awal sampai akhir
+        5. membuat variabel sorted_numbers, untuk membuat slot kosong yang berguna untuk meletakkan angka-angka sesuai urutannya
+        6. dengan for loop num in numbers, mengurutkan kumpulan data dengan perulangan, kumpulan data asli, frekuensi kumulatif
+            1. lakukan perulangan dengan mengiterasi elemen kumpulan data
+            2. cari indeks elemen sebagai slot untuk memasukkan data yg terurut
+            3. beri assignment pada list kosong untuk meletakkan elemen berdasarkan indeks  
+            4. lalu, lakukan decrement indeks pada frekuensi kumulatif yang sudah terpakai
+
+        rumus diatas dapat diketik menjadi suatu fungsi 
+
+        def counting_sort (numbers:list) -> list:
+            max_values =  max(numbers)
+            min_values = min(numbers)
+            range_values = max_values - min_values + 1
+
+            count = [0] * range_values
+                    
+            for num in numbers:
+                count[num - min_values] += 1
+                    
+            for i in range(1, range_values):
+                count[i] += count[i - 1]
+                    
+            sorted_numbers = [0] * len(numbers)
+
+            for num in numbers:
+                index = count[num - min_values] - 1
+                sorted_numbers[index] = num
+                count[num - min_values] -= 1
+
+            return sorted_numbers
+        
+        numbers = [1,3,2,5,1,6,1,3,2,1]
+        sorted = counting_sort(numbers)
+        print (f"data sebelum diurutkan : \n {numbers}")
+        print (f"data sesudah diurutkan : \n {sorted}")
+
+        algoritma ini memanfaatkan rentang nilai dari kumpulan data, rentang dari angka 0 sampai seterusnya
+        tapi, sangat tidak efisien apabila data yg digunakan adalah angka yg rentangnya besar {0, 1, 5, 20, 50, 100}
+
+        maka, frekuensi elemen akan membuat kumpulan data/slot kosong menjadi sebanyak 100, padahal elemen yg dihitung hanya 6
+        sisanya adalah kosong, sehingga membutuhkan memory yg cukup banyak
+
+    Selection Sort 
+        algoritma pengumpulan data dengan memilih dan membandingkan 2 elemen data yg berurutan, menemukan elemen terkecil dan terbesar, lalu ditukar dengan elemen yg blm urut
+        akan terus berlanjut sampai semua terurut, baik ascending maupun descending 
+
+        numbers = [1,3,2,5,1,6,1,3,2,1]
+        sorted_numbers = numbers.copy()
+        n = len(sorted_numbers)
+
+        for i in range(n):
+            min_index = i
+            
+            for j in range(i+1, n):
+                if sorted_numbers[j] < sorted_numbers[min_index]:
+                    min_index = j
+            
+            sorted_numbers[i], sorted_numbers[min_index] = sorted_numbers[min_index], sorted_numbers[i]
+        
+        1. membuat variabel sorted_numbers, untuk membedakan data asli dengan data yg akan diurutkan
+        2. membuat variabel n, untuk menjadi batasan dari looping for, 
+        3. dengan for loop i in range(n),
+            1. simpan indeks pertama pada variabel baru untuk menandakan bahwa indeks pertama berisi data paling kecil
+            2. dengan for loop j in range, melakukan perbandingan dua elemen dalam kumpulan data  
+                apabila j < min_index
+                maka, min_index akan menyimpan nilai j
+                maka, angka di i dan angka dengan min_index akan saling ditukar 
+
+        def selection_sort(numbers : list) -> list:
+            sorted_numbers = numbers.copy()
+        n = len(sorted_numbers)
+
+        for i in range(n):
+            min_index = i
+            
+            for j in range(i+1, n): #artinya, j dimulai dari i+1 sampai batas n
+                if sorted_numbers[j] < sorted_numbers[min_index]:
+                    min_index = j
+            
+            sorted_numbers[i], sorted_numbers[min_index] = sorted_numbers[min_index], sorted_numbers[i]
+        
+        return sorted_numbers
+
+        proses perulangan ini memiliki satu kelemahan, yaitu komputasi yg lama, sehingga tidak cocok untuk kumpulan data yg besar
+
+    Bubble Sort
+        algorima pengurutan data dengan membandingkan dua elemen yg bersebelahan  dan menukarnya apabila urutannya salah
+        disebut bubble sort, karena elemen yg lebih kecil akan "mengapung" atau naik ke permukaan, yg lebih besar akan "tenggelam"
+
+        numbers = [1,3,2,5,1,6,1,3,2,1]
+        sorted_numbers = numbers.copy()
+        n = len(sorted_numbers)
+
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                if sorted_numbers[j] > sorted_numbers[j+1]:
+                    sorted_numbers[j], sorted_numbers[j+1] = sorted_numbers[j+1], sorted_numbers[j]
+
+        1. caranya hampir sama dengan selection_sort, tapi perulangan for i in range yg berbeda
+        2. dengan for j in range(0,n -i -1), membandingkan data dengan elemen yg belum terurut
+            jika data di urutan j < dari j+1, maka akan terjadi pertukaran data
+
+        def bubble_sort(numbers:list) -> list:
+ 
+        sorted_numbers = numbers.copy()
+        n = len(sorted_numbers)
+
+        for i in range(n):
+            for j in range(0, n - i - 1): #artinya j dimulai dari 0 sampai n - i - 1
+                if sorted_numbers[j] > sorted_numbers[j+1]:
+                    sorted_numbers[j], sorted_numbers[j+1] = sorted_numbers[j+1], sorted_numbers[j]
+        
+        return sorted_numbers
+
+        bubble sort sebenarnya sama dengan selection sort, membutuhkan waktu komputasi yg lebih lama
+        tetapi bubble sort lebih stabil dan lebih mudah dipahami. stabil secara data
+        bubble sort dapat mempertahankan letak urutan data apabila ada 2 atau lebih data yg Sama
+        dan kalau ditambahkan data baru, tetap bisa mengurutkan dengan baik
+
+    Insertion sort 
+        algoritma pengurutan data yg unik, pengurutan berdasarkan pencarian tempat yg sesuai secara sekuensial
+        data dibandingkan dengan data sebelumnya sampai mencari nilai minimal 
+
+        kalau elemen tersebut berada di tempat yg salah (menemukan tempat yg lebih baik/lebih pas), maka akan disisipkan ke tempat tersebut
+
+        numbers = [1,3,2,5,1,6,1,3,2,1]
+        sorted_numbers = numbers.copy()
+        n = len(sorted_numbers)
+
+        for i in range(1,n):
+            key = sorted_numbers[i]
+            j = i - 1
+
+            while j >= 0 and key < sorted_numbers[j]:
+                sorted_numbers[j+1] = sorted_numbers[j]
+                j =- 1
+            
+            sorted_numbers[j+1] = key
+        
+
+        1. awalan caranya hampir sama dengan sebelum-sebelumnya (bubble sort dan selection sort)
+        2. dengan for i in range (1,n), digunakan untuk proses decrement dan variabel "key" untuk menyimpan elemen yg akan dipindahkan (sementara)
+        3. dengan while j >=0, digunakan untuk melakukan perbandingan apakah elemen yg dibandingkan memenuhi syarat atau tidak
+            apabila key < data yang dibandingkan, maka data yang dibandingkan akan dipindah ke urutan j + 1
+            lalu lakukan decrement pada urutan j
+        4. setelah selesai dengan loop while j >= 0, key bisa dimasukkan dalam kumpulan data j+1
+
+        insertion sort sebenarnya sama saja dengan selection sort, tapi lebih efektif dan lebih mudah dipahami
+            karena algoritma hanya membandingkan data dengan elemen yg sudah diurutkan sampai menemukan posisi yg tepat
+            kalau selection sort, akan terus melakukan perbandingan walaupun sudah urut 
+        dan juga insertion sort lebih stabil, sama dengan bubble sort
+
+        sebenarnya, msih banyak lagi algoritma sort yg lain
+        seperti quick sort, merge sort, heap sort, dll

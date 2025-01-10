@@ -1,0 +1,123 @@
+Mail Server
+    Server internet berbasis cloud computing untuk mengirim dan menerima email dalam satu jaringan server mail yg sama
+    Mail server mengumpulkan, mengolah, mengirim, data serta info dalam bentuk email dengan menggunakkan domain email khusus
+    Mail server menggunakkan dasar layanan client-server, dimana client mengakses mail server melalui app
+
+Fungsi Mail Server
+    1. Sebagai pengatur, penerima, penyalur atas email yg msuk
+    2. Aplikasi yg dgunakan untuk menginstal email
+    
+    Ada juga web mail server, web mail server adalah web dimana user dapat mengakses email (tidak perlu mengakses aplikasi)
+
+Protokol Mail
+    Ada 3 protokol dalam mengirim email
+        1. SMTP (Simple Mail Transfer Protocol)
+            digunakan untuk menampung data serta mengirim email ke alamat email lain 
+            Protocol untuk mengirim email di Internet atau mengirim email dari lokal ke server lalu ke receiver
+            Proses ini dikontrol oleh MTA (Mail Transfer Agent) yg ada dalam server email
+
+            Untuk Port STMP
+                Port 25 - Tidak terenkripsi
+                Port 426 - Port SSL/TLS sehingga terenkripsi (SMTPS)
+
+        2. POP3 (Post Office Protocol V3)
+            digunakan untuk memudahkan pengaksesan email secara remote
+            Protocol baru untuk menerima email dari server ke local
+            Digunakan untuk berkomunikasi dengan Mail server dan mengunduh semua email yg ada (Outlook, Thunderbird, Windows Mail, Mac Mail)
+
+            Sangat disarankan untuk memiliki salinan ketika menggunakkan POP3 (sehingga, ketika di download semua, tetap perlu menyimpan email yg ada)
+            POP 3 adalah protokol komunikasi satu arah, artinya data diambil dari server dan dikirim ke email lokal
+
+            Untuk Port POP3
+                Port 110 - Tidak terenkripsi
+                Port 995 - Port SSL/TLS sehingga terenkripsi (POP3S)
+
+            Kelebihan POP3
+                1. Tidak perlu terhubung ke internet jika sudah mendownload semua email dari aplikasi local mail
+                2. Tidak ada limit untuk email yg dikirim/didownload
+                3. Dapat membuka file attachment dengan cepat
+                4. Tidak ada max space utk mailbox, kecuali harddisk penuh
+
+            Kekurangan POP3
+                1. Jika JS pada email reader diaktifkan, email phising dengan embed JS dapat terbaca di email 
+                2. Semua pesan akan disimpan di komputer sehingga mengurangi space di komputer
+                3. Semua file attachment diunduh dan disimpan dalam komputer, sehingga potensi terserang virus besar
+                4. Folder email terkadang hilang, sehingga restore sulit dilakukan
+
+        3. IMAP (Internet Message Access Protocol)
+            digunakan untuk memudahkan pengaksesan email secara remote
+            sama seperti POP3, tapi cara kerja nya berbeda 
+                perbedaannya adalah IMAP adalah protokol komunikasi 2 arah sebagai perubahan yg dibuat pada local mail yg juga dikirim ke server
+            IMAP lebih banyak direkomendasikan dari POP3 (cthnya Gmail)
+
+            Dalam IMAP, email disimpan dalam mail server, local mail akan menghubungi server untuk menampilkan email 
+            Sehingga file pesan email akan tersimpan dalam server dan tidak didownload di email lokal
+
+            Untuk Port IMAP
+                Port 143 - Tidak terenkripsi
+                Port 993 - Port SSL/TLS sehingga terenkripsi (IMAPS)
+            
+            Kelebihan IMAP
+                1. Dapat mengakses email dimana saja dengan device yg berbeda
+                2. Email dapat diakses melalui web tanpa app
+                3. Dapat mengunduh email yg ingin dibuka, sehingga tidak perlu menunggu semua pesan di download
+                4. Attachment tidak otomatis didownload IMAP, sehingga email dapat terbuka lebih cepat 
+                5. Dapat memilih attachment yg ingin dibuka
+
+            Kekurangan IMPA
+                1. Beberapa web hosting tidak mendukung IMAP 
+                2. Email disimpan dalam server, sehingga mengurangi disk space hosting
+                3. Email hanya dapat diakses apabila terhubung internet 
+
+Komponen Mail Server
+    Mail Server umumnya memiliki 2 aplikasi yaitu SMTP dan POP, tapi terdapat komponen lain pendukung yg memaksimalkan proses menerima dan mengirim email
+        1. MUA (Mail User Agent)
+            komponen untuk membaca, membuat, mengirimkan email
+            MUA sering disebut email reader karena fungsi utamanya adalah perintah" untuk menerima email dan membaca email
+            Ada beberapa MUA yg juga yg dilengkapi MIME (Multipurpose Internet Mail Ext) untuk menambahkan attachment pada email (file, foto, video)
+        
+        2. MTA (Mail Transfer Agent)
+            komponen untuk mengurus pengaturan pengiriman email
+            MTA bertugas dalam menerima dan memproses email yg msuk melalui berbagai jaringan, menentukan tujuan email, menggunakan daftar distribusi untuk mengirimkan copy email
+        
+        3. MDA (Mail Delivery Agent)
+            komponen untuk mengurus pengiriman email
+            MDA memiliki 2 komponen utama
+                1. Database jaringan untuk mengirim pesan   
+                2. Delivery agent untuk mengirim email sesuai jaringan yg dipilih
+
+Cara kerja Mail Server
+    Mail server memiliki 2 server yg berbeda fungsi, server sebagai outgoing server (send email) dan incoming server (receive email)
+        Outgoing di handle oleh SMTP pada port 25
+        Incoming di handle oleh POP3 pada port 110 atau IMAP pada port 143
+    
+    Sehingga prosesnya 
+    Sender -> MUA -> waiting list email -> MTA -> user mailbox -> MUA -> receiver
+        
+        Email yg dikirim sender akan dikumpulkan dalam 1 database mail server dan diatur pengelompokannya based on tujuan 
+        Email yg dikirim tentunya memiliki info siapa yg mengirim dan tujuan dikirimkannya ke siapa 
+        Ketika sudah terkirim oleh receiver, maka receiver akan membaca dari web atau apli
+    
+Jenis Mail Server
+    Mail Server memiliki jenis tertentu berdasarkan sistem pengoperasian dan program
+    
+    Sendmail
+        Mail server yg paling standar dan banyak digunakan pada Linux dan Unix
+    Postfix 
+        Mail server yg dibuat berdasarkan hasil pengembangan Sendmail
+        Postfix dapat dijalankan pada Linux, Unix, dan Mac OS X
+        Diharapkan dapat menggantikan sendmail
+    Qmail   
+        Mail server yg dianggap paling aman dalam OS Mail server
+        Karena minim celah keamanan 
+        Banyak digunakan oleh penyedia email besar seperti Hotmail dan Yahoo
+    
+Contoh Mail Server
+    Mail server bekerja dalam mode client server dan dibedakan berdasarkan komponennya
+
+    Komponen MTA
+        aplikasi Sendmail, Postfix, Exim, Qmail, MAilX, Pine, dan Netscape
+    Komponen MDA
+        mail server yang berfungsi mendistribusikan email yang datang ke MTA sesuai mailbox masing-masing user
+    Komponen MUA
+        Thunderbird, Outlook, Eudora Mail, Kmail, dan Evolution

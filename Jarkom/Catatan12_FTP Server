@@ -1,0 +1,62 @@
+FTP (File Transfer Protocol)
+    protokol internet service dimana user dapat mengirim file ke komputer (download) atau mengirim file ke server (upload)
+    FTP dapat digunakan untuk melakukan remote server  
+        Remote server berguna untuk mengelola website tanpa harus msuk ke hosting atau VPS (Virtual Private Server)
+
+Sejarah FTP 
+    FTP tidak lepas dari Telnet
+        Telnet digunakan untuk koneksi langsung (indirect connect)
+        FTP digunakan untuk koneksi tidak langsung 
+        dan keduanya termasuk dalam TCP/IP
+    
+    Koneksi tdk langsung brrti menggunakkan resource dari remote host dan menggunakkan pada sistem lokal, lalu ditransfer kembali ke remote host
+    Standar FTP pertama kali adalah RFC 114 yang dikeluarkan pada tahun 1971, bahkan sebelum TCP dan IP ada
+
+Fungsi dan Kegunaan FTP
+    1. Mengupdate website page ke internet page melalui website hosting
+    2. Mendownload atau mengupload file dari public website
+    3. Mengupload file yg besar menjadi bagian" karena tidak bisa dikirimkan sekaligus
+    4. Mendownload dan mengupload konten, sperti tugas kuliah ke FTP Server
+    5. Mengupdate program yang dilakukan oleh software developer
+    6. Memindahkan satu file ke tempat lain
+
+Cara kerja FTP
+    FTP bekerja dengan mengandalkan autentikasi yg meminta user memasukkan username dan password utk mengakses data
+        Setiap kali mengunduh, mengakses, mengupload file, menyalin, menghapus maka diperlukan akses FTP
+        Akses FTP didapat dari username dan password yg digunakan
+    Sebelum terjadi pertukaran data, FTP client harus melakukan permintaan koneksi ke FTP Server
+        Jika sudah, maka bisa dilakukan pengiriman file
+
+Aplikasi FTP client
+    Ada banyak aplikasi FTP client
+    1. FileZilla FTP client
+        Remote FTP dengan fitur yg lengkap
+        Bisa berjalan pada Linux dan Windows
+        Dapat melakukan transisi simultan
+        Dapat mengupload ulang jika terputus
+        - Membutuhkan waktu yg lama untuk mengupload file (semakin banyak, maka semakin lama)
+
+    2. WinSCP
+        - Tidak sepopuler FileZilla
+        Mendukung Protocol SFTP, SCP, FTP, dan WebDev
+        Mendukung SSH password, keyboard interaktif, public key, dan authentication Kerberos
+        Terintegrasi dengan Pageant
+        - Hanya berlaku untuk Windows
+    
+    3. GFTP
+        - Hanya bisa berlaku untuk Linux
+        Open source sehingga bisa diupdate
+        Sudah mendukung protokol FTP, FTPS, HTTP, HTTPS, SSH, FSP
+        - Hanya bisa melakukan koneksi FTP secara lokal 
+
+Perintah Dasar FTP 
+    ftp (alamat server ftp)
+        Koneksi ke FTP Server
+    dir 
+        Melihat directory file
+    put (nama file)
+        Mengupload file ke FTP Server
+    get (nama file)
+        Mendownload file dari FTP Server
+    quit
+        Keluar dari FTP Server

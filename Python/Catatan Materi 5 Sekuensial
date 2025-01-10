@@ -1,0 +1,165 @@
+Pemrograman Prosedural harus dilakukan secara sekuensial (bertahap)
+Berpikir secara struktural dan logis untuk menghasilkan output yg diinginkan
+
+Kasus Aksi Sekuensial 
+    Sekuensial/Sequential Statement = deretan instruksi/tindakan yg dilakukan secara berurut
+        dimulai dari tahapan 1,2,3,4,5, sampai n
+    Dalam aksi sekuensial, ada 2 state yg saling terhubung satu dengan yg lain
+        Initial state = status aksi yg harus dipenuhi 
+        Final state = status aksi setelah dipenuhi
+        
+        Initial state   --->   aksi yang dilakukan   ---> final state 
+            ke- i                                            ke- i
+
+Perspektif Initial dan Final State
+    Setiap aksi memiliki batasan dan ketentuan yg harus dipenuhi
+    batasan dan ketentuan itu lah yg disebut initial state, jika initial state tidak terpenuhi, maka sub-aksi (langkah pertama) tidak dapat dikerjakan 
+        cth : mencuci sayuran
+            initial state : sayuran, air, wadah untuk meletakkan sayuran
+            jika salah satu tidak ada, maka aksi mencuci sayuran tidak dapat dilakukan, bahkan program untuk memasak sup tidak dapat dilakukan
+            final state : sayuran telah bersih
+            final state akan berubah menjadi initial state untuk aksi selanjutnya
+
+Pengamatan Aksi 
+    jika initial state tidak terpenuhi, maka sub-aksi tidak dapat dikerjakan
+    walaupun initial state tidak dapat terpenuhi, tetap bisa dimanipulasi atau diakali dengan menambahkan sub-aksi baru
+    cth :  
+            1. Mencuci sayuran
+            2. Memotong sayuran
+            3. ....
+        tapi, karena sayuran dan talenan tidak ada, maka bisa diakali dengan menambahkan langkah baru
+            1. Mengambil sayuran 
+            2. Menyiapkan talenan
+            3. Mencuci sayuran
+            4. Memotong sayuran
+            5. ....
+
+    Terkadang, suatu sub-aksi tidak terhubung dengan sub-aksi setelahnya
+        cth : mengambil sayuran dan menyiapkan talenan tidak berhubungan satu dengan yg lain (bisa dibolak balik juga)
+            tetapi, mereka dibutuhkan untuk initial state dari sub-aksi belakangnya
+    bahkan, sub-aksi tersebut bisa digabung menjadi
+            1. Mengambil sayuran dan Menyiapkan talenan
+            2. Mencuci sayuran
+            3. Memotong sayuran
+            4. ....
+    
+Aksi Bersyarat 
+    terkadang, suatu aksi memerlukan syarat tertentu yg bisa dipenuhi (opsional) (if)
+            1. Mengambil sayuran dan Menyiapkan talenan
+            2. Jika sering meninggalkan bekas kotor saat memasak, pakailah celemek. (bisa bernilai true or false)
+            3. Mencuci sayuran.
+            4. Memotong sayuran
+
+Pengulangan Aksi
+    terkadang, suatu aksi memerlukan pengulangan untuk menghasilkan output yg diinginkan
+    tetapi, tidak semua sub-aksi harus dilakukan secara berulang. Hanya beberapa sub-aksi yang perlu dilakukan secara berulang
+            1. Mengambil sayuran dan Menyiapkan talenan
+            2. Jika sering meninggalkan bekas kotor saat memasak, pakailah celemek. (bisa bernilai true or false)
+
+            # Diulang sebanyak n kali 
+            3. Mencuci sayuran
+            4. Memotong sayuran
+    
+    bahkan, pengulangan juga bisa dipecah menjadi sub aksi tersendiri agar lebih efisien
+            1. Mengambil sayuran dan Menyiapkan talenan
+            2. Jika sering meninggalkan bekas kotor saat memasak, pakailah celemek.
+            
+            # Diulang sebanyak n kali
+            1. Mencuci sayuran.
+
+            # Diulang sebanyak n kali
+            1. Memotong sayuran
+
+            # Diulang sebanyak n kali            
+            1.Memasak kaldu dalam panci.
+            2.Memasukkan sayur yang telah terpotong ke dalam panci.
+            3.Menyajikan sup dalam mangkuk.
+
+Pengelompokan aksi-aksi
+    aksi-aksi tersebut dapat dikelompokkan dan sebaiknya dikelompokkan dengan aksi yg memiliki tujuan yg sama
+    aksi yang dikelompokkan dijadikan menjadi satu fungsi/
+    
+    cara diatas, bisa dikelompokkan dengan 
+    1. Menyiapkan bahan dan peralatan memasak berisi:
+        A. Mengambil talenan di rak dan mengambil sayuran di rak.
+        B. Jika sering meninggalkan bekas kotor saat memasak, pakailah celemek.
+        C. Mencuci dan memotong sayuran
+
+    2. Memasak dan menyajikan makanan berisi:
+        A. Memasak kaldu dalam panci.
+        B. Memasukkan sayur yang telah terpotong ke dalam panci.
+        C. Menyajikan sup dalam mangkuk.
+    
+    Perlu dianalisa dan diperhatikan lebih dahulu mengenai aksi yg dilakukan
+        jika memang bisa dikelompokkan/dipersingkat, maka akan lebih memudahkan aksi yang dilakukan
+
+Observasi Aksi 
+    dalam membuat program, perlu diperhatikan instruksi dan aksi yang dilakukan 
+    dengan membuat pemisah berupa new line atau paragraf baru, aksi bisa dibaca dengan lebih baik 
+        atau bisa dengan menggabungkan instruksi yg tidak berkaitan menjadi 1
+
+    1. Mengambil sayuran di rak.
+    2. Mengambil talenan di rak.
+    3. Mencuci sayuran.
+    4. Memotong sayur menjadi bagian kecil-kecil.
+    5. Memasak kaldu dalam panci.
+    6. Memasukkan sayur yang telah terpotong ke dalam panci.
+    7. Menyajikan sup dalam mangkuk. 
+
+    Perintah 1 dan 2 dapat dibolak balik posisinya atau digabung menjadi 1
+        dibolak balik karena initila state dan final statenya tidak terhubung satu dengan yg lain (1. Mengambil talenan di rak, 2. Mengambil sayuran di rak )
+
+            getVegetablesDone = True
+            getCuttingBoardsDone = True
+
+        KECUALI, kalau langkah ke 1 dan 3, karena final state dari langkah ke 1 akan menjadi initial state langkah ke 3, maka harus diletakkan paling atas
+            
+            getVegetablesDone = True
+            cutVegetables = getVegetablesDone and True
+
+        kalau digabung menjadi 1, maka (Mengambil sayuran dan talenan)
+            getVegetablesDone = True; getCuttingBoardsDone = True
+
+    penggabungan ini bisa dilakukan dengan konsep one-liner, menulis suatu kode dalam satu baris yg sama 
+    dapat diterapkan pada Python, cth : mengetahui palindrome , menukar 2 variabel, menjumlahkan semua nilai pada 1 list
+
+        getVegetablesDone, getCuttingBoardDone = True, True
+        (kalau di c++, bisa disingkat dengan bool getVegetablesDone, getCuttingBoardDone = True) di python tidak bisa 
+    
+    kelebihan one-liner adalah lebih mudah membaca kode dan mempercepat penulisan kode 
+
+Blok Program 
+    Blok program = sekelompok instruksi yang memiliki tujuan yg sama
+    cth :
+     1. Menyiapkan bahan dan peralatan memasak berisi:
+        A. Mengambil talenan di rak dan mengambil sayuran di rak.
+        B. Jika sering meninggalkan bekas kotor saat memasak, pakailah celemek.
+        C. Mencuci dan memotong sayuran
+
+    2. Memasak dan menyajikan makanan berisi:
+        A. Memasak kaldu dalam panci.
+        B. Memasukkan sayur yang telah terpotong ke dalam panci.
+        C. Menyajikan sup dalam mangkuk.
+    
+    sebenarnya, satu langkah instruksi sudah termasuk dalam satu blok sendiri, karena memiliki tujuan yg berbeda(final state yg berbeda) dengan langkah lainnya
+
+    indentasi (pemberian jarak tab pada program) sangatlah berguna untuk membaca program
+        python sangatlah sensitif dengan penggunaan indentasi,
+
+   1. Menyiapkan bahan dan peralatan memasak*
+   2. Lakukan sub-aksi berikut hingga selesai sebanyak 100 kali.
+        Mencuci sayuran.
+   3. Lakukan sub-aksi berikut hingga selesai sebanyak 100 kali.
+        Memotong sayur menjadi bagian kecil-kecil.
+   4. Lakukan sub-aksi berikut hingga selesai sebanyak 100 kali.
+        Memasak dan menyajikan makanan**
+
+    Blok program sangat penting penggunaannya, untuk membatasi blok program, harus terdapat batasan yg jelas
+    kalau untuk python, hanya dengan memberikan tab pada program (indentasi), kalau c++ bisa menggunakkan {}
+
+    isReady = True
+
+    if isReady:
+        print("Memasak sup")
+    
+    print ("Aksi selesai")

@@ -1,0 +1,71 @@
+Wireless 
+    Jaringan nirkabel yg menggunakkan gelombang radio, cthnya hp, tv, radio, laptop dan bisa berkomunikasi 2 arah seperti radio 
+
+    Cara kerja Wireless 
+        1. Adaptor wireless laptop mentranslate data menjadi sinyal radio dan mengirim sinyal dengan antena 
+        2. Router wireless menerima sinyal dan melakukan decode 
+        3. Router mengirimkan hasil decode ke Internet melalui kabel Ethernet, yg terhubung dengan laptop
+
+    Wireless internet 
+        layanan internet yg dapat diakses tanpa kabel fisik
+        umumnya disediakan oleh ISP melalui router wireless
+            atau secara jelasnya menggunakkan router wireless yg terhubung ke kabel atau modem DSL (Digital Subscriber Line)
+        
+        wireless tentunya bisa diakses oleh semua org karena tanpa menggunakkan kabel, sehingga wireless perlu di password
+        teknologi WEP (Wired Equivalent Privacy) digunakan utk meningkatkan security, dengan cara membuat password utk mencegah anomali akses ke Access Point
+            sehingga, yg bisa mengakses wireless adalah org yg punya password
+
+        Wireless terdiri dari 3 komponen utk mengirim dan menerima data
+            Sinyal Radio (Radio Signal)
+            Format Data (Data Format)
+            Struktur Jaringan (Network Structure)
+
+            Saat mengirim data, 3 komponen trsbut berfungsi sebagai alat yg merubah data digital menjadi sinyal radio 
+            Saat menerima data, 3 komponen trsbut berfungsi sebagai alat yg merubah sinyal radio menjadi data digital
+            
+            Sinyal radio dapat diubah menjadi data digital dengan cara 
+                menggabungkan transmitter (alat pemancar gelombang radio), receiver (alat penerima gelombang radio)
+                              antenna (alat membantu transmitter dan receiver agar lebih mudah dan lebih jauh) yg diolah dari gelombang menjadi bit biner dalam semua peralatan wireless 
+                        
+        Macam" security wireless Network
+            WPA-PSK (Wifi Protected Access - Pre Shared Key)
+                security yg menggunakkan password pre shared (yg sudah disiapkan) dan tidak menggunakkan authentikasi server
+                sehingga, access point dapat dijalankan tanpa mengunakkan komputer lain sebgai server 
+                    tidak semua access point punya fitur yg sama dan tidak semua access point punya method yg sama utk mendapat dan membagikan password 
+                
+                Beberapa access point mungkin memiliki opsi konfigurasi yang berbeda
+                    Pada access point Dlink DWL-2000AP, pemberian password diberikan secara manual tanpa mengetahui algoritma yg digunakan 
+                    Pada access point Linksys WRT54G, admin dapat memilih 2 algorithm, algorithm TKIP (Temporal Key Integrity Protocol) dan algorithm AES (Advanced Encryption Standart)
+                    
+                Setelah password didapat, user dapat memasukkan password tersebut
+                cara WPA-PSK sama seperti cara Shared-Key 
+            
+            WEP (Wired Equivalent Privacy)
+                memiliki nama lain Shared Key Authentication 
+                Shared Key Authentication adalah method Authentication yg membutuhkan penggunaan WEP 
+
+                Enkripsi WEP menggunakkan password manual (karya sendiri) yg diinput oleh admin ke access point dan client (PC, laptop, hp)
+                passwword nya hrus cocok agar bisa melakukan authentikasi
+            
+            WPA (Wifi Protected Access)
+                upgrade dari WEP karena banyak minus dari WEP 
+                WPA mengimplementasikan layer dari IEEE (layer 802.11i), sehingga lebih aman dan banyak digunakan 
+                
+                WPA dapat menggunakkan Authentication unik utk tiap user, sehingga meningkatkan security network 
+                WPA juga sama seperti WEP, menggunakkan algoritma Enkripsi RC4 dan juga tambahan TKIP
+        
+    Frekuensi Wifi
+        Frekuensi 2.4 GHz (2400 MHz)
+            frekuensi yg paling banyak digunakan pada banyak device, sprti Wifi, BT, Remote TV, Alarm
+            populer karena sinyalnya bagus dan jangakauan luas 
+
+            namun, karena banyak yg menggunakan frekuensi 2.4 GHz, sering terjadi gangguan yg mempengaruhi kualitas sinyal
+                cth: Intereferensi dari sinyal dan perangkat lain, dinding yg tebal, jarak yg terlalu jauh 
+            apabila membutuhkan Wifi utk di rumah (lingkup ruang yg tidak terlalu luas), bisa menggunakkan wifi 
+        
+        Frekuensi 5 GHz (5000 MHz)
+            frekuensi terbaru dan upgrade dari 2.4 GHz, apalagi msih sedikit device yg menggunakkan frekuensi ini
+            frekuensi ini lebih cepat dan stabil saat digunakan, terutama jika tidak ada penghalang
+            
+            tapi memiliki jangkauan yg lebih kecil daripada 2.4 GHz
+            apabila membutuhkan wifi khusus utk satu ruangan (tidak terhalang apapun) atau wireless mifi, bisa menggunakkan frekuensi ini

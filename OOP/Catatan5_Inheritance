@@ -1,0 +1,172 @@
+Inheritance/Pewarisan 
+    Setelah membuat class baru, kita dapat menggunakkan class yg sudah ada lalu menambahkan attribute/method sendiri
+    Inheritance adalah bentuk lain dari penyimpanan dan code reuse
+    Write Once, Use anywhere
+    Class Child memiliki semua kemampuan yg sama dengan Class Parent
+
+Subclass 
+    Versi kelas yg lebih khusus yg mewarisi atribut dan sifat dari class induk, dan dapat memperkenalkan dirinya sendiri/berdiri sendrii
+
+Manfaat Inheritance 
+    1. Mewakili dunia nyata
+    2. Pengaplikasian Code Reuse
+    3. Bersifat Transitif
+    4. Inheritance mudah dipahami dan struktur modelnya sederhana
+    5. Lebih sedikit untuk biaya development dan maintenance
+
+Cth Inheritance pada python 
+    class ParentClass:
+        {Body}
+    class ChildClass(ParentClass):
+        {Body}
+    
+    class person:
+        def __init__(self,name):
+            self.name = name
+        def getName(self):
+            return name
+        def isEmployee(self):
+            return False
+    
+    class employee(person):
+        def isEmployee(self):
+            return True 
+    
+    emp = Person("Person 1")
+    print(emp.getName(), emp.isEmployee())
+
+    emp = Employee("Person 2")
+    print(emp.getName(), emp.isEmployee())
+
+Cth Inheritance pada java
+    class ParentClass{
+        Body
+    }
+    class ChildClass extends ParentClass {
+        Body
+    }
+
+    class person{
+        String name;
+        boolean isEmployee;
+
+        person(String name){
+            this.name = name;
+            isEmployee = false;
+        }
+
+        public String getName(){
+            return this.name;
+        }
+
+        public boolean getIsEmployee(){
+            return this.isEmployee;
+        }
+    }
+
+    class employee extends person{
+        this.isEmployee = true;
+    }
+
+Tetapi,ada yang kurang pada code diatas, yaitu kurangnya pemanggilan constructor dan method class parent pada Subclass 
+    maka dibutuhkanlah fungsi super()
+    Super() adalah fungsi bawaan untuk memanggil method/constructor pada class parent melalui class Child
+        Sehingga, class child bisa mengakses method/constructor pada class parent 
+    
+        class person:
+            def __init__(self,name,age):
+                self.name = name
+                self.age = age
+            
+            def display(self):
+                print(self.name, self.age)
+        
+
+        class employee(person):
+            def __init__(self,name,age):
+                self.eName = name
+                self.eAge = age
+                super().__init__("Rahul",age) // mengakses method display pada person
+
+            def displayInfo(self):
+                print(self.eName, self.eAge)
+    
+            obj = person("Mayank", 23)
+            obj.display() // menampilkan rahul
+            obj.displayInfo() // menampilkan mayank 
+
+        
+        class person{
+        String name;
+        boolean isEmployee;
+
+        person(String name){
+            this.name = name;
+            isEmployee = false;
+        }
+
+        public String getName(){
+            return this.name;
+        }
+
+        public boolean getIsEmployee(){
+            return this.isEmployee;
+        }
+    }
+
+        class employee extends person{
+            super(name); // memanggil constructor person agar tidak perlu mengetikkan ulang
+            this.isEmployee = true;
+        }
+
+Jenis-jenis Inheritance
+    Single Inheritance
+        Child Class mewarisi properti/atribut/method dari Parent Class secara tunggal
+            sehingga, bisa menambah fungsi dengan mudah
+    
+    Multiple Inheritance 
+        Child class mewarisi properti/atribut/method dari Parent Class secara multiple (diturunkan lbih dari 1)
+            class Father:
+            class Mother:
+            class Son(Father, Mother):
+
+            untuk Java, java tidak mendukung multiple Inheritance, Tetapi menggunakkan inteface 
+            class Son implements Father, Mother
+    
+    Multilevel Inheritance
+        Child class mewarisi properti/atribut/method dari GrandParent Class (diatas ParentClass)        
+            jadi, diturunkan sebanyak 2x
+
+            class GrandFather:
+            class Father(GrandFather):
+            class Son(Father):
+
+            untuk java, java mendukung multilevel inheritance
+
+            class GrandFather{}
+            class Father extends GrandFather{}
+            class Son extends Father{}
+    
+    Hierarchical Inheritance
+        Parent Class mewariskan properti/atribut/method ke banyak Child Class (lebih dari 1)
+            class Father:
+            class Son(Father):
+            class Daughter(Father):
+
+            untuk java, java mendukung Hierarchical inheritance
+            class Father{}
+            class Son extends Father{}
+            class Daughter extends Father{}
+    
+    Hybrid Inheritance
+        Gabungan dari beberapa inheritance diatas (biasanya gabungan multiple inheritance dan single inheritance)
+            class GrandFather
+            class Father (GrandFather): // multilevel inheritance
+            class Teacher: // single inheritance
+            class Son(Father, Teacher):
+
+            untuk java, java tidak mendukung hybrid inheritance, tpi bisa dilakukan sebagai berikut
+            class GrandFather{}
+            class Father extends GrandFather{}
+            class Teacher{}
+            class Son extends Father implements Teacher{}

@@ -1,0 +1,34 @@
+Routing Static 
+    Jenis routing yg dilakukan admin/ network manager untuk mengonfigurasi info jaringan yg dituju secara manual
+    Ciri"" Routing static sebagai berikut 
+        1. Jalur spesifik ditentukan admin
+        2. Pengisian tabel routing dilakukan manual oleh admin
+
+    Penggunaan routing static dalam jaringan kecil cukup mudah, hanya beberapa entri yg perlu diisi pada forwarding table (tabel data komunikasi antar router (IP,Mask,Interface,Gateway)) di setiap router 
+    Namun, bayangkan jika harus melengkapi forwarding table di setiap router pada jaringan besar  
+
+    Cara kerja Routing Static 
+        1. Konfigurasi router dilakukan oleh admin jaringan
+        2. Router melakukan routing berdasarkan info tabel routing 
+        3. Admin menggunakkan perintah IP Route secara manual untuk Konfigurasi router dengan routing static
+            routing static berguna untuk mengirim paket data pada jaringan 
+    Ada beberapa parameter yg ada pada routing  
+        1. Destination/Network, alamat tujuan yg ingin dicapai, 0.0.0.0/0 digunakan utk semua jaringan  
+        2. Gateway/Nexthop, datagram yg dapat dicapai melalui Interface, alamat IP untuk pergi keluar dari network sendiri
+        3. Pref. Source, alamat IP pengirim paket data 
+        4. Distance (0-255), jarak dari suatu Pref.Source ke alamat IP tujuan 
+        5. Netmask (Subnetting), subnet /CIDR yg digunakan
+
+    Keuntungan Routing Static 
+        1. Meringankan kinerja prosessor router
+        2. Tidak ada bandwidth yg digunakan untuk pertukaran informasi dari tabel routing pada saat mengirim paket
+        3. Routing static lebih aman dari Routing Dynamic
+        4. Routing static kebal dari hack
+            hacker biasanya menspoof dengan tujuan membajak traffic
+               spoof = pemalsuan alamat sumber/informasi Routing
+    
+    Kerugian Routing Static 
+        1. Admin harus mengetahui semua info dari semua router yg ada
+        2. Hanya dapat digunakan utk jaringan kecil
+        3. Administrasi cukup rumit dibanding routing dinamis, apalagi jika router yg harus dikonfigurasi manual ada banyak
+        4. Rentan kesalahan

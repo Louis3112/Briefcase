@@ -1,0 +1,299 @@
+Rekursif
+    aksi yang diulang terus menerus-menerus dengan masukan yang berasal dari output sebelumnya (fibonacci)
+
+    Rekursif dalam pemrograman = fungsi/prosedur yang berisi aksi untuk memanggil fungsi itu sendiri, sampai mencapai suatu batasan  
+        contoh dalam kehidupan sehari", kaca yg saling berhadapan
+
+Komponen Penyusun Rekursif
+    fibonacci adalah salah satu bentuk penggunaan Rekursif. dengan rumus F (n - 1) + F(n - 2)
+    ketika ingin mengetahui angka indeks ke 5, maka kita harus tau angka indeks ke 4 dan ke 3, dan untuk tau angka indeks ke 4 harus tau angka indeks ke 3 dan 2, dst
+    sehingga, perlu memecah masalah menjadi bagian yg lebih kecil lagi 
+
+    kalau menuliskannya dalam rumus
+    1. Tentukan indeks ke - n yg akan dicari
+    2. apabila nilai n = 0, silahkan kembalikan nilai 0
+    3. apabila n = 1, silahkan kembalikan nilai 1
+    4. apabila n > 1, maka hitung dan kembalikan nilai fibonacci dengan formula F (n - 1) + F(n - 2)
+
+    sesuatu dapat dikatakan sebagai rekursif, apabila fungsi tersebut memanggil dirinya sendiri baik secara langsung maupun tidak langsung
+    rekursif sangat disarankan untuk dibuat menjadi fungsi, dan diberi parameter agar lebih mudah mengatur looping
+    sehingga 
+
+    1. Tentukan indeks ke - n yg akan dicari
+    2. buat fungsi fibonacci dengan parameter adalah n dan tipe data positif
+        1. apabila nilai n = 0, silahkan kembalikan nilai 0
+        2. apabila n = 1, silahkan kembalikan nilai 1
+        3. apabila n > 1, maka hitung dan kembalikan nilai fibonacci dengan formula F (n - 1) + F(n - 2)
+
+    ketika program meminta untuk mencari n = 5,
+    maka otomatis akan melakukan langkah ke 3, maka fungsi akan menghitung formula f (4) + F(3), tapi karena tidak sesuai, maka dipanggil kembali menjadi f(3) + f(2), dst
+
+    dalam fungsi rekursif, ada yg namanya base case. Base case adalah kondisi dimana fungsi mengembalikan output tanpa memanggil fungsi itu lagi (udah mencapai batasan)
+    base case dalam hal ini adalah n = 0, dan n = 1
+    sehingga
+
+    def fibonacci (n : int) -> int:
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        elif n > 1:
+            return fibonacci(n-1) + fibonacci (n-2)
+    
+    n = 8
+    resultFibonacci = fibonacci(n)
+
+    dalam c++
+
+    int fibonacci (int n){
+        if (n == 0){
+            return 0;
+        }
+
+        else if (n == 1){
+            return 1;
+        }
+
+        else if (n > 1){
+            return fibonacci(n-1) + fibonacci(n-2);
+        }
+    }
+
+    sehingga, rekursif terdiri atas 4 komponen utama 
+        1. Pemecahan masalah (masalah dibagi menjadi bagian yg lebih kecil)
+        2. Pembuatan fungsi 
+        3. Pemanggilan rekursif (return rumus itu sendiri)
+        4. Base case (fungsi telah mencapai suatu batas)
+    
+Jenis Algoritma Rekursif
+    Algoritma rekursif memiliki 3 cara unik untuk menyelesaikan permasalahan 
+    1. struktur Pemanggilan fungsi
+    2. metode pemanggilan fungsi
+    3. eksekusi pemanggilan fungsi
+
+    struktur pemanggilan fungsi
+        algoritma rekursif adalah pemanggilan fungsi tersebut secara terus menerus
+        kita bisa membuat fungsi tersebut sekompleks mungkin
+        ada 2 cara :
+
+        linear recursion
+        fungsi rekursif yang hanya memanggil fungsi itu sekali dalam setiap pemanggilannya 
+
+        def countdown(n:int)-> int:
+            if n > 0:
+                print(f"{n}" , end = " " )
+                countdown (n-1)
+        
+        countdown(5)
+        print (countdown)
+
+        itu adalah contoh penggunaan rekursif untuk penghitungan mundur dari n sampai 1 
+        jika diliat, fungsi tersebut hanya memanggil satu kali fungsi tersebut (hanya menghitung countdown(n-1)) sampai base case terpenuhi
+        jika dipecah menjadi 2, pohon pemanggilan fungsi akan terbagi menjadi 2 aksi,
+            print() angka countdown dan memanggil fungsi tersebut
+
+        tree recursion
+        fungsi rekursif yang memanggil fungsi itu lebih dari sekali, contohnya adalah fibonacci itu sendiri
+        def fibonacci(n : int) -> int :
+            if n == 0:
+                return 0
+            elif n == 1:
+                return 1
+            else:
+                return fibonacci(n-1) + fibonacci(n-2)
+            
+            jika n = 0 atau n = 1, maka fungsi berada dalam kondisi base case, tapi kalau n > 0, maka ia memanggil fungsi tersebut 2 kali
+            jika dipecah menjadi seperti pohon pemanggilan fungsi, maka dia akan bercabang 2 kali untuk mengecek apakah dia sampai di base case
+        
+        selain itu, ada deret tribonacci, sama dengan fibonacci, hanya saja menjumlahkan 3 deret angka di depannya
+        0,1,1,2,4,7,13,24..
+        sehingga
+        def tribonacci(n : int) -> int :
+            if n == 0:
+                return 0
+            elif n == 1 or n == 2:
+                return 1
+            else:
+                return tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3)
+        
+        tribonacci akan dipanggil sebanyak 3 kali. Hal tersebut dilakukan untuk memeriksa apakah fungsi sampai di base case (angka 0,1,2)
+    
+    Metode pemanggilan fungsi 
+        pemanggilan fungsi pada rekursif tidak boleh sampai merusak kinerja algoritma
+        pemanggilan fungsi pada rekursif akan berdampak pada kinerja dan efisiensi algoritma
+        ada 2 metode pemanggilan fungsi:
+        
+        direct recursion / pemanggilan secara langsung
+        tidak ada perantara untuk mengulang proses rekursif (tidak memanggil fungsi yg lain), jadi lgsg memanggil fungsi itu sendiri
+        def countdown(n:int) -> int:
+            if n > 0:
+                print(f"{n}", end=" ")
+                countdown(n-1)
+        
+        fungsi rekursif tersebut tidak menjalankan fungsi selain dari fungsi itu sendiri, maka disebut sebagai direct recursion (berlaku untuk fibonacci dan tribonacci)
+
+
+        indirect recursion/pemanggilan secara tidak langsung
+        ada perantara dengan fungsi lain (membutuhkan fungsi lain agar bisa menjalankan rekursif)
+
+        def isOdd (n:int):
+            if n == 0:
+                return False
+            else:
+                return isEven(n-1)
+        
+        def isEven(n:int):
+            if n == 0:
+                return True
+            else:
+                return isOdd(n-1)
+        
+        fungsi di atas saling memanggil satu dengan yg lain. fungsi dari isOdd akan memanggil isEven, dan sebaliknya 
+        apabila angka 0 ditemukan pada odd, maka akan false, kalau bukan 0 maka akan dilempar ke isEven
+        butuh fungsi lainnya dan tidak dapat berdiri sendiri
+    
+    Eksekusi Pemanggilan Rekursif
+        berkaitan dengan letak eksekusi pemanggilan fungsi rekursif tersebut
+        ada 2:
+        tail recursion
+
+        def countdown(n:int):
+            if n > 0:
+                print(f"n", end =" ")
+                countdown(n-1)
+        
+        pemanggilan fungsi rekursif terletak di bagian paling bawah (ekor) dari fungsi tersebut
+
+        non-tail recursion
+        def countup(n:int):
+            if n > 0:
+                countup(n-1)
+                print(f="n", end = " ")
+        
+        pemanggilan fungsi rekursif diletakkan bukan paling bawah, karena hal itu menjadi countup
+        dalam hal ini, fungsi akan melakukan rekursif terlebih dahulu sampai menyentuh base case, 
+        setelah sampai di base case, maka langsung print angka dimulai dari 1 (karena base case) sampai n
+
+Di balik algoritma Rekursif
+    rekursif mampu menyelesaikan suatu masalah dengan cara berulang-ulang memanggil fungsi tersebut sampai base case
+    fungsi rekursif memiliki kelebihan dan kekurangan
+
+    kelebihan:
+        1. mampu menyelesaikan masalah yg kompleks (dengan membagi masalah tersebut menjadi masalah kecil dan diselesaikan satu per satu)
+            walaupun suatu masalah bisa diselesaikan tanpa rekursif, tapi dengan rekursif, bisa memperkaya cara pikir seorang developer
+            
+            def countup(n:int):
+            if n > 0:
+                countup(n-1)
+                print(f="n", end = " ") 
+            
+            def countup_without_recursion(n:int):
+            for n in range (1, n+1):
+                print(f="n", end = " ")
+           
+            menjelaskan bahwa ada banyak cara untuk menyelesaikan suatu masalah
+        2. penyederhanaan konsep
+            suatu masalah yg kompleks dapat disederhanakan kode nya dan tidak perlu repot-repot menyimpan suatu nilai
+
+            def power(base, exponent):
+                if exponent == 0:
+                    return 1
+                else:
+                    return base * power(base, exponent -1)
+                            
+            def power_without_recursion(base, exponent):
+                result = 1
+                for _ in range(exponent):
+                    result *= base
+                return result
+        3. penyingkatan kode
+            rekursif memungkinkan kita untuk mempersingkat kode
+
+            def binary_search(numbers:list, target: int, index = 0) -> int:
+                if index >= len(numbers):
+                    return -1
+                elif numbers[index] == target:
+                    return index
+                else:
+                    return binary_search(number, target, index + 1)
+                
+            numbers = [23,99,55,49,89,72,9,13,42,62]
+            targetedNumber = 42
+
+            numbers = sorted(numbers)
+            result = binary_search(numbers, targetedNumber)
+
+            if return != -1:
+                print (f"angka {targeted number} ditemukan pada indeks {result} ")
+            else :
+                print (f"angka tidak ditemukan ")
+
+            def binary_search_without_recursion(numbers : list, target: int, index = 0) -> int:
+                low = 0
+                high = len(numbers) - 1
+
+                mid = 0
+
+                while low <= high:
+                    mid = low + high
+                    mid_value = numbers(mid)
+
+                    if mid_value == target:
+                        return mid
+                    elif mid value < target:
+                        low = mid + 1
+                    else 
+                        high = mid - 1
+                return -1
+
+            numbers = [23,99,55,49,89,72,9,13,42,62]
+            targetedNumber = 42
+
+            numbers = sorted(numbers)
+            result = binary_search_without_recursion(numbers, targetedNumber)
+
+            if return != -1:
+                print (f"angka {targeted number} ditemukan pada indeks {result} ")
+            else :
+                print (f"angka tidak ditemukan ")
+        4. Meningkatkan keterbacaan kode
+            dalam rekursif, masalah dipecah menjadi sub masalah yg lebih kecil, sehingga lebih mudah dipahami 
+
+    kekurangan :
+        1. efisiensi rendah
+            penggunaan algoritma rekursif membutuhkan banyak alokasi memori untuk menyimpan panggilan dan nilai 
+            contohnya seperti fibonacci, program perlu tau 2 elemen yg saling berdekatan dengan indeks tersebut, sampai mencapai angka 0 dan 1
+            maka program fibonacci akan menghitung secara berkali-kembali
+
+        2. waktu tidak efektif 
+            algoritma rekursif memanggil terus menerus sehingga memakan banyak memori dan waktu.
+            waktu eksekusi program akan semakin lama bila semakin banyak fungsi rekursif yg dipanggil
+            algoritma rekursif memiliki efisiensi komputasi yg rendah 
+
+        3. proses debugging rendah 
+            apabila terjadi suatu error atau bug, maka akan sulit melacak dan memperbaiki bug
+            karena rekursif dapat menjalankan blok program lebih dari 1, pada saat recursion tree berjalan.
+            karena terus memanggil fungsi itu, maka apabila terjadi bug akan membuat bingung
+
+        4. tidak cocok untuk semua masalah 
+            tidak semua cocok untuk rekursif, beberapa ada yg cocok hanya dengan looping for dan while atau pendekatan lain
+            fibonacci sebenarnya tidak cocok dengan rekursif, karena kinerjanya yg lambat, dan harus terus memanggil fungsi fibonacci tersebut terus menerus 
+            dan ternyata, fibonacci cocok dengan dynamic programming
+
+            Dynamic programming sebenarnya sama dengan rekursif, memecah masalah menjdi sub masalah 
+            ia memanfaatkan iteratif looping untuk menyimpan hasil dari sub masalah 
+
+            bedanya, dynamic programming dapat menghindari perhitungan berulang, sehingga lebih efisien dan tidak akan mengkalkulasi masalah yg Sama
+
+            def fibonacci_dynamic(n:int) -> int:
+                numbers: list = []
+                for i in range (0, n+1):
+                    if i <= 1:
+                        numbers.append(i)
+                    else :
+                        next_fib = numbers[i-1] + numbers[i-2]
+                        numbers.append(next_fib)
+                return numbers[-1]
+
+            fibonacci_dynamic akan menyimpan proses perhitungan dalam variabel numbers. kita bisa memanggil 2 elemen sebelumnya dengan mudah 
+            berbeda dengan rekursif, yg harus mencari 2 elemen sebelumnya, dan tidak disimpan nilainya, sehingga kinerja semakin lambat

@@ -1,0 +1,192 @@
+Kenapa mempelajari game?
+    Kriteria menang atau kalah jelas
+    Dapat mempelajari permasalahan 
+    Histori 
+    Menyenangkan 
+    Mempunyai search space yg besar 
+        (game catur mempunyai 35^100 nodes dalam search tree dan 10^40 legal states)
+
+Seberapa hebat AI dalam Game Playing 
+    Catur 
+        Deep blue vs Gary Kasparov 1997
+        Gary Kasparov vs Deep Junior Feb 2003 (Seri)
+    Checkers 
+        Chinook (AI)
+    Go 
+        Computer Player mempunyai Expert Level
+    Bridge 
+        Computer Player mempunyai Expert Level
+    
+Ciri umum pada game 
+    2 pemain 
+    Turn-based game
+    Zero-sum : kerugian pemain adalah keuntungan pemain lain 
+    Perfect Information : pemain mengetahui semua info state dalam game
+    Tdk mengandung probabilistik (sperti dadu)
+    Cth Tic-Tac-Toe, Checkers, Chess, Go, Nim, Otthelo
+        Bridge, Solitaire, Backgammon tdk termasuk 
+    
+Cara bermain game 
+    1. Pertimbangkan semua kemungkinan jalan 
+    2. Berikan nilai pada semua kemungkinan jalan
+    3. Ambil jalan dengan nilai kemungkinan tinggi 
+    4. Tunggu giliran musuh 
+    5. Ulangi 
+
+    Key Problems:
+        Representasikan "board" atau "state" terkini 
+        Buat next board yg legal (kemungkinan langkah yang ada)
+        Evaluasi posisi setelah mengambil langkah tersebut 
+
+Metode pencarian dan evaluasi 
+    State space (ruang keadaan) pada games direpresentasikan dengan search tree (pohon pelacakan)
+        Tiap node pada search tree berhubungan dengan keadaan yg mungkin terjadi dalam permainan tersebut 
+    Tiap langkah akan membawa perubahan dari current state menuju child state (keadaan selanjutnya)
+    Permasalahannya adalah menentukan mana state yg paling baik
+
+    Cth Game Tree adalah kemungkinan pada permainan tic tac toe 
+
+    Proses Pencarian 
+        utk mengefektikan proses pencarian, terdapat 2 cara 
+            1. Membentuk prosedur sedemikian sehingga yg tersisa hanya langkah" baik 
+            2. Membentuk prosedur pengujian sedemikian hingga path terbaik yg akan diexplore pertama kali 
+    Proses Evaluasi 
+        Untuk evaluasi dapat dilakukan secara rekursif atau statis
+        Untuk evaluasi rekursif 
+            Kita akan mengevaluasi (dengan nilai) langkah" yg mungkin sehingga kita tahu seberapa baik suatu state diikuti (menang/kalah)
+            Kita mengevaluasi tiap langkah dengan mengambil nilai terbaik utk diikuti 
+        Untuk evaluasi statis 
+            Kita akan mengevaluasi seberapa bagus suatu langkah 
+                cth : Tic tac Toe = jumlah baris, Kolom, diagonal yg berisi 2 tanda milik kita 
+                      Catur       = memberi nilai pada tiap bidak (Raja = 1000, Ratu = 10, Menteri = 5,..)
+        
+            Digunakan utk menilai "seberapa bagus" konfigurasi suatu game
+
+            Fungsi evaluasi memberi estimasi tentang kualitas game yg mengarahkan player untuk menjadi pemenang (disebut static board evaluator, f(n))
+                Pada setiap node akar:
+                    jika f(n) bil. positif besar, artinya board configuration pada node tersebut adalah "baik untuk saya, buruk untuk musuh"
+                    jika f(n) bil. negatif besar, artinya board configuration pada node tersebut adalah "buruk untuk saya, baik untuk musuh"
+                    jika f(n) = 0, artinya board configuration pada node tersebut adalah seri
+                    jika f(n) = + infinite, artinya saya memenangkan permainan
+                    jika f(n) = - infinite, artinya musuh memenangkan permainan
+                
+                cth :
+                    Tic Tac Toe 
+                        f(n) = [jumlah 3-length terbuka utk saya] - [jumlah 3-length terbuka utk musuh]
+                            3-length adalah complete row, column, diagonal yg terisi 
+                        
+                        andaikan   
+                                | x |       f(x) = 2 - 0  = 1
+                                |   |       terjadi karena ada 2 garis yg bisa dibuat oleh x (row/column)
+                                |   |
+
+                                | x |       f(x) = 2 - 1  = 1
+                                | o |       terjadi karena hanya 1 garis yg bisa dibuat oleh x (row), karena ditutupi oleh o    
+                                |   |
+                        evaluation function score = banyaknya garis yg bisa dibuat player tanpa distraction player lain 
+
+                    Alan Turing's func on chess 
+                        f(n) = w(n)/b(n)
+                            w(n) = jumlah point value bidak putih 
+                            b(n) = jumlah point value bidak hitam
+                        Deep Blue mempunyai >8000 features utk evaluation function ketika mengalahkan Gary Kasparov 1997
+
+Minimax 
+    John von Neumann (1944) menguraikan algoritma search pada game, yg disebut minimax, yg memaksimalkan posisi kita dan meminimalisir posisi musuh
+    Algorithm minimax adalah algoritma menentukan pilihan agar memperkecil peluang kehilangan nilai max
+    Ditetapkan pada permainan 2 player sprti tic tac toe,checkers, go, atau yg menggunakkan strategi 
+
+    Minimax dikembangkan dari teori game zero-sum
+        jika ada player yg mendapat profit nilai +, player lain akan mendapat loss nilai -, vice versa
+            profit - loss = 0
+    Minimax adalah algorithm dasar DFS utk transversal dalam pohon 
+    Fungsi evaluasi yg Digunakan adalah evaluasi statis, karena berasumsi bahwa musuh akan mengambil langkah terbaik
+    
+    Dalam tree Minimax, terdapat 2 jenis node 
+        Max node akan mengambil langkah dengan value max
+        Min node akan mengambil langkah dengan value min
+    
+    Tree utk Minimax
+        1. Pembuatan tree dimulai dari posisi awal hingga posisi akhir game
+        2. Posisi akhir dieval dari max POV 
+        3. Inner node diisi dengan value yg telah dieval
+        4. Max node akan menerima nilai max dari childnya 
+        5. Min node akan memilih nilai min dari childnya 
+
+    Cth
+        Max                         A (1)                   Giliran kita
+                                  /    \
+        Min                 (1)  B         C (-3)           Giliran musuh 
+                           /    /          \       \
+        Max          (4) D  (1) E       (2) F    (-3) G     Giliran kita
+
+    Pada Minimax, ada 2 prosedur yg dijalankan 
+        Maksimasi dilakukan oleh saya 
+        Minimasi dilakukan oleh musuh 
+    Perlu dilakukan fungsi evaluasi statis yg menyatakan nilai yg mungkin didapat oleh saya (nilai trsbut antara -10 sampai 10)
+
+    Algorithm Minimax
+        Minimax (State Saya, Kedalaman, Pemain){
+            if(Kedalaman == MAX){
+                return static(State Saya, Pemain)
+            }
+            Bangkit SUCCESSOR State[1..N]
+            if(Pemain == Saya){
+                return max of Minimax(State[i], Kedalaman+1, Pemain)
+            }
+            else return min of Minimax(State[i], Kedalaman+1, Pemain)
+        }
+    
+        Cth eval pada game tic tac toe
+            def score(game)
+                if game.win(@player)
+                    return 10
+                if game.win(@enemy)
+                    return -10
+                else 
+                    return 0
+            end 
+            Tentunya, kita sebagai pemain berusaha menyentuh nilai 10 
+        
+    Perbaikan Minimax
+        Teknik branch n bound digunakan utk mengurangi jmlah keadaan yg hrus diuji utk menentukan value dari suatu search tree
+        Nilai batas bawah dapat disimpan pada node yg melakukan maksimasi, dan mengabaikan node" yg tidak akan memperbaiki batas tersebut (lebih tinggi)
+        Nilai batas atas dapat disimpan pada node yg melakukan minimasi, dan mengabaikan node" yg tidak akan memperbaiki batas tersebut (lebih rendah)
+
+    alpha-beta Pruning di Depth Limited Search 
+        salah satu cara utk memodif Minimax adalah alpha-beta pruning 
+            alpha digunakan utk batas bawah node yg melakukan maksimasi 
+            beta digunakan utk batas atas node yg melakukan minimasi 
+        Pada node yg melakukan minimasi, eval dihentikan jika sudah ditemukan child node yg memiliki nilai yg lebih kecil dibanding dengan alpha 
+        Pada node yg melakukan maksimasi, eval dihentikan jik sudah ditemukan child node yg memiliki nilai yg lebih besar dibanding dengan beta 
+
+        Pruning = pemotongan cabang pada tree
+            digunakan utk memangkas waktu pembuatan dan penelusuran tree
+
+        Algorithm alpha-beta pruning 
+            Minimax pada depth Limited search + pruning 
+            syarat pruning :
+                alpha = nilai paling max di semua level max
+                beta = nilai paling min di semua level min 
+
+            function Max-Value(state,alpha,beta) returns utility value 
+                inputs : state, current state in game 
+                         alpha, value of best alternative for max along the path to state 
+                         beta, value of best alternative for min along the path to state 
+                if(Terminal-test(value)) return Utlity(state)
+                    v <- -infinite 
+                for a,s in SUCCESSORS(state)
+                    do  v <- Max(v, Min-value(s, alpha, beta))
+                    if v >= beta then return v 
+                        alpha <- Max(alpha, v)
+                return v
+        
+            contoh alpha-beta pruning
+                maximum-alpha                                                                 1                                                 mengambil nilai paling max
+                minimum-beta                                               0                                         1                          mengambil nilai paling min       
+                maximum-alpha                                    0                      2                    1                    2             mengambil nilai paling max
+                minimum-beta                            0                               2                    1               -5         2       mengambil nilai paling min        
+                maximum-alpha             0         3      x          x                 2      x             1               -5         2       mengambil nilai paling max            
+                minimum-beta          0      -3     3      x          x        2       -5      x         1       -3       -5      x    2        mengambil nilai paling min
+                                    0  5   -3  3    3   3  0  2    -2  3     5  2     5 -5    0  1     5  1    -3  0    -5  5   -3  3   2
+                x artinya dilakukan pruning

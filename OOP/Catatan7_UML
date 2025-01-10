@@ -1,0 +1,108 @@
+UML/Unified Modelling Language 
+    cara utk memvisualisasikan kerangka software. Dari banyak diagram, class diagram adalah diagram yg paling banyak digunakan 
+    Class diagram UML memberi tampilan statis dari OOP  
+        menunjukkan class, attribute, method, relationship antar object
+    UML Class diagram terdiri atas blok diagram, representasinya, jenis" relationship, contoh real time 
+
+Blok Diagram penyusun UML 
+    Class 
+        Blueprint/tempat mendefinisikan property dan behavior suatu object 
+        digambarkan dengan persegi panjang dan terbagi menjadi 3 bagian 
+            ____________________________________________
+            |                BankAccount               |   Nama (kompartemen atas) : Identitas unik class 
+            |__________________________________________|
+            | - accountNumber : String                 |   Atribut (kompartemen tengah) : properti, atribute, data dari suatu class
+            | # balance : double                       |
+            |__________________________________________|
+            | + deposit (amount: double) :: void       |   Operasi (kompartemen bawah) : method, behavior dari suatu class
+            | + withdraw (amount: double) :: void      |
+            | - updateBalance(amount: double) :: void  |
+            | - getAccountInfo() :: String             |
+            |__________________________________________|
+
+        Class juga memiliki penanda visibilitas
+            + artinya public (atribute/method dapat diakses dari class manapun)
+            - artinya private (atribute/method hanya dapat diakses dari dalam class)
+            # artinya protected (atribute/method dapat diakses dalam class yg sama/ subclassnya)
+            ~ artinya package (atribute/method dapat diakses dalam package yg sama)
+
+    Attribute 
+        properti/data suatu class, ditulis dengan format:
+            visibility name : type [multiplicity] = default value 
+                visibility    : penanda aksesbilitas
+                name          : nama attribute 
+                type          : tipe data 
+                multiplicity  : berapa banyak instance/data yg dapat diinput (opsional)
+                default value : nilai awal jika tidak diberi nilai  (opsional)
+    
+    Method 
+        fungsi/behavior dari suatu class, ditulis dengan format:
+            visibility name (parameter name: parameter type) :: return type
+                visibility      : penanda aksesbilitas
+                name            : nama method 
+                parameter name  : nama parameter dri method
+                parameter type  : tipe data parameter
+                return type     : pengembalian method 
+    
+    Interface class 
+        Class yg digunakan sebagai kerangka/contract yg dapat diimplementasi oleh class lain 
+        digambarkan dengan persegi panjang dengan keyword <<interface>> di atas nama interface class 
+        mehot dalam interface bersifat abstract, sehingga tidak perlu ditampilkan apa"
+        ____________________________________________
+        |               <<interface>>              |
+        |                BankAccount               |   
+        |__________________________________________|
+        | + draw() : void                          |  
+        | - erase() : void                         |
+        |__________________________________________|
+    
+    Abstract class
+        Blueprint dari suatu class, class yg tidak dapat dibuat instance/objectnya 
+        digambarkan dengan persegi panjang dengan keyword <<abstract>> di atas nama abstract class (dengan huruf miring)
+        ____________________________________________
+        |                <<abstract>>              |
+        |                   _Shape_                |   
+        |__________________________________________|
+        | + area : double                          |  
+        |__________________________________________|
+        | + getArea() : void                       |
+        |__________________________________________|
+
+    Multiplicity 
+        jumlah instance dari suatu class yg dapat dihubungkan dengan instance dari class lain
+        digambarkan dengan angka/rentang angka di akhir garis relationship
+        cth : 1 (tepat satu), 0..1 (nol atau satu), * (nol atau lebih), 1..* (satu atau lebih)
+
+Relationship dalam UML 
+    Ada 6 tipe relationship antar class 
+        Asosiasi (Association) ______________> (garis lurus)
+            mewakili hubungan "use a" antara 1 class dengan class lain 
+            cth : class Student dengan class Course
+        Agregasi (Agregation) _______________<> (garis lurus, diamond)
+            mewakili hubungan "has a" antara 1 class dengan class lain 
+            cth : class Car dengan class Engine 
+        Komposisi (Composition) _______________<> (garis lurus, diamond full hitam)
+            mewakili hubungan "has a" YG KUAT antara 1 class dengan class lain
+            suatu class tidak dapat berdiri sendiri tanpa class ini  
+            cth : class House dengan class Room
+        Warisan (Inheritance) ____________________|> (garis lurus, panah full hitam)
+            mewakili hubungan "is a" antara 1 class dengan class lain 
+            cth : class Animal dengan class Dog dan class Cat 
+        Realisasi (Implementation) -----------|> (panah full hitam)
+            mewakili hubungan class dengnan interface 
+            cth : class interface Shape dengan class Rectangle dan class Triangle 
+        Ketergantungan (Dependency) ------------>
+            mewakili hubungan "penggunaan" dimana 1 class dapat mempengaruhi class lain 
+            cth : class Customer dengan class Order 
+    
+    Urutan relationship yg kuat ke lemah 
+        Inheritance --> Implementation ---> Composition ---> Agregation ---> Association ---> Dependency
+
+Cth Implementation class 
+    class Person Composition dengan class Address (1..*) (karena seseorang punya lebih dari 1 alamat)
+    class Person Association dengan class Phone Number 
+        class Phone Number Dependency dengan class enum PhoneType 
+    class Person Agregation dengan class interface Pet 
+        class interface Pet Implementation dengan class Dog dan class Cat 
+            class Dog dan class Cat Inheritance dari class Animal 
+    

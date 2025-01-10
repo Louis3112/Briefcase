@@ -1,0 +1,180 @@
+Database Architecture / Arsitektur Basis data
+    Terdiri atas 3 lapisan arsitektur 
+
+    Lapisan Eksternal (berhubungan dengan apa yg keliatan end users)
+        Setiap user memiliki skema eksternal yg berbeda"
+        Berfokus pada cara data ditampilkan dan diakses oleh user
+
+    Lapisan Konseptual (menjelaskan simpanan data dalam DB dan relasi antar data)
+        Merepresentasikan struktur logis database tanpa implementasi fisik (karena tidak bisa disentuh)
+        Berfokus pada relasi antar entity, attribute
+        Biasanya independen dari platform/teknologi yg digunakan (sehingga bisa dipakai di platform lain)
+ 
+    Lapisan Internal (berhubungan dengan penyimpanan hardware/database)
+        Berfokus pada cara data disimpan dalam hardware/database
+        Menangani optimasi penyimpanan, indeks, metode akses, dan struktur file
+
+Data Model 
+    Kumpulan konsep yg digunakan untuk menggambarkan struktur basis data, operasi untuk memanipulasi struktur tersebut, serta batasan pada basis data 
+
+    Struktur dan batasan model data
+        Untuk mendefinisikan struktur database
+        Mencakup elemen" (field) serta kelompok elemen (entitas, catatan, tabel) dan hubungan antara kelompok" trsbut
+        Batasan digunakan untuk menentukan beberapa aturan yang harus dipatuhi
+ 
+    Biasanya, user akan lebih paham dengan data berbentuk diagram daripada bentuk non diagram/list 
+        Memodelkan data akan memudahkan user
+    Data model bisa diaplikasikan di DBMS lalu bisa kita buat DB berdasarkan data model
+
+    Operasi data model
+        Operasi yang digunakan untuk menentukan pengambikan/pembaruan data dalam DB 
+        Operasi ini biasanya mencakup operasi model dasar (insert, create, delete) dan operasi/fungsi yang didefinisikan user (hitung_IPK_Mahasiswa)
+    
+Kategori data model
+    Conceptual Data Modelling (CDM)
+        Hanya menampilkan entity dan relationship antar entity (tidak ada Primary key/Foreign Key)
+        Mudah dipahami dan diupgrade
+        - Abstract dan kurang detail
+
+        Pegawai ---> Buku
+
+    Logical Data Modelling (LDM)
+        Menampilkan key attribute, non key attribute , PK, FK dari entity
+
+        Pegawai             ---->       Buku
+            ID_Pegawai                      ID_Buku
+            Nama                            Judul
+            Alamat                          Penulis
+
+    Physical Data Modelling (PDM)   
+        Entity disebut table, Attribute disebut column
+        Menampilkan tipe dan length data untuk setiap column (attribute)
+        Sudah menyesuaikan standar DBMS sehingga siap diimplementasikan (biasanya dibuat dengan _ untuk memudahkan penulisan query)
+
+        Pegawai             ---->       Buku
+            ID_Pegawai__VARCHAR(10)         ID_Buku_____VARCHAR(10)
+            Nama________VARCHAR(25)         Judul_______VARCHAR(25)
+            Alamat______TEXT                Penulis_____VARCHAR(25)
+
+Skema DB/DB Scheme (Kerangka DB) (Intensi karena merujuk pada struktur/rancangan)
+    Deskripsi/Rancangan dari suatu DB, mencakup struktur, tabel, kolom, relationship, tipe data dan batasan"" pada DB
+    Sifatnya biasanya tidak sering berubah, biasanya akan tetap sama sampai ada big update
+    Diagram Skema
+        Tampilan ilustratif dari skema DB (sebagian besar)
+    Konstruksi Skema
+        Komponen/Objek dri skema DB, misal STUDENT, COURSE, TEACHER
+
+Status DB/DB State (isi dari database) (Ekstensi karena merujuk pada isi data)
+    Real data yang disimpan dalam DB, setiap kali basis data diperbarui, maka status juga berubah
+    Bersifat dinamis dan berubah"" seiring aktivitas user
+    Bisa disebut instance/occurence/snapshot DB
+    Istilah instance digunakan untuk komponen basis data individu
+        seperti record instance, table instance, entity instance
+
+Dengan kata lain, skema (intensi) menggambarkan bentuk/struktur DB, sedangkan status (ekstensi) menggambarkan isi/data dalam DB
+    cth skema 
+
+    Mahasiswa
+        |Nama       |NIM        |Jurusan            |Prodi      |
+
+    Dosen
+        |Nama       |NIP        |Jurusan mengajar   |Alamat     |
+
+    cth status 
+
+    Mahasiswa
+        |Nama       |NIM        |Jurusan            |Prodi      |
+        |Ucup Sapri |2305120401 |Teknik Informatika |PTI        |
+        |Dani Lan   |2305120402 |Teknik Informatika |SI         |
+
+ER (Entity Relationship) Model
+    Sebelum membuat Database, kita harus merancang DB dengan pendekatan perancangan konsepsual dengan ER Diagram
+    ER Diagram menggambarkan tipe objek, relasi antar objek
+    System Analyst yg biasanya merancang ER Diagram 
+        lalu diberikan kepada Database Engineer/Database Admin (DB Engineer bisa menjadi DB Admin, tapi DB Admin blm tentu)
+    ER harus dibahas atau diwawancarai dengan client agar jelas 
+    ER Model dibuat berdasarkan persepsi/pengamatan yg terdiri atas entity dan relationship
+    Sehingga DB dapat dimodelkan sebagai kumpulan entitas dan relasi antar entitas  
+
+    Entitas
+        Objek yg ada dan dapat dibedakan dengan objek lain 
+            Entitas nyata = orang, buku, pegawai, mahasiswa, dosen
+            Entitas abstrak (yg tidak bisa disentuh/rancu) =  kejadian, matkul, pekerjaan, status
+        Entitas memiliki atribut yang menjelaskan entitas 
+        Entitas memiliki attribute key yang bersifat unik yang membedakan dengan entitas lain   
+            Beberapa attribute juga dapat ditetapkan sebagai calon kunci (candidate key)
+            cth : Mahasiswa dengan NIM, Dosen dengan NIP
+        Tapi ada entitas yang tidak memiliki attribute key sendiri atau bergantung pada entity lain, maka disebut weak entity
+        
+Notasi ER 
+    Notasi ER adalah anggapannya SOP/peraturan yg harus dipahami 
+    cth notasi ER yang banyak dipakai 
+        Chen
+        Martin
+        El Masri (yang akan dipakai)
+        Korth 
+    Umumnya sama, tapi berbeda pemilihan simbol yg digunakan    
+
+    Bentuk ER Diagram bisa dilihat di google
+
+    Jenis entitas 
+        Entitas kuat (strong entity) = entitas yang berdiri sendiri, keberadaannya tidak bergantung pada entitas lin 
+        Entitas lemah (weak entity)  = entitas yang bergantung pada entitas lain
+            tidak memiliki key attribute sendiri (hanya FK)
+            Entitas tempat bergabung disebut Identifying owner/owner
+            Attribute weak entity berperan sebagai partial identifier (identifier yang berfungsi secara sebagian)
+        cth :
+            Mahasiswa adalah strong entity, Hobi adalah weak entity
+
+    Jenis attribute 
+        Attribute key = attribute yg bersifat unik digunakan untuk membedakan objek satu dengan objek yg lain, cth : nim, nip, nidn
+        Attribute sederhana = attribute bernilai tunggal, cth : nama, harga, status
+        Attribte multivalue = attribute yang bernilai banyak (nilai tidak hanya 1), cth : hobi
+        Attribute komposit  = attribute yang masih bisa diuraikan lagi, cth : alamat yang masih bisa diuraikan dengan nama jalan, kelurahan..
+        Attribute turunan/derivatif = attribute yg diturunkan dri attribute lain, cth : umur diturunkan dari tgl lahir
+
+    Relasi 
+        hubungan antar entitas satu dengan entitas lain
+        relasi dapat memiliki attribute, dimana relasi terkadang memiliki attribute tertentu
+        cth : 
+            Mahasiswa (strong entity) mengambil (relasi) matkul (weak entity)
+            disini, jika kita menambahkan attribute Nilai di Mahasiswa, maka semua nilai matkul yg diambil mahasiswa akan menghasilkan nilai yg sama
+                    jika kita menambahkan attribute Nilai di Matkul   , maka semua nilai mahasiswa yg mengambil matkul tersebut akan mempunyai nilai yg sama
+            maka, diletakkan di relasi mengambil, jika mahasiswa mengambil mata kuliah tertentu, maka akan mendapatkan nilai tertentu juga
+
+Rasio Kardinalitas
+    Derajat relasi = jumlah entitas yg terhubung dengan suatu relasi 
+        dapat berupa :
+        Unary relationship (relasi berderajat 1)
+        Binary relationship (relasi berderajat 2)
+        Ternary relationship (relasi berderajat 3)
+
+    Jenis hubungan pada relasi (menunjukkan kuantitas dari entitas)
+        One to one -> Satu ke satu, ditunjukkan dengan angka 1 
+        One to Many -> Satu ke banyak, ditunjukkan dengan angka 1 dan N
+        Many to Many -> Banyak ke banyak, ditunjukkan dengan M dan N 
+
+    Unary Relationship (Relasi derajat 1)
+        relasi yg hanya melibatkan 1 entitas (bisa disebut relasi rekursif)
+    Binary Relationship (Relasi derajat 2)
+        relasi yang melibatkan 2 entitas 
+    Ternary Relationship (Relasi derajat 3)
+        relasi yang melibatkan 3 entitas 
+
+Participation Constraint    
+    menunjukkan apakah keberadaan suatu entitas bergantung penuh/tidak pada entitas lainnya
+    Constraint/Batasan = jumlah minimum relasi tiap entitas
+    2 jenis participation constraint 
+        Participation Total = partisipasi yg menunjukkan ketergantungan penuh pada suatu entitas (semua bagian bergantung penuh)
+        Participation Parsial =  partisipasi yg menunjukkan ketergantungan tidak penuh pada suatu entitas (tidak semua)
+    
+    1 : 1 (one to one), participation parsial
+        Pegawai memimpin departemen 
+            1 Pegawai pasti memimpin 1 departemen, dan tidak mungkin semua pegawai juga ikut memimpin departemen (pasti ada bawahan)
+    M : 1 (many to one),participation total    
+        Pegawai bekerja di departemen 
+            Semua pegawai pasti bekerja di setidaknya 1 departemen (semua bagian entitas terisi)
+    M : N (many to many), participation Total
+        Pegawai mengerjakan proyek
+            1 Pegawai bisa saja mengerjakan 2 proyek atau lebih, dan 1 proyek bisa saja dikerjakan 2 org lebih (semua bagian entitas terisi)
+    

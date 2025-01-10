@@ -1,0 +1,328 @@
+Dalam program, terdapat banyak sekali pengodisian yg harus dilakukan untuk selalu menghasilkan efek neto positif
+    kalau efek neto negatif, maka program akan error
+
+    Pengodisian membutuhkan boolean, sehingga membutuhkan operasi logika dan operasi relasional
+        jika hasilnya true, maka blok program akan dikerjakan. Jika hasilnya false, maka akan skip 
+
+If
+    dalam python, penulisan if nya adalah
+    if hujan :
+        print("pakai jas hujan!")
+
+    dalam c++, penulisan if 
+    if(hujan == true){
+        cout << "pakai jas hujan";
+    }
+
+    dan if memiliki else, apabila kondisi pertama tidak terpenuhi 
+    hujan = true
+    if hujan :
+        print("pakai jas hujan!")
+    
+    else : 
+        print ("lanjutkan perjalanan")
+
+    dan if memiliki elif, apabila terdapat kondisi lebih dari 1
+    hujan = False
+    badai = True 
+
+    if hujan :
+        print("pakai jas hujan!")
+    elif badai :
+        print("sebaiknya berteduh dulu")
+    else :
+        print("lanjutkan perjalanan")
+
+    ingat, harus ada indentasi dalam penggunaan python, agar program tidak error dan program mengganggap hal tersebut masuk dalam 1 blok 
+
+Match
+    sama dengan switch case dari C++, C, Java, JS 
+    myFood = "mi ayam"
+ 
+    if myFood == "nasi goreng":
+        print("Makanan Anda adalah nasi goreng.")
+    elif myFood == "mi ayam":
+        print("Makanan Anda adalah mi ayam.")
+    elif myFood == "soto":
+        print("Makanan Anda adalah soto.")
+    elif myFood == "sate":
+        print("Makanan Anda adalah sate.")
+    else:
+        print("Kita tidak tahu makanan Anda.")
+
+    menjadi
+    
+    myFood = "mi ayam"
+ 
+    match myFood: 
+    case "nasi goreng":
+        print("Makanan Anda adalah nasi goreng.")
+    case "mi ayam":
+        print("Makanan Anda adalah mi ayam.")
+    case "soto":
+        print("Makanan Anda adalah soto.")
+    case "sate":
+        print("Makanan Anda adalah sate.")
+    case _:
+        print("Kita tidak tahu makanan Anda.")
+
+    case_ sama dengan default pada switch case
+
+    int myFood = 2;
+
+    switch (myFood) 
+    case 1 : 
+        cout << "Makanan Anda adalah nasi goreng";
+        break;
+    case 2 :
+        cout << "Makanan Anda adalah mi ayam";
+        break;
+    case 3 :
+        cout << "Makanan Anda adalah soto";
+        break;
+    case 4 : 
+        cout << "Makanan Anda adalah sate";
+        break;
+    default :
+        cout << "Kita tidak tahu makanan Anda";
+        break;
+    
+    kata kunci match adalah match-variable-case-value, sedangkan if adalah if-variable-equal-value
+
+    temperature: float = float(input("Masukkan suhu (dalam derajat Celsius): "))
+
+    if temperature > 100 :
+        print("Air berubah menjadi gas.")
+    elif 0 <= temperature <= 100 :  #kalau di c++, temperature >= 0 && temperature <= 100
+        print("Air tetap berupa cairan.")
+    else :
+        print("Air berubah menjadi padat.")
+
+    isSick: bool = False
+    temperature: float = float(input())
+
+    if temperature >= 38:
+        print("Anda mengalami sakit demam.")
+        isSick = True
+    elif 35 < temperature < 38:
+        print("Suhu tubuh Anda normal.")
+    else:
+        print("Anda terjangkit sakit hipotermia.")
+        isSick = True
+
+    if isSick:
+        print("Anda disarankan istirahat atau kunjungi dokter secepatnya.")
+    
+Pengulangan 
+    Pengulangan yg dilakukan komputer sangatlah unggul bila dibandingkan dengan manusia
+        1. Kecepatan dan Efisiensi
+        2. Kapasitas
+        3. Ketelitian 
+        4. Konsistensi
+    Walaupun begitu, manusia tetap unggul dalam kreativitas, mengatasi masalah, berpikir kritis
+
+    Looping sangat dibutuhkan dalam suatu program, agar codingan tidak perlu diketik secara berulang dan program semakin fleksibel
+    Looping membutuhkan 4 kunci utama 
+        1. State awal (Initial state)
+        2. Kondisi berhenti (agar tidak terjadi infinite looping )
+        3. Badan Perulangan (Looping body) (satu blok program di dalam suatu looping)
+        4. Proses Iterasi (Looping) (Iterasi = perulangan yang menggabungkan 3 hal diatas)
+
+Skema Pengulangan 
+    Skema pengulangan dalam python ada 4, yaitu 
+
+        1. Berdasarkan jumlah iterasi 
+            for_in range(5): #sama dengan for (int i = 0, i <= 5, i++)
+            kelebihan dari skema tersebut 
+                1. ketepatan jumlah iterasi (looping dilakukan sesuai permintaan)
+                2. kemudahan implementasi 
+                3. kejelasan logika program 
+            underscore (_) merujuk pada variabel kontemporer, anggapannya, tidak ada variabel yg penting dalam looping tersebut
+
+        2. Berdasarkan pencacah
+            for i in range(5):
+                print (f"angka {i}")
+            membagi list menjadi bagian kecil-keci, lalu di lakukan looping tiap karakter nya
+            #sama dengan for (int i = 0, i <= 5, i ++){
+            #   cout << "angka" << i; }
+            underscore (_) digantikan dengan i
+
+            Dengan memanfaatkan variabel kontemporer (underscore), maka bisa menyimpan nilai pada variabel tersebut dan digunakan dalam looping
+
+            bisa juga diterapkan dalam list, tuple, atau string
+            
+            for i in [0, "Bima", True, 3.14] :
+                print(f"mencetak {i}")
+            # mencetak 0
+            # mencetak Bima
+            # mencetak True
+            # mencetak 3.14
+            
+            for i in "Bima" :
+                print(f"mencetak {i}")
+            # mencetak B
+            # mencetak i
+            # mencetak m
+            # mencetak a
+        
+        3. Berdasarkan evaluasi kondisi berhenti 
+            
+            kelebihan dari 
+                1. Fleksibilitas (mudah mengatur jalan berhentinya iterasi)
+                2. Menghemat sumber daya
+                3. Lebih mudah mengatur alur program
+                4. Mampu menangani kasus khusus (mampu memberikan batasan tambahan)
+
+            Evaluasi pada awal program #menggunakkan while
+                perbedaan for dan while, while memerlukan kondisi yang harus dipenuhi 
+                dilakukan evaluasi pada awal iterasi, bila true menjalankan loop, bila false akan menskip 
+                    i = 0
+                while i < 5 :
+                    print (f"mencetak {i}")
+                    i = i + 1
+                # sama dengan while(i = 0){
+                #    cout << "mencetak" << i;
+                #   i++;}
+
+                penggunaan while, harus selalu memperhatikan batasan. Apabila tidak ada batasan, maka akan terjadi infinite loop
+                    i = 0
+                while i < 5 :
+                    print (f"mencetak {i}")
+                    #tanpa i = i + 1
+
+                
+            Evealuasi pada akhir program #menggunakkan do while
+                perbedaan while dengan do while adalah, iterasi dilakukan setidaknya sekali, lalu dievaluasi kondisi iterasi
+                int i = 0;
+                do {
+                    cout << "mencetak " << i << endl;
+                    i++;
+                } while(i < 5);
+                
+                tetapi, python tidak punya perintah do while, sehingga bisa diakali Dengan
+                    i = 0
+                    isloop = True
+                while isloop :
+                    print (f"mencetak {i}")
+                    i = i + 1
+                    if i > 5
+                        isloop = False      
+            
+            Sebenarnya, perbedaan paling mencolok dengan for dan while adalah, loop while bisa diatur sesuai dengan input dan kondisi program
+            kalau loop harus diketahui batasannya terlebih dahulu, sedangkan while tidak 
+    
+                isloop = True
+                while isloop:
+                    char = input("silahkan ketikkan y untuk berhenti!")
+                    if char == 'y' or char == 'Y'
+                        isloop = False
+
+        4. Berdasarkan Kompleksitas program #nested loop
+            terkadang, ada permasalahan yg memerlukan looping di dalam suatu looping, yang disebut nested loop
+            nested artinya bersarang
+
+            sama seperti analogi seseorang yang membaca buku untuk mencari suatu jawaban, bila membutuhkan 3 buku maka akan melakukan looping membaca 3 buku
+            contoh penggunaan nested loop adalah membuat segitiga siku-siku
+            
+            cara sederhana untuk membayangkannya adalah dengan perulangan luar dan perulangan dalam
+            untuk perulangan luar, dianggap sebagai barisnya, perulangan dalam dianggap sebagai kolomnya 
+            for i in range (1,6) :
+                for j in range (i) :
+                    print("*", end = ' ')
+                print (" ")
+
+            kalau untuk c++
+            for(int i = 0; i < 6; i++ ){
+                for(int j = 0; j <= i; j++){
+                    cout << "* ";
+                }
+                cout << endl;
+            }
+
+            perulangan luar dengan variabel i akan beriterasi sebanyak jumlah baris/batasan
+            perulangan dalam dengan variabel j akan beriterasi sebanyak i 
+                sehingga, looping dapat mengikuti batasan tertentu seperti perulangan Dalam
+
+            kelebihan nested looping 
+                1. Dapat mengakses setiap kombinasi elemen (dapat mengakses dan mengombinasikan elemen dari struktur data yg berbeda karena berbeda variabel temporer)
+                2. Memiliki struktur perulangan yang terstruktur
+                3. Mampu menangani tugas yg kompleks 
+                4. Fleksibel dalam memanipulasi data (dengan mengombinasikan banyak variabel temporer, memudahkan kita untuk memanipulasi data)
+            
+            semakin banyak/kompleks suatu nested loop, maka waktu eksekusi program akan semakin lama 
+            sehingga, penting untuk mempertimbangkan efisiensi dan Kompleksitas algoritma saat menggunakkan nested loop
+
+Dinamika Perulangan
+    Pada saat perulangan, ada banyak hal terjadi, seperti perubahan state, menjalankan aksi dalam iterasi, evaluasi kondisi, dan iterasi itu sendiri
+    tetapi, juga harus memperhatikan efek neto yang dihasilkan dari setiap looping. harus menghasilkan efek neto positif dan sesuai keinginan 
+
+    Putus atau Terus 
+        Saat melakukan iterasi/looping, harus ada kondisi atau batasan berhenti. Untuk itu, menggunakkan perintah break pada python
+
+        for i in range(1,5):
+            print(f"sampai di lantai {i}")
+            if i == 2:
+                print(f"Berhenti di lantai {i}")
+                break
+            
+            print(f"melewati lantai {i}")
+        break membuat iterasi akan berhenti
+
+        lalu ada juga perintah continue
+
+        for i in range(1,5):
+            print(f"sampai di lantai {i}")
+            if i != 3:
+                print(f"melewati lantai{i}")
+                continue
+            
+            print(f"berhenti di lantai 3")
+            break
+            
+        continue tugasnya melanjutkan perulangan tanpa memedulikan perintah di bawahnya 
+        jadi, perintah di bawahnya akan diabaikan dan continue akan melakukan iterasi terhadap perintah atasnya sampai kondisi terpenuhi
+        jika sudah, maka perintah di continue akan diabaikan dan sampai ke break
+
+Terikat dengan Hubungan Perulangan 
+    Program akan melakukan evaluasi kondisi tergantung dengan batasan yg kita berikan dan perubahan state terhadap variabel state  (variabel temporer)
+    Perulangan tidak hanya mengandalkan variabel state saja, variabel state hanya berguna untuk menyimpan informasi mengenai status saat iterasi berlangsung dan membatasi iterasi
+        kita bisa menggunakkan variabel tambahan untuk membuat program menjadi lebih kompleks, memanipulasi informasi dalam program
+
+        total = 0
+        for value in [2, 4, 6, 8]:
+            total = total + value
+            print(f"total saat ini adalah {total}")
+
+        print(f"total akhir adalah {total}")
+
+        variabel total adalah variabel tambahan, total akan terus ditambahkan selama proses iterasi
+        dapat digunakan untuk pengurangan, perkalian, dll
+        sangat cocok untuk pengunaan banyaknya jumlah data 
+
+    ada parameter end untuk mengubah karakter terakhir menjadi karakter tertentu
+    print("Sepatu", end = ' ')
+    print("kuda")
+
+    Jadi, kalau di python, setiap akhir dari print(), pasti akan new line (\n)
+    nah supaya tidak newline terus (tidak membuat program terlalu panjang), diketiklah end = ' '. Karena ada spasi, maka otomatis setiap print, pasti akan menjadi spasi
+    jadi, setiap akhir dari pemanggilan print akan mengeluarkan karakter yg kita inginkan
+    
+    a : int = 1
+    b : int = 2
+    n : int = int(input())
+
+    for i in range (1, n+1):
+            Un = a + (i-1) * b
+            print(Un, end = ' ')
+
+    print("\n")
+
+    a: int = 4
+    r: int = 3
+    n: int = int(input())
+
+    for i in range(1, n+1):
+        Un = a * r ** (i-1)
+        print(Un, end=' ')
+
+    print()

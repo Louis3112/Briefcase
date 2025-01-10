@@ -1,0 +1,180 @@
+Pipeline Aggregation
+    serangkaian tahap untuk mengubah document dalam collection menjadi bentuk yg diinginkan (teragregasi)
+    
+    General Concept
+        Tahapan dalam Pipeline
+            Tiap tahapan bisa muncul lebih dari sekali, sehingga bisa mengulang tahapan yg sama beberapa kali sesuai kebutuhan 
+            Tapi, ada tahapan yg memiliki aturan khusus dan memiliki kondisi khusus 
+                $out        : menyimpan hasil akhir ke collection baru atau yg udh ada                      $ = dibaca string
+                $merge      : menyimpan hasil aggregation ke collection lain                                $
+                $geoNear    : mencari document terdekat berdasarkan koordinat geografi (geospatial)         $
+        Ekspresi dalam Pipeline
+            Ekspresi pipeline hanya dapat beroperasi pada document yg digunakan dalam Pipeline, dan tidak dapat mengakses pada document lain (diluar pipeline)
+            Proses pipeline dan tiap ekspresi berlangsung pada RAM dan setiap tahapan memiliki limit yaitu 100 MB utk memastikan efisiensi RAM
+        Stateless dan Evaluasi Ekspresi 
+            Ekspresi Pipeline bersifat stateless, artinya tidak menyimpan info/kondisi document sebelumnya 
+            Ekspresi hanya dieval saat mencapai tahap tertentu, kecuali untuk ekspresi akumulator dalam tahap $group            $ (Cth: $sum, $avg, $max, $min, $push $)
+                Ekspresi akumulator digunakan untuk menghitung nilai agregat seperti total, maksimum, minimum, atau data terkait lainnya
+                sehingga memungkinkan pengolahan lebih kompleks pada pipeline   
+        Alternatif Map-Reduce 
+            Pipeline agregasi adalah alternatif yang lebih efisien dibandingkan map-reduce dalam pengelompokkan data, perhitungan total 
+            Dengan operator tambahan seperti $accumulator dan $function, MongoDB dapat melakukan operasi kompleks tanpa map-reduce yang rumit.
+
+    Perbedaan ekspresi pada SQL 
+        WHERE       == $match         $
+        GROUP BY    == $group         $
+        HAVING      == $match         $
+        SELECT      == $project       $
+        ORDER BY    == $sort          $
+        LIMIT       == $limit         $
+        SUM         == $sum           $
+        COUNT       == $sum           $
+
+    Pipeline 
+        tahapan utk mengolah/mengubah data dalam suatu collection menjadi hasil yg lebih terstruktur/teragregasi
+        memungkinkan kita utk melakukan operasi kompleks terhadap data dengan cara yg kompleks dan terstruktur
+
+        Disebut pipeline karena proses pengolahan data "mengalir" dari satu tahap ke tahap lain, seperti dalam pipa 
+            setiap tahap memproses dan mengolah data lalu dialirkan ke tahap selanjutnya, hingga mencapai tahap akhir 
+        
+        Cara kerja Pipeline 
+            1. Stages 
+                tiap tahap dalam pipeline berisi operasi tertentu utk memanipulasi data (filtering, sorting, grouping, projecting)
+                tiap tahap bekerja berdasarkan document yg diolah tahap sebelumnya
+            2. Urutan eksekusi 
+                tiap tahapan memiliki urutan yg ditentukan oleh user, urutan ini penting karena output tiap tahap akan menjadi input di tahap selanjutnya 
+                    cth : tahap 1 adalah filtering, tahap 2 adalah sorting
+            3. Filtering 
+                Pipeline dapat digunakan utk filter ($match $), grouping  ($group $), sorting ($sort $), atau pembuatan document baru utk hasil agregat baru ($projcet $)
+        
+        Beberapa tahap Pipeline 
+            $match      $ : memfilter document berdasarkan kondisi tertentu, sama seperti operasi find()
+            $group      $ : mengelompokkan document berdasarkan field/kondisi tertentu dan mengagregasi data dalam tiap group (menghitung jumlah/total)
+            $sort       $ : mengurutkan document berdasarkan field/kondisi tertentu 
+            $project    $ : memilih atau memodifikasi field dokumen, memungkinkan penambahan, penghapusan, atau perubahan nilai field
+            $limit      $ : membatasi jumlah document
+            $skip       $ : menskip document dari hasil sebelumnya 
+            $out        $ : menyimpan hasil akhir pipeline ke collection baru atau collection yg sudah ada 
+            
+            cth pengaplikasian 
+                db.storage.insertMany([
+                    {
+                    "_id": 1,
+                    "product": "Laptop",
+                    "quantity": 2,
+                    "price": 1000
+                    },
+                    {
+                    "_id": 2,
+                    "product": "Smartphone",
+                    "quantity": 5,
+                    "price": 500
+                    },
+                    {
+                    "_id": 3,
+                    "product": "Laptop",
+                    "quantity": 1,
+                    "price": 1000
+                    }
+                ])
+
+                    db.patients.aggregate([
+                        { $group: { _id: "$product", totalSales: { $sum: { $multiply: ["$quantity", "$price"] } } } },
+                        { $sort: { totalSales: -1 } }
+                        ])
+                        $
+                    akan menghasilkan
+                        {
+                            "_id": "Laptop",
+                            "totalSales": 3000
+                        }
+                        {
+                            "_id": "Smartphone", 
+                            "totalSales": 2500
+                        }
+                        {
+                            "_id": null,
+                            "totalSales": 0
+                        }
+                    
+                    $group $ = mengelompokkan document berdasarkan product dan menghitung totalSales dengan mengalikan quantity dan price
+                    $sort $ = mengurutkan document berdasarkan totalSales secara desc
+                        
+        Kelebihan
+            Efisien : operasi aggregation dilakukan di server, sehingga mengurangi beban aplikasi   
+            Fleksibel : pipeline dapat disesuaikan utk berbagi jenis agregasi 
+            Memori terpisah : MongoDB melakukan aggregation dalam memori dan memberi limit agar menjaga performa 
+            
+            Pipeline di MongoDB memungkinkan pengolahan data secara bertahap, membuatnya terstruktur dan modular
+        
+        Perintah Pipeline 
+
+            GROUP BY Vs aggregate($group)                              $
+                Pada MySQL                                 
+                    SELECT status, 
+                        SUM(age) AS total 
+                    FROM people 
+                    GROUP BY status
+                
+                Pada MongoDB 
+                    db.people.aggregate([
+                        {
+                          $group: {
+                            _id: "$status",                 //group field 
+                            total: { $sum: "$age" }         //fungsi aggregation
+                          }
+                        }
+                      ])
+
+            GROUP BY HAVING Vs aggregte($group, $match)
+                Pada MySQL  
+                    SELECT status,
+                        SUM(age) AS total
+                    FROM people
+                    GROUP BY status 
+                    HAVING total > 1000
+
+                Pada MongoDB 
+                    db.orders.aggregate([
+                        {
+                        $group: {
+                            _id: "$status",                     
+                            total: { $sum: "$age" }
+                        }
+                        },
+                        { $match: { total: { $gt: 1000 } } }  //menspesifikasikan output dengan kondisi sesuai $match           $
+                    ])                                          jika total >= 1000, maka ditampilkan
+            
+            Perlu diketahui bahwa MongoDB adalah case sensitive
+            $addFields    : menambah field baru (yg sblmnya gak ada) yg berisi output dari document dan ekspresi (perintah) dari user pada tiap document (tanpa mengubah isi document)
+                                $addFields tidak akan disimpan dalam collection, hanya ditampilkan di pipeline aggregation
+            $bucket       : mengelompokkan document ke dalam "bucket"/grup berdasarkan ekspresi dari user
+            $bucketAuto   : mengelompokkan document ke dalam "bucket" secara otomatis (batas"nya) berdasarkan ekspresi dari user
+            $collStats    : mengambil statistik suatu collection dan harus menjadi tahap pertama dalam pipeline aggregation (collectionStats)
+            $count        : menghitung jumlah document yg memenuhi kriteria dari ekspresi user sebelumnya
+            $facet        : memproses beberapa pipeline agregasi dalam satu tahap pada collection yang sama, digunakan utk menghasilkan beberapa perspektif/analisa berbeda dalam satu aggregation (multi faceted/bersisi banyak)
+            $geoNear      : mengambil urutan document berdasarkan kedekatannya terhadap suatu titik koordinat, dan harus menjadi tahap pertama dalam pipeline aggregation (harus punya titik koordinat)
+            $graphLookup  : melakukan pencarian rekursif dalam suatu collection atau berbeda collection (), outputnya adalah hasil pencarian yg sesuai dengan ekspresi user (berdasarkan pencarian rekursif) 
+                                biasanya digunakan untuk mencari relasi antara suatu document dengan document lain
+            $group        : mengelompokkan document berdasarkan ekspresi user (identifier expression dan accumulator expression), outputnya adalah document yg memenuhi ketentuan dari ekspresi
+            $indexStats   : mengambil statistik penggunaan index suatu collection, harus menjadi tahap pertama dalam pipeline aggregation
+            $limit        : mengambil sejumlah document hasil pipeline aggregation sesuai ekspresi user tanpa mengubah isi document. Document pertama sampai n ditampilkan/diteruskan, document setelah n diabaikan
+            $lookup       : menjoinkan suatu collection dengan collection lain pada database yg sama dengan menggabungkan data yang berelasi (satu tingkat relasi). outputnya adalah menambahkan array baru untuk document yang di joinkan dengan document input 
+                                walau suatu document tidak memiliki relasi dengan document yg dijoinkan, document tetap ditampilkan walau array kosongi.
+            $match        : memfilter document yang sesuai kriteria ekspresi user, menggunakkan query standard MongoDB. Bisa jadi outputnya satu ataupun nol (tidak ada document yg sesuai kriteria)
+            $merge        : menyimpan hasil aggregation ke dalam collection, bisa untuk menyisipkan doc baru, mengupdate dokumen yg ada(dengan merge), atau mengganti total document yg sudah ada
+                                harus menjadi tahap terakhir dalam pipeline aggregation
+            $out          : menyimpan hasil aggregation ke collection BARU atau collection lain (jika sudah ada), harus menjadi tahap terakhir dalam pipeline aggregation (collection yg dipanggil pada $out harus dibuat manual)
+            $project      : membentuk ulang document dengan menambah atau mengurangi field, field : 1 artinya field masuk, field : 0 artinya field dihapus, field yg tidak 
+                                $project tidak akan disimpan dalam collection, tapi hanya ditampilkan di pipeline aggregation
+                                $project tidak bisa mengubah nilai suatu field
+            $sample       : memilih random beberapa document dalam suatu collection sesuai ekspresi user
+            $set          : menambah field baru pada suatu document (sama seperti $addFields), juga bisa memperbarui nilai suatu field (jika ternyata fieldnya sudah ada), 
+                                mirip seperti $project, hanya saja bisa menambahkan field baru, tidak bisa menghapus suatu field, dan hasil outputnya tidak disimpan dalam collection, hanya ditampilkan di pipeline aggregation
+            $skip          : menskip beberapa document sesuai ekspresi user tanpa memodifikasi document (untuk document yang diskip)
+            $sort          : mengurutkan document berdasarkan ekspresi user (1 utk asc, -1 utk desc) tanpa perlu memodifikasi document
+                                kita bisa mengurutkan document berdasarkan 1 field/ lebih. Jika pada field 1 ada yg sama nilainya, maka field 2 akan m  engurutkan (asc/desc)
+            $sortByCount   : mengelompokkan document berdasarkan ekspresi user dan menghitung banyaknya document berdasarkan masing" kelompok 
+            $unset         : menghapus field dari suatu document, tidak akan tersimpan dalam collection, hanya ditampilkan dalam pipeline aggregation
+            $unwind        : memecah array field (multivalue) menjadi beberapa document (1st NF SQL) yang dimana output document adalah seberapa banyak nilai dalam suatu array (karena tiap document berisi 1 nilai)
+            

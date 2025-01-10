@@ -1,0 +1,171 @@
+Pengenalan ML
+    ML adalah salah satu algoritma untuk menganalisis data dalam jumlah yg besar
+    ML harus banyak" dilatih agar dapat menghasilkan keputusan yg tepat 
+    ML terus dikembangkan akhir" ini sehingga akan sangat banyak digunakan pada industri kali ini
+
+    Traditional Programming vs Machine Programming 
+        Search engine yg berbeda akan menghasilkan output yg berbeda pula, tetapi tidak masalah. Selama data yg dicari masih berkesinambungan 
+        ML secara sederhana adalah cabang ilmu yg memberikan waktu komputer untuk belajar tanpa diprogram scara eksplisit 
+        
+        Pada mulanya, pemrograman direpresentasikan dengan diagram berikut 
+            Rules -------> Pemrograman  ------> Solusi
+            Data --------> Traditional
+        Sehingga, Rules dan Data dapat dianggap sebagai input, 
+        Pemrograman Tradisional hanya mengandalkan if dan else, memang kita bisa menggunakkan if dan else dengan mudah
+        Tetapi, jika kondisinya semakin banyak, maka akan membuat kewalahan dan menyebabkan error 
+        Sehingga, masalah dapat dikaitkan sebagai rules 
+
+        Tetapi, berbeda dengan ML,
+        ML direpresentasikan dengan diagram berikut
+            Solusi -------> Machine  -------> Rules
+            Data    ------> Learning 
+        Sehingga, apabila kita memiliki masalah dan data, kita bisa meminta ML untuk mempelajari masalah tersebut, sehingga menghasilkan suatu aturan 
+        ML akan menganlisa dan menemukan pola pada data dan solusi yg kita punya saat ini
+        Sehingga ML dapat memprediksi data yg akan muncul dari aturan yg dibuat oleh ML
+
+Tipe Tipe ML 
+    terbagi menjadi 3, Superviced Learning, Unsuperviced Learning dan Reinforcement Learning
+    Pembagian didasarkan pada karakteristik data dan jenis supervicce yg digunakan selama training ML
+
+    Superviced Learning
+        ML yang proses trainingnya menggunakkan data yg memiliki label/jawaban
+        Ketika data diinputkan, maka model ML akan melakukan komputasi terhadap input berdasarkan algoritma yg digunakan
+        Proses perhitungan dilakukan secara berulang sehingga ML mengenal karakteristik input dan memberi label/jawaban sesuai dengan data aktual 
+
+        Andaikan ML digunakan untuk membedakan apel dan stroberi, maka kita memberitahu ML karakteristik apel dan karakteristik stroberi 
+        Superviced Learning banyak digunakan karena menghasilkan output yg lebih akurat dan performa akurasinya dapat dihitung 
+        2 Pilar utama pada Superviced Learning adalah classification dan regression
+
+        Biasanya, Superviced Learning digunakan untuk mendeteksi spam email, mendeteksi harga rumah atau melakukan klasifikai terhadap data buah baru 
+
+    Unsuperviced Learning
+        ML yang proses trainingnya tidak menggunakkan data yg memiliki label/jawaban (raw data)
+        Sehingga, ketika diberikan data tidak beraturan, maka ML akan melakukan interpretasi, menyusun algoritma dan mengeluarkan output berdasarkan hasil interpretasi
+        
+        Biasanya, ML diberikan data tidak beraturan dan ML akan menemukan kesamaan di masing" datanya dalam proses interpretasi
+        Sehingga, outputnya biasanya adalah dataset yg ditemukan polanya dalam algoritma ML
+
+        Biasanya untuk analisis data eksplorasi, strategi penjualan silang, segmentasi pelanggan, mengidentifikasi gambar 
+
+    Reinforcement Learning
+        ML yg mempelajari bagaimana membuat keputusan terbaik secara berurutan untuk memaksimalkan output 
+        ML ini belajar dari trial dan error sistem 
+       
+        Andaikan suatu software yg disebut agen disuruh untuk mengamati suatu lingkungan dan melakukan aksi terhadap lingkungan tersebut 
+        Tujuan utama agent adalah mendapatkan reward/jawaban yg sesuai dengan keinginan developer
+
+        Tapi jika agen salah, maka agen perlu melakukan aksi ulang dengan langkah yg sama, diharapkan ML dapat belajar dari kealahan tersebut
+        sehingga, agen akan berusaha mendapat reward dan menghindari kesalahan 
+
+        Andaikan seorang mahasiswa di suatu kelas baru, ketika dia tidak tau peraturan dari dosen tersebut. mahasiswa tersebut harus menetapkan policy 
+        atau kegiatan yg dapat dia jadikann sebagai aksi
+        Jika ternyata aksi salah, maka mahasisa tersebut akan menghindari aksi tersebut dan mencoba aksi lain
+
+ML Workflow
+    terbagi menjadi 5 bagian dan biasanya memiliki tahapan iterasi yg prosesnya berulang sesuai kebutuhan, sehingga apabila ada yg kurang, bisa diulangi lgi 
+    1. Pengumpulan Data
+        Data diambil dati dataset dri sumber yg diinginkan (kaggle, zenodo, UCI)
+        Sehingga kita dapat memilih dataset yg diinginkan dan sesuai dengan model ML kita 
+
+        Namun jika kita adalah ML Engineer pada perusahaan yg bertugas untuk membuat ML untuk keperluan perusahaan
+        maka kita harus mengekstrak sendiri data yg dibutuhkan, seperti database, file, data sensor
+
+        Kita juga berurusan dengan tipe data terstruktur dan tidak terstruktur, 80 persen data yg dikumpulkan adalah tipe data tidak terstruktur
+        Lalu, data tersebut perlu diolah terlebih dahulu
+    
+    2. Preprocessing Data
+        Tahap pengolahan data lebih lanjut dalam proses pengembangan ML 
+        Proes yg mengubah fitur" data ke dalam bentuk yg dapat diinterpretasikan dan diproses dalam algoritma ML 
+        Data Preprocessing terdiri atas data cleaning, data transformation dan data integration
+
+        Data cleaning terdiri atas: 
+            1. Penanganan missing value 
+            2. Data yg tidak konsisten 
+            3. Data yg terduplikasi
+            4. Ketidakseimbangan data 
+        
+        Data transformation terdiri atas:
+            1. scaling (mengubah skala data menjadi skala yg diinginkan)
+            2. standarisasi 
+            3. normalisasi 
+            4. mengonversi data menjadi variabel kategori 
+        
+        Data integration terdiri atas:
+            1. Menggabungkan dataset
+            2. Menghilangkan fitur duplikat 
+            3. Menyamakan format
+
+    3. Model transformation
+        Model transformation bisa brrti 2 hal, 
+            pemilihan learning method atau algoritma ML dan pemilihan hyperparameter untuk metode ML yg dipilih 
+        Menentukan model yg sesuai dengan data kita miliki sangat berpengaruh terhadap perkembangan ML 
+        Tidak ada model yg dianggap terbaik dari yg lain, semua tergantung data yg di inputkan
+
+        Saat memiliki kasus klasifikasi biner, kita perlu mempertimbangkan model terbaik kita, apakah logistic regression atau SVM classifier
+        Saat menentukan metode yg cocok, kita perlu mengubah hyperparameternya juga.
+        hyperparameter adalah variabel yg digunakan untuk mengontrol proses pelatihan model, cth : epochs, optimizer 
+        Proses menentukan performa terbaik model dengan pengaturan hyperparameter disebut Model Development
+
+    4. Model Evaluation
+        Setelah model dianggap berjalan dengan baik, maka dilakukan evaluasi
+        Langkah evaluasi model dijabarkan sebagai brikut : 
+            1. Memprediksi label pada data uji 
+            2. Menghitung jumlah dari hasil prediksi berdasarkan data uji (menghitung seberapa banyak yg benar atau salah)
+            3. Membandingkan hasil prediksi dengan data label yg dimiliki, sehingga mengetahui keakuratan dan performa model
+        Sehingga, Model Evalution menilai sbeerap bagus kerja ML 
+        Idealnya, model yg bagus adalah model yg dapat bekerja dengan deta baru dan data training 
+    
+    5. Model Deployment
+        Setelah dirasa sudah aman, maka model segera di deploy untuk dapat diproduksi 
+        Dengan cara menyimpan model yg telah dilatih dari tahap Preprocessing sampe ke pipeline prediksi 
+        Bawa seluruh tahapan pada data Preprocessing untuk digunakan pada tahapan prediksi 
+        Lalu, simpan semua tahapan model dan dibuatlah suatu fungsi yg disebut fungsi predict() untuk memproses data baru
+        Sehingga, model dapat di deploy di platform yg diinginkan, sedangkan fungsi predict() digunakan untuk memprediksi data baru yg diinput 
+
+        Andaikan pada suatu studi kasus regresi 
+        Sebuah model regresi untuk menentukan harga rumah. User dapat mengetikkan bbrp data tentang lokasi yang diinginkan dan melakukan pemprediksian harga 
+        Proses ini akan mengirimkan query yg berisi data ke server, lalu meneruskan ke aplikasi 
+        Lalu model akan memanggil fungsi predict() untuk menentukan harga prediksi
+
+Model Maintenance
+    Model yg di deploy psti akan mengalami penurunan performa, dikarenakan banyaknya data baru yg masuk sehingga akurasi model menurun 
+    penurunan performa juga dapat terjadi karena faktor-faktor di real life yg ikt berubah 
+    ada 2 teknik dasar dalam menjaga agar model selalu bisa belajar dengan data yg baru 
+
+    Manual retraining
+        Melakukan proses pelatihan ulang model dari awal sehingga data" baru dimasukkan bersamaan dengan data" lama 
+        Kekurangannya adalah waktu dan efektivitas, karena tidak efektif dan anggepannya hrus memulai dari awal
+        Tapi kelebihannya adalah ktia dapat menemukan model dan atribut baru yg menghasilkan performa lebih baik lagi 
+    
+    Countinous Learning
+        Sistem terotomasi dalam pelatihan ulang model
+        Berikut adalah langkah Countinous learning
+            1. Menyimpan data baru yang ditemui pada tahap produksi
+            2. Ketika data baru yg dikumpulkan cukup,lakukan pengujian akurasi model terhadap data baru 
+            3. Jika akurasi model menurun, maka data baru dicampur dengan data lama lalu diuji kembali 
+        Proses tersebut akan dilakukan secara otomatis
+
+Machine Learning di Industri 
+    ML banyak digunakan pada industri, Contohnya sistem rekomendasi Netflix
+    Rekomendasi sistem yang dibuat Netflix adalah agar memberikan rekomendasi film yg sekiranya cocok untuk pengguna 
+    Faktor yg diambil pada netflix adalah 
+        1. Rating yg diberikan
+        2. Search / View History
+        3. Kesamaan dengan user lain 
+        4. Info mengenai film yg ditonton
+        5. Jumlah waktu menonton dlm sehari 
+        6. Device yg dipakai 
+        7. Waktu regional user 
+    Data tersebut digunakan oleh Netflix sebagai input program 
+    Netflix juga menggunakkan beberapa algoritma seperti Personalised Video Rangking (PVR), top-N Video ranker, trending now ranker, continue watiching ranker, dan video similarity ranker
+    Dan netflix akan memberikan output berupa hasil rekomendasi film dengan sistem peringkat berbasis 2 tingkat, kolom dan baris 
+    kolom untuk rekomendasi terbaik dri suatu kategori, baris untuk rekomendasi terbaik secara kategori 
+
+    Hasil baris dan kolom tersebut juga dapat dijadikan sebagai data baru/feedback dari penonton mengenai rekomendasi film yg ada
+    Sehingga netflix dapat melakukan model Maintenance dengan memberikan rekomendasi yang relevan dengan trending saat ini 
+
+Batasan ML 
+    Kekurangan ML sejauh ini adalah karena ekspetasi tinggi dari user ML dan pressure yg dialami oleh developer
+    Salah satunya adalah ML tidak memiliki empati, jika seorang customer ingin berkeluh kesah di hari ultahnya
+    maka ML akan menanggapi dengan membalas keluhan tersebut smbil mengucapkan ultah kepada customer, juga terkadang kata" yg dibawakan cenderung kaku 
+    sehingga tidak semua proyek atau pekerjaan dapat diserahkan kepada ML

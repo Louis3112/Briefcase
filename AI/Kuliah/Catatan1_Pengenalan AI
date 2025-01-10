@@ -1,0 +1,92 @@
+Definisi AI
+    Bagian ilmu komputer yg mempelajari cara mesin dapat melakukan pekerjaan/tingkah laku seperti manusia
+
+    Cerdas = memiliki pengetahuan, pengalamana, penalaran, moral yg baik
+    Agar mesin bisa cerdas, maka harus diberi bekal pengetahuan dan mempunyai kemmampuan untuk menalar
+
+    Ada 2 bagian utama yg dibutuhkan AI 
+        Knowledge Base : berisi fakta", teori, pemikiran dan hubungan antara satu dengan yg lain
+        Inference Engine : kemampuan menarik kesimpulan berdasarkan pengetahuan
+    
+    Masalah --> Basis Pengetahuan dan Mesin Inferensi --> Solusi
+        Sistem yg menggunakkan AI adalah robot
+    
+Perbedaan AI dan RI (Real Intelligence)
+    1. AI bersifat permanen
+        RI bisa berubah karena lupa
+        AI tidak akan pernah berubah kecuali memang sengaja dirubah
+    2. AI lebih mudah diduplikasi dan disebar
+        Mentransfer kecerdasan membutuhkan waktu dan proses yg lama
+            apalagi keahlian tidak bisa diduplikasi sempurna
+        Untuk AI, bisa di tf dengan mudah dan pasti akan selalu sama
+    3. Lebih murah 
+        Layanan AI dan komputer lebih mudah dan murah daripada mendatangkan seorang ahli
+    4. Bersifat konsisten dan teliti
+        Karena tidak berubah"
+    5. Dapat didokumentasi
+        Keputusan AI dapat dilacak dan didokumentasi dengan mudah dengan cara tinggal melihat history
+    6. Dapat multitasking
+
+Kelebihan RI 
+    1. Kreatif 
+        Manusia dapat menambah pengetahuan lebih mudah dripada AI yg harus membangun sistem baru 
+    2. Memungkinkan orang untuk menggunakkan pengetahuan dan pembelajaran secara langsung 
+        Sedangkan AI harus input" secara simbolik
+    3. Pemikiran manusia sangatlah luas, sedangkan AI terbatas 
+
+Sejarah AI 
+    1. Tahun 1950-an, para ilmuwan berpikir cara agar mesin dapat melakukan pekerjaan seperti manusia
+        sehingga muncullah Turing Machine, yg dites dengan nama Turing Test.
+        Dimana mesin menyamar seolah" menjadi manusia dan dapat berkomunikai seperti manusia 
+        Tahun 1950 adalah awal" AI juga pertama kali dikembangkan
+            1951, Mesin Ferranti Mark I di Univ of Manchester untuk permainan catur 
+    2. Istilah AI pertama kali muncul 1956 oleh John McCarthy pada Dartmouth Conf
+    3. 1960 - 1970, Macsysma, program pengetahuan matematika
+                    Perceptrons, batas jaringan syaraf sederhana
+                    Prolog, Bahasa komputer
+                    Expert System pertama juga diciptakan
+                    AI-driven vehicle juga pertama muncul
+    4. 1980 - 1990, Artificial Neural Network (ANN) digunakan meluas dengan backpropagation
+                    Deep blue, AI untuk catur bisa menglhkn grandmaster chess, Gary Kasparov
+    5. 2004, DARPA menchallenge untuk pembuatan AI-driven vehicle
+
+AI pada aplikasi komersial
+    1. Expert system
+        Expert System menyimpan Knowledge sehingga mampu menyelesaikan masalah dengan meniru keahlian yg dimiliki Expert
+            cth :  Diagnosa penyakit
+    2. Natural Language Processing
+        User dapat berkomunikasi dengan komputer menggunakkan bahasa sehari" tanpa perlu coding
+        Translator juga termasuk NLP (menerjemahkan setiap kata dengan benar dan sintaksnya)
+        Text summarization (meringkas hal" penting)
+    3. Speech Recognition
+        User dapat berkomunikasi dengan komputer menggunakkan suara 
+        cth : memberi perintah ke komputer, text to speech (untuk tunanetra)
+                Optional Character Recognition (OCR) untuk komputer membaca teks tertulis
+                Identifikasi bahasa isyarat 
+    4. Robotika 
+    5. Sistem sensor
+        Sistem sensor pada mesin cuci dengan menggunakkan cahaya, apakah cahaya bisa sampai ke ujung lain
+            Semakin kotor, maka semakin redup cahaya bisa sampe
+            Sistem juga dapat mengidentifikasi jenis kotoran dan berapa banyak putaran yg tepat
+    6. Computer vision
+        mengintepretasikan gambar/objek tampak melalui komputer
+        image analysis dan enchantment
+    7. Intelligent Computer - aided instruction
+        komputer dapat mengajar 
+    8. Game komputer 
+        Deep Blue (1997) AI pada komputer IBM, mampu mengevaluasi 200 juta posisi bidak catur/detik
+    9. Information helper
+    10. Autonomous planning & scheduling
+        Telescope scheduling 
+    11. Medical 
+        Image guided surgery
+        Membantu diagnosis penyakit 
+    12. Transportasi
+        Autonomous Vehicle Control
+        Pedestrian detection
+
+Soft computing 
+    Inovasi baru dalam membangun sistem cerdas
+        Sistem cerdas = sistem yg memiliki keahlian seperti manusia pada domain tertentu
+            mamou beradaptasi dan belajar lgi
+    Soft computing membantu mengecek ketidakpastian, kesalahan agar dapat diselesaikan dengan mudah agar sesuai kebenaran

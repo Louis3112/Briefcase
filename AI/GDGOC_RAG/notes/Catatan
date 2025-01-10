@@ -1,0 +1,15 @@
+RAG (Retrieveal Augmented Generation)
+Bisa membuat personal assistance yg bisa menjawab pertanyaan dari document/data
+
+LLM  (Large Language Model)
+LLM dapat digunakan dalam banyak kasus
+
+tetapi LLMM memiliki masalah (Grounding Problem/Hallucinations)
+    mereka hanya mengerti info 
+        dari data yg sudah di ltih 
+        dari apa yg ada di prompt 
+    LLM tidak bisa mencari info diluar dar data mereka 
+    cth : Ditanya apa itu Louis, mereka akan hanya menampilkan data fiksi atau data yg berbeda yg kita cari 
+
+
+AIzaSyDYZ54CZu9oxRaM6IFsaCg9eUMxeYXVrqM

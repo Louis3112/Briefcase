@@ -1,0 +1,200 @@
+NoSQL (Not Only SQL)
+    DBMS alternatif yg berbeda jauh dri RDBMS tradisional
+    Tidak memerlukan skema tabel dan menghindari operasi join atau horizontal
+    Cara penyimpanan tidak perlu diinisialisasi
+    Dipopulerkan oleh web besar seperti Google dan FB
+
+Sejarah NoSQL
+    Dicetuskan 1998 oleh Carlos Strozzi sebagai DBMS yg tidak memiliki SQL
+    Dikenalkan 2008 oleh Eric Evans sebagai DBMS non relasional yg juga Dipopulerkan web besar
+    NoSQL diciptakan karena adanya big data dari website" (FB,Twitter,Google,Yahoo) karena data tidak berupa file
+    NoSQL digunakan untuk tipe data dinamis karena seringnya terjadi perubahan skema
+    Munculnya solusi lain menggunakkan cloud seperti Amazon S3 (Simple Storage Service)
+
+Karakteristik NoSQL
+    1. Volume data besar 
+        NoSQL digunakan untuk menangani data dalam jumlah yg besar, misalnya miliaran baris atau petabyte data
+        NoSQL dirancang untuk mendukung skalabilitas horizontal (dapat diperluas dengan menambah lebih banyak server)
+    2. Google's big data
+        NoSQL digunakan untuk menangani data skala besar, biasanya data terstruktur, semi-terstruktur, tidak terstruktur (foto, video, data sensor, teks)
+            yg harus diproses dalam jumlah besar (biasanya digunakan oleh Google)
+    3. Query membutuhkan jawaban cepat
+        NoSQL didesain utk memberi perform yg cepat dalam execution query, meski datanya besar
+            sehingga, berfokus pada kecepatan dalam pencarian dan analisa data dibandingkan RDBMS
+    4. Mostly Query, Few Updates 
+        NoSQL lebih fokus pada operasi query (baca) daripada operasi tulis (update)
+            shingga, NoSQL digunakan untuk apli pencarian dan analisis data yg jarang mengubah data yg ada
+    5. Asynchronous Inserts and Updates (Penyisipan dan Pembaruan Asinkron)
+        NoSQL memiliki proses insert dan update yg Asynchronous
+            artinya operasi tersebut tidak menghalangi eksekusi operasi lain, sehingga lebih efisien tanpa perlu menunggu eksekusi lain selesai
+    6. Scheme-less 
+        NoSQL adalah DBMS yg tidak relasional dan tidak memiliki skema
+        Data disimpan dalam berbagai format (JSON (JavaScript Object Notation),XML (Extensible Markup Language),BSON (Binary JSON))
+            yg tidak perlu didefinisikan struktur kolom atau tabelnya, sehingga lebih fleksibel
+    7. Partition Tolerance
+        NoSQL dapat berjalan dengan baik meski ada partisi antar node dalam sistem terdistribusi
+        NoSQL lebih fokus pada availability dan Partition Tolerance (AP atau AP/CP)
+    8. Open Source development 
+        NoSQL bersifat open source, shingga sumber code bisa diakses, dimmodif, dan didistribute secara bebas
+        Sehingga community bisa lebih bebas untuk berkolaborasi dalam development dan fungsionalitas 
+    9. ACID Transaction Properties are not needed 
+        Dalam RDBMS, Operasi transaksi harus memenuhi ACID (Atomicity, Consistency, Isolation, Durability) utk memastikan konsistensi data
+        NoSQL bersifat lebih fleksibel karena hanya berfokus pada availability dan skalabilitas
+    10. BASE Transaction
+        NoSQL menggunakkan model BASE (Basically Available, Soft State, Eventually Consistent)
+            maksudnya NoSQL mengutamakan availability dan kemampuan menangani big data, tapi konsistensi data tidak terjamin scara real time
+            tapi singkat cerita.. data akan disinkronkan setelah beberapa waktu
+    11. Bersifat CAP Theorem
+        Dlm sistem terdistribusi, hanya ada 2 sifat yg dipenuhi
+            1. Consistency
+                Semua node melihat data yg sama pada saat yg bersamaan
+            2. Availability
+                Setiap permintaan selalu menerima respons, walau tidak konsisten
+            3. Partition Tolerance
+                Dapat berjalan dengan baik meski ada partisi antar node
+
+Keuntungan NoSQL
+    1. Murah, mudah digunakan dan Open Source   
+    2. Data direplika ke banyak node (shingga identikal dan fault-tolerant) dan bisa dipartisi
+        Node bawah bisa direplace dan minim kesalahan
+    3. Mudah didistribusikan
+    4. Tidak membutuhkan skema
+    5. Bisa dibesarkan maupun dikecilkan
+    6. Bersifat CAP
+
+Produk NoSQL
+    Apache Jackrabbit, dibuat oleh Apache pda tahun 2010 dan berbasis document, dan bersifat CAP 
+    Big Table, dibuat oleh Google pda tahun 2005 dann berbasis column, dan bersifat CAPP(Persistance) (didesain untuk bisa diskala besar)
+    Cassandara, dibuat oleh Apache Software Foundation pda thun 2008 dan berbasis column, dan bersifat APP (write often, read less)
+    MongoDB, dibuat oleh 10gen pda tahun 2009 dan berbasis Document dan bersifat CAP (dynamic query, write often, read less)
+    Redis, dibuat oleh Salvatore Sanfilippo pda tahun 2009 dan berbasis Key-Value dan bersifat CAP (Rapid change data, write often read less)
+    Project Voldemort, dibuat oleh LinkedIn pda tahun 2009 dan berbasis Key-Value dan bersifat AP
+
+Klasifikasi NoSQL 
+    1. Column Store 
+        jenis DBMS NoSQL yg menyimpan data dalam bentuk kolom
+        jika kita punya tabel dengan kolom "nama", "alamat" dan "nomor telepon"
+            maka DBMS Column akan menyimpan value kolom "nama" dalam lokasi penyimpanan yg berbeda 
+                                            value kolom "alamat" dalam lokasi penyimpanan yg berbeda 
+        Data diorganisir dlm struktur "Column Family", mirip dengan RDBMS, tpi lebih fleksibel dan terpisah berdasarkan kolom 
+        
+        Kelebihan 
+            Optimal untuk operasi read
+                DBMS Column Store efisien utk pencarian, analisa dan operasi read
+                jika kolom "nama" diperlukan dalam query, maka hanya kolom itu yg dibaca (sehingga lebih cepat)
+            skalabilitas baik 
+                DBMS Column Store mudah diskalakan secara horizontal, memungkinkan utk big data
+            Pengolahan data terstruktur
+                Baik untuk analisa data yg melibatkan agregasi besar/OLAP (Online Analytical Processing) (Penghitugnan), seperti pengolahan data bisnis 
+
+        Contoh DB 
+            Apache Cassandra    
+                DBMS NoSQL Column Store yg populer, banyak digunakan untuk apli skalabilitas tinggi dan availability 
+            HBase 
+                DBMS yg berjalan di atas Hadoop, utk memproses data skala besar
+    
+    2. Document Store
+        jenis DBMS NoSQL yg menyimpan data dalam bentuk dokumen (JSON, XML, BSON)  
+        Data dalam document store disimpan dalam bentuk object yg kompleks
+            document ini bisa berisi banyak pasangan key-value dan memiliki struktur yg berbeda
+        Tiap dokumen adalah unit dasar penyimpanan, yg diidentifikasi dengan ID unik 
+            bisa menyimpan data teks hingga data multimedia 
+        Tidak ada skema yg ketat utk document store, jadi bebas 
+
+        Kelebihan 
+            Fleksibilitas Skema
+                Tidak perlu mendefinisikan skema seperti RDBMS, sehingga bisa membuat data secara fleksibel
+            Cocok untuk data semi-terstruktur 
+                Data semi terstruktur atau tidak terstruktur (JSON), sangat ideal utk apli web dan service yg sering mengubah struktur data 
+            Pengambilan data cepat
+                Dokumen disimpan sebagai 1 unit, pengambilan dan pengaksesan data dapat dilakukan dengan cepat dan efisien
+                    terutama data yg tdk membutuhkan operasi join yg kompleks
+
+        Contoh DB 
+            MongoDB 
+                DBMS NoSQL Document Store yg populer, MongoDB menyimpan data dalam format BSON dan mendukung operasi yg cepat utk pengambilan data brdasarkan id/indeks 
+            CouchDB
+                DBMS yg menyimpan data dalam format JSON sehingga mendukung replikasi serta recovery data di lingkungan terdistribusi
+        
+    3. Key-Value Store 
+        jenis DBMS NoSQL paling sederhana dan paling dasar 
+        Data disimpan dalam bentuk pasangan key-value
+            menyerupai hash table/dictionary 
+        Setiap entry dalam DB disusun dalam key unik yg mengidentifikasi data, dengan value yg ingin disimpan
+        Modelnya sederhana dan memungkinkan pengambilan data yg cepat, karena hanya mencocokkan key dengan value yg sesuai
+        Nilai yg disimpan bisa object/data mentah (string, angka, file biner)
+
+        Kelebihan 
+            Kesederhanaan dan kecepatan
+                Model key-value sangat sederhana sehingga sangat cepat dalam hal pengaksesan dan penyimpanan data 
+            Skalabilitas tinggi 
+                Mudah diskalakan karena kesederhanaan strukturnya , dan mendukung beban kerja berat dengan minim overhead 
+            Fleksibel 
+                Value yg disimpan bisa dalam beberapa format, trmsuk teks, JSON, gambar, file besar lain 
+        
+        Contoh DB 
+            Redis 
+                DBMS NoSQL Key-Value Store yg cepat dan sering digunakan utk caching, sesi storing atau manajemen tugas 
+            Riak 
+                DBMS Key-value yg dirancang utk consistency dan availability tinggi, digunakan utk aplikasi yg membutuhkan partition tolerancy tinggi
+    
+    Setiap klasifikasi memiliki Kelebihan dan kekurangan yg berbeda" 
+    Pilih klasifikasi yg disesuaikan dengan kebutuhan aplikasi 
+        Jika membutuhkan analisa big data/operasi agregasi, gunakan Column Store
+        Jika membutuhkan utk analisa data semi-terstruktur dan fleksibilitas, gunakan Document Store
+        Jika membutuhkan utk kecepatan dan kesederhanaan dan penyimpanan based on key, gunakan Key-Value Store 
+
+SQL vs NoSQL
+    INSERT INTO mahasiswa_ti (nim,nama_lengkap,kelas) VALUES 
+    (23051204085, "Cornelius Louis Nathan", TI 2023 C)
+
+    db.mahasiswa_ti.save({"nim" : 23051204085, "nama_lengkap": "Cornelius Louis Nathan", "kelas" : TI 2023 C})
+
+MongoDB 
+    DBMS NoSQL Document Store paling populer, dirancang untuk menangani big data, fleksibilitas tinggi, dan kemampuan menyimpan data semi=terstruktur dan tidak terstruktur (JSON)
+    Menyimpan data dalam bentuk document, yg dasarnya adalah JSON (format BSON)
+    Tiap dokumen berisi data terstruktur dalam pasangan key-value dan dapat memiliki jenis data kompleks sprti array/object
+
+    MongoDB terdiri atas 3, MongoDB Atlas,Compass,Shell
+    MongoDB Atlas adalah web App
+    MongoDB Compass adalah app nya
+    MongoDB Shell adalah cmd
+
+    Utk membuat cluster (akun/penyimpanan), harus melalui MongoDB Atlas, maka dibuat url dan username dan password (Pastikan ketika membuat url, gunakan IP Address yg diinginkan, karena diluar IP.. tidak bisa diakses)
+    Tabel pada MongoDB disebut Collection
+
+    Perlu diketahui bahwa MongoDB adlah case sensitive
+    Untuk menginsertkan document, pada MongoDB Compass terdapat tombolnya, lalu masukkan data yg diinginkan 
+        {"nim" : 23051204085,
+         "nama_lengkap" : "Cornelius Louis Nathan",
+         "kelas" : "TI 2023 C"}
+    setiap document akan memiliki id unik (id object)
+
+    Untuk menginsertkan document lebih dri 1, harus dibedakan
+        {"nim" : 23051204085,
+         "nama_lengkap" : "Cornelius Louis Nathan",
+         "kelas" : "TI 2023 C"},
+         {"nim" : 23051204999,
+         "nama_lengkap" : "YNTKTS",
+         "kelas" : "TI 2023 Z"}
+    
+    Pada MongoDB Shell
+        utk menampilkan semua db yg aktif pada suatu cluster
+            show dbs
+        utk menggunakkan salah satu db pada suatu cluster
+            use nama_db
+        utk menampilkan semua collection yg aktif pada suatu db 
+            show collections
+        utk menginputkan 1 document data 
+            db.mahasiswa_ti.insertOne({"nim" : 23051204085, "nama_lengkap": "Cornelius Louis Nathan", "kelas" : TI 2023 C})
+        utk menginputkan lebih dari 1 document data 
+            db.mahasiswa_ti.insertMany([{"nim" : 23051204085, "nama_lengkap": "Cornelius Louis Nathan", "kelas" : TI 2023 C},
+                                        {"nim" : 23051204999,"nama_lengkap" : "YNTKTS","kelas" : "TI 2023 Z"}])
+        utk menampilkan semua data pada collection
+            db.mahasiswa_ti.find()
+        utk mencari data tertentu pada suatu collection
+            db.mahasiswa_ti.find({nim : 23051204085})
+        utk mengupdate data tertentu pada suatu collection
+            db.mahasiswa_ti.updateOne({nim : 23051204085}, {$set: {nama_lengkap : "Louis Nathan"}})    
+        utk menghapus document tertentu pada suatu collection
+            db.mahasiswa_ti.deleteOne({nim : 23051204999})

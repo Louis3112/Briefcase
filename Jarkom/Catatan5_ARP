@@ -1,0 +1,50 @@
+ARP (Address Resolution Protocol)
+    Protocol untuk menemukan hardware Address (MAC Address) dengan IP Address tertentu
+    Ketika IP Package dikirim, maka paket diteruskan ke layer dibawahnya (data link), yg akan memberikan MAC Address
+    Tabel ARP didapatkan dri req broadcast ke jaringan
+    MAC (Media Access Control) ada di layer 2, IP ada di layer 3, ARP adalah penghubung antara layer 2 dan 3
+    Setiap host memiliki tabel ARP dalam cache 
+        Sehingga, pasti akan selalu terupdate 
+
+    Interface: 192.168.100.12 --- 0x5
+      Internet Address      Physical Address      Type
+        192.168.100.255       ff-ff-ff-ff-ff-ff     static
+        224.0.0.22            01-00-5e-00-00-16     static
+        224.0.0.251           01-00-5e-00-00-fb     static
+        224.0.0.252           01-00-5e-00-00-fc     static
+        239.255.255.250       01-00-5e-7f-ff-fa     static
+        255.255.255.255       ff-ff-ff-ff-ff-ff     static
+
+    Device membutuhkan MAC Address untuk komunikasi pada LAN    
+        maka, Device menggunakkan ARP untuk mengetahui MAC Address
+    
+    MAC Address
+        Setiap device memiliki MAC Address unik untuk berkomunikasi
+        Terdiri dari 48 bit hexadecimal
+        Jika router memiliki 5 interface, maka router ada 5 MAC Address
+        Untuk virtual interface, (cth :  VLAN, VAP, EoIP), membutuhkan virtual MAC Address  
+            VLAN = Virtual Local Access Network
+            VAP = Virtual Access Point
+            EoIP = Ethernet over Internet Protocol
+        Pada MAC Address
+            3 digit awal adalah Organizationally Unique Identifier (OUI), yaitu nomor seri yg berbeda tiap pabrik
+            3 digit trkhir adalah Network Interface Controller (NIC) specifier, yaitu nomor seri yg diberikan pabrik untuk setiap device 
+    
+        Ada 2 tipe ARP Tabel
+            Dynamic 
+                Dibuat otomatis ketika device mengirim broadcast ke ARP ke jaringan LAN dan dapat expired
+            static
+                Dibuat manual berupa pasangan IP dan MAC Address ke dalam ARP entry
+                Static ARP digunakan untuk mengurangi traffic broadcast ARP ke dalam broadcast LAN dan untuk alasan security
+        
+        Alasan mengapa MAC Address penting
+            1. Untuk komunikasi jaringan lokal (broadcast domain sama, atau dalam 1 router/switch yg sama)
+            2. IP Address digunakan jika komunikasi beda jaringan
+        
+    Cara kerja ARP
+        1. Jika host ingin berkomunikasi dengan IP host tertentu, komputer sumber melakukan pengecekan MAC Address dari kom tujuan ke ARP Table
+        2. Jika tidak ada Table ARP, maka lakukan ARP Request
+        3. PC 1 dengan IP Address 192.168.1.1 (sumber) ingin mengirim pesan ke PC 3 dengan IP 192.168.1.3
+        4. PC 1 mengirim ARP Req scara broadcast, tapi hanya PC 3 yg mengambil req, karena PC 2 merasa bukan IPnya 
+        5. Sehingga, PC 3 mengirimkan ARP reply beserta MAC Address
+        6. Sehingga, ARP Table PC 1 dan PC 3 terisi Mapping IP dan Mac Address masing"" lawan bicara 

@@ -1,0 +1,66 @@
+Matrix
+    larik(array) berdimensi 2 karena matrix memiliki baris dan kolom
+    susunan elemen matrix disusun menurut baris dan kolom dan merupakan satu kesatuan
+        dilambangkan baris = m, kolom = n
+    
+    Sehingga, bisa dikatakan matriks adalah 
+        himpunan elemen yg disusun berbentuk persegi panjang yang berisi baris dan kolom
+    
+    Matrix A dan B dapat dikatakan berukuran sama apabila A = B
+        jika Aij = Bij, utk setiap i dan j
+
+    Pembuatan matrix pada python dapat menggunakkan list (dengan fungsi append(), add()) atau numpy (array([]))
+
+Fungsi pada numpy, kita bisa membuat matrix dengan elemen serandom mungkin
+    import numpy as matrik
+        matrik.random.rand(4) // maka matrik akan generate 4 elemen float secara random
+        matrik.random.rand(4,5) // maka matrik akan generate 4 elemen float secara random, 4 baris, 5 kolom
+        matrik.random.randint(batas, size = x) // maka matrik akan generate x elemen int secara random, dengan < batas
+        matrik.random.randint(batas, size =(x,y)) // maka matrik akan generate x baris elemen dan y kolom int secara random, dengan < batas
+
+Macam"" matrik
+    1. Matrik Nol   
+        Matrik yang semuanya 0
+            matrik.zeroes((3,3))
+    2. Matrik bujur sangkar
+        Matrik yang panjang baris dan kolom sama
+            matrik.randint(10, size = (3,3))
+    3. Matrik persegi panjang
+        Matrik yang panjang baris dan kolom berbeda
+            matrik.randint(10, size = (7,3))
+    4. Matrik diagonal
+        Matrik bujur sangkar yang elemen diagonal utamanya adalah blgn real, sisanya 0
+        [1  0  0]
+        [0  2  0]
+        [0  0  3]
+            matrik.diag(([4,5,6]))
+    5. Matrik satuan
+        Matrik diagonal, tetapi elemen diagonal utamanya adalah 1
+        [1  0  0]
+        [0  1  0]
+        [0  0  1]
+            matrik.diag(([1,1,1]))
+            matrik.eye(3)
+    6. Matrik skalar 
+        Matrik diagonal yang semua elemennya sama, tetapi bukan 1 atau 0
+        [3  0  0]
+        [0  3  0]
+        [0  0  3]
+            matrik.diag(([3,3,3]))
+            scalar_value * matrik.eye(3)
+
+Sifat Matrik 
+    A + B = B + A                   (Komutatif Penjumlahan)
+    A + (B + C) = (A + B) + C       (Asosiatif Penjumlahan) 
+    k (A + B) = kA + kB             k Skalar
+    (k + l) A = kA + kB             k dan l Skalar
+    (kl) A = k (lA)                 k dan l Skalar
+    k(AB) = kA(B) = Ak(B)           k Skalar
+    A(BC) = (AB)C                   (Asosiatif Perkalian)
+    A(B + C) = AB + AC              (Distributif)
+    (A + B)C = AC + BC              (Distributif)
+    A * B != B * A                  (Tidak komutatif)
+    Jika A * B = A * C, blm tentu B = C
+    Jika A * B = 0, maka bisa jadi kemungkinan 
+        A = 0 dan B = 0
+        A != 0 dan B != 0

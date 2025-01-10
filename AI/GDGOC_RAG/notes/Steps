@@ -1,0 +1,6 @@
+Install virtualenv : pip install virtualenv
+ketikkan virtualenv env (maka membuat env bru)
+ketikkan cd env/Scripts
+.\activate (untuk mengaktifkan env)
+https://codeshare.io/unesa-gdgoc untuk mengcopy library yg dibutuhkan
+pada folder env, pip install -r req.txt

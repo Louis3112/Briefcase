@@ -1,0 +1,72 @@
+Single Row Function / Fungsi Baris Tunggal
+    Fungsi yg bekerja pada setiap baris data dan mengembalikan hasil tiap baris secara individu
+    Digunakan dalam SQL untuk mengubah, memformat, memproses data pada level baris demi baris
+    cth :  
+        1. Fungsi Karakter (CHAR FUNCTIONS) : Mengelola data teks/string
+            a. UPPER(column_name) : mengubah teks jadi huruf besar
+            b. LOWER(column_name) : mengubah teks jadi huruf kecil 
+            c. SUBSTR(column_name,start,length) : mengambil bagian tertentu pada teks // Substring
+            d. CONCAT(column_name1, column_name2) : menggabungkan 2 teks
+    
+        2. Fungsi Numerik (NUM FUNCTIONS) : Mengelola data numerik 
+            a. ROUND(column_name,decimals) : membulatkan data sesuai desimal yg ditentukan
+            b. TRUNCATE(column_name,decimals) : memotong data sesuai desimal yg ditentukan
+            c. ABS(column_name) : menghasilkan data absolut
+
+        3. Fungsi Tanggal (DATE FUNCTIONS) : Mengelola data tanggal 
+            a. SYSDATE() : mengembalikan/mengambil tanggal saat mengakses di server 
+            b. ADD_MONTHS(date, n) : menambahkan sejumlah bulan tertentu pada tanggal (Oracle) 
+                pada MySQL disebut DATE_ADD(date, INTERVAL n MONTH)
+            c. MONTHS_BETWEEN(date1,date2) : menghitung selisih bulan pada 2 data yg berbeda (Oracle)
+                pada MySQL disebut TIMESTAMPDIFF(MONTH, date1, date2)
+
+        4. Fungsi Konversi (CONVERT FUNCTIONS) : Mengubah tipe data
+            a. TO_CHAR(date,'format') : mengonversi tanggal menjadi string dengan format tersebut 
+            b. TO_DATE(string,'format') : mengonversi string menjadi tanggal dengan format tersebut
+            c. TO_NUMBER(string) : mengonversi string menjadi angka 
+        Fungsi tersebut berguna karena dapat memanipulasi data pada baris tanpa harus mengubah struktur tabel
+
+    Mengurutkan Data 
+        Utk mengurutkan data, menggunakkan perintah ORDER BY 
+        Dapat mengurutkan asc atau desc
+
+            SELECT * FROM nama_tabel ORDER BY nama_field ASC/DESC;
+    
+    Agregate Function 
+        Utk mencari COUNT (menghitung banyak data), SUM, AVG, MAX, MIN 
+    
+    Operator Between dan In
+        Between untuk mencari data yang setidaknya memiliki ketentuan yang ditentukan (1 ataupun 10)
+        
+            SELECT * FROM nama_tabel WHERE nama_field BETWEEN 'isi_field_1' AND 'isi_field_2';
+            SELECT * FROM orderItems WHERE quantity BETWEEN '1' AND '10';
+
+        In untuk mencari data yang sesuai dengan ketentuan yang dibutuhkan (harus persis)
+
+            SELECT * FROM nama_tabel WHERE nama_field IN ('isi_field_1','isi_field_2');
+            SELECT * FROM customers WHERE cust_id IN ('10001','10005');
+
+    Ekspresi Query 
+        melakukan perubahan terhadap output field kolom dan menambah output field baris 
+        1. Mengganti output judul field
+
+            SELECT nama_field AS nama_field_pengganti FROM nama_tabel;
+            SELECT kode_mk AS kode_matkul FROM Matkul;
+        
+        2. Menambah output field baris 
+            
+            SELECT 'nama_field_tambahan', 'nama_field_asal' FROM 'nama_tabel';
+            SELECT vend_name,'diproduksi di',vend_city FROM vendors
+
+        3. Ekspresi Kondisi 
+
+            SELECT 'nama_field_1' CASE 'nama_field_2' WHEN 'nilai_field_2' THEN 'keterangan_1' ELSE 'keterangan_2' END AS 'nilai_field_2' FROM 'nama_tabel'
+            SELECT kode_matkul CASE sks WHEN '1' THEN 'praktikum' ELSE 'matkul' END AS sks FROM Matkul;
+        
+    Perintah Waktu 
+        Beberapa fungsi waktu pada SQL
+        Current_Date = untuk menampilkan tanggal
+        Current_Time = untuk menampilkan waktu
+
+        SELECT Current_Date AS 'waktu';
+        SELECT Current_Time AS 'tanggal hari ini';

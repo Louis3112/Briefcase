@@ -1,0 +1,115 @@
+Web Server 
+    Software yg berfungsi sebagai penerima req yg dikirim melalui browser lalu mengirim response dalam bentuk website atau HTML
+    Web server dapat punya 2 pengertian yg berbeda, yaitu web server bagian dari Hardware dan Software
+        Web server bagian dari Hardware, artinya web server menyimpan data" seperti HTML, gambar, CSS, JS
+        Web server bagian dari Software, artinya web server sebagai pusat kontrol untuk memproses req dari browser
+
+    Jadi, apapun yg berhubungan dengan server pasti berhubungan dengan web server
+        Karena web server bertugas mengatur semua komunikasi yg terjadi antara browser dengan server untuk memproses website
+
+    Web server pertama kali diusulkan di tahun 1990 oleh CERN dengan nama CERN httpd (Hypertext Transfer Protocol Daemon (Daemon =  web server)), diusulkan oleh Sir Tim Berners-Lee
+    Web server berjalan di Server NeXT, yg dimana NeXT adalah perusahaan ciptaan Steve Jobs setelah keluar Apple
+    Pada tahun yg sama, WWW pertama kali diciptakan
+
+Cara Kerja Web Server
+                    HTTP Response                HTTP Req
+            Web Server <-----------------------------> Browser
+        Files   HTTP Server
+
+    1. Saat akan mengambil website page, browser mengirim req ke server yg diterima web server
+    2. Sebelum memproses HTTP Req, Web server menjamin keamanan  dengan melakukan pengecekan 
+    3. HTTP Req diproses dengan HTTP Server
+        HTTP Server adlh software yg bertugas mentranslate URL (Uniform Resource Locator/Alamat website) serta HTTP (Protocol untuk menampilkan website page)
+        Jika diperlukan, web server akan mengirim query ke database untuk memenuhi permintaan HTTP Req
+    4. Lalu Web server mengirim HTTP Response kepada browser dan Browser memprosesnya menjadi website page
+
+Fungsi Web Server
+    1. Penghubung komunikasi antar website page dan browser
+    2. Tempat pemrosesan HTTP Req
+    3. Memastikan semua modul yg dibutuhkan agar bisa digunakan
+    4. Membersihkan storage, cache dan module yg tdk dipakai
+    5. Melakukan pemeriksaan keamanan terhadap HTTP Req yg dilakukan browser
+    6. Sebagai Hardware, utuk menyimpan data" seperti HTML, Script, gambar, CSS, JS
+        Sehingga harus bisa diakses di mana saja 
+        Web server bisa didapat dari layanan hosting dimana saja (berbayar), 
+            Syarat layanan hosting adlaah harus cepat, punya memory besar, punya RAM yg cepat
+    7. Sebagai softare, untuk melayani permintaan browser (cth : Apache)
+
+Contoh Web Server
+    Ada banyak sekali web server yg tersedia, cth :
+        Apache                  oleh Apache                     sebanyak 48.5 %
+        nginx                   oleh NGINX INC.                 sebanyak 35.4 %
+        IIS                     oleh Microsoft                  sebanyak 10.8 %
+        Litespeed Web Server    oleh Lifespeed Technologies     sebanyak 2.9 %
+        GWS (Google Web Server) oleh Google                     sebanyak 1.1 %
+        Oracle Servers IBM
+        Servers
+        Gunicorn
+        Zope
+        Kestrel
+        Jetty
+    
+    Web yg banyak digunakan tersebut diambil dari  10 jt website yg pling banyak digunakan dan teknologi yg digunakan oleh website" tersebut, tidak termasuk subdomain 
+
+    Keunggulan tiap web server
+        Apache/Apache Tomcat
+            Pengaturan lebih mudah 
+            Open Source 
+            Komunitas besar
+            Compatible banyak sistem
+
+        NGINX 
+            Ringan 
+            Stabil dan banyak fitur 
+            High performance
+            - Kurang komunitas
+
+        IIS
+            Support penuh pada Windows
+            Adanya error finder
+            Kerja dengan PHP lebih stabil
+        
+        Litespeed Web Server
+            Adanya pencegahan DDos
+            Recover kesalahan secara langsung 
+            Compatible dengan .htaccess
+
+Cara mendapat layanan web server
+    1. Web server lokal
+        Mengunduh file instalasi web server lalu di instal pada komputer lokal 
+            tapi tidak bisa diakses di mana saja, kecuali IP Dynamic
+    2. Menyewa perangkat VPS (Virtual Private Server) pada VPS Provider
+        Tinggal menyewa dan OS sudah tersedia (lalu diatur sesuka kita)
+        Ada tidak adanya web sever tergantung VPS yg kita pilih (ada yg menyediakan atau tidak)
+            Jika belum, maka bisa diinstal dengan melakukan askes ke VPS menggunakkan SSH (Secure Shell)
+        Jika web server sudah diinstal, bisa melakukan akses ke VPS menggunakkan alamat IP VPS  
+            Dan website kita juga bisa diakses jika folder http nya sudah ready 
+
+HTML (Hypertext Markup Language) 
+    Disebut Hypertext karena dalam HTML terdapat text biasa yg dapat berfungsi lain
+        Text tersebut dapat diatur menjadi Hypertext, yaitu link ke web lain apabila mengklik text tersebut
+    DIsebut Markup kareana terdapat tanda <> untuk tiap bagian text
+    HTML adalah dasar dari pembuatan web dan biasanya berdiri bersama CSS, JS, ataupun PHP (untuk manipulasi kode HTML)
+        Sebenarnya bisa berdiri sendiri, tapi akan terkesan kaku dan hambar 
+
+HTTP dan HTTPS 
+    HTTP (Hypertext Transfer Protocol)
+        protokol jaringan utk transfer file (text, gambar, video, suara) di WWW
+        Saat membuka browser web, secara tidak langsung user menggunakkan HTTP
+        HTTP bekerja di atas TCP/IP  
+    
+    HTTPS (Hypertext Transfer Protocol Secure)  
+        HTTP versi aman yg dilapisi SSL (Secure Sockets Layer)  / TLS (Transport Layer Security)
+        Dengan HTTPS, HTTP Response dan Req terenkripsi sehingga tidak bisa dilihat hacker 
+        Port HTTPS adalah 443
+    
+    Cara kerja HTTP dan HTTPS 
+        HTTP adalah protokol komunikasi antara browser (client) dan web server (sever)
+        HTTP biasanya dihubungkan dengan port 80
+
+        1. Client HTTP (Web browser) membuat sambungan (hyperlink/url) dan mengirim req ke web server hosting
+        2. Daemon HTTP di web server menerima req dan mengirim response brupa file (bisa lebih dari 1) yg terkait dengan req HTTP
+
+        Cara kerja HTTP dan HTTPS tidak jauh berbeda, pada HTTPS terdapat proses validasi yg digunakan utk mengecek apakah web valid/tidak (SSL Handshake)
+            Jika valid akan menampilkan HTTPS:// dengan gambar gembok
+            Jika tidak akan menampilkan HTTP:// dengan gambar berbahaya (bahwa situs tidak aman)

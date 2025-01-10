@@ -1,0 +1,2591 @@
+Catatan Pengenalan 
+Mengajarkan sistem pengorganisasian struktur data array, struct, tree dengan teknik stack, queue, linked list, hashing. Serta cara menambah, menghapus, mengedit, mencari, dan mengurutkan
+Struktur data : array, struct, tree
+Teknik : stack, queue, linked list
+Manipulasi : sorting, searching, adding, deleting, editing
+
+Materi yg dibahas :
+1. Array, pointer, struct
+2. Linked list
+3. Stack
+4. Queue
+5. Asymptotic Analysis
+6. Rekursif
+7. Sorting
+8. Searching 
+9. Tree
+10. Graph
+
+Data = kuantitas, karakter, simbol dimana komputer akan melakukan operasi yang dapat disimpan dan ditransmisikan
+dalam bentuk sinyal listrik dan direkam dengan media perekam (magnetik, optik,mekanis)
+
+c = a + b
+a dan b adalah data, karena adalah kuantitas yang dapat disimpan dan ditransmisikan, dan dapat dilakukan operasi
+
+Perbedaan Data dan Informasi
+    Data dapat berubah menjadi informasi
+    Data : YM ANEM SI SIOUL
+    Informasi : MY NAME IS LOUIS 
+
+    YM ANEM SI SIOUL adalah data yg berisi kumpulan char random, dan tidak memiliki info 
+    Informasi adalah data yang tersusun secara sistematis, terstruktur dan memiliki arti
+
+Kegunaan Struktur data
+    1. Data perlu diatur dengan cara tertentu agar menghasilkan info yg berarti
+    2. Cara mengatur data yg benar adalah mengetahui struktur data
+    3. Struktur data mengajarkan cara mengatur data secara efisien 
+Sehingga struktur data adalah cara sistematis untuk mengatur data sehingga dapat digunakan secara efisien dalam hal waktu dan ruang 
+cth : Array
+    Array adalah struktur data yang memungkinkan kita untuk mengelola data secara tepat dan berurutan 
+    Dengan array, maka bisa menyimpan banyak nilai tanpa harus membuat banyak variabel dengan tipe data yg sama
+        *Menyimpan string juga sama dengan membuat array char, karena memerlukan array
+
+Contoh penggunaan struktur data 
+    Stack untuk pengimplementasian undo dan redo
+    Array untuk menyimpan gambar sebagai bitmap (serangkaian pixel)
+    Graph untuk menyimpan info friendship pada suatu sosmed
+
+    Stack untuk pengimplementasian undo dan redo 
+        My Name is Luois
+            Karena terdapat typo, maka bisa dibenarkan dengan cara membatalkan operasi terakhir yg dilakukan 
+            Hal ini bisa terjadi karena data disimpan dalam undo stack 
+            Stack hanya bisa mengakses data paling terakhir
+            Insert dan delete tulisan diakses dari stack paling atas 
+        
+        Setelah melakukan undo, maka elemen paling atas dipindahkan ke redo stack 
+        sehingga, bila user ingin melakukan redo, maka elemen paling atas pada redo akan ditempatkan semula ke undo stack 
+
+    Array untuk menyimpan gambar sebagai bitmap 
+        Image bitmap = serangkaian pixel
+        Pixel adalah kotak kecil yg diberi warna dan kemudian disusun dalam pola untuk membentuk gambar 
+        
+        Setiap pixel menyimpan informasi, yaitu warna dri pixel. Sehingga membentuk gambar
+
+    Graph untuk menyimpan info friendship pada suatu sosmed
+        Menghubungkan 2 org tertentu dengan edge tertentu untuk mewakili hubungan mereka 
+        A berteman dengan B dan C, sehingga terdapat garis antara A dengan B dan C 
+        B berteman dengan A dan C, sehingga terdapat garis juga
+        tetapi, D tidak berteman dengan A, sehingga tidak ada garis penghubung 
+            tetapi, D berteman dengan B dan C, sehingga ada garis penghubung 
+        
+        Informasi tersebut disimpan dalam bentuk struktur data graf, org" itu adalah simpul graf dan hubungan mereka menggunakkan edge
+
+Tipe Data didefinisikan dalam 2 karakteristik utama 
+    Mendefinisikan domain nilai (apakah int atau double)
+    Mendefinisikan operasi yg berlaku untuk nilai tersebut (apakah add, minus, multi )
+
+    Tipe data terbagi menjadi 3 
+    Primitive data type (int, char, string, bool)
+    User Defined data type (struct, array, enum, union)
+    Abstract data type (ADT)
+
+    Primitive Data Type
+        Tipe data yg sudah disediakan di dalam bahasa pemrograman
+        int
+            domain : int (bilangan bulat)
+            operasi : add, subtraction, multi, div, mod, bitwise operation 
+        float 
+            domain : floating point value (bilangan koma)
+            operasi : add, subtraction, multi, div, (mod & bitwise tidak berlaku)
+    
+    User Defined Data Type 
+        Tipe data yg dibuat oleh user (struct, enum, union)
+        cth : struct point {
+            int x;
+            int y;
+        };
+        user defined data type bisa digabung dengan primitive data type maupun dengan user defined itu juga(pada struct)
+        int x dan int y digabung untuk membuat tipe data point 
+    
+    Abstract Data Type (ADT)
+        Operasi pada nilai menggunakkan fungsi tanpa mengetahui apa yg ada di dalam fungsi dan bagaimana operasi dilakukan 
+        ADT hanya melibatkan apa yg dapat dilakukan dengan data, bukan bagaimana hal itu hrus dilakukan 
+        ADT dianggap sbegai kotak hitam yang menyembunyikan struktur bagian dalam dan desain tipe data 
+        ADT tidak memiliki implementasi tunggal atau tetap, tetapi dapat diimplementasikan dalam berbagai cara 
+        
+        Intinya, Fungsi yg dibuat untuk membantu pengaturan struktur data 
+
+        Stack ADT 
+            Stack terdiri atas elemen dengan tipe sama yang disusun secara sekuensial 
+        Operasi Stack 
+            initialize() : inisialisasi stack agar menjadi kosong 
+            push() : memasukkan elemen ke dalam stack 
+            pop() : mengambil elemen dari = dalam stack 
+            isEmpty() : memeriksa apakah stack kosong 
+            isFull() : memeriksa apakah stack penuh 
+            user tidak perlu mengetahui detail implementasi dari fungsi tersebut 
+        Stack ADT dapat diimplementasikan dengan array atau linked list 
+
+        Terdapat terminologi brikut 
+            Client Program : Program yg menggunakkan struktur data, dan pastinya program memiliki akses ke ADT (interface)
+            Implementation : Program yg mengimplementasikan struktur data 
+            
+            Client Program berkaitan dengan detail eksterior, yang menggunakkan struktur data
+            Implementation berkaitan dengan detail interior, yang mengimplementasikan struktur data 
+        
+        Keuntungan ADT 
+            Penggunaan push() dan pop() pada stack dapat digunakan dalam program tanpa harus mengetahui implementasinya 
+            Jika implementasi struktur data diubah, maka tidak akan mempengaruhi client program dalam fungsi tersebut 
+            ADT tidak akan memusingkan user 
+        
+        ADT digunakan dalam struktur data agar data dapat diatur dan digunakan secara efisien dalam hal ruang dan waktu 
+        Stack ADT dapat digunakan pada linked list dan array 
+        ADT memberi info apa yg harus dilakukan dan struktur data memberi info cara yg harus dilakukan 
+        ADT adalah blueprint nya, struktur data adalah implementasinya 
+
+Memilih data struktur untuk ADT 
+    Struktur data berhubungan dengan space (menyimpan data), time (waktu kompilasi), complexity (kompleksitas program dengan implementasi)
+    Implementasi ADT yg berbeda akan saling dibandingkan untuk efisiensi ruang dan waktu, dan dipilih sesuai dengan kebutuhan 
+    Jika ingin yg menghemat ruang, maka dipilih struktur data yg menghemat ruangan 
+    Jika ingin yg cepat, maka dipilih struktur data yg kompilasinya tercepat
+
+Keuntungan Struktur data 
+    1. Efficiency (Struktur data yg tepat akan membuat program menjadi efisien dalam hal ruang dan waktu)
+    2. Reusability (Multiple Client Program dapat mengunakkan satu implementation)
+    3. Abstraction (Client Program tidak perlu mengkhawatirkan detail implementasi,karena struktur data yg ditentukan oleh ADT)
+
+Struktur data terbagi menjadi 2 
+    Linear struktur data 
+    Non Linear struktur data 
+
+    Linear struktur data 
+        Struktur data yg disusun secara linear (berurutan) atau sekuensial 
+        Setiap elemen hanya punya satu predecessor dan successor kecuali elemen pertama dan terakhir 
+        Elemen pertama hanya punya successor (penerus), Elemen terakhir hanya punya predecessor (pendahulu)
+    cth : Array, linked list, queue, stack
+
+    Non linear struktur data 
+        Struktur data yg tidak disusun secara linear 
+        Setiap elemen punya predecessor dan successor dalam jumlah tertentu 
+    cth : tree, graph
+
+    Berdasarkan alokasi memori, terbagi menjadi 2 
+    Static struktur data
+    Dynamic struktur data
+    
+    Static struktur data
+        memori dialokasikan saat kompilasi 
+        Ukuran max sudah ditentukan 
+
+        Keuntungan : Akses data cepat 
+        Kerugian : Operasi insertion dan deletion lebih lambat 
+
+        Array adalah contoh static struktur data 
+        
+        Ukuran Array dialokasikan saat kompilasi sesuai dengan kode yg ditulis, dan ukurannya tidak dapat dimodif 
+    
+    Dynamic struktur data 
+        memori dialokasikan saat running time
+        Ukuran flexibel 
+
+        keuntungan : operasi insertion dan deletion lebih cepat
+        kerugian : akses data lebih lambat
+
+        linked list adalah contoh dynamic struktur data 
+
+        Ukuran linked list saat running dapat dialokasikan sehingga mudah untuk mengubah data
+
+Catatan Pertemuan Pertama (Pointer)
+Setiap variabel punya slot loka pada memori yang ukurannya tergantung pada tipe datanya 
+    lokasi tersebut digunakan untuk menyimpan nilai
+
+Pointer adalah variabel yg digunakan untuk menyimpan alamat dari sel memori itu
+cth : int a = 100; //a disimpan pada memori 1024
+    cout << a; //a = 100
+    cout << &a; // &a = 1024
+
+Kegunaan dari pointer adalah pointer bisa mengakses sebuah nilai melalui alamatnya lgsg tanpa harus mengcopy/menggandakan nilai tersebut
+Kekurangan dari pointer adalah debugging yg lama dan lebih rumit 
+
+& akan memberi alamat memori dari suatu variabel 
+pointer menggunakkan *(Dereferencing operator)
+apabila suatu variabel terdapat *, maka dia otomatis adalah pointer
+int a = 100;
+int *b = &a; // ini pointer
+akan error apabila salah satu tidak ada (saling melengkapi)
+
+pointer juga sebenarnya adalah variabel 
+nilai dari pointer pasti adalah alamat dari variabel tersebut 
+int a = 100;
+int *p = &a;
+int **q = &p;
+kalau misalkan ingin menampilkan nilai sesungguhnya dari suatu variabel (bukan alamat), maka harus cout dengan * (dereferencing operator)
+cout << a << endl;
+cout << *p << endl;
+cout << **q << endl; //pointer dari pointer p
+
+int a = 100;
+int *p = &a; //alamatnya 1024
+cout << a << &a << endl; // 100 1024
+cout << p << *p << &p <<endl; // 1024 100 1034
+deferencing operator tidak bisa digunakan pada variabel yg tidak punya pointer (polos)
+
+pointer bisa menunjuk variabel yg lain
+int a = 100, b = 200, c = 300;
+int *x = &a, *y = &b, *z = &c;
+y = x; //maka pointer y akan menunjuk variabel a
+b = *z // maka pointer b akan mengambil nilai c 
+*y = *z // karena y menunjuk variabel a, maka pointer y mengambil nilai dari pointer z, berarti a mengambil nilai c
+
+kalau misalkan 
+y = z // maka pointer y akan bebarengan dengan pointer z, maka pointer y menunjuk variabel c
+
+contoh fungsi menggunakkan pointer 
+void kali(int x,int *p){
+	*p = 2 * x;
+}
+
+int main(){
+	int a = 16;
+	kali(9, &a); //karena awalnya menggunakkan &a, lalu bertemu dengan pointer, maka menampilkan angka normal
+    cout<< a; // maka a = 18;
+	return 0;
+} 
+
+Ada yg namanya Variabel Reference
+Variabel Reference adalah tambahan variabel yang memiliki alamat yg sama dengan variabel tertentu 
+int a = 100;
+int &ref = a;
+
+cout << ref;// pasti akan sama alamatnya
+cout << &a; // pasti akan sama alamatnya
+
+variabel reference adalah variabel alternatif untuk suatu variabel. Dan apabila nilai dari variabel reference diganti, maka nilai variabel utamanya akan ikut berganti
+int a = 100;
+int &ref = a;
+ref = 200;
+// maka a = 200;
+variabel reference digunakan untuk parameter passing pada suatu fungsi (sama dengan pointer)
+
+Perbedaan fungsi pointer dan variabel reference 
+Pointer 
+void Balik(char *ptr1, char *ptr2){
+    char temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
+}
+
+int main(){
+    char y = 'y';
+    char n = 'n';
+    Balik (&y, &n);
+    cout << y << n;
+}
+
+void kuadrat (int * x){
+    *x = (*x) * (*x);
+}
+atau 
+void kuadrat (int *x){
+    *x *= *x;
+}
+
+Fungsi pointer harus menggunakkan void, karena nilai yang menggunakkan pointer akan digantikan. 
+Sehingga tidak memerlukan return
+dengan pointer, kita tidak perlu membuat variabel baru yg hanya akan dipakai sekali 
+
+Variabel Reference
+void Balik(char &ref1, char &ref2){
+    char temp = ref1;
+    ref1 = ref2;
+    ref2 = temp; 
+}
+
+int main(){
+    char y = 'y';
+    char n = 'n';
+    Balik (y, n);
+    cout << y << n;
+}
+Fungsi reference juga menggunakkan void
+
+void kuadrat (int &x){
+    x = x * x;
+}
+atau 
+void kuadrat (int &x){
+    x *= x;
+}
+
+Pointers dan Array 
+Nama variabel array sebagai pointer adalah alamat elemen pertama array
+    tiap elemen pada array, lokasi memorinya akan berbeda. Tetapi tetap konstan dan konsisten disitu
+Array adalah pointer konstan 
+
+int main(){
+    int a[5] ={1,2,3,4,5};
+    cout << a[0] << endl; 
+    cout << *a << endl; // maka akan mengeluarkan list paling awal, yaitu 1 
+    cout << &a << endl;
+    cout << a << endl; //maka akan mengeluarkan alamat
+}
+terkecuali pada array, apabila kita ingin mengeluarkan output berupa *a, maka bisa (tidak bisa untuk tipe data biasa)
+
+pointer dapat menggantikkan array
+int main(){
+    a[5] = {1,2,3,4,5};
+    int *p = a; //tidak perlu ditambahkan &a
+    cout << a[0] << *p; //maka akan mengeluarkan list paling awal juga 
+}
+
+untuk dereferencing semua elemen array
+menggunakkan *(a + n), karena  *(a+n) == a[n]
+int main(){
+    int a[5] = {1,2,3,4,5};
+    for (int i = 0; i <= 5; i++){
+        cout << *(a + i) << endl;
+    }
+}
+
+int main(){
+    int tgl_lahir[] ={31,12,2004};
+    int *ptgl_lahir = tgl_lahir;
+
+    cout << "diakses dengan pointer" << endl;
+    cout << *ptgl_lahir << endl; // 31
+    cout << *(ptgl_lahir + 1) << endl; // 12
+    cout << *(ptgl_lahir + 2) << endl; //2004
+
+    cout << "diakses dengan array biasa" << endl;
+    cout << tgl_lahir[0] << endl; // 31
+    cout << tgl_lahir[1] << endl; // 12
+    cout << tgl_lahir[2] << endl; // 2004
+}
+
+NULL Pointer 
+NULL adalah pointer kosong 
+jika NULL diakses, maka akan terjadi error
+int *p;
+int p = 0;
+cout << p << endl; // 0
+cout << &p << endl; // alamat
+cout << *p << endl; // error
+atau, kalau diketikkan 
+int *p = nullptr;
+maka bila di cout, akan menampilkan alamat kosong // 0x0
+
+Pointer untuk Array 2D
+table[i] = &table[i][0] mengacu alamat baris ke i
+int table[3][4] = {{1,2,3,4}, 
+{5,6,7,8},{9,10,11,12}};
+
+for (int i = 0; i < 3;i++){
+    for (int j = 0; j < 4; j++)(
+        cout << *(*(table +i)+ j));
+    cout << endl;
+}
+maka output nya 
+1 2 3 4
+5 6 7 8
+9 10 11 12
+
+
+Dynamic Objects/Dynamic Memory/Dynamic Memory Allocation
+
+Memory management terbagi menjadi 2 
+    Static Memory Allocation //digunakan apabila jumlah data yg kita input sudah yakin
+        Memory yg dialokasikan pada saat kompilasi (compile) (pada saat program sedang diproses)
+    Dynamic Memory Allocation // digunakan apabila jumlah data yg kita input masih belum yakin
+        Memory yg dialokasikan saat running time (pada saat program berjalan) (sehingga dapat ditentukan banyaknya nilai yg masuk sesuai keinginan kita )
+
+Static object 
+    variabel dideklarasikan pada saat fungsi dipanggil
+    alokasi memori secara otomatis ketika dicompile 
+    memory dikembalikan otomatis ketika object keluar dari scope 
+
+Dynamic object 
+    alokasi memory berdasarkan operator yg dijalankan, yg disebut new
+    dynamic object bisa terletak di luar fungsi tempat object dialokasikan 
+    memory object yg sudah dialokasikan dapat direturn dengan perintah deallocation mengunakkan operator delete
+
+contoh static object
+    int size[8];
+
+contoh dynamic object
+    int size = 8;
+    int *p = new int [size];
+        maka, p akan menjadi suatu array yg mampu menyimpan 8 nilai
+    
+    int size = 8;
+    int *p = new int [size];
+
+    p[0] = 1;
+    p[1] = 11;
+    p[2] = 111;
+
+    cout << *(p + 1); // maka mengeluarkan angka 11
+
+    delete[] p; //maka akan dihapus 
+    dan bisa dihapus dengan command delete[]
+    maka, semua angka di dalam array akan hilang
+
+dynamic object harus dibuat dengan menggunakkan pointer  
+    int *p = new int [8];
+    atau
+    int *p = new int;
+    *p =  8;
+    
+    menghapus object 
+    delete p;
+    atau
+    delete [] p ; 
+
+pointer bersifat fleksibel dan dapat menjadi array
+    int *p, n = 10;
+    p = new int;
+    p = new int [100];
+    p = new int[n];
+
+contoh 
+    void PrintMean (int*grades, int n){
+    int totalGrades = 0;
+    for(int i = 0; i < n; i++){
+        totalGrades += grades[i];
+    }
+    double mean = totalGrades / n;
+    cout << "The mean of the students are " << mean;
+
+}
+int main(){
+        int n;
+        cout << "How many students? : ";
+        cin >> n;
+
+        int *grades = new int [n];
+        for (int i = 0; i < n; i++){
+            int mark;
+            cout << "input grade for student " << i+1 << ": ";
+            cin >> mark;
+            grades[i] = mark;
+        }
+
+        PrintMean(grades, n);
+        delete [] grades;
+        
+        return 0;
+    }
+setelah menggunakkan new int, maka jangan lupa untuk menghapus isi array, agar memori/data tidak bocor
+
+delete ptr dengan delete [] ptr berbeda
+delete ptr brrti menghapus semua array dan variabelnya
+delete [] ptr hanya menghapus array saja 
+delete ptr [] juga bisa
+
+contoh dynamic memory 
+void initialize (int* list, int size, int value){ // bisa juga menggunakkan int list[]
+    for (int i = 0; i < size; i++){
+        list[i] = value;
+    }
+}
+
+void print (int list[], int size){ // dalam c++, parameter array adalah reference dan tidak perlu &
+    cout << "[ ";
+    for (int i = 0; i < size; i++){
+        cout << list[i] << " ";
+    }
+    cout << "]";
+}
+
+int* addElement(int list[], int& size, int value){ 
+    int* newList = new int [size + 1]; //buat array baru, sebenarnya tanpa +1 juga bisa
+        if (newList == 0){ //perlu dibuat seperti ini agar menghindari error dynamic memory
+            cerr << "Memory allocation error for addElement!" << endl;
+            exit (-1); //kalau error maka akan keluar dari program secara paksa
+        }
+
+    for (int i = 0; i < size; i++){
+        newList[i] = list[i]; // copas ke array baru
+    }
+
+    if (size > 0){
+        delete [] list;// menghapus array lama
+    }
+
+    newList[size] = value; 
+    size++; // size++ harus diletakkan setelah newList, agar angka di array terakhir dapat diubah terlebih dahulu, dan array dimulai dari 0
+    return newList; //kalau ditaruh sebelum, maka angka yg baru tidak bisa dimasukkan ke array terakhir
+}
+
+int* deleteFirst(int *list, int size){
+    
+    if(size <= 1){
+        if (size){
+            delete list; // jika list kurang dari 1, maka akan error
+        }
+        size = 0;
+        return NULL;
+    }
+
+    int *newList = new int [size-1]; //buat array baru lagi
+    if (newList == 0){
+        cerr << "Memory allocation error for deleteFirst";
+        exit (-1);
+    }
+
+    for (int i = 0; i < size-1; i++){
+        newList[i] = list[i+1]; //copas dari array sebelumnya, +1 agar value masuk ke dalam array 
+    }
+
+    delete [] list; //membersihkan memori list yg sudah tidak terpakai
+        size--; //mengurangi ukuran array
+        //sebenarnya tidak perlu size-- itu gpp
+    return newList;
+}
+
+int main(){
+    int n;
+    cin >> n;
+    int *A = new int [n];
+
+    if (n <= 0){
+        cerr << "memory is not enough";
+        return -1;
+    }
+
+    initialize (A, n, 0);
+    print (A, n);
+    A = addElement (A, n, 5);
+    print (A, n);
+    A = deleteFirst(A, n);
+    print (A,n);
+}
+
+fungsi lain dari addElement menggunakkan void 
+void addElement(int* &list, int &size, const int value ){ //menggunakkan * &list agar bisa array bisa langsung diubah, & untuk mengubah nilai dari size dan list 
+    int * newList = new int [size + 1];
+    
+    if(newList == NULL){
+        cerr << "Memory allocation error for addElement!" << endl;
+        exit(-1);
+    }
+ 
+    for(int i = 0; i < size; i++ ){
+        newList[i] = list[i];
+    }
+    
+    if(size >= 0){
+        delete [] list; //menghapus list array yg lama
+    }
+    
+    newList[size] = value;
+    size++;
+    list = newList; // mencopas list array yg baru 
+    //sebenarnya sama aja dengan fungsi sebeumnya, hanya saja ditambah list = newList
+    return; //fun fact, dengan fungsi void, kita bisa mengetikan return tanpa ada nilai untuk mmeberitahu bahwa fungsi selesai
+}
+
+fungsi lain dari deleteFirst menggunakan void
+
+void deleteFirst(int * &list, int &size){
+    int *newList = new int [size-1]; //sebenarnya menggunakkan size biasa sudah cukup 
+    if(size <= 1){
+        if (size){
+            delete list;
+        }
+        list = NULL;
+        size = 0;
+        return;
+    }
+
+    for (int i = 0; i < size; i++){
+        newList[i-1] = list[i]; // newList harus mengurangi agar angka terakhir di dalam array bisa masuk
+    }
+    delete [] list;
+    size--; //size array NewList akan berkurang
+    return;
+}
+
+apabila terjadi
+    int *A = new int [5];
+    A[5] = {1,2,3,4,5};
+    int *B = A;
+    delete [] A;
+    B[1] = 1; //akan terjadi error, karena array dihapus
+
+atau 
+    int *A = new int [5];
+    for (int i = 0; i < 5; i++){
+        A[i] = i;
+    }
+    
+    A = new int [5] // maka, akan terjadi error, karena memori yg dialokasikan sebelumnya tidak dihapus 
+dynamic memory harus menggunakkan pointer, agar program bisa menggunakkan memori tersebut 
+
+Array Dynamic 2d
+    adalah array dari pointer yg memungkinkan setiap baris array memiliki jumlah kolom yg berbeda 
+int *table = new int *[5]; //untuk array 2d, menggunakkan tambahan pointer lagi
+table[0] = new int [3];
+table[1] = new int [4];
+table[2] = new int [5];
+table[3] = new int [6];
+table[4] = NULL;
+
+atau 
+int **table;
+table = new int *[5];
+
+int **table;
+table = new int*[6];
+table[0]= new int[3];
+table[1]= new int[1];
+table[2]= new int[5];
+table[3]= new int[10];
+table[4]= new int[2];
+table[5]= new int[6];
+table[0][0] = 1; table[0][1] = 2; table[0][2] = 3;
+table[1][0] = 4;
+table[2][0] = 5; table[2][1] = 6; table[2][2] = 7;
+table[2][3] = 8; table[2][4] = 9;
+table[4][0] = 10; table[4][1] = 11;
+cout << table[2][5] << endl; //maka, outputnya berupa angka random
+
+Array dynamic 2d, harus menghapus barisnya satu persatu
+for (int i = 0; i < 6; i++){
+    delete[] table[i]; //tergantung berapa banyak array baris sebelumnya
+}
+delete[] table;
+
+contoh
+int m, n;
+cin >> m >> n;
+
+int **matriks;
+matriks = new int *[m];
+for (int i = 0; i < n; i++){
+    matriks[i] = new int[n]; //maka, i = baris, n = kolom 
+}
+
+yg bila dijadikan sebagai fungsi
+int** CreateMatrix(int row, int collumn){
+    int **Matrix;
+    Matrix = new int *[row];
+
+    for (int i =0; i < collumn; i++){
+        Matrix[i] = new int [collumn];
+    }
+
+    return Matrix;
+}
+
+void pointer 
+pointer yang tidak memiliki tipe data yg terkait dengannya 
+dapat menunjuk ke tipe data apa pun dan dapat diubah ke tipe apapun 
+
+int main(){
+    int n = 10;
+    void *m = &n;
+    cout << * (int *)m;
+}
+tapi, void pointer harus ditentukan tipe datanya ketika dereferencing agar tidak error
+
+null pointer 
+pointer yg tidak menunjuk lokasi memori manapun 
+mempresentasikan lokasi memori yg tidak valid
+
+fungsi malloc() adalah fungsi yang digunakan secara dinamis untuk mengalokasikan memori dengan ukuran yg sudah ditentukan 
+    jika berhasil, akan mengembalikan void pointer
+    jika ruang memori tidak cukup, alokasi gagal, akan mengembalikan null
+
+null pointer dapat digunakan untuk menginisialisasi pointer ketika pointer belum diberi alamat memori yg valid
+int main(){
+    int *ptr = null;
+}
+
+null pointer dapat digunakan untuk error handling
+int main(){
+    int *ptr;
+    ptr = (int*)malloc(2*sizeof(int));
+
+    if(ptr == NULL){
+        cerr << "Memory could not be allocated";
+    }
+    else{
+        cout << "Memory allocated successfully" ;
+    }
+    return 0;
+}
+
+int main(){
+    int *ptr, n, i;
+    cout << "Masukkan banyaknya data yg ingin kita input: ";
+    cin >> n;
+
+    ptr = (int *)malloc(n*sizeof(int)); //n * sizeof(int) artinya bahwa sizeof akan memberitahu malloc banyaknya byte yg diperlukan untuk alokasi memori 
+    
+    if (ptr == NULL){
+        cerr << "Memori tidak cukup";
+        return -1;
+    }
+
+    for (i = 0; i < n; i++){
+        cout << "Masukkan data ke- " << i+1 << ": ";
+        cin >> ptr[i]; 
+    }
+
+    cout << "Data yang anda masukkan adalah ";
+    for(i = 0; i < n; i++){
+        cout << ptr[i] << " ";
+    }
+
+    return 0;
+}
+
+nilai dari NULL adalah 0
+sehingga, dapat menggunakan NULL atau 0
+int main(){
+    int *ptr = NULL;
+    cout << ptr; //maka output berupa 0
+}
+0 disini bukan int 
+
+ukuran dari NULL tergantung pada platform dan sama seperti ukuran pointer pada umumnya
+int main(){
+    cout << sizeof(NULL);
+    return 0;
+} //maka outputnya adalah 8
+
+atau bisa menggunakkan nullptr
+karena lebih terjamin 
+
+Dangling pointer 
+pointer yang menunjuk ke beberapa lokasi memori yg tidak pernah ada
+int main(){
+    int *ptr = new int [1000];
+    delete ptr[];
+}
+
+pointer int ptr berisi alamat pertama dari memori yg dialokasikan 
+setelah beberapa operasi, memori dilepaskan menggunakkan delete. Maka semua pointer yang di deallocation akan menjadi dangling pointer
+
+meskipun memori dilepas, pointer tetap menunjuk alamat yang tidak dialokasikan
+contoh :
+    alamat byte pertama dari blok memori pointer adalah 1000
+    setelah deallocation, memori dilepas, tapi alamat di dalam pointer tidak berubah 
+    sehingga pointer alamatnya masih 1000, yaitu lokasi memori yg sudah tidak ada, sehingga disebut sebagai dangling pointer
+
+cara mengatasinya adalah melakukan reinisialisasi pointer dengan nilai tertentu 
+int main(){
+    int *ptr = new int[1000];
+    delete ptr[];
+
+    ptr = NULL; //atau ptr = nullptr;
+    return 0;
+}
+
+wild pointer / pointer yang tidak diinsialisasi 
+menunjuk ke beberapa lokasi memori yg sembarangan dan menyebabkan program crash
+
+int main(){
+    int *ptr; // wild pointer, pointer di deklarasi, tapi tidak dinisialisasi ke variabel lain
+    *ptr = 10; // lalu dereferencingnya diisi nilai 10, maka akan crash karena mengakses lokasi memori yg ilegal
+} // nilai int tidak bisa digunakan pada pointer 
+
+cara mengatasinya adalah
+1. inisialisasi dengan alamat dari suatu variabel
+int main(){
+    int value = 10;
+    int *ptr;
+    *ptr = &value;
+}
+
+2. alokasikan memori dan masukkan nilai ke dalam memori yg dialokasikan 
+int main(){
+    int *ptr = new int;
+    *ptr = 10;
+    delete ptr;
+}
+
+
+Catatan Pertemuan 2 (Struktur)
+Setiap elemen pada 1 array harus memiliki tipe yg sama 
+tapi terkadang, ada saat dimana kita harus membuat array dengan tipe yg berbeda"" (data diri). Dibuatlah record
+
+Record dalam c++ adalah struct, dan tiap elemennya disebut member(kalau record nama membernya field)
+struct dataDiri {
+    string namaLengkap;
+    int tglLahir;
+    int bulanLahir;
+    int tahunLahir;
+}
+
+Struktur = pengelompokan variabel yg berbeda tipe data dalam satu kelompok yg sama 
+struktur adalah user-defined type (tipe data yg dibuat oleh user)
+elemen dari struktur boleh berbeda"" tipenya
+elemennya bisa tipe data primitif, maupun berupa struct lainnya
+struct nilaiMahasiswa {
+    string Nama[20];
+    Tanggal ulangtahun; //tapi sebelumnya, struct Tanggal ulangtahun harus di deklarasikan terlebih dahulu
+    int course[10];
+    int tugas[5];
+    int pr[3];
+    int ujian[2];
+}
+
+ketika membuat struct, nama dari struct itu adalah tipe data dari struct itu sendiri
+struct adalah kata kunci
+
+cara mendeklarasikan struct ada 3 cara:
+1. Deklarasi variabel bertipe struct
+    struct date today ;
+2. Deklarasi struct diikuti dengan variabel setelah memberi member
+    struct date {
+        int tanggal;
+        int bulan;
+        int tahun;
+    } today;
+3. Deklarasi struktur tanpa kata kunci struct
+    date today; // apabila sebelumnya sudah dideklarasikan 
+
+maka, bila selesai. today adalah variabel yg bertipe date
+struct date; dengan struct date today; itu berbeda
+struct date; biasanya dideklarasikan pada awal program dan akan memberitahu bahwa akan ada variabel yg menggunakkan tipe data struct date //dan juga dideklarasikan membernya
+struct date today; biasanya digunakan apabila struct date sudah dideklarasikan sebelumnya //dan tidak akan bisa berjalan apabila sebelumnya struct date tidak dideklarasikan
+
+cara mengakses struct
+struct StudentRecord{
+		char name[50];
+		int id;
+		char dept[30];
+		char gender;
+	};
+StudentRecord Student1, Student2;
+student1.id = 23051204085; //menggunakkan . lalu nama membernya 
+struct bisa digunakan sebagai fungsi (dan bisa mengembalikan nilai)
+
+struct StudentRecord {
+    char name [50];
+    int id;
+    char dept [30];
+    char gender;
+};
+
+int main(){
+    StudentRecord Student1;
+    strcpy (Student1.name , "Cornelius Louis Nathan"); // bisa mengisi data dengan menggunakkan strcpy (variabel.member, nilai);
+    Student1.id = 23051204085;
+    strcpy (Student1.dept , "Engineering Informathics"); // hanya berlaku apabila tipe datanya berupa char 
+    Student1.gender = 'M';
+
+    cout << "The student is ";
+    switch (Student1.gender){
+    case 'M': cout << "Mr. ";
+        break;
+    case 'F': cout << "Ms. ";
+         break;
+    }
+    cout << Student1.name;
+} //output : The student is Mr. Cornelius Louis Nathan
+
+bahkan kita bisa sebenarnya mengcopy semua nilai dari member pada suatu variabel ke variabel lain
+Student2 = Student1;
+strcpy (Student2.name , "Clarine Lucy Nathania");
+Student1.gender = 'F';
+
+Nested struct
+member suatu struct dapat bertipe struct
+struct date{
+    int tanggal;
+    int bulan;
+    int tahun;
+};
+
+struct ultah{
+    string nama;
+    struct date kelahiran; //memang boleh, tapi harus tetap mendeklarasikan variabel baru untuk tipe data struct di dalam nested struct
+}; // nested struct, struct di dalamnya juga bisa diakses 
+
+ultah orang1;
+    orang1.nama = "Louis";
+    orang1.kelahiran.tanggal = 31;
+    orang1.kelahiran.bulan = 12;
+    orang1.kelahiran.tahun = 2004;
+
+cout << orang1.nama << ": " << orang1.kelahiran.tanggal << "-" << orang1.kelahiran.bulan << "-" << orang1.kelahiran.tahun;
+
+inistiasi struct / pemberian nama juga bisa dilakukan dengan cara yg berbeda
+struct date{
+    int tanggal, bulan, tahun;
+} kelahiran = {31,12,2004}; // hanya berlaku untuk struct yg sudah didefinisikan sebelumnya 
+
+struct date{
+    int tanggal, bulan,tahun;
+};
+date kelahiran = {31,12,2004};
+
+struct date kelahiran{
+    int tanggal = 31;
+    int bulan = 12;
+    int tahun = 2004;
+}
+
+contoh :
+struct Point {
+    int x;
+    int y;
+};
+Point P; //maka, P.x = 5, P.y = 6;
+
+struct Line {
+    Point P1, P2;
+};
+Line L; // maka, L.P1.x = 5, L.P1.y = 6, L.P2.x = 12, L.P2.y = 4;
+
+struct Triangle {
+    Point P1,P2,P3;
+};
+Triangle T;
+
+  struct zodiak { 	
+	char nama[11];	
+	int tgl_awal;		
+ 	int bln_awal;	
+	int tgl_akhir;		
+ 	int bln_akhir;	
+}; 
+  	zodiak bintang ={"Sagitarius", 22,11,21,12};
+  	int tgl, bln, thn;
+
+    cin >> tgl >> bln >> thn;
+    if ((tgl >= bintang.tgl_awal && bln == bintang.bln_awal) || (tgl <= bintang.tgl_akhir && bln == bintang.bln_akhir)){ // harus or, agar apabila ada 1 yg salah, maka akan tetap benar
+        cout << "Bintang anda adalah " << bintang.nama;
+    }   
+
+    else{
+        cout << "Bintang anda bukan " << bintang.nama; 
+    }
+
+Array struct
+berbeda dengan array pada umumnya, array struct memiliki elemen yg tiap datanya berbeda""
+elemen dari suatu array bahkan dapat bertipe struct 
+struct date{
+    int tanggal;
+    int bulan;
+    int tahun;
+};
+
+struct ultah{
+    string nama;
+    struct date kelahiran;
+};
+
+int MAKS = 5;
+struct ultah orang[MAKS];
+for (int i = 0; i < MAKS; i++){
+    cout << "Nama : "; 
+    cin >> orang[i].nama; //indeks diletakkan pada variabel yg adalah array
+
+    cout << "tanggal : ";
+    cin >> orang[i].kelahiran.tanggal;
+    
+    cout << "bulan : ";
+    cin >> orang[i].kelahiran.bulan;
+
+    cout << "tahun : ";
+    cin >> orang[i].kelahiran.tahun;
+}
+
+struct StudentRecord{
+		char name[50];
+		int id;
+		char dept[30];
+		char gender;
+	};
+StudentRecord Student[100];
+
+strcpy(Student[85].name, "Cornelius Louis Nathan");
+Student[85].id = 23051204085;
+strcpy(Student[85].dept, "Informathic Engineering");
+Student[85].gender = 'M';
+
+array dapat dijadikan sebagai member struct 
+struct Square {
+    Point P[4];
+};
+Square S;
+
+inisiasi struct array dapat dilakukan dengan cara yg berbeda
+struct abc{
+    int a;
+    char b;
+} arr[2] = {{1,'a'}, {2,'b'}};
+
+atau
+
+struct abc{
+    int a;
+    char b;
+};
+abc arr[2] = {{1,'a'}, {2,'b'}};
+
+struct transkrip{
+    int nim[10];
+    int nilai[20];
+} mhs[50];
+
+for (int i = 0; i < 50; i++){
+    cin >> mhs[i].nim;
+    for(int j = 0; j < 20;j++){
+        cin >> mhs[i].nilai[j];
+    }
+}
+
+berbeda dengan
+struct transkrip{
+    int nim[10];
+    int nilai[20];
+} mhs;
+cin >> mhs.nim;
+for(int i = 0; i < 20;i++){
+    cin>> mhs.nilai[i];
+}
+
+struct dapat dijadikan sebagai pointer (static allocation)
+struct person {
+    long id;
+    float gpa;
+};
+
+struct identity{
+    char name[30];
+    struct person student;
+};
+
+int main(){
+    struct identity js = {"John Smith"},*ptr = &js;//atau menggunakkan identity *ptr = &js; sesuai dengan tipe data struktur 
+    /*selain menggunakkan cara ini
+    struct identity js;
+    strcpy(js.name "Cornelius Louis Nathan");
+    identity *ptr = &js;
+    bisa langsung menggunakkan cara diatas*/
+    
+    js.student.id = 23051204085;
+    js.student.gpa = 4.0;
+
+    cout << js.name << " " << js.student.id << " " << js.student.gpa << endl;
+    cout << ptr->name << " " << ptr->student.id << " " << ptr->student.gpa << endl; //untuk pointer, menggunakkan ptr->member
+}
+berarti, bisa menggunakkan variabel dari tipe data struct itu lgsg (js)
+atau
+bisa menggunakkan variabel pointer yang sudah terhubung dengan alamat struct (ptr->)
+
+struct dapat dijadikan sebagai pointer (dynamic allocation)
+struct anggota {
+    int no;
+    string nama;
+}
+
+int main(){
+    anggota *agt = new anggota; //menggunakkan new tipe data struct
+    cout << "No Anggota: ";
+    cin >> agt->no;
+    cout << "Nama: ";
+    cin >> agt->nama;
+}
+
+struct dan Fungsi
+member dari struct bisa dijadikan sebagai argumen fungsi (pass by value)
+
+void todayDate(int dd, int mm, int yy){
+    string months[] = {"Wrong Months", "January", "February", "March", "April", "May", 
+    "June","July", "August", "September", "October","November", "December"};
+
+    cout << "Today is " << dd << " " << months[mm] << " " << yy;
+}
+int main(){
+    struct date{
+        int day; int month; int year;
+    }today; //kita bisa mendeklarasikan struct dan variabelnya langsung dengan cara seperti ini
+
+    cin >> today.day >> today.month >> today.year;
+    todayDate(today.day,today.month,today.year);
+}
+
+member struct juga bisa digunakan sebagai argument (pass by pointer atau reference)
+struct charset{
+    char s;
+    int i;
+};
+
+void keyValue(char *s, int *i){
+    cout << "Enter key value pair: ";
+    cin >> *s >> *i;
+}
+
+int main(){
+    charset cs;
+    keyValue(&cs.s, &cs.i);
+    cout << cs.s << " " << cs.i;
+}
+
+atau
+
+struct charset{
+    char s;
+    int i;
+}
+
+void keyValue(char &s, int &i){
+    cout << "Enter key value pair: ";
+    cin >> s >> i;
+}
+
+int main(){
+    charset cs;
+    keyvalue(cs.s, cs.i);
+    cout << cs.s << " " << cs.i;
+}
+
+struct variable{
+    int x;
+    int y;
+};
+
+void tukarVariable(int *x, int*y){
+    int temporary;
+    temporary = *x;
+    *x = *y;
+    *y = temporary;
+}
+
+int main(){
+    variable testing;
+    cout << "Masukkan nilai pertama: ";
+    cin >> testing.x;
+    cout << "Masukkan nilai kedua: ";
+    cin >> testing.y;
+
+    tukarVariable(&testing.x, &testing.y);
+    cout << "nilai pertama = " << testing.x;
+    cout << "nilai kedua = " << testing.y;
+
+}
+
+struct variable{
+    int x;
+    int y;
+};
+
+void tukarVariable(int &x, int*y){
+    int temporary;
+    temporary = x;
+    x = y;
+    y = temporary;
+}
+
+int main(){
+    variable testing;
+    cout << "Masukkan nilai pertama: ";
+    cin >> testing.x;
+    cout << "Masukkan nilai kedua: ";
+    cin >> testing.y;
+
+    tukarVariable(testing.x, testing.y);
+    cout << "nilai pertama = " << testing.x;
+    cout << "nilai kedua = " << testing.y;
+}
+
+struct juga bisa untuk parameter (pass by struct)
+apabila struct memiliki banyak field,dan semua fieldnya diubah oleh fungsi 
+    maka, parameter menggunakkan passing dari alamat struct
+
+void tukarVariable(variable *testing){
+    int temporary;
+    temporary = (*testing).x;
+    (*testing).x = (*testing).y;
+    (*testing).y = temporary;
+}
+
+atau menggunakkan << testing->x
+void tukarVariable(variable *testing){
+    int temporary;
+    temporary = testing-> x;
+    testing-> x = testing-> y;
+    testing-> y = temporary;
+}
+
+struct date {int day; int month; int year;};
+void todayDate(struct date now){
+    string months[] = {"Wrong Months", "January", "February", "March", "April", "May", //untuk dibuat jadi parameter, maka tipe data struct harus memiliki variabel
+    "June","July", "August", "September", "October","November", "December"};
+    
+    cout << "Today is " << now.day << " " << now.month << " " << now.year;
+} 
+int main(){
+    struct date today;
+    cin >> today.day >> today.month >> today.year;
+    todayDate(today);
+}
+
+atau 
+
+struct date{int day; int month; int year;};
+void todayDate(date *now){
+    string months[] = {"Wrong Months", "January", "February", "March", "April", "May", //untuk dibuat jadi parameter, maka tipe data struct harus memiliki variabel
+    "June","July", "August", "September", "October","November", "December"};
+    
+    cout << "Today is " << (*now).day << " " << now->month << " " << now->year;
+} 
+
+struct juga bisa menjadi fungsi 
+struct point {
+    int x;
+    int y;
+};
+
+struct point edit(point p){
+    (p.x)++;
+    p.y += 5;
+    return p;
+}
+
+void print(point p){
+    cout << p.x << " " << p.y << endl;
+}
+
+int main(){
+    point p1 = {50,100};
+    point p2 = {20,40};
+
+    p1 = edit(p1);
+    p2 = edit(p2);
+    print(p1);
+    print(p2);
+}
+
+fungsi struct yg menjadi pointer
+struct pointer{
+    int x;
+    int y;
+};
+
+struct pointer *testing(int a, int b){
+    struct pointer *ptr =(struct pointer*) malloc (sizeof(struct pointer));
+    ptr ->x = a;
+    ptr ->y = b + 5;
+    return ptr;
+}
+
+void print(struct pointer *ptr){
+    cout << ptr->x << " " << ptr->y << endl;
+}
+
+int main(){
+struct pointer *ptr1, *ptr2; //bila fungsi struct menjadi pointer, maka untuk menginisiasi struct harus dengan pointer juga 
+ptr1 = testing(10,15);
+ptr2 = testing(20,25);
+
+print(ptr1);
+print(ptr2);
+}
+
+Self referential struct 
+struct yg mempunyai member yg bertipe pointer yg menunjuk pada struct yg sama // walaupun konsepnya sama kayak rekursif, tapi tidak memanggil dirinya sendiri
+
+struct self{
+    int p;
+    struct self *ptr;
+};
+
+contoh 
+struct code{
+    int i;
+    char c;
+    struct code *ptr;
+};
+
+int main(){
+    code var1;
+    code var2;
+
+    var1.i = 50;
+    var1.c = 'A';
+    var1.ptr = NULL;
+
+    var2.i = 100;
+    var2.c = 'B';
+    var2.ptr = NULL;
+
+    var1.ptr = &var2; //pointer var1 menunjuk ke var2
+    cout << var1.ptr->i << " " << var1.ptr->c << " " << var1.ptr; //jadi, nilai var1 mengikuti nilai var2 karena menunjuk var2
+    cout << var2.ptr->i << " " << var2.ptr->c << " " << var2.ptr; //kalau dijalankan, maka hanya menampilkan 1 output
+}
+
+untuk mendefinisikan struct, terkadang bisa menggunakkan typedef //ingat, mendefinisikan struct, bukan variabel dari struct
+typedef struct {
+    int day;
+    int month;
+    int year;
+} date;
+date today = {31,12,2004};
+
+sebenarnya bisa langsung struct date{
+    int day;
+    int month;
+    int year;
+} today;
+date today = {31,12,2004};
+
+definisi struct harus diakhiri dengan ;
+jika member struct adalah array, maka member harus menggunakkan index
+    today.month[i]; 
+jika variable struct adalah array, maka variable harus menggunakkan index juga
+    today[i].day;
+index digunakan untuk variabel yg adalah array 
+
+member struct boleh memiliki nama member yg sama dengan struct lain 
+karena berbeda scope
+
+struct parts{
+    int qty;
+} part;
+
+struct testScores{
+    int qty; //karena berbeda scope
+} scores;
+part.qty = 50;
+scores.qty =50;
+
+tapi, kalau untuk variabel dengan nama yg sama, walaupun tipe data nya berbeda. Tetap tidak bisa
+
+
+Catatan Pertemuan 5 (Single Linked List, Linear)
+int A[5];
+int B[6]; //maka tidak ada 6 lokasi berurutan untuk B
+Maka, untuk menyimpan 6 data secara berurutan, menggunakkan linked list 
+
+Linked List adalah salah satu bentuk struktur data, berisi kumpulan data (node) yang tersusun secara sekuensial (urut), saling menyambung, dinamis, dan terbatas
+Linked list saling terhubung dengan pointer
+Masing"" data dalam linked list disebut sebagai node (simpul) yg menempati alokasi memori secara dinamis
+
+Perbedaan Array dan Linked List 
+Array 
+    Statis 
+    Penambahan/Penghapusan data terbatas
+    Random Access
+    Penghapusan Array tidak memungkinkan
+Linked List 
+    Dinamis
+    Penambahan/Penghapusan data tidak terbatas 
+    Sequential Access
+    Penghapusan Linked List mudah 
+
+Jenis"" Linked List ada 4
+    Single Linked List Linear = A -> B -> C (A adalah head)
+    Single Linked List Circular =  A -> B -> C (C kembali terhubung dengan A)
+    Doubly Linked List Linear = A <-> B <-> C (A adalah head, B adalah prev dan next, C adalah tail)
+    Doubly Linked List Circular = A <-> B <-> C (C terhubung kembali dengan A, dan sebaliknya)
+
+Single : Field Pointernya hanya satu buah dan satu arah saja, node"" nya saling terhubung satu dengan yg lain 
+[data | pointer]
+Komponen pada Single Linked List Linear 
+    Node yang berisi data dan pointer, sehingga didefinisikan dalam bentuk struct 
+    Link untuk menyimpan alamat dari node berikutnya, yg diimplementasikan dalam pointer
+    Head adalah pointer yg menyimpan alamat node pertama, awal dari linked list 
+    Node Terakhir adalah node yg pointernya null untuk kondisi berhenti saat membaca linked list 
+
+[A |] -> [B |] -> [C |] -> [D |] -> null
+FFF1     FFF2      FFF3     FFF4
+[data | pointer ]
+
+Cara mendeklarasikan Linked List Linear 
+typedef struct Tnode{
+    int data;
+    Tnode *next;
+};
+
+ketika mendeklarasikan node, membutuhkan 1 buah variabel pointer : head
+Head akan selalu menunjuk pada node pertama dengan
+    Tnode *head //diletakkan diluar fungsi struct Tnode
+
+Fungsi untuk inisialisasi Single Linked List Linear 
+void initiation(){
+    head = NULL; //sehingga isi  dari head akan kosong
+}
+
+Fungsi untuk mengecek apakah Single Linked List Linear kosong atau tidak (Jika pointer head tidak menunjuk suatu node, maka kosong)
+int isEmpty(){
+    if (head == NULL){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+};
+
+Penambahan data di depan 
+    Penambahan node baru akan dikaitkan di node paling depan 
+        Pada saat data masih kosong, penambahan data dilakukan dengan cara head ditunjukkan ke node baru 
+        Jika data tidak kosong, node baru disambungkan ke node yg ditunjuk oleh head 
+            lalu head akan berpindah (sehingga, node terbaru menjadi head)
+
+void insertDepan(int dataBaru){
+    Tnode *baru = new Tnode;
+    baru =  new Tnode;// dynamic allocation untuk node baru 
+    baru->data = databaru; //data baru dimasukkan ke node baru (yg akan dimasukkan ke linked list )
+    baru->next = NULL; // pointer next akan menjadi null
+    //node baru adalah node yg akan dimasukkan ke dalam linked list 
+
+    if (isEmpty() == 1){
+        head = baru; //head menjadi node terbaru dan langsung masuk ke linked list
+        head->next = NULL;
+    }
+    else {
+        baru->next = head; //pointer baru menunjuk head (sehingga otomatis pointer baru didepan)
+        head = baru; //sehingga, head menjadi node terdepan 
+    }
+        cout << "Data masuk" << endl;
+} 
+
+Penambahan data di belakang
+    Penambahan data di belakang
+    Jika data pertama kali dimasukkan, node langsung ditunjuk di head (sehingga masuk paling awal)
+    membutuhkan pointer baru untuk mengetahui node terbelakang, lalu dikaitkan dengan node baru 
+    untuk mengetahui data paling belakang, diperlukan perulangan
+
+    awalan fungsinya hampir sama dengan void insertDepan
+
+void insertBelakang(int dataBaru){
+    Tnode *baru, *bantu; 
+    baru = new Tnode; //dynamic allocation untuk node terbaru
+    baru->data = databaru; //data baru dimasukkan ke dalam node baru (yg akan dimasukkan ke linked list)
+    baru->next = NULL; //pointer next akan menjadi null
+    //node baru adalah node yg akan dimasukkan ke dalam linked list 
+
+    if(isEmpty() == 1){
+        head = baru; //head menjadi node terbaru dan masuk ke linked list 
+        head->next = NULL; 
+    }
+    else{
+        bantu = head; //pointer bantu menjadi head 
+        while(bantu->next != NULL){ //melakukan looping
+            bantu = bantu->next //pointer bantu berpindah ke node selanjutnya, sampai bantu->next menjadi 0 
+        }
+        bantu->next = baru; //setelah ditemukan node terakhir, maka masukkan node terbaru 
+    }
+    cout << "Data masuk" << endl;
+}
+
+void TampilLinkedList(){
+    Tnode *bantu;
+    bantu = head; //pointer bantu menjadi head
+    if(isEmpty() == 0){
+        while(bantu->next != NULL){
+            cout << bantu->data << " ";
+            bantu = bantu->next;
+        }
+    cout << endl;
+    }
+    else{
+        cout << "data masih kosong" << endl;
+    }
+}
+
+Menghapus data terdepan 
+    menggunakkan pointer lain yang digunakan untuk menunjuk node yg akan dihapus (pointer hapus)
+    sebelum data terdepan dihapus, maka head harus ditunjukkan ke node selanjutnya agar linked list tidak terputus 
+    menghapus pointer hapus dengan perintah delete
+    jika head = NULL, maka dqta masih kosong
+
+void hapusTerdepan(){
+    Tnode *hapus;
+    int d; // untuk menyimpan informasi mengenai data yg akan dihapus 
+
+    if(isEmpty() != 1){
+        if (head->next != NULL){
+            hapus = data; //pointer hapus menunjuk head
+            d = head->data; //d menyimpan nilai head
+            head = head->next; //posisi head dipindah ke node selanjutnya
+            delete hapus; //pengorbanan pointer hapus
+        }
+
+        else{
+            d = head->data;
+            head = NULL; //penghapusan data di head, karena tidak ada node lain di belakang head 
+            //mengapa tidak menggunakkan delete head? agar linked list tidak hilang
+        }
+        
+        cout << d << " terhapus dari linked list" << endl;
+    }
+    else {
+        cout << "linked list msih kosong" << endl;
+    }
+}
+
+Menghapus data terbelakang
+    membutuhkan pointer hapus dan bantu
+        pointer hapus untuk menunjuk node yg kan dihapus 
+        pointer bantu untuk menunjuk node sebelum node yg akan dihapus agar menjadi node terakhir 
+
+    alur :
+        1. menempatkan pointer bantu pada node sebelum node terakhir
+        2. pointer hapus untuk menunjuk node setelah pointer bantu
+        3. pointer hapus dihapus
+        4. pointer bantu menunjukk null dan menjadi node terakhir
+
+void hapusTerbelakang(){
+    Tnode *hapus, *bantu;
+    int d;
+    if (isEmpty == 0){
+        if(head->next != NULL){
+            bantu = head; //pointer bantu menunjuk head
+            while(bantu->next->next != NULL){ //while pointer next masih ada node yg lain sampai menyentuh node kedua paling terakhir 
+                bantu = bantu -> next; // pointer bantu berpindah ke node selanjutnya 
+            }
+            hapus = bantu->next; //pointer hapus menunjuk node setelah pointer bantu
+            d = hapus->data; // d menyimpan informasi data yg akan dihapus 
+            bantu->next = NULL; //node bantu akan menunjuk NULL,agar menjadi node terakhor
+            delete hapus;
+        }
+
+        else{
+            d = head-> data;// d menyimpan informasi data yg akan dihapus
+            head = NULL; //mengapa tidak menggunakkan delete head? agar linked list tidak hilang
+        }
+    cout << d << "telah terhapus" << endl;
+    }
+
+    else{
+    cout << "linked list masih kosong" << endl;
+    }
+}
+
+void deleteSemua(){
+    Tnode *bantu, *hapus;
+    bantu = head;
+    while (bantu != NULL){
+        hapus = bantu;
+        bantu = bantu-> next; //pindah ke node selanjutnya
+        delete hapus;
+    }
+    cout << "Penghapusan semua elemen linked list selesai" << endl;
+    head = NULL; // agar head tidak lagi menunjuk pada alamat memori node terakhir yang dihapus, dan benar" terhapus semua data
+}
+
+Single Linked List Linear dengan Head dan tail
+
+dibutuhkan 2 variabel pointer : head dan tail
+head menunjuk node pertama, tail menunjuk node terakhir
+
+inisiaslisasi Single Linked List Linear dengan Head dan tail
+typedef struct Tnode{
+    int data;
+    Tnode *next;
+}
+Tnode *head;
+Tnode *tail;
+
+Fungsi inisiasi single linked list linear dengan head dan tail
+void init(){
+    head = NULL;
+    tail =  NULL;
+}
+
+Fungsi untuk mengetahui single linked list linear dengan head dan tail kosong atau tidak
+
+Penambahan data di depan 
+Penambahan data baru akan selalu menjadi head
+
+void insertDepan(int dataBaru){
+    Tnode *baru;
+    baru = new Tnode; //dynamic allocation untuk node terbaru
+    baru->data = databaru; //data baru dimasukkan ke dalam node baru (yg akan dimasukkan ke linked list)
+    baru->next = NULL; //pointer next akan menjadi null
+    //node baru adalah node yg akan dimasukkan ke dalam linked list 
+
+    if (isEmpty() == 1){
+        head = tail = baru; // disini, karena linked list kosong, maka nilai dari head dan tail sama, sehingga bisa copas pointer baru
+        tail->next = NULL; //tail menjadi node terakhir
+    }
+    else{
+        baru->next = head; //pointer baru menunjuk head (sehingga otomatis pointer baru didepan)
+        head = baru; //node terbaru menjadi head 
+    }
+    
+    cout << "data masuk" << endl;
+}
+
+Penambahan data di belakang 
+Kelebihan dari Single Linked List Linear dengan Head dan Tail, hanya dibutuhkan tail untuk mengikat node baru, sehingga node baru menjadi tail (tidak perlu pointer bantu)
+void insertBelakang(int dataBaru){
+    Tnode *baru;
+    baru = new Tnode;
+    baru->data = databaru;
+    baru->next = NULL;
+
+    if (isEmpty() == 1){
+        head = tail = baru;
+        tail->next = NULL;
+    }
+    else{
+        tail->next = baru; //pointer tail menunjuk baru (sehingga otomatis pointer baru di belakang)
+        tail = baru; //node terbaru menjadi tail
+    }
+
+    cout << "Data masuk" << endl;
+}
+
+void TampilLinkedList(){
+    Tnode *bantu;
+    bantu = head;
+    if (isEmpty == 0){
+        while (bantu-> next != NULL){
+            cout << bantu->data << " ";
+            bantu = bantu->next;
+        }
+    }
+    else{
+        cout << "data masih kosong" << endl;
+    }
+} //hampir sama dengan yg tanpa head dan tail
+
+void hapusTerdepan(){
+    Tnode *hapus;
+    int d;
+    if(isEmpty == 0){
+        if(head != tail){ //mengecek apakah head sama dengan tail, mengecek apakah linked list hanya 1
+        hapus = head;
+        d = hapus->data;
+        head = head->next;
+        delete hapus; 
+        }
+        else{
+            d = tail->data; // d mengambil informasi dari tail (karena head dan tail sama saja)
+            head = tail = NULL; // head dan tail dikosongkan isinya
+        }
+        cout << d << " telah terhapus" << endl;
+    }
+
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void hapusTerbelakang(){
+    Tnode *bantu, *hapus;
+    int d;
+    if (isEmpty == 0){
+        bantu = head;
+        if (head!= tail){
+            while(bantu->next != tail){ //mengecek sampai menyentuh node sebelum tail
+                bantu = bantu->next;
+            }
+            hapus = tail; //pointer hapus mengambil alih tail
+            tail = bantu; //node sebelum node yg akan dihapus akan menjadi tail
+            d = hapus->data;
+            delete hapus;
+            tail->next = NULL;
+        }
+
+        else{
+            d = tail->data;
+            head = tail = NULL;
+        }
+        cout << d << " sudah dihapus" << endl;
+    }
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void deleteSemua(){
+    Tnode *bantu, *hapus;
+    bantu = head;
+    while(bantu != NULL){
+        hapus = bantu;
+        bantu = bantu->next;
+        delete hapus;
+    }
+    cout << "penghapusan data dalam linked list selesai" << endl;
+    head = NULL;
+    tail = NULL;
+}
+
+Penyisipan List secara urut 
+    1. Cari dimana tempat Penyisipan
+        Untuk melakukan penyisipan, harus diketahui elemen sebelum tempat dimana item akan disisipkan 
+        maka, menggunakkan pointer current  
+            jika nilai yg ingin disisipkan lebih kecil daripada nilai yg sudah ada (current number), maka pindahkan current pointer ke posisi berikut 
+            tambahkan pointer prev, yg selalu ada sebelum current, untuk menandai posisi elemen sebelumnya
+
+            cur = head;
+            prev = NULL;
+            while (x > cur->data){
+                prev = cur;
+                cur = cur-> next;
+            }
+
+            tapi, akan ada masalah. Dimana apabila x lebih besar dari semua nilai dalam list, maka akan terjadi error 
+                karena cur-> next = NULL;
+            
+            solusi :
+            cur = head;
+            prev = NULL;
+            while((cur != NULL) && (x > cur->data)){
+                prev = cur;
+                cur = cur-> next;
+            }
+    
+    2. Buat node baru 
+        Tambahkan satu pointer newItem
+        newItem = new Tnode;
+        newItem->data = x;
+
+    3. Sisipkan node baru ke dalam linked list 
+        Perlu pointer dari [50] ke [66], maka menggunakkan cur 
+            newitem->next = cur;
+        Perlu pointer dari [41] ke [50], maka menggunakkan prev
+            prev->next = newItem;
+        
+        Bagaimana jika penyisipan dilakukan pada awal list (sehingga prev == NULL)
+        Solusi:
+        if (prev != NULL){
+            newItem->next = cur;
+            prev->next = newItem;
+        }
+        else{
+            newiItem->next = head; //maka, newItem ditaruh di depan
+            head = newItem;
+        }
+
+        Bagaimana jika penyisipan dilakukan saat list masih kosong
+        Solusi  : maka head harus diinsialisasikan terlebih dahulu 
+        if (head == Null){
+            head = new Tnode;
+            head->data = x;
+            head->next = NULL;
+        }
+
+        Bagaimana jika x yg dimasukkan memiliki nilai yg sama di dalam list 
+        Solusi : 
+        if ((cur == NULL) || (x != cur->data)){
+            cout << "not duplicate " << endl;
+        }
+        else{
+            cout << "a duplicate" << endl;
+        }
+
+yg bila digabungin adalah
+void insertSorted(int x) {
+    Tnode *cur = head;
+    Tnode *prev = NULL;
+    Tnode *newItem = new Tnode;
+    newItem->data = x;
+
+    while ((cur != NULL) && (x > cur->data)) {
+        prev = cur;
+        cur = cur->next;
+    }
+
+    if (prev != NULL) {
+        newItem->next = cur;
+        prev->next = newItem;
+    } else {
+        newItem->next = head;
+        head = newItem;
+    }
+
+    if (isEmpty() == 1) {
+        head = new Tnode;
+        head->data = x;
+        head->next = NULL;
+    }
+
+    if ((cur == NULL) || (x != cur->data)) {
+        cout << "not duplicate" << endl;
+    } else {
+        cout << "a duplicate" << endl;
+    }
+}
+
+Menghapus dari Linked List terurut 
+1. Cari dimana node yg akan dihapus
+    Gunakan current pointer 
+    Cari node yang mempunyai nilai yg akan dihapus dengan pointer cur //jadi, cur disini yg akan disamakan
+    Tambahkan pointer prev yang selalu berada di posisi sebelum cur untuk menandai elemen sebelumnya 
+
+    cur = head;
+    prev = NULL;
+    while((cur !=NULL) && (x != cur-> data)){
+        prev = cur;
+        cur = cur->next;
+    }
+2. Lewati node tersebut dalam linked list 
+    Lewati node yg akan dihapus 
+    if ((cur != NULL) && (x == cur->data)){
+        prev-> next = cur-> next; //
+        Success = boolean(1);
+    }
+    else{
+        Success = boolean(0);
+    }
+
+    Jika yg dihapus adalah awal list (berarti, angka yg akan dihapus adalah angka awal)
+    if ((cur != NULL) && (x == cur->data)){
+        if(prev!= NULL){
+        prev-> next = cur-> next;
+        }
+        else{
+            head = cur->next;
+        }
+        Success = boolean(1);
+    }
+    else{
+        Success = boolean(0);
+    }
+3. Mengatur node jika diperlukan 
+    Menghapus Node 
+    Setelah dihapus, cur masih menyimpan node yg dihapus 
+    Dari sudut pandang list memang sudah terhapus, tapi di memory blm
+    Sehingga, untuk menghapus dari memori, menggunakkan 
+        delete cur;
+    alokasikan cur untuk proses berikutnya 
+
+yg bila digabungkan, menjadi 
+void deleteSorted (int x){
+    Tnode *cur;
+    Tnode *prev = NULL;
+    bool Success;
+
+    while((cur !=NULL) && (x != cur-> data)){
+        prev = cur;
+        cur = cur->next;
+
+        if ((cur != NULL) && (x == cur->data)){
+        if(prev!= NULL){
+        prev-> next = cur-> next; //maka, prev dan cur next menunjuk node selanjutnya, sehingga cur bisa dihapus
+        }
+        else{
+            head = cur->next;
+        }
+        Success = true;
+        delete cur;
+    }
+    else{
+        Success = false;
+    }
+
+    }
+    return Success; 
+}
+Insertion (cara menyisipkan x pada lokasi setelah current)
+[A |] -> [B |] -> [C |] //andaikan A adalah current
+Newitem->next = cur-> next;
+cur->next = newItem;
+
+Catatan ke 5.2 (Single Linked List Circular)
+SLLC adalah pointer yang nextnya menunjuk ke dirinya sendiri 
+node terakhirnya menunjuk ke node terdepan 
+
+deklarasi node 
+typedef struct Tnode;{
+    int data;
+    Tnode *next;
+} 
+
+Tnode *baru;
+baru = new Tnode;
+baru->data = databaru;
+baru->next = baru; //kalau sebelumnya, baru->next = NULL
+
+SLLC membutuhkan 1 head, dan 1 head menunjuk yg paling depan
+
+Tnode head;
+
+void init(){
+    head = NULL;
+}
+
+int isEmpty(){
+    if (head == NULL){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+Penambahan data di depan 
+ketika menambahkan data, maka otomatis akan menambahkan data di depannya
+    namun saat pertama kali, maka otomatis akan ke head 
+
+Prinspnya 
+    1. mengaitkan data baru dengan head 
+    2. kemudian, menunjuk pada data baru, sehingga head akan selalu di depan 
+    3. Untuk menghubungkan node terakhir, maka membutuhkan pointer bantu untuk mencari node yg paling belakang 
+
+void insertDepan(int databaru){
+    Tnode *baru, *bantu;
+    baru = new Tnode;
+    baru->data = databaru;
+    baru->next = baru;
+    if(isEmpty() == 1){
+        head = baru;
+        head->next = head; //menunjuk dirinya sendiri
+    }
+    else{
+        bantu = head;
+        while(bantu->next != head){
+            bantu = bantu->next; //pointer bantu pergi menuju node terakhir. sehingga akan menjadi node terakhir
+        }
+        baru->next = head;
+        head = baru;
+        bantu->next = head;
+    }
+    cout << "data telah masuk" << endl;
+}
+
+Penambahan data di belakang
+    namun saat pertama kali, maka otomatis akan ke head
+Prinsipnya 
+    1. membutuhkan pointer bantu untuk mengetahui node paling belakang 
+    2. menggunakkan perulangan untuk mencari node terakhir 
+    3. data baru dikaitkan di node paling belakang 
+    4. data baru paling belakang, lalu disambung ke head 
+
+void insertBelakang(int databaru){
+    Tnode *baru, *bantu;
+    baru = new Tnode;
+    baru->data = databaru;
+    baru->next = baru;
+    if(isEmpty() == 1){
+        head = baru;
+        head->next = baru;
+    }
+    else{
+        bantu = head;
+        while (bantu->next != head){
+            bantu = bantu->next;
+        }
+        bantu->next = baru;
+        baru->next = head;
+    }
+    cout << "Data telah masuk" << endl;
+}
+
+void PrintLinkedList(){
+    Tnode *bantu;
+    bantu = head;
+    if(isEmpty()== 0){
+    while (bantu->next != head){
+        cout << bantu ->data << " ";
+        bantu = bantu->next;
+        }
+            cout << endl;
+    }
+    else {
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void HapusDepan(){
+    Tnode *hapus, *bantu;
+    int d;
+    if (isEmpty()==0){
+        hapus = head;
+        d = head->data;
+        if (head->next != head){
+            bantu = head;
+            while (bantu->next != head){
+                bantu = bantu->next;
+            } 
+            head->next = head;
+            delete hapus;
+            bantu->next = head;
+        }
+        
+        else{
+            head = NULL;
+        }
+    }
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void HapusBelakang(){
+    Tnode *hapus, *bantu;
+    int d;
+    if(isEmpty() == 0){
+        hapus = head;
+        if(head->next == head){
+            head == NULL;
+        }
+        else{
+            bantu = head;
+            while (bantu->next->next != head){
+                bantu = bantu->next;
+            }
+            hapus = bantu->next;
+            d = hapus->data;
+            bantu->next = head;
+            delete hapus;
+        }
+        cout << d << "telah terhapus dari linked list" << endl;
+    }
+    else{
+        cout << "linked list masih kosong" << endl;
+    }
+}
+
+void DeleteAll(){
+    Tnode *DeleteNode, *Help;
+    Head = Help;
+    while(Help->Next != Head){
+        DeleteNode = Help;
+        Help = Help->Next;
+        delete DeleteNode;
+    }
+    Head = NULL;
+    cout << "Semua data telah dibersihkan" << endl;
+}
+
+Single Linked List Circular dengan Head dan tail
+Dibutuhkan 2 buah variabel, pointer head dan tail
+Head akan selalu menunjuk pada pointer pertama, Tail menunjuk pada pointer terakhir 
+
+struct Tnode{
+    int Data;
+    Tnode *Next;
+};
+
+Tnode *Head;
+Tnode *Tail;
+
+void init(){
+    Head = Tail = NULL;
+}
+
+int isEmpty(){
+    return (Tail == NULL) ? 1 : 0;
+}
+
+void InsertFront(int NewData){
+    Tnode *NewNode, *Help; // Pembuatan node baru dan node bantu
+    NewNode = new Tnode;  //Penambahan node bantu
+    NewNode->Data = NewData; // Node baru menyimpan data yang akan dimasukkan
+    (*NewNode).Next = NewNode; //Pointer next menunjuk dirinya sendiri
+
+    if(isEmpty() == 1){ //Jika linked list kosong
+        Head = NewNode; //Node head menyimpan node baru
+        Tail = NewNode; //Node Tail juga menyimpan node baru
+        Head->Next = Head; //Pointer next pada head menunjuk dirinya sendiri
+        Tail->Next = Tail; //Pointer next pada tail menunjuk dirinya sendiri
+    } //karena masih satu node aja
+    else{ //Jika linked list tidak kosong
+        NewNode->Next = Head; //Node baru dimasukkan di depan head 
+        Head = NewNode; //Node baru menjadi head
+        (*Tail).Next = Head; //Pointer tail menunjuk Head, agar menjadi circular 
+    }
+    cout << (*NewNode).Data << " inserted in front of the linked list" << endl;
+}
+
+void InsertBack(int NewData){
+    Tnode *NewNode, *Help;
+    NewNode = new Tnode;
+    NewNode->Data = NewData;
+    (*NewNode).Next = NewNode;
+
+    if(isEmpty() == 1){
+        Head = NewNode; //Node head menyimpan node baru
+        Tail = NewNode; //Node Tail juga menyimpan node baru
+        Head->Next = Head; //Pointer next pada head menunjuk dirinya sendiri
+        Tail->Next = Tail; //Pointer next pada tail menunjuk dirinya sendiri
+    }
+    else{
+        Tail->Next = NewNode;
+        Tail = NewNode;
+        Tail->Next = Head;  //Pointer tail menunjuk Head, agar menjadi circular
+    }
+    cout << (*NewNode).Data << " inserted in front of the linked list" << endl;
+}
+
+
+void PrintLinkedList(){
+    Tnode *Print;
+    Print = Head;
+    if(isEmpty() == 0){
+        cout << "[ ";
+        do{ 
+            cout << Print->Data << " "; 
+            Print = Print->Next;
+        }while(Print != Tail->Next);
+        cout << "]" << endl << endl;
+    }
+    else{
+        cout << "Linked list is empty" << endl << endl; 
+    }
+}
+
+Menghapus data terdepan brrti menghapus Head
+Tetapi, penghapusan tidak boleh dilakukan jika node sedang ditunjuk oleh head 
+    Maka, Pointer hapus menunjuk head
+    Head digeser ke node selanjutnya agar jadi head baru 
+    Lalu delete deleteNode
+Jika tail masih null, brrti data kosong //karena head dan tail sama
+
+void DeleteFront(){
+    Tnode *DeleteNode; //Membuat pointer hapus 
+    int DeletedData; //untuk memberitahu data yang dihapus 
+    if(isEmpty() == 0){ //jika linked list tidak kosong
+        if(Head != Tail){ //jika node Head dan Tail berbeda
+            DeleteNode = Head;//pointer delete menunjuk Head
+            Head = Head->Next;
+            DeletedData = Head->Data;//data yang dihapus akan disimpan oleh
+            (*Tail).Next = Head; //pointer next Tail menunjuk head, agar circular
+            delete DeleteNode;
+        }
+        else { //jika node Head dan Tail sama
+            DeletedData = Head->Data; 
+            Head = Tail = NULL; //Node head dan tail dikosongkan 
+        }
+        cout << DeletedData << " deleted from the linked list" << endl;
+    }
+    else{
+        cout << "linked list is empty" << endl;
+    }
+}
+
+Menghapus data terakhir adalah menghapus data tail
+Penghapusan node tidak boleh dilakukan jika node tersebut masih tail
+    Maka, tail ditunjuk oleh node hapus
+    Kemudian pointer bantu mencari node sebelum tail 
+    Tail digeser ke node bantu
+    Node bantu menjadi tail 
+    lalu delete DeleteNode;
+Jika tail masih null, maka data kosong
+void DeleteBack(){
+    Tnode *DeleteNode, *Help;
+    int DeletedData;
+    if(isEmpty() == 0){
+        if(Head != Tail){
+            Help = Head;
+            while (Help->Next = Tail){
+                Help = Help->Next;
+            }
+            DeleteNode = Tail;
+            Tail = Help;
+            DeletedData = DeleteNode->Data;
+            Tail->Next = Head;
+            delete DeleteNode;
+        }
+    }
+}
+
+void DeleteAll(){
+    Tnode *Help, *DeleteNode; //membuat pointer hapus untuk menunjuk node yang akan dihapus, dan pointer bantu untuk menelusuri node-node selanjutnya
+    if(isEmpty() == 0){
+        Help = Head; //Pointer help dimulai dari head 
+        while (Help->Next != Head){ //selama pointer help tidak kosong 
+            DeleteNode = Help; //pointer delete bersiap untuk menghapus node tersebut
+            Help = Help->Next; //pointer help bergeser ke node selanjutnya
+            delete DeleteNode; //melakukan penghapusan node 
+
+        }    
+        Head = Tail = NULL; //node head dan tail dikosongkan
+    }
+    else{
+        cout << "linked list is empty" << endl;
+    }
+}
+
+
+Catatan ke 5.3 (Doubly Linked List Linear)
+Doubly Linked List memiliki 2 buah pointer, Pointer prev dan next 
+Pointer next menunjuk node selanjutnya, Pointer prev menunjuk Node sebelumnya
+
+Catatan Keenam (Stack)
+Stack dapat diimplementasikan dengan array dan linked list 
+
+Tipe data abstrak stack 
+Objek : serangkaian elemen yang bertipe sama dimana rangkaian tersebut hanya punya satu akses, yaitu diakhir 
+    sehingga, penambahan atau penghapusan elemen harus dimulai dari akhir rangkaian atau top 
+LIFO (Last in, First Out), contoh tumpukan piring 
+
+Operasi stack ada :
+Initialize :pembentukan stack 
+Push :penambahan item di stack pada tumpukan paling atas
+Pop :pengambilan item di stack pada tumpukan paling atas
+isEmpty:mengecek apakah stack masih kosong
+isFull:mengecek apakah stack penuh 
+
+Implementasi stack pada array:
+    1. Stack adalah tumpukan elemen
+    2. Semua operasi harus dilakukan di akhir Stack
+    3. Harus memeriksa apakah stack masih kosong/sudah penuh
+    4. Harus diketahui tumpukan paling atas 
+
+deklarasi Stack
+#define MAX_STACK_SIZE 100
+typedef struct {
+    int key;
+}element;
+
+element stack [MAX_STACK_SIZE];
+int top;
+
+top = element yg paling atas 
+stack [] = array yg mengimplementasikan rangkaian elemen
+bottom of stack, stack[0] = elemen pertama pada stack
+top of stack, stack[top] = elemen terakhir 
+empty stack : top = -1; //karena stack dimulai dri 0, sehingga -1,
+full stack : top = MAX_STACK_SIZE-1; //brrti 99
+
+inisialisasi stack
+memberi nilai awal pada stack/membentuk stack
+    Precondition: stack blm dikenal
+    Postcondition : stack kosong 
+
+void init(int *top){
+    *top = -1;
+}
+
+Push 
+Push (top, stack, item) : item ditempatkan paling atas (top)
+    Precondition : stack pada kondisi tertentu, item belum memiliki nilai
+    Postcondition : Jika stack penuh, stack tidak berubah. Jika stack tidak penuh, item ditambahkan pada stack (dengan posisi paling atas (top))
+void push(int *top, element stack[], element item){
+    if (!stackfull(*top)){//kalau masih ada slot, stackfull nilainya 0, tapi karena !, sehingga menjadi 1
+        stack[++(*top)] = item;
+    }
+}
+
+Pop
+Pop (item, stack) :  item diambil yg paling atas, posisi stack paling atas dipindahkan 
+    Precondition : stack pada kondisi tertentu
+    Postcondition : Jika stack kosong, stack tidak berubah, item tidak punya nilai. Jika ada, stack berubah, dan item mempunyai nilai 
+element pop(int *top,el6ement stack[], element item){
+    if(!stackempty(*top)){
+        return stack[(*top)--];
+    }
+}
+
+Empty
+Empty (stack) : memeriksa apakah stack punya elemen 
+    Precondition : stack pada kondisi tertentu 
+    Postcondition : True jika stack kosong, false jika stack ada 
+Dengan cara memeriksa top of stack, jika masih -1, brrti kosong 
+int stackempty(int top){
+    return top == -1; // mengecek, kalau misalkan kosong, maka true, karena di init.. nilainya -1
+}
+
+Full 
+Full (stack) :  memeriksa apakah stack penuh 
+    Precondition : stack pada kondisi tertentu 
+    Postcondition : True jika stack kosong, false jka stack ada
+Dengan cara memeriksa top of stack
+int stackfull(int top){
+    return top == MAX_STACK_SIZE - 1; // mengecek, kalau full, maka nilai nya sama dengan max - 1, maka akan mengembalikan nilai true
+} // kalau masih ada slot,  false
+
+Print stack
+untuk menampilkan semua elemen, maka me loop semua nilai array secara terbalik (dari indeks paling besar ke indeks paling rendah)
+int main(){
+    init(&top);
+
+cout << "Input data : ";
+    cin >> item.key;
+    while (item.key != 0){
+        push(&top, stack, item);
+        cout << "input your data (input 0 to stop) : ";
+        cin >> item.key;
+    }
+
+    while(!(stackempty(top))){
+        item = pop (&top, stack);
+        cout << item.key << " ";
+    }
+}
+
+yg bila digabungkan, menjadi 
+#include <iostream>
+using namespace std;
+
+#define MAX_STACK_SIZE 100
+typedef struct {
+    int key;
+}element;
+
+element stack [MAX_STACK_SIZE];
+int top;
+element item;
+
+void init(int *top){
+    *top = -1;
+}
+
+int stackfull(int top){
+    return top == MAX_STACK_SIZE-1;
+}
+
+int stackempty(int top){
+    return top == -1;
+}
+
+
+void push(int *top, element stack[], element item){
+    if (!(stackfull(*top))){
+        stack[++(*top)] = item;
+    }
+}
+
+element pop(int *top,element stack[]){
+    if(!(stackempty(*top))){
+        return stack[(*top)--];
+    }
+}
+
+int main(){
+    init(&top);
+    cout << "Input data : ";
+    cin >> item.key;
+    while (item.key != 0){
+        push(&top, stack, item);
+        cout << "input your data (input 0 to stop) : ";
+        cin >> item.key;
+    }
+
+    while(!(stackempty(top))){
+        item = pop (&top, stack);
+        cout << item.key << " ";
+    }
+return 0;
+}
+
+stack dengan linked list
+implementasi menggunakkan single linked list dengan pointer head sebagai top
+Node 0
+Node 1
+Node 2
+Node 3
+
+Contoh aplikasi stack
+    Polish notation
+    finding a path
+    konversi bilangan desimal ke bilangan bulat
+    mathcing balancing parenthesis
+
+Polish notation 
+    komputer umumnya hanya mengetahui ekspresi matematika yang ditulis dengan notasi postfix
+    ekspresi matematika yang diubah dari notasi infix agar dikenal oleh komputer harus diubah dengan memperhatikan :
+        mengubah notasi infix menjadi notasi postfix lalu dihitung 
+        menggunakkan stack untuk penampung sementara operator dan operandnya 
+    
+    Dalam operasi matematika, ada 3 jenis notasi
+    1. infix (menempatkan operator diantara 2 operand) : A+B, C/D
+    2. prefix (menempatkan operator sebelum 2 operand)  : +AB, /CD
+    3. postfix (menempatkan operator setelah 2 operand): AB+, CD/
+
+    Mengkonversikan notasi yang ditulis secara infix kedalam notasi postfix
+    A * B + (C - D) / E menjadi A B * C D - E / +
+
+    postfix 
+    A B * + C D - / E
+    A B * + C D - E /
+    A B * C D - E / +
+
+    prefix 
+    * A B + - C D / E
+    * A B + / - C D E
+    + * A B / - C D E
+
+Finding a path 
+    mencari jalur dari satu tempat ke tempat lain dan setiap tempat hanya boleh dikunjungi satu kali 
+
+Konversi Desimal ke Biner 
+    cara mengonversi bilangan desimal ke bilangan biner 
+    1. membagi bilangan desimal dengan 2
+    2. menyimpan sisa bagi per setiap pembaginya hingga hasilnya < 2
+    3. hasilnya adalah urutan konversi dari paling akhir ke yg awal
+
+    contoh : konversi 25 ke biner 
+    25 / 2 = 12 sisa 1
+    12 / 2 = 6 sisa 0
+    6 / 2 = 3 sisa 0
+    3 / 2 = 1 sisa 1
+
+    sehingga 25 = 11001
+
+Mathcing Balancing Parenthesis 
+    memeriksa sintax yang menggunakkan ( )
+    Sebuah ( harus berpasangan dengan ), jika tidak maka illegal
+
+    contoh :
+    ()() legal
+    ((())) legal
+    (()() ilegal
+    ((((())))) legal
+    )()( ilegal
+
+Catatan ketujuh (queue)
+implementasi array dan linked list 
+    memasukkan data dan menghapus data
+
+Queue/ antrian 
+Object : serangkaian elemen yang mempunyai tipe sama dengan penambahan elemen lewat akhir rangkaian yg dinamakan back dan penghapusan rangkaian pada ujung rangkaian yg disebut front 
+Back --> --> --> --> Front
+Operasi queue terdiri atas : init, enqueue, dequeue, empty, full 
+
+Karakteristik queue 
+serangkaian nilai, dimana item yg paling awal ditambahkan ke queue merupakan yg paling awal dihapus 
+    FIFO (First in First Out)
+    FCFS (First come first served)
+
+penggunaan queue dilakukan apabila permintaan pelayanan lebih banyak/lebih besar dari kemampuan pelayanan 
+contoh : antrian bank 
+
+Operasi queue 
+    Initialize/ init(queue) : memberi nilai awal pada queue 
+    Precondition : queue tidak dikenal
+    Postcondition : queue kosong 
+    void init(int *front, int *length){
+        *front = *length = 0; //alamat dari first dan length 0
+    }
+
+    Enqueue (item, queue) : item ditempatkan queue paling blkg 
+    Precondition : queue pada kondisi tertentu, item tidak punya nilai 
+    Postcondition : Jika queue penuh, queue tidak berubah, Jika queue kosong, queue bertambah 1 nilai yaitu nilai item 
+    void enqueue(int front, int *length, element queue[], element item){
+        int where;
+        if (!*QueueFull(*length)){
+            where = front + *length; //kalau misalkan 0, where = 0 + 0
+            queue[where % MAX_QUEUE_SIZE] = item; // 0 + 0 = 0, maka item akan msuk kesana
+            (*length)++;
+        }
+    }
+
+    Dequeue (item, queue) : elemen pada queue yg paling depan dihapus dan menjadi nilai untuk item
+    Precondition : queue pada kondisi tertentu, item tidak punya nilai 
+    Postcondition : jika queue kosong, queue tidak berubah dan item tidak punya nilai, Jika queue ada isinya, queue berkurang yg paling depan dan nilai item diambil dari nilai queue yg paling depan 
+    element dequeue(int *front, int *length, element queue[]){
+        int where;
+        if(!*QueueEmpty(*length)){
+            where = *front; //where mengambil lokasi dri front
+            *front = (where+1) % MAX_QUEUE_SIZE; //front pergi ke antrian setelah where
+            (*length)--; //mengurangi panjang 
+            return queue[where]; //mengambil nilai where
+        }
+    }
+
+    Empty (queue) : memeriksa apakah queue kosong atau tidak 
+    Precondition : queue pada kondisi tertentu
+    Postcondition : jika queue kosong, maka true. Jika queue ada nilai, maka false 
+    int QueueEmpty(int length){
+        return length == 0;
+    }
+
+    Full (queue) : memeriksa apakah queue penuh atau tidak
+    Precondition : queue pada kondisi tertentu
+    Postcondition : jika queue penuh, maka true. Jika queue ada nilai, maka false 
+    int QueueFull(int length){
+        return length == MAX_QUEUE_SIZE;
+    }
+
+Queue terbagi menjadi 2, linear queue 
+Linear queue : antrian pada umumnya 
+    A -- B -- C -- D -- E -- F
+    jika dequeue, maka A akan diambil, dan queue di belakangnya maju 
+
+Circular queue 
+    A -- B -- C -- D -- E -- F
+    jika dequeue, maka A akan diambil, tetapi queue sebelumnya tidak maju, tapi tetap ditempat
+    jika slotnya hanya 6 dan dilakukan penambahan terus menerus, maka data yg baru aja dimasukkan akan mengisi tempat yg kosong (sehingga bisa jadi malah di depan)
+
+    G -- H -- I -- D -- E -- F
+
+Deklarasi queue hampir sama dengan stack 
+#define MAX_QUEUE_SIZE 100
+
+typedef struct{
+       int key;
+       /* other fields can go here */
+} element;
+
+element queue[MAX_QUEUE_SIZE];
+int front; 
+int length;
+
+queue[] = elemen dalam queue
+back of queue = elemen paling blkg dalam queue
+    queue [front + length - 1] //front 0, nah supaya diketahui angka paling blkg, menggunakkan length - 1
+front of queue = elemen paling depan
+    queue [front]
+empty queue 
+    queue = 0
+full queue 
+    queue = MAX_QUEUE_SIZE
+
+implementasi queue dengan linked list 
+    Untuk memasukkan data/enqueue 
+    cari node terakhir
+    hubungkan node terakhir dengan node baru 
+    rubah tail ke node terakhir 
+
+    dequeue node
+    ambil data pada linked list dri depan (head)
+
+#include <iostream>
+#define MAX_QUEUE_SIZE 5 //pembatasan maksimal queue
+using namespace std;
+
+typedef struct{ 
+    int Key; //pendefinisian member queue untuk menyimpan data
+}Element;
+Element Queue[MAX_QUEUE_SIZE]; //pendefinisian struct queue 
+
+void Init(int *Front, int *Length){
+    *Front = *Length = 0; //menginisiasi bahwa front dan length dimulai dari 0 
+}
+
+int QueueEmpty(int Length){
+    return Length == 0; //jika panjang dari queue kosong, maka queue kosong
+}
+
+int QueueFull(int Length){
+    return Length == MAX_QUEUE_SIZE; //jika panjang dari queue sama dengan batas maksimal, maka queue penuh
+}
+
+void Enqueue(int Front, int *Length, Element Queue[], Element Item){
+    int Where; //pembuatan variabel where untuk meletakkan data pada queue
+    if (!QueueFull(*Length)) { //jika queue tidak penuh
+        Where = Front + *Length; //where digunakan untuk menghitung letak data dimasukkan, dengan menghitung dari awal dan panjang queue
+        Queue[Where % MAX_QUEUE_SIZE] = Item; //data yang baru diletakkan pada queue, dengan urutan Where % batas maksimal (hasilnya berupa bilangan itu sendiri)
+        (*Length)++; //menambah panjang queue karena dimasukkan data baru
+    }
+}
+
+Element Dequeue(int *Front, int *Length, Element Queue[]){
+    int Where; //pembuatan variabel where untuk mengambil data yang akan diambil
+    if(!(QueueEmpty(*Length))){ //jika queue tidak kosong
+        Where = *Front; //variabel where mengambil alamat front
+        *Front = (Where+1) % MAX_QUEUE_SIZE; //front berpindah posisi ke tempat selanjutnya 
+        (*Length)--; //panjang queue dikurangi
+        return Queue[Where]; //mengembalikan nilai pertama dalam queue
+    }
+}
+
+void PrintQueue(Element Queue[], int Front, int Length){
+    for (int i = 0; i < Length;i++){  
+        cout << Queue[Front + i % MAX_QUEUE_SIZE].Key << " "; //menampilkan semua data pada queue satu per satu 
+    }
+    cout << endl;
+}
+
+int main (){
+    int Front,Length; // mendeklarasikan front dan length, front untuk queue paling depan, length untuk panjang queue
+    Element Item; //mendeklarasikan item.key untuk menyimpan data
+
+    Init(&Front, &Length); //inisiasi front dan length
+    Item.Key = 0;
+
+    for(int i = 0; i < MAX_QUEUE_SIZE; i++){
+        Enqueue(Front, &Length, Queue, Item);
+        Item.Key++;
+        PrintQueue(Queue, Front, Length);
+    }
+    
+    for (int i = 0; i < MAX_QUEUE_SIZE;i++){
+        PrintQueue(Queue, Front, Length);
+        Item = Dequeue(&Front, &Length, Queue);
+    }
+return 0;    
+}

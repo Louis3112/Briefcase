@@ -1,0 +1,201 @@
+Seharusnya, materi ini dipelajari sebelum Pipeline Aggregation 
+
+Dalam menulis rumus NoSQL, terdiri atas 3 script
+    Method 
+        Metode/Fungsi yg akan digunakan
+        cth : find(), insertOne(), insertMany(), deleteOne()
+    Filter 
+        Fungsi/bagian script yg menyaring data kita inginkan 
+        cth : age, price (biasanya suatu field)
+    Operator
+        Fungsi/bagian script yg digunakan agar penyaringan data bisa dilakukan lebih spesifik (patokan filter)
+    
+    db.volunteer.find(                  // method
+        {
+            usia:                       // filter
+                {   
+                    $gt:20              // operator
+                }
+        }
+    )
+
+    Contoh Operator
+        $gt     : greater than                  (lebih dari)                      // utk pipeline aggregation
+        $lt     : lower than                    (kurang dari)                     // utk pipeline aggregation 
+        $gte    : greater than or equal to      (lebih dari atau sama dengan)     // utk pipeline aggregation
+        $lte    : lower than or equal to        (kurang dari atau sama dengan)    // utk pipeline aggregation
+        $eq     : equal to                      (sama dengan)                     // utk pipeline aggregation
+        $in     : mirip dengan $eq, tapi kita bisa mencari lebih dari 1 data      // utk pipeline aggregation   
+            db.collection.find(
+                {
+                    field:
+                        {
+                            $in :[nilai 1, nilai 2]
+                        }
+                }).pretty()   // utk merapikan hasil output 
+        $nin    : kebalikan dari $in (menampilkan document yg tidak disebutkan dalam array $in)          // utk pipeline aggregation    
+        $and    : menyaring data dengan 2/lebih ekspresi yg dmn semua hrus benar (maka akan ditampilkan) (tidak bisa mencari hanya dengan sepatah data, kalau mencari harus full 1 nilai) // utk find
+        $or     : menyaring data dengan 2/lebih ekspresi yg dmn salah satu benar (maka akan ditampilkan)         // utk find
+        $not    : menyaring data yg sama sekali salah/bertentangan dengan ekspresi user (maka akan ditampilkan)  // utk find
+        $exists : mengecek apakah suatu field ada atau tidak (dengan menampilkan document yang memiliki field tersebut)  // utk find
+            db.collection.find(
+                {
+                    field:
+                        {
+                            $exists : true   // mencari document yg memiliki field tersebut
+                        }                    // $exists : false, mencari document yg tidak memiliki field tersebut 
+                }).pretty()
+        $type   : menyaring data berdasarkan tipe datanya                                               // utk find
+            db.collection.find(
+                {
+                    field:
+                        {
+                            $type : "kode tipe data"   // mencari document berdasarkan tipe data tertentu 
+                        }                               
+                }).pretty()
+
+                "double"              (kode: 1) – Nilai desimal
+                "string"              (kode: 2) – String
+                "object"              (kode: 3) – Object (Dokumen)
+                "array"               (kode: 4) – Array
+                "binary"              (kode: 5) – Binary Data
+                "undefined"           (kode: 6) – Undefined
+                "objectId"            (kode: 7) – ObjectId
+                "bool"                (kode: 8) – Boolean
+                "date"                (kode: 9) – Date
+                "null"                (kode: 10) – Null
+                "regex"               (kode: 11) – Regular Expression 
+                "dbPointer"           (kode: 12) – DBPointer
+                "javascript"          (kode: 13) – JavaScript
+                "symbol"              (kode: 14) – Symbol
+                "javascriptWithScope" (kode: 15) – JavaScript dengan scope
+                "int"                 (kode: 16) – 32-bit Integer
+                "timestamp"           (kode: 17) – Timestamp
+                "long"                (kode: 18) – 64-bit Integer
+                "decimal"             (kode: 19) – Decimal128
+        $regex  : mencari data yg memiliki huruf/potongan kata tertentu pada nilainya, misal huruf a atau b               // utk find 
+            disebut regex karena regex adalah konsep pemrograman yg mencocokkan pola tertentu dalam suatu teks berdasarkan ekspresi user
+            db.collection.find(
+                {
+                    field:
+                        {
+                            $regex : "A"    
+                        }                               
+                }).pretty()
+        $expr  : membandingkan suatu data tertentu berdasarkan operator                                                   // utk find 
+            db.collection.find(
+                {
+                    $exp : {
+                        $gt : ["$harga", "$modal"]  // jika harga lebih besar dari modal, maka harga akan muncul
+                    }
+                }
+            ).pretty()
+        $next   : menampilkan document secara urut dri awal sampai akhir, sayangnya tidak ada di MongoDB, sehingga bisa menggunakkan $sort                
+        $unset  : menghapus field pada suatu document                                                                      // utk pipeline aggregation
+        $rename : mengubah nama suatu field                                                                                // utk update
+            db.collection.updateMany(
+                {}
+                {
+                    $rename : {
+                        nm-barang : "nama_barang"  // jika harga lebih besar dari modal, maka harga akan muncul
+                    }
+                }
+            )
+        $upsert : menambahkan suatu data jika data yg diupdate tidak ditemukan                                              // utk update
+            db.collection.updateMany(
+                {kriteria}
+                {
+                    $set : {
+                        data : "isi"
+                    }
+                },
+                {  
+                    $upsert : true      // jika tidak ada data sesuai kriteria, maka akan lgsg ditambahkan
+                }
+            )
+        $elemMatch : mencari data pada suatu data array                                                                     // utk push 
+            db.collection.find(
+                {
+                    data : {
+                        $elemMatch : { $gt : 50, $lt : 100}  // maka menampilkan data diantara 50 sampai 100
+                    }
+                }
+            ).pretty()
+        $push : menambahkan data pada suatu data ARRAY
+            db.collection.updateOne(
+                {kriteria}
+                {
+                    $push: {
+                        dataArray : "dataBaru"
+                    }
+                }
+            )
+        $pull : menghapus data pada suatu data ARRAY 
+            db.collection.updateOne(
+                {kriteria}
+                {
+                    $pull: {
+                        dataArray : "dataYangInginDihapus"
+                    }
+                }
+            )
+        $addToSet : menambahkan data pada suatu data ARRAY, tapi jika sudah ada, maka tidak usah ditambahkan
+            db.collection.updateOne(
+                {kriteria}
+                {
+                    $addToSet: {
+                        dataArray : "dataBaru"
+                    }
+                }
+            )
+
+Index
+    fungsi pada database untuk mempercepat pengeksekusian data
+    apabila kita menggunakkan index pada suatu data di tabel, maka akan lebih cepat muncul daripada yg tidak menggunakkan index 
+    
+    Utk mengetahui index apa saja yg terdapat pada tabel , gunakan getIndexes()
+        db.collection.getIndexes()
+    
+    Utk membuat index dengan cara 
+        db.collection.createIndex({data : 1})
+        db.collection.createIndex({data1 : 1, data2 : -1})
+    
+    Tetapi, jika kita menghapus/mengupdate data yg memiliki index (andaikan index pada suatu tabel sudah banyak), maka akan lebih lama terhapus
+    Utk menghapus index dengan cara 
+        db.collection.dropIndex({data : 1})
+
+    Index memiliki tipe, dan salah satunya adalah Unique. Unique adalah properties pada index yg bersifat tidak boleh sama atau hanya ada 1 pada collection 
+        db.collection.createIndex({data : 1}, {unique : true})
+
+    Utk membuat index yg hanya berlaku pada suatu data tertentu
+        db.collection.createIndex({data : 1}, {partialFilterExpression: {kriteria}})
+    
+    Utk membuat index yang hanya berlaku pada kurun waktu tertentu 
+        db.collection.createIndex({data : 1}, {expireAfterSeconds : 10})
+
+    cth
+        { "_id": 1, "name": "Laptop", "category": "Electronics" }
+        { "_id": 2, "name": "Sofa", "category": "Furniture" }
+        { "_id": 3, "name": "Phone", "category": "Electronics" }
+        { "_id": 4, "name": "Table", "category": "Furniture" }
+
+        Jika kita ingin membuat index pada suatu field. MongoDB akan membuat B-tree untuk field category
+        Tiap node di B-Tree akan menyimpan nilai dari field category dan akan mereference ke document yg relevan 
+            db.products.createIndex({category : 1})
+        maka outputnya 
+            [ "Electronics" ] ---> (Dokumen 1, Dokumen 3)
+            [ "Furniture" ] ---> (Dokumen 2, Dokumen 4)
+
+        ketika kita menjalankan db.products.find(category : "Electronics" )
+        MongoDB hanya akan mengakses index Electronics tanpa perlu melakukan full scan dan bisa mengakses document yg memiliki reference dengan index Electronics 
+
+    B-Tree adalah struktur data yg efisien. Ketika kita mencari document dalam B-Tree, MongoDB hanya perlu pergi ke level" pohon utk mencari nilai yg diinginkan 
+        cth B Tree
+                                                                A   
+                                                    B C                 D E
+                                    F       G H I       J K        L M      N       O P Q
+        Dimana suatu node bisa terdiri atas 1 atau lebih data 
+    Semakin banyak data yg dimiliki, semakin banyak index akan lebih baik utk performa terbaik 
+
+    Index juga sangat penting utk sort(). Jika kita membuat index pada field yg diurutkan,
+         MongoDB dpt lgsg menggunakkan index tersebut utk mengurutkan data tanpa perlu full scan

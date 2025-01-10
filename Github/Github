@@ -1,0 +1,117 @@
+Dalam github, kita bisa membuat file apapun atau menambah file apapun
+    file tersebut bisa codingan, maupun bisa text biasa (Add file, lalu Create New File)
+
+Kita juga bisa melakukan perubahan (edit), lalu menyimpan perubahan tersebut dengan commit
+    dalam commit, kita bisa menjelaskan perubahan apa yg dilakukan (secara singkat maupun panjang)
+Dalam history, kita bsa melihat berapa kali commit dilakukan, juga siapa, kapan, apa yg melakukan commit 
+
+Branch 
+    Cabang dari master branch/commit 
+    Proses membuat git branch disebut Branching 
+    Fungsi Branching adalah
+        1. Membuat snapshot tanpa mengganggu Main branch
+        2. Fitur experimental
+        3. 2 orang mengerjakan repo yg sama
+    berpindah branch/commit disebut sebagai checkout 
+    Cara membuat branchnya ada 2 cara
+        1. create new branch ketika scroll ke bawah sebelum commit
+        2. create new branch di menu branch untuk membuat branch baru 
+Merge
+    Menggabungkan git branch dengan main branch
+   
+    pada branch yg bukan master, akan ada tambahan tombol baru (compare and pull request)
+        yg akan menggabungkan ke master branch 
+    nah ketika akan merge, github akan mengecek apakah file" bisa di merge atau tidak
+        kalau memang tidak bisa, maka disebut merge conflict (karena aa baris yg sama tapi berubah)
+
+    mengapa harus pull req, agar branch tersebut bisa meminta izin kepadda main branch agar mau pull dengan main branch
+        apalagi ketika teamwork dengan org lain, pasti tidak serta merta kita bisa push branch kita semena"
+
+    ketika ada merge conflict, kita tetap bisa melakukan pull request
+        maka sebagai pemilik utama repo harus meresolve conflict tersebut 
+        yang dimana, line yg sama akan ditunjukkan oleh github dan dicopas ke file tersebut
+            di file tersebut, pemilik utama repo harus melakukan perubahan terhadap line 
+        
+Fork
+    menduplikat repo milik orang lain, dimodif lagi tetapi masih terdapat credit untuk org lain (juga historinya)
+    Fungsi forking adalah:
+        1. Jembatan antara repo original dengan repo duplikatnya
+        2. Modifikasi terhadap repo original
+        3. Berkontribusi terhaap repo org lain (mengembangkan)
+    Fork != clone
+
+    cara untuk fork adalah
+        1. pilih repo yg ingin di fork
+        2. lalu klik pada salah satu file dan klik tombol pensil (maka akan muncul tulisan fork this project)
+        3. lalu otomatis akan itambahkan di repo kita 
+
+    sebenarnya bisa aja CLONE dan DOWNLOAD, yg akan digabungkan menjadi zip 
+
+    bahkan, kita bisa melakukan pull request terhadap repo yg kita fork
+        kita juga bisa mengatur branch mana yg mau kita requestan kepada pemilik repo aslinya
+    
+Web Hosting Gratis dari Github
+    Web hosting adalah web yang bisa kita gunakan untuk menampilkan portofolio kita sendiri atau portofolio kantor 
+    Web hosting yg disediakan Github juga terbatas karena hanya bisa menampilkan website static (HTML,CSS,JS)
+
+    Caranya adalah :
+        1. Membuat repo baru dengan format nama <nama_akun>.github.io (public dan tidak ada readme)
+        2. Folder yg berisi HTML,CSS,JS dibuat menjadi repo di git bash 
+            di inisiasi dan di lakukan remote add terhadap folder tersebut
+                $ git init 
+                    dan
+                $ git remote add origin https://github.com/Louis3112/Louis3112.github.io.git
+        3. Pastikan untuk meng add dan meng commit semua data yg ada 
+                $ git add .
+                    dan 
+                $ git commit -m "<messages>"
+        4. Lalu push semua file ke github
+                $ git push
+        5. Setelah itu, diketikkan di google <nama_akun>.github.io
+            maka web akan muncul
+
+    Sebenarnya, bisa diubah domainnya dari github.io menjadi .com, bisa dipelajari di github pages 
+        ataupun bisa membuat custom domain (dengan syarat sudah mempnyai custom domain)
+
+    Bahkan, kita bisa membuat website dari masing" repo tersebut. Tapi, setiap repo yg kita buat webnya, url nya akan berada di bawah domainn github kita
+        misal Louis3112.github.io/test      
+    Caranya adalah : 
+        1. Membuat repo baru dengan format nama bebas 
+        2. Folder yg berisi HTML,CSS,JS dibuat menjadi repo di git bash 
+            di inisiasi dan di lakukan remote add terhadap folder tersebut
+                $ git init 
+                    dan
+                $ git remote add origin https://github.com/Louis3112/<nama_repo>
+        3. Pastikan untuk meng add dan meng commit semua data yg ada 
+                $ git add .
+                    dan 
+                $ git commit -m "<messages>"
+        4. Lalu push semua file ke github
+                $ git push
+        5. Pergi ke settings. lalu pada tab Code and Automation, klik Pages
+            untuk Sources, pilih branch yg diinginkan (bisa main, dll), lalu save 
+        DENGAN KONDISI BAHWA FOLDER TERSEBUT ADALAH FOLDER WEB YANG SIAP TAMPIL (HTML,CSS,JS)
+    
+    KIta sebenarnya juga bisa membuat website yang bukan merupakan folder web siap tampil
+
+Multiple Remote 
+    cara untuk terhubung ke beberapa remote sekaligus supaya bisa sinkron satu dengan yg lain
+    biasa digunakan ketika ngoding/mengerjakan proyek bersama
+
+    Dalam kasus ini, kita mencoba untuk forking salah satu project milik org lain, lalu kita clone ke gitbash
+    Dan ketika di remote -v, maka terlihat bahwa remote nya masih tetap terhubung milik akun kita, bukan pemilik repo 
+
+    Tetapi, supaya sinkron dan kita bisa tau bila ada perubahan, kita harus meng add remote nama pemilik akunnya 
+        contoh 
+        $ git remote add <nama_akun_> https://repo
+
+    sehingga bila ditelusuri lagi dengan git remote -v, maka akan muncul 2 user, yaitu milik kita dan milik org lain
+        ketika kita ada multiple remote, kita harus banyak-banyak melakukan $ git fetch untuk mengetahui apakah ada perubahan dengan pemilik repo
+    
+    lalu, ketika kita ingin mengikuti perubahan yg dilakukan pemilik repo, maka kita harus melakukan merge dengan pemilik repo (bukan di pull)
+        maka, $ git merge <pemilik_repo>
+    
+    setelah itu, apabila kita git status, kita akan melihat bahwa repo di git lokal telah terupdate, tetapi repo di githubnya blm, maka perlu dipush ke github
+        $ git push -u origin master (jangan lupa -u)
+
+    DIATAS ADALAH CARA UNTUK MELAKUKAN FORKING DAN INGIN MENGIKUTI PERUBAHAN YG DILAKUKAN PEMILIK REPO

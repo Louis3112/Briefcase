@@ -1,0 +1,242 @@
+Data
+    Data = informasi yang dapat diakses oleh komputer, berupa teks, angka, grafis, gambar, suara, video
+    Setiap aksi yang kita lakukan, pasti akan masuk data. Setiap aksi yang berjalan, akan ada data yang mendukung aksi tersebut 
+
+    Sebelum membuat program, programmer harus melakukan pemilihan tipe data. Tipe data yg dipilih harus sesuai dengan kebutuhan agar program berjalan dengan baik
+    Data pada program = informasi di dalam program yg berguna untuk melakukan operasi atau pengolahan instruksi tertentu  
+    Data dalam program ada 2 tipe, tipe data primitif dan non primitif
+        Primitif, cth : string untuk teks, 
+                        int, double, float untuk angka  
+                        bool untuk pengambilan keputusan 
+        Non-Primitif, cth : kumpulan dari data-data primitif (lebih kompleks)
+
+        Data juga bisa dibedakan menurut sifatnya,
+        mutable = bisa diubah
+        immutable = tidak bisa diubah (const)
+
+    Program dapat menyimpan informasi yaitu dengan variabel
+    Variabel ini dapat menyimpan data dalam bentuk boolean, angka, string, atau informasi lainnya. 
+    Variabel adalah nama dari suatu data,  dan isi dari variabel adalah nilai (value)
+
+Tipe Data Primitif
+    int x = 1;
+    tipe data variabel = nilai;
+
+    python
+    numFloors = 1;
+    propertyType = "Rumah";
+
+    Komponen dasar dari program adalah data-data primitif yang dibutuhkan
+
+    Boolean = tipe data yang memiliki 2 nilai, true/false
+        hasTerrace = True
+        hasGarage = False
+
+    Numerik = tipe data yang memiliki 2 nilai, bilangan bulat atau bilangan desimal 
+        int atau float
+        numberOfRestroom = 3
+        heightOfRestroom = 2
+        widthOfRestroom = 1.5
+
+    String = tipe data yang memiliki nilai berupa teks 
+            kombinasi huruf, angka, simbol, dan spasi yang membentuk kata, kalimat, atau teks yang panjang. 
+            diapit oleh tanda kutip ganda (" ") atau tanda kutip tunggal (' ')
+            buildingArea = "88 meter persegi"
+            homeAddress = 'Jl. Batik Kumeli No. 50, Bandung'
+            facilities = "Pasar tradisional, tempat olahraga, SPBU"
+
+    Kita bisa mengecek tipe data dengan perintah type() (python)
+    a = 5
+    b = "Hello"
+    c = 4.5
+    d = False
+    
+    print(type(a))  # <class 'int'>
+    print(type(b))  # <class 'str'>
+    print(type(c))  # <class 'float'>
+    print(type(d))  # <class 'bool'>
+
+Tipe Data Non Primitif
+    List 
+        List = kumpulan elemen/nilai yang disusun secara berurut
+        Bisa berupa string, numerik, bool atau nested list lagi, tidak harus satu tipe
+
+        List
+        1
+        "Rumah"
+        4.5
+        False
+
+        Ketika akan mendefinisikan nilai dalam list, harus memperhatikan posisi, urutan, dan indeks (urutan dalam program)
+        Indeks dimulai dari 0 dan berakhir dengan n-1, n adalah banyaknya elemen 
+        
+        
+        List bersifat mutable dan dalamnya dapat diubah-ubah 
+        # deklarasi variabel list
+        numbers = [23, 43, 15, 34]
+        
+        # cara mencetak elemen dalam variabel list
+        print (numbers[0])    # 23
+        print (numbers[1])    # 43
+        print (numbers[2])    # 15
+        print (numbers[3])    # 34
+        
+        # cara mengubah nilai elemen dalam variabel list
+        numbers[2] = 51
+        print (numbers[2])    # 51
+
+
+        List dalam python juga lebih fleksibel, bisa dimanipulasi dalamnya. Dengan cara menambahkan, menghapus, dan mengubah sesuai dengan kebutuhan
+        # deklarasi variabel list numbers
+        numbers = [1, 2, 3]
+ 
+        # menambahkan elemen di indeks ke-4
+        numbers.insert(4, 5)    # [1, 2, 3, 5]
+ 
+        # mengubah elemen di indeks ke-4
+        numbers[3] = 4    # [1, 2, 3, 4]
+ 
+        # menghapus elemen di indeks ke-2
+        numbers.pop(2)    # [1, 2, 4]
+        Proses mendeklarasi dan mengakses elemen pada list python hampir sama dengan JS
+
+        List dalam python bisa berupa string, numerik, bool atau nested list lagi, tidak harus satu tipe (bahkan bisa untuk data non primitif lainnya)
+        # deklarasi variabel list
+        myList = [1, "Rumah", 4.5, True, ["Kamar mandi", "Kamar tidur"]]
+ 
+        # cara mengakses elemen dalam variabel list
+        print (myList[0])   # 1
+        print (myList[1])   # "Rumah"
+        print (myList[3])   # True
+        print (myList[4])   # ["Kamar mandi", "Kamar tidur"]
+ 
+        # cara mengakses elemen dalam sublist
+        print (myList[4][0])   # "Kamar mandi"
+        print (myList[4][1])   # "Kamar tidur"
+
+    Tuple
+        Sama dengan List, hanya saja Tuple berupa immutable dari List
+        hanya bisa mengakses data yg di dalam tuple
+        Kalau list menggunakkan [], tuple menggunakkan ()
+        
+        # deklarasi variabel tuple
+        numbers = (23, 43, 15, 34)
+ 
+        # cara mengakses elemen dalam variabel tuple
+        print (numbers[0])    # 23
+        print (numbers[1])    # 43
+        print (numbers[2])    # 15
+        print (numbers[3])    # 34
+
+    Set
+        sama dengan list, set itu tipe data mutable yg berisi elemen unik (tidak boleh ada nilai yg sama)
+        tidak boleh diisi oleh nilai duplikasi karena sifatnya sama dengan himpunan matematika
+        Set juga tidak memiliki urutan indeks (berbeda dengan list dan tuple)
+        Kalau list menggunakkan [], tuple menggunakkan (), set menggunakkan {}
+
+        # deklarasi variabel set
+        numbers = {23, 43, 15, 34}
+ 
+        # cara mengakses elemen dalam variabel tuple
+        print (numbers[0])    # 23
+        print (numbers[1])    # 43
+        print (numbers[2])    # 15
+        print (numbers[3])    # 34
+
+        Bila ada angka yg sama dimasuikkan ke dalam set, maka set tidak akan menambahkan angka yg sama tersebut 
+        Set dapat melakukan operasi union(gabungan), intersection(irisan), differnece(perbedaan)
+        # deklarasi variabel set a dan b
+        a = {1, 2, 3}
+        b = {2, 3, 4}
+        
+        # operasi gabungan
+        a.union(b)    # {1, 2, 3, 4}
+        
+        # operasi irisan
+        # mencari angka yg sama
+        a.intersection(b)    # {2, 3}
+        
+        # operasi perbedaan
+        # mencari angka yg berbeda
+        a.symmetric_difference(b)    # {1, 4}
+
+    Dictionary 
+        Sama dengan list, tapi bisa menyimpan dengan bentuk data "key-value"
+        key-value, key = nama data yg mau disimpan, value = niai dari data tersebut
+        key harus berupa string dan tidak boleh sama dengan yg lain
+        menggunakkan {}
+
+        # deklarasi variabel dictionary
+        propertyDetail = {"numFloors": 1, "propertyType": "Rumah", "hasTerrace": True, "hasGarage": False}
+
+        # cara mengakses elemen dalam variabel dictionary
+        print(propertyDetail["numFloors"])       # 1
+        print(propertyDetail["propertyType"])    # Rumah
+        print(propertyDetail["hasTerrace"])      # True
+        print(propertyDetail["hasGarage"])       # False
+        
+        # cara mengubah nilai elemen dalam variabel dictionary
+        propertyDetail["hasTerrace"] = False
+        
+        print(propertyDetail["hasTerrace"])      # False
+
+        Sama seperti kamus, setiap key(kata/data) mempunya value(informasi)
+
+    Tipe Data Non primitif termasuk dalam tingkatan advanced karena mengandung kumpulan data primitif 
+    Sama seperti tas/koper, bisa diisi dengan barang/data yg kita mau
+    Untuk mengaksesnya, perlu cara yg berbeda-beda tergantung tipe nya 
+
+Type Annotation pada Variabel 
+    Anotasi = mekanisme untuk menerangkan/memperjelas suatu data 
+    yg sebelumnya 
+        nama = "Budi"
+    menjad
+        nama : str = "Budi"
+    
+    Walaupun python tidak perlu menggunakkan anotasi, tapi berguna untuk membantu pembacaan kode, dokumentasi, dan mempermudah penganalisan status 
+        penganalisan status yg disediakan oleh IDE, seperti linter atau type checking
+    cth :
+
+        hasTerrace : bool = True
+        numberOfRestroom : int = 3
+        roomArea : float = 9.5
+        buildingArea : str = "88 meter persegi"
+
+        berlaku juga untuk tipe data non primitif 
+        numbersList: list = [23, 43, 15, 34]
+        fruitsTuple : tuple = ("Apel", "Jeruk", "Semangka")
+        colorSet : set = {"Merah", "Kuning", "Hijau"}
+        propertyDetailDict : dict = {"numFloors": 1, "propertyType": "Rumah", "hasTerrace": True, "hasGarage": False}
+
+        bahkan, tipe data non primitif bisa ditambahkan informasi yg lebih spesifik lagi
+        numbersList: list[int] = [23, 43, 15, 34]
+        fruitsTuple : tuple[str] = ("Apel", "Jeruk", "Semangka")
+        colorSet : set[str] = {"Merah", "Kuning", "Hijau"}
+        propertyDetailDict : dict[str,any] = {"numFloors": 1, "propertyType": "Rumah", "hasTerrace": True, "hasGarage": False}
+        any digunakan untuk tipe data yg beragam
+
+        Di python yg terbaru, list, tuple, set, dan dict bisa menampung tipe data yg berbeda (tidak harus satu jenis)
+        numbersList: list[int, float] = [23, 52.3, 34]
+        fruitsTuple: tuple[str, int, bool] = ("Apel", "Jeruk", 10, True)
+        colorSet: set[int, str] = {225, "Biru", "Merah"}
+        propertyDetailDict: dict[str, tuple[int, str]] = {"numFloors": 1, "propertyType": "Rumah", "hasTerrace": True, "hasGarage": False}
+        
+        untuk memastikan tipe data yg digunakan, bisa menggunakkan print (type())
+    
+    Kelebihan Anotasi pada coding
+        1. Dokumentasi Otomatis
+            Anotasi adlaah salah satu bentuk dokumentasi, sehingga bisa mempermudah pemahaman coding dan mempermudah penjelasan dengan programmer lain 
+        2. Autocomplete 
+            VSC akan membantu pengetikan dengan Autocomplete, dengan anotasi, Autocomplete akan menjadi lebih akurat dan saran yg diberikan akan sesuai dengan tipe datanya 
+                cth : kalau string, maka nanti Autocomplete akan memberikan saran yg berhubungan dengan string
+        3. Typechecker
+            Terkadang, kita tidak sengaja salah memberikan nilai kepada variabel yg sebelumnya sudah memiliki tipe data yg berbeda (awalnya int, tpi dikasih nilai string)
+            maka dari itu, dibuatlah Typechecker pada python (yaitu library mypy)
+
+            untuk mengeceknya, menggunakkan perintah $ mypy main.py
+            Dengan Typechecker, bisa mendeteksi kesalahan tipe data, mengurangi peluang bug, mempercepat proses debugging  
+    
+startTime : dict [str,int]= {"HH" : 9, "mm" : 23, "ss" : 57}
+endTime : dict [str,int] = {"HH" : 15, "mm" : 25, "ss" : 43}
+
+inspectionList : list = ["pemahaman terhadap rencana dan desain" , "ketersediaan bahan dan peralatan" , "pengawasan pekerjaan" , "kualitas konstruksi" , "keselamatan kerja" , "koordinasi dengan pemilik proyek"]

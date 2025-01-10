@@ -1,0 +1,85 @@
+Pengantar Program Prosedural
+    Pemrograman Prosedural = Pemrograman yang disusun secara strutural atau urut
+    Paradigma Prosedural sangatlah penting, agar kita terbiasa untuk menyelesaikan masalah secara runtut 
+    Paradigma Prosedural mengajarkan algoritma, pengolahan data, pengendalian aliran eksekusi, pembagian aksi menjadi sub-aksi
+
+    Pemrograman Prosedural dibagi menjadi 4
+        Aksi = Setiap langkah memerlukan aksi tertentu, aksi tersebut harus dilakukan sampai selesai. 
+                Apabila aksi tidak dikerjakan, bisa jadi aksi berikutnya tidak bisa dikerjakan
+
+        Efek Neto/Net Effect = Reaksi yang dihasilkam oleh suatu aksi, bisa positif, negatif, ataupun netral
+                                Efek positif bisa terjadi apabila program berjalan lancar, tpi bisa negatif bila program error
+
+        Batasan = Setiap aksi pasti punya batasan (batasan waktu, batasan aksi). Bila tidak ada batasan, maka aksi akan error
+                    Batasan selalu ditetapkan di awal sebelum aksi dilakukan
+
+        Mesin = Setiap aksi yang sudah dilakukan, akan diolah oleh mesin sehingga mengeluarkan output 
+                Maka, aksi harus dikerjakan sesuai dengan prosedur dan bahasa Pemrograman, apabila tidak, maka akan error
+
+Algoritma 
+    Algoritma =  langkah-langkah intruksi urut untuk mengerjakan suatu tugas 
+        Algoritma bisa dipecah menjadi sub-algoritma 
+    Algoritma dilakukan agar efek neto dapat menghasilkan output positif 
+    Efek Neto dapat menghasilkan output negatif apabila terdapat kesalahan secara internal maupun eksternal
+    Efek Neto juga dapat menghasilkan output netral, apabila langkah-langkah yang dilakukan ada yg ditukar, tetapi tidak mempengaruhi output yg diberikan
+    
+    Aksi memiliki 2 kondisi waktu, waktu sebelum dilakukan aksi, dan waktu setelah dilakukan aksi
+    Efek neto akan dilihat dari 2 kondisi waktu tersebut. 
+    Dengan kondisi waktu tersebut, terdapat batasan yg harus diperhatikan, sehingga
+        Initial State (Start) = akan terjadi apabila aksi sudah memenuhi kebutuhan yang diperlukan dan tinggal dilakukan
+        Final State (End) = akan terjadi apabila suatu batasan telah terpenuhi 
+
+    Setiap program harus punya alur penyelesaian di akhir algoritma 
+    Efek Neto bisa menghasilkan output negatif, baik secara internal maupun eksternal
+        internal = kesalahan logika, sintaks
+        eksternal = kesalahan input, jaringan, kompatibilitas
+        juga bisa menghasilkan output netral, karena tidak merubah output pada program
+            cth : mengambil data dari sumber eksternal, perhitungan matematis, 
+    
+    Efek neto dapat dianalisis dengan membandingkan keadaan sebelum dan sesudah aksi berjalan
+    Batasan juga perlu dianalsisi sebelum aksi dilakukan agar tidak menghasilkan efek neto negatif.
+        Batasan perlu diperhatikan agar tidak terjadi error karena 
+        lamanya durasi sebuah aksi berjalan;
+        kelebihan penggunaan memori;
+        ketidaksesuaian jenis, ukuran, atau format input dan output;
+        kurangnya kapabilitas perangkat dalam mengelola data;
+        ketidaksamaan sistem operasi, perangkat keras, atau versi aplikasi; dll.
+
+Interpretasi Algoritma
+    Program/Algoritma yang ditulis di kertas apabila diperiksa akan sulit untuk melihat efek netonya
+    Maka dari itu, mesin diciptakan untuk memudahkan membaca algoritma tersebut
+
+    Mesin berperan sebagai pembaca instruksi/algoritma melalui program. Mesin bekerja melalui aturan dan bahasa yang telah ditetapkan
+    Setiap bahasa pemrograman akan punya compiler atau interpreter nya agar bahasa tersebut bisa diterjemahkan ke dalam bahasa biner.\
+    Mesin = alat yang bisa menjalankan instruksi dasar/sederhana secara berurutan
+        atau bisa disebut bahwa Mesin = pengeksekusi/pelaku dari algoritma 
+
+    Tetapi, tidak semua hal bisa disebut mesin. Contohnya charger. Charger hanya bisa melakukan 1 aksi, yaitu perantara proses cas hp dengan listrik
+    Tetapi mesin bisa melakukan instruksi sekuensial dan berurutan 
+    Berbeda dengan HP, untuk menyalakan HP, perlu dilakukan langkah-langkah tertentu agar HP bisa menyala
+
+    Sehingga, bisa dilihat bahwa mesin terdiri atas sekumpulan peralatan 
+        jumlah peralatan yang digunakan pun terbatas, tetapi tiap peralatan punya fungsinya masing"
+    Mesin akan mematuhi program yang dikirim dengan sangat teliti
+
+    Sehingga, programmer harus bisa mengerti algoritma yang diketikkan pada program 
+        juga harus teliti dengan program yang diketik. Tidak bisa sembarangan
+    Karena mesin hanya mengikuti perintah untuk menghasilkan output yg diinginkan
+
+Python sebagai Pemrogram Prosedural 
+    Bahasa pemrograman dapat dipilih berdasarkan beberapa hal, seperti
+        tingkat kompleksitas bahasa dalam menerjemahkan algoritma menjadi kode;
+        kemudahan dalam memahami sintaksis kode;
+        memiliki komunitas yang cukup besar dan aktif;
+        memiliki resource library yang cukup banyak; 
+        beragamnya kegunaan dengan menggunakan bahasa tersebut.
+    
+    Python banyak dipakai karena lebih mudah dan sangat direkomendasikan untuk pemula 
+    Python banyak digunakan untuk analisis data, pengembangan web, machine learning,
+
+    Berdasarkan survey StackOverflow, bahasa pemrograman yg paling banyak digunakan 
+        1. JS
+        2. HTML/CSS
+        3. Python
+        4. SQL
+        5. TypeScript

@@ -1,0 +1,113 @@
+Pengalamatan IP
+    IP trdpat dlam network layer 
+    digunakan untuk mengalamtkan PC (host) secara logical (tdk secara fisik, karena fisiknya pake MAC)
+    Ada 2 jenis pengalamatan IP
+        IPv4    
+            - Pengalamatan 32 bit
+            - Jumlah host 4.294.967.296
+                didapat dari 2 pangkat 32 (32 bit merepreentasikan alamat IP)
+                setiap alamat IP trdiri atas 32 bit, yg terbagi mnjdi 4 bagian (tiap bagian trdiri atas 8 bit)
+            - Sudah mulai penuh
+        IPv6
+            - Pengalamatan 128 bit
+            - Jumlah host hmpir tak terhitung (2 pangkat 128)
+            - Memiliki header lebih sederhana dri IPv4
+
+IPv4
+    jenis pengalamatan jaringan yg menggunakkan TCP/IP yg menggunakkan protokol IP versi 4
+    didapat dari 256 (didapat dri 8 bit) dipangkat 4 (karena ada 4 bagian)
+    nilai max nya 255.255.255.255
+    Jika host melebihi kuota, maka dibuat IPv6
+        contoh IPv4 adlaah 192.168.100.1
+
+Aturan pengalamatan IPv4
+    anggap aja ada 8 kolom (karena 8 bit) 
+    128   64    32    16    8   4   2   1
+
+    Alamat IP terbentuk dri penjumlhan angka" yg memiliki nilai 1
+        misal, 168 terbentuk dri
+    128   64    32    16    8   4   2   1
+     1    0     1      0    1   0   0   0
+    128 + 32 + 8 = 168
+
+    kalau untuk 192
+    124   64    32    16    8   4   2   1
+     1    1     0      0    0   0   0   0
+
+    sehingga, dibrikan titik titik seperti : 11000000.1010100.xxxxxx.yyyyy
+
+    sedangkan untuk konversi dari angka biner ke desimal, tinggal melihat tabel dan dibalik
+
+    Atau bisa saja menggunakan tools konversi tabel
+
+Repreentasi IP Address
+    IPv4 diekspresikan dalam (dotted-decimal notation) yg dibagi dalam 4 octet
+    Formatnya w.x.y.z dan stiap oktet maksimal nilainya 255 
+        255 didapat dri kalau setiap nilai dijumlahkan smua
+
+    Alamat IP yg dimmiliki oleh host dpat dibagi dengan subnet mask dalam 2 bagian
+        Network Identifier/NetID/Network Address (alamat jaringan)
+            digunakan untuk mengidentifikasi alamat jaringan dmn host berada
+            harus bersifat unik dalam internetwork dan tidak boleh bernilai 0 dan 255
+        Host Identifier/HostID/Host Address (alamat host)
+            digunakan untuk mengidentifikasi alamat host dalam jaringan
+            dapat berupa workstation,server/sistem lain berbasis TCP/IP
+            Tidak boleh bernilai 0 dan 255
+    contoh
+        192.168.1.10
+        NetID = 192.168.1
+        HostID = 10
+
+Pembagian kelas IPv4
+    Dalam RFC 791, IPv4 dibagi dalam beberapa kelas
+    Pembedanya dilihat pada oktet/bagian pertama (bit-bit awal/high order bit)
+        untuk lebih mudah mengingat, bisa dilihat representasi desimal
+    
+    Kelas IPv4      Oktet prtama desimal       Oktet prtama binary          Digunakan oleh                                                         Subnet Mask          Network + Host     
+    Kelas A         1-127                       0xxx xxxx                   Alamat unicast untuk network besar  (seperti jalan provinsi)           255.0.0.0            N.H.H.H
+    Kelas B         128-191                     10xx xxxx                   Alamat unicast untuk network sedang (seperti jalan antar kota)         255.255.0.0          N.N.H.H
+    Kelas C         192-223                     110x xxxx                   Alamat unicast untuk network kecil (seperti jalan kota)                255.255.255.0        N.N.N.H         
+    Kelas D         224-239                     1110 xxxx                   Alamat multicast
+    Kelas E         240-255                     1111 xxxx                   Alamat multicast, direservasi untuk percobaan (eksperimen)
+    
+    Jumlah network Kelas A ada 2^7 - 2(0 dicadangkan sebagai default dan 127 dicadangkan sebagai loopback) (harusnya 8, tapi karena bit pertamanya 0, jadi sisa 7)  
+        Jumlah host kelas A ada 2^24 - 2(alamat utk network dan broadcast)
+    Jumlah network kelas B ada 2^14 - 2 (harusnya 16, tpi karena bit pertamanya adalah 10, jadi sisa 14)
+        Jumlah host kelas B ada 2^16 - 2
+    Jumlah network kelas C ada 2^21 - 2 (harusnya 24, tpi karena bit pertamanya adalah 110, jadi sisa 21)
+        Jumlah host kelas C ada 2^8 - 2
+    
+    Kelas C tiga bit pertamanya 110, 21 bit selanjutnya (untuk melengkapi 3 oktet pertama) akan membentuk NetID, 1 oktet terakhir akan membentuk HostID
+        sehingga, ada 2,097,152 network dan 254 host untuk tiap network
+    Kelas D untuk alamat IP multicast, 4 bit pertama diset 1110, 28 bit sisanya sebagai alamat untuk HostID
+    Kelas E untuk alamat eksperimental, dan dicadangkan untuk masa depan, 4 bit pertama diset 1111, 28 bit sisanya sebagai alamat untuk HostID
+
+    Tapi, penggunaan kelas IP sudah tidak relevan karena sudah tidak ada pembagian lgi
+        Karena semakin banyak permintaan akan IP sehingga tidak mencukupi dengan model tersebut
+        Maka dibuatlah classless address
+    
+IP Public dan IP Private
+    IP Public, biasa digunakan untuk internet
+        semua host yg terkoneksi membutuhkan public IP Address yg unik
+        IP Public didapat dari pinjaman ISP atau alokasi dari APNIC (Asia-Pacific Network Information Center) /IDNIC (Indonesia Network Information Center)
+    IP Private, digunakan untuk LAN dan tidak terkoneksi internet
+        dan terbagi menurut kelasnya
+            
+            Kelas IPv4      Oktet prtama                Subnet Mask                 Private Address                               CIDR (Classless Inter-Domain Routing)
+            Kelas A         1-127                       255.0.0.0                   10.0.0.0 - 10.255.255.255                     10./8
+            Kelas B         128-191                     255.255.0.0                 172.16.0.0 - 172.31.255.255                   172.16./12                        
+            Kelas C         192-223                     255.255.255.0               192.168.0.0 - 192.168.255.255                 192.168./16
+
+Mengatur IP Address dan Subnet mask pada Windows
+    1. Control Panel --> Network & Internet --> Network Connections
+    2. Network Connections --> Local Area Connection, lalu klik kanan
+        3. Properties --> Networking --> Internet Protocol Version 4(TCP/IPv4)
+    4. Lalu masukkan data IP Address, subnet mask, gateway, dan DNS
+
+    IP Address = IP Host PC 
+    Subnet mask = penentuan blok jaringan (subnetting)
+    Gateway = jik ada tujuan IP yg tdk dikenali, maka dilempar ke gateway
+    DNS = meresolve domain address ke IP Address
+
+    utk mengtahui hsil konfifgurasi bisa dicek di cmd dngan mengtikkan ipconfig atau ipnconfig/all
+    

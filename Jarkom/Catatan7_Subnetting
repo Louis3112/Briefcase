@@ -1,0 +1,133 @@
+Subnetting
+    Proses membagi network menjadi sub-network
+    Subnetting hanya dapat dilakukan pada IP Address kelas A, B,C
+    Subnetting menciptakan network tambahanan, tpi mengurangi jmlh maksimum host dalam tiap network
+    Utk memperbanyak network ID, maka perlu mengorbankan Host ID
+
+Mengapa Subnetting penting?
+    1. Mengalokasikan IP Address yg terbatas supaya lebih efisien 
+        Jika internet terbatas oleh kelas A,B,C
+        Tiap network akan memiliki host sktr 16 juta untuk kelas A, 65000 kelas B, 254 untuk kelas C.
+        Sehingga, akan menghamburkan banyak IP yg tidak digunakan
+    2. Walau sebuah organisasi pny ribuan host, mengoperasikan semua device dalam network ID akan memperlambat network
+        TCP/IP bekerja dengan mengatur agar semua komputer dengan network ID yg sama hrus berada dalam physical network yg sama
+        Physical network memiliki domain brodcast yg sama, sehingga medium network membawa semua traffic dalam network
+        Sehingga harus disegmentasi ke domain broadcast kecil" 
+    3. Pengefisiensi pengalamatan 
+        cth : jaringan yg pnyaa 10 host, kalau kita pake kelas C, maka ada 244 alamat tidak terpakai
+    4. Membagi satu kelas network menjadi bagian kecil"
+    5. Menempatkan host
+        apakah berada dalam 1 jringan atau tidak
+    6. Untuk mengatasi perbedaan hardware dengan topologi physical network
+    7. Meningkatkan security dan mengurangi peluang kongesti (penimbunan) karena banyaknya host
+
+Analogi Subnetting
+    Andaikan jaringan adalah suatu jalan yg terdiri atas rumah nomor 1 - 8
+    Jlan tersebut memiliki alamat 192.168.10.0
+    Rumah nomor 8 adlaah rumah Ketua RT yg dmn Ketua RT memiliki tugas untuk mengumumkan info ke semua rumah disana 
+    Rumah nomor 1 memiliki alamat 192.168.10.1
+    Rumah nomor 2 memiliki alamat 192.168.10.2
+    Rumah nomor 8 memiliki alamat 192.168.10.255 (sebagai Broadcast)
+
+    Ketika rumah di wilayah itu mkin banyak, maka terjadi keriwehan dan kemacetan
+    Sehingga, dibuatlah gang", rumah yg masuk ke gang dibuat nomor baru dan tiap gang memiliki ketua RT nya msing"
+    Sehingga, memecah kemacetan, efisiensi, pengoptimalan transportasi dan tiap gang punya priviledge (hak, imunitas, manfaat) dalam mengolah gangnya
+
+    cth 
+        NETWORK 192.168.10.0
+        SUBNET  192.168.10.16 (Gang 1) (Host dikorbankan sebagai subnet)
+            Rumah 1 192.168.10.17
+            Rumah 2 192.168.10.18
+            Rumah RT 192.168.10.31 (Broadcast)
+        SUBNET 192.168.10.32 (Gang 2)
+            Rumah 1 192.168.10.33
+            Rumah 2 192.168.10.34
+            Rumah RT 192.168.10.47 (Broadcast)
+        dst.
+
+Subnet Mask
+    Membaca bagaimana kita membagi jalan dan gang atau network dan hostnya.
+    Address/Host mana saja yg berfungsi sebagai SUBNET
+        mana yg host dan mana yg broadcast
+    
+    Semua bisa diketahui dri Subnet Masknya
+    Jln Gatot Subroto tanpa gang bisa dikatakan sebgai SUBNET MASK DEFAULT a.k.a Network tanpa subnet
+
+Perhitungan Subnet 
+    Perhitungan bisa dilakukan 2 cara 
+        cara binary yg relatif lambat 
+        cara tabel yg relatif cepat
+    Pertanyaan subnet akan berkutat pada    
+        1. Jumlah subnet
+        2. Jumlah IP dan IP yg dipakai
+        3. Blok Subnet (Network dan Broadcast)
+    
+Dengan subnet, Host ID dipecah dan dipangkas menjadi Subnet ID, sehingga mengorbankan Host ID, tetapi memberikan banyak kemudahan
+
+Dalam tiap kelompok, terdapat 2 IP yg bersifat khusus 
+    Network = Address identitas kelompok IP (IP pertama dalam suatu kelompok)
+    Broadcast = Address untuk mengirim pesan ke semua host pada kelompok IP (IP terakhir dalam suatu kelompok)
+
+Cth perhitungan Binary
+Cth : Diket IP Address 192.168.1.10/26
+    IP Binary : 1100000.10101000.00000001.00001010 = 192.168.1.10
+    Subnet Mask : 1111111.11111111.11111111.11000000 = 255.255.255.255.192 (didapat dari karena 6 bit nya untuk host) (6 bit kosong)
+    CIDR : 8 + 8 + 8 + 2 = 26 (8 didapat dari banyaknya 1 yg muncul) (artinya, subnet memiliki 26 bit untuk mengidentifikasi jaringan, sisanya yaitu 6 bit untuk mengidentifikasi host)
+    IP Subnet = 2^(26-24) = 4 buah subnet (RT) 
+        26 - 24 didapat dari karena CIDR yg maks adlaah /24 (itu adalah jaringan yg tidak memiliki subnet)
+    Jumlah IP = 2^(32-26) = 64 Host
+    Usable IP = 64 - 2 (untuk Network dan Broadcast)
+    Block Range = 192.168.1.0-192.168.1.63
+
+Cth perhitungan tabel 
+    CIDR        Subnet Mask             Total IP        Usable IP       Banyak subnet                           Blok network (Blm termasuk network n broadcast)
+    /24         255.255.255.0           256             254             1 (tidak ada subnet yg terbagi)         0-255
+    /25         255.255.255.128         128             126             2                                       0-127,128-255
+    /26         255.255.255.192         64              62              4                                       0-63,64-127,128-191,192-255
+    /27         255.255.255.224         32              30              8                                       0-31,32-63,64-95,66-127...
+    /28         255.255.255.240         16              14              16                                      0-15,16-31,32-47...
+    /29         255.255.255.248         8               6               32                                      0-7,8-15....
+    /30         255.255.255.252         4               2               64                                      0-3,4-7...
+    /31         255.255.255.254         2               -               126                                     Spesial
+    /32         255.255.255.255         1               -               256                                     Spesial
+
+Subnetting biasanya dilakukan di kelas C karena dapat mengefisiensikan IP dalam jaringan
+
+Latihan 
+1. Diket IP Address 172.20.20.200/26, Tentukan IP Network dan IP Broadcast
+        DIlihat bahwa Host ID nya adalah 200 dan dia masuk dalam blok network 192-255 (RT 4)
+        IP Network = 172.20.20.192
+        IP Broadcast = 172.20.20.255
+2. Diket IP Address 192.168.10.33, subnet mask 255.255.255.224
+Tentukan IP network dan IP Broadcast dan Jumlah IP Usable
+        255.255.255.224 adalah CIDR /27, artinya terdapat 8 subnet 
+        Host ID adalah 33 dan dia masuk dalam blok network 32-63
+        brrti, IP Network = 192.168.10.32
+               IP Broadcast = 192.168.10.63
+               IP Usablenya adalah 30 (192.168.10.33-192.168.10.62)
+3. Sebuah Lab memiliki 30 PC utk siswa dan 1 PC utk guru, brp subnetmask yg efektif untuk lab tersebut
+        Ada 31 port yg dibutuhkan (30 + 1) dan 2 port tambahan untuk Network dan Broadcast, sehingga 33
+        Brrti, CIDR /26 yg cocok karena dapat menampung 33 port (CIDR /27 tidak dapat menampung karena kekurangan port)
+        Sehingga, Subnet nya adalah 255.255.255.192
+4. Sekolah memiliki bbrp akses point dengan tiap akses point pnya ID Network yg berbeda"
+Diket IP DHCP (Dynamic Host Control Protocol) dri akses point adalah 172.30.30.200 dan subnetmasknya 255.255.255.192
+Berapa IP Network dan IP Broadcast  
+        Dilihat dari subnetmasknya adalah 255.255.255.192 brrti CIDRnya /26
+        Dilihat bahwa Host ID nya adalah 200, maka masuk blok network 192-255 (RT 4) 
+        IP Network = 172.30.30.192
+        IP Broadcast = 172.30.30.255
+5. SMK X punya 2 lab dan tiap lab nya memiliki 254 PC, diket msing" lab terhubung ke internet dan memiliki subnet yg berbeda 
+Tentukan range IP Lab 1 dan Lab 2 serta Tentukan gateway dan subnet nya jika header IP nya 192.168.XX.YY
+        Yg pasti, tiap Lab menggunakkan CIDR /24 karena butuh 254 port untuk msing" PC
+        Subnet yg berbeda, brrti anggepannya mereka berbeda gang 
+        maka, bisa aja kita menggunakkan 
+        LAB 1 = 192.168.1.0/24
+            IP Network = 192.168.1.0
+            IP Broadcast = 192.168.1.255
+            Range IP = 192.168.1.1 - 192.168.1.255
+            Gateway IP = 192.168.1.1 atau 192.168.1.255 (trgntg konfigurasi)
+        LAB 1 = 192.168.2.0/24
+            IP Network = 192.168.2.0
+            IP Broadcast = 192.168.2.255
+            Range IP = 192.168.2.1 - 192.168.2.255
+            Gateway IP = 192.168.2.1 atau 192.168.2.255 (trgntg konfigurasi)

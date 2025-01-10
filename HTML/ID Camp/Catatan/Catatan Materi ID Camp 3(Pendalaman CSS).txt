@@ -1,0 +1,550 @@
+Selector
+    Selector ada banyak macamnya
+    Type Selector
+        menggunakkan nama elemen sebagai target untuk diterapkan rule, jadi.. semua elemen yg memiliki nama yg sama akan berubah
+        span { color : red; } (maka span semuanya jadi merah)
+
+    Class selector
+        menetapkan target elemen berdasarkan nilai dari class (anggepannya kayak wungsi) (di CSS nya dibuat fungsinya, terus dipanggil di html)
+        untuk membuat class selector, harus menggunakkan . di depannya
+        . blueBG { background-color : blue; }. Maka <p class="blueBG">
+
+        class selector juga bisa digunakan berkali" di elemen yg berbeda
+        class selector juga bisa ditumpuk,  <p class="red blueBG">
+
+        bahkan, bisa juga disetting secara spesifik seperti ini 
+        p.blueBG { background-color : blue; color-font : white; }
+
+    Id selector
+        kegunaan dari penggunaan atribut id pada <div> dan <span> sebelumnya adalah untuk ini.
+        Untuk memanggilnya di css, harus menggunakkan # di depannya
+        #special {background-color: blue;} maka, <div id="special">Warna biru</div>
+        dan hanya bisa dipake sekali saja,
+        kalau memang ingin bisa berkali", lebih baik pake class selector aja
+    
+    Attribute selector
+        dilihat dari atributenya, jika pada atribute terdapat kata yg sama, maka bagian dari elemen tersebut akan berubah sesuai rule
+        agak ribet memang
+        menggunakkan tanda []
+        [href] artinya menargetkan dengan atribut href
+        [href=value] artinya menargetkan atribut href yang memiliki nilai atau link yg sama persis
+        [href~=value] artinya menargetkan atribut href yang memiliki nilai salah satunya berupa value
+        [href^=value] artinya menargetkan atribut href yang nilai awalnya berupa value
+        [href$=value] artinya menargetkan atribut href yang nilai akhirnya berupa value
+        [href*=value] artinya menargetkan atribut href yg nilainya mengandung value
+
+    Universal Selector
+        digunakan untuk menerapkan rule ke semua elemen dengan syarat tertentu 
+        * { color : green; } artinya semua hijau
+        *[lang^="en"]{font-style : italic} artinya semua yg ada en nya akan jadi italic
+        *. warning { color-font : red;} artinya semua class yg ada warning maka akan jadi merah
+
+Combinators
+    bisa menggabungkan lebih dari 1 selector
+
+    Adjacent Sibling Selector (+)
+    artinya, dengan selector satu dengan setelahnya (+), maka akan berubah
+    img + p {color : green;} maka tulisan setelah image akan berubah menjadi hijau. Tapi, yg lainyya gak
+
+    General Sibling Selector (~)
+    artinya, dengan selector satu dengan setelahnya (~), maka semua akan ikut berubah
+    img ~ p {color : green;} maka semua tulisan dari awal sampe akhir akan menjadi hijau
+
+    Child selector (>)
+    artinya, semua child element di dalam parent element, semua akan ikut berubah
+    tapi, bila di dalamnya ada child element yg lain, maka tidak akan berubah
+    div > p {color: green;} maka semua tulisan dari awal sampe akhir pada bagian div akan menjadi ijo, tapi kalau ada section di dalam div, maka tidak akan berubah
+
+    Descendant Selector (spasi)
+    sama dengan child selector, hanya saja semua ikt berubah tanpa terkecuali
+    div p (color: green;) maka semuanya jadi ijo
+
+Pseudo selector
+    menargetkan sifat elemen yg berubah" dalam satu elemen ketika terjadi sesuatu
+
+    Pseudo-Class selector
+    menargetkan sifat elemen yg dapat berubah" dalam satu elemen
+    a:link {color : red;} artinya link yg muncul warnanya merah
+    a:visited {color: green;} artinya link yg sudah pernah dikunjungi warnanya jdi ijo
+    a:hover {color :pink;} artinya link yg kursornya diarahkan ke link, warnanya jadi pink
+    a:active{coloe:orange;} artinya link yg sedang aktif/sedang diakses akan berubah jadi oranye
+    menggunakkan : 
+
+    Pseudo-Element Selector
+    sama seperti Pseudo-class selector, kita tidak perlu menuliskan elemen/konten baru pada html, hanya perlu mengetag elemennya saja
+    menggunakkan ::before dan ::after
+    blockquote::before, blockquote::after {content : ""; font size :24 px;font-style :italic;font-weight: bold}
+    sebenarnya bisa pake : saja, tapi supaya bisa dibedakan 
+    bisa juga menggunakkan p::firstletter{font-size:32 px;font-weight:bold;color:brown;}
+
+Jika kita ingin menetapkan styling pada tampilan teks itu sendiri, gunakanlah properti font. Contohnya, properti font dapat mengatur tipe font, ukuran, ketebalan, dan lainnya. 
+Sementara itu, properti teks digunakan untuk mendukung hal lainnya dalam menampilkan teks seperti menetapkan text alignment, dekorasi, spacing, dan masih banyak lagi.
+
+Font styling
+    font-family: menetapkan jenis font yang akan diterapkan pada target.
+    font-size: menentukan ukuran pada teks.
+    font-weight: menentukan ketebalan pada teks. 
+    font-style: menetapkan styling yang diterapkan pada teks.
+    font-variant: menentukan teks untuk menggunakan gaya small caps (huruf kapital kecil).
+    font: sebagai shorthand dari properti font yang ada.
+
+    font-family
+        ketika pengetikkan font-family, ada yg namanya font stack
+        p{font-family:Arial, Verdana, sans-serif}
+        fungsinya adalah, apabila browser tidak punya font yg utama, maka font kedua yg akan menggantikan
+            ada peraturan nya lagi
+            Seluruh nilai font yang bukan merupakan generic font families harus dituliskan secara kapital. Contohnya, “Arial” bukan dituliskan “arial”.
+            Gunakan tanda koma (,) untuk memisahkan antara nilai font yang digunakan. 
+            Selalu tanda kutip (“) untuk membungkus nilai font yang memiliki spasi pada namanya. Contohnya “Open Sans”.
+        
+        Generic font families selalu ada di semua browser. dan dapat digunakan sebagai fallback mechanism (font terakhir yg dapat dighnakan)
+            Serif: jenis font yang memiliki runcing pada garis akhir karakternya. Times New Roman merupakan salah satu jenis serif font.
+            Sans-serif: jenis font yang tidak meruncing pada garis akhir karakternya. Contohnya, “Open Sans”, “Fira Sans” dan lainnya.
+            Monospace: jenis font yang memiliki nilai lebar tiap karakternya sama. Consolas merupakan salah satu jenisnya.
+            Cursive: jenis font yang tampak seperti handwriting atau hasil tulisan tangan.
+            Fantasy: jenis font yang merepresentasikan karakteristik yang menyenangkan.
+            System-ui: jika menerapkan nilai ini maka font yang diterapkan akan sama seperti font yang digunakan pada sistem operasi kita.
+            Math: jenis font yang digunakan untuk penulisan rumus-rumus matematika.
+            Emoji: jenis font yang digunakan untuk menampilkan emoji.
+            Fangsong: jenis font yang menampilkan gaya penulisan Chinese.
+        
+        untuk memasukkan font sendiri, bisa menggunakkan @font-face
+        @font-face {
+                font-family: "Dicoding Font";
+                src: url('FILE-FONT.TTF');
+            }
+        sehingga, bila dipanggil
+        p {font-family:"Dicoding Font"}
+
+    font-size   
+        satuan dalam menentukan font-size terdiri dari 2
+            relative unit atau absolute unit
+            relative unit terdiri dari em,ex,rem,ch,vw,vh,
+            absolute unit terdiri px,pt,pc,mm,cm,in
+        
+        juga bisa menggunakkan presentase untuk menentukan ukurannya
+        body {font-size:16 px;}
+        h1 {font-size:150%;} maka 150% dari 16 px
+
+        atau dapat menggunakkan perintah xx-small,x-small,small,medium,large,x-large,xx-large
+        font di browser umumnya menggunakkan medium
+
+    font-weight
+        ketebalan font bisa diatur menggunakkan bold, bolder,ligher, dan angka numeric 100-900
+        h1 {font-weight:bold}
+    
+    font-style
+        mengatur bentuk font, bisa italic, oblique
+        h1{font-style:italic;}
+        italic menerapkan teks miring dari suatu font
+        oblique memiringkan teks normal
+    
+    font-variant
+        bisa mengatur variasi font
+        h1{font-variant:small-caps} artinya semua font diubah menjadi huruf kapital kecil
+    
+    shorthand
+        daripada mengetikkan satu", terdapat shorthand untuk mudah mengetikkannya
+        p {font : style weight variant size font-family}
+        sehingga 
+        p {font : small caps lighter 12 px}
+
+Text styling
+    berfokus pada penataan teks
+
+    Line height
+        jarak antar teks dengan teks lain (setiap teks punya garis dasar yang sama, 1 char dihitung 1 em)
+        mengetikkan 
+        p{line-height:2;} atau p{line-height:200%} atau p{line-height:2em;}
+
+    Text Indent
+        teks yg menjorok ke dalam paragraf. mengunakkan property text-Indent
+        p {text-indent: 2em;}, p{text-indent: 25%}, p{text-indent:-35px;} (-35 digunakan untuk hanging indent)
+        untuk mengatur semua penjorokan text, mending menggunakkan margin atau padding
+
+    Text alignment
+        mengatur perataan teks
+        p{text-allign:left;} text-align:right,center,justify
+    
+    Text Decoration
+        memberikan efek dekorasi atau hiasan pada teks
+        p {text-decoration : underline;}, overline, line-through, none (none lebih baik digunakan pada link, jadi menghapus underline dari link)
+    
+    Text transform
+        mengubah teks dengan kapitalisasi
+        p{text-transform:none;} capitalized (semua huruf di awal kata harus huruf besar), lowercase (semua kata menjadi huruf kecil),uppercase
+
+    Word and Letter spacing
+        memberikan spasi pada word dan Letter
+        letter untuk spasi antar huruf
+        word untuk spasi antar kata
+        p {word-spacing:2px}; p{letter-spacing:2px}
+    
+    Text shadow
+        memberikan bayangan pada text
+        harus memberikan 4 nilai, karena menentukan dari :
+        nilai ke 1: menunjukkan jauh kiri kanan bayangan ditampilkan
+        nilai ke 2: menunjukkkan jarak atas bawah bayangan ditampilkan
+        nilai ke 3: menentukan nilai keburaman bayangan
+        nilai ke 4: warna bayangan
+        p{  text-shadow: 2px 2px 0px #000000;}
+
+    Cara mengcopy google Fonts
+        1. Pilih font yg akan digunakan
+        2. Setelah itu, select bagian font yg ingin dipilih
+        3. Lalu pada selected family, copy di "use on web"
+        4. Copy di CSS 
+    kalau pake dari google fonts, font nya gratis dan mudah digunakan
+    Google Fonts hanya dapat digunakan ketika komputer dalam keadaan online. 
+    Jika kita sedang mengembangkan website dalam keadaan offline, sebaiknya gunakan pendekatan @font-face.
+
+Pewarnaan
+    Warna dari laptop tercipta dari RGB, warna" tersebut tercipta dari pixel yg menampilkan warna dari RGB
+    Bila ingin memilih warna,bisa menggunakan color picker
+    
+    Pewarnaan dengan CSS, bisa menggunakkan 2 format, numeric value atau predefined color name
+    Numeric Value
+        menggunakkan format angka
+        color : rgb(78,231,23); menggunakkan format RGB
+        color : #4ee717; menggunakkan format HEX
+        color : hsl(104, 82%, 50%); mengugnakkan format HSL (Hue, Saturation, Light)    
+    
+    Predefined color name   
+        menggunakkan bahasa inggris
+        color:black;
+        color:white;
+        color:blue;
+        terdapat 140 nama warna yg bisa diakses dengan html
+    
+    Background color
+        background-color dapat diubah sesuai keinginan kita. Setiap bagian elemen html dianggap sebagai suatu kotak
+        HTML akan membuat background menjadi putih jika tidak disetting
+        main {background-color:grey}, maka bagian main akan berwarna abu"
+        
+    Opacity 
+        Opacity dapat diatur dengan opacity: percent;
+        Perbedaan transparan dan opacity
+            transparan adalah seberapa besar tingkat tembus pandang
+            opacity adalah seberapa besar tingkat kejelasan objek. Semakin besar persen, semakin terlihat
+        
+        Opacity juga bisa disetting pada warna
+        bisa digunakan pada rgb dan hsl
+        color : rgb(78,231,23,0.5)
+        color : hsl(104, 82%, 50%,0.5)
+    
+Box Model
+    Setiap elemen memiliki box modelnya sendiri"
+    bisa disetting lebar tinggi kotak (content); ruang kosong antara konten dengan border (padding); garis tepi (border); jarak dari elemen lain (margin)
+    content : isi dari elemen itu sendiri
+    padding ; area antara border dengan content, area padding akan berubah bila diberi background-color:
+    border : garis pembatas padding dengan bagian luar
+    margin : jarak antara border dengan elemen lain
+    edge of element :  batas antara elemen 
+
+    Dimension
+        Dimension dapat diatur dengan menggunakkan properti width dan height 
+        biasanya, banyak menggunakkan pixel, dan banyak yg menggunakkan presentase agar bisa menyesuaikan ukuran dari browser
+        .box {
+            height : 600 px;
+            width : 300 px;
+        }
+
+        p {
+            height : 75%;
+            width : 75%;
+        } maka, p akan menyesuaikan
+
+    Limiting Dimension
+        kita bisa membatasi maksimal dan minimal Dimension
+        max width : 800 px;
+        min width : 400 px;
+    
+    Overflow
+        hal yang terjadi apabila dimension box tidak mampu menampung konten sebanyak yg ditampilkan, maka dari itu menggunakakn rule Overflow
+        Overflow : visible; tetap seperti biasa 
+        Overflow : hidden; kontent yg tidak tertampung akan tersembunyi
+        Overflow : scroll; bisa discroll, kanan kiri, atas bawah
+        Overflow : auto; konten menyesuaikan, jadi cuma scroll atas bawah
+    
+    Box-sizing 
+        dulu, kalau kita menentukan ukuran suatu kotak atau konten, harus menghitung terlebih dahulu
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: lightgreen;
+            border: 10px solid cornflowerblue;
+            padding: 20px;
+            } (tapi total keseluruhannya 260 px)
+
+        dengan box-sizing, maka akan tetap total 200 px
+        div {
+            box-sizing : content-box;
+        }
+    
+    Border
+        sebuah garis yang mengelilingi area konten atau padding. Bisa diatur tipe, ketebalan, garisnya 
+        
+        Border-width
+            menggunakkan pixel atau predefined names value : thin, thick, medium
+            .box {
+                border-top-width: 2px;
+                border-right-width: 1px;
+                border-bottom-width: 1px;
+                border-left-width: 2px;
+            }
+            bisa diketik dengan, dan inputnya sesuai dengan arah jarum jam
+            .box{
+                border-width: 2px 1px 1px 2px;
+            }
+
+            jika diisi 1 nilai aja, maka border lain akan menyesuaikan dengan nilai tersebut
+            jika diisi 2 nilai aja, maka atas bawah nilai 1, kiri kanan nilai 2
+            jika diisi 3 nilai, maka atas nilai 1, kiri kanan nilai 2, bawah nilai 3
+        
+        Border-style
+            dengan border-style, bisa memilih tipe border
+            solid : garis padat
+            dotted : titik-titik, jika tebal border :4 px, maka jarak antar titik 4 px
+            dashed: garis putus-putus
+            double : 2 garis padat 
+            groove : berbentuk seperti frame
+            hidden : tidak terlihat
+
+            bahkan bordernya bisa divariasikan 
+            .box {
+                border-top-style: solid;
+                border-right-style: dotted;
+                border-bottom-style: groove;
+                border-left-style: double;
+
+                border-width: 4px;
+                border-color: red;
+                width: 200px;
+                height: 50px;
+             }
+
+            bahkan terdapat shorthand atau shorcutnya
+            div {border:width, type, color}
+            karena, untuk membuat border, harus menentukan ketebalan, tipe, dan warna
+            announcement {border: 2px,dashed,red;
+                width:400px;
+                }
+        
+        Padding 
+            jarak antara area konten dan border 
+            menggunakkan rumus padding :
+            padding bisa diketikkan dengan
+                padding-top : 10px;
+                padding-right : 10px;
+                padding-left : 10px;
+                padding-bottom  : 10px;
+            
+            terdapat shorthand untuk mempermudah pengetikkan
+            padding  : 10px 10px 10px 10px;
+        
+        margin
+            jarak antara elemen satu dengan elemen yg lain, terletak di luar border
+            menggunakkan rumus margin:
+            margin bisa dikettikan dengan  
+                margin-top : 10px;
+                margin-right : 10px;
+                margin-left : 10px;
+                margin-bottom  : 10px;
+
+            terdapat shorthand untuk mempermudah pengetikkan
+            margin  : 10px 10px 10px 10px;
+            atau margin : 10px 15 px; artinya 10 px atas bawah, 15px kiri kanan
+
+            Margin bersifat collapsed, yang artinya dapat menumpuk jika terdapat dua margin yang saling bertumpukkan.
+
+        Centering content
+            jika ingin membuat konten berada di tengah, margin kanan atau kiri bisa diletakkn auto. Dan harus membuat kotak terlebih dahulu
+            agar tidak memakan semua tempat di browser
+            .box {
+                width: 50%;
+                border: 4px solid darkblue;
+                padding: 20px;
+                margin-bottom: 20px;
+                margin : 0 auto;
+                }
+
+Display Role
+    Di dalam html, ada 2 tipe elemen, inline element and block element
+        Inline element
+            elemen html tidak menambahkan baris baru
+            nilai lebar dan tinggi hanya sebesar konten yang diketik, tidak bisa berubah
+            margin dan padding hanya mempengaruhi elemen secara horizontal, bukan vertikal
+
+        Block element
+            element html menambahkan baris baru
+            Jika tidak diatur lebarnya, lebar dari elemen block akan memenuhi lebar dari browser atau elemen yang menaunginya.
+            dapat mengatur dimensi dari block element
+            dapat menyimpan elemen html yg lain
+
+        nah, kita bisa mengubah inline menjadi block atau sebaliknya, dengan properti display:
+        display : inline; mengubah block element menjadi inline;
+        display : block; mengubah inline element menjadi block;
+        display : block-inline; mengubah elemen block tidak menambahkan baris baru ketika dibuat
+        display : none; menghilangkan element
+
+        properti ini banyak digunakan untuk navigasi
+        dengan 
+        li {
+            display: inline;
+            margin-left : 5 px;
+        }
+
+Box Shadow 
+    Menambahkan drop shadow pada box (tidak termasuk margin), dengan propetery box-shadow;
+    nilainya sama seperti text shadow
+        harus memberikan 4 nilai, karena menentukan dari :
+        nilai ke 1: menunjukkan jauh kiri kanan bayangan ditampilkan
+        nilai ke 2: menunjukkkan jarak atas bawah bayangan ditampilkan
+        nilai ke 3: menentukan nilai keburaman bayangan
+        nilai ke 4: warna bayangan
+        p{ box-shadow: 2px 2px 0px #000000;}
+
+Rounded Corner 
+    membuat rounded corner dengan menggunakkan properti border-radius, nilai menggunakkan px dan mempengaruhi tingkat kelengkungan 
+    harus membuat boxnya terlebih dahulu
+    box {
+        width : 300px;
+        padding : 20px;
+        border: 4px red;
+
+        border-radius:10px;
+    }
+    bisa diatur dengan Cara
+    .rounded {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 10px;
+    }
+
+    shorhand dengan Cara
+    . round { 
+        border-radius : 5px 10px 5px 10px;
+    }
+
+FUN FACT : supaya gambar ditampilkan dengan ukuran yang imbang. 
+Solusinya, kita tambahkan properti object-fit: cover dan object-position: center pada gambar yg witdhnya 100% dan max-heightnya 300px
+
+FUN FACT : bila kita membuat nav list dengan bullet, bisa mengugnakkan list-style-type: none;
+sehingga bullet hilang
+
+Positioning 
+    cara mengubah posisi dari suatu elemen menggunakkan margin, tapi terkadang malah mengubah total posisi elemen yg lain, maka dari itu menggunakkan Positioning
+    nilai dari property positioning ada 4
+        normal flow : default position yang dimiliki oleh suatu elemen. elemen akan ditampilkan di bawah baris baru ketika dibuat, walaupun disampingnya ada tempat
+        relative positioning : posisi elemen dapat ditaruh di atas kanan bawah kiri dan tidak mengganggu elemen yg lain karena dipindahkan dari normal flow
+        absolute positioning : hampir sama dengan relative positioning, hanya saja posisinya relatif terhadap jendela browser ataupun induk elemen
+        fixed positioning : merupakan absolute positioning, namun posisinya selalu relatif pada jendela browser, bahkan ketika discroll atas bawah
+        
+    Static Flow dan Non-Static Flow
+    Static Flow : posisi elemen akan tetap, dan ketika suatu elemen akan digeser, maka elemen yg ada di sekitarnya akan ikut berpindah
+    tapi, dengan non-static flow (relative positioning), maka posisi akan berubah menjadi di atasnya, karena static tidak akan bisa diganggu
+    position : relative;
+
+    lalu, posisi bisa berubah jika kita gunakan non-static flow. dengan property top, right, bottom, left. yaitu relative, absolute, fixed
+    normal/static flow adalah default posititon
+
+    relative positioning, dapat diatur posisiny dan propertinya dengan position : relative;
+
+    absolute positioning, sama dengan relative positioning
+        hanya saja, elemen dengan absolute tidak dianggap ada oleh normal flow. 
+        Sehingga, lokasi awal elemen yang diberikan nilai absolute akan ditempati oleh elemen di bawahnya
+        maka, kalau absolute ditaruh, pasti bisa menumpuk dengan elemen lain
+
+    fixed positioning 
+        sama seperti absolute positioning, tapi posisinya akan benar-benar tetap (fixed). Bahkan ketika discroll
+
+Floating 
+    properti float membuat suatu elemen melayang di sebelah kiri atau kanan. Bahkan jika ada elemen inline, memungkinkan untuk mengelilingi elemen tersebut
+    Float banyak digunakan untuk membuat layout website untuk multiple column
+    properti float hanya mnggunakkan left dan right 
+    float : left;
+
+    jangan lupa untuk menyetting width persen agar bisa dibagi posisinya
+
+    lalu, kalau misalkan ada lebih dari 2 kolom? semua tinggal disetting 
+    float :  left;
+    width : 100% dibagi berapa kolom
+
+    namun, float menimbulkan permasalahan
+        jika sebuah elemen induk hanya memiliki satu elemen dengan menerapkan properti float, akan memiliki tinggi nilai 0px
+        karena suatu elemen yg menggunakkan float akan dianggap tidak atas (melayang), sama seperti absolute positioning
+    
+    cara mengatasi hal tersebut adalah dengan properti clear dan menetapkan nilai overflow : auto
+
+    Properti clear 
+        digunakan agar elemen yg menggunakkan float agar dianggap ada kembali, dan cara menggunakkannya.. harus ada <div> yg kosong
+        <div class ="clear"></div>
+        dan value dari clear harus mengikuti dari value float
+        bisa menggunakkan value left, right, both
+
+    Overflow:auto
+        cara kedua selain menggunakkan properti: clear; dan lebih praktis
+        overflow dapat diletakkan pada div yang ditampung oleh elemen yg menggunakkan float
+
+Konfigurasi Meta Tag Viewport untuk responsibiltias layout
+    agar terlihat sama" bagus di mobile, ktia harus setting juga untuk mobile
+    di chrome, terdapat yg namanya inspect element. Cara mengaksesnya dengan CTRL+SHIFT+I atau klik kanan lalu pilih inspect terus inspect element
+    disitu, cari yg ada gambar hp lalu kita bisa pilih, mau menampilkan opsi hp apabila
+
+    karena setting an laptop dan hp berbeda, maka menggunakkan Viewport
+    dengan cara mengetikkan   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    atau di VCS, bisa mengetikkan !, maka akan auto muncul
+
+Specific Style dengan Media Query
+    walaupun dengan <meta name "viewport">, tetap ada masalaj, yaitu <aside> dan <footer> tidak bisa terlihat dengan jelas
+    @media media-type and (media-feature-rule) {
+    }
+    yg dimana 
+    media type : jenis media yg dijadikan acuan bagi browser untuk menerapkan kode styling, bisa print, screen 
+    media-feature-rule : aturan atau kondisi yg harus dilakukan agar perintah dari css dapat terpenuhi
+    media-block :  rule css yang akan dilaksanakan jika kedua poin terpenuhi
+
+    @media screen and (min-width: 400px) {
+    h1 {
+    color: red;
+    }
+
+    h2 {
+    color: green;
+    }
+}
+
+    modelnya sama seperti if, if in width : 400px, maka berubah warna (400px akan berubah jika viewport di atas 600px)
+    dan sebenarnya kita juga harus nyetting lagi untuk membuat versi mobile
+    
+    saran, supaya lebih enak untuk hp, bisa menggunakkan
+    @media screen and (max width : 1000px){
+        #content, aside {
+            width:100%;
+            padding : 0;
+        }
+    }
+    maka, element akan memenuhi layar dan antar jaraknya 0
+
+Sticky position untuk nav
+    cara agar nav bisa ikut ketika kita scroll, bisa     
+    dengan cara menuliskan
+    position : sticky;
+    top : 0;
+
+    lalu, header (
+        display : inline;
+    )
+
+Untuk mengecek apakah css nya valid atau bukan, bisa menggunakkan web online, linknya adalaj
+https://jigsaw.w3.org/css-validator/#validate_by_uri
+https://codebeautify.org/cssvalidate
+http://csslint.net/
+
+CSS perlu dipersingkat juga agar web bisa berjalan dengan cepat dan lancar
+bisa dengan cara menghapus spasi, baris baru, pembatas block, komentar css
+atau pake link
+https://cssnano.co/playground/
+https://cssminifier.com/
+https://www.minifier.org/

@@ -1,0 +1,179 @@
+Super() #Python
+    fungsi dalam python yg bisa memanggil constructor, variabel, method dari super class
+    Superclass dan subclass bisa memiliki nama method dan variabel yg sama, kadang ada beberapa skenario kita harus menggunakkan keduanya
+    Maka, super() digunakan untuk memanggil method dari superclass
+
+Polimorph
+    Poli = banyak, Morph = bentuk
+    Proses merepresentasikan 'satu bentuk ke banyak bentuk'
+    cth : Seorang laki bisa menjadi ayah, anak, pekerja, pemimpin
+
+    Bentuk Polymorph terdapat pada Overriding dan Overloading
+        Overriding 
+            fitur dalam subclass untuk mengganti spesifik implementasi dari suatu method yang disediakan oleh super class 
+            Ketika method dalam subclass memiliki nama,parameter,tipe pengembalian (return) yg sama dengan superclass, 
+                maka, method tersebut dikatakan Overriding (menimpa) method dalam super class
+    
+            1. Mengimplementasi 'runtime polymorphism'
+            2. Method dipanggil ditentukan saat runtime berdasarkan tipe object
+            3. Terjadi antara superclass dan subclass
+            4. Memiliki nama dan signature yg sama
+            5. Jika error, terlihat pada saat runtime (ketika program dijalankan)
+        Overloading 
+            fitur dalam subclass yg memungkinkan method memiliki nama yg sama tetapi signature yg berbeda (signature adalah input parameter)
+                signature yg berbeda bisa dari jumlah parameter yg masuk, tipe parameter yg masuk (return tidak termasuk dalam signature)
+
+            1. Mengimplementasi 'compile time polymorphism'
+            2. Method dipanggil ditentukan saat compiling
+            3. Terjadi antara method dalamm class yang sama
+            4. Memiliki nama yg sama, tetapi signature yg berbeda
+            5. Jika error, terlihat pada saat compiling
+
+    Overloading pada Python terbagi menjadi 3
+        1. Operator Overloading (Java tidak mendukung ini)
+            Jika kita ingin menggunakkan operator yg sama untuk tujuan yg berbeda
+            cthnya : + dan *, bisa digunakan pada int, string, list
+                print(10+20) = 30
+                print("Python" + "Programming") = PythonProgramming
+                print([1,2,3] + [4,5,6]) = [1,2,3,4,5,6]
+        2. Method Overloading
+            2 method dengan nama yang sama, tetapi berbeda signature 
+            Python tidak memungkinkan terjadinya method overloading, karena akan memilih method paling terakhir
+            cth :
+                public int add(int a, int b){
+                    return a + b;
+                }
+                public int add(int a,int b,int c){
+                    return a + b + c;
+                }
+        3. Constructor Overloading
+            2 constructor untuk class yang sama, tetapi berbeda signature 
+            Python tidak memungkinkan terjadinya constructor overloading, karena akan memilih method paling terakhir
+
+    Overriding mengacu pada proses pengimplementasian kembali method yg ada pada super class di sub class
+
+Abstract 
+    class yang berisi satu/lebih method abstract
+    method abstract adalah method yang didefinisikan tetapi tidak diimplementasikan 
+
+    Method pada python terbagi menjadi 2 
+        Implemented Method 
+            Method yg memiliki nama,isi dan disbut method yang diimplementasikan
+            bisa juga disebut method konkrit/method non abstract
+        Un-Implemented Method
+            Method yg memiliki nama, tetapi tidak memiliki isi dan disbut method yang tidak diimplementasikan
+            bisa juga disebut method non konkrit/method abstract
+
+    Kita dapat membuat class abstract dengan package abc 
+        cth: 
+            from abc import *
+                class Demo1(ABC):
+                    @abstract method
+                    def m1(self):
+                        pass
+                    def m2(self):
+                        print("Implemented Method")
+        untuk java 
+            abstract class Demo1{
+                abstract public void m1();
+                public void m2(){
+                    System.out.println("Implemented Method");
+                }
+            }
+    Class abstract dapat berisi constructor, variable, method abstract, method non-abstract, subclass
+    Method abstract harus dan hanya diimplementasikan pada subclass
+    Jika subclass tidak mengimplementasi method abstract, maka subclass tersebut menjadi class abstract
+        sehingga, subclass harus mengimplementasi method abstract
+    Class abstract tidak dapat membuat object 
+        tapi, kita bisa membuat object dari subclass suatu class abstract
+    cth :
+        abstract class Shape{
+            int Sides;
+            abstract void countPerimeter();
+            abstract void countArea();
+        }
+
+Interface
+    Interface dapat memiliki method dan variable, tetapi method dalam interface secara default akan menjadi abstract
+    Interface menentukan apa yg harus dilakukan oleh suatu class, bukan bagaimana class bekerja
+        Bisa dikatakan sebagai blueprint dari suatu class
+    Interface adalah tentang kemampuan 
+        Andai ada class player, dan class player harus dapat mengimplementasikan move()
+        Maka, interface akan menjadi pengingat bahwa class player harus mengimplementasikan method move()
+    Jika suatu class mengimplementasi interface, tetapi tidak mengimplementasikan semua method dalam interface, maka class tersebut harus dinyatakan abstract (kalau tidak akan error)
+
+    Perbedaan class dan interface (java)
+    1. Class menggunakkan keyword class, sedangkan Interface menggunakkan keyword interface 
+    2. Class dapat membuat object, interface tidak dapat membuat object
+    3. Class tidak support multiple inheritance, tetapi interface support 
+    4. Bisa mewarisi method dari suatu class, interface tidak bisa mewarisi method dari suatu class
+    5. Cara untuk mewarisinya menggunakkan keyword 'extends', sedangkan interface mewarisi menggunakkan keyword 'implements' 
+    6. Class mengandung constructor, interface tidak bisa mengandung constructor
+    7. Class tidak bisa mengandung abstract method, interface mengndung abstract method saja
+    8. Variabel dan method pada class bisa dideklarasikan dengan access specifier apa saja (private, public, default, protected)
+          sedangkan interface akan otomatis mendeklarasikannya dengan public
+    9. Variabel pada class bisa dibuat static, final, atau bukan keduanya, sedangkan interface akan otomatis final dan static
+        static = variabel/method dimiliki oleh suatu class, sehingga tidak perlu membuat object 
+        final = variabel tidak dapat diubah""
+    
+    Interface pada Python 
+    Python secara default tidak memiliki kunci keyword untuk interface, tetapi tetap bisa diakali dengan menggunakkan abstract class yg hanya memiliki method abstract
+    Tapi, kita bisa menggunakkan package zope.interface
+    
+    zope.interface didefinisikan dan dipanggil 
+        Class ImyInterface(zope.interface.Interface): #sehingga, class akan menjadi subclass dari zope.interface 
+            @abstract method
+            def method1(): 
+            ... 
+
+    Perbandingan C#
+    using System;
+    namespace Learn{
+        public interface IEmployee{ #Interface dimulai dengan huruf I
+            string Name { get;}     #properties
+            double Salary { get; }  #properties
+            double Bonus();         #method
+        }
+
+        public class Employee : IEmployee{
+            private string _firName;
+            private string _lastName;
+            private double _salary;
+
+            public Employee(string firstName, string lastName, double salary){
+                this._firName = firstName;
+                this._lastName = lastName;
+                this._salary = salary;
+            }
+
+            public string Name => _firName + " " +  _lastName; #implementasi interface
+            public double Salary => _salary;                   #implementasi interface
+            public double Bonus() => .1 * Salary;              #implementasi interface
+            public override toString(){
+                return $"Name = {Name}, Salary = {Salary}, Bonus = {Bonus()}";
+            }
+        }
+    }
+
+    Perbandinga Java
+        interface iFather{
+            public static int mark = 100; #properties
+            int roll = 121;
+            public void disp();           #method
+        }
+        
+        interface iMother{
+            public mark = 200;
+            void add();
+        }
+        
+        class Son implements iFather, iMother{
+            int sum = iFather.mark + iMother.mark;
+            public void disp(){
+                System.out.println("Roll = " + iFather.roll);
+            }
+            public void add(){
+                System.out.println("Total Mark = " + sum);
+            }
+        }
+Interface biasanya digunakan untuk sifat"" dari suatu object (Subclass hanya bisa menerima inheritance dari 1 super class saja, tetapi untuk interface bisa banyak class)

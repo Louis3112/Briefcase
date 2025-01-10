@@ -1,0 +1,99 @@
+DNS (Domain Name Server) Server
+    Sistem yg menghubungkan URL dengan IP Address
+    Untuk mengakses internet/web, kita perlu mengetikkan IP yg ribet dan tidak mungkin dihafal atau diingat, sehingga digunakanlah DNS
+
+    NS (Name Server) yg memudahkan pengetikkan alamat IP, sehingga kita hanya perlu ingat nama Domainnya 
+        Lalu, DNS akan mentranslate domain tersebut menjadi IP Address
+    cth : Untuk mengakses google tinggal mengetikkan google.com, tanpa perlu mengetikkan 8.8.8.8 atau 172.217.0.142
+
+Fungsi DNS
+    1. Meminta info IP Address website berdasarkan nama domain 
+    2. Meminta info URL website berdasarkan IP Address yg dimasukkan
+
+Bagian DNS
+    Prinsip dasar kerja DNS adalah mencocokkan bagian komponen URL dengan bagian komponen IP
+        Sama seperti di perpustakaan, tiap buku memiliki DDS (Dewey Decimal System) yg terdiri atas judul buku, nama penulis, tahun buku 
+        Sehingga, bagian URL juga tersusun banyak dalam hierarki DNS 
+    Bagian DNS terdiri dari (belakang): 
+        1. Root level domain 
+            bagian tertinggi dari hierarki DNS (berwujud tanda titik (.)) di bagian belakang URL (dan tidak ditampilkan biasanya)
+        2. Top level domain (TLD)
+            ext bagian depan Root level domain 
+            Terdapat 2 jenis TLD
+                a. Generic Top Level Domain (GTLD)
+                    menjelaskan sifat institusi dari pemilik web 
+                    .com untuk commercial
+                    .edu untuk education
+                    .gov untuk government 
+                Country Code Top Level Domain (CCLTD)
+                    menjelaskan asal institusi dari pemilik web
+                    .id untuk indonesia
+                    .au untuk aussie
+                    .uk untuk UK 
+        3. Second level domain (SLD)
+            nama lain utk domain itu dan digunakan utk identitas insititusi itu sendiri 
+                cth : wikipedia, google
+        4. Third level domain/Subdomain 
+            bagian dari Main Domain yg berdiri sendiri
+                apabila main domain dianggap rumah, maka sub domain adalah ruangannya
+                cth : en. id
+        5. Hostname/Scheme
+            bagian yg mengawali URL dan menunjukkan suatu fungsi/protocol dari website
+                cth : https
+        cth: https://en.wikipedia.co.org.
+
+Cara kerja DNS 
+    Dimulai dari :
+    1. DNS Query 
+        istilah utk meminta info soal IP Address dan dimulai ketika mengetikkan url ke address bar
+        DNS Server mencari info di filehosts
+            jika tidak ada, maka server tetap berusaha mencari info yg ada dalam system (cache)
+        dan masih terbagi 3 jenis DNS Query
+        
+        a. Recursive Query
+            User memberi hostname yg dmn DNS Resolver hrus memberi jawaban dan ada 2 kemungkinan jawaban 
+                jawaban 1 : DNS menyediakan info relevan setelah mencari root server atau authoritative name server
+                jawaban 2 : Browser memberi pesan error karena info not found 
+        b. Iterative Query 
+            User memberi hostname yg dmn DNS Resolver akan mencari cache yg relevan di memori 
+                Jika gagal, DNS akan mencari info di root server dan authoritative name server yg paling dekat/relevan dengan DNS Zone
+        c. Non recursive Query
+            Proses pencarian tercepat, karena tidak perlu ke root server dan authoritative name server karena data ada dalam cache 
+        
+    2. DNS Recursor/DNS Recursive Resolver  
+        tahapan pertama pencarian info, ketika user memasukkan url dan tdak menemukan hasil di cache
+            sistem akan mencari info dalam cache ISP
+    
+    3. Root Name server
+        jika info yg tidak ada dalam cache ISP, sehingga sistem akan mencari info di root name server 
+        Root name server adalah DB yg menjawab pertanyaan soal nama domain dan IP Address, tapi terkadang tidak selalu tersedia
+        Tetapi, root name server bisa meneruskan req info ke server yg lebih besar
+        
+        Terdapat 13 root server yg bekerja dan diurutkan secara alphabet dari A sampai M
+            contohnya dikelola oleh organisasi Internet Systems Consortium, Verisign, ICANN, Univ of Maryland
+
+    4. TLD Name Server
+        Dalam root name server, sistem akan membaca jenis info dari TLD
+        Tiap TLD seperti .COM, .ORG, .EDU, .ID, .AU mempunyai letak servernya masing"
+            Sehingga, sistem bisa mncari info ke tempat server yg dicari
+    
+    5. Authoritative Name Server    
+        Setelah mendapatkan info/clue dimana server dicari, maka Authoritative addalah tujuan terakhir
+        Authoritative Name Server memiliki semua info yg dicari
+
+        Ketika info sudah ketemu, maka akan langsung ditampilkan oleh browser dan searching memiliki masa waktu tertentu
+        Proses searching diulang utk memastikan info tetap update dan beberapa data disimpan dalam cache agar query berjalan cepat
+
+Macam" DNS 
+    Info yg diminta user dalam Sistem DNS disebut DNS Record
+    Ada 10 jenis DNS Record
+        1. A Record (Address record) ─ menyimpan informasi soal hostname, time to live (TTL), untuk IPv4 Address.
+        2. AAAA Record - menyimpan informasi hostname untuk IPv6 address.
+        3. MX Record (Mail Exchange Record) ─ menunjukkan server email mana yang digunakan oleh domain untuk menerima email
+        4. CNAME Record (Canonical Name Record) ─  me-redirect domain atau subdomain suatu IP Address. Sehingga tidak perlu memperbarui DNS Record
+        5. NS Record (Name Server Record) ─ menunjukkan name server yang bertanggung jawab atas suatu domain atau subdomain, biasanya digunakan jika domain dan subdomain di-hosting di server berbeda.
+        6. PTR Record (Point Record) ─ kebalikan dari A Record, digunakan untuk menemukan nama domain dari alamat IP (reverse DNS lookup)
+        7. CERT Record ─ menyimpan sertifikat enkripsi atau sertifikat keamanan domain
+        8. SRV Record (Service Record) ─ menyimpan informasi terkait service domain seperti lokasi komunikasi, semacam Priority, Name, Weight, Port, Points, dan TTL
+        9. TXT Record (Text Record) ─ menyimpan data text yang hanya bisa dibaca oleh mesin
+        10. SOA Record (Start of Authority) ─ menyimpan info dasar DNS, seperti main server, email admin, data update domain

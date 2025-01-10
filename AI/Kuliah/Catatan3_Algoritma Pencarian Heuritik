@@ -1,0 +1,157 @@
+Alg. Pencarian Heuristik terbagi menjadi 5
+    1. Best First Search
+    2. A*
+    3. Hill Climbing 
+    4. Branch n Bound
+    5. Dynamic Programming 
+
+Alg. Pencarian memanfaatkan knowledge tambahan utk. mencari jalur terbaik
+    Fungsi Heuristik mencari estimasi jarak
+    Fungsi Heuristik menentukan suatu state lebih baik dri sblmnya
+
+Ada yg namanya Pencarian dgn Informasi (Informed Search)
+    Langkah":
+    1. Tambahkan info pada spesifik domain utk mencari jalur terbaik
+    2. Tentukan fungsi Heuristik h(n) untuk mencari "goodness" dri suatu node
+        h(n) = perkiraan minimal cost dari node n ke node tujuan
+        Shingga, fungsi Heuristik adalah pencarian perkiraan berdasarkan info spesifik domain yg dpt dihitung dri node n
+
+Fungsi Heuristik 1
+    h(n) memperkirakan cost terpendek dari node n ke node tujuan
+    5       8       1   2   3
+    4   2   1   ->  4   5   6       h(n) = jumlah tile yg tidak sesuai ada 6
+    7   3   6       7   8
+
+Fungsi Heuristik 2
+    3   2   8           3     ->     3
+    4   5   6   tetapi  ...   ...   ... membutuhkan 2 step
+    7   1               ...   ...   ...
+        
+        | Goal          ...    <-    8
+        v               ...     |   ... membutuhkan 3 step
+                        ...     8   ...
+    1   2   3           
+    4   5   6           1      <-   ...
+    7   8               ...     |   ... membutuhkan 3 step
+                        ...     1   ...
+    h(n) = 8 (karena untuk mencapai goal butuh 8 step)
+
+Sehingga, terdapat 2 fungsi 
+    5       8       1   2   3
+    4   2   1   ->  4   5   6   
+    7   3   6       7   8
+
+    h1(n) = 6 (ada 6 tile yg tidak sesuai)
+    h2(n) = 2 + 3 + 0 + 1 + 3 + 0 + 3 + 1 = 13 (jumlah total tile yg tidak sesuai)
+
+Dalam kasus nyata, cost sesungguhnya adalah panjang jalur sebenarnya yg di tempuh
+    Sehingga fungsi Heuristik adalah garis lurus dari 1 kota ke kota lain
+    sehingga rumus yg digunakan adalah 
+        dab = sqrt((yb - ya)^2 + (xb-xa)^2)
+    
+1. Best First Search 
+    Kombinasi dari DFS dan BFS
+    Pencarian ke node yg levelnya lebih rendah diperkenankan apabila ada node yg levelnya lebih tinggi memiliki h(n) lebih buruk
+    BestFS akan membangkitkan node berikutnya dari semua node yg pernah dibangkitkan 
+    BestFS terbagi menjadi 2
+        1. Greedy BestFS
+            Algorithm BestFS yg pling Sederhana
+            Hanya menghitung biaya perkiraan, f(n) = h'(n)
+            Karena hanya menghitung perkiraan, sehingga tdak Optimal
+2. Algorithm A* 
+            Algorithm yg pling banyak dipakai 
+            Menghitung node dengan menggabungkan g(n) dan h(n), f(n) = g(n) + h(n)
+                f(n) = total cost perkiraan ke node n
+                g(n) = cost dri node asal ke node n
+                h(n) = cost perkiraan terdekat dari node n ke node tujuan
+    
+    Cth :
+    
+    n       Start   A      B     C      D       E      F     Goal     H     J     K      L     M
+   h'(n)    80      80     60    70     85      74     70    0        40    100   30     20    70
+    DISCLAIMER : h(n) tidak selalu menampilkan nilai yg tertera pada data, h(n) bisa jadi memiliki nilai di bawah data yg tertera 
+    Greedy BestFS hanya melihat dri node dengan jarak tersedikit
+        maka mengambil Start-B-K-Goal = 100 (dilihat dari h'n)         
+
+    Sedangkan untuk A*
+    n       Start   A      B     C      D       E      F     Goal     H     J     K      L     M
+   h'(n)    80      80     60    70     85      74     70    0        40    100   30     20    70
+   g(n)     0       10     25    30     35      10     25    100      60    30    65     95    70
+   f(n)     80      90     85    100    120     84     95    100      100   130   95     115   140
+   maka, jarak terdekatnya Start->A->B->F->K->Goal = 95
+
+    Fungsi Heuristik mengarahkan pencarian ke jalan yg lebih menjanjikan
+    Waktu utk menghitung fungsi Heuristik akan mendapat pencarian yg lebih baik
+    Menentukan node mana yg akan diperluas disebut meta-reasoning
+    Fungsi Heuristik tdk selalu terlihat seperti angka dan melibatkan knowledge lain
+
+    Kapan menggunakkan algoritma pencarian
+    Ruang pencarian kecil 
+        Tidak ada teknik lain yg tersedia 
+        Tidak sepadan untuk membuat teknik lain 
+    Ruang pencarian besar
+        Tidak ada teknik lain yg tersedia 
+        Terdapat Heuristik "good"
+
+3. Hill Climbing
+    Menyelesaikan masalah yang mempunyai banyak solusi
+    Ada solusi yg lebih baik daripada solusi lain 
+    Mirip dengan DFS, tapi pemilihan node disertai aturan 
+    cth : TSP (Travelling Salesman Problem)
+        - Salesman ingin mengunjungi n kota
+        - Jarak antar kota sudah diketahui
+        - Kita ingin mengunjungi kota lain tapi tidak boleh mengunjungi kota itu lgi (1x)
+        - Misal ada 4 kota
+
+               8
+        A_____________B
+        |             |
+      7 |             | 5
+        |             |
+        C_____________D
+               6
+        A - D = 3, B - C = 4
+
+    Maka, solusi menyusunnya
+        A - B - C - D = 19
+        A - B - D - C = 18
+        A - C - B - D = 12
+        dst
+
+    Dalam Hill Climbing, kita bisa menukar posisi kota utk mengetahui rute terbaik 
+    Operator kombinasi digunakan untuk mengetahui banyaknya kombinasi apabila menukar urutan posisi 2 kota dalam 1 lintasan 
+        Jika ada n kota dan kita ingin menukar posisi 2 kota,
+        maka didapat rumus berikut 
+            n!/2! (n-2)! = 4!/2! (4-2)! = 6
+        sehingga ada 6 kombinasi untuk TSP
+    
+    Dari Hill Climbing, dapat dilihat mana kombinasi dengan cost tersedikit
+        dan hasil kombinasi dengan cost tersedikit adalah DBCA (12) 
+
+    Untuk Hill Climbing, jika state awal sama dengan state tujuan, maka proses terhenti
+        jika tidak sama, maka lanjutkan proses dengan membuat state awal sampai state terkini
+        Kerjakan langkah berikutnya sampai solusi ditemukan/tidak ada operator baru yg dapat digunakan 
+    Maka 
+        -Jika state baru adalah goal, maka proses berhenti
+        -Jika state baru bukan goal, tapi lebih baik dari state sekarang, maka state baru menjadi state sekarang 
+        -Jika state baru tidak lebih baik, maka lanjutkan 
+
+    Steepest Hill Climbing 
+        Mirip dengan Hill Climbing
+        Pada Steepest Hill Climbing, node pertama yg jaraknya terdekat dengan solusi yg dipilih 
+        Semua successor dibandingkan, dan solusi terdekat yg dipilih 
+            Sedangkan simple hill Climbing, hanya langsung mengambil nilai terdekat tanpa membandingkan semua successor
+        
+        Pada level pertama, Steepest Hill Climbing memilih nilai heuristik terbaik, sehingga diambil satu 
+        Pada level kedua, Steepest Hill Climbing berusaha mencari nilai heuristik lain, tapi karena tidak ada lagi, maka tetap nilai level 1 yg diambil
+
+        Hitung semua successor dan bandingkan dengan state sekarang
+            Jika ada nilai yg lebih baik, maka diambil state tersebut
+            Jika tidak ada nilai yg lebih baik, maka berhenti 
+
+    Kelebihan Hill Climbing
+        Butuh memori kecil
+        Menemukan solusi tanpa harus menguji yg lain
+    Kelemahan Hill Climbing
+        Mungkin terjebak pada local optimal
+        Perlu menentukan aturan yang tepat 

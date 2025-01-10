@@ -1,0 +1,38 @@
+Untuk memasukkan lorem ipsum, maka ketikkan lorem10
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, laboriosam.
+
+<hr> fungsinya untuk memberi garis (horizontal line), tidak perlu pakai </hr>
+
+<b>untuk bold</b>
+<i>untuk italic</i>
+<u>untuk underline</u>
+Dan bisa dikombinasikan dengan apa aja
+
+untuk memasukkan video, menggunakkan tag 
+<video>
+    <source src="rickroll.mp4" type="video/mp4">
+</video>
+
+src itu drimana dan type itu extension videonya apa,
+Dan tambahin controls, juga bisa atur panjang dan lebar
+
+<video controls width="100 px" height="100 px">
+    <source src="rickroll.mp4" type="video/mp4">
+</video>
+
+Lalu juga berlaku untuk audio
+<audio>
+    <source src="rickroll.mpeg" type="audio/mpeg">
+</audio>
+
+Kita juga bisa memasukkan video dari yt lgsg, dengan cara klik 3 titik di video, klik bagikan, klik sematkan dan copas
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ifJfaZejj8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+Jika ingin menampilkan detik atau menit yg diinginkan, maka ketikkan ?start= (1 menit dihitung 60 detik, maka ketikkan detiknya)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ifJfaZejj8w?start=120" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+ketika membuat tabel, ada juga yg disebut sebagai <th></th> atau table head, diletakkan untuk membuat judul tabel nya
+
+Ada juga yg dinamakan cellspacing, cellspacing fungsinya untuk menebalkan table
+cellspacing="3px"
+
+Funfact, kalau menulis tag html dengan <i> <b> <u> memasak <u> <b> <i>, maka harus urut. Yg disebutkan pertama harus yg paling terakhir (alfa dan omega)

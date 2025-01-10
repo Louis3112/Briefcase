@@ -1,0 +1,47 @@
+DHCP (Dynamic Configuration Protocol)       
+    Protocol yg memberi IP otomatis kepada komputer yg req
+    Komputer yg memberi IP disebut DHCP Server
+    Komputer yg menerima IP disebut DHCP Client 
+    Sehingga, admin tidak perlu memberi IP manual kepada client saat konfigurasi TCP/IP, tpi memberi referensi ke DHCP Server
+
+    Saat DHCP Client hidup, Client otomatis melakukan req IP kepada DHCP Server
+        DHCP Server me respond dengan meminjamkan IP, subnet, dan gateway yg ada di database
+        DHCP Server juga mencoret nomor IP tersebut dari daftar pool 
+        Jika semua IP sudah dibagikan oleh server, maka client lain tidak dapat tersambung ke network tersebut
+    
+    Setelah period waktu tertentu, pemakaian DHCP Client sudah selesai sehingga nomor IP dikembalikan ke Server 
+        DHCP Server akan memberikan kepada DHCP Client lain yg membutuhkan
+        Lama periode dapat ditentukan dalam menit, jam, hari, dst. Periode ini disebut leased period
+    
+Cara kerja DHCP 
+    DHCP ada 4 proses utk memberi IP 
+        Jika client memiliki NIC (Network Interface Card) lebih dari 1 dan butuh IP lagi, maka proses nya dijalankan sesuai adaptor masing"
+    
+    1. DHCP Discover    (DHCP Client ----> DHCP Server)
+        Client meminta IP ke Server (Broadcast mencari DHCP Server)
+    2. DHCP Offer       (DHCP Client <---- DHCP Server)
+        Server yg mempunyai IP akan memberi offer ke client 
+            jika server lebih dari 1, maka server lain juga memberi offer
+    3. DHCP Req         (DHCP Clint ----> DHCP Server)
+        Client menerima offer yg pertama kasli masuk dan setuju lalu melakukan broadcast untuk melakukan req IP 
+    4. DHCP Acknowledgement (DHCP Client <---- DHCP Server)
+        Server memberi respond berupa nomor IP dan info lain ke client dengan ACKnowledgement
+        Lalu client akan melakukan inisialisasi dengan binding nomor IP tersevut
+            Jika ada server yg offerny ditolak, maka offernya ditarik lagi 
+
+Kelebihan DHCP Server
+    1. Memudahkan transfer data ke PC Client atau PC server
+    2. Menyediakan IP yg dinamik karena didesain utk network besar dan konfigurasi TCP/IP yg kompleks
+    3. Memungkinkan penggunaan IP yg reusable apabila ada client yg tidak menggunakannya
+    4. Memungkinkan client menggunakan  alamat IP untuk periode tertentu
+    5. Memberikan satu alamat IP dan parameter-parameter konfigurasi lainnya kepada client
+
+Kekurangan DHCP
+    Jika DHCP Server mati, maka DHCP Client tidak akan terhubung dengan jaringan manapun
+
+Metode dalam konfigurasi DHCP
+    1. Konfigurasi Secara Random (Dynamic) 
+        DHCP Server memberikan alamat IP secara otomatis kepadaclient dari rentang alamat yang telah ditentukan
+    
+    2. Konfigurasi dengan Alamat IP Tetap (Fixed)
+        DHCP Server memberikan alamat IP yang fixed kepada perangkat berdasarkan MAC address perangkat tersebut

@@ -1,0 +1,66 @@
+Ergonomi Antarmuka (Interface Ergonomics)
+    Pengantar 
+        Ilmu yg berfokus pada penyesuaian alat, environment agar lebih sesuai dengan kebutuhan fisik dan psiko manusia
+    Tujuan 
+        1. Kenyamanan dan efisiensi dlm interaksi dengan komputer
+        2. Meminimalisir kelelahan dan cedera
+        3. Meningkatkan produktivitas dan exp 
+    
+    Pentingnya ergonomi dalam interface design 
+        1. Pengaruh pada UX 
+            UI yg ergonomis memudahkan user utk berinteraksi, memahami, dan menyelesaikan tugas dengan mudah
+        2. Menghindari cedera fisik     
+            menghindari cedera mata, pergelangan tangan, kaki 
+        3. Efisiensi dan kepuasaan user 
+            User dapat menyelesaikan tugas lebih cepat dan mudah karena UI yg ergonomis
+  
+    Prinsip dasar ergonomi interface 
+        Konsistensi (Consistency)
+            Design yg konsisten akan memudahkan user mempelajari UI
+            Penggunaan elemen design yg sama dan berulang (warna, logo, icon) dlm interface
+                cth : menggunakkan warna yg sama utk tombol aksi yg sama 
+                manfaat : memudahkan user utk mempelajari interface dan navigasi 
+        Keterbacaan (Readability)
+            Teks dan elemen yg mudah dibaca 
+                1. Pastikan ukuran font tidak terlalu kecil 
+                2. Warna teks yg kontras dengan latar belakang 
+                3. Jenis font yg memudahkan pembacaan dan estetik (font sans-serif)
+        Aksesibilitas (Accessbility)
+            UI bisa diakses oleh semua org, trmsuk disabilitas
+                Mengakomodasi utk disabilitass
+                    Teks alternatif pada gambar agar bisa diliat oleh user dengan gangguan pengliatan 
+                    Ukuran tombol yg cukup agar mempermudah user dengan gangguan motorik 
+                    Tambahan mode malam agar mencegah kelelahan mata
+                Manfaat : semua user bisa mengakses UI dengan mudah
+        Feedback dan respon sistem (System feedback)    
+            Sistem memberi feedback (tanggapan/respon) setelah user melakukan aksi 
+                cth : Warna tombol berubah saat diklik 
+                      Loading bar yg menunjukkan proses 
+                      Notif jika ada tindakan sukses atau gagal
+                Manfaat : menginformasikan status/hasil tindakan user sehingga tidak bikin bingung
+            
+    Prinsip ergonomi fisik dalam design 
+        Posisi duduk 
+            Posisi ergonomis dengan sandaran dan kaki menapak tanah 
+        Jarak pandang 
+            jarak ideal mata dengan layar 50-70 cm 
+        Utk pengguna desktop, monitor sejajar mata dan ada kursi dengan sandaran punggung 
+        Utk pengguna mobile, gunakan pada posisi nyaman dan hindari terlalu dekat dengan mata
+
+    Warna dan Kontras dalam desain ergonomis 
+        Prinsip warna yg nyaman
+            hindari warna" yg mencolok mata 
+        Kontras yg tinggi antara bg dan teks 
+            cth : teks hitam pada layar putih/abu"
+    
+    Ergonomi input dan interaksi 
+        pemilihan alat input yg sesuai dengan kebutuhan user 
+            keyboard    : utk pengetikan panjang 
+            mouse       : utk navigasi cepat dan akurat
+            touchscreen : utk kemudahan dan interaksi lgsg, namun kurang utk tugas lama 
+            input voice : utk alternatif hands-free interaction 
+
+   Navigasi yg efektif dan ergonomis
+        Sederhana dan mudah dijangkau, sehingga tdak perlu banyak klik pada navigasi utama 
+        cth : desain UI yg minimalis dengan tombol utama yg jelas terlihat 
+        manfaat : mengurangi kebingungan user dan mempercepat pencarian info 

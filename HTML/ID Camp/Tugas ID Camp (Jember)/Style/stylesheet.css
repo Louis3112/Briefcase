@@ -45,7 +45,7 @@ header.navbar .list li a {
  
 header.navbar .list li:hover a {
   background-color: #822bb2;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 header.navbar .list li:active a {

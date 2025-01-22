@@ -1,15 +1,113 @@
-RAG (Retrieveal Augmented Generation)
+RAG (Retrieval Augmented Generation)
 Bisa membuat personal assistance yg bisa menjawab pertanyaan dari document/data
 
-LLM  (Large Language Model)
+LLM (Large Language Model)
 LLM dapat digunakan dalam banyak kasus
 
-tetapi LLMM memiliki masalah (Grounding Problem/Hallucinations)
+tetapi LLM memiliki masalah (Grounding Problem/Hallucinations)
     mereka hanya mengerti info 
-        dari data yg sudah di ltih 
-        dari apa yg ada di prompt 
-    LLM tidak bisa mencari info diluar dar data mereka 
-    cth : Ditanya apa itu Louis, mereka akan hanya menampilkan data fiksi atau data yg berbeda yg kita cari 
+        dari data yg sudah di latih 
+        dari input yg ada di prompt 
+    LLM tidak bisa mencari info diluar dari data mereka 
+    cth : Ditanya apa itu Louis, mereka akan hanya menampilkan data fiksi atau data yg tidak sesaui ekspetasi kita (Halusinasi)
 
+Sehingga, LLM tanpa RAG :  Halusinasi, Info yg diberikan adalah info lawas, bukan data yg diinginkan
+          LLM dengan RAG : Berakar pada sumber data, selalu update, bisa menggunakkan data saya atau data publik
 
-AIzaSyDYZ54CZu9oxRaM6IFsaCg9eUMxeYXVrqM
+R -> Retrieval (dicari data yang relevan)
+A -> Augmented (sesuai konteks prompt)
+G -> Generation (digunakan untuk generative AI)
+
+Cara solusi lain tanpa RAG (Useless)
+1. (Full) Fine-Tuning
+    LLM ditrain dengan Fine-Tuning untuk diajarkan data yang kita inginkan
+    
+    Kelemahan : 
+        Butuh effort untuk persiapan data
+        Mahal
+        Perlu online learning/ menambahkan data baru 
+        Blm tentu bekerja secara maksimal
+
+2. Tenaga manusia
+    Ada manusia diantara interaksi user dan LLM 
+
+    Kelemahan : 
+        Sangat terbatas dan mahal
+        Manusia tidak bisa diandalkan dan tidak selalu stand by
+
+3. Prompt Engineering
+    Menambahkan data baru agar LLM mengeluarkan output yang sesuai
+ 
+    Kelemahan : 
+       Sangat bergantung pada apa yang diajarkan LLM
+       Adanya token limit pada LLM 
+       Berkurangnya performa, latency dan biaya 
+
+Cara kerja RAG                                                                                                      Text Generation
+    Input Prompt ------------> Retriever (BM25, encoder, vector search) ------------------------------------------> Generator (LLM) --------------------> Output
+                                akan melakukan pencarian info trhadap      Information Retrieval (IR) System      akan diranking mana 
+                                    External Knowledge (Internet)                                               jawaban yg paling mendekati
+
+Terkadang 
+    LLM tidak tau jaaban pasti/ domain spesifik dari data kita 
+    LLM tidak punya info real time 
+    LLM akan kesulitan untuk mencari sitasi yg akurat dri data yg dimiliki
+Solusi 
+    Berikan input prompt yg relevan dengan konteks pada LLM secara real time, dengan IR System 
+
+    cth : 
+        "You are an intelligent assistant helping the users with their questions on ({company | research papers|..})."
+        "STRICTLY USE ONLY the folloing pieces of context to answer. Think step-by-step and answer"
+        "If the answer cannot be determined from the context, say 'I Cannot determine the answer to that'"
+        "If the context is empty, just say 'I do not know the answer to that'"
+        "Context : {Retrieved_Info}"
+        "Question : {Question}"
+
+Kapan penggunaan RAG?
+1. Question and Answering 
+    Semantic search untuk mensimpulkan jawaban dari document atau data yg ada
+    Bisa digunakan untuk memecah pertanyaan kompleks, menggabungkan banyak sumber/referensi 
+2. ChatBot
+    ChatBot bisa menerima banyak jawaban dan query dri user, menerima klarifikasi dan menjawab pertanyan terus menerus 
+3. Agent 
+    Agent adalah mesin otomatis reasoning dan decision yang bisa menerima input dri user, sehingga bisa mengambil keputusan dari query tersebut 
+    Membutuhkan pemecahan pertanyaan kompleks, menggunakkan ext tools, planning tasks dan tasks yg sudah selesai sblmnya 
+
+RAG digunakan jika : 
+    1. Pengetahuan external dibutuhkan 
+    2. Meminimalisir halusinasi 
+    3. Data yg digunakan dynamic 
+    4. Dibutuhkan interpretasi (sehingga bisa dijelaskan dengan mudah)
+Fine-Tuning digunakan jika : 
+    1. Dibutuhkan adaptasi model
+    2. Adanya data yang perlu di training
+
+Kelebihan RAG 
+    1. Lebih cepat untuk update (data bisa ditambahkan secara langsung tanpa perlu train)
+    2. Lebih murah dan mudah (lebih murah dri fine tuning dan lebih mudah diimplementasikan)
+    3. Lebih mudah diatur (kita bisa mengatur respons dari LLM bergantung pada user yg mengakses, dengan mengatur akses kontrol dan penamaan)
+
+Proses jalannya RAG 
+1. Loading 
+    Meloading data yg dibutuhkan 
+2. Chunking
+    Membagi data menjadi banyak potongan (chunk) (Data Ingestion/Parsing)
+    Data dokumen dipecah menjadi banyak chunk, setiap chunk memiliki teks
+3. Embedding 
+    Proses merepresentasikan data ke dalam bentuk vector (angka) pada ruang dimensi tertentu 
+    Tujuannya adalah mengubah data kompleks seperti teks, gambar, suara ke format numerik yg bisa diproses komputer 
+
+    Data (10^4-10^6 dimension) ----> Deep Learning Models ----> Hasil (10^2-10^4)
+
+    Dalam teks, embedding digunakan utk merepresentasikan kata" sehingga kata" yg pnya makna mirip (kucing, anjing) punya vektor yg hmpir mirip
+    Dalam gambar, embedding menangkap fitur penting sprti bntuk dn warna
+
+    Pada konteks ini, tiap chunk diembedding 
+4. Storaging 
+    Tiap hasil embedding, disimpan ke vector database
+5. Retrieval 
+    Dilakukan pencarian jawaban dari input (query) user
+6. Answer Generation 
+    Pemberian jawaban dan kesimpulan dari hasil data yg ditemukan
+
+Semakin baik retrieval, semakin baik pula jawabannya 

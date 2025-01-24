@@ -1,0 +1,154 @@
+Alert 
+    method untuk menampilkan message kotak dialog error yg sudah ditentukan oleh programmer pada desktop
+
+Block Statement
+    sekumpulan statement yg dikelompokkan dalam tanda kurung kurawal ({}) utk dieksekusi bersama 
+
+Closure 
+    kombinasi dari func beserta lexical environment (struktur data JavaScript utk menyimpan variabel dan fungsi) yang dapat mengakses variabel di luar func tersebut
+    intinya, func yang dapat mengakses ke variabel di luar func itu sendiri, mskipun fungsi luarnya sudah dieksekusi
+    cth:
+        function counter() {
+        let count = 0; 
+        
+        return {
+            increment: function() {
+                count++;
+            return count;
+            },
+
+            decrement: function() {
+                count--;
+            return count;
+            },
+
+            getCount: function() {
+            return count;
+            }
+
+        };
+        }
+
+        const myCounter = counter();
+        console.log(myCounter.increment()); // Output: 1
+        console.log(myCounter.increment()); // Output: 2
+        console.log(myCounter.decrement()); // Output: 1
+        console.log(myCounter.getCount());  // Output: 1
+
+    sehingga, myCounter dapat mengakses func di dalam""nya 
+    Closure juga memungkinkan fungsi utk mengingat dan menggunakkan data yg sblmnya digunakan (jadi tidak perlu membuat variabel baru)
+
+Compiled language 
+    Bahasa pemrograman yang perlu dicompile dulu (C++, Java)
+
+Declarative Programming 
+    Pendekatan programming yg menekankan hasil akhir daripada proses atau langkah""  mencapainya 
+Document Object Model (DOM)
+    Struktur data yang memungkinkan JS utk mengakses dan memanipulasi elemen dalam HTML 
+
+ECMAScript 
+    Standar yg menjelaskan cara kerja JS dan spesifikasinya 
+Expression 
+    Statement yg menghasilkan nilai, sperti angka/operasi mtk
+    x = 1 + 5 (statement ini adalah expression)
+
+First Class Citizen 
+    Konsep dmn suatu entitas (func, variabel, object) dlm JavaScript dapat diperlakukan seperti nilai atau objek lain
+    1. Dapat disimpan dalam variabel
+        const sayHello = function() {
+            console.log("Hello");
+        }
+        sayHello(); // Hello
+
+    2. Dikirim sebagai argument
+        function greet(callback){
+            callback();
+        }
+
+        greet(function(){
+            console.log("Hello World");
+        }) // Hello World
+
+    3. Direturn ke func lain
+        function multiplier(x){
+            return function(y){ // sama seperti closure
+                return x * y;
+            };
+        }
+
+        const multiplyBy2 = multiplier(2);
+        console.log(multiplyBy2(5)); // 10
+
+Flow Control
+    Urutan bagaimana expression dan statement dijalankan oleh komputer berdasarkan kondisi dan logika tertentu
+
+Global Object
+    Objek yg tersedia secara global dlm runtime JavaScript, spt windows di browser dan process di Node.JS
+    sehingga, tidak perlu dideklarasi atau diimpor (bisa lgsg diakses saat itu juga, bawaan dri JavaScript)
+Global scope 
+    Ruang lingkup variabel yg tersedia di smua bagian coding, tidak terbatas func/block tertentu
+
+High-Level Language 
+    Bahasa pemrograman yg lebih mudah dipahami oleh manusia dan perlu dikonversi ke bahasa mesin untuk dieksekusi
+Hoisting 
+    Mekanisme JavaScript yg mengangkat (hoist) deklarasi variabel dan func ke atas scope sblm dieksekusi
+    cth :
+        console.log(a); // output : undefined
+        var a = 5;
+        console.log(a); // output : 5
+    
+    tapi, yg dieksekusi oleh program adalah 
+        var a;
+        console.log(a); // output : undefined
+        a = 5;
+        console.log(a); // output : 5
+    
+        sayHello(); // output : Hello World, sistemnya kayak prototype pada C++
+        function sayHello(){
+            console.log("Hello World"); 
+        }
+
+        tapi, untuk let dan const tidak dilakukan inisiasi, sehingga terjadi error (walau dihoisting, tpi tetap error)
+        console.log(b); // ReferenceError: Cannot access 'b' before initialization
+        let b = 20;
+        console.log(c);  // ReferenceError: Cannot access 'c' before initialization
+        const c = 30;
+
+Interpreter 
+    Program yang menerjemahkan dan menjalankan source code secara lgsg tanpa prlu dicompile (Python,JavaScript)
+
+Kompilasi (Compiled)
+    Proses menerjemahkan source code High Level Programming menjadi bahasa mesin yg dipahami komputer 
+
+Modularisasi
+    Teknik memecah source code menjadi bagian kecil"" agar lebih terstruktur dan jelas 
+
+Node.js 
+    Runtime environment utk menjalankan JavaScript di luar browser, sehingga bisa dikembangkan menjadi aplikasi server 
+Number 
+    Tipe data angka bulat atau pecahan pada JavaScript
+
+Object 
+    Struktur data yg menyimpan key dan value (kayak struct pada C++)
+    Key bisa berupa string 
+    Value bisa berupa tipe data lain (number, string, array, object)
+
+REPL (Read-Eval-Print-Loop)
+    Interactive environment yg melakukan read, eval, print secara lagnsung terhadap hasil kodingan JavaScript
+
+Scripting Language
+    Bahasa pemrograman yg diterjemahkan dan dijalankan secara langsung oleh Interpreter tanpa compile (JS, Python, PHP, Rust)
+Syntax
+    Aturan penulisan coding yg hrus diikuti agar program dapat berjalan 
+Syntactic Sugar 
+    Syntax yg dibuat utk mempermudah implementasi suatu konsep yg sudah ada sblmnya 
+Statement
+    Baris perintah yg akan dijalankan oleh komputer
+
+Template Literal 
+    Cara menulis string yg memungkinkan penyisipan expression menggunakkan tanda backtick atau notasi ${}
+Terminal 
+    Bagian OS utk menjalankan perintah dan program secara CLI
+
+Window 
+    Global Object di runtime envi Browser yg menyediakan akses ke elemen dan fitur browser lainnya.

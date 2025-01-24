@@ -1,0 +1,184 @@
+Programming adalah proses menyusun instruksi yg sistematis dan akan dieksekusi komputer
+    sama seperti manusia yg dapat diberikan instruksi, tapi objeknya adalah komputer dan harus sistematis
+
+Tingkat kompleksitas komputer berbanding lurus dengan jumlah instruksi.
+    Semakin kompleks, semakin banyak instruksinya
+
+Program tidak selamanya harus kompleks, kata" hello world saja sudah termasuk dalam program
+
+Instruksi yang diberikan pada komputer harus menggunakkan bahasa khusus, bahasa pemrograman 
+    Hasil kegiatan menulis kode ini disebut sebagai source code, source code tersebut akan diolah 
+    Alasannya agar komputer dapat memahami bahasa yang digunakan 
+
+    Source code/Bahasa pemrograman = High Level Programming Language
+    Bahasa Mesin  = Low Level Programming Language 
+
+Dalam proses perubahan bahasa (compiling), ada 2 mekanisme yg dapat dilakukan, atau istilahnya ada 2 jenis bahasa pemrograman
+    Compiled Language
+        Source Code -------------> Compiler --------------> Machine 
+                      Compiling                Executing
+        Source code perlu dicompile/diterjemahkan oleh compiler, sehingga dibaca oleh mesin
+        Tiap bahasa pemrograman, punya compiler yg berbeda"
+        cth : C++, Swift, Java
+
+    Scripting Language 
+        Source code --------------------------------> Machine 
+                    Converting n Executing each line
+        Source code tidak perlu dicompile/diterjemahkan, mesin dapat lgsg menjalankan karena ada interpreternya
+        Browser juga memiliki interpreter. Setiap aplikasi web, pasti menggunakkan JavaScript dan dapat dibaca lgsg oleh browser
+        cth : Python, JavaScript, PHP, Rust
+
+        Jika terjadi error, error lgsg ditampilkan saat runtime
+
+JavaScript adalah High Level Scripting Programming Language 
+    JS bnyk digunakan untuk aplikasi web, dengan bantuan HTML dan CSS
+        HTML sebagai pembentuk struktur halaman
+        CSS sebagai styling 
+
+    Tanpa JS, Website akan statis (tidak interaktif dan dinamis)
+        Website tidak bisa melakukan perubahan elemen, perubahan styling, mengatur HTML dan CSS, meminta data dari server
+    
+    Banyak aplikasi server, desktop, dan lainnya dibangun dengan JS 
+    Adanya runtime envi seperti node.js dan bun yang bisa membuat banyak aplikasi server, desktop, dll 
+    MongoDB juga menggunakkan JS untuk scripting language dan query 
+
+Sejarah JS
+    JS diciptakan thun 1995 oleh Brendan Eich dari perusahaan Netscape, tujuannya hanya utk membuat website lebih bagus 
+    JS tidak ada hubungannya dengan java, namanya digunakan utk tujuan marketing 
+    Awalny, namanya LiveScript 
+
+    JS kemudian distandarisasi oleh organisasi inter bernama European Computers Manufacturer Association (ECMA)
+    Hasil standarisasinya disebut ECMAscript 
+        Isinya adalah penjelasan bagaimana JS bekerja dan spesifikasinya
+        Harapannya agar semua plarform yg menggunakkan JS dapat mengikuti spesifikasinya 
+    JS adalah bahasa pemrogramannya
+    ECMAscript adalah standarisasinya 
+
+    Tahun 2000-2010, digunakan ECMAscript 3 utk JS yg tersedia saat itu 
+    ECMAScript 4 dihentikan thun 2008 karena projek yg terlalu ambisius dan banyak halangan (apabila bnyk yg berubah, akan mempengaruhi kinerja aplikasi broser)
+    ECMAScript 5 dibuat thun 2009, dengan mengurangi ambisi dan melakukan perubahan minor, tetapi tetap dibatalkan 
+    ECMAScript 6 dibuat thun 2015, dengan perubahan yg cukup besar, serta terdapat bbrp update dri ECMAScript 4 yg smpt dibatalkan  
+        sejak saat itu, tiap tahun ECMAScript ada perubahan minor
+
+    Dengan berkembangnya JS, browser dan aplikasi lain harus mengikuti perkembangannya juga 
+    Jika browser yg digunakan lama, bbrp fitur JS yg bru tidak dapat berjalan 
+        sehingga, developer harus bisa mengatur kompatibilitas agar JS dapat berjalan dengan baik 
+    Bahkan, JS blm tentu bisa mengaplikasikan perubahan baru dari ECMAScript (apabila ada upd bru)
+
+JavaScript Runtime Environment 
+    Tiap apli utk platform yg berbeda, menggunakkan bahasa pemrograman yg berbeda pula 
+        Andro = Kotlin 
+        ios = Swift 
+        web = JS
+        windows = C#
+
+    Tapi, JS skrg dpat digunakan utk banyak platform karena Runtime envi di luar browser
+
+    Runtime envi = tempat suatu program dijalankan
+        Runtime envi akan menentukan global object yg dpt diakses oleh JS 
+        
+    Ada 3 yg dibahas, Browser, Node.js, Bun 
+    
+    Browser
+        JS digunakan utk membuat website menjadi interaktif 
+
+        <!DOCTYPE html>
+        <html>
+            <body>
+                <h1>My Website</h1>
+
+                <script>
+                    window.alert('Hello World');
+                </script>
+            </body>
+        </html>
+        
+        (cara diatas disebut sebagai embedded javascript)
+        Maka, akan muncul alert "This page says "Hello World""
+
+        Alert dpt menampilkan browser alert karena window adalah global object
+        JS pada browser memiliki akses terhadap global object window
+        
+        window.document = developer dapat memanipulasi konten yg tampil di browser
+
+        Berkas eksternal JS
+            code program ditulis secara terpisah, sehingga ada 2 file (index.html dan index.js)
+
+            index.html
+            <!DOCTYPE html>
+            <html>
+                <body>
+                    <h1>My Website</h1>
+
+                    <script src ="index.js"> </script>
+                </body>
+            </html>
+
+            index.js
+                window.alert('Hello World');
+            
+            Pemisahan ini membuat program JS tdk tersambung dengan index.html, shingga perlu dilakukan import dengan src 
+
+        REPL 
+            Kita dapat menulis secara langsung program JS yg diinginkan pada console browser (disini tidak perlu ada index.js)
+            cara :
+            1. Pilih browser yg diinginkan dan buka index.html
+            2. Pada web yg sedang dibuka, klik kanan lalu buka Developer tools (pada chrome, klik inspect)
+            3. Lalu cari console
+            4. Ketikkan window.alert('Hello World');
+
+
+        Program yg dibuat pada browser disebut apli front-end/aplikasi client 
+        Jika ingin menggunakkan JS utk back-end, dapat menggunakkan node.js atau bun 
+
+    Node.js
+        runtime envi yg berbeda dri browser, global objectnya bukan window lgi, tapi adalah process
+        Node.js bisa mengakses file system, database, dll
+
+        kita dpt mengetahui OS yg digunakan dgn printah 
+        console.log(process.platform);
+
+        node.js perlu diinstall dan utk memanggilnya menggunakkan kata "node" pada terminal (diakses di terminal)
+
+        process adalah global obj yg berisi data" yg berelasi dengan file JS yg dieksekusi 
+
+        utk membuat program sederhana trsebut 
+        cat app.js (pada linux) (cat = concatenation, membaca/menapilkan file file)
+        console.log(process.platform);
+
+        node app.js (melakukan run pada app.js)
+        "linux"
+
+        type app.js (pada windows)
+        console.log(process.platform);
+
+        node app.js (melakukan run pada app.js)
+        "windows"
+
+        REPL
+            Kita juga bisa melakukan REPL pada node.js 
+            cara :
+            1. Buka terminal
+            2. Ketik node, maka node.js akan berjalan
+            3. ketikkan process.platform
+            4. maka muncul output
+        
+    Bun
+        alternatif runtime envi lainnya, Bun adalah javascript runtime envi yg berfokus pada kecepatan dan efisiensi, tapi tetap kompatibel dengan JS terbaru
+        Bun dapat digunakan pada windows, mac os, linux
+
+        Bun jga perlu diinstal terlebih dahulu , dan utk memanggilnya menggunakkan kata "bun" pada terminal
+        
+        utk menjalankan apli, bisa mengetikkan 
+        bun run app.js
+        
+        tpi, bisa dilakukan syntatic sugar dengan cara
+        bun app.js
+
+        REPL
+            Kita juga bisa melakukan REPL pada bun 
+            cara :
+            1. Buka terminal
+            2. Ketik bun repl, maka bun akan berjalan
+            3. ketikkan process.platform
+            4. maka muncul output

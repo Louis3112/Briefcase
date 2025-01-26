@@ -1,0 +1,33 @@
+API (Application Programming Interface)
+    Interface perantara antar sistem yg berbeda
+
+Command-Line 
+    Interaksi dengan OS melalui perintah teks 
+Content-Type
+    Label utk mengidentifikasi jenis konten/format file yg dikirim dari internet
+cURL  (Client URL)
+    Software Command-Line utk mengirim data dengan protokol internet (salah satunya HTTPS)
+
+Dependencies
+    Library yg dibutuhkan Software utk menjalankan suatu program
+Deploy
+    Aktivitas agar software dapat digunakan
+    Mendeploy suatu program dari development envi menjadi live production envi (sehingga bisa digunakan user)
+
+GCP (Google Cloud Platform)
+    Cloud computing yg disediakan Google 
+
+Instance 
+    Virtual Machine yg berjalan di atas cloud 
+
+Package
+    Folder dan directory yg dibutuhkan oleh suatu software
+Production 
+    Lingkungan/envi dmn program/software digunakan oleh end-user
+
+SSH (Secure Shell)  
+    Encrypted Network protocol utk mengoperasikan network services secara aman pada jaringan yg rawan (internet)
+    digunakan utk remote command-line
+
+Library 
+    Kumpulan fungsi/coding yg telah dibuat sblmnya dan digunakan utk tujuan tertentu

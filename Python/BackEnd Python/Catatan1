@@ -1,0 +1,315 @@
+Web App terdiri atas 2 bagian, 
+    Front-End 
+        Bagian depan/tampilan yg diakses dan digunakan oleh user 
+        org yg bekerja disebut Front-End Dev 
+            membuat web app, desktop app, mobile (native) app yg langsung digunakan oleh user 
+
+    Back-End 
+        Bagian belakang yang mengelola data dan logika dari suatu apli 
+        org yg bekerja disebut Back-End Dev
+            mengelola apli di sisi server, mulai dari API, database, dan cyber security
+            harus bisa mengauasai database, API, server, version control, dan security
+        bahasa yg digunakan adalah Python dengan Django, JS dengan Node.js, Go, Java, PHP
+        
+Web app erat kaitannya dengan server 
+    Server = program komputer (sistem) yg menyediakan data, service, program utk client
+        tugasnya melayani client
+        Satu server bisa melayani banyak client
+    Client = komputer/device yg mengonsumsi resource/service dri server 
+        tugasnya menerima resource dari server
+        Satu client bisa meminta banyak server 
+
+    Jenis-jenis server
+        Web Server
+            Komputer yg melayani req dari web protocol/HTTP 
+            memberi data sperti halaman web (HTML)/data dalam format lain   
+            sering digunakan utk pengembangan back-end 
+            cth : Apache dan Nginx
+        Mail Server
+            komputer/apli utk mengirim dan menerima email 
+        Database Server
+            komputer yg menyimpan kumpulan data" dan dapat diakses dimanapun 
+        DNS Server
+            komputer yg menerjemahkan domain name menjadi IP
+        masih ada proxy server,app server dan FTP server 
+    
+Utk berkomunikasi dengan web server, membutuhkan HTTP (Hypertext Transfer Protocol)
+    HTTP = protocol network utk berkomunikasi antara browser (client) dan server    
+    HTTP menggunakkan pola request-response
+    versi amannya adlah HTTPS
+    tapi, http tdk cukup utk melayani client, maka dibutuhkan web service 
+
+Web Service = program yg dijalankan di web server apli front-end dan back-end dapat bertukar data
+    web service juga digunakan pada apli/sistem yg berbeda tanpa memandang sumber datanya
+        tanpa memandang databasenya, bahasa yg digunakan dan platformm yg digunakan
+        sehingga, menjadi penghubung antar banyak sistem
+    
+    Web service juga memiliki arsitektur agar development tidak liar dan komunikasi antar client dan server lebih mudah 
+        salah satunya adalah REST (REpresentational State Transfer)
+    
+    REST digunakn karena pengembangannya cukup mudah dan menggunakkan HTTP (alias pola req-response)
+    REST memisahkan client dan server, sehingga keduanya tdk saling mengetahui dan terdampak     
+        artinya, ketika terjadi update di sisi client, maka tidak berdampak pada server
+
+    RESTful API
+        API yg menerapkan REST 
+        Kebanyakan API mengadopsi arsitektur REST 
+            istilah API juga tidak hanya berlaku utk web service, tapi juga berupa SDK (Software Development Kit)
+
+    Prinsip REST 
+        Client-Server 
+            Hal paling dasar yg dimiliki oleh RESTful API 
+            Server hrus bisa menerima req dan memberi resp kepada client 
+            Client hrus bisa memberi req dan menerima resp kepada server
+            Tidak peduli resp gagal/berhasil
+
+        Stateless
+            RESTful API tdk boleh menyimpan state (keadaan) apapun terkait client
+            Seluruh session disimpan oleh client dan tdk boleh ada session pada RESTful API 
+            Req yg dikirim oleh client harus jelas dan RESTful API tdk akan menyimpan info dari req sblmny
+        
+        Cacheable 
+            Agar dpt merespon req dengan cepat, RESTful API harus memiliki cache
+            shingga RESTful API tdk perlu mengambil resp dari database 
+        
+        Layerful 
+            RESTful API harus memiliki arsitektur yg kompleks dan jelas, client tdk perlu tau bagaimana sistem bekerja
+
+    REST juga memiliki tingkatan level yg disebut REST Maturity Model/Richardson Maturity Model (dikenalkan oleh Leonard Richardson)
+
+    ^    Glory of Rest
+    |    Level 3 : Hypermedia Controls
+    |    Level 2 : HTTP Verbs
+    |    Level 1 : Resources
+    |    Level 0 : The Swamp of POX
+
+        Intinya, RESTful API harus mencapai level 3, Hypermedia Controls
+            Hypermedia = konten yg berisi link ke media lain,sprt images, movie, text, link
+        Utk mencapai level 3, API harus mengirim resp berupa resources yg diminta dan harus mengembalikan link menuju resources lain/yg berhubungan
+        Level 3 juga disebut HATEOAS (Hypermedia as the Engine of Application State)
+
+        cth resp HATEOAS
+            {
+            "status": "success",
+            "message": "Catatan berhasil ditampilkan",
+            "data": {
+                "notes": [
+                {
+                    "id": 2,
+                    "title": "Catatan pertama saya",
+                    "body": "Ini adalah contoh catatan saya dalam perjalanan belajar Back-End dengan Django di Dicoding",
+                    "tags": [
+                    "Personal"
+                    ],
+                    "createdAt": "2024-09-18T10:34:52.595848Z",
+                    "updatedAt": "2024-09-18T10:34:52.595916Z",
+                    "links": [
+                    {
+                        "rel": "self",
+                        "href": "http://127.0.0.1:8000/notes/2/?format=json",
+                        "action": "GET",
+                        "types": [
+                        "application/json"
+                        ]
+                    },
+                    {
+                        "rel": "self",
+                        "href": "http://127.0.0.1:8000/notes/2/?format=json",
+                        "action": "PUT",
+                        "types": [
+                        "application/json"
+                        ]
+                    },
+                    {
+                        "rel": "self",
+                        "href": "http://127.0.0.1:8000/notes/2/?format=json",
+                        "action": "DELETE",
+                        "types": [
+                        "application/json"
+                        ]
+                    }
+                    ]
+                }
+                ]
+            }
+            }
+
+        Dlm resp tersebut, terdapat link menuju resource lain, seperti resources user.
+            dan terdapat resources lain, seperti detail pada atribut URL4
+        Sblm membuat RESTful API, kita harus memahami HTTP Methods, HTTP Req dan Resp, dan URL Design
+    
+Utk melakukan pola req-resp, client terlebih dahulu yg melakukan req, lalu req akan diproses oleh server, dan akan dikirim resp sesuai dengan req user
+    cth :
+    Pelanggan -------------------> Pelayan ----------------------------> Barista 
+                mereq kopi                  melakukan req membuat kopi
+              <------------------           <---------------------------
+                menerima kopi               mengirim resp dalam bentuk kopi
+    jika req kurang/tidak jelas, maka server tidak bisa memproses req
+
+    Req minimal harus mengandung info seperti berikut
+        1. Req line = berisi method/verb, path/alamat yg diminta, dan versi HTTP
+        2. Header = berisi info yg dilampirkan terkait req, sprti format doc (application/json, text/html), key access
+        3. Body (opsional) = berisi data yg dibutuhkan server, dalam bntuk teks, JSON. Tidak dibutuhkan bila server tdk membutuhkan data
+
+        POST /api/notes HTTP/1.1                    // req line, POST adalah method, /api/notes adalah path, 
+        Host: example.com                           // Header, Host = nama domain
+        Content-Type: application/json                         Content-type = format doc 
+        Authorization: Bearer your-access-token                Authorization = key access
+        Content-Length: 75                                     Panjang length dari body
+
+        {                                           // body 
+        "title": "Catatan Pertama Saya",
+        "body": "Ini adalah isi catatan.",
+        "tags": ["personal", "belajar"]
+        }
+    
+    Resp minimal harus mengandung info seperti berikut 
+        1. Status line = berisi versi HTTP; status code, reason phrase/status text yg merupakan pesan brdasarkan status code dlm bntk teks
+        2. Header = berisi info yg dilampirkan terkait resp, sprti format doc
+        3. Body (opsional, namun biasanya selalu ada) = berisi data yg dikirimkan oleh server, dalam bentuk teks, JSON, gambar, HTML
+
+        HTTP/1.1 200 OK                             // status line , HTTP/1.1 versi HTTP, 200 adalah status code, OK adalah reason pharse
+        Content-Type: application/json              // header, format doc
+        Content-Length: 87
+
+        {                                           // body
+        "status": "success",
+        "message": "Catatan berhasil dibuat",
+        "data": {
+            "id": 1,
+            "title": "Catatan Pertama Saya",
+            "body": "Ini adalah isi catatan.",
+            "tags": ["personal", "belajar"]
+        }
+        }
+    
+Format req dan resp pada RESTful API menggunakkan JSON, dulu" menggunakkan XML. Alasannya karena JSON lbih mudah dibaca dan efisien dlm transaksi data 
+    JSON (JavaScript Object Notation) menggunakkan key dan value 
+        Key memiliki tanda petik di antaranya 
+        Value biasanya random, bisa string, array, boolean, number, object
+    RESTful API selalu mmerespon dengan format JSON, sehingga jangan lupa utk menambahkan header dengan properti "Content-type" dan "application/json"  
+    JSON dapat digunakan oleh banyak bahasa pemrograman, tidak hanya JS saja 
+
+Cara melakukan http req bisa menggunakkan cURL (menggunakkan cmd)
+    1. buka cmd 
+    2. ketikkan curl -X GET https://coffee-api.dicoding.dev/coffees -i (ini adalah req)
+        curl utk mengakses program curl 
+        -X GET adalah HTTP method 
+        https://coffee-api.dicoding.dev/coffees adalah path (URL)
+        i utk menerima resp info detail mengenai path tersebut
+
+    3. maka akan menerima resp sbgi brikut 
+        HTTP/1.1 200 OK                                                                         // status line 
+        Server: nginx/1.18.0 (Ubuntu)                                                           // header 
+        Date: Tue, 27 Aug 2024 02:26:06 GMT
+        Content-Type: application/json; charset=utf-8
+        Content-Length: 188
+        Connection: keep-alive
+        content-security-policy: upgrade-insecure-requests
+        referrer-policy: strict-origin-when-cross-origin
+        x-frame-options: DENY
+        x-content-type-options: nosniff
+        x-xss-protection: 1; mode=block
+        vary: origin
+        access-control-expose-headers: WWW-Authenticate,Server-Authorization
+        cache-control: no-cache
+        accept-ranges: bytes
+        
+        {"message":"Berikut daftar kopi yang tersedia","coffees":[{"id":1,"name":"Kopi Tubruk","price":12000},{"id":2,"name":"Kopi Tarik",  "price":15000},{"id":3,"name":"Kopi Jawa","price":18000}]}
+
+        di atas adalah body
+    
+Protocol HTTP 
+    Req line memiliki HTTP method/verbs, HTTP Method adalah cara client utk mmemberitahu server apa yg hrus dilakukan dengan resource yg ada
+        GET = mendapat/menerima data
+        POST = menambah data
+        PUT = mengupdate data
+        PATCH = mengupdate sebagian data 
+        DELETE = menghapus data 
+
+    lalu, setiap resp HTTP (status line) pasti memiliki status code dan reason phrase
+        setiap status code dan reason phrase punya maknanya masing""
+
+        200 (OK)                        - Req client berhasil dijalankan oleh server 
+        201 (Created)                   - Server berhasil membuat/menambah resource dri req client 
+        400 (Bad Request)               - Req client gagal karena proses validasi input dri client gagal
+        401 (Unauthorized)              - Req client gagal karena client belum melakukan autentikasi (biasanya)
+        403 (Forbidden)                 - Req client gagal karena client tdk memiliki hak akses ke resource yg direq
+        404 (Not Found)                 - Req client gagal karena resource yg direq tidak ditemukan
+        500 (Internal Server error)     - Req client gagal karena server error (adanya exception)
+        503 (Service unavailable)       - Req client gagal karena server tdk dapat menangani req 
+    
+    status code yg tepat dapat meminimalisir kebingungan dan mempercepat debugging
+
+    contoh penerapan HTTP req 
+        1. buka cmd
+        2. ketikkan cURL -X POST -H "Content-Type: application/json" -d "{\"name\": \"Kopi Tubruk\"}" https://coffee-api.dicoding.dev/transactions -i
+            -X POST utk menambahkan data baru 
+            -H "Content-Type: application/json" utk menambahkan header 
+            -d " utk menambahkan data 
+            https utk menambahkn path (URL)
+            -i utk menerima info resp detail 
+
+        3. maka akan menerima resp sbgai berikut 
+
+            HTTP/1.1 201 Created
+            Server: nginx/1.18.0 (Ubuntu)
+            Date: Tue, 27 Aug 2024 04:05:31 GMT
+            Content-Type: application/json; charset=utf-8
+            Content-Length: 46
+            Connection: keep-alive
+            content-security-policy: upgrade-insecure-requests
+            referrer-policy: strict-origin-when-cross-origin
+            x-frame-options: DENY
+            x-content-type-options: nosniff
+            x-xss-protection: 1; mode=block
+            vary: origin
+            access-control-expose-headers: WWW-Authenticate,Server-Authorization
+            cache-control: no-cache
+            
+            {"message":"Pesanan berhasil!","success":true} 
+
+        Jika sebelumnya, kita mendapat status code 200, maka sekarang 201. Yang berarti, data yg baru saja di req utk ditambahkan
+            berhasil diterima oleh server
+
+URL (Uniform Resources Locator)
+    alamat resources yg ada di internet 
+    URL adalah salah satu cara utk mengambil resources yg digunakan melalui browser
+    URL terbentuk atas banyak bagian, ada yg wajib dan opsional
+        Wajib = scheme, nama domain, path 
+        Opsional = port, query parameter
+    
+    cth : https://www.dicoding.com/learningpaths/41
+        https = scheme
+        www.dicoding.com = domain name
+        learningpaths/41 = path
+
+    Resources diwakili oleh URL dan URL ditangani oleh web server. URL utk setiap resources berbeda tergantung dev web server
+    URL perlu nama dan desain yg sesuai dengan convention (aturan umum) RESTful API agar mudah diakses, yaitu 
+        1. Menggunakkan kata benda utk mewakili resources 
+            path url hrus menggunakkan kata benda (agar mempermudah pengaksesan)
+            karena, kata kerja (verb) telah dilakukan oleh HTTP Method/Verbs    
+
+            berikut adalah contoh penamaan yg kurang tepat 
+            https://example.com/getProducts             (menerima data semua products)
+            https://example.com/addProducts             (menambah data product)
+            https://example.com/getProducts/:id         (menerima data product sesuai id)
+            https://example.com/deleteProducts/:id      (menghapus data product sesuai id)
+
+            yg benar adalah
+            GET https://example.com/Products             (menerima data semua products)
+            ADD https://example.com/Products             (menambah data product)
+            GET https://example.com/Products/:id         (menerima data product sesuai id)
+            DELETE https://example.com/Products/:id      (menghapus data product sesuai id)
+            
+        2. Gunakan kata jamak pada endpoint utk resource collection
+            Kata jamak disarankan utk resources yg banyak (kecuali 1, gpp gunakan kata tunggal)
+            Dengan menggunakkan kata jamak, path yg ditulis akan konsisten dengan DB (DB memiliki lebih dri satu record)
+        
+        3. Gunakan tanda hubung utk endpoint yg memiliki lebih dari 1 kata 
+            https://www.example.com/categories/machine-learning/practices
+        
+        4. Jangan menambahkan ext file di URL
+            Menambahkan ext spti json, html, xml tdk akan berguna (dan makin memperpanjang url)
+
+    Walaupun tidak harus diikuti (karena tdk menyebabkan error), tetapi mempermudah kolaborasi dan pengembangan

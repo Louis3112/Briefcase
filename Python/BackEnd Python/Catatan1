@@ -81,7 +81,7 @@ Web Service = program yg dijalankan di web server apli front-end dan back-end da
     |    Level 3 : Hypermedia Controls
     |    Level 2 : HTTP Verbs
     |    Level 1 : Resources
-    |    Level 0 : The Swamp of POX
+    |    Level 0 : The Swamp of POX (Plain old XML)
 
         Intinya, RESTful API harus mencapai level 3, Hypermedia Controls
             Hypermedia = konten yg berisi link ke media lain,sprt images, movie, text, link
@@ -135,7 +135,7 @@ Web Service = program yg dijalankan di web server apli front-end dan back-end da
             }
 
         Dlm resp tersebut, terdapat link menuju resource lain, seperti resources user.
-            dan terdapat resources lain, seperti detail pada atribut URL4
+            dan terdapat resources lain, seperti detail pada atribut URL
         Sblm membuat RESTful API, kita harus memahami HTTP Methods, HTTP Req dan Resp, dan URL Design
     
 Utk melakukan pola req-resp, client terlebih dahulu yg melakukan req, lalu req akan diproses oleh server, dan akan dikirim resp sesuai dengan req user

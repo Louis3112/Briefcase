@@ -55,7 +55,7 @@ Sejarah JS
     ECMAscript adalah standarisasinya 
 
     Tahun 2000-2010, digunakan ECMAscript 3 utk JS yg tersedia saat itu 
-    ECMAScript 4 dihentikan thun 2008 karena projek yg terlalu ambisius dan banyak halangan (apabila bnyk yg berubah, akan mempengaruhi kinerja aplikasi broser)
+    ECMAScript 4 dihentikan thun 2008 karena projek yg terlalu ambisius dan banyak halangan (apabila bnyk yg berubah, akan mempengaruhi kinerja aplikasi browser)
     ECMAScript 5 dibuat thun 2009, dengan mengurangi ambisi dan melakukan perubahan minor, tetapi tetap dibatalkan 
     ECMAScript 6 dibuat thun 2015, dengan perubahan yg cukup besar, serta terdapat bbrp update dri ECMAScript 4 yg smpt dibatalkan  
         sejak saat itu, tiap tahun ECMAScript ada perubahan minor
@@ -143,7 +143,7 @@ JavaScript Runtime Environment
         process adalah global obj yg berisi data" yg berelasi dengan file JS yg dieksekusi 
 
         utk membuat program sederhana trsebut 
-        cat app.js (pada linux) (cat = concatenation, membaca/menapilkan file file)
+        cat app.js (pada linux) (cat = concatenation, membaca/menampilkan file file)
         console.log(process.platform);
 
         node app.js (melakukan run pada app.js)

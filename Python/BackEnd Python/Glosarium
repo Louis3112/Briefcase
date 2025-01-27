@@ -10,7 +10,7 @@ cURL  (Client URL)
 
 Dependencies
     Library yg dibutuhkan Software utk menjalankan suatu program
-Deploy
+Deploy1
     Aktivitas agar software dapat digunakan
     Mendeploy suatu program dari development envi menjadi live production envi (sehingga bisa digunakan user)
 

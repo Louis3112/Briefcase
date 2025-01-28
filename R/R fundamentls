@@ -1,0 +1,210 @@
+R
+    Bahasa pemrograman dan software utk analisis data 
+    Memiliki fitur yg banyak dan lengkap (puluhan ribu fitur)   
+        library dapat digunakan utk baca file, database, grafik, 
+                                    membuat dashboard bahkan ML 
+    R bersifat free dan open source
+
+Data
+    Penggunaan aplikasi yg semakin luas menghasilkan banyak data dalam volume besar (big data)  
+    Data" tersebut blm tentu menjadi info yg dapat digunakan jika tidak dikelola dengan baik 
+
+    Maka diperlukan Data Scientist
+        Data Science = Disiplin ilmu yg mempelajari bagaimana mengubah data menjadi info yg berguna 
+        Data Scientist = orang yg mempelajari data science 
+    
+Alasan mengapa R digunakan 
+    1. Lebih mudah dipelajari   
+        R lebih mudah dipelajari dibandingkan dengan Java, C#, JS
+    2. Lebih cepat 
+        R menghasilkan output lbih cepat dibanding bahasa lain 
+        R juga dapat menghasilkan visualisasi yg membantu data scientist 
+    3. Lebih kaya fitur 
+        R dapat menjawab semua permasalahan data
+        cth : utk mengatasi permasalahan optimasi stok di E-commerce, R dpt menghasilkan rekomendasi product packaging 
+              utk merapikan data (func tidyr)
+              utk baca file csv (comma separated values), tsv (tab separated values), fwf (fixed-width formatted file) (func readr)
+              utk baca xlsx (func openxlsx)
+              utk baca xml (func xml)
+              utk melakukan transformasi data (func dplyr)
+              utk membuat grafik (func ggplot2)
+              dan msih banyak lagi (jsonlite, twitteR, tm, qcc, reshape2, MissMDA, httr, features)
+    4. Approved
+        R banyak digunakan oleh perusahaan besar 
+        cth : Uber, Microsoft, AirBNB, FB, Anz
+
+R dapat digunakan utk Pengolahan data dengan framework 3C 
+    Capture, Clean, Consume
+R digunakan utk melakukan perhitungan matematika, menampilkan grafik, pemodelan berbasis statistik, pemodelan Machine Learning
+
+Output R 
+    R melakukan pembacaan per line (secara sequential) dan melakukan output secara sequential juga 
+    jika kita mengetikkan 
+        9
+        "Budi"
+    maka outputnya adalah 
+        > 9 
+        [1] 9 
+        > "Budi"
+        [1] Budi
+    
+    yg berrti 
+        > = prompt dari R utk mnrima input 
+        [1] = posisi indeks dari output baris pertama, output hnya punya 1 item, maka hanya muncul 1
+    
+    utk print suatu string, bisa menggunakkan print()
+
+R bersifat case-sensitive, sehingga perlu memperhatikan penulisan kode 
+    "01" dan "1" dianggap berbeda jika dalam string 
+        jadi, jika diminta menggunakkan 2 digit, maka tetap harus diperhatikan 0 nya 
+    01 dan 1 dianggap sama jika dalam angka 
+
+    "12-01-1987" dan "12-1-1987" dianggap berbeda jika dalam string 
+        karena 2 format tanggal tersebut dianggap sebagai teks yg berbeda 
+
+Function    
+    object di R yg parameternya dapat diisi 1/lebih dri 1, dan dapat mengembalikan nilai
+    Statement atau perintah yg dibuat utk mengerjakan suatu task khusus (sehingga dapat dipanggil berulang")
+    
+    c() (combine) adalah salah satu function utk membuat urutan angka/teks 
+    ketika kita mengetikkan c(10:40)
+        maka outputnya adalah
+        > c(10:40)
+        [1] 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34
+        [26] 35 36 37 38 39 40
+    
+    yg berrti 
+        [1] = posisi indeks dari output baris pertama, maka 10 urutan pertama 
+        [26] = posisi indeks dari output baris kedua, maka 35 adalah urutan ke 26
+    
+    jika c() diubah menjadi C(), maka akan terjadi error karena C bukanlah func yg diketahui R
+
+Variabel
+    R menyimpan variabel sama seperti python, hanya perlu memanggil namanya dan otomatis akan menyimpan nilainya 
+        bisa berupa angka, string, bilangan dengan operasi matematis, hasil suatu func 
+    
+    Keunikan dari R adalah operator assignment tidak menggunakkan =, melainkan menggunakkan tanda panah <-
+    cth :
+        budi_berat_kg <- 68 
+        santi_berat_kg <- 54
+
+        budi_berat_kg
+        santi_berat_kg
+
+    maka outputnya 
+        > budi_berat_kg <- 68 
+
+        > santi_berat_kg <- 54
+        
+        > budi_berat_kg
+        [1] 68
+        
+        > santi_berat_kg
+        [1] 54
+
+    apabila dipanggil, akan menampilkan angka dari output tersebut 
+
+Comment,
+    utk comment menggunakkan #
+
+
+Tipe data 
+    Vector
+        tipe data yg menyimpan deretan nilai dengan tipe data sama utk tiap elemennya (array)
+        vector didefinisikan dengan satu func yaitu c()
+        dan bisa disimpan ke dalam variabel 
+
+        angka <- c(3,5,7)
+
+        utk mempersingkat penulisan nilai yg berurutan, bisa menggunakkan : 
+
+            angka1 <- c(1,2,3,4,5,6,7,8,9,10)
+            print(angka1)
+            angka2 <- c(1:10)
+            print(angka2)
+
+            adalah sama
+        
+        kita juga bisa menyimpan array string pada R 
+            
+            nama_mahasiswa <- c("Amira", "Budi", "Charlie")
+            print(nama_mahasiswa)
+            # outputnya [1] Amira, Budi, Charlie 
+
+        utk mengakses indeks, maka gunakan accessor [] (format kurung siku)
+            angka1 <- c(1,2,3,4,5,6,7,8,9,10)
+            print(angka1[3])
+            # outputnya [1] 3 
+
+        pada R, indeks dimulai dari 1, bukan dari 0 
+        
+        kita juga bisa menggunakkan accessor [[]] (format kurung siku double)
+            print(angka1[[5]])
+            # outputnya tetap indeks ke 5
+        
+        jika ingin mengoutput nilai tertentu dan secara berurut, maka gunakan :
+            print(angka1[4:6])
+            # outputnya adalah indeks 4,5,6
+    
+    Named Vector (masih sama dengan vector)
+        kita juga bisa memberi nama utk tiap elemen dengan format key=value 
+        sehingga disebtus sebagai named vector (sama seperti dictionary pada python)
+
+        nilai <- c(statistik = 89, fisika = 95, ilmukomunikasi = 100) # key tidak perlu diberi tanda petik
+        print(nilai)
+            
+            # outputnya
+            statistik         fisika ilmukomunikasi 
+                    89             95            100 
+        
+        bila diperhatikan juga, tidak ada [1] saat output 
+
+        jika ingin mengoutput salah satu nilai, maka menggunakkan accessor
+        print(nilai ["fisika"]) # jangan lupa tanda petik karena string 
+
+            # outputnya
+            fisika  
+                95            
+
+    List 
+        tipe data yg menyimpan deretan nilai dengan tipe data yg berbeda" (sama seperti list pada Python)
+        list_random <- list(2,"Budi", 4)
+
+        jika di print, maka 
+            list_random 
+            [[1]]
+            [1] 2
+            
+            [[2]]
+            [1] "Budi"
+            
+            [[3]]
+            [1] 4
+        
+        outputnya terlihat berbeda dengan vector, tiap output memiliki 2 accessor
+            [[]] = posisi indeks pada list 
+            [] = posisi indeks saat output
+
+        List juga bisa menyimpan named vector 
+        kota <- list(nama_kota = "Makassar", propinsi = "Sulawesi Selatan", luas_km = 199.3)
+
+        jika di print, maka 
+            kota
+            $nama_kota
+            [1] "Makassar"
+            
+            $propinsi
+            [1] "Sulawesi Selatan"
+            
+            $luas_km
+            [1] 199.3
+
+        berbeda dengan list biasanya 
+        
+        utk mengambil indeks pada list, sama seperti vector, menggunakkan accessor
+            list_saya[2]
+            atau 
+            list_saya[[2]]
+
+        lalu utk mengambil indeks tertentu dan secara urut, menggunakkan :
+            list_saya[4:6]

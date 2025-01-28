@@ -1,0 +1,59 @@
+Data Science dan R 
+    Data Scientist adalah pekerjaan yg menjanjikan, bekerja mengubah data yg sblmnya tidak berguna menjadi suatu info yg berharga
+    Data Scientist perlu tool yaitu software. Software diusahakan sederhana tapi kuat dlm penggunaannya 
+
+    R adalah bhs pemrograman yg digunakan utk pengolahan dan pemodelan database (Data analyst)
+
+R 
+    Bhs pemrograman dan software utk pengolahan data dan grafik
+    Banyak digunakan karena :
+        1. Banyak pilihan pengolahan data dengan fitur yg lengkap, grafik -- ML 
+        2. Lebih cepat dipelajari dan dijalankan utk mengolah data
+        3. Free dan Open Source (tdk perlu lisensi mahal utk pengolahan data)
+    R adalah Scripting impreted language
+
+Perusahaan yg menggunakkan R 
+    AirBnb utk data Science
+    Microsoft utk menambahkan fungsionalitas di produk"nya 
+    Uber utk stats analysis 
+    FB utk behavior analysis
+
+Hello World 
+    utk menjalankan hello world pada R, hanya perlu mengetikkan 
+        "Hello World" 
+    tidak perlu menambahkan syntax atau keyword lain
+    
+    Lalu, apabila utk menambahkan penjumlahan, juga bisa lgsg mengetikkan angkanya
+        10 + 7
+    maka akan lgsg muncul outputnya
+
+    Tapi, kita juga bisa mengetikkan sama seperti kita mengetik bahasa pemrograman lain 
+        a = 5
+        print(a)
+    (sama seperti python)
+
+    utk mengetikkan command, maka symbol yg digunakan adalah # 
+        # ini adalah comment 
+
+Vector pada R
+    Vector = struktur data yg dpt menyimpan lebih dari satu data yg akan digunakan di R (sama kayak array)
+    cara penggunaannya adalah 
+        c(5,10,20) # berarti, vector menyimpan 5, 10, 20
+    utk menyimpan angka 1-20, bisa menggunakkan 
+        c(1:20)
+    
+Summary 
+    terdapat func summary yg melakukan penghitungan dan menyimpulkan data yg kita proses 
+    summary hasilnya berupa hasil penghitungan statistik dari data yg dimiliki 
+        1. Nilai min 
+        2. Nilai 1st Quartil 
+        3. Nilai medium
+        4. Nilai 3rd Quartil 
+        5. Nilai max
+    
+    cth : summary(c(1:5))
+    maka outputnya 
+        Min.    1st Qu.     Median      Mean    3rd Qu.    Max.
+            1         2          3         3          4       5
+
+

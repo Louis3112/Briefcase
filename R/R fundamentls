@@ -167,8 +167,8 @@ Tipe data
                 95            
 
     List 
-        tipe data yg menyimpan deretan nilai dengan tipe data yg berbeda" (sama seperti list pada Python)
-        list_random <- list(2,"Budi", 4)
+        tipe data yg menyimpan deretan nilai dengan tipe data yg berbeda"" (sama seperti list pada Python)
+        list_random <- list(2,"Budi", 4) 
 
         jika di print, maka 
             list_random 
@@ -208,3 +208,5 @@ Tipe data
 
         lalu utk mengambil indeks tertentu dan secara urut, menggunakkan :
             list_saya[4:6]
+
+        

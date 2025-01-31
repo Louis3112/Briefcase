@@ -1,0 +1,173 @@
+Lab ini akan berfokus pada prompt engineering dan cara melakukan prompt yg baik agar hasil LLM sesuai keinginan
+Prompt akan spesifik, presisi dan berfokus pada satu pekerjaan 
+Lab ini juga mengajarkan cara mengubah generative tasks menjadi classification tasks
+
+Cara menginstal Vertex AI pada jupyter
+    %pip install --upgrade --user --quiet google-cloud-aiplatform
+    import IPython
+
+    app = IPython.Application.instance()
+    app.kernel.do_shutdown(True)
+
+    import sys
+
+    if "google.colab" in sys.modules:
+        from google.colab import auth
+
+        auth.authenticate_user()
+
+    PROJECT_ID = "qwiklabs-gcp-03-31ad76f643fd"  # @param {type:"string"}
+    LOCATION = "us-central1"  # @param {type:"string"}
+
+    import vertexai
+
+    vertexai.init(project=PROJECT_ID, location=LOCATION)
+
+    from vertexai.generative_models import GenerationConfig, GenerativeModel
+    import time
+
+    model = GenerativeModel("gemini-1.5-flash")
+
+    import time
+
+    def call_gemini(prompt, generation_config=GenerationConfig(temperature=1.0)):
+        wait_time = 1
+        while True:
+            try:
+                response = model.generate_content(prompt, generation_config=generation_config).text
+                return response
+                break  # Exit the loop if successful
+            except Exception as e:  # Replace with the actual exception type
+                time.sleep(wait_time)
+                wait_time *= 2  # Double the wait time
+
+    def send_message_gemini(model, prompt):    
+        wait_time = 1
+        while True:
+            try:
+                response = model.send_message(prompt).text
+                return response
+                break  # Exit the loop if successful
+            except Exception as e:  # Replace with the actual exception type
+                time.sleep(wait_time)
+                wait_time *= 2  # Double the wait time
+
+Prompt Engineering adalah cara mendesain prompt agar responnya sesuai yg diinginkan 
+    Prompt usahakan agar tidak "ribet" utk mencegah noise pada prompt dan mencegah LLM utk miskom terhadap prompt yg dimiliki 
+Hal yg harus diperhatikan ketika prompt adalah 
+    
+    1. Ringkas 
+        jangan bertele"" seperti 
+            prompt = "What do you think could be a good name for a flower shop that specializes in selling bouquets of dried flowers more than fresh flowers?"
+            print(call_gemini(prompt))
+        tetapi
+            prompt = "Suggest a name for a flower shop that sells bouquets of dried flowers"
+            print(call_gemini(prompt))
+
+    2. Spesifik
+        jangan prompt terlalu umum seperti 
+            prompt - "Tell me about earth"
+            print(call_gemini(prompt))  
+        tetapi
+            prompt = "Generate a list of ways that makes Earth unique compared to other planets"
+            print(call_gemini(prompt))
+
+    3. Tanya prompt/tugas satu per satu 
+        jangan prompt 2 pertanyaan yg tidak memiliki hubungan  satu dengan yg lain (kan bisa dipecah promptnya)
+            prompt = "What's the best method of boiling water and why is the sky blue?"
+            print(call_gemini(prompt))
+            # AI akan menjwab pertanyaan dengn lebih singkat 
+        tapi, pecah prompt menjadi 2 pertanyaan 
+            prompt = "What's the best method of boiling water?"
+            print(call_gemini(prompt))
+
+            prompt = "Why is the sky blue?"
+            print(call_gemini(prompt))
+    
+    4. Awas akan halusinasi 
+        LLM bisa mengenerate jawaban yg terkadang tidak sesuai realita atau tidak berdasarkan apa"",sehingga itu disebut sebagai halusinasi 
+        halusinasi bisa terjadi karena kurangnya kapabilitas memori. Menambahkan sitasi ke LLM tidak akan membantu apa"" karena kadang LLM melihat sitasi yg salah/berbeda
+        sehingga, kita harus tau kapan LLM sedang berhalusinasi walau terlihat pd dalam jawabannya 
+        
+        cth : 
+            generation_config = GenerationConfig(temperature=1.0)
+            prompt = "What day is it today?"
+            print(call_gemini(prompt, generation_config))
+
+        utk sekarang, LLM blg bahwa mereka tidak memiliki akses ke kalender, tetapi terkadang bisa memberitahu hari yg salah 
+
+        Terdapat 2 cara utk mengatasi halusinasi 
+
+        1. Menggunakkan system intructions utk menjadi pembatas agar tidak memberi prompt yg salah 
+
+                model_travel = GenerativeModel(
+                model_name="gemini-1.5-flash",
+                system_instruction=[
+                    "Hello! You are an AI chatbot for a travel web site.",
+                    "Your mission is to provide helpful queries for travelers.",
+                    "Remember that before you answer a question, you must check to see if it complies with your mission.",
+                    "If not, you can say, Sorry I can't answer that question.",
+                    ],
+                )
+
+                chat = model_travel.start_chat()
+                prompt = "What is the best place for sightseeing in Milan, Italy?"
+                print(send_message_gemini(chat, prompt))
+
+            sehingga, AI tidak akan memberi jawaban diluar dari system instruction
+                prompt = "What's for dinner?"
+                print(send_message_gemini(chat, prompt))
+
+        2. Mengubah generative tasks menjadi classification tasks
+            Generative tasks adalah tasks yg menghasilkan atau menciptakan sesuatu yang baru
+            sama seperti generative AI yg selalu digunakan utk menghasilkan atau meenciptakan jawaban baru 
+
+                prompt = "I'm a high school student. Recommend me a programming activity to improve my skills."
+                print(call_gemini(prompt))
+                # sehingga akan menghasilkan jawaban panjang dan terkadang bersifat hallucination
+
+            Classification tasks adalah tasks yg sudah dikategorikan/diklasifikasi menurut datanya
+                prompt = "I'm a high school student. Which of these activities do you suggest and why:
+                        a) learn Python
+                        b) learn JavaScript
+                        c) learn Fortran"
+                print(call_gemini(prompt))
+
+        3. Menambahkan contoh 
+            LLM belajar dari context dan contoh utk merespon. Satu atau lebih contoh sudah cukup utk agar respon yg diberikan baik
+            terlalu banyak contoh akan membuat model over-fit dan mengurangi kualitas respon
+            terdapat 3 jenis contoh prompt
+
+            1. zero-shot prompt
+                prompt = """Decide whether a Tweet's sentiment is positive, neutral, or negative.
+                Tweet: I loved the new YouTube video you made!
+                Sentiment:
+                """
+                print(call_gemini(prompt))
+
+            2. one-shot prompt          
+                prompt = """Decide whether a Tweet's sentiment is positive, neutral, or negative.
+                Tweet: I loved the new YouTube video you made!
+                Sentiment: positive
+
+                Tweet: That was awful. Super boring 😠
+                Sentiment:
+                """
+                print(call_gemini(prompt))
+
+            3. few-shot prompt     
+                prompt = """Decide whether a Tweet's sentiment is positive, neutral, or negative.
+                Tweet: I loved the new YouTube video you made!
+                Sentiment: positive
+
+                Tweet: That was awful. Super boring 😠
+                Sentiment: negative
+
+                Tweet: Something surprised me about this video - it was actually original. It was not the same old recycled stuff that I always see. Watch it - you will not regret it.
+                Sentiment:
+                """
+                print(call_gemini(prompt))
+
+            Pilih prompt yg sesuai dengan kebutuhan 
+                zero prompt biasanya memberi jawaban yg creative dan open-minded
+                one atau few shot biasanya digunakan utk melatih model utk memberi jawaban yg sesuai ekspetasi kita

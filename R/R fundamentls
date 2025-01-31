@@ -209,4 +209,209 @@ Tipe data
         lalu utk mengambil indeks tertentu dan secara urut, menggunakkan :
             list_saya[4:6]
 
+    Data Frame 
+        struktur data yg dirancang utk menjadi representasi tabel yg tiap kolom berisi vector/list (disarankan vector) dengan jumlah data harus sama (jika tidak, maka error)
+        maka, utk menggunakkan data frame, kita menggunakkan func data.frame() 
         
+        sehingga, data.frame() harus berisi minimal 2 list
+        cth :
+            fakultas <- c("Bisnis", "D3 Perhotelan", "ICT", "Ilmu Komunikasi", "Seni dan Desain")
+            jumlah_mahasiswa <- c(260, 28, 284, 465, 735)
+
+            info_mahasiswa <- data.frame(fakultas, jumlah_mahasiswa)
+
+            print(info_mahasiswa)
+            # maka outputnya 
+            info_mahasiswa
+                    fakultas jumlah_mahasiswa
+            1          Bisnis              260
+            2   D3 Perhotelan               28
+            3             ICT              284
+            4 Ilmu Komunikasi              465
+            5 Seni dan Desain              735
+
+            usahakan agar data yg dimasukkan adalah sesama vector (jika tipe datanya sama) karena tidak terjadi bug
+        
+        kita juga bisa memasukkan hasil data.frame ke dalam data.frame  
+            akreditasi <- c("A","A","B","A","A")
+            info_mahasiswa <- data.frame(info_mahasiswa, akreditasi) 
+                # info_mahasiswa adalah variabel yg sama, tapi msih bisa
+            print(info_mahasiswa)
+            # maka outputnya 
+            info_mahasiswa
+                    fakultas jumlah_mahasiswa akreditasi
+            1          Bisnis              260          A
+            2   D3 Perhotelan               28          A
+            3             ICT              284          B
+            4 Ilmu Komunikasi              465          A
+            5 Seni dan Desain              735          A
+
+        atau, untuk mempersingkat kode, data.frame bisa dimasukkan lebih dari 2 vector 
+            info_mahasiswa <- data.frame(fakultas, jumlah_mahasiswa, akreditasi)
+
+        utk mengakses suatu kolom pada data.frame, kita menggunakkan accessor dengan simbol $
+            info_mahasiswa$akreditasi #jika salah mengetikkan kolom, maka akan tertulis NULL, bukan error
+            # maka outputnya
+            info_mahasiswa$jumlah_mahasiswa
+            [1] 260  28 284 465 735
+        
+Library 
+    R juga memiliki library, salah satu library tersebut adalah ggplot2 (grammar of graphic plot 2)
+        (sama seperti matplotlib (matlab, plot, library)di python)
+    
+    Dari pembuatan data.frame sebelumnya, bisa kita kembangkan agar menghasilkan grafik yg advanced
+
+    utk menggunakkan library, perlu melakukan import terhadap library yg dibutuhkan
+        library("ggplot2") atau library(ggplot2)
+
+    lalu, kita buat canvas dan pengaturannya 
+        fakultas <- c("Bisnis", "D3 Perhotelan", "ICT", "Ilmu Komunikasi", "Seni dan Desain")
+        jumlah_mahasiswa <- c(260, 28, 284, 465, 735)
+        akreditasi <- c("A","A","B","A","A")
+        info_mahasiswa <- data.frame(fakultas, jumlah_mahasiswa, akreditasi)
+
+        library("ggplot2") # akan lebih bagus jika di import di awal file
+
+        gambar <- ggplot(info_mahasiswa, aes(x = fakultas, y =jumlah_mahasiswa, fill = fakultas))
+        gambar <- gambar + geom_bar(width = 1, stat = "identity")
+
+        #maka outputnya 
+            adalah gambar grafik
+        
+        yg berarti
+            ggplot() = fungsi utk menggambar grafik pada ggplot
+            aes = fungsi utk mengambil data apa saja
+            x = kolom utk sumbu x
+            y = kolom utk sumbu y 
+            fill = kolom mana yg akan diberi warna (jika tidak ada, maka grafik hitam putih)
+        
+            + = menggabungkn objek"" ggplot2
+
+            geom_bar() = fungsi utk mengambar grafik dlm bntuk geometri bar chart
+            width = ukuran lebar dri tiap chart (1)
+            stat = transformasi data yg perlu dilakukan 
+                karena ingin menggunakkan plot apa adanya, kita gunakan identity (sbnrnya ada banyak)
+            
+        lalu, utk menambahkan judul grafik 
+            gambar <- gambar + ggtitle("Jumlah Mahasiswa per Fakultas")
+        lalu utk mengganti caption pada sumbu x (yg sblmnya mengambil nama variabel x)
+            gambar <- gambar + xlab("Nama Fakultas")
+        lalu utk mengganti caption pada sumbu y 
+            gambar <- gambar + ylab("Jumlah mahasiswa")
+        
+    R juga memiliki library bernama openxlsx utk membaca file excel, dan perlu dilakukan import
+        library(openxlsx) 
+    
+    lalu, dibuatlah 1 variabel (data.frame) utk membaca file tersebut 
+        data_mahasiswa <- read.xlsx("https://storage.googleapis.com/dqlab-dataset/mahasiswa.xlsx",sheet = "Sheet 1")
+        print(data_mahasiswa)
+        #maka outputnya 
+            ANGKATAN        Fakultas                          Prodi  Kode JUMLAH
+        1      2015          Bisnis                      Akuntansi  AKUN     88
+        2      2016          Bisnis                      Akuntansi  AKUN     85
+        3      2017          Bisnis                      Akuntansi  AKUN    103
+        4      2016 Seni dan Desain                        Arsitek    AR     28
+        5      2017 Seni dan Desain                        Arsitek    AR     45
+        6      2015 Seni dan Desain       Desain Komunikasi Visual   DKV    279
+        7      2016 Seni dan Desain       Desain Komunikasi Visual   DKV    314
+        8      2017 Seni dan Desain       Desain Komunikasi Visual   DKV    337
+        9      2015 Seni dan Desain              Film dan Televisi   FTV    284
+        10     2016 Seni dan Desain              Film dan Televisi   FTV    274
+        11     2017 Seni dan Desain              Film dan Televisi   FTV    300
+        12     2015 Ilmu Komunikasi                Ilmu Komunikasi ILKOM    499
+        13     2016 Ilmu Komunikasi                Ilmu Komunikasi ILKOM    275
+        14     2017 Ilmu Komunikasi                Ilmu Komunikasi ILKOM    313
+        15     2015 Ilmu Komunikasi                    Jurnalistik    JR      1
+        16     2016 Ilmu Komunikasi                    Jurnalistik    JR    251
+        17     2017 Ilmu Komunikasi                    Jurnalistik    JR    186
+        18     2015          Bisnis                      Manajemen   MAN    169
+        19     2016          Bisnis                      Manajemen   MAN    163
+        20     2017          Bisnis                      Manajemen   MAN    160
+        21     2017   D3 Perhotelan                     Perhotelan   HTL     28
+        22     2015             ICT               Sistem Informasi    SI    104
+        23     2016             ICT               Sistem Informasi    SI     95
+        24     2017             ICT               Sistem Informasi    SI    113
+        25     2015             ICT                Sistem Komputer    SK     20
+        26     2016             ICT                Sistem Komputer    SK     20
+        27     2017             ICT                Sistem Komputer    SK     18
+        28     2016             ICT                 Teknik Elektro    TE      4
+        29     2017             ICT                 Teknik Elektro    TE      7
+        30     2016             ICT                  Teknik Fisika    TF      7
+        31     2017             ICT                  Teknik Fisika    TF     16
+        32     2015             ICT             Teknik Informatika    TI    125
+        33     2016             ICT             Teknik Informatika    TI    168
+        34     2017             ICT             Teknik Informatika    TI    164
+        35     2017             ICT Teknik Informatika Dual Degree   TID      6
+
+    sehingga, apabila kita ingin membuat grafik tersebut, maka kita tinggal gunakan library(ggplot2)
+
+        library(ggplot2)
+        gambar <- ggplot(data_mahasiswa,aes(x = Fakultas, y = JUMLAH, fill = Fakultas))
+        gambar <- gambar + geom_bar(width = 1, stats = "identity")
+        gambar
+    
+    sehingga, bisa dilihat, kalau kita menggunakkan excel,kita tinggal memasukkan link beserta sheetsnya ke dalm suatu variabel
+        sedangkan bila tdk menggunakkan excel, kita harus membuat datanya satu persatu 
+    
+    dari pembelajaran tersebut, kita bisa membuat perbandingan data seperti sebagai berikut 
+
+        library(ggplot2)
+        #Menggunakan package openxlsx
+        library(openxlsx)
+
+        #Membaca file mahasiswa.xlsx
+        mahasiswa <- read.xlsx("https://storage.googleapis.com/dqlab-dataset/mahasiswa.xlsx",sheet = "Sheet 1")
+    
+        #Menghitung Jumlah Data by Fakultas
+        summarybyfakultas <- aggregate(x=mahasiswa$JUMLAH, by=list(Kategori=mahasiswa$Fakultas, Tahun=mahasiswa$ANGKATAN), FUN=sum)
+        summarybyfakultas <- setNames(summarybyfakultas, c("fakultas","tahun", "jumlah_mahasiswa"))
+        summarybyfakultas
+
+        summarybyfakultas$tahun = as.factor(summarybyfakultas$tahun)
+
+        ggplot(summarybyfakultas, aes(x=fakultas, y=jumlah_mahasiswa)) + geom_bar(stat = "identity", aes(fill = tahun), width=0.8, position = position_dodge(width=0.8)) + theme_classic() 
+        #tidak perlu membuat variabel baru 
+
+    kita juga bisa membuat pie chart dengan library ggplot2 menggunakkan fungsi ggplot dan coord_polar 
+
+        library(ggplot2)
+        library(openxlsx)
+        #Membaca file mahasiswa.xlsx
+        mahasiswa <- read.xlsx("https://storage.googleapis.com/dqlab-dataset/mahasiswa.xlsx",sheet = "Sheet 1")
+
+        #Menghitung Jumlah Data by Fakultas
+        summarybyfakultas <- aggregate(x=mahasiswa$JUMLAH, by=list(Kategori=mahasiswa$Fakultas), FUN=sum)
+        summarybyfakultas <- setNames(summarybyfakultas, c("fakultas","jumlah_mahasiswa"))
+
+        piechart<- ggplot(summarybyfakultas, aes(x="", y=jumlah_mahasiswa, fill=fakultas))+ geom_bar(width = 1, stat = "identity")
+        piechart <- piechart + coord_polar("y", start=0)
+        piechart <- piechart + ggtitle("Disribusi Mahasiswa per Fakultas")
+        piechart <- piechart + scale_fill_brewer(palette="Blues")+ theme_minimal()
+        piechart <- piechart + guides(fill=guide_legend(title="Fakultas"))
+        piechart <- piechart + ylab("Jumlah Mahasiswa") 
+        piechart
+
+    piechart tersebut akan menampilkan persentase potongannya sesuai dengan jumlah data yg ada
+        sebagai contoh, Bisnis, D3 Perhotelan dan ICT memiliki jumlah tidak mencapai 2000, sehingga piechart nya tidak mencapai angka 2000
+
+    kita juga bisa melakukan filtering pada R 
+        dengan operator %in% dan input berupa vector 
+
+        library("ggplot2")
+        library("openxlsx")
+
+        #Membaca file mahasiswa.xlsx
+        mahasiswa <- read.xlsx("https://storage.googleapis.com/dqlab-dataset/mahasiswa.xlsx",sheet = "Sheet 1")
+
+        #Menghitung Jumlah Data by Fakultas
+        summarybyfakultas <- aggregate(x=mahasiswa$JUMLAH, by=list(Kategori=mahasiswa$Fakultas, Tahun=mahasiswa$ANGKATAN), FUN=sum)
+        summarybyfakultas <- setNames(summarybyfakultas, c("fakultas","tahun", "jumlah_mahasiswa"))
+        summarybyfakultas
+
+        summarybyfakultas$tahun = as.factor(summarybyfakultas$tahun)
+        summarybyfakultas[summarybyfakultas$fakultas %in% c("ICT", "Ilmu Komunikasi"),] # memfilter data di kolom fakultas dari data.frame summarybyfakultas
+
+        ggplot(summarybyfakultas[summarybyfakultas$fakultas %in% c("ICT", "Ilmu Komunikasi"),], # mengambil data yg sblmnya sudah difilter dari semua kolom
+        aes(x=fakultas, y=jumlah_mahasiswa)) + geom_bar(stat = "identity", aes(fill = tahun), width=0.8, position = position_dodge(width=0.8)) + theme_classic() 
+    
+        maka, yg muncul hanya data dari ICT dan ILKOM

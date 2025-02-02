@@ -2,6 +2,11 @@ Lab ini akan berfokus pada prompt engineering dan cara melakukan prompt yg baik 
 Prompt akan spesifik, presisi dan berfokus pada satu pekerjaan 
 Lab ini juga mengajarkan cara mengubah generative tasks menjadi classification tasks
 
+Cara Mengakses jupyterLab pada Google Cloud Console
+    1. Akses google cloud console, pada navigation menu klik vertex AI 
+    2. Klik Workbench, pada bagian instances vertex-ai-jupyterLab, klik open jupyterLab
+    3. Pada pemilihan kernel, pilih python 3
+
 Cara menginstal Vertex AI pada jupyter
     %pip install --upgrade --user --quiet google-cloud-aiplatform
     import IPython

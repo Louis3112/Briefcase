@@ -1,0 +1,191 @@
+Menganalisa gambar dengan Gemini pada Freeform Mode 
+	kita bisa menganlisa gambar dan mengambil info dari suatu gambar 
+	Di Freeform mode, kita bisa mengatur prompt utk melakukan klasifikasi, extraction, generation. Freeform mode tidak memiliki history, sehingga tiap prompt adalah info baru utk model
+
+	Cara mengakses 
+		1. Akses Google Cloud Console, cari Vertex AI API (Google Enterprise AI), klik enable
+		2. Klik navigation menu, pilih Vertex AI, lalu Vertex AI Studio
+		3. Pilih overview, lalu pilih freeform
+
+	terdapat 3 section pada UI Vertex AI studio  Freeform 
+		1. Prompt (kotak putih)
+			tempat utk menginputkan prompt 
+		2. Configuration (sebelah kanan)
+			Ttempat utk memilih model, konfigurasi parameter dan mengambil codingan 
+		3. Response
+			tempat utk mengenerate hasil prompt
+		
+	Pada section prompt, kita bisa memasukkan gambar lalu memberikan perintah utk melakukan perintah apapun yg kita inginkan
+
+	Pada AI, terdapat yg namanya temperature
+		temperature mengatur keacakan hasil output dari suatu prompt.
+		temperature yg rendah sangat bagus utk mendapatkan respons yg benar (sesuai harapan)
+		temperature yg tinggi akan menghasilkan output yg lebih kreatif dan tidak terduga
+		
+		dengan temperature 0, token (jawaban) dengan probabilitas tertinggi yg dipilih
+
+		cth: gambar departure board di bandara 
+		temperature 0 akan menghasilkan output : 
+		
+			Certainly! Here's a detailed description of the image:
+
+			Overall Scene:
+
+			The image shows a close-up shot of a digital departure board, likely found in an airport or train station. The board is displaying flight or train information, with times and destinations listed. The background is slightly out of focus, suggesting the board is the main subject.
+
+			Departure Board Details:
+
+			Display Type: The board is a digital display, likely using LED or similar technology, with orange characters against a dark background. The characters are formed by a grid of small dots.
+			Layout: The board is organized into rows, with each row displaying a departure time on the left and a destination on the right.
+			Times: The departure times are displayed in a 24-hour format (e.g., 10:50, 11:05, 12:30).
+			Destinations: The destinations are a mix of city names and airport codes, such as:
+			MOSCOW/SVO
+			EDINBURGH
+			LONDON/LHR
+			BUCHAREST/OTP
+			KIEV/BORISPOL
+			DUBLIN
+			EAST MIDLANDS
+			SOFIA
+			LONDON/LGW
+			NEWCASTLE
+			ST PETERSBURG
+			LONDON/LGW
+			MANCHESTER
+
+			Repetition: Note that "LONDON/LGW" appears twice on the board, at different times.
+			Clarity: The text is generally clear and legible, although some of the characters are slightly pixelated due to the nature of the display.
+
+		temperatur 2 akan menghasilkan output : 
+			
+			Certainly! Let's describe the image in detail:
+
+			Overall Composition:
+
+			The image is a close-up, angled shot of an electronic display board commonly found in airports or train stations. This board provides departure information, listing destinations alongside their scheduled departure times. The lighting suggests the scene might be indoors or dimly lit, creating a dramatic look.
+
+			Content:
+
+			Display Board: The focus of the image is an old school pixelated electronic sign. Its main body is rectangular, set against a darker background. The data is arranged in rows and columns. Each row features two columns with bright red LED numerals that look illuminated or a light is shined behind, which contain the departure times on the left. On the right it contains departure locations, with letters created by LEDs as well.
+
+			Departure Times: The left side of the display board shows the departure times of various trips. These are arranged vertically from top to bottom with earlier times closer to the top. The specific times displayed include "10:50", "11:05", "11:10", "11:30", "11:35", "11:45", "12:15", "12:30", "12:40" and "12:45". These all appear to be a 24 hour format time.
+
+			Destinations: On the right side of the board, directly aligned with their departure time, there are destination locations. The locations displayed include "MOSCOW/SUO", "EDINBURGH", "LONDON/LHR", "BUCHAREST/OTP", "KIEU/BORISPOL", "DUBLIN", "EAST MIDLANDS", "SOFIA", "LONDON/LGW", "NEWCASTLE", "ST PETERSBURG", "LONDON/LGW", and "MANCHESTER". Most cities displayed are major cities in Europe, while it is worth noting some entries contain acronyms as opposed to just cities.
+
+	kita juga bisa meminta Vertex AI studio  utk mengekstrak info pada suatu gambar 
+		READ THE TEXT IN THE IMAGE
+		10:50 MOSCOW/SUO 11:05 EDINBURGH 11:05 LONDON/LHR 11:10 BUCHAREST/OTP 11:30 KIEV/BORISPOL 11:35 DUBLIN 11:45 EAST MIDLANDS 12:15 SOFIA 12:30 LONDON/LGW 12:30 NEWCASTLE 12:40 ST PETERSBURG 12:40 LONDON/LGW 12:45 MANCHESTER
+
+	dan bisa diatur agar dibuat menjadi suatu list
+		Parse the time and city in this image into a list with two columns: time and city.
+		Here's the parsed list of time and city from the image:
+
+		Time	City
+		10:50	MOSCOW/SUO
+		11:05	EDINBURGH
+		11:05	LONDON/LHR
+		11:10	BUCHAREST/OTP
+		11:30	KIEV/BORISPOL
+		11:35	DUBLIN
+		11:45	EAST MIDLANDS
+		12:15	SOFIA
+		12:30	LONDON/LGW
+		12:30	NEWCASTLE
+		12:40	ST PETERSBURG
+		12:40	LONDON/LGW
+		12:45	MANCHESTER
+
+	kita juga bisa meminta vertex AI studio utk menghitung kalkulasi persentase kemana penerbangan" itu pergi ke benua lain
+		Calculate the percentage of the flights to different continents.
+		Here's the breakdown of the flights by continent based on the provided OCR and some assumptions:
+
+		Flights and Destinations:
+
+		Europe:
+		Moscow (Russia) - Europe
+		Edinburgh (Scotland) - Europe
+		London (England) - Europe (appears 2 times)
+		Bucharest (Romania) - Europe
+		Kiev (Ukraine) - Europe
+		Dublin (Ireland) - Europe
+		Sofia (Bulgaria) - Europe
+		Newcastle (England) - Europe
+		St. Petersburg (Russia) - Europe
+		Manchester (England) - Europe
+		East Midlands (England) - Europe
+
+		Calculations:
+
+		Total Flights: 12
+		Flights to Europe: 12
+		Percentage:
+
+		Europe: (12 / 12) * 100% = 100%
+		Summary:
+
+		Based on the provided flight board, 100% of the flights are to destinations within Europe.
+
+		#beda temperature, beda output
+
+	hasil prompt bisa kita lakukan saving dan hasil saving tersebut dapat diakses pada menu prompt management
+
+
+Explore Multimodal Capabilities
+	Gemini juga bisa menerima video sebagai input 
+
+	Cara mengakses 
+		1. Akses Google Cloud Console, cari cloud storage dan pergi ke buckets
+		2. Aktivasi cloud shell
+	kita bisa memberikan perintah kepada shell utk mengakses video yg kita miliki dengan perintah 
+
+		gcloud storage cp gs://spls/gsp154/video/train.mp4 gs://<Your-Cloud-Storage-Bucket> #pastikan <Your-Cloud-Storage-Bucket> diganti dengan nama bucket kita
+
+	tujuan meletakkan google cloud storage ini fungsinya utk menaruh video ke dalam bucket (cloud) kita
+
+	lalu, kembali ke Vertex AI Studio, lalu klik Freeform
+		kita bisa mengimport video tdi dengan insert media, lalu import from cloud storage
+	barulah kita bisa memberikan prompt yg berhubungan dengan media tersebut
+
+Prompt Design 
+	Prompt design = proses menentukan prompt terbaik agar dapat menerima respons yg sesuai dari model
+	Ada 3 jenis contoh prompt
+
+	1. Zero shot prompt
+		Metode dimana kita hanya memberi prompt kepada LLM (Large Language Model) tanpa ada tambahan data 
+		cth : "What is prompt design"
+	2. One shot prompt 
+		Metode dimana kita memberi prompt kepada LLM dengan satu contoh data
+		cth : if you want AI to write a poem, you can give a simple example poem
+
+		gemini menyediakan menu agar kita bisa menambahkan example (sehingga tidak perlu diketikkan pada prompt)
+		example ini terdiri atas input prefix dan output prefix
+		LLM akan mengikuti contoh dari output prefix (semakin singkat output prefix, maka respons nya juga semakin singkat)
+
+	3. Few shot prompt 
+		Metode dimana kita memberi prompt kepada LLM dengan lebih dari satu contoh data 
+		cth : if you want AI to write news article, you can give few example of news article
+			  if you want AI to determine whether a movie review is positive or negative or neutral 
+	
+	Paremeter 
+	Suatu LLM memiliki parameter yg akan mempengaruhi output/respons dari model 
+		Temperature
+			Mengatur randomness dari token yg dipilih
+			Temperature 0 digunakan utk respons jawaban benar/salah 
+			Temperature 0 artinya token dengan probabilitas pling tinggi yg akan dipilih 
+			Temperature 2 artinya respons akan lebih kreatif, tidak terduga dan kemungkinan hasilnya bias (utk kreatifitas)
+			gemini-1.5-pro punya range 0-2 dengan defaultnya 1
+
+		Output token limit 
+			Limit maks output dalam suatu prompt 
+	
+	Vertex AI Studio menyediakan prompt gallery sebagai referensi bagi user utk bisa membuat prompt sesuai kebutuhan user 
+		berisi contoh prompt 
+	Sama seperti buku masakan yg bisa membantu 
+
+Generate Conversation 
+	gemini memiliki chat mode yg dimana kita bisa berkomunikasi dan berinteraksi dengan AI
+	model akan menggunakkan history sebagai konteks utk jawaban kedepannya 
+
+	cara mengakses chat mode adalah dengan pergi ke navigation menu lalu memilih chat 
+	
+	kita bisa menggunakkan system instruction agar menyuruh AI utk menjawab sesuai yg kita inginkan (menghindari halusinasi)

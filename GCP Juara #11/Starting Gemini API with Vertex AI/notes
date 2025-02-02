@@ -1,0 +1,277 @@
+Gemini adalah Gen AI yg dibuat oleh Google DeepMind dan memiliki API pada Vertex AI 
+Vertex AI sendiri adalah platform Machine Learning yg ada pada google cloud console 
+
+Gemini API pada Vertex AI memungkinkan terjadinya interksi dengan Gemini (tanpa perlu mengakses ke Gemini lgsg atau membuat AI baru)
+Gemini terbagi menjadi 2 model 
+    Gemini Pro (utk masalah rumit)
+        Menganalisa info dalam jumlah banyak 
+        Penalaran tinggi (gambar, video, coding)
+        Problem solving yg tinggi 
+    Gemini Flash (utk kecepatan dan efisiensi)
+        waktu respon dan throughput yg tinggi 
+        lebih murah dri Pro
+        Enchanced Multimodal Capabilities (bisa menggunakkan API lain)
+            spatial understanding, output modalities (gambar, video, teks), dan penggunaan aplikasi lain
+
+Utk mengakses Vertex AI 
+    1. Akses google cloud console, pada navigation menu klik vertex AI 
+    2. Klik Workbench, pada bagian instances vertex-ai-jupyterLab, klik open jupyterLab
+    3. Pada pemilihan kernel, pilih python 3
+
+Gemini 1.5 pro model didesign utk menghandle bahasa asli, multi turn teks dan coding 
+    kita bisa meminta Gemini utk menghasilkan teks dari prompt teks dengan method generate_content()
+
+    dan juga bisa melakukan print streaming pada AI
+        maksud dari print streaming adalaah output diprint secara bertahap (biasanya, Gemini akan langsung ngeprint semuanya)
+
+    dan juga bisa membuat prompt kita sendiri 
+
+    kita bisa mengatur parameter output AI, 
+    generation_config = GenerationConfig(
+        temperature=0.9,                    # mengatur tingkat kerandoman output AI (seberapa kreatif AI)
+        top_p=1.0,                          # mengatur distribusi probabilitas kata yang dipilih (semakin kecil, maka kata" yg dipilih juga semakin sedikit )
+        top_k=32,                           # model hanya dapat memilih 32 kata dengan probabilitas tertinggi 
+        candidate_count=1,                  # model hanya dapat memilih 1 jawaban AI
+        max_output_tokens=8192,
+    ) # sehingga, model cukup kreatif, tidak terlalu membatasi opsi dan hanya memiliki 1 jawaban saja
+      # jika ingin jawabannya lebih tepat dan benar, bisa menurunkan temperature dan top_p 
+      # jika ingin jawabannya lebih kreatif, bisa menaikkan temperature dan top_k
+
+    Gemini memiliki safety filters yg bisa kita atur utk kategori dan tipe kontennya
+        Pengaturan keamanan gemini secara default dimatikan (OFF), dan tidak ada konten yg diblokir secara otomatis (BLOCK_NONE).
+        Tapi bisa diatur dengan cara mengatur safety_settings 
+
+        safety_settings = [
+            SafetySetting(
+                category=HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+                threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
+            ),
+        ]
+
+    Gemini juga memungkinkan utk melakukan test chat prompt sehingga bisa memberi respon secara timbal balik pada user 
+        menggunakkan method start_chat(), sehingga AI akan membalas berdasarkan history resp sblmnya
+
+Generate text from Multimodal prompt
+    Gemini adalah Multimodal model yg support multimodal prompt (prompt yg tidak hanya berupa teks, tpi bisa gambar,video, atau code)
+        tapi dengan membutuhkan bantuan beberapa fungsi 
+
+            import http.client
+            import typing
+            import urllib.request
+
+            import IPython.display
+            from PIL import Image as PIL_Image
+            from PIL import ImageOps as PIL_ImageOps
+
+
+            def display_images(
+                images: typing.Iterable[Image],
+                max_width: int = 600,
+                max_height: int = 350,
+            ) -> None:
+                for image in images:
+                    pil_image = typing.cast(PIL_Image.Image, image._pil_image)
+                    if pil_image.mode != "RGB":
+                        # RGB is supported by all Jupyter environments (e.g. RGBA is not yet)
+                        pil_image = pil_image.convert("RGB")
+                    image_width, image_height = pil_image.size
+                    if max_width < image_width or max_height < image_height:
+                        # Resize to display a smaller notebook image
+                        pil_image = PIL_ImageOps.contain(pil_image, (max_width, max_height))
+                    IPython.display.display(pil_image)
+
+
+            def get_image_bytes_from_url(image_url: str) -> bytes:
+                with urllib.request.urlopen(image_url) as response:
+                    response = typing.cast(http.client.HTTPResponse, response)
+                    image_bytes = response.read()
+                return image_bytes
+
+
+            def load_image_from_url(image_url: str) -> Image:
+                image_bytes = get_image_bytes_from_url(image_url)
+                return Image.from_bytes(image_bytes)
+
+
+            def get_url_from_gcs(gcs_uri: str) -> str:
+                # converts GCS uri to url for image display.
+                url = "https://storage.googleapis.com/" + gcs_uri.replace("gs://", "").replace(
+                    " ", "%20"
+                )
+                return url
+
+
+            def print_multimodal_prompt(contents: list):
+                """
+                Given contents that would be sent to Gemini,
+                output the full multimodal prompt for ease of readability.
+                """
+                for content in contents:
+                    if isinstance(content, Image):
+                        display_images([content])
+                    elif isinstance(content, Part):
+                        url = get_url_from_gcs(content.file_data.file_uri)
+                        IPython.display.display(load_image_from_url(url))
+                    else:
+            print(content)
+
+    bisa mengenerate teks dari local image dan teks
+
+        # Download an image from Google Cloud Storage
+        ! gsutil cp "gs://cloud-samples-data/generative-ai/image/320px-Felis_catus-cat_on_snow.jpg" ./image.jpg
+        
+        # Load from local file
+        image = Image.load_from_file("image.jpg")
+        
+        # Prepare contents
+        prompt = "Describe this image?"
+        contents = [image, prompt]
+        
+        response = model.generate_content(contents)
+        
+        print("-------Prompt--------")
+        print_multimodal_prompt(contents)
+        
+        print("\n-------Response--------")
+        print(response.text)
+
+    bisa mengenerate teks dari image di cloud dan teks
+        Jika menggunakkan gambar dari cloud storage, kita harus memasukkan URI (Uniform Resource Identifier) dari gambar tersebut
+        Kita harus menspesifikasikan mime_type (Multipurpose Internet Mail Extensions), mime_type yg bisa digunakan adalah image/jpeg dan image/png 
+
+            # Load image from Cloud Storage URI
+            gcs_uri = "gs://cloud-samples-data/generative-ai/image/boats.jpeg"
+            
+            # Prepare contents
+            image = Part.from_uri(gcs_uri, mime_type="image/jpeg")
+            prompt = "Describe the scene?"
+            contents = [image, prompt]
+
+            response = model.generate_content(contents)
+
+            print("-------Prompt--------")
+            print_multimodal_prompt(contents)
+
+            print("\n-------Response--------")
+            print(response.text, end="")
+
+        sebenarnya bisa aja kita langsung menggunakkan direct link lgsg dengan func load_image_from_url() yg kemudian akan diconvert menjadi bytes
+
+            # Load image from Cloud Storage URI
+            image_url = (
+                "https://storage.googleapis.com/cloud-samples-data/generative-ai/image/boats.jpeg"
+            )
+            image = load_image_from_url(image_url)  # convert to bytes
+
+            # Prepare contents
+            prompt = "Describe the scene?"
+            contents = [image, prompt]
+
+            response = model.generate_content(contents)
+
+            print("-------Prompt--------")
+            print_multimodal_prompt(contents)
+
+            print("\n-------Response--------")
+            print(response.text)
+
+
+    bisa menggabungkan banyak gambar dan teks prompt utk few-shot prompt
+        # Load images from Cloud Storage URI
+        image1_url = "https://storage.googleapis.com/github-repo/img/gemini/intro/landmark1.jpg"
+        image2_url = "https://storage.googleapis.com/github-repo/img/gemini/intro/landmark2.jpg"
+        image3_url = "https://storage.googleapis.com/github-repo/img/gemini/intro/landmark3.jpg"
+        image1 = load_image_from_url(image1_url)
+        image2 = load_image_from_url(image2_url)
+        image3 = load_image_from_url(image3_url)
+
+        #prepare prompts
+        prompt1 = """{"city" : "London", "Landmark:", "Big Ben"}"""
+        prompt2 = """{"city" : "Paris", "Landmark:", "Eiffel Tower"}"""
+
+        contents = [image1, prompt1, image2, prompt2, image3]
+        responses = model.generate_content(contents)
+
+        print("-------Prompt--------")
+        print_multimodal_prompt(contents)
+
+        print("-------Results--------")
+        print(responses.text)
+
+    bisa mengenerate teks dari video 
+        sama seperti mengenerate gambar, kita juga harus bisa menspesifikasikan URI cloud storage dari video kita 
+        videonya harus diambil dari Google Bucket (dengan akun yg sama) dan memasukkan mime_typenya (video/mp4)
+
+        file_path = "github-repo/img/gemini/multimodality_usecases_overview/pixel8.mp4"
+        video_uri = f"gs://{file_path}"
+        video_url = f"https://storage.googleapis.com/{file_path}"
+
+        IPython.display.Video(video_url, width=450)
+
+        prompt = """
+        Answer the following questions using the video only:
+        What is the profession of the main person?
+        What are the main features of the phone highlighted?
+        Which city was this recorded in?
+        Provide the answer in JSON.
+        """
+
+        video = Part.from_uri(video_uri, mime_type="video/mp4")
+        contents = [prompt, video]
+
+        response = model.generate_content(contents)
+
+        print(response.text)
+
+    bisa menganalisa langsung terhadap web" media (fitur baru dari Gemini)
+
+        prompt = """
+        Extract the objects in the given image and output them in a list in alphabetical order.
+        """
+        
+        image_file = Part.from_uri(
+            "https://storage.googleapis.com/cloud-samples-data/generative-ai/image/office-desk.jpeg",
+            "image/jpeg",
+        )
+        
+        response = model.generate_content([image_file, prompt])
+        
+        print(response.text)
+
+
+    dan juga bisa menambahkan url file dari file video yg tersedia available secara umum agar bisa dimasukkan ke dalam prompt
+        response_schema = {
+            "type": "ARRAY",
+            "items": {
+                "type": "OBJECT",
+                "properties": {
+                    "timecode": {
+                        "type": "STRING",
+                    },
+                    "chapter_summary": {
+                        "type": "STRING",
+                    },
+                },
+                "required": ["timecode", "chapter_summary"],
+            },
+        }
+        ​
+        prompt = """
+        Chapterize this video content by grouping the video content into chapters and providing a brief summary for each chapter. 
+        Please only capture key events and highlights. If you are not sure about any info, please do not make it up. 
+        """
+        ​
+        video_file = Part.from_uri(
+            "https://storage.googleapis.com/cloud-samples-data/generative-ai/video/rio_de_janeiro_beyond_the_map_rio.mp4",
+            "video/mp4",
+        )
+        ​
+        response = model.generate_content(
+            contents=[video_file, prompt],
+            generation_config=GenerationConfig(
+                response_mime_type="application/json",
+                response_schema=response_schema,
+            ),
+        )
+        ​
+        print(response.text)

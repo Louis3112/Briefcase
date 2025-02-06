@@ -1,0 +1,84 @@
+Stats sudah ada sblm masehi
+    negara" sprti Mesopotamia, Mesir, Cina mengumpulkan stats utk memperkirakan pajak yg dibayar warga, penghasilan pertanian 
+
+Stats digunakan thun 1950 utk pengambilan keputusan, utk generalisasi, prediksi variabel resiko dan uncertainty
+
+Awalnya stats trdiri dari pengumpulan data dan penyajian data, lalu berkembang dengan adny teori probability dan keputusan 
+    bnyk digunakan pada ekonomi, manajemen, teknik, ilmu politik, ilmu sosial
+
+probability tidak bs ddipisahkan dri stats 
+    karena saling melengkapi dlm pemahaman dan analisis data
+    karena probability jg mnjdi fondasi utk mengukur uncertainty dlm statistik
+        seperti model pengambilan keputusan, pengujian hipotesis
+
+Statistik vs Statistika 
+    Stats = data nya (kumpulan angka, bilangan dlm bntuk diagram/tabel, yg menjelaskan suatu permasalahan)
+          = ukuran yg dihitung dri sekumpulan data dan merupakan wakil dari data tersebut 
+          cth : Rata" berat mahasiswa adalah 51 kg, 90% mahasiswa berasal dari kota A
+
+    Statistika = ilmunya (metode ilmiah yg mempelajari pengumpulan, penyusunan, penyajian, penganalisisan, dan interpret data (menyimpulkan data))
+
+    Ahli statistik bertugas mengumpulkan info numerik dlm bntuk data, mengeval, menarik kesimpulan dari data tersebut
+        bukan hanya menghitung rata"/ membuat tabel dari data
+
+Topik 
+    1. Peran statistika dan probability 
+    2. Distribusi frekuensi
+    3. Pengukuran data statistik 
+    4. Angka indeks 
+    5. Analisis runtun waktu 
+    6. probability 
+    7. Distribusi probability Diskrit
+    8. Distribusi probability Kontinu 
+    9. Hipotesis dan uji hipotesis 
+    10. Regresi 
+    11. Korelasi 
+
+Kategori Statistika 
+    dibagi berdasarkan aktivitas yg dilakukan
+
+        1. Statistika Deskriptif 
+            membahas cara memperoleh data dengan mengumpulkan data, mengurangi jumlah pengamatan, mengukur konsentrasi dan distribusi
+            statistika deskriptif = deksripsi dari data yg dibutuhkan
+            Tujuan : MENDESKRIPSIKAN subjek penelitian secara ringkas (bukan utk menyimpulkan/spekulasi)
+            Disajikan dalam bentuk tabel distribusi, grafik, bagan, narasi
+                dmn rata", modus, median, range, standar deviasi dihitung 
+
+        2. Statistika Inferensial 
+            membahas cara mengeval data dan menarik kesimpulan 
+                berhubungan dengan pengujian hipotesis dan estimasi parameter 
+            melibatkan investigasi suatu info utk menarik kesimpulan tentang semua info 
+            Tujuan : menarik kesimpulan 
+            Asumsi dibuat berdasarkan stats deskriptif sebelum menarik kesimpulan 
+
+    dibagi berdasarkan metodenya 
+
+        1. Statistika Parameterik   
+            bagian dari stats inferensial yg menghitung nilai dri 1 atau lebih parameter populasi
+                spt rata", standar deviasi, korelasi 
+            Parameter : mempertimbangkan nilai populasi, mengunakkan range scale terkecil utk data 
+                        menggunakkan variabel kontinu, menggunakkan data dengan distribusi normal
+            cth : korelasi Pearson, uji-t, uji-z 
+
+        2. Statistika Nonparameterik 
+            subhimpunan dari stats inferensial dmn satu/lebih parameter populasi diabaikan
+            cth data nonparametrik : data pada skala nominal/ordinal, variabel diskrit dan menggunakkan sampel yg relatif kecil (<30)
+            cth : Uji wilcoxon, uji spearmen, uji chi-square
+
+Fungsi statistika 
+    1. Membantu pengambilan keputusan berdasarkan data
+        keputusan harus dibuat berdasarkan bukti dan analisis
+        cth : harus menggunakkan A/B Testing ut mengevaluasi hasil design berdasarkan data pengguna 
+
+    2. Mengukur dan mengatasi uncertainty (ketidakpastian)
+        Banyak fenomena yg memiliki variabilitas dan uncertainty, seperti cuaca, harga saham, perform algoritma
+        Stats membantu memahami pola dan mengurangi resiko dengan probability 
+        cth : Dlm ML, model probabilistik menangani data yg tdk pasti 
+
+    3. Meningkatkan kemampuan analisis data 
+        Data Science smkin berkembang dan statistika menjadi dasar dalam mengeksplor data 
+        cth : statistika digunakan utk menganalisa sentimen pengguna dan tren populer 
+    
+    4. Dasar utk ML dan AI 
+        Banyak algoritma ML dan AI berbasis statistika, sprti Naive Bayes, Regresi, Neural Networks 
+        Statistika membantu memahami distribusi data, estimasi pararel, validasi model 

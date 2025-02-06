@@ -1,0 +1,162 @@
+Pada Lab kali ini, kita bisa membangun Image Recog, Image Generator, chat prompt AI menggunakkan Gemini pada Vertex AI Platform (Python SDK)
+
+Untuk membangun image Recog
+    Pertama, kita harus mengetikkan code ini 
+        import vertexai 
+        from vertexai.generative_models import GenerativeModel, Part
+
+        def generate_contents(project_id: str, location: str) -> str:
+            #Initialize Vertex ai 
+            vertexai.init(project = project_id, location = location)
+            #Load model 
+            multimodal_model = GenerativeModel("gemini-1.0-pro-vision")
+            #Query model 
+            response = multimodal_model.generate_content(
+                [
+                    #Add image 
+                Part.from_uri("gs://generativeai-downloads/images/scones.jpg", mime_type = "image/jpeg"),
+                    #Add Query
+                    "what is shown in image?",
+                ]
+            )
+
+            return response.text
+
+        # Variable Initialization
+        project_id = "project"
+        location = "loc"
+
+        response = generate_contents(project_id, location)
+        print(response)
+
+    utk menjalankan program, bisa ketikkan usr/bin/python3 /home/student/genai.py
+        maka prompt akan muncul
+
+Utk membangun image generation
+    Kita ketikkan coding ini 
+        import vertexai 
+        from vertexai.preview.vision_models import ImageGenerationModel
+
+        def generate_image(project_id : str, location : str, output_file : str, prompt : str) -> vertexai.preview.vision_models.ImageGenerationResponse:
+            """Generate image using text prompt 
+
+                Args : 
+                    project_id : Google cloud project id, to initialize VertexAI
+                    location: Google cloud location, to initialize VertexAI 
+                    output_file : localpath to output file
+                    prompt : prompt """
+            
+            vertexai.init(project = project_id, location = location)
+            model = ImageGenerationModel.from_pretrained("imagegeneration@002")
+            images = model.generate_images(
+                prompt = prompt,
+                #opt parameters
+                number_of_images = 1,
+                seed = 1,
+                add_watermark = False,
+            )
+            image[0].save(location=output_file)
+
+            return images
+
+        generate_image(project_id= "project", location= "loc", output_file= "image.jpeg", prompt= "Create an image of a cricket ground in the heart of Los Angeles")
+
+Utk membangun chat prompt AI 
+    Kita ketikkan coding ini (utk chat tanpa stream)
+        import vertexai 
+        from vertexai.generative_models import GenerativeModel,ChatSession
+
+        import logging 
+        from google.cloud import logging as gcp_logging
+
+        #initialize gcp logging
+        gcp_logging_client = gcp_logging.Client()
+        gcp_logging_client.setup_logging()
+
+        project_id = "project_id"
+        location = "region"
+
+        vertexai.init(project = project_id, location = location)
+        model = GenerativeModel("gemini-1.0-pro")
+        chat = model.start_chat()
+
+        def get_chat_response(chat : ChatSession, prompt : str) -> str:
+            logging.info(f'Sending prompt: {prompt}')
+            response = chat.send_message(prompt)
+            logging.info(f'Received resp : {response.text}')
+            return response.text
+
+        prompt = "Hello"
+        print(get_chat_response(chat, prompt))
+
+        prompt = "What are all the colors in a rainbow?"
+        print(get_chat_response(chat, prompt))
+
+        prompt = "Why does it appear when it rains?"
+        print(get_chat_response(chat,prompt))
+
+    Kita ketikkan coding ini (utk chat dengan stream)
+        import vertexai
+        from vertexai.generative_models import GenerativeModel, ChatSession
+
+        import logging 
+        from google.cloud import logging as gcp_logging
+
+        vertexai.init(project_id = project_id, location = location)
+        model = GenerativeModel("gemini-1.0-pro")
+        chat = model.start_chat()
+
+        def get_chat_response(chat : ChatSession, prompt : str) -> str:
+            logging.info(f'Sending prompt: {prompt}')
+            response = chat.send_message(prompt, Stream = True)
+            for chunk in response:
+                text_response.append(chunk.text)
+            return "".join(text_reponse)
+
+        prompt = "Hello"
+        print(get_chat_response(chat, prompt))
+
+        prompt = "What are all the colors in a rainbow?"
+        print(get_chat_response(chat, prompt))
+
+        prompt = "Why does it appear when it rains?"
+        print(get_chat_response(chat,prompt))
+
+
+        import vertexai 
+        from vertexai.preview.vision_models import ImageGenerationModel
+
+        def generate_bouquet_image(project_id : str, loc : str, output_file : str, prompt : str
+            ) -> vertexai.preview.vision_models.ImageGenerationModel :
+            """Generate image 
+                Args : 
+                    project_id : Google cloud project id, to initialize VertexAI
+                    location: Google cloud location, to initialize VertexAI 
+                    output_file : localpath to output file
+                    prompt : prompt """
+
+            vertexai.init(project = project_id, location = loc)
+            model = ImageGenerationModel.from_pretrained("imagegeneration@002") 
+            images = model.generate_images(
+                prompt = prompt,
+                number_of_images = 1,
+                seed = 1,
+                add_watermark = False,
+            )   
+            images[0].save(location = output_file)
+            return images
+
+        generate_bouquet_image(project_id = "qwiklabs-gcp-03-ada41eb1f108", loc = "europe-west1", output_file="image.jpeg", prompt="Create an image containing a bouquet of 2 sunflowers and 3 roses")
+
+def analyze_bouquet_image(image_path:str, project_id:str, location:str) -> str:
+    vertexai.init(project = project_id, location=location)
+    multimodal_model = GenerativeModel("gemini-1.0-pro-vision")
+    response = multimodal_model.generate_content(
+        [
+            Part.from_image(image_path),
+            "Generate birthday wishes based on the image",
+        ]
+    )
+    return response.text
+
+print(analyze_bouquet_image("image.jpeg","qwiklabs-gcp-03-edc57a30482c","us-east4"))

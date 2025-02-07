@@ -1,0 +1,60 @@
+Background 
+    Kebutuhan keamanan info sudah berubah saat ini
+    Keamanan informasi tradisional hanya menyediakan 
+        mekanisme keamanan fisik (penguncian/penggembokan fisik)
+        administratif (membatasi pengaksesan)
+    Perkembangan komputer membutuhkan tool otomatis yg melindungi file dan menjamin keamanan selama data di kirim
+    
+Security menurut jangkauannya terbagi menjadi 4
+    Computer Security 
+        Sekumpulan tools utk melindungi data SUATU komputer
+        Menggunakkan format electronic dan memiliki classification level (unclassified, confidental, secret, top secret)
+
+    Network Security    
+        Perlindungan selama komunikasi data 
+        PC to PC, PC to Network Devices
+        Network msih terbatas dan kita masih memegang kendali atas jarngan tersebut 
+
+    Internet Security
+        Tindakan utk melindungi data selama dikirim melalui Network Devices yg sling terhubung (public network)  
+        PC to Internet, PC to Routers
+
+    Information Security 
+        Perlindungan penggunaan, penyalahgunaan, modifikasi dari data, fakta, atau pengetahuan
+        Suatu network dijaga oleh firewall
+        Antar comm tower memiliki comm security
+
+Sejarah Security (Physical Security)
+    Info ditulis dalam hiroglip, kertas, lalu ditaruh di tempat aman 
+    Bisa menggunakkan benteng, kunci, penjagaan oleh petugas 
+
+    Pengiriman info dengan kurir/telik sandi
+    Masih menggunakkan teknik sederhana 
+        Penyandian sederhana (Julius Caesar Cipher) dan penyembunyian
+
+    Physical Security pnya kelemahan, jika ditangkap saat transit, info bisa dipelajari oleh musuh
+        maka berkembang
+            Caesar Cipher yg melakukan penggeseran urutan alfabet (A -> C, B -> D..)
+            Mesin Enigma utk penyandian pesan (Jerman)
+    
+Emissions Security (EMSEC)
+    Muncul kebocoran sinyal karena kelemahan device 
+    Teletype ---> Encryptor ----> Public switched telephone networ 
+                         Telephone line
+                  !  (Encrypted and unencrypted signals exist) !
+
+Issue Keamanan yg pernah terjadi 
+    Hacker Russia hack 300.000 data CD Universe 
+    Creditcards.com dihack, menyebabkan krisis kepercayaan bank dan menimbulkan rush money 
+    Server KPU 2004 dihack oleh xnuver (tidak mengubah data, hanya merubah logo partai)
+    Hacker Belanda berhasil hack network militer AS dan hendak dijual ke Saddam Hussein
+    Konflik Ambalat Malaysia dan Indo memicu aksi defacing pada web malay oleh Hacker Indo
+
+Tapi dri itu, perkembangan security TI membuat banyak perubahan baru 
+    1. Distributed Environment di close 
+    2. Teknologi exclusive militer kini bisa diakses utk komersil 
+    3. Desktop mulai banyak digunakan 
+    4. Ketergantungan pada tehnologi (office editor, email)
+    5. Manual to Automation
+    6. Human to Machine 
+    7. Uang fisik menjadi Digital Wallet

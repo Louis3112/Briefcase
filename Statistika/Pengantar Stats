@@ -1,22 +1,23 @@
-Stats sudah ada sblm masehi
-    negara" sprti Mesopotamia, Mesir, Cina mengumpulkan stats utk memperkirakan pajak yg dibayar warga, penghasilan pertanian 
+Sejarah dan Perkembangan Statistika
+    Suudah ada sblm masehi
+        negara" sprti Mesopotamia, Mesir, Cina mengumpulkan stats utk memperkirakan pajak serta hasil pertanian 
 
-Stats digunakan thun 1950 utk pengambilan keputusan, utk generalisasi, prediksi variabel resiko dan uncertainty
+    Stats digunakan thun 1950 utk pengambilan keputusan, generalisasi, prediksi resiko dan uncertainty
 
-Awalnya stats trdiri dari pengumpulan data dan penyajian data, lalu berkembang dengan adny teori probability dan keputusan 
-    bnyk digunakan pada ekonomi, manajemen, teknik, ilmu politik, ilmu sosial
+    Awalnya stats trdiri dari pengumpulan data dan penyajian data, lalu berkembang dengan adny teori probability dan keputusan 
+        bnyk digunakan pada ekonomi, manajemen, teknik, ilmu politik, ilmu sosial
 
-probability tidak bs ddipisahkan dri stats 
-    karena saling melengkapi dlm pemahaman dan analisis data
-    karena probability jg mnjdi fondasi utk mengukur uncertainty dlm statistik
-        seperti model pengambilan keputusan, pengujian hipotesis
+    probability tidak bs dipisahkan dri stats 
+        karena saling melengkapi dlm pemahaman dan analisis data
+        karena probability jg mnjdi fondasi utk mengukur uncertainty dlm statistik
+            seperti model pengambilan keputusan, pengujian hipotesis
 
 Statistik vs Statistika 
-    Stats = data nya (kumpulan angka, bilangan dlm bntuk diagram/tabel, yg menjelaskan suatu permasalahan)
+    Stats = DATA numerik dlm bntuk diagram/tabel, yg menjelaskan suatu permasalahan
           = ukuran yg dihitung dri sekumpulan data dan merupakan wakil dari data tersebut 
           cth : Rata" berat mahasiswa adalah 51 kg, 90% mahasiswa berasal dari kota A
 
-    Statistika = ilmunya (metode ilmiah yg mempelajari pengumpulan, penyusunan, penyajian, penganalisisan, dan interpret data (menyimpulkan data))
+    Statistika = ILMU yg mempelajari metode pengumpulan, penyusunan, penyajian, penganalisisan, dan interpret data (menyimpulkan data)
 
     Ahli statistik bertugas mengumpulkan info numerik dlm bntuk data, mengeval, menarik kesimpulan dari data tersebut
         bukan hanya menghitung rata"/ membuat tabel dari data
@@ -38,16 +39,16 @@ Kategori Statistika
     dibagi berdasarkan aktivitas yg dilakukan
 
         1. Statistika Deskriptif 
-            membahas cara memperoleh data dengan mengumpulkan data, mengurangi jumlah pengamatan, mengukur konsentrasi dan distribusi
+            mengumpulkan data, mengurangi jumlah pengamatan, mengukur konsentrasi dan distribusi
+                TANPA MENARIK KESIMPULAN
             statistika deskriptif = deksripsi dari data yg dibutuhkan
             Tujuan : MENDESKRIPSIKAN subjek penelitian secara ringkas (bukan utk menyimpulkan/spekulasi)
             Disajikan dalam bentuk tabel distribusi, grafik, bagan, narasi
                 dmn rata", modus, median, range, standar deviasi dihitung 
 
         2. Statistika Inferensial 
-            membahas cara mengeval data dan menarik kesimpulan 
-                berhubungan dengan pengujian hipotesis dan estimasi parameter 
-            melibatkan investigasi suatu info utk menarik kesimpulan tentang semua info 
+            mengeval data utk menarik kesimpulan, pengujian hipotesis dan estimasi parameter 
+            melibatkan investigasi suatu info utk MENARIK kesimpulan 
             Tujuan : menarik kesimpulan 
             Asumsi dibuat berdasarkan stats deskriptif sebelum menarik kesimpulan 
 

@@ -1,0 +1,287 @@
+Sebelum PPT 
+    Krisis Software (Software Crisis)
+        Akhir tahun 1960, banyak proyek Software yg gagal 
+        Banyak Software yg overbudgetn karena hard to maintain dan not reliable
+            Semakin kompleks, semakin mahal dan sulit di maintain
+            Semakin upgrade suatu hardware, maka semakin kompleks suatu Software
+        Demand terhadap Software baru lebih banyak dari supply Software baru 
+        Sering late dan bad performance
+
+        cth : 
+            2009, Kesalahan komputer menyebabkan penundaan penerbangan 
+                puluhan penerbangan ditunda karena masalah sistem lalu lintas udara Skotlandia (walau tidak ada korban)
+            1996, Ledakan Arianne 5 setelah 36,7 detik 
+                karena kesalahan overflow (mencoba menyimpan nomor 64-bit ke ruang 16-bit)
+            1992, London Ambulance CAD Failure 
+                overclocked, tidak dapat melacak ambulans dan statusnya, delay pengiriman info kepada bbrp ambulans (46 deaths)
+            
+    Solusi Software Crisis 
+        Kata RPL/Software Engineering muncul pada NATO Software Engineering Conferences
+        Mengubah unorganized code menjadi Software Discipline, sehingga membantu perusahaan utk mengefisienkan operasi dan perkembangan software yg memenuhi demand 
+        Akhir 1970-an, prinsip RPL mulai digunakan 
+        1980-an, terjadi otomatisasi melalui CASE (Computer-Aided Software Engineering)
+        1990-an, fokus bergeser ke manajemen kualitas dengan standar sprti ISO 9001
+
+    Mengapa RPL penting?
+        Sistem yg kompleks memerlukan pendekatan/ disiplin ilmu utk design, development , dan managing
+            Big Software - Mempermudah development dan maintainance sistem kompleks
+            Scalability - Mempermudah update lebih besar
+            Adaptability - Dapat diupdate sesuai kebutuhan 
+            Cost - Menekan production cost dan maintainance pada software maupun hardware
+            Dynamic - Software selalu update dan dinamis sesuai envi user
+            Quality Management -  Menjamin software lebih baik dan andal 
+
+    Hubungan RPL dengan disiplin ilmu lain 
+        1. Ilmu Komputer : memberi dasar ilmiah utk software karena teknik elektro bergantung pada fisika 
+        2. Manajemen : RPL adalah labor-intensive yg menuntut teknis dan manajemen 
+            (pekerjaan padat karya : membutuhkan banyak tenaga kerja daripada mesin)
+        3. Ekonomi : RPL membantu mengestimasi resource dan cost control 
+            Sistem komputasi dan data harus dikelola sesuai budget 
+        4. Rekayasa Sistem : Sebagian besar RPL adalah bagian dari sistem yg besar, metode RPL hrus digunakan utk mempermudah
+            cth : sistem pemantauan industri dan software penerbangan 
+        
+    Tantangan RPL 
+        1. Safety : Cost of failure utk flight, nuclear, space travel sngatlah tinggi 
+        2. Kecepatan development : Pasar menuntut development yg cepat 
+        3. Kompleksitas : Meningkatnya kompleksitas suatu software
+        4. Interopability : Harus bisa berkomunikasi dengan OS lain
+
+    Atribut RPL (https://www.youtube.com/watch?v=weKjER-XpY0)
+        Software harus memiliki fitur yg menentukan kinerjanya saat diinstal dan digunakan, karena berhubugan dengan perilaku dan penggunaan software
+        1. Maintainability : Software harus tertata rapi, mudah dipahami, dan terdokumentasi dengan baik sehingga bisa update/maintain
+        2. Dependability :Dapat diandalkan, memiliki keamanan. Tidak menyebabkan kerusakan fisik/ekonomi apabila sistem gagal
+        3. Efficiency : Menggunakkan resource secara optimal, Penggunaan memori dan processor harus diminimalisir agar efisien 
+        4. Usability : Memiliki UI dan documentation yg baik 
+        Mengoptimalkan atribut tersebut sangat sulit karena apabila kita meningkatkan atribut lain, dapat mempengaruhi atribut lain 
+            UI yg cnggih dapat mngurangi performa
+        
+    Karakteristik RPL  (https://www.geeksforgeeks.org/software-engineering-characteristics-of-good-software/)
+        Software yg dinilai dari apa yg ditawarkan dan metode yg diberikan 
+        Setiap software harus memiliki 
+        1. Operasional/Operational (Seberapa bagus performa software dalam suatu operasi)
+            - Budget 
+            - Usability
+            - Efficiency
+            - Robustness
+            - Correctness
+            - Functionability
+            - Dependability
+            - Security
+            - Safety
+        
+        2. Transisi/Transitional (Software dapat dipindahkan dari satu platform ke platform lain)
+            - Interopability
+            - Reusability
+            - Portability
+            - Adaptability
+        
+        3. Maintainance (Software memiliki kemampuan utk memaintain dirinya dalam envi lain scra cepat)
+            - Flexibility
+            - Maintainability
+            - Modularity
+            - Scalability
+
+
+PPT
+    RPL 
+        Disiplin ilmu yg menerapkan konsep teknik dan ilmu komputer dalam development dan maintainance software yg reliable, reusable, dan dependable 
+        Berhubungan dengan SDLC (Software Development Life Cycle)
+            1. Systems Planning and Organization (lanjut ke nomor 2) 
+            2. Systems Analysis 
+            3. Systems Design 
+            4. Systems Implementation and Operation (kembali ke nomor 1)
+
+    Pemdas 
+        Source Code --------------> Compiler -----------> Object File --------------> Runtime Library Files -------------> Executable file
+                    dicompile             menghasilkan        diggabungkan dengan Linker                   menghasilkan
+
+    Programming Paradigm terbagi menjadi 2
+        Imperative Programming Paradigm (Paradigma yg berfokus pada bagaimana task dilakukan secara bertahap)
+            Procedural Programming : Program disusun dalam prosedur/fungsi (C++, Pascal)
+            Object-Oriented Programming : Program disusun dalam bentuk class dan object (C++, Java, Python)
+            Parrarel Processing Approach : Memanfaatkan eksekusi pararel utk meningkatkan kinerja 
+
+        Declarative Programming Paradigm (Paradigma yg berfokus pada hasil akhir tanpa menentukan langkah"nya secara eksplisit)
+            Logic Programming : Program disusun dalam logic (Prolog)
+            Functional Program : Program disusun dlam bentuk fungsi mtk (Haskell, Lisp)
+            Database Processing Approach : Program menggunakkan DB : MySQL
+
+    Software terdiri atas 
+        Program
+        Data
+        Documentation 
+            System Documentation
+            User Documentation
+
+    Jenis Software
+        Generic Software (Software Generik/Umum)
+            Sistem/Software yg dipasarkan dan dijual kepada cust yg ingin membeli/menggunakkan 
+            cth : graphic program, project management, software CAD (Computer-Aided Design), website, online shop, game
+            Spesifikasi,update software dibuat dan diatur oleh developer
+
+        Specific Purpose Software
+            Sistem/Software yg dibuat khusus utk cust tertentu utk memenuhi kebutuhan cust tersebut 
+            cth : Integrated Control System, air traffic control system, traffic control software
+            Spesifikasi, update software dibuat dan diatur oleh customer 
+    
+    RPL vs Rekayasa Sistem 
+        Rekayasa Sistem 
+            Bidang teknik interdispliner (comp, software, proses rekayasa)
+            Mencakup semua aspek computer system development (Hardware, Software, Process)
+            lbih tua dari RPL 
+        
+        RPL 
+            Berkaitan dengan design, development, deployment dari software
+            Bagian dari rekayasa sistem 
+
+    QnA Software
+        1. Software adalah program komputer beserta dokumentasinya yg dpt dikembangkan utk cust/pasar tertentu 
+        2. Atribut Software yg baik adalah functionality, reliability, maintainability, dan easy
+        3. RPL adalah disiplin rekayasa yg berfokus pada semua aspek software dev
+        4. Aktivitas utama RPL mencakup specification, dev, validation, dan evolusi software
+        5. RPL vs ilmu komputer: 
+            Ilmu komputer berfokus pada teori dan dasar-dasar, RPL lebih menekankan pada pengembangan software.
+        6. RPL vs Rekayasa Sistem : 
+            Rekayasa sistem mencakup development Hardware, Software, Process rekayasa, RPL bagian dari rekayasa sistem
+        7. Challenge dlm RPL meliputi meningkatnya keragaman sistem, tuntutan waktu deploymenny, serta development yg reliable
+        8. Cost dri RPL terdiri dari sekitar 60 persen untuk development dan 40 persen untuk testing. 
+            Pada perangkat lunak kustom (Specific Purpose Software), biaya evolusi(upd) bisa lebih tinggi daripada biaya development
+        9. Tidak ada satu metode terbaik dalam RPL, tiap proyek punya kebutuhan berbeda. 
+            cth : game development menggunakan prototype, safety system membutuhkan spesifikasi yang lebih ketat dan analisis 
+        10. Web development vs RPL
+            Web telah memperluas layanan software secara distributed, meningkatkan update dalam bahasa pemrograman dan modularitas software.
+
+    Proses/Basic Activity dari RPL 
+        Aktivitas dan hasil yg dari RPL
+            Specification
+                mengetahui apa yg dibutuhkan user
+                mengetahui kendala user 
+            Development
+                design dan programming 
+            Validation
+                memeriksa apakah sesuai specification
+            Evolution
+                mengupdate program (sesuai pasar/user)
+    
+    Software Model Process
+        Mendeskripsikan bagaimana sistem didevelop
+        berfokus pada aktivitas, data, dan peran orang yang terlibat
+            1. Alur kerja berfokus pada tindakan developer dalam development,
+                termasuk input, output, dan dependency.
+            2. Aliran data berfokus pada transformasi informasi, dari input diubah output dalam suatu sistem
+            3. Peran/Tindakan berfokus pada siapa yang terlibat dalam tiap proses
+        cth : 
+            Pendekatan waterfall (secara bertahap step by step)
+            Pendekatan iteratif (secara berulang)
+            RPL berbasis CBSE (Component Based Software Engineering)
+                (menggunakkan komponen" software yg sdh ada sblmnya)
+    
+    Biaya RPL 
+        tergantung pada proses dan jenis software yg digunakan 
+        setiap pendekatan memiliki profil distribusi yg berbeda
+        60 persen utk development cost, 40 persen utk testing cost 
+        utk specific purpose software, memiliki evolution cost yg lebih besar dri development cost
+    
+    CASE (Computer-Aided Software Engineering)
+        Program yg mendukung 
+            Analisa kebutuhan 
+            Pemodelan sistem 
+            Debug
+            Pengujian
+        cth : Draw.io, Microsoft Visio, StarUML, Visual Paradigm, CASEStudio
+
+    Atribut software yg baik 
+        atribut fungsional (performa, apa yg dilakukan sistem)
+        atribut non fungsional (kualitas, bagaimana sistem melakukannya)
+
+        1. Maintainability : Kualitas program seperti testability, extenbility
+        2. Dependability :Dapat diandalkan, memiliki keamanan, keselamatan
+        3. Efficiency : Memiliki respons, waktu pemrosesan, dan pemanfaatan memori
+        4. Usability : Mudah dipelajari dan mudah dipahami, memuaskan user 
+    
+    Atribut utama utk 
+        Game : Pemain, Score, Scene, Tema 
+        Sistem Perbankan : Rekening Klien, Transaksi, Obligasi saham 
+        Monitor Jantung : Detak jantung, oksigen, suhu, tekanan darah
+
+    Challenge utk RPL saat ini 
+        Heterogenitas 
+           Komputer, platform, OS yg berbeda. Developer perlu membuat aplikasi bisa berjalan di tempat yg berbeda"
+        Deliver 
+           Mampu memproses suatu task dgn cepat. Developer perlu membuat aplikasi berjalan lancar tanpa mengurangi kualitas 
+        Trust 
+           Data, komputer, OS, software sangat erat kaitanny dengan kita. Developer perlu membuat aplikasi yg bisa menjamin keamanan semua itu 
+
+Epilog
+    The Big Picture 
+        Konsep utk memahami bagaimana software dikembangkan, dari perencanaan, maintainance, termasuk metode Waterfall dan Agile 
+        
+        Waterfall
+            Metode linear dimana tiap tahap (analyst, design, implementation, testing, dan maintainance) harus diselesaikan secara bertahap satu persatu 
+        Agile
+            Metode pendekatan yg lebih fleksibel (iteratif dan kolaboratif), sehingga development lebih cepat dan fleksibel terhadap update yg dibutuhkan
+
+    New Ways of Working 
+        Lean                                                # Pendekatan utk meningkatkan efisiensi dan berfokus pada kualitas produksi
+            Flow                                            # Mengoptimalkan proses produksi utk menciptakan aliran kerja yg lancar
+            Pull
+            Value
+            Value Stream
+        
+            Perfection 
+                Continuous Improvement (Kaizen)             # Perkembangan terus menerus 
+                Disruptive (Kaikaku)                        # Inovasi yg mengganggu
+                Deming                                      # Metode untuk meningkatkan kualitas dengan menghilangkan hambatan produksi
+                    PDCA (Plan-Do-Check-Act)                # Siklus perbaikan berkelanjutan
+                Goldratt
+                    Theory of Constraints
+        
+        Lean Product Dev.                                   # Pendekatan dlm pengembangan produk yg fokus pada efisiensi dan inovasi 
+            MVP (Minimum Viable Product)                    # Versi awal produk yg memiliki fitur dasar dan dapat diuji di pasar
+                Ries
+            Business Model Canvas                           # Kerangka strategi bisnis untuk merancang model bisnis
+        
+        Systems Thinking                                    # Fokus pada pemikiran sistem utk jangka panjang
+            Complexity                                      # Kerangka pengambilan keputusan berdasarkan tingkat kompleksitas 
+                Cynefin                                     # Mengambil tindakan yg tepat sesuai dengan "domain" yg terjadi
+            Organisational Learning                         # Fokus pada pembelajaran Organisational
+                Senge                                       # Personal Mastery, Model Mental, Shared Vision, Team Learning, Systems Thinking
+                Argyris                                     # Perkembangan seseorang diproses melalui perubahan dari situasi ketidakmatangan ke situasi kematangan.
+        
+        Social Psychology                                   # Pembelajaran bagaimana faktor sosial dan psikologi mempengaruhi kinerja tim
+            Organization                                    # Prinsip membentuk tim sesuai jumlah optimal anggota
+                Dunbar's Number                             # Manusia hanya dapat memiliki hubungan secara efektif dengan 150 org
+                Two Pizzas                                  # Semakin sedikit orang, maka semakin baik
+                Team of Teams                               # Dalam suatu tim/organisasi terdapat tim lagi 
+            Motivation                                      # Teori motivasi utk meningkatkan produktivitas
+                Herzberg                                    # Kepuasan karyawan didasarkan pada 2 hal
+                    Hygiene     
+                    Motivational
+                Pink                                        # Motivasi internal adalah kunci utama dari adanya motivasi
+                    Purpose                                 # Perasaan berkontribusi pada sesuatu yang lebih besar dari diri sendiri
+                    Autonomy                                # Perasaan mandiri dan pengarahan diri sendiri dalam pekerjaan
+                    Mastery                                 # Keinginan untuk meningkatkan keterampilan melalui pembelajaran dan latihan
+                McGregor                                    # Motivasi bagaimana seorang manajer memotivasi bawahannya
+                    Theory X/Y                              # X melihat sisi negatif, Y melihat sisi positif
+        
+        ITIL (Information Technology Infrastructure Library) # Proses yg meluruskan service IT dengan keubuthan binis
+            Service-level management (SLM)
+            
+        Agile                                                # Metodologi software development yg iteratif dan fleksibel
+            Scrum                                            # Framework software development berbasis iterasi yg cepat dan kolaboratif
+            Extreme Programming (XP)                         # Teknik development yg berfokus pada kecepatan dan kesederhanaan dengan siklus pengembangan yang pendek
+            Test Driven Development (TDD)                    # Teknik development yg berfokus pada pengujian
+            Continuous Integration                           # Praktik software development yg menggabungkan dan menguji kode secara otomatis
+            Continuous Delivery                              # Praktik software development yg mengirim kode pengujian ke production envi secara langsung
+            Cross-Functional Teaming                         # Tim yg terdiri dari berbagai keahlian untuk kolaborasi yang lebih baik.
+        
+        Resistance                                           # Kemampuan sistem dan tim dalam menghadapi masalah dan beradaptasi 
+            Anti-Agile                                       # Sistem menjadi lebih kuat setelah menghadapi tantangan
+            Dekker                                           # Studi tentang kesalahan manusia dalam dalam sistem utk meningkatkan keamanan
+                Human Error 
+        
+        Dev-Ops                                              # Pendekatan kolaboratif antara Dev (Pengembang) dan Ops (Operasional) utk meningkatkan kualitas dan kecepatan software
+            Automation                                       # Menggunakan otomatisasi untuk meningkatkan efisiensi 
+            "You build it, you run it"                       # Filosofi utk software development utk bertanggung jawab atas software yg dibangun 
+            Release & Deployment Management                  # Proses pengelolaan dan deployment berjalan dengan lancar
+            Service Asset & Config. Management               # Mengelola aset dan konfigurasi untuk memastikan stabilitas layanan

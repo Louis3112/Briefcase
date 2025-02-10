@@ -1,0 +1,58 @@
+Sejarah R
+    Ross Ihaka dan Robert Gentleman dari New Zealand adalah pembuat R
+    Tahun 2012, menurut Oracle terdapat 2 juta pengguna bahasa R di seluruh dunia dan meningkatkan 40% setiap tahun
+
+Alasan R populer 
+    1. Open source (gratis)
+    2. Platform-Independent, bisa digunakan pada OS mana saja (Windoes,s Linux, Mac)
+    3. Punya fitur statistika yg lengkap, meliputi statistika dasar(mean, medium, modus), grafik, distribusi probabilitas
+    4. Banyak package 
+        library (tidyr) utk membersihkan data
+        library (ggplot) utk membuat grafik 
+        library (dplyr) utk membuat data wrangling 
+    5. Bekerja dengan sistem distributed computing (secara programming)
+        pemrosesan data terbagi ke beberapa komputer/node utk meningkatkan efisiensi dan perform
+        lawan dari sequential computing
+
+R memiliki operator aritmatika yg terdiri atas 
+    + (Pertambahan)
+    - (Pengurangan) 
+    * (Perkalian) 
+    / (Pembagian) 
+    ^ (Eksponensial) (Mengalikan nilai angka di sebelah kiri dengan yg di sebelah kanan)
+    %% (Modulo) (Mengembalikan hasil nilai pembagian dari angka di sebelah kiri dengan yg di sebelah kanan)
+
+    cth : 
+    #Berapa Hasil dari 15 + 46
+    15 + 46
+
+    #Berapa Hasil dari 65 / 13
+    65 / 14
+
+    #Berapa Hasil dari 28 %% 5
+    28 %% 5
+
+    #Berapa Hasil dari 4 ^ 5
+    4 ^ 5
+
+Variabel 
+    Variabel disimpan dengan cara menggunakkan operator assignment <- (pada variabelnya) atau menggunakkan = 
+    cth : 
+    #Simpan nilai apel ke dalam variable bernama ‘apel’
+    apel <- 5               # perlu diwaspadai, <- harus disambung, jangan menggunakkan < - karena dikira akan melakukan perbandingan (walau nnti tetap akan disimpan)
+    
+    #Simpan nilai jeruk ke dalam variable bernama ‘jeruk’
+    jeruk <- 7
+
+    #Tampilkan nilai dari variable ‘jeruk’
+    jeruk 
+
+    #Kamu memiliki 5 apel dan 7 jeruk
+    apel <- 5
+    jeruk <- 7
+
+    #Jumlahkan buah-buahan yang kamu miliki
+    apel + jeruk
+
+    #Simpan apel + jeruk ke dalam variable 'buah'
+    buah <- apel + jeruk 

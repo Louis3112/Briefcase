@@ -1,0 +1,278 @@
+Sebelum PPT 
+    SDLC (Software Development Life Cycle/Siklus Hidup Perkembangan Software)
+        Proses sistematis utk mendevelop software utk menjamin kualitas, ketepatan waktu dan biaya. 
+        Setiap tahap SDLC memiliki proses dan hasil ke tahap selanjutnya
+    
+    Mengapa harus SDLC
+        1. Mempermudah perencanaan project dan biaya
+        2. Menyediakan standard dan Framework development
+        3. Meningkatkan tracking, control, dan hubungan dengan client 
+        4. Meminimalisir resiko dan mempercepat development 
+    
+    Tahapan SDLC (7 Tahap)
+        1. Pengumpulan dan analisis persyaratan (Requirement Analysis)
+            Mengumpulkan requirement dan condition yg dilakukan oleh tim senior kepada stakeholder (CEO, Boss, Manager, Client, Investor)
+            Quality Planning Assurance Req dan Risk Identification juga dikenalkan pada tahap ini
+                Risk = project memiliki elemen kompleks/blm fix, butuh high security and safety
+    
+        2. Studi Kelayakan (Feastability Study)
+            Mendokumentasikan requirement software dengan doc SRS (Software Requirements Specification)/Spesifikasi Persyaratan Perangkat Lunak 
+            5 jenis pemeriksaan kelayakan 
+               1. Ekonomi : bisakah menyelesaikan project sesuai anggaran
+               2. Hukum : apakah project ini taat cyber law/persyaratan lain
+               3. Kelayakan Operasi : apakah apli sesuai ekspetasi 
+               4. Teknis : apakah software dpat berjalan di atas OS saat ini 
+               5. Jadwal : apakah apli bisa dideploy sesuai dl
+
+        3. Desain (Design)
+            Membuat design tingkat tinggi (High Level Design (HLD)) atau design tingkat rendah (LLD) utk arsitektur sistem 
+               HLD : fokus pada apa dan mengapa sistem dibangun 
+                    - system architecture
+                    - database design
+                    - penjelasan singkat tentang sistem, services, platform dan relasi antar modul
+               LLD : fokus pada bagaimana sistem dibangun 
+                    - language programming dan DB yg digunakan
+                    - logika fungsional modul
+                    - tabel database 
+                    - hardware interfaces, software interfaces
+                    - input output utk tiap modul 
+                    - error messages
+
+        4. Pengkodean (Coding)
+            Pembuatan program dengan coding berdasarkan HLD dan LLD yg sudah ada 
+            Tugas dibagi" per unit/modul ke para developer 
+            Merupakan bagian terpanjang dari SDLC 
+            Developer menggunakkan compiler, interpreter, debugger utk mendevelop program 
+
+        5. Pengujian (Testing)
+            QC,QA,Tester melakukan testing dan menemukan bug yg akan dilaporkan ke developer 
+            Developer melakukkan debugging dan dikirim lagi ke tester 
+        
+        6. Install Deploy  
+            Setelah tdk ada bug dan dirasa aman, software di deploy dan dirilis ke envi yg diinginkan (production envir)
+            Tetap dilakukan pemantauan jika adakah trouble atau tidak 
+        
+        7. Maintainance 
+            Developer melakukan bug fixing, upgrade (upgrade apli ke versi software yg baru), update (menambahkan fitur baru di dlm software)
+    Inti dari SDLC adalah utk memastikan kebutuhan terus terpenuhi dan sistem terus bekerja 
+    
+    Model SDLC 
+        Waterfall Model (Winston Royce, 1970)
+            SDLC yg pling banyak digunakan dan berbentuk linear secara sequential
+            Output dari suatu tahap merupakan input dari tahap lain (sehingga harus selesai dan tidak boleh tumpang tindih)
+            Perlu dokumentasi yg ketat 
+
+            Kapan menggunakkn waterfall 
+                1. Requirement jelas dan tidak banyak perubahan 
+                2. Apli tidak rumit dan besar 
+                3. Project singkat 
+                4. Envi, teknologi, dan device stabil 
+                5. Resource yg sudah terlatih 
+            
+            Kelebihan
+                1. Setiap fase harus diselesaikan sebelum ke fase selanjutnya
+                2. Cocok utk project kecil 
+                3. Perlu verifikasi dan validation tiap fase
+                4. Documentation yg rinci tiap fase 
+                5. Minim intervensi client
+            
+            Kekurangan 
+                1. Kesalahan hanya bisa diperbaiki di fase tersebut
+                2. Tidak cocok utk project besar dengan requirement yg terus berubah
+                3. Testing dilakukan di bgian terakhir, sehingga debugging akan sedikit sulit 
+                4. Documentation yg memakan waktu 
+                5. Minim feedback dari client 
+                6. Perubahan/error minor dapat menyebabkan masalah
+
+        Incremental Model
+            Development yg terdiri atas bbrp Model waterfall
+            Development terbagi menjadi bbrp modul bagian dan tiap progress akan ditambahkan bertahap
+                Urutan : Analysis -> design -> coding -> test
+                jdi 
+                Analysis -> Design -> Coding -> Test  (Increment 1) (Biasanya bagian utama/inti dri produk)
+                    Analysis -> Design -> Coding -> Test (Increment 2) (Fitur lain yg lebih penting)
+                        Analysis -> Design -> Coding -> Test (Increment 3) (Fitur lain yg kurang penting)
+            
+            Partial system akan digabung menjadi suatu product utama di akhir
+            Tidak boleh ada perubahan besar ketika suatu increment selesai 
+            
+            Kapan menggunakkan incremental 
+                1. Requirement jelas 
+                2. Jika ada demand utk rilis alpha/beta oleh client
+                3. Jika developer msih memiliki keterbatasan
+                4. Jika feature dan tujuan memiliki high risk
+                5. Biasa digunakan oleh web app dan product based company
+            
+            Kelebihan
+                1. Software dapat didevelop lebih cepat
+                2. Fleksibel kalau ada perubahan req
+                3. Perubahan dalam development dapat dilakukan
+                4. Lebih hemat economy
+                5. Client dapat memberi feedback
+                6. Bug/Error/Kesalahan dapat diidentifikasi dan diubah
+            
+            Kekurangan 
+                1. Membutuhkan planning yg matang
+                2. System architecture bisa error jika requirement ada yg terlewat
+                3. Tiap fase kaku dan tidak boleh saling tumpang tindih
+                4. Debugging pada suatu modul dapat mempengaruhi modul lain
+
+        V Model 
+            Development dan testing dilakukan secara pararel
+            Fase verifikasi di smping dan validasi di samping lain, bergabung ketika fase coding
+
+        Agile Model 
+            Iteratif dan fleksibel dengan update kecil dlm bbrp wktu singkat 
+            Adanya interaksi antara coding dan testing
+            Project terbagi menjadi beberapa update kecil, yg update tersebut dilakukan secara iterasi selama beberapa minggu  
+
+        Spiral Model (Barry Boehlem, 1990)
+            Berfokus pada risk dengan gabungan dari beberapa model waterfall, incremental, dan prototyping agar hasil yg baik dan fleksibel
+            Bisa dibilang mirip dengan iterasi (tapi dengan gabungan beberapa model dan mengambil bagian yang terbaik)
+
+            Development dilakukan secara bertahap dengan menambahkan fitur baru di setiap putaran (spiral)
+                Urutan : Liaison (Hubungan) (Jarang digunakan) -> Planning -> Risk Analysis -> Engineering -> Construction & Release -> Eval
+                Urutan Spiral : Concept Dev -> System Development -> System Maintainance -> System Evolution/Enchance
+            
+            Setiap spiral selesai dan dimulai spiral baru, akan ditambahkan fitur" yg perlu atau penting
+            Tahap awal spiral dimulai dari perencanaan dan diakhiri dengan client feedback
+
+            Kapan menggunakkan Spiral Model 
+                1. Project skala besar dengan upd rutin 
+                2. Pembuatan prototype
+                3. Utk mid-high risk project 
+                4. Requirement yg tidak jelas dan dinamis 
+                5. Sering terjadi perubahan 
+                6. Utk project jangka panjang
+            
+            Kelebihan 
+                1. Fleksibel utk menambahkan fitur/upd
+                2. Estimasi biaya yg mudah karena proyek dibagi menjadi bagian kecil 
+                3. Iterasi development membantu manajemen resiko 
+                4. Fitur ditambahkan secara sistematis
+                5. Memungkinkan feedback dari client 
+            
+            Kekurangan 
+                1. Rawan tidak memenuhi jadwal/anggaran 
+                2. Hanya cocok utk big project dan perlunya keahlian utk penilaian risk 
+                3. Harus mengikuti protocol 
+                4. Perlu banyak documentation 
+                5. Tidak cocok utk small project karena biaya
+
+        Big Bang Model 
+            Berfokus pada resource dan coding, tanpa perancangan dan bersifat spontan
+            Biasanya utk project kecil" dan bersifat akademik
+            Requirement mudah dipahami dan tidak sulit diterapkan 
+
+        RAD Model (Rapid App Development)
+            Development yg berfokus pada prototype tanpa perencanaan khusus 
+            Less focus pada planning dan more focus pada development karena menargetkan development yg singkat 
+            
+            Urutan : Business Modelling -> Data Modelling -> Process Modelling -> Application Generation -> Testing n Turnover 
+            Setiap urutan tersebut dilakukan oleh RAD Prototype, dan biasanya terdapat 3 RAD Prototype
+                    RAD Prototype 1 --> RAD Prototype 2 ---> RAD Prototype 3 ---> Application code 
+                               <-------------------------------->
+                                        Automation tool
+            RAD berfokus pada modularitas dan reusability terhadap template, proses dan coding, sehingga mempercepat development
+
+            Kapan menggunakkan RAD Model 
+                1. Project memiliki deadline yg cepat (2-3 bulan)
+                2. Requirement diketahui 
+                3. User terlibat selama SDLC
+                4. Technical risk yg kecil 
+                5. Memiliki anggaran yg cukup utk pemodelan dan otomasi coding 
+                6. Sedikit org dalam tim 
+            
+            Kelebihan RAD 
+                1. Flexibel 
+                2. Mengurangi risk project dengan reusability dan prototype
+                3. Meningkatkan produktivitas karena lebih sedikit org
+                4. Tiap fase memberi highest functionality priorirty pada client 
+            
+            Kekurangan
+                1. Tidak cocok utk project kecil/high risk 
+                2. Tidak semua apli dapat diadaptasi oleh RAD 
+                3. Perlu banyak documentation
+                4. Membutuhkan high-skilled programmer dan high commitment 
+
+    Perbandingan Model SDLC     
+        Properti Model                      Waterfall Model             Incremental Model               Spiral Model                RAD Model 
+        
+        Planning pada tahap awal            Ya                          Ya                              Ya                          Tidak
+        Kembali ke fase sbeelumnya          Tidak                       Ya                              Ya                          Ya
+        Utk project besar                   Tidak                       Kurang                          Ya                          Tidak
+        Documentation rinci                 Ya                          Ya, tapi tidak banyak           Ya                          Terbatas 
+        Biaya                               Rendah                      Rendah                          Tinggi                      Rendah (tinggi utk modelling)             
+        Requirement Analysis                Awal                        Awal                            Awal                        Tergantung timebox (tergantung manajemen)
+        Flexibility utk perubahan           Sulit                       Mudah                           Mudah                       Mudah 
+        Keterlibatan user                   Hanya di awal               Ya (Intermediate)               Ya (Tinggi)                 Hanya di awal
+        Maintainance                        Paling sedikit              Ya                              Ya                          Easy Maintainance 
+        Durasi                              Panjang                     Sangat Lama                     Sangat Lama                 Singkat 
+        Risk                                Tinggi                      Rendah                          Mid-Tinggi                  Rendah 
+        Jenis Framework                     Linear                      Linear + Iteratif               Linear + Iteratif           Linear
+        Testing                             Setelah coding              Setelah coding/increment        Setelah engineering         Setelah Application Generation
+        Tumpang tindih                      Tidak                       Ya (karena pararel)             Tidak                       Ya
+        Maintainability                     Paling sulit                Ya                              Ya                          Easy Maintainance
+        Reusability                         Tidak                       Sampai batas tertentu           Sampai batas tertentu       Ya
+        Time usage                          Panjang                     Sangat Lama                     Sangat Lama                 Singkat 
+        Ketersediaan software               Di akhir cycle              Di akhir iterasi                Di akhir iterasi            Di akhir cycle 
+        Objective                           High guarantee              High guarantee                  High guarantee              Fast development
+        Ukuran tim                          Big Team                    Big Team                        Big Team                    Small Team 
+        Control user ke admin               Tidak                       Ya                              Ya                          Ya 
+
+        Prototyping Model
+            Model software development dimana prototype dibangun, diuji, dan dikerjakan ulang sampai prototype dapat di acc 
+            Urutan : Requirement Analysis -> Quick Design -> Build Prototype -> User Evaluation -> Refining Prototype -> Implement and Maintain 
+                                                                                            <- Loop ->
+            Jenis Model Prototype 
+                Prototype Fast Throwaway 
+                    Dibuat berdasarkan requirement awal dan utk mendapat feedback dri client 
+                    Prototype di "throwaway" setelah feedback diterima dan tidak menjadi bagian dri final product 
+                    Cocok utk explor ide dan memahami requirement client 
+
+                Prototype Evolution
+                    Prototype didevelop secara bertahap menurut feedback client 
+                    Menghemat waktu dan energi karena tdk perlu start dri 0 
+                    Digunakan utk project dengan new techonology/ requirement dinamis 
+
+                Prototype Additional
+                    Final product dimodular menjadi prototype kecil yg dikembangkan secara individual 
+                    Setelah selesai, semua prototype akhirnya digabung lgi
+                    Mengurangi waktu feedback antara user dan developer
+
+                Prototype Extreme   
+                    Digunakan pada web development
+                    Terdiri dari 3 fase 
+                        1. Pembuatan prototype dasar dengan HTML 
+                        2. Simulasi proses data menggunakkan prototype service 
+                        3. Implementasi dan integrasi layanan ke final prototype 
+
+            Tips Prototyping Model 
+                1. Gunakan Prototyping ketika requirement tidak jelas 
+                2. Rencanakan dan kendalikan proses dengan baik 
+                3. Lakukan annual meeting utk menghindari delay 
+                4. User dan developer harus memahami masalah dalam prototyping 
+                5. ACC Prototype sebelumnya utk upd ke prototype selanjutnya 
+                6. Jangan takut utk mengubah keputusan jika diperlukan 
+                7. Develop fitur utama/penting utk memastikan sistem berjlan lancar 
+            
+            Kelebihan Prototype Model 
+                1. Adanya feedback dari client 
+                2. Mengurangi risk karena fungsionalitas yg hilang bisa diidentifikasi
+                3. Meningkatkan komunikasi antar dev dan client
+                4. Memudahkan client utk membandingkan product dengan spesifikasi 
+                5. Mendorong inovasi dan design fleksibel
+                6. Mudah dipahami 
+                7. Prototype dapat diubah/di-throwaway
+            
+            Kekurangan Prototype Model 
+                1. Waktu dan process yang lambat 
+                2. Biaya development bisa sia" karena sering melakukan throwaway prototype
+                3. Adanya perubahan req yg berlebihan dri client 
+                4. Client tidak mau selalu terlibat dalam loop dalam evaluation dan refining product 
+                5. Documentation kurang baik karena banyak perubahan 
+                6. Client ribet dan bisa mengira product telah selesai dari prototype awal
+                7. Development yg terburu" menghasilkan solusi yg tidak optimal 
+
+PPT 
+    RPL terdiri dari Rekayasa dan Perangkat Lunak 

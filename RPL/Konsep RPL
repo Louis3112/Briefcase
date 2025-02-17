@@ -98,7 +98,7 @@ PPT
     Programming Paradigm terbagi menjadi 2
         Imperative Programming Paradigm (Paradigma yg berfokus pada bagaimana task dilakukan secara bertahap)
             Procedural Programming : Program disusun dalam prosedur/fungsi (C++, Pascal)
-            Object-Oriented Programming : Program disusun dalam bentuk class dan object (C++, Java, Python)
+            Object-Oriented Programming : Program disusun dalam     bentuk class dan object (C++, Java, Python)
             Parrarel Processing Approach : Memanfaatkan eksekusi pararel utk meningkatkan kinerja 
 
         Declarative Programming Paradigm (Paradigma yg berfokus pada hasil akhir tanpa menentukan langkah"nya secara eksplisit)

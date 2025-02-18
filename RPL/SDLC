@@ -72,7 +72,7 @@ Sebelum PPT
             Kelebihan
                 1. Setiap fase harus diselesaikan sebelum ke fase selanjutnya
                 2. Cocok utk project kecil 
-                3. Perlu verifikasi dan validation tiap fase
+                3. Adanya verifikasi dan validation tiap fase
                 4. Documentation yg rinci tiap fase 
                 5. Minim intervensi client
             
@@ -84,6 +84,9 @@ Sebelum PPT
                 5. Minim feedback dari client 
                 6. Perubahan/error minor dapat menyebabkan masalah
 
+            Waterfall Model banyak digunakan pada pengembangan sistem embedded pada ATM atau mesin kasir, 
+                sistem akademik suatu sekolah atau kampus, pengembangn software rumah sakit dan militer. 
+        
         Incremental Model
             Development yg terdiri atas bbrp Model waterfall
             Development terbagi menjadi bbrp modul bagian dan tiap progress akan ditambahkan bertahap
@@ -117,6 +120,9 @@ Sebelum PPT
                 3. Tiap fase kaku dan tidak boleh saling tumpang tindih
                 4. Debugging pada suatu modul dapat mempengaruhi modul lain
 
+            Incremental model banyak digunakan pada pengembangan website app dan product-based company, seperti Google, Microsoft, Adobe, Amazon. 
+            Incremental model juga digunakan pada pengembangan sistem kompleks, seperti sistem CRM (Customer Relationship Management) dan ERP (Enterprise Resource Planning).
+
         V Model 
             Development dan testing dilakukan secara pararel
             Fase verifikasi di smping dan validasi di samping lain, bergabung ketika fase coding
@@ -127,7 +133,7 @@ Sebelum PPT
             Project terbagi menjadi beberapa update kecil, yg update tersebut dilakukan secara iterasi selama beberapa minggu  
 
         Spiral Model (Barry Boehlem, 1990)
-            Berfokus pada risk dengan gabungan dari beberapa model waterfall, incremental, dan prototyping agar hasil yg baik dan fleksibel
+            Berfokus pada risk management dengan gabungan dari beberapa model waterfall, incremental, dan prototyping agar hasil yg baik dan fleksibel
             Bisa dibilang mirip dengan iterasi (tapi dengan gabungan beberapa model dan mengambil bagian yang terbaik)
 
             Development dilakukan secara bertahap dengan menambahkan fitur baru di setiap putaran (spiral)
@@ -159,6 +165,10 @@ Sebelum PPT
                 4. Perlu banyak documentation 
                 5. Tidak cocok utk small project karena biaya
 
+                Spiral model banyak digunakan pada sistem berskala besar dengan update rutin, seperti sistem perbankan dan ERP (Enterprise Resource Planning).
+                Spiral model juga digunakan pada pengembangan sistem beresiko tinggi, seperti milter dan rumah sakit.
+                Pengembangan sistem yang membutuhkan fleksibilitas dan iterasi, seperti AI dan Machine Learning.
+                
         Big Bang Model 
             Berfokus pada resource dan coding, tanpa perancangan dan bersifat spontan
             Biasanya utk project kecil" dan bersifat akademik
@@ -194,6 +204,9 @@ Sebelum PPT
                 2. Tidak semua apli dapat diadaptasi oleh RAD 
                 3. Perlu banyak documentation
                 4. Membutuhkan high-skilled programmer dan high commitment 
+
+                RAD model banyak digunakan pada pengembangan sistem kompleks, seperti sistem CRM (Customer Relationship Management) dan ERP (Enterprise Resource Planning). 
+                RAD Model banyak digunakan untuk pembuatan aplikasi startup, GUI, atau aplikasi berbasis cloud.
 
     Perbandingan Model SDLC     
         Properti Model                      Waterfall Model             Incremental Model               Spiral Model                RAD Model 
@@ -273,6 +286,7 @@ Sebelum PPT
                 5. Documentation kurang baik karena banyak perubahan 
                 6. Client ribet dan bisa mengira product telah selesai dari prototype awal
                 7. Development yg terburu" menghasilkan solusi yg tidak optimal 
-
-PPT 
-    RPL terdiri dari Rekayasa dan Perangkat Lunak 
+        
+        Prototyping Model banyak digunakan pada pengembangan sistem requirement yang belum jelas, seperti aplikasi startup dengan fitur inovatif. 
+                Pengembangan sistem dengan teknologi baru, seperti aplikasi blockchain. 
+                Pengembangan sistem yang membutuhkan user interaction yang tinggi, seperti website. 

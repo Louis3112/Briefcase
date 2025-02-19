@@ -1,0 +1,202 @@
+Populasi dan Sampel
+    Statistika deskriptif dilakukan pada populasi (karena mengumpulkan data/meringkas data yg dikumpulkan tanpa kesimpulan)
+    Statistika inferensial dilakukan pada sampel (karena mengambil kesimpulan mengenai populasi)
+
+    Populasi = keseluruhan pengamatan yng menjadi objek penelitian                      (mahasiswa UNESA)
+    Parameter = karakteristik dari suatu populasi                                       (kepuasaan fasilitas kampus)
+    Sampel = bagian dari populasi dan memiliki karakteristik yg sama dengan populasi    (yang diwawancarai)
+
+    Pengumpulan data populasi terkadang tidak bisa dilakukan karena jumlahnya yg mencapai tak hingga, cth : user internet 
+        maka, diambil lah sampel utk memudahkan
+        sehingga, dari sampel tersebut, bisa diambil kesimpulan mengenai karakteristik populasi tersebut 
+
+    Sampel bisa memberi info yg keliru dari populasi meski chance nya rendah 
+        cth : 80% mhs puas dengan fasilitas kampus, bukan brrti 8 dari 10 puas dengan fasilitas kampus
+              jika diket nilai probabilitasnya 0.0328, hanya 1/2 dari 10 yg puas 
+                    artinya 3% peluang utk sampel random yg berlawanan dengan parameter populasi 
+                    tidak lebih dari 50% mahasiswa merasa puas terhadap fasilitas kampus
+    Kualitas sampel akan mempengaruhi kualitas kesimpulan terhadap populasi 
+        ketepatan pengambilan sampel sangatlah penting 
+
+    cth : 
+        Seorang insinyur menemukan bahwa dalam sampel 100 barang, ada 10 yang cacat (10%). Padahal, batas maksimal yang bisa diterima perusahaan hanya 5%.
+        
+        jadi, Engi dengan konsep probabilitas, Engi dpt mengeval apakah hasil sampel menunjukkan bahwa proses produksi msih dalam batas wajar atau ada sesuatu 
+        Ternyata, proses produksi msih dalam batas wajar dan chance utk mendapat 10/lebih barang cacat adalah 2.82% (0.0282)
+
+        artinya, jika proses produksi benar"" memiliki 5% barang cacat, maka peluang utk mendapat 10/lebih barang cacat adalah 2.82% adalah kecil sekali 
+        tapi, engi malah mendapat 10 barang cacat 
+        ini menandakan bahwa kemungkinan besar kemungkinan besar tingkat cacat sebenarnya lebih dari 5%, karena hal ini jarang terjadi 
+        
+        0.0282 disebut sebagai P Value, jika P Value kecil, maka kejadian ini jarang terjadi jika asumsi awal benar (cacat 5%)
+        sehingga, engi menyimpulkn bahwa perlu ada eval utk proses produksi 
+
+        kesimpulan : konsep probabilitas membantu menerjemahkan data sampel menjadi kesimpulan 
+            dalam hal ini, kemungkinan besar bahwa tingkat cacat lebih tinggi dari batas toleransi (5%), maka perlu ada eval 
+
+Cara kerja Probabilitas dan Statistik Inferensial 
+    Probabilitas adalah cabang matematika yg mempelajari kemungkinan suatu kejadian dengan pendekatan deduktif (dari populasi ke sampel)
+        kita coba memahami bagaimana sampel yg terlihat jika kita ambil dari populasi 
+    Statistika Inferensial adalah cabang statistika yg menggunakkan data sampel utk menarik kesimpulan dengan pendekatan induktif (dari sampel ke populasi)    
+        kita bisa memperkirakan/menguji sesuatu tentang populasi dari data yg kita ambil 
+
+    sehingga, 2 2 ny sling melengkapi 
+        probabilitas membantu memahami sampel dari populasi ada, statistik inferensial membantu memahami populasi dari sampel yg ada    
+            --->   Probabilitas   ---->
+        Populasi                        Sampel
+            <--- Statistik Inferensial <---
+
+Pengumpulan Data
+    Tahap yg sangat krusial, data adalah keterangan dri suatu keadaan pada suatu Objek 
+    Objek bisa bersumber dari populasi/sampel dan bisa berupa orang/objek 
+    
+    3 hal yg perlu ditentukan
+        1. Objek pengumpulan data 
+            cth barang : dokumen, nilai rapot, laporan hasil usaha, CV, 
+            cth orang : responden dari populasi/sampel 
+            
+            2 metode pengumpulan data
+                a. sensus : mengumpulkan data dari suatu populasi, cth : SEMUA mhs TI dengan IPK diatas 3,00
+                b. sampling : mengumpulkan data dari suatu sample, cth : Hanya mhs TI angk. 2023 (atau responden yg mengisi)
+
+        2. Keadaan/sifat yg akan dikumpulkan datanya  (Variabel)
+            bergantung pada tujuan pengumpulan, cth : data kehadiran dari presensi/data kinerja karyawan 
+        
+        3. Alat pengumpulan data 
+            data bisa dikumpulkan dengan cara MENGUKUR/MENGHITUNG dan membutuhkan alat/instrumen
+            MENGUKUR : data yg dikumpulkan memiliki satuan (lama waktu pengaksesan, seberapa jauh)
+            MENGHITUNG : data yg dikumpulkan tdk memiliki satuan (berapa banyak orang)
+    
+    Kebenaran data juga harus diperhatikan, karena dapat mempengaruhi kesimpulan 
+    Syarat dari data yg baik 
+        1. Objektif : menggambarkan masalah apa adanya, bukan rekayasa dan subjektif 
+        2. Representatif : Harus mewakili populasi, apalagi jika menggunakkan sampel
+        3. Kesalahan baku kecil : Menggunakkan standar toleransi yang sesuai 
+        4. Tepat waktu : dikumpulkan pada waktu yg ditetapkan 
+        5. Relevan : sesuai dengan masalah yg dibahas
+
+    Kategori Pengumpulan data   
+        1. Sifat 
+            Data kualitatif : Data non numerik berdasarkan atribut/kategori 
+                Pendapat siswa tentang mapel, Pendapat... (senang, kurang senang, tidak senang)
+            Data kuantitatif : Data numerik yg bisa dibagi 
+                Data diskrit : data yg diperoleh dengan cara mencacah, menghitung banyak objek (tidak ada satuan) 
+                    jmlah mahasiswa TI 2023
+                Data kontinu : data yang diperoleh dengan cara mengukur besaran objek (ada satuan)
+                    luas bangunan, berat badan 
+
+        2. Sumber 
+            Data Internal : Data yg diperoleh dari dalam instansi 
+                data pegawai, data gaji dari suatu perusahaan 
+            Data ekstrenal : Data yg diperoleh dari luar instansi 
+                data tren selera pasar, data fluktuasi harga saham 
+
+        3. Cara memperoleh 
+            Data Primer : Data dikumpulkan secara langsung oleh individu/lembaga
+            Data Sekunder : Data tdk dikumpulkan secara langsung, tapi mengambil dari individu/lembaga lain 
+
+        4. Waktu pengumpulan 
+            Data cross section : Data yg dikumpulkan pada peridode waktu tertentu 
+                Data pemilu pada pemilu, data yg ditetapkan masa pengambilannya 
+            Data berkala (Time Series) : Data yg dikumpulkan dari waktu ke waktu 
+                Data GDP negara, data kelahiran, data kematian
+
+        5. Jenis 
+            Data ditentukan berdasarkan skala pengukurannya 
+            Sehingga, dari jenis data ini.. dapat ditentukan cara penyajian data 
+
+            1. Data Nominal 
+                berupa angka tetapi hanya sebagai kategori, bukan tingkatan 
+                tidak bisa diurutkan, karena angkanya hanya berupa label 
+                cth : jenis kelamin (1 utk laki"", 2 perempuan)
+                      agama (11 utk Islam, 2 utk Kristen)
+                tidak bisa dihitung dengan operasi matematis, sperti penjumlahan/pembagian, karena hanya menunjukkan kategori
+
+            2. Data Ordinal 
+                berupa angka yg sudah memiliki tingkatan, tetapi jaraknya tdak selalu sama
+                cth : pendidikan (SD, SMP, SMA)
+                      juara (Ranking 1, 2, 3)   
+                        Ranking 1 dan 2 bisa saja memiliki jarak hanya sekian detik, 2 dan 3 jaraknya hanya sepersekian mili detik 
+                tidak bisa dihitung dengan operasi matematis, karen hanya menunjukkan urutan tingkatan (bukan nilai sebenarnya)
+
+            3. Data Interval 
+                menggunakkan angka kuantitatif dengan interval/selisih yg tetap, sehingga bisa dilakukan penjumlahan pengurangan (tidak bisa perkalian pembagian)
+                tidak memiliki 0 mutlak, 0 hanya referensi, bukan tanda ketiadaan
+                data tidak bisa diurutkan dengan tingkatan tertinggi dan perhitunggannya didasarkan pada rata"" atau angka minimal
+                cth : suhu dalam Celcius/Farenheit (0 derajat bukan brrti tidak ada suhu)
+                      Tahun/Tanggal (Tahun 0 bukan brrti tidak ada kehidupan)
+                kita tidak bisa mengatakan 40 derajat celcius sama dengan 20 derajat dikali 2, karena 0 nya bukan 0 mutlak
+
+            4. Data Rasio 
+                menggunakkan angka kuantitatif dengan interval/selisih yg tetap, dan 0 nya 0 mutlak 
+                bisa dilakukan operasi matematis (semuanya)
+                data dapat diurutkan dengan dengan tingaktan tertinggi dan perhitungannya dimulai dari titik 0 sesungguhnya
+                cth : berat badan dan tinggi badan 
+    
+    Upaya Pengumpulan Data 
+        1. Wawancara (interview)        
+            data diambil dengan wawancara, responden (interviewee) menjawab pertanyaan dari interviewer yang akan dicatat/direkam
+        2. Kuesioner (angket)
+            data diambil dengan cara mengisi angket, responden mengisi angket sesuai petunjuk yg diberikan
+                cth : tingkat kepuasan pengguna...
+        3. Observasi 
+            data diambil dengan melakukan pengamatan secara langsng terhadap objek penelitian, baik di lab maupun terjun ke lapangan 
+                cth : pengamatan sel kanker atau pengamatan tumbuhnya jamur 
+        4. Tes dan skala objektif 
+            data diambil dengan melakukan tes/pengujian pada objek penelitian dan memberi nilai berdasarkan hasil jawaban
+                cth : pemberian ujian/quiz kepada siswa, baik berupa ujian tulis/lisan
+        5. Metode proyektif 
+            data diambil dengan menganalisa objek penelitian melalui hasil lukisan/tulisan 
+                cth : meminta objek penelitian utk menggambar/menulis sesuatu (dilakukan pada ilmu sosial humanoira)
+
+Penyajian Data 
+    Data yg dikumpulkan lalu disusun sistematis agar lebih mudah dibaca, dipahami, dan dianalisa. 
+    Bisa berupa SKOR, PERSENTASE/INDEKS, STATEMENT, TABEL, GRAFIK/DIAGRAMtergantung mana yg paling efektif
+
+    contoh dengan INDKES/PERSENTASE
+        cth :
+            dari 33 org ujian, 20 gagal 
+            Persentase gagal : 20/33 x 100% = 60.6% 
+            Persentase lulus : 100%-60.6% = 39.3%
+            Indeks gagal : 0.606
+
+        Persentase memudahkan pembacaan karena menunjukkan proporsi/perbandingan yg jelas (kesuksesan kegagalan)
+        Indeks memudahkan untuk perbandingan lebih lanjut 
+    
+    STATEMENT jarang digunakan karena sulit utk dipelajari secara cepat (perlu ditelaah terlebih dahulu)
+    TABEL/GRAFIK yang lebih populer 
+    
+    Tabel terbagi menjadi 4 
+        Tabel 1 arah (secara vertikal) (banyak mahasiswa)
+        Tabel 2 arah (secara vertikal dan horizonal) (usia responden yg mengisi)
+        Tabel distribusi frekuensi (1 arah) (nilai ujian, yg mendapat 45 ada berapa orang)
+        Tabel 3 arah (terdapat tambahan kolom di suatu kolom lagi) (banyak suatu barang dan harganya dari tahun ke tahun)
+
+    Grafik Batang (Bar Chart)
+        menyajikan data yg berbentuk kategori/data dengan rentang waktu tertentu (asal masa waktu tidak banyak)
+        cth : banyaknya siswa menurut pendidikannya di tahun X, jenis kelamin di suatu kota
+
+    Grafik garis (line chart)
+        menyajikan data utk menggambarkan secara kontinu dari tahun ke tahun 
+        bisa menggunakkan garis tegas patah"", atau melengkung
+        cth : banyaknya mhs dari tahun ke tahun, stok beras dari tahun ke tahun 
+    
+    Grafik pencar (scatter plot)
+        menyajikan data kuantitatif dengan dua variabel/lebih
+        menggunakkan koordinat kartesian x dan y utk menampilkan titik data 
+        biasanya utk menggambarkan hubungan antara variabel 1 dengan variabel lain
+        cth : hubungan kecepatan kendaraan dan kepadatan lalu lintas, hubungan berat badan dan tinggi seseorang 
+
+    Grafik lingkaran (pie chart)
+        menyajikan data menggunakkan lingkaran utk menunjukkan proposisi/persentase dari suatu kategori 
+        Sudut Kategori = (jumlah kategori/total data) * 360 derajat
+        Persentase kategori = (jumlah kategori/total data) * 100%
+        cth : banyaknya mahasiswa di FT, banyaknya kendaraan di jalan A Yani
+
+    Grafik histogram (histogram chart)
+        menyajikan data numerik kontinu dan BATANG DISUSUN SECARA BERHIMPIT (hampir sama seperti grafik batang)
+        cth : berat badan siswa, nilai mahasiswa (biasanya menggunakkan data rasio)
+
+    Grafik Poligon (polygon chart)
+        menyajikan data dengan menghubungkan titik tengah pada batang histogram
+        kurva digambarkn dengn titik tengah batang histogram dan dihubungkan dengan garis putus"" tipuis

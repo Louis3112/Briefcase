@@ -1,1 +1,0 @@
-pltlib.show()

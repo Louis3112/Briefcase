@@ -21,6 +21,9 @@ Representasi Digital Image
           f(2,3) = baris ke 2, kolom ke 3 = 170
           f(4,4) = baris ke 4, kolom ke 4 = 240
 
+V pada mengacu pada himp. nilai pixel yg dianggap bagian dari object pada image processing
+    V = {0,1}. Maka pixel yg dianggap/dihitung/dilalui path adalah pixel 0 dan 1
+
 Jumlah bit 
     Jumlah nilai gray level, dalam citdig dinyatakan sebagai L = 2^k, dmn k = jumlah bit/piksel
         semakin besar k, semakin banyak tingkat gray yg dipresentasikan sehingga makin detail 

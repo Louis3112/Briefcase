@@ -1,0 +1,70 @@
+Process and Safety Product 
+    Safety mencakup PPT (People, Process dan Technology)
+    tidak ada yg 100% aman, psti bisa diakali 
+    Antivirus, firewall adalah contohnya
+        Avast, SMADAV, McAfee, Bitdefender, Windows Defender
+
+    Antivirus 
+        software yg digunakan utk mengurangi gangguan dari malicious program (berbahaya)
+        tapi, kita tidak bisa bertindak apa" apabila intruder sudah berhasil mengakses control system
+    
+    Access Control
+        Komputer harus dilakukan restriction utk siapa saja yg bisa mengakses komputer, dan pemberian level akses utk tiap usernya
+        Kita dapat menambhkan keamanan seperti login authentication, security file, security sharing, 2 factor authentication, kode OTP (One-Time Password)
+
+    Firewall
+        Pembatas/Dinding antara internal network dan external network
+        Rule internal network lebih longgar dripada eksternal
+        Firewall mengizinkan traffic tertentu dari eksternal ke internal (HTTPS)
+        Hacker dapat menciptakan backdoor dan menciptakan trojan horse utk mengakali firewall
+        cth : 
+            DMZ (De-militerized Zone)
+                area network antara internal network dan eksternal
+                menempatkan server yg harus diakses dari internet (web server atau mail server), tapi tetap melindungi internal 
+
+            Port Knocking
+                menutup port hingga user/client memberi "knocking"/pola tertentu. Jika benar, maka firewall akan membuka akses 
+
+            Honey Port 
+                Port jebakan utk menarik dan memantau serangan, sehingga mengetahui jenis serangan dan metode yang digunakan 
+
+    Smartcard
+        alternatif individual authentication dengan kartu (gerbang masuk perum)
+        ada masanya Password bisa ditebak, sehingga dengan combo smartcard dan Password, lebih terjaga keamanan
+    
+    Biometiric 
+        alternatif individual authentication dengan ciri fisik (scan sidik jari, retina)
+        memberi keamanan lebih baik dari smartcard, karena tidak mungkin dicuri 
+
+    Detection
+        tindakan utk mengenali aktivitas mencurigakan dlm jaringan 
+        cth : scanning, probing, footprinting yg merupakan satu kesatuan 
+            
+            Footprinting 
+                tahap awal pengumpulan informasi (IP, WHOIS Lookup, DNS Record, Medsos)
+                sehingga diket IP, struktur jaringan, domain, provider, services dari korban   
+            
+            Scanning
+                pemindaian port yg terbuka, services, dan celah pada sistem 
+                dengan Nmap, Nessus, OpenVAS
+            
+            Probing (Pengujian lebih lanjut)
+                pengujian seberapa jauh sistem dapat diekspolit 
+                dengan Banner Grabbing (mendapat info sistem dari service yg ada) atau Brute Force Login (memaksa login secara brutal dengan menginputkan kombinasi)
+
+    Policy Management 
+        manajemen utk mengatur keamanan dengan memberi SOP ketat, pemberian level pada user 
+        cth : user tdk diizinkan utk mengakses lgsg dri internet, melainkan hrus menggunakkan VPN
+
+    Vulnerability Scanning 
+        tindakan utk mendeteksi apakah ada celah keamanan
+        cth : port/service yg terbuka/running, mengetahui versi apli yg berjalan 
+              melakukan update patch secara rutin 
+    
+    Encryption 
+        melakukan pengengkripsian data sehingga memastikan informasi aman saat dikirim 
+        mengamankan file penyimpantan (data store encryption)   
+
+    Physical Security
+        adanya penghalang : kunci, pagar, pintu berlapis, biometric, dan card scan, APAR
+               sistem pemantau dan penghalang : CCTV, alarm, sensor panas, deteksi asap

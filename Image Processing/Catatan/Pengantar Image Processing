@@ -1,0 +1,77 @@
+Tiga bidang yg berkaitan dengan Image Processing 
+    1950 Image Processing 
+        masih berbasis analog, utk image enchancement, OCR (Optical Character Recognition)
+    1970 Computer Graphics
+        awal perkembangan grafik 2D dan 3D, utk wireframe 3D model, early rendering technique
+    1970 Compouter Vision
+        awal computer vision dengan pendekatan pattern recognition, utk early face recognition, edge detection algorithm
+
+Pada Image Processing, kita akan belajar mengenai 
+    Image Processing/Manipulation
+        Image Enchancement      
+        Image Restoration       (Memperbaiki gambar dengan mengurangi/menghilangkan cacat)
+        Image Segmentation      (Membagi/mensegmentasi gambar berdasarkan warna pikselnya)
+        Image Reconstruction    (Membangun gambar dari data/sinyal yg hilang/tidak lengkap)
+        Image Stylization       (Mengubah tampilan gambar ke stlye artistik tertentu)
+        Image Compression       
+        Image Analysis
+        Image Contrast
+        Image Sharpening
+        Image Blurring
+        Reducing Noise
+    Image Analysis/Interpretation
+        Object Detection & Recognition (Face,Skin)
+        Edge Detection & Segmentation
+        Pattern Recognition
+        Image Matching  
+    Image Coding/Communication  
+        Lossy Compression (JPEG,WebP)
+        Lossless compression (PNG, GIF)
+        Image Transmission
+
+Citra Digital/Digital Image
+    representasi numerik dari suatu gambar dalam bentuk matriks,gambar sendiri terdiri dari elemen" kecil yg disebut pixel
+    tiap pixel memiliki nilai numerik dan dilambangkan pada matrix, nilainya memiliki range 0-255
+    semakin terang, semakin besar angkanya
+
+    Image processing meliputi 
+        Koordinat Spasial (x, y): Menunjukkan lokasi piksel dalam gambar
+        Intensitas Cahaya Pixel (f(x, y)): Menentukan tingkat kecerahan atau warna piksel
+        Sampling (Diskritisasi Koordinat): Proses mengubah citra kontinu menjadi grid piksel (citra digital)
+        Quantization (Diskritisasi Intensitas): Proses mengubah nilai kontinu intensitas cahaya menjadi nilai diskrit (0-255 dalam gambar grayscale 8-bit)
+
+    Ada 
+        Citra Kontinu / Continous Image = Gambar dalam bentuk analog sebelum menjadi digital piksel
+        Citra digital / Digital Image  = gambar dalam bentuk pixelated berdasarkan intensitas cahaya/warna
+        Matriks Citra / Image Matrix
+        Resolusi Spasial/ Spatial Resolution =  semakin tinggi resolusi, semakin jelas gambar
+        Resolusi Keabuan/ Gray Level Resolution = semakin tinggi resolusi, semakin banyak variasi gray levelnya
+
+Alur Image Processing
+    terdiri atas 
+        Low Level Processing    
+            Input/Problem Domain      
+            Image Acquisition               <==>
+            Pre Processing                  <==>
+        Intermediate Level Processing 
+            Segmentation                    <==>    KNOWLEDGE BASE
+            Representation n Description    <==>
+        High Level Processing 
+            Recognition n Interpretation    <==>
+            Output
+
+Image Acquisition
+    Image ---> Sampled Image ---> Sampled and Quantized Image
+        Sampling            Quantized
+    Sampling = perubahan image menjadi bentuk digital/pixel, dmn tiap pixel blm memiliki value
+    Quantized = pengolahan cahaya/warna pixel sehingga memiliki value
+
+    Jika suatu gambar memiliki besar 256x256
+        gambar tersebut dibagi menjadi blok" kecil berukuran 8x8 pixel
+        yg dmn 8x8 pixel memiliki nilai intensitas cahayanya
+
+Jika gambar dengan resolusi tinggi di compressed atau di resample ke ukuran yg lebih kecil
+    1024 x 1024 --> 512 x 512 (dengan teknik duplikasi baris dan kolom)
+    maka detail akan lebih sedikit dan apabila diperbesar.. makin terlihat pixelatednya
+    matrixnya pun juga semakin kecil
+

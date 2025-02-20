@@ -1,0 +1,155 @@
+Model matematis image 
+    Model kontinu
+        I = f(x,y), bergantung pada intensitas cahaya pada koordinat (x,y)
+    Model diskrit (array 2D)
+        I = matrix(i,j), kumpulan pixel dengan nilai intensitas tertentu 
+
+    Image digital adalah image kontinu yg telah mengalami digitasi secara sampling (diskritasi koordinaat) dan quantization (diskritasi intensitas)
+
+Continous Image/Gambar kontinu di projek dengan sensor array, sehingga mengalami sampling dan quantization menghasilkan Digital Image 
+
+Representasi Digital Image 
+    Hasil sampling dan quantization adalah matriks real 
+    andai ada suatu gambar 5x5
+        | 0     50    100    150     200 |
+        | 10    60    110    160     210 | 
+    I = | 20    70    120    170     220 |
+        | 30    80    130    180     230 |
+        | 40    90    140    190     240 |
+
+    maka, f(0,0) = 0
+          f(2,3) = baris ke 2, kolom ke 3 = 170
+          f(4,4) = baris ke 4, kolom ke 4 = 240
+
+Jumlah bit 
+    Jumlah nilai gray level, dalam citdig dinyatakan sebagai L = 2^k, dmn k = jumlah bit/piksel
+        semakin besar k, semakin banyak tingkat gray yg dipresentasikan sehingga makin detail 
+        cth : hitam putih (1), grayscale(8), High Bit-Depth Grayscale/RGB(16), True color RGB(32) 
+    Jumlah bit utk menyimpan digital image 
+        b = M * N * k 
+            M = jumlah baris 
+            N = jumlah kolom 
+            k = jumlah bit/pixel
+
+Hubungan dasar antar pixel
+    Neighboring pixel
+        tiap pixel (x,y) memiliki bbrp jnis Connectivity 
+            
+            4-Connectivity/4-Tetangga (N4(p))
+                Neighbor yg berada secara hori dan vertical
+                        X
+                    X   p   X
+                        X
+                koordinat : (x + 1, y), (x - 1,y), (x,y + 1), (x, y - 1)
+            
+            Diagonal Connectivity/Koordinat secara diagonal (ND(p))
+                Neighbor yg berada secara diagonal 
+                    X       X
+                        p
+                    X       X
+            
+            8-Connectivity/8-Tetangga (N8(p))
+                Kombinasi dari 4 Connectivity dan Diagonal Connectivity
+                    X   X   X
+                    X   p   X
+                    X   X   X               
+                    
+    Adjacency  (Kedekatan)
+        menentukan keterhubungan antar pixel berdasarkan himpunan matrix nilai gray-level (V) 
+        2 tipe Adjacency
+            4 Adjacency 
+                pixel p dan q pada V dikatakan 4-Adjacency jika q berada dlm N4(p) (4-Connectivity)
+            8 Adjacency 
+                pixel p dan q pada V dikatakan 8-Adjacency jika q berada dlm N8(p) (8-Connectivity)
+
+        Jadi, pixel yg 4 Adjacency juga termasuk 8 Adjacency, tapi 8 Adjacency blm tentu 4 Adjacency
+
+    Connectivity (Path/Digital Path/Curve)
+        urutan pixel yg berbeda", menghubungkan pixel p(x,y) ke pixel q(s,t) melalui pixel yg Adjacency
+            (x0,y0), (x1,y1),.... (xn,yn)
+            dipastikan harus adjacent utk 1 <= i <= n. n adalah jarak ke tujuan pixel
+
+            jika (x0,y0) = (xn,yn), maka disebut closed path 
+                0  1  1  1  0  
+                1  0  0  0  1  
+                1  0  P  0  1  
+                1  0  0  0  1  
+                0  1  1  1  0 
+
+                jika (x0,y0) = (1,1), dan (xn,yn) = (1,1). Maka harus memutari P dan dikatakan sebagai closed path 
+        
+        Andai suatu image (I), jika terdapat himp. pixel S 
+            S subset I 
+            Connection Pixel    = pixel p dan q dikatakan terhubung (to be connected) jika terdapat path yg menghubungkan keduanya pada S
+            Connected Component = himp. pixel p yg terhubung satu sama lain dalam S 
+            Connected Set       = jika seluruh connected Component saling berhubungan satu dengan yg lain (tidak terpisahkan), maka disebut Connected Set
+            
+            andai 
+                1  1  0  0  1  
+                1  1  0  0  1  
+                0  0  1  1  0  
+                0  0  1  1  0  
+
+                Connected Component 1 = pixel nilai 1 pada bagian kiri atas 
+                Connected Component 2 = pixel nilai 1 pada bagian kanan atas 
+                Connected Component 3 = pixel nilai 1 pada bagian kanan bawah 
+
+                karena tidak terhubung antar Connected Component, maka tidak bisa dikatakan Connected Set
+    
+    Regions & Boundaries 
+        Andai suatu image (I), jika terdapat himp. pixel R
+            R subset I 
+            R akan disebut REGION jika dia adalah connected set yg saling terhubung dan tidak berpisah 
+
+        Boundaries (Border/Contour)
+            pixel yg memiliki Connectivity/tetangga di luar R
+            Boundaries menentukan tepi/batas dari Region pada gambar 
+
+            andai 
+                0  0  0  0  0  0  
+                0  1  1  1  0  0  
+                0  1  1  1  0  0  
+                0  1  1  1  0  0  
+                0  0  0  0  0  0  
+
+                maka, R = 
+                    (1,1), (1,2), (1,3),  
+                    (2,1), (2,2), (2,3),  
+                    (3,1), (3,2), (3,3)
+                tapi Border nya 
+                    (1,1), (1,2), (1,3),  
+                    (2,1),        (2,3),  
+                    (3,1), (3,2), (3,3)
+
+    Distance Measurement
+        Jika terdapat pixel p (x,y), q (s,t), r (u,v)
+        
+        D adalah fungsi jarak/metric jika 
+            D(p,q) >= 0 (jika D(p,q) = 0, maka p == q (1 titik yg sama))
+            D(p,q) == D(q,p) (sama, tidak berbeda)
+            D(p,r) <= D(p,q) + D(q,r) (rumus pythagoras)
+
+        Euclidean Dist. antara p dan q 
+            De = √(x - s)^2 + (y - t)^2
+                            
+            0 0 0 0 q 0 0
+            p 0 0 0 0 0 0   
+
+        City Block Dist./ Manhattan Dist. (4-Connectivity)
+            D4(p,q) = |x - s| + |y - t|
+                    2
+                2   1   2
+            2   1   0   1   2
+                2   1   2
+                    2
+            pixel dengan D4 = 1, adalah 4-Connectivity terhadap (x,y)
+
+        Chessboard Dist. (8-Connectivity)
+            D8(p,q) = max(|x-s|,|y-t|) (jadi, ambil nilai salah satu paling tinggi)
+            2   2   2   2   2
+            2   1   1   1   2
+            2   1   0   1   2
+            2   1   1   1   2
+            2   2   2   2   2
+            pixel dengan D8 = 1, adalah 8-Connectivity terhadap (x,y)
+                

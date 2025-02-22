@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"> <!-- Penggunaan karakter encoding HTML, sehingga bisa membaca char/simbol aneh-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Menyesuaikan tampilan pada HP-->
+        <title>Software Engineering Lab. Assistant Registration Form</title>
+    </head>
+    <style>
+        body{
+            background-color: #f4f4f4;
+            font-family: 'Arial', Times, serif; 
+            margin: 20px;                           /* Jarak element luar terhadap dinding desktop*/
+        }   
+        
+        .form{
+            padding: 20px;                          /* Jarak element dalam terhadap dinding desktop*/
+            border-radius: 8px;                     /* Lekukan border */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            width:98%;                              /* Panjang input text area */
+            padding: 10px;                          /* Jarak element dalam text radius */
+            border: 1px solid #ccccccda;          /* Border text area */
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;                          /* Jarak element dalam terhadap button */
+            background: rgb(0, 140, 239);         /* Warna button */
+            color: white;   
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <body>
+        <header>
+            <h1 style="text-align: center;">Software Engineering Lab. Assistant Registration Form</h1>
+        </header>
+
+        <div class="form">
+            <fieldset>
+                <legend>Identity</legend>
+                    <p>Full Name : <input type="text" required></p>
+                    <p>Student ID Number : <input type="text" required placeholder="ex : 240512..."></p>
+                    <p>Gender:
+                        <select name="" id="">
+                            <option value="">Male</option>
+                            <option value="">Female</option>
+                        </select>
+                    </p>
+                    <p>Major : <input type="text" placeholder="ex : Informathic Engineering" required> </p>
+                    <p>Faculty : <input type="text" disabled placeholder="Engineering"></p>
+                    <p>Semester: <input type="number" required></p>
+                    <p>Address Domicile : <input type="text" required></p>
+            </fieldset> 
+            <br> <br>
+    
+            <fieldset>
+                <legend>Contact Info</legend>
+                    <p>Phone Number : <input type="text" name="" id="" placeholder="ex : +62..."></p>
+                    <p>Email : <input type="email" required placeholder="ex : ...@mhs.unesa.ac.id"></p>
+                    <p>Github : <input type="text" name="" id="" placeholder="ex : https://github.com/..."></p>
+                    <p>Linkedin : <input type="text" name="" id="" placeholder="ex : https://www.linkedin.com/in/.../"></p>
+            </fieldset>
+            <br> <br>
+    
+            <fieldset>
+                <legend>Required Document</legend>
+                    <p>GPA : <input type="text" name="" id="" placeholder="ex : +62..."></p>
+                    <P>Profile Pict : <input type="file" name="" id="" required> </P>
+                    <p>Academic Transcript : <input type="file" required ></p>
+                    <p>CV : <input type="file" name="" id="" required></p>
+            </fieldset>
+        </div>
+        <form action="">
+
+        <br> <br>
+
+        <div class="form">
+            <p>Are you affiliated or joined in any organization?
+                <select name="" id="">
+                    <option value="">Yes</option>
+                    <option value="">No</option>
+                </select>
+            </p>
+    
+            <p>If yes, what is your organization?</p>
+                <select name="" id="">
+                    <option value="">University Student Executive Board (BEM Univ)</option>
+                    <option value="">Faculty Student Executive Board (BEM Fakultas)</option>
+                    <option value="">Informathic Engineering Student Association (HIMTI)</option>
+                    <option value="">Google Development Student Club (GDSC)</option>
+                    <option value="">Student Activity Unit (UKM)</option>
+                    <option value="">Campus External Organization (OMEK)</option>
+                    <option value="">I am not affiliated or joined in any organization</option>
+                </select>
+    
+            <p>If yes, what is your position on your organization?</p>
+                <select name="" id="">
+                    <option value="">Chairman/Vice Chairman</option>
+                    <option value="">Executive Boards</option>
+                    <option value="">Chairman/Vice Chairman of Division</option>
+                    <option value="">Member</option>
+                    <option value="">I am not affiliated or joined in any organization</option>
+                </select>
+            </form>
+        </div>
+    
+        <br> <br>
+
+        <button type="submit">SUBMIT</button>
+        
+    </body>
+</html>

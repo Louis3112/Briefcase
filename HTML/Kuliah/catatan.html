@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>Catatan HTML</title>
+    </head>
+
+    <body>
+        <body>
+            <!-- 1. Basic HTML -->
+            <h1>Belajar HTML</h1>
+            
+            <!-- 2. Teks -->
+            <p>Ini adalah paragraf.</p>
+            <br>
+            
+            <!-- 3. Heading -->
+            <h1>Subjudul h1</h1>
+            <h2>Subjudul h2</h2>
+            <h3>Subjudul h3</h3>
+            <h4>Subjudul h4</h4>
+            <h5>Subjudul h5</h5>
+            <h6>Subjudul h6</h6>
+
+            <!-- 4. Quote -->
+            <q>Ini adalah kutipan.</q>
+            <cite>Nama Penulis</cite>
+            
+            <!-- 5. Mark -->
+            <p><mark>Ini adalah teks yang di-highlight</mark></p>
+            
+            <!-- 6. Singkatan -->
+            <abbr title="HyperText Markup Language">HTML</abbr>
+            
+            <!-- 7. Simbol -->
+            <p>Hak Cipta &copy; 2025</p>
+            <a href="https://html.spec.whatwg.org/multipage/named-characters.html">LINK DICTIONARY SIMBOL</a>
+            
+            <!-- 8. Tulisan lebih kecil -->
+            <small>Teks kecil</small>
+            
+            <!-- 9. List -->
+            <h3>Ordered List</h3>
+            <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ol>
+            
+            <h3>Unordered List</h3>
+            <ul>
+                <li>Item A</li>
+                <li>Item B</li>
+            </ul>
+            
+            <h3>Description List</h3>
+            <dl>
+                <dt>Description Title 1</dt>
+                    <dd>Description Data 1</dd>
+                <dt>Description Title 2</dt>
+                    <dd>Description Data 2</dd>
+            </dl>
+
+            <!-- 10. Nested List -->
+            <ul>
+                <li>Item 1
+                    <ul>
+                        <li>Subitem 1</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <!-- 11. Hyperlink -->
+            <a href="https://www.google.com">Google</a>
+            
+            <!-- 12. Linked List -->
+            <ul>
+                <li><a href="https://www.google.com">Google</a></li>
+                <li><a href="https://www.bing.com">Bing</a></li>
+            </ul>
+            
+            <!-- 13. Link di halaman yang sama -->
+            <p><a href="#section1">Ke Bagian 1</a></p>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 id="section1">Bagian 1</h2>
+            
+            <!-- 14. Gambar -->
+            <img src="gambar.jpg" alt="Deskripsi gambar" width="200">
+            
+            <!-- 15. Elemen pada HTML -->
+            <p>Tag = menandai bagian dari website</p>
+            <p>Atribut = Informasi tambahan yang ditulis kedalam tag pembuka</p>
+            <p>Value = nilai dari atribut</p>
+            <p>< tag atribut = "value: > </p>
+            <p style="text-align: center; color: blue; font-size: 20px;">Teks dengan CSS</p>
+            
+            <!-- 16. Audio dan Video -->
+            <audio src="audio.mp3" controls></audio>
+            <video src="video.mp4" controls width="300"></video>
+            
+            <!-- 17. Table -->
+            <table border="1" cellspacing="10" cellpadding="10">
+                <caption>Tabel Contoh</caption>
+                <tr>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                </tr>
+                <tr>
+                    <td>Ani</td>
+                    <td>10A</td>
+                </tr>
+            </table>
+            
+            <!-- 18. Atribut pada tabel -->
+            <table border="1" rules="cols">
+                <tr>
+                    <th>Nama</th>
+                    <th>Usia</th>
+                </tr>
+                <tr>
+                    <td>Budi</td>
+                    <td>17</td>
+                </tr>
+            </table>
+            
+            <!-- 19. Colspan dan Rowspan -->
+            <table border="1">
+                <tr>
+                    <th colspan="2">Data</th>
+                </tr>
+                <tr>
+                    <td>Nama</td>
+                    <td>Usia</td>
+                </tr>
+            </table>
+            
+            <!-- 21. Form -->
+            <form>
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama" name="nama" required>
+                <br>
+                <button type="submit">Kirim</button>
+            </form>
+
+            <!-- 22. Text Area -->
+            <textarea name="" id="" cols="80" rows="7"></textarea>
+            
+            <!-- 23. Input Date -->
+            <input type="date">
+            
+            <!-- 24. Radio Button -->
+            <input type="radio" name="jenis_kelamin" value="Laki-laki">Laki-Laki
+            <input type="radio" name="jenis_kelamin" value="Perempuan">Perempuan
+            
+            <!-- 25. Checkbox -->
+            <input type="checkbox">Minuman
+            
+            <!-- 26. Selection Input -->
+            <select>
+                <option value="" selected>Elin</option>
+            </select>
+
+            <!-- 27. Label -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            
+            <!-- 28. Fieldset dan Legend-->
+            <fieldset>
+                <legend>Identitas Pribadi</legend>
+                <p>Nama: <input type="text" required></p>
+                <p>Tanggal lahir: <input type="date"></p>
+                <p>Jenis Kelamin: <input type="radio"> Laki-laki <input type="radio"> Wanita</p>
+                <p>Email: <input type="email" placeholder="@gmail.com"></p>
+                <p>Hobi: <input type="checkbox"> main <input type="checkbox"> renang</p>
+            </fieldset>
+
+            <!-- 30. Warna -->
+            <p>Masukkan warna yang akan dipilih : <input type="color" name=”warna”></p>
+
+            <!-- 31. Input Email -->
+            <input type="email" placeholder="Masukkan Email">
+            
+            <!-- 32. Input Website-->
+            <p>Masukkan alamat website : <input type="url"></p>
+
+            <!-- 33. Input Search -->
+            <input type="search">
+            <button type="submit">Cari</button>
+
+            <!-- 34. Input Search -->
+            <input type="number" name="angka" min="5" max="25" step="3">
+
+            <!-- 35. Input Nomor Telpon -->
+            <input type="tel" name="tel">
+
+            <!-- 36. Input Tanggal yang benar -->
+            <p>Tanggal : <input type="date"></p>
+            <p>Waktu : <input type="time"></p>
+            <p>Tanggal dan Waktu : <input type="datetime-local"></p>
+            <p>Bulan dan Tahun : <input type="month"></p>
+            <p>Minggu : <input type="week"></p>
+
+            <!-- 37. Hidden Disabled Autofocus -->
+            <p>Nama: <input type="text" hidden></p>
+            <p>Nama: <input type="text" disabled></p>
+            <p>Nama: <input type="text" autofocus></p>
+
+            <!-- 38. Placeholder -->
+            <p>Masukkan Nama : <input type="text" placeholder="Nama anda"></p>
+
+            <!-- 39. Required -->
+            <p>Nama Lengkap : <input type="text" required></p>
+
+            <!-- 40. Bar Progress -->
+            <progress value="50" max="100"></progress>
+            
+            <!-- 41. Upload file -->
+            <input type="file">
+            
+            <!-- 42. Hidden Text -->
+            <details>
+                <summary>Info</summary>
+                <p>Ini adalah teks tersembunyi.</p>
+            </details>
+            
+            <!-- 54. Komentar -->
+            <!-- Ini adalah komentar -->
+            
+            <!-- 58. Strong dan Bold -->
+            <p><strong>Teks penting</strong></p>
+            
+            <!-- 59. Alamat -->
+            <address>
+                Jl. Surabaya No. 123
+            </address>
+            
+            <!-- 60. Tombol -->
+            <button onclick="alert('Tombol diklik')">Klik Saya</button>
+        </body>
+</html>

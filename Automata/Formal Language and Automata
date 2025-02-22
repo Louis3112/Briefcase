@@ -1,0 +1,82 @@
+Mathematical preliminareis and notation (Dasar matematika dan notasi)
+    Himpunan 
+        Kumpulan elemen tanpa struktur lain selain keanggotaan
+        x ∈ S (x adalah bagian dari S)
+        S = {0,1,2} (S adalah himpunan bilangan 0,1,2)
+
+        Operasi dasar pada himpunan
+            Union (U), jika S1 U S2 = {x : x ∈ S1 OR x ∈ S2 }
+            Intersection (∩), jika S1 ∩ S2 = {x : x ∈ S1 AND x ∈ S2 }
+            Difference (-), jika S1 - S2 =  {x : x ∈ S1 AND x !∈ S2 }
+
+        Jika S = {a,b,c}, maka powerset nya adalah 
+            2^S = {Ø, {a},{b}, {c}, {a,b}, {b,c}, {a,c}, {a,b,c} } = 8
+        
+        Jika S1 = {2,4} dan S2 = {2,3,5,6}, maka 
+            S1 U S2 = {2,3,4,5,6}
+            S1 ∩ S2 = {2}
+            S1 - S2 = {4}
+            S2 - S1 = {3,5,6}
+
+    Fungsi/Relasi 
+        aturan yg menetapkan hubungan setiap elemen antara suatu himp. (domain) ke himp. lain (codomain/range)
+        jika f adalah fungsi, dan ditulis f : S1 -> S2, maka fungsi f memetakan relasi setiap elemen pada S1 dengan S2
+
+    Graph dan Trees 
+        pemetaan/konstruksi antara 2 himpunan yg terbatas, dengan himp. V (vertex) = {V1,V2,V3}, dan himp. e (edge) = {e1,e2}
+            V = {V1,V2,V3} dan e = {{V1,V2}, {V1,V3}...}
+
+    Proof by Technique (Teknik pembuktian pada teori komputasi/matdis)
+        Proof by Induction (Pembuktian dengan Induksi) pada bilangan bulat positif
+            Base Case  = membuktikan bahwa pernyataan benar untuk nilai awal (n = 1)
+            Inducive Case = mengasumsikan pernyataan benar untuk suatu n = k  dan menunjukkan bahwa pernyataan juga benar untuk n = k + 1
+
+        Proof by Contradiction (Pembuktian dengan Kontradiksi) membuktikan bahwa suatu pernyataan benar dengan cara mengasumsikan kebalikannya (salah)
+            Assumption = mengasumsikan kebalikan dari pernyataan 
+            Derivation = menggunakkan logika matematika untuk asumsi tersebut
+            Conclusion = jika hasilnya bertentangan, maka asumsi awal nya salah 
+
+    Three basic conceptions
+        Language 
+            Automata memiliki languages 
+            Alphabet (Σ) = finite set dan digunakan untuk membentuk string
+                Alphabet Σ = {a, b}, artinya hanya simbol 'a' dan 'b' yang diperbolehkan utk dipakai 
+        
+            String = urutan simbol yg berasal dari Alphabet Σ
+                abab adalha string yg terbentuk dari Alphabet Σ = {a, b}
+        
+        Grammar 
+            Teknik komputasi memiliki grammar 
+            G = (V,T,S,P)
+                V (Variable) = Himp. simbol variabel (non-terminal) yang dapat diganti oleh simbol lain
+                T (Terminal symbols) = Himp. simbol terminal, yaitu simbol yang tidak bisa diganti
+                S (Start Variable) = simbol khusus ∈ V, yg digunakan sebagai titik awal
+                P (Productions ) = himp. yang menentukan bagaimana variabel dalam V bisa diubah menjadi kombinasi variabel lain 
+        
+        Automata 
+            Model abstrak dri suatu digital komputer (untuk menganalisa dan memeriksa sistem komputer)
+            Input ===> Control Unit ===> Output
+                           V
+                        Storage
+
+    A={1,2,3,4} B={3,4,5,6}
+        Carilah Union, intersection, difference, dan powerset
+            A U B = {1,2,3,4,5,6}
+            A ∩ B = {3,4}
+            Powerset A = 16, B = 16
+                {Ø, {1},{2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3},  {2,3,4},  {1,2,4}, {1,3,4}, {1,2,3,4} }
+
+    R={(1,5),(2,4),(2,6),(3,5)}
+        Carilah domain dan range
+        Domain = 1,2,3
+        Range  = 4,5,6
+
+    f(x)=2x+3, dengan domain X={1,2,3,4}
+        Berapa hasilnya?
+        f(1) = 5
+        f(2) = 7
+        f(3) = 9
+        f(4) = 11                
+     
+        {5,7,9,11}
+        maka, {{1,5},{2,7}, {3,9}, {4,11}}

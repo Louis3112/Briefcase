@@ -1,0 +1,101 @@
+FSM/ Finite Automata adalah bagian dri Automata 
+
+    CPU <===> Memory 
+
+    CPU memiliki 4 Memory
+    Jika terdapat fungsi f(x) = x^3
+
+        Input memory = menyimpan memori utk diinputkan (keyboard, mouse)
+            x = 2
+        
+        Temporary memory = menyimpan memori sementara utk dikomputasi (RAM, Cache)
+            z = 2 * 2 = 4
+            f(x) = z * 2 = 8
+
+        Program memory = menyimpan memori/intruksi/algoritma utk dikomputasi (Processor)
+            compute x * x
+            compute x^2 * x
+
+        Ouptut memory = menyimpan hasil akhir yg kemudian akan dikeluarkan (layar, speaker)
+
+    Pada automaton, juga terdapat seperti itu.. tapi digambarkan dengan state dan transition (sama seperti graph)
+        State -----------> State 1 -------------> State 2
+              Transition            Transition
+        
+    Automaton terbagi menjadi 3 jenis 
+        Finite Automata (tanpa Temporary Memory)
+            cth : Elevators, Vending Machine, Lexical Analyzers (Small Computing Power)
+
+        Pushdown Automata (Temporary Memory menggunakkan stack)
+            cth : compiler programming languages (C, Java, Ada) (Medium Computing Power)
+ 
+        Turing Machine (Temporary Memory menggunakkan RAM)
+            cth : banyak algoritma (Heavy Computing Power)
+
+    Finite Automata < Pushdown Automata < Turing Automata
+Less Power ----------------------------------- > More Power
+
+    Traditional Chomsky Hierarchy 
+        Grammars (generators) and Languages                         Automata (acceptors)
+            Recursively - enumerable Language                    Turing Machine
+               Context - sensitive Language                    Linear- bounded automaton
+                    Context - free Language                  Pushdown automaton
+                        Regular Language                    Finite state Automaton
+    
+    Finite Automata terbagi menjadi 2
+    Finite Automata with output 
+        Moore Machine 
+        Mealy Machine
+
+    Finite automata without output
+        DFA (Deterministic Finite Automata)
+        NFA (Non-Deterministic Finite Automata)
+        ε - NFA (Delta Non-Deterministic Finite Automata)
+
+    FSM didefinisikan dengan pasangan 5 tupel → M = (Q, ∑, δ, S, F).
+        Q = himpunan finite state
+        ∑ = himpunan finite state simbol input (alphabet)
+        δ (gamma) = fungsi transisi, menggambarkan transisi state FSA akibat pembacaan simbol input (dberikan dalam bentuk tabel)
+        S ∈ Q = Start state
+        F ⊂ Q = Final State (himpunan bagiandari)
+
+    Seorang petani dengan seekor serigala, kambing dan seikat rumput berada pada suatu sisi sungai. Tersedia hanya sebuah perahu kecil yang hanya dapat dimuati dengan petani tersebut dengan salah satu serigala, kambing atau rumput. Petani tersebut harus menyeberangkan ketiga bawaannya kesisi lain sungai.
+    Tetapi jika petani meninggalkan serigala dan kambing, maka kambing akan dimakan serigala. 
+    
+    Begitu pula jika kambing ditinggalkan dengan rumput, maka rumput akan dimakan oleh kambing. Mungkinkah ditemukan suatu cara untuk melintasi sungai
+    tanpa menyebabkan kambing atau rumput dimakan. 
+
+    Akan ada 16 kombinasi state yg terjadi (Powerset), tapi ada bberapa state yg gk bisa, karena melanggar aturan tdi
+
+    | Sisi Kiri | Sisi Kanan | Simbol State |
+    |-----------|-----------|-------------|
+    | PSKR      | Ø         | PSKR - Ø    |
+    | SR        | PK        | SR - PK     |
+    | SK        | PR        | SK - PR     | X
+    | KR        | PS        | KR - PS     | X
+    | PSR       | K         | PSR - K     | 
+    | PSK       | R         | PSK - R     | 
+    | PKR       | S         | PKR - S     | 
+    | PK        | SR        | PK - SR     | 
+    | PR        | SK        | PR - SK     | X
+    | PS        | KR        | PS - KR     | X
+    | K         | PSR       | K - PSR     |
+    | R         | PSK       | R - PSK     |
+    | S         | PKR       | S - PKR     |
+    | SKR       | P         | SKR - P     | X
+    | P         | SKR       | P - SKR     | X
+    | Ø         | PSKR      | Ø - PSKR    |
+
+    PSKR - Ø  <--->  SR - PK 
+                PK
+    
+    State adalah PSKR - Ø, garis adalah transisi
+
+    brrti 
+       1. PSKR - Ø (PK) --->  SR - PK 
+       2. SR - PK (P) ---> PSR - K 
+       3. PSR - K (PS) ---> R - PSK 
+       4. R - PSK (PK) ---> PKR - S
+       5. PKR - S (PR) ---> K - PSR
+       6. K - PSR (P) ---> PK - SR
+       7. PK - SR PK ---> Ø - PSKR0

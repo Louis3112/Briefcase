@@ -1,0 +1,177 @@
+Metodologi Agile dalam testing dan software developing menekankan iterasi berkelanjutan, kolaborasi tim, dan fleksibilitas (tidak seperti waterfall yg linear)
+    Agile memungkinkan development dan testing dilakukan secara bersamaan agar project lebih responsif.
+
+Agile menekankan 4 poin 
+    1. Interaksi individu dan tim melalui process dan device 
+    2. Software yg berfungsi dengan dokumentasi yg baik 
+    3. Kolaborasi client melalui contract negotiation
+    4. Adaptasi dengan adanya perubahan 
+
+Agile dan Waterfall berbeda, tetapi kedua metode approach ini berguna, tergantung pada requirement dan jenis project 
+    Agile 
+        pendekatan incremental,fleksibel dan interatif 
+        project di modular menjadi project individu yg dikerjakan oleh developer 
+        memmungkinkan perubahan dengan testing yang dilakukan dalam setiap iterasi
+        adanya kolaborasi dengan client (sehingga client memberi review/perubahan pada software yg sudah dibangun)
+        project dijalankan dengan iteratif yg singkat (2-4 minggu)
+        sedikit planning dan documentation (karena banyak perubahan)
+
+        kurang terstruktur dibanding waterfall dan sulit memperkirakan development time
+    
+    Waterfall
+        pendekatan linear dan terstruktur 
+        project tidak di modular dan dikerjakan secara bertahap
+        tidak boleh ada perubahan yang signifikan 
+        cocok utk project dengan requirement yg jelas dan stabil
+        client hanya bisa melihat project pada tahap testing 
+        semua fitur yg di develop, di deploy sekligus setelah implementation 
+        banyak planning dan documentation (agar bisa dipelajari)
+        dapat diperkirakan development timenya
+
+        kurang fleksibel dibanding Agile, sehingga apabila ada perubahan akan mengakibatkan delay 
+
+Metodologi Agile terbagi menjadi 5 
+    1. SCRUM
+        metode development yg berfokus pada kerja tim kecil dan iteratif agar efisien dan fleksibel
+        SCRUM memiliki 3 peran utama 
+            1. Scrum Master, bertanggung jawab dalam koordinasi tim dan memfasilitasi iterasi 
+            2. Product owner, mengatur product backlog dan menentukan fitur utama, memastikan setiap iterasi memenuhi client's req
+            3. Scrum Team, tim mengelola dan mengatur pekerjaannya sendiri berdasarkan pembagian jobdesc
+
+        Product backlog
+            repo yg berisi daftar requirement/fitur apa saja yg harus ada sebelum di deploy
+            dikelola oleh product owner dan dibagikan ke Scrum team
+            Scrum team dapat meminta penambahan, modifikasi, pengurangan dri product backlog
+        
+        Praktik scrum 
+            1.  Sprint Planning (setiap iterasi pada SCRUM disebut sprint)
+                merencanakan Product Backlog, Team structure dan kapabilitas, serta business condition/plan 
+            2.  Sprint
+                Tim bekerja dalam periode tertentu (cth 30 hari) dan terdapat sprint backlog dan burndown charts (graph yg menunjukkan seberapa banyak task yg belum selsai) utk mencatat progress
+            3.  Daily Scrum Meeting
+                melakukan meeting singkat 15 menit utk task decision dan decision making 
+            4.  Sprint Review Meeting 
+                mereview progress dan mendapat feedback/tambahan dri client 
+            5.  Sprint Retrospective Meet
+                eval process dan tanggung jawab scrum master, serta eval utk proses sprint selanjutnya 
+            Setelah selesai, product dideploy kepada user/client 
+
+    2. Crystal Methodology
+        metode development yg berfokus pada fleksibilitas dan adaptasi
+        Crystal methodology memiliki 3 tahap
+            1. Chartering (pemborongan), tahap awal yang mencakup pembentukan tim, requirement analysis, planning, dan penyempurnaan metodologi yang akan digunakan
+            2. Cyclic Delivery, proses iteratif mencakup plan release update, implementation dan requirement testing, dan deploy product kepada client
+            3. Wrap up, tahap akhir yang melibatkan deployment product kepada envi user, review post-deployment, dan eval
+        
+        Crystal Methodology memiliki tingkatan warna bergantung pada banyaknya org
+            Clear (6 org) ---> Yellow (7-20) ---> Orange (21-40) ---> Red (40-80) ---> Maroon (80-200) ---> Diamond/Saphire (>200)
+
+    3. DSDM (Dynamic Software Development Method) (Metode Pengembangan Perangkat Lunak Dinamis)
+        metode development yg berfokus pada Rapid Application Development (RAD) dengan framework yg fleksibel
+        karakteristik DSDM :
+            1. Client/user terlibat aktif dalam development
+            2. Team punya wewenang utk membuat keputusan 
+            3. Deployment product secara berkala 
+
+        Teknik DSDM : 
+            1. Timeboxing, menentukan deadline untuk menyelesaikan tugas tertentu
+            2. MoSCoW rule, menentukan prioritas fitur dengan kategori Must have, Should have, Could have, Won’t have
+            3. Pembuatan prototype, mengembangkan prototype untuk mendapatkan feedback lebih cepat.
+        
+        Tahapan DSDM 
+            1. Pre-Project → Perencanaan awal project
+            2. Feasibility Study  → Menilai apakah project dapat dilakukan
+            3. Business Study → Memahami kebutuhan bisni
+            4. Functional Model iteration → Develop prototype
+            5. Design and Buikd iteration  → Develop dan upgrade produk secara bertahap.
+            6. Implementation → Produk siap digunakan dalam envi
+            7. Pasca-Project → eval dan maintainance product
+
+    4. FDD (Feature Driven Development)
+        metode development yg berfokus pada design and build
+        berbeda dengan metode lain, FDD menetapkan work phase yang spesifik dan singkat yang harus diselesaikan secara terpisah untuk setiap fitur
+
+        Karakteristik FDD:
+            1. Mengutamakan development skala kecil yang dikelola dengan baik
+            2. Memiliki work step yang jelas, mulai dari domain exploring, design inspection, testing, hingga to build promotion
+            3. Result-oriented, dengan strict monitoring
+
+        Tahapan FDD 
+            1. Domain Object Modeling → membantu memahami sistem
+            2. Feature-Based Development → setiap fitur dikembangkan secara terpisah dan spesifik.
+            3. Component/Class Ownership → setiap class/bagian pada project memiliki penanggung jawabnya msing".
+            4. Feature Teams → tim yang terdiri dari individu dengan keahlian khusus.
+            5. Inspection → inspeksi utk mengecek kualidas code.
+            6. Configuration Management →  Mmngelola perubahan dalam development.
+            7. Regular Builds → update dan integrasi produk secara berkala.
+            8. Progress and Results Visibility → pemantauan dan transparansi dalam development
+
+    5. Lean Software Development
+        metode development yg berfokus pada just-in-time production dan efisiensi
+        bertujuan meningkatkan kecepatan development dan mengurangi cost, berfokus pada efisiensi dan value-driven processes 
+
+        7 prinsip utama lean software
+            1. Eliminate Waste → menghapus segala sesuatu yang tidak memberikan value pada produk.
+            2. Amplify Learning → mendorong continuous improvement dan knowledge sharing.
+            3. Delay Commitment → membuat keputusan sampai info lebih lengkap sudah ada
+            4. Deliver Early → memprioritaskan rilis yang cepat dan bertahap
+            5. Empower Teams → memberikan wewenang kepada tim utk mengambil keputusan.
+            6. Build Integrity → menjaga konsistensi dan kualitas sistem
+            7. Optimize the Whole → fokus pada keseluruhan workflow daripada tugas individu
+
+    6. Extreme Programming (XP)
+        metode development yg berfokus pada requirement yg terus berubah dengan development cycle yg pendek dan iteratif
+        XP menekankan frequent product release, continous testing, dan kolaborasi dengan client/user
+
+        Skema XP 
+            Project Req =========> Stories ========> Test Cases =========> Tasks =========> Completion (Story Metrics)     
+                                            Automated Unit Testing                                Client input ==> Iteration Planning Meeting
+                                                        Client Testing ===> Acceptance Tests
+
+        Business and Project Req disimpan dalam bentuk stories, stories" tersebut disimpan pada parking lot        
+        Setiap fase didasarkan pada cycle iterasi dngan waktu 14 hari, tiap iterasi ada testing, coding, dan review oeh client 
+        Mengedepankan frequent small releases untuk meningkatkan produktivitas dan fleksibilitas sistem
+        Evaluasi dan revisi dilakukan secara berkala melalui Iteration Reviews
+
+        6 fase dalam XP
+            Planning → Menentukan pemangku kepentingan, infrastruktur, safety, dan Service Level Agreement (SLA)
+            Analysis → Mengumpulkan, memprioritaskan, dan memperkirakan user stories
+            Design → Membuat testing scenario dan planning testing
+            Execution → Pengkodean, unit testing, dan debugging
+            Wrap-Up → Regression testing, demonstrasi fitur, dan iterasi baru berdasarkan feedback user
+            Closure → Pilot Launch, training, deployment ke production envi, dan maintainance
+
+        Story Tracking dalam XP:
+            Story Cards → Metode tradisional menggunakan sticky notes di papan tulis utk melacak aktivitas
+            Online Storyboard → Digunakan untuk menyimpan dan mengelola stories secara digital, memungkinkan kolaborasi
+
+    7. Kanban 
+        metode development yg berfokus pada continous workflow dan flexibility, lebih dynamic dri scrum
+        Kanban dari kata bhs. Jepang yang berarti kartu yang berisi semua informasi yang diperlukan utk menyelesaikan product di setiap tahap workflow
+
+        Prinsip Kanban 
+            1. Tidak ada pembagian jobdesc yg rinci
+            2. Priority, Commitment, Deadline bersifat opsional
+            3. Tidak ada tracking yg specific
+            4. Memungkinkan adanya changes jka diperlukan 
+            5. WIP dibatasi langsung oleh aturan eksplisit
+
+    Metrik Agile untuk menentukan efektivitas metode mana yg paling baik
+        Faktor Hambatan
+            1. Mengukur waktu yang dihabiskan untuk aktivitas di luar sprint
+            2. Dapat ditingkatkan dengan mengurangi resources yang dibagi dan task yang tidak penting
+            3. Perkiraan baru dapat dihitung dengan rumus:
+                Perkiraan Baru = (Perkiraan Lama + Faktor Hambatan)
+                
+        Kecepatan (Velocity)
+            Menghitung jumlah item backlog (story user) yang diselesaikan per sprint
+
+        Jumlah Test Unit 
+            Mengukur jumlah testing unit yang ditambahkan
+
+        Development time 
+            Mengevaluasi waktu yang dibutuhkan untuk membangun proyek harian
+
+        Bug Counting
+            Memantau bug yang ditemukan dalam iterasi saat ini atau sebelumnya
+            Melacak kebocoran cacat produksi, yaitu bug yang tidak terdeteksi 

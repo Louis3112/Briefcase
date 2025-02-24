@@ -162,12 +162,12 @@ Metodologi Agile terbagi menjadi 5
             2. Dapat ditingkatkan dengan mengurangi resources yang dibagi dan task yang tidak penting
             3. Perkiraan baru dapat dihitung dengan rumus:
                 Perkiraan Baru = (Perkiraan Lama + Faktor Hambatan)
-                
+
         Kecepatan (Velocity)
             Menghitung jumlah item backlog (story user) yang diselesaikan per sprint
 
         Jumlah Test Unit 
-            Mengukur jumlah testing unit yang ditambahkan
+            Mengukur jumlah testing unit yang ditambahkan utk meningkatkan quality
 
         Development time 
             Mengevaluasi waktu yang dibutuhkan untuk membangun proyek harian

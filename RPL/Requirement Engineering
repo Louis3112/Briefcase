@@ -1,0 +1,222 @@
+Req Engineering 
+    proses menentukan service dan boundaries software sesuai req user/client
+
+    Requirement bisa pernyataan abstrak (keinginan langsung) client, hingga fungsional matematika yg terperinci
+    Req harus ditulis agar kontraktor bisa memahami, menawarkan solusi kepada client 
+        lalu, kontraktor harus menulis definisi sistem agar client bisa memahami solusi dari kontraktor
+        yg disebut sebagai SYSTEM REQUIREMENT SPECIFICATION
+
+Requirement     
+    terbagi menjadi 2
+        User Requirement  
+            kebutuhan dan service diagram dri program, ditulis oleh client 
+        System Requirement  
+            dokumen terstruktur yg menguraikan requirement client, ditulis dalam kontrak client dan developer
+
+    System Requirement Specification = deksripsi software yg terperinci sebagai dasar/design dari software, ditulis oleh developer
+        cth 
+        System requirements specification
+            1.1 On the last working day of each month, a summary of the drugs prescribed, their cost and the prescribing clinics shall be generated.
+            1.2 The system shall generate the report for printing after 17.30 on the last working day of the month.
+            1.3 A report shall be created for each clinic and shall list the individual drug names, the total number of prescriptions, the number of doses prescribed and the total cost of the prescribed drugs.
+            1.4 If drugs are available in different dose units (e.g. 10mg, 20mg, etc.) separate reports shall be created for each dose unit.
+            1.5 Access to drug cost reports shall be restricted to authorized users as listed on a management access control list.
+    
+    Req/kebutuhan terbagi menjadi 3
+        Functional req : mendefinisikan apa yg hrus dilakukan sistem
+                         services yg disediakan sistem, bagaimana sistem merespons input dan behavior function suatu sistem
+                         serta apa yg tidak dapat dilakukan system
+        Non Fungsional req : mendefinisikan bgmn siste hrus beroperasi
+                             obstacle atau boundaries pada sistem, sprti respond time, standard, method utk development 
+                             biasanya mencangkup keseluruhan program (bukan hanya suatu fungsi)
+                             lebih pnting dripada fungsional req
+        Domain req : obstacle yg muncul berdasarkan envi/domain dari sistem (karena keterbatasan pemahaman/komunikasi)
+                     requirement yg berhubungan dengan bahasa yg tidak dipahami oleh developer 
+                        saldo hipotek, akuntansi inventor, mortgage
+
+Functional Requirement (wajib)
+    mendefinisikan fungsi/fitur yg harus/ada di dalam sistem
+    berkaitan dengan input, proses, output 
+    cth : business process, data manipulation, UI, API Integration
+
+    berfokus pada fungsi, proses, dan UI, input output
+    cth Functional Req 
+        1. Sistem harus memungkinkan user untuk membuat, mengedit, dan menghapus data client.
+        2. Software harus secara otomatis memvalidasi user sebelum memberi akses.
+        3. Manajer harus memiliki izin untuk melihat data keuangan, sedangkan pegawai biasa tidak dapat mengaksesnya.
+        4. Sistem harus memungkinkan integrasi dengan API perbankan untuk transaksi otomatis.
+        5. Warna latar belakang aplikasi harus biru dengan kode warna #0000FF.
+
+    Keuntungan Functional Requirement
+        1. Memastikan kelengkapan fitur     
+        2. Membantu perancangan sistem 
+        3. Mendeteksi requirement yg terlewat
+        4. Mengurangi cost fixing yg salah (karena ada req yg terlewat)
+        5. Mendukung manajemen proyek
+    
+Non Functional Requirement (tidak wajib)
+    mempengaruhi arsitektur sistem 
+        jika ingin mengupgrade perform, sistem mungkin harus dikonfigurasi agar komunikasi antar komponennya lebih efisien
+    berdampak pada Functional req 
+        beberapa non-functional requirement dapat menciptakan functional req baru 
+        terkadang non-functional requirement juga membatasi fitur lain
+    cth : kecepatan loading, batas user, kompatibilitas sistem 
+    
+    berfokus pada kualitas, performa, keamanan, skalabilitas 
+    cth Non Functional Req
+        1. Sistem harus dapat memproses 100.000 transaksi per detik tanpa penurunan performa.
+        2. User harus mengganti kata sandi awal setelah login pertama berhasil.
+        3. Situs web harus dapat menangani 20 juta user tanpa downtime.
+        4. Data transaksi yang gagal harus dicatat dalam audit log untuk keamanan.
+        5. Software harus portabel dan dapat berpindah antar OS tanpa gangguan.
+    
+    Kerugian Non Functional Req
+        1. Memastikan software tidak melanggar copyright
+        2. Meningkatkan perform, dependability, dan UX program (dengan meningkatkan perform)
+        4. Meningkatkan kemanan program
+    Jenis Non Functional Requirement
+        Product requirements
+            Efficiency requirements
+                Performance requirements
+                Space requirements
+            Dependability requirements
+            Security requirements
+            Usability requirements
+
+        Organizational requirements 
+            Environmental requirements
+            Operational requirements
+            Development requirements
+
+        External requirements
+            Regulatory requirements    
+            Ethical requirements
+            Legislative requirements
+            Accounting requirements
+            Safety/security requirements
+
+Proses Requirement Engineering 
+    1. Feasibility Study (Studi kelayakan)
+        studi yg mengecek apakah suatu proyek dapat dijalankan dengan baik  
+        ada 5 bidang yg dipelajari 
+            
+            1. Engineering Feasibility
+                menganalisa resource hardware dan software
+                menilai kemampuan tim developer
+                memastikan teknologi dapat digunakan dan dimaintain
+
+            2. Operational Feasibility
+                Menilai kemudahan usage dan maintainance
+                Mengevaluasi apakah solusi yang ditawarkan sesuai dengan user requirement
+
+            3. Economy Feasibility (paling penting)
+                Menganalisis biaya development dan operasional project
+                Menilai manfaat project (secara finansial) bagi tim 
+            
+            4. Law Feasibility (kurang penting)
+                Memastikan proyek mematuhi hukum dan regulasi yang berlaku
+                Mengevaluasi kontrak dan perjanjian terhadap proyek
+                Meninjau aspek kekayaan intelektual seperti copyright dan paten
+
+            5. Schedule Feasibility 
+                Mengevaluasi jadwal project
+                Menetapkan deadline dan milestone
+                Memastikan ketersediaan resource agar proyek berjalan sesuai jadwal
+        
+    2. Requirement Elicitation (Penggalian kebutuhan)
+        proses pengumpulan info tentang requirement dan goals dari client terhadap software
+        
+        Sumber pengetahuan domain/bidang software
+            1. Client 
+            2. Business manual
+            3. software yg sama
+            4. Standard
+            5. Office holder (CEO,Boss, Manager, Lead Developer)
+
+        Teknik pengumpulan 
+            1. Wawancara → Percakapan langsung dengan Office holder
+            2. Survei → Kuesioner untuk mengumpulkan informasi,
+            3. Kelompok Fokus → Diskusi kelompok kecil Office holder.
+            4. Observasi → Mengamati office holder dalam lingkungan kerja.
+            5. Pembuatan Prototipe → Model awal sistem untuk mendapat feedback
+
+        Requirement elicitation tidak menghasilkan model/jawaban formal, tetapi memperluas pemahaman domain
+        Hasil elicitation bisa didokumentasi, dicatat, diatur agar lengkap dan konsisten
+    
+    3. Requirement Specification (Spesifikasi kebutuhan)
+        proses mendokumentasikan requirement dari hasil elicitation sebelumnya 
+        
+        jenis requirement
+            functional req → Menjelaskan fitur dan fungsi software (validasi input, penyimpanan data, UI)
+            non functional req → Menjelaskan kualitas software (kinerja, keandalan, keamanan)
+            obstacle → Kendala dalam development
+            requirement criteria → syarat/requirement agar sistem/software dianggap siap  
+
+        Metode Dokumentasi
+            ERD (Entity Relational Diagram)
+            DFD (Data Flow Diagram)
+            FDD (Functional Decomposition Diagram)
+            Data Dict
+
+        Prinsip Penulisan Requirement Specification
+            Menggunakan bahasa yang jelas, sederhana, dan tidak ambigu
+            Menghindari kosakata teknis
+            Menggunakan diagram dan model untuk komunikasi lebih baik
+        
+            Ditinjau oleh office holder & developer untuk memastikan kelengkapan dan konsistensi
+    
+    4. Requirement Verification n Validation (VnV)
+        Verification
+            Memastikan bahwa semua req ditulis secara lengkap, konsisten, dan akurat
+            Proses pengecekan dilakukan melalui peninjauan dokumen, model, diagram, meeting dan diskusi
+            Tujuannnya agar menjamin bahwa req jelas, dapat diuji, dan bebas dari kesalahan
+        
+        Validation
+            Memastikan bahwa req yang telah ditetapkan benar-benar mencerminkan req dan goals office holder
+            Dilakukan dengan pengujian melalui simulasi, prototipe, atau final version dri software
+            Tujuannya agar menjamin bahwa software yg didevelop sesuai ekspetasi office holder 
+        
+        VnV dilakukan berulang"" sepanjang SDLC dan melibatkan developer dan office holder 
+
+    5. Requirement Management (Manajemen kebutuhan)
+        Proses menganalisa, mendokumentasikan, melacak, memprioritaskan, dan menyetujui req yg sudah ada
+        Menangani perubahan req dan memastikan SRS dapat dimodifikasi sesuai kebutuhan
+
+        Aktivitas Utama 
+            Change control -> Memantau resource dan dampak perubahan, serta menyetujui atau menolak changes
+            Version control -> Menyimpan versi berbeda dari SRS sesuai update
+            Traceability (Ketelusuran): Menghubungkan req dengan elemen lain (desain, pengujian, validasi).
+            Komunikasi -> Menjamin req disampaikan secara efektif kepada semua org yg terlibat development
+            Monitoring and reporting -> monitoring proses development dan mereport status/progress req
+
+Tools Requirement Engineering 
+    Observation report 
+    Questionaires
+    Usage Cases (mendefinisikan interaksi sistem dan behavior yg diekspetasikan)
+    User Story (mendeskripsikan req dari user pov)
+    Req workshop (diskusi kolaboratif utk mengupgrade program)
+    Mind mapping (menghubungkan antar poin req)
+    Role playing (mensimulasikan req user utk mengetahui req lainnya yg blm diketahui)
+    Prototyping
+
+Keuntungan Rekayasa Kebutuhan
+    Memastikan software memenuhi requirement dan goals dari office holder
+    Membantu mengidentifikasi masalah potensial lebih awal, sehingga mengurangi changes mahal 
+    Meningkatkan efisiensi biaya dan efektivitas developent
+    Memperkuat komunikasi dan kolaborasi antara dev dan office holder
+    Memastikan sistem selaras/memenuhi kebutuhan dari office holder
+    Memberikan deskripsi requirement yang jelas sehingga mengurangi kesalahpahaman.
+    Membantu mendeteksi dan menyelesaikan konflik/crash sebelum development
+    Memastikan deployment tepat waktu, sesuai anggaran, dan memenuhi standar kualitas
+    Menyediakan landasan kuat bgi development sehingga mengurangi chance gagal 
+
+Kerugian Rekayasa Kebutuhan
+    Memakan waktu dan biaya, jika tidak dikelola dengan baik
+    Sulit untuk memastikan requirement dan goals dari office holder
+    Menjaga kejelasan, konsistensi, dan kelengkapan req bisa menjadi tantangan.
+    Perubahan req dapat menyebabkan penundaan dan peningkatan development cost 
+    Proses ini harus fleksibel dan adaptif terhadap perubahan tujuan project
+    Jika req terlalu kompleks, prosesnya akan semakin lama dan mahal
+    Office holder pny prioritas yg berbeda"", sehingga sulit untuk menyatukan req mereka.
+    Konflik antara office holder dan developer bisa sulit diselesaikan
+

@@ -55,7 +55,7 @@ Less Power ----------------------------------- > More Power
     FSM didefinisikan dengan pasangan 5 tupel → M = (Q, ∑, δ, S, F).
         Q = himpunan finite state
         ∑ = himpunan finite state simbol input (alphabet)
-        δ (gamma) = fungsi transisi, menggambarkan transisi state FSA akibat pembacaan simbol input (dberikan dalam bentuk tabel)
+        δ (gamma)/delta = fungsi transisi, menggambarkan transisi state FSA akibat pembacaan simbol input (dberikan dalam bentuk tabel)
         S ∈ Q = Start state
         F ⊂ Q = Final State (himpunan bagiandari)
 
@@ -73,7 +73,7 @@ Less Power ----------------------------------- > More Power
     | SR        | PK        | SR - PK     |
     | SK        | PR        | SK - PR     | X
     | KR        | PS        | KR - PS     | X
-    | PSR       | K         | PSR - K     | 
+    | PSR       | K         | PSR - K     |         
     | PSK       | R         | PSK - R     | 
     | PKR       | S         | PKR - S     | 
     | PK        | SR        | PK - SR     | 

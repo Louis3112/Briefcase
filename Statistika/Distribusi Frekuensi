@@ -61,9 +61,9 @@ Langkah" membuat tabel distribusi frekuensi
         Jika data dalam bentuk desimal, maka nilai p yang diambil juga dalam bentuk desimal
 
         karena data dalam bentuk satuan, maka nilai p bisa menggunakkan 9 atau 10
-            tpi kita ambil 9
-            perhitungan kelas interval dimulai dari i++
-            jdi, kalau 31, start hitungannya dari 32
+            tpi kita ambil 10
+            perhitungan kelas interval dimulai dari i
+            jdi, kalau 31, start hitungannya dari 31
 
     6. Menyusun data dlm bntuk tabel
         Distribusi Frekuensi Mutlak

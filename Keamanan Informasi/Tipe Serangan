@@ -1,0 +1,83 @@
+Tipe serangan terbagi menjadi 4 
+    Access Attack 
+        usaha utk mendapat akses yg tidak boleh diberikan 
+        bisa terjadi pada database atau saat transmisi data, biasa terjadi di bagian elektronikal
+
+        Snooping (mengintai)
+            mencari info dalam file dengan harapan menemukan sesuatu yg menarik 
+            pemantauan transmisi pada digital network utk dpt mengetahui password/data lain 
+            jika file ada secara fisik (di meja, lemari), maka bisa disebut snooping 
+            termasuk passive attack karena mendapat info tanpa merubah info
+
+        Eavesdrooping (menguping)
+            menguping/masuk dlm network utk mendengar/mendapat data yg diinginkan 
+            biasanya mencuri data yg dikirim melalui network tanpa proses enkripsi 
+            pembicaraan melalui VoIP (Voice over IP) yg tidak terenkripsi akan mudh di Eavesdrooping
+            termasuk passive attack karena mendapat info tanpa merubah info
+
+        Interception (pencegatan)
+            attacker mendpatkan data pada transmisi data sebelum data sampai tujuan
+            lalu, attacker bisa memilih utk dikirim atau tidak (jika dikirim, msuknya reply)
+            bisa jadi attacker adalah MITM (Man in the Middle)/attacker membuat koneksi baru ke korban 
+        
+        Access Attack dpt terjadi pada info kertas/elektronik 
+            kertas bisa di lemari, laci, atas meja, tas, tempat sampah, fax machine, brangkas
+            elektronik bisa di PC, server, laptop, CD, FD, tape, backup server
+
+    Modification 
+        upaya mengubah info yg attacker tdk diperbolehkan mengganti 
+        bisa terjadi pada database atau saat transmisi data, biasa terjadi di bagian elektronikal
+        bertujuan mengubah integritas info/data
+        attacker mengubah header package's address utk mengarahkan data ke tujuan berbeda/memodif data
+        
+        Reply
+            attacker mengarahkan data ke tujuan berbeda (tetapi tetap sampai ke tujuan)
+        Modification
+            attacker memodif data yg dikirim korban (jadi, data asli tdk pernah sampai)
+
+    Denial of Service 
+        upaya menghabiskan resource pada komputer/server sehingga komputer/laptop tidak dapat menjalankan fungsinya dengan benar 
+            sehingga, user lain tdk bisa mengakses service komputer/server
+        attacker bisa melakukan banyak cara 
+            1. membanjiri network traffic dengan banyak data, sehingga menghambat user asli utk mengakses service (traffic flooding)
+            2. membajiri service dengan banyak req, sehingga req user asli tidak digubris server (req flooding)
+            3. mengganggu komunikasi host dan client, bisa dengan mengubah konfigurasi sistem/merusak fisik komputer/service 
+
+        terdapat juga DDOS (Distributed DOS)
+            DDOS dilaukan oleh banyak kompi (1 attacker, tpi bisa ratusan/ribuan kompi yg sudh di hack)
+            lebih sulit dri DOS karena attack secara terdistribusi
+
+    Repudiation (Penolakan)
+        upaya memberi info palsu/hoax atau menolak suatu peristiwa/transmisi yg seharusnya terjadi 
+        MITM termasuk dalam Repudiation 
+            ada Interception (attacker mendapat data transmisi (korban juga berhasil mengirim data asli))
+                Interruption (attacker memblokir data transmisi, tapi korban mengira kalau data sudah berhasil dikirim)
+                Modification (attacker mendapat data transmisi, data dimodif oleh attacker, lalu dikirim ke korban)
+                Reply        (attacker mendapat data transmisi, attacker juga mengirim kepada korban (korban juga berhasil mengirim data asli))
+                Fabrication  (attacker mengirim data seolah" sebagai teman korban)
+
+    Tipe Serangan lain 
+        Physical Access Attacks 
+            Wiretapping 
+            Server Hacking 
+            Vandalism 
+        Dialogue Attack 
+            Eavesdrooping
+            Impersonation/Fabrication 
+            Message Altercation/Modification
+            Network Sniffing/Snooping
+        Penetration Attack
+            DOS
+            Malware
+            Break-In
+            Scanning/Probing
+            Zero-Day Attack
+            Exploiting 
+            Session Hijacking   
+        Special Engineering 
+            Opening Attachments
+            Password Theft
+            Info Theft
+            Account Cracking
+            System/Application Design Error 
+            

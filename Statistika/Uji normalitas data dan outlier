@@ -1,0 +1,276 @@
+Slah satu faktor mempengaruhi penyimpangan distribusi normal adlah outlier 
+outlier = nilai yg jauh berbeda dri sebagian besar data (bisa karena kesalahan pengukuran, variabilitas alami, dll)
+    
+Langkah analisa data
+    1. Lakukan uji normalitas (jika data hrus normal)
+    2. Jika tdk normal, periksa ada outiler atau tdk 
+    3. Atasi outlier dengan metode statistik/transformasi data
+    4. Lakukan uji normalitas lagi jika sudah selesai
+
+Uji normalitas 
+    prosedur statistik utk menentukan apakah dataset mengikuti distribusi normal 
+    Distribusi normal = syarat utama dlm metode statistik spti regresi linear, ANOVA, uji t
+    uji normalitas penting krna 
+        1. menentukan asumsi statistik : bnyk metode statistik parametris butuh data distribusi normal
+        2. menentukan metode analisis : Jika data tidak normal, metode non-parametrik mungkin lebih cocok digunakan
+        3. mencegah kesalahan interpretasi : data yg tidak normal dpt mengakibatkan pengambilan kesimpulan yg salah
+
+    2 pendekatan utama pada uji normalitas 
+        1. Metode visualisasi 
+            Histogram : distribusi data dlm bar chart 
+            Q-Q Plot (Quantile-Quantile Plot) : membandingkan kuantil data dengan kuantil distribusi normal 
+            Boxpkot : membantu mendeteksi outlier yg mempengaruhi normalitas 
+        2. Uji statistik
+            Kolmogorov-Smirnov (K-S) Test
+                uji kesesuaian distribusi dengan membandingkan distribusi sampel dengan distribusi teoretis tertentu (cth : distribusi normal)
+                2 jenis K-S Test
+                    One Sample K-S Test 
+                        menguji apakah suatu sampel berasal dari distribusi tertentu (cth : normal)
+                    Two-Sample K-S Test 
+                        membandingkan 2 distribusi sampel utk melihat apakah brasal dri populasi yg sama
+                cocok utk sampel besar (> 50)
+            
+            Shapiro-Wilk Test
+                menguji dengan mendeteksi deviasi dri normalitas 
+                cocok utk sampel kecil (< 50)
+                
+    Hipotesis yg diuji 
+        H0 (Hipotesis 0) : Data berdistribusi normal 
+        H1 (Hipotesis alternatif) : Data tidak berdistribusi normal
+            jika p-value > 0.05, H0 diterima, data dianggap normal
+        
+        Tingkat signifikansi (α) = peluang SALAH menolak H0 ketika H0 sbnrnya bener 
+        bisa dikatakan, α = probabilitas terjadinya kesalahan tipe 1 (false positive), menganggap adanya pola (padahal sbnrnya gk ada)
+        biasanya, nilai α = 0.05 (5% resiko)
+        diperkenalkan Ronald Fisher (1925) dan banyak digunakan dlm penelitian 
+
+    Jika data tidak terdistribusi normal, metode yg bisa digunakan adalah 
+        1. Transformasi data 
+            Log Transformation 
+                gunakan jika 
+                    1. Data memiliki skewness positif (data dominan lebih besar drpada median/mean)
+                    2. Variasi data sangat besar
+                        X' = Log(X)
+                
+                Kelebihan 
+                    1. Mengurangi skewness 
+                    2. Menormalkan distribusi data
+                    3. Cocok utk range besar 
+                Kekurangan 
+                    1. Tidak bisa digunakan jika ada 0/negatif
+                    2. Perubahan skala data ekstream membuat interpretasi sulit 
+
+            Square Root Transformation
+                gunakan jika 
+                1. Data memiliki skewness positif ringan 
+                2. Data memiliki nilai 0 (karena tidak bisa dioperasikan dengan log)
+                        X' = √X
+                
+                Kelebihan 
+                    1. Bisa digunakan utk data 0
+                    2. Tidak mengubah skala data se ekstream Log Transformation
+                Kekurangan 
+                    1. Tidak efektif utk skewness besar
+
+        2. Menghilangkan outlier 
+            Z-Score 
+            IQR
+            Grubbs' Test
+
+        3. Menggunakkan metode Non-Parametrik
+            Jika Transformasi tdk efektif, gunakan Uji Mann-Whitney/Kruskal-Wallis 
+    
+Outlier (peristiwa langka) 
+    data yg berbeda jauh dibandingkan data yg lain
+    bisa jadi data nilainya jauh lebih tinggi atau lebih rendah 
+
+    ada banyak uji statistik utk mendeteksi outiler
+    
+    outlier bisa terjadi karena 
+        kesalahan pengukuran 
+        kejadian langka
+        faktor lain (salah pengisian)
+    outlier perlu disingkirkan karena dapat mempengaruhi hasil interpret
+        kalau pada scatter graph, outlier akan mencar sendiri 
+
+Karakteristik Outlier 
+    Extreme values  
+        terdapat data/nilai yg berbeda jauh dari mean/median
+        cth : range nilai mhs dri 65-80, tpi ada yg dpt 30, disebutoutlier
+
+    Isolated Points (Titik terisolasi)
+        outlier tdk hanya terjadi pada 1 variabel, tpi juga pada 2 variabel/lebih (data multivariat)
+            data ini tdk sesuai dengan pola umum pada bbrp dimensi
+            shingga ekstream dan terisolasi dengan variabel/dimensi lain
+        cth : jika rata" tinggi 170 cm pny berat 60-75 kg, tpi ada org tinggi 170 cm tpi berat 30 kg, disebut outlier
+
+    Influential Points (Titik berpengaruh)
+        outlier dapat mempengaruhi hasil analisis data, trutama dalam statistik dan ML 
+        sehingga mempengaruhi interpretasi, hasil, dan hubungan antar data
+
+        cth : dlm analisis regresi linear antara jam belajar dan nilai ujian
+              mhhs yg bljr 6-8 jam dpt nilai 60-80, tpi ada yg bljr 1 jam dpt nilai 100 
+              outlier trsbt dpt mempengaruhi hasil model regresi 
+
+    Dlm Finance 
+        lonjakan hrg saham dpt mnjadi outlier krna manipulasi/berita
+        cth : jika harga saham harganya 1000 per lembar, tpi tiba" naik jdi 2500, 
+              bisa disebut outlier, mungkim karena berita merger/tindakan inventor
+
+    Dlm Healthcare
+        kadar gula darah yg sngt tinggi bisa krna salah input/kondisi kesehatan yg berbqhaya
+    
+    Dlm Manufacturing 
+        pembacaan sensor/hasil output di luar kisaran normal bisa karena mesin rusak/cacat produuksi
+        cth : jika suhu mesin dlm range 100-120 derajat, tapi tiba" jdi 200
+              bisa disebut outlier, mungkin karena sensor/mesin rusak (cacat produksi)
+
+Pengaruh Outlier
+    Outlier berpengaruh pada statistik inferensial
+    1. Mempengaruhi estimasi parameter
+        outlier dpt mempengaruhi nilai mean, standar deviasi, korelasi pada statistik inferensial
+        estimasi parameter bisa menjadi bias dan tidak merepresentasikan populasi 
+        cth : 1 outlier dapat mempengaruhi kemiringan garis regresi, sehingga hasil estimasi koefisien tdk akurat
+
+    2. Mempengaruhi uji hipotesis
+        uji statistik spti uji t, ANOVA, uji Chi-Square brgntung pada asumsi tertentu 
+        misalnya normalitas dan homogenitas varians 
+        jika ada outlier, nilai p-value bisa menjadi tdk valid 
+        cth : jika dalam uji t membandingkan 2 klompok dengan adanya outlier yg extreme 
+              perbedaan rata" antar kelompok bisa tampak berbbeda dari aslinya 
+
+    3. Meningkatna resiko kesalahan statistik
+        outlier bisa menyebabkan  Type I error (false positive) atau Type II error (false negative) dalam uji hipotesis
+        sehingga bisa membuat analisis salah dalam menolak atau menerima H0
+        cth : dlm uji korelasi, 1 outlier dapat bisa membuat hubungan antara dua variabel tampak lebih kuat atau lebih lemah
+
+    4. Mempengaruhi Distribusi data 
+        Banyak metode statistik mengasumsikan data terdistribusi normal
+        Outlier bisa membuat distribusi menjadi skewed (miring) atau long tails, yang dapat mengurangi akurasi inferensi
+        cth : dlm  analisis regresi, outlier dapat membuat residual tidak terdistribusi normal, sehingga metode Ordinary Least Squares (OLS) tidak optimal
+
+Identifikasi Outlier
+    Visualisasi    
+        Boxplot
+            menentukan batas bawah dan atas dengan IQR, data lebih dri atau kurang dri IQR dsebut outlier 
+            hasil perhitungan divisualisasikan untuk memudahkan deteksi nilai yang tidak biasa
+            Boxplot bukan alat formal untuk uji outlier, tetapi sebagai alat diagnostik untuk eksplorasi data
+
+            perhitungan Boxplot 
+                IQR = Q3 - Q1
+                Batas bawah outlier = Q1 - (1.5 × IQR)
+                Batas atas outlier = Q3 + (1.5 × IQR)
+                Jika nilai berada di luar batas, maka dianggap sebagai outlier potensial dan ditampilkan sebagai titik terpisah dalam Boxplot
+
+        Scatter Plot
+            digunakan untuk memvisualisasikan hubungan antara dua variabel
+            outlier adaalah titik-titik yang berada jauh dari pola umum data
+            Outliers dapat menunjukkan:
+                Kesalahan dalam data
+                Variabilitas alami
+                Fenomena yang tidak biasa
+
+    Statistik (lebih formal dan kuantitatif)
+        Z-Score (standar skor)
+            Mengukur seberapa jauh suatu nilai menyimpang dari rata"
+            Z = X - μ/ σ
+                X = nilai/data yg dianalisis
+                μ = mean
+                σ = standar deviasi 
+            Jika |Z| > 3, maka nilai tersebut dianggap outlier
+            
+            Gunakan Z-Score jika:
+                Ingin mendeteksi outliers dengan cepat dalam distribusi normal
+                Ingin membandingkan nilai dari skala yang berbeda
+                Perlu menstandarisasi data untuk analisis statistik atau machine learning
+
+            mengapa harus |Z| > 3
+                1. Distribusi normal : Hanya 0.3% data yang berada di luar batas ini
+                2. Probabilitas rendah: Nilai yg lebih besar dari 3 standar deviasi sangat kecil (0.13%), sehingga dianggap outlier
+                3. Dataset kecil / tidak normal: Aturan |Z| > 3 bisa terlalu ketat, sehingga mungkin tidak cocok, maka 
+                    4. Fleksibel dalam bidang tertentu 
+                        dlm bidang finance/data real time 
+                            |Z| = 2.5 atau 3.5, tergantung kebutuhan
+                            
+                            Jika |Z| > 2, Menandai 5% data sebagai outlier, bisa terlalu banyak
+                            Jika |Z| > 4, Hanya 0.006% data dianggap outlier, bisa terlalu ketat dan mengabaikan nilai ekstrem yang relevan
+                            |Z| > 3 adalah kompromi yg paling umum , terutama utk data yg mendekati distribusi normal
+            
+            Jumlah outlier bisa dideteksi banyak sekaligus
+            Distribusi data tidak hrus normal, tetapi lbih akurat jika normal 
+            Pendekatan eksploratif (diagnostik awal)
+            maka nilai kritis lebih tinggi, sehingga lebih sulit mengidentifikasi outliermaka nilai kritis lebih tinggi, sehingga lebih sulit mengidentifikasi outlier
+        Grubbs Test 
+            metode statistik untuk mendeteksi outlier tunggal dalam dataset yang berdistribusi normal
+            utk menemukan apakah titik data tersebut paling ekstream dan berbeda dari data lainnya 
+            
+            G = max |Xi - rata"X| / S
+                Xi = nilai yg diuji
+                S = Standar deviasi Sampel
+            
+            Gunakan Grubbs Test :
+                Jika dicurigai ada satu outlier dalam dataset
+                Jika dataset berdistribusi normal (karena metode ini sensitif terhadap distribusi data)
+                Jika dataset relatif kecil hingga sedang
+
+            Bandingkan nilai G yang dihitung dengan nilai kritis dari tabel untuk ukuran sampel N pada tingkat signifikansi α = 0.05.
+            | **N (Jumlah Data)** | **Nilai Kritis G** |
+            |---------------------|------------------|
+            | 3                   | 1.15             |
+            | 4                   | 1.48             |
+            | 5                   | 2.02             |
+            | 6                   | 2.29             |
+            | 7                   | 2.51             |
+            | 10                  | 2.82             |
+            | 20                  | 3.19             |
+            | 30                  | 3.37             |
+            Jika dataset lebih besar (cth : N > 30), maka nilai kritis lebih tinggi, sehingga lebih sulit mengidentifikasi outlier
+
+    Saran penggunaan Z-Score dan Grubbs Test
+        Kita boleh menggunakan standar deviasi yang sama untuk Z-score dan Grubbs' Test, tetapi pastikan metode ini diterapkan secara konsisten.
+        Jika data tidak normal, Grubbs' Test kurang akurat, sementara Z-score masih bisa digunakan.
+        Jika dataset besar dan ada kemungkinan banyak outliers, lebih baik gunakan Z-score.
+        Jika hanya ingin menguji satu outlier secara formal, gunakan Grubbs' Test.
+        Jika ingin mendeteksi nilai yang **jauh dari rata-rata**, Z-score adalah metode yang cepat dan efektif.
+        
+        Z > 2 atau Z < -2 → Moderate outlier (outlier sedang)
+        Z > 3 atau Z < -3 → Extreme outlier (outlier ekstrem)
+
+Penanganan Outlier 
+    Outlier bisa dihapus jika
+        a. kesalahan input/human error
+            Salah input (misalnya, ketik 1000 padahal seharusnya 10).
+            Data dari sensor rusak/tidak akurat.
+            Kesalahan pengukuran dalam eksperimen.
+
+        b. data tidak relevan dengan analisis
+            Studi berat badan manusia, tapi ada data 500 kg (mungkin bukan manusia).
+            Studi pendapatan rumah tangga, tapi ada data dari perusahaan besar.
+
+        c. mengganggu model statistik secara tidak wajar
+            Dalam regresi linear, outlier bisa mengubah slope/intercept.
+            Dalam clustering, outlier bisa mempengaruhi kelompok data
+        
+    Outlier TIDAK BOLEH dihapus jika 
+        1. Outlier adalah bagian dari fenomena yg perlu dianalisis
+            Studi ekstrem cuaca butuh data suhu ekstrem.
+            Studi pendapatan negara berkembang, outlier bisa dari orang kaya/miskin.
+
+        2. Outlier mengandung info penting 
+            Penelitian medis, tekanan darah sangat tinggi bisa menunjukkan penyakit langka.
+            Ekonomi, lonjakan harga saham bisa menunjukkan krisis atau booming.
+        
+        Penanganan yg bisa dilakukan 
+            1. Winsorization 
+                Mengganti nilai outlier dengan nilai yang lebih dekat ke batas normal.
+                cth: Jika ada data penghasilan (dalam juta rupiah) [3, 5, 6, 150], 
+                     nilai 150 bisa diganti dengan persentil ke-95 dari data lainnya.
+            
+            2. Transformasi data (Log, Square Root, Box-Cox)
+                Jika outlier menyebabkan distribusi menjadi tidak normal, 
+                bisa dilakukan log transform atau Box-Cox transform untuk mengurangi dampaknya
+
+            3. Capping (membatasi range nilai)
+                Jika data memiliki batas alami, outlier bisa dibatasi dalam range yang wajar.
+                cth: Dalam studi usia manusia, jika ada data usia 200 tahun, 
+                     maka bisa dibatasi maksimal 120 tahun

@@ -241,7 +241,7 @@ Ukuran Letak data
             utk Ungroup data
                 Letak Di = data ke i(n+1)/10, dengan i = 1,2,3..9
                     setelah diket letak Di nya 
-                Nilai Di = data ke Di + 1/Di-1 (data ke Di + 1 - data ke Di)
+                Nilai Di = data ke Di + (bagian desimal (koma) dari Pi * (data ke Di + 1 - data ke Di))
                 utk hasilnya terkadang tidak sesuai dengan yg ada di daftar data
 
             utk Group Data 
@@ -266,7 +266,7 @@ Ukuran Letak data
             utk Ungroup data
                 Letak Pi = data ke i(n+1)/100, dengan i = 1,2,3..99
                     setelah diket letak Di nya 
-                Nilai Pi = data ke Pi + 1/bagian desimal (koma) dari Pi (data ke Pi + 1 - data ke Pi)
+                Nilai Pi = data ke Pi + (bagian desimal (koma) dari Pi (data ke Pi + 1 - data ke Pi))
                 utk hasilnya terkadang tidak sesuai dengan yg ada di daftar data
 
             utk Group Data 

@@ -1,0 +1,304 @@
+Proses mengembangkan model abstrak suatu sistem, yg tiap model memberikan pov trtntu
+didasarkan pada UML
+tujuannya memudahkan pemahaman fungsionalitas dan organisasi agar bisa dijelaskan ke client
+
+System modelling terbagi mnjadi 2
+    Existing system modelling 
+        memudahkan penjelasan sistem yg sudah ada 
+        bisa utk membahas strength dan weakness
+    New System Modelling 
+        membantu merancang sistem dan diusulkan kepada office holder
+        bisa utk dokumentasi sistem/proposal design 
+    
+System Perspective 
+    External Perspective        : memodelkan konteks/envi external sistem
+    Interaction Perspective     : memodelkan interaksi antara sistem dengan envi dan komponennya (komunikasi dan transmisi data)
+    Structural Perspective      : memodelkan organisasi sistem/struktur data sistem 
+    Behavior Perspective        : memodelkan behavior sistem dan responnya terhadap suatu input/changes
+
+Jenis Diagram   
+    Activity Diagram            : workflow dari suatu sistem
+
+    Use Case Diagram            : interaksi antara actor external (user) dn sistem
+        digunakan utk memahami interaksi pada suatu sistem 
+        Setiap use case mewakili tasks yg melibatkan interaksi dengan sistem 
+        actor dapat berupa org, waktu, server, komputer
+
+        cth :
+            Medical Receptionist --> Transfer Data --> Patient Record System 
+                actor : Medical Receptionist, Patient Record System 
+                description: Receptionist dpt mentransfer PRS ke database 
+                data :  data pasien, obat yg dibutuhkan, riwayat penyakit 
+                stimulus : user command dari Receptionist
+                respond : konfirmasi PRS telah terupdate
+                catatan : perlunya hak akses tambahan kepada resepsionist
+
+            Medical Receptionist ----- Register Patient, Unregister Patient, view patient info, send data, contact patient, contact doctor
+
+    Sequence Diagram            : interaksi dinamis antara actor, sistem dan komponen sistem (object) secara berurutan
+        Menunjukkan urutan interaksi dalam suatu use case
+        Memodelkan aliran komunikasi antara aktor dan sistem secara berurutan
+        Object Sequence Diagram 
+            Actor dan Object : terletak di bagian atas diagram 
+            Lifeline (garis putus") : menunjukkan waktu berlangsungnya proses
+            Panah : menunjukkan arah interaksi antar objek 
+
+    Class Diagram               : object class dan relationshipnya dengan kelas lain
+        menyusun model awal dalam RPL 
+        Object Class Diagram 
+            Class : representasi object dengan atribut dan model 
+            Asosiasi/Relasi/Aggregation/Composition : hubungan antar suatu class
+            Hubungan kardinalitas (cardinality relationship): one to one, one to many, singlecast, multicast, broadcast
+    State Diagram               : perubahan state terhadap respond suatu sistem
+
+Context Model
+    mengilustrasikan konteks operasional suatu sistem 
+    menggambarkan sistem dan hubungannya dengan sistem lain
+    cth : MHC-PMS (Mental Health Care - Patient Management System)
+    hanya menunjukkan sistem lain di suatu envi, bukan bagaimana sistem yang dikembangkan,digunakan dalam environment 
+        sedangkan proccess model menjelaskan bagaimana sistem dikembangkan dlm envi trsbut
+
+Interaction Model   
+    Interaction Model user penting utk mengidentifikasi kebutuhan user 
+    Interaction model system-to-system menyoroti potensi masalah komunikasi 
+    Interaction model component membantu memahami struktur sistem apakah optimal atau tidak 
+        gunakan use case dan flowchart utk interaksinya
+
+Generalization
+    teknik yang digunakan untuk mengelola kompleksitas dengan mengelompokkan entitas ke dalam kelas yang lebih umum
+    pengelompokan ini didasarkan pada kategori umum dan karakteristiknya
+        cth : tupai dan tikus msuk hewan pengerat 
+    
+    dlm system modelling, Generalization membantu menyusun class lebih efektif
+    sehingga, jika ada perubahan, tidak perlu diubah semuanya
+    Generalization diimplementasikan dgn inheritance
+
+    Superclass menginheritance atribut, method ke subclass. Subclass ini kemudian dapat menambahkan atribut dan operasi yang lebih spesifik sesuai dengan kebutuhannya
+       
+
+Aggregation Model
+    menunjukkan bagaimana kelas merupakan kumpulan dari kelas lain 
+    mirip dengan hubungan model data semantik
+
+Behavioral Model 
+    model dinamis dari suatu sistem saat dijalankan
+    menjelaskan activity yg terjadi ketika sistem menerima stimulus (input dri user)
+    
+    ada Data Behavioral Model
+        data yg harus diproses oleh sistem 
+    ada Event Behavioral Model 
+        event yg memicu/terjadi saat pemrosesan 
+    
+Data Driven Model 
+    banyak aplikasi yg pemrosesan sistemnya dikendalikan data 
+    data driven menunjukkan bagaimana urutan input dan output data
+    banyak digunakan dalam requirement analysis 
+
+State Machine Model
+    Memodelkan state sistem dalam merespons peristiwa eksternal dan internal
+    digunakan utk menggambarkan perubahan state pada suatu sistem
+    sangat berguna utk realtime sistem 
+
+    cth: proses penggunaan oven 
+    state : 
+        waiting     : oven menunggu input user 
+        half power  : daya oven diatur 1/2 power
+        full power  : daya oven max
+        timer set   : user mengatur timer
+        turned off  : oven bl bisa digunakan karena safety functuion 
+        turned on   : oven siap digunakan 
+        operation   : oven sedang memproses input
+
+Model Driven Engineering  (MDE)
+    pendekatan software development yg menjadikan model sebagai output utama (bukannya codingan)
+    membantu proses automatisasi (software akan dibuat/dihasilkan dari model ini)
+    biasa digunakan pada perangkat lunak tertanam (embedded systems), enterprise applications, dan Model-Driven Architecture - MDA
+
+    MDE biasanya juga digunakan pada pengembangan penelitian 
+    kelebihan MDE 
+        meningkatkan abstraksi pada software development 
+        developer tdk terlalu fokus pada detail bahasa pemrograman/platform, karena model dapat dikonversi menjadi codingan 
+    kekurangan MDE 
+        model untuk abstraksi yang tinggi perlu divalidasi ulang 
+        proses otomatisasi dri model ke code membutuhkan biaya yg mahal 
+
+Model Driven Architecture (MDA)
+    pendahulu MDE 
+    pendekatan software developent yang berfokus pada model untuk desain dan implementasi
+    menggunakkan subset model UML utk menggambarkan suatu sistem
+
+    pembuatan model pada tingkat abstraksi yg berbeda (model independen platform hingga model yang lebih spesifi)
+    sama" melakukan Automation
+    mencakup metodologi serta alat bantu
+
+    jenis MDA 
+        Computation Independent Model (CIM)
+            berfokus pada domain bisnis atau masalah (Model Domain)
+        Platform Independent Model (PIM)    
+            menggambarkan operasi sistem tanpa mengacu pada platform tertentu 
+            menggunakan UML untuk menunjukkan struktur sistem statis
+        Platform Specific Model (PSM)
+            hasil transformasi dari PIM ke dalam bentuk yang sesuai dengan platform tertentu
+            Setiap platform memiliki PSM terpisah
+
+    secara singkat 
+        Computation Independent Model, Requirement Engineering ---> Translator ---> Platform Independent Model ---> Translator ---> Platform Specific Model ---> Translator ---> Code
+    cth : PIM 
+        J2EE Translator --> J2EE Specific Model --> Java Code --> Java Program 
+        .Net Translator --> .Net Specific Model --> C# Code ---> C# Program
+    
+    MDA dapat digunakan dalam agile 
+        tetapi, pendekatan pemodelan yang sangat luas bisa bertentangan dengan prinsip utama Agile
+        Jika transformasi model bisa berjalan otomatis dan menghasilkan kode dari PIM (Platform Independent Model)
+            maka MDA dapat diterapkan dalam pengembangan Agile karena tidak membutuhkan pengkodean terpisah   
+
+    MDA dan MDE bisa tercipta juga karena adanya Subset UML 2/xUML (Executable UML)
+        xUML terbagi menjadi 3 tipe utama 
+            Domain models: Mengidentifikasi elemen utama dalam sistem menggunakan diagram kelas UML
+            Class models: Menjelaskan kelas, atribut, dan operasinya
+            State models: Menghubungkan keadaan dalam diagram state
+        behavior sistem dapat dijelaskan dengan 
+            Object Constraint Language (OCL) untuk aturan deklaratif
+            UML Action Language untuk mengekspresikan tindakan dalam sistem
+    
+UML 
+    telah menjadi standar dunia dan mengambbarkan model software dengan abstraksi tinggi (language = ide)
+    UML digunakan dengan grafis/diagram utk mengekspresikan analisis Object Oriented dan design software
+        tidak bergantung pada satu bahasa/teknologi, UML menggerakkan kita dri fragmentasi utk standarisasi
+
+    UML mengalami perkembangan dri tahun per tahun 
+        1995 (Metode terpadu 0.8) -> 1996 (UML 0.9 & 0.91) -> 1997 (UML 1.0 & 1.1) -> 1999 (UML 1.3) -> 2001 (UML 1.4) -> 2003 (UML 2.0) 
+    
+    terdiri dari 
+        Use Case Diagram 
+            digunakan utk memahami interaksi aktor pada suatu sistem 
+            Setiap use case mewakili tasks yg melibatkan interaksi dengan sistem 
+            
+            fungsi 
+                menggambarkan user scenario -> bagaimana user berinteraksi dengan sistem 
+                mengetahui user requirement -> memastikan sistem dikembangkan sesuai kebutuhan pengguna
+                menjadi kontrak antara user dan developer -> menjelaskan fungsi dan sistematis dari program 
+            
+            use case diagram terdiri atas 
+                actor 
+                    peran user dalam suatu sistem
+                        actor dapat berupa org, waktu, server, komputer
+                    bisa dikatakan sebagai sistem external yg membutuhkan info dri sistem ini
+
+                batas/boundaries 
+                    diagram persegi panjang yg mewakili batas antara actor dan sistem   
+
+                use case (fungsi/fitur), 
+                    skenario yg menggambarkan interaksi user dan sistem   
+
+            ada asosiasi 
+                komunikasi antara aktor dan use case, digambarkan dengan garis padat
+                actor _____________________ use case
+
+            generalisasi (inheritance)
+                hubungan antara suatu use case umum dan khusus (utk alternatif khusus)
+                digambarkan dengan garis panah ke arah use case induk
+                use case anak/khusus ____________________> use case induk
+
+            include 
+                hubungan antara use case include memiliki perilaku sama sprti use case induk 
+                digambarkan dengan garis putus" dengan panah yg menunjuk ke use case include, dengan tulisan <<include>>
+                use case induk --------------------> use case include
+                                    <<include>>
+            extend 
+                hubungan utk menambah perilaku ke base use case 
+                base use case merupakan extension point untuk menentukan fungsionalitas tambahan bisa terjadi
+                digambar kan dengan garis putus" dengan panah yg menujuk base case
+                extented use case ---------------> base use case
+                                    <<extend>>
+
+        Class Diagram   
+            menggambarkan class dan keterkaitannya dengan menunjukkan struktur dan behavior dari class
+            fungsi
+                requirement elicitation system dan iteraksi user 
+                utk software development dengan detail lebih rinci
+
+            stiap class terdiri atas 3 compartment
+                name, atribut, operasi/fungsi/method
+            terdapat modifier utk menunjukkan Visibility 
+                + (fungsi public)
+                - (fungsi private)
+                + (fungsi protected) (hanya superclass dan subclass yang bisa mengakses)
+            
+            OOR (Object-Oriented Relation)
+                2 macam relasi 
+                    generalisasi/inheritance
+                        super class <|_______________________ sub class 
+                        mengabstraksi detail pada suatu sub class (yg memiliki inheritance) (tdk perlu ditulis ulang)
+
+                    asosiasi (hubungan satu class dengan lain)
+                        memiliki nama hubungan (pendaftaran), multiplistas/hub. kardinalitas (1..*), navigasi (searah/dua arah)
+                        cth         
+                                 1                      * (murid)
+                            Univ _________________________ Orang
+                                 _________________________
+                                0..1                    * (guru)
+                                (pemberi kerja)
+
+                        dibagi lagi menjadi 
+                            agregasi
+                                mewakili hubungan "has a" antara 1 class dengan class lain (container - containee)
+                                dapat berdiri sendiri dan tidak dipengaruhi class lain
+                                agregasi sesuai jika container dan containee tdk memiliki hak akses yg sama 
+                                
+                            komposisi
+                                mewakili hubungan "has a" YG KUAT antara 1 class dengan class lain
+                                suatu class tidak dapat berdiri sendiri tanpa class ini  
+                                jika class ini dihapus, maka class yg lain juga ikt terhapus
+                                cth: papan catur dengan 64 kotak papan hitam putih
+
+        Sequence Diagram 
+            menunjukkan bagaimana objek berinteraksi satu dengan yg lain
+            UML mendukung 2 jenis sequence diagram 
+                Sequence Diagram 
+                    Caller                  Phone                     Callee 
+                    |-----------A---------> |                           |
+                    |-----------B---------\ |                           |
+                    |----------------C      |                           |
+                    |                ---->  |                           |
+                    |[kondisi]---------D -> |                           |
+                    |*----------E---------> |                           |
+                    |----|F                 |                           |
+                    |<----                  |                           |
+                    
+                    A = Sinkron = Caller menunggu respon phone sebelum melanjutkan.
+                    B = Asinkron = Caller tdk respon phone (tanda panah setengah)
+                    C = Transmisi tertunda = Pesan tidak langsung diproses tetapi ditunda.
+                    D = Kondisi = Caller mengirim pesan dengan kondisi tertentu 
+                    E = Iterasi = Caller melakukan iterasi pemanggilan
+                    F = Rekursif  = Caller memanggil dirinya sendiri
+
+                Sequence diagram mendemonstrasikan perilaku objek dalam use case dengan menjelaskan objek serta pesan yang mereka sampaikan
+                    Dimensi horizontal menunjukkan objek yang terlibat dalam interaksi.
+                    Dimensi vertikal menunjukkan urutan pesan yang dikirimkan antar objek.
+                    Label pada diagram dapat berisi nomor urut atau simbol # untuk menunjukkan adanya konkurensi.
+
+                    cthnya pada class 
+                    User            Catalog                 Reservation
+                        1. User mencari informasi menggunakan lookup().
+                        2. Catalog mengembalikan title data().
+                        3. Jika judul tidak tersedia, Catalog mengirimkan reserve title().
+                        4. Saat judul dikembalikan, pesan title returned() dikirim.
+                        5. Sistem menyimpan judul dengan hold title().
+                        6. Jika judul tersedia, pesan title available() dikirim.
+                        7. User dapat meminjam dengan borrow title().
+                        8. Setelah selesai, reservasi dapat dihapus dengan remove reservation().
+                    
+                Collaboration Diagram 
+                    sama dengan Sequence Diagram 
+                    berfokus pada hubungan antar objek tanpa memperjelas urutan waktu
+                    Lebih ringkas dan memberikan gambaran struktur hubungan antar objek
+
+        State Diagram
+            menunjukkan urutan state yg dilalui object dlm menerima input dan mengeluarkan outputq
+                bersama dengan reaction dan response 
+            cth :
+                Start ---------> Belum Dibayar -------------> Dibayar -------------------> Finish 
+             Faktur dibuat                     pembayaran             Penghancuran faktur
+
+             Start disbut state, Pembayaran termasuk peristiwa, belum dibayar -> dibayar = transisi

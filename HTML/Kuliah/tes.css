@@ -1,0 +1,30 @@
+h1{
+    color: aqua;
+}
+
+.JudulBerita1,#JudulBerita2{
+    color: black;
+}
+
+.google:link{
+    color: red;
+}
+.google:visited{
+    color:navajowhite;
+}
+.google:hover{
+    background-color: blue;
+}
+
+div{
+    background-color:blue;
+    width: 500px;
+    height: 500px;
+    border: 8px dashed black;
+    border-radius: 40px;
+    box-shadow:inset;
+}
+
+hr{
+    border: 2px dashed black;
+}

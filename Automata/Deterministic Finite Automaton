@@ -1,0 +1,87 @@
+DFA 
+    Input tape  ---> Finite Automaton ---> Output 
+    String             (State)              Accept/Reject
+
+Determinism
+    Saat berada di suatu state, maka state selanjutnya sudah dapat diketahui 
+        State A, if input = 1 then State B 
+                 if input = 0 then state C
+    Hanya 1 state selanjutnya
+        State A, if input = 1 then State B
+            tidak boleh if input = 1 then State B or C
+    Tiap state punya transisi utk setiap input 
+    Suatu state bisa kembali ke state sebelumnya 
+
+Initial state        State             Final State
+    A ---------------> B -------------> (C) 
+        1  (Transisi)           0
+
+Suatu language yg di accepted adalah language yg statenya mencapai final state 
+Suatu language yg di reject adalah language yg statenya tidak mencapai final state 
+    L = {a,b,a,b}
+       atau
+    L = {a^n : n >= 0} (bahasa matematis)
+Input tabe juga bisa kosong/ ε (epsilon)
+
+Automaton bisa menerima lebih dari 1 language jika memungkinkan
+
+Suatu DFA/Automaton punya multi final state 
+
+DFA memiliki rumus sebagai berikut 
+    M = (Q, ∑, δ, q0, F)
+        Q = himpunan finite state
+        ∑ = himpunan finite state simbol input (alphabet)
+        δ (gamma)/delta = fungsi transisi, menggambarkan transisi state pembacaan simbol input (dberikan dalam bentuk tabel)
+        q0 ∈ Q = Start state (elemen dari suatu himpunan)
+        F ⊂ Q = Final State (himpunan bagian dari)
+    
+    yg apabila dibahasakan, menjadi 
+    L(M) : {x|δ(S,x) ∈ F}
+
+    cth : 
+        Q = {q1,q2,q3,q4,q5}
+        ∑ = {a,b,c..} (input), ε tidak termasuk ∑ (input tidak pernah kosong)
+        δ(S,x) = q'       fungsi transisi dengan input alphabet     
+            S ---> q'
+                x
+            menggambarkan state yg diperoleh dengan input char x dari state q
+        F = {q5}
+    
+Tabel Transisi
+    menggambarkan δ(S,x)
+    δ    a    b   (symbol)
+    q0   q1   q3
+    q1   q2   q3
+    q2   q3   q3
+    q3   q3   q3
+
+    δ(q0,a) = q1
+    δ(q0,b) = q3
+
+utk ∑ = {a,b}, buat DFA yg menerima string  dengan jumlah 'a' genap     
+                a 
+    b loop   <-------    b loop
+        (Q0) --------> Q1
+                a
+
+δ*: Q x ∑* = Q 
+δ*(q,w) = q'    (fungsi transisi dengan input string)
+    menggambarkan state yg diperoleh dengan input string w dari state q
+    cth : 
+        δ*(q0,ab) = q3
+        δ*(q0,ababab) = q3
+
+    jadi, secara umum 
+    w = δ1 δ2 δ3.. δk
+
+Bahasa yang diterima oleh DFA 
+    L(M) = {w ∈ ∑* : δ*(q,w) ∈ F} atau di dalam F  
+Bahasa yang ditolak oleh DFA 
+    L(M) = {w ∈ ∑* : δ*(q,w) !∈ F} atau di dalam F  
+
+    δ (q0,abababaa) ==> δ (q0,bababaa) ==> δ (q1,ababaa).... δ (q0,baa) ==> δ (q0,aa) ==> δ (q0,a) ==> q0
+    maka, L(M) = {abababaa, bababaa, ababaa, babaa...} (tapi tidak perlu ditulis semua)
+
+Susun DFA dengan syarat :
+    LM = himpunan semua string yang dimulai dengan '0'
+        = {0, 00, 01, 000, 010, 011, 0000}

@@ -26,10 +26,18 @@ Uji normalitas
                 2 jenis K-S Test
                     One Sample K-S Test 
                         menguji apakah suatu sampel berasal dari distribusi tertentu (cth : normal)
+                        steps:
+                            1. Hitung rata" semua data 
+                            2. Hitung standar deviasi sampel 
+                            3. Hitung nilai K-S (selisih ECDF dan CDF teoretis)
+                                ECDF (Empirical Cumulative Distribution Function/distribusi kumulatif empiris)
+                                CDF Teoretis (Cumulative Distribution Function/distribusi kumulatif teoretis)
+                            4. Hitung p-value 
+                                p-value = Qks(√ND)
                     Two-Sample K-S Test 
                         membandingkan 2 distribusi sampel utk melihat apakah brasal dri populasi yg sama
                 cocok utk sampel besar (> 50)
-            
+
             Shapiro-Wilk Test
                 menguji dengan mendeteksi deviasi dri normalitas 
                 cocok utk sampel kecil (< 50)
@@ -51,7 +59,7 @@ Uji normalitas
                     1. Data memiliki skewness positif (data dominan lebih besar drpada median/mean)
                     2. Variasi data sangat besar
                         X' = Log(X)
-                
+                        dimana semua data diubah dengan log
                 Kelebihan 
                     1. Mengurangi skewness 
                     2. Menormalkan distribusi data
@@ -65,7 +73,7 @@ Uji normalitas
                 1. Data memiliki skewness positif ringan 
                 2. Data memiliki nilai 0 (karena tidak bisa dioperasikan dengan log)
                         X' = √X
-                
+                        dimana semua data diakarkan
                 Kelebihan 
                     1. Bisa digunakan utk data 0
                     2. Tidak mengubah skala data se ekstream Log Transformation
@@ -96,7 +104,7 @@ Outlier (peristiwa langka)
 Karakteristik Outlier 
     Extreme values  
         terdapat data/nilai yg berbeda jauh dari mean/median
-        cth : range nilai mhs dri 65-80, tpi ada yg dpt 30, disebutoutlier
+        cth : range nilai mhs dri 65-80, tpi ada yg dpt 30, disebut outlier
 
     Isolated Points (Titik terisolasi)
         outlier tdk hanya terjadi pada 1 variabel, tpi juga pada 2 variabel/lebih (data multivariat)
@@ -207,7 +215,8 @@ Identifikasi Outlier
             G = max |Xi - rata"X| / S
                 Xi = nilai yg diuji
                 S = Standar deviasi Sampel
-            
+                biasanya, nilai pling tinggi yg diuji 
+
             Gunakan Grubbs Test :
                 Jika dicurigai ada satu outlier dalam dataset
                 Jika dataset berdistribusi normal (karena metode ini sensitif terhadap distribusi data)
@@ -226,6 +235,12 @@ Identifikasi Outlier
             | 30                  | 3.37             |
             Jika dataset lebih besar (cth : N > 30), maka nilai kritis lebih tinggi, sehingga lebih sulit mengidentifikasi outlier
 
+            utk mencari nilai kritis G
+                G = (N-1)/√N - √t^2/N-2 t^2
+                dimana N = jumlah total data 
+                       t = nilai krisis t-student N-2 derajat kebebasan pada tingkat signifikansi α/2N
+                       α = 0.05
+                       
     Saran penggunaan Z-Score dan Grubbs Test
         Kita boleh menggunakan standar deviasi yang sama untuk Z-score dan Grubbs' Test, tetapi pastikan metode ini diterapkan secara konsisten.
         Jika data tidak normal, Grubbs' Test kurang akurat, sementara Z-score masih bisa digunakan.

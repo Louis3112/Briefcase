@@ -223,8 +223,93 @@
                 <p>Ini adalah teks tersembunyi.</p>
             </details>
             
+            <!-- 43. Embed video youtube -->
+            <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            
+            <!-- 48. Tag Code / Program -->
+            <p>Gunakan perintah <code>print("Hello, World!")</code> untuk mencetak teks di Python.</p>  <!-- Menampilkan tulisan coding -->
+            <pre>    <!-- Menampilkan tulisan coding dengan tetap menyimpan cara indentasi -->
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                    margin: 0;
+                    padding: 20px;
+                }
+            </pre>
+            <pre> <code>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                    margin: 0;
+                    padding: 20px;
+                }</code>
+            </pre>
+
+            <!-- 49. Elemen pada tabel lainnya -->
+            <colgroup>
+                <col style="background-color: blueviolet;">
+                <col style="background-color: cyan; width: 300px;">
+            </colgroup>
+    
+            <thead>  <!-- Hanya sebagai penanda utk table head -->
+                <tr>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+            
+            <tbody>  <!-- Hanya sebagai penanda utk table body -->
+                <tr>
+                    <td>Laptop</td>
+                    <td>Rp 10.000.000</td>
+                </tr>
+                <tr>
+                    <td>Mouse</td>
+                    <td>Rp 250.000</td>
+                </tr>
+            </tbody>
+            
+            <tfoot> <!-- Hanya sebagai penanda utk table foot -->
+                <tr>
+                    <td>Total Produk</td>
+                    <td>2 Item</td>
+                </tr>
+            </tfoot>
+
+            <!-- 50. Tag Gambar -->
+            <figure>
+                <img src="https://via.placeholder.com/300" alt="Contoh Gambar">
+                <figcaption>Gambar ini adalah contoh placeholder.</figcaption>
+            </figure> <!-- Gak ada efek visual sebenarnya, tapi membantu dalam pengetikan semantic agar mudah dipahami -->
+
+            <!-- 51. Melampirkan file -->
+            <object data="lampiran/surat.pdf" type="application/pdf" width="600px" height="800px"> <!-- Menampilkan pdf pada website -->
+                <p>File tidak bisa ditampilkan. <a href="lampiran/surat.pdf">Unduh PDF</a></p>
+            </object>
+        
+            <object data="https://www.wikipedia.org" type="text/html" width="600px" height="800px"></object>  <!-- Menampilkan halaman web lain pada website -->
+
             <!-- 54. Komentar -->
             <!-- Ini adalah komentar -->
+            
+            <!-- 55. Coretan pada huruf  dan garis bawah -->
+            <p>Harga lama <del>Rp.45000</del></p>        <!-- del = hapus -->
+            <p>Diskon menjadi <ins>Rp.30000</ins></p>    <!-- ins = insert-->
+
+            <!-- 56. Tag em dan Garis miring -->
+            <p>Nama saya adalah rifqi atau <em>The Boss</em></p>    <!-- em memberikan makna semantik, emphasize -->
+            <p>Nama saya adalah rifqi atau <i>The Boss</i></p>      <!-- i hanya memberikan gaya italic -->
+            <!-- sama" miring -->
+            
+            <!-- 57. Tag Rumus -->
+            <p>kecepatan = jarak dibagi waktu</p>
+            <p><var>v</var> = <var>s</var> / <var>t</var></p>        <!-- memberi efek huruf/angka jadi variabel -->
             
             <!-- 58. Strong dan Bold -->
             <p><strong>Teks penting</strong></p>
@@ -236,5 +321,125 @@
             
             <!-- 60. Tombol -->
             <button onclick="alert('Tombol diklik')">Klik Saya</button>
-        </body>
+
+            Elemen pada CSS
+            <code>selector style = "property: value;"</code>
+            <h1 style="color: blue;"></h1>
+
+            Cara penggunaan CSS
+            Inline Style CSS   <!-- Declaration (style = "property: value;") ditulis satu bagian pada selector -->
+                <h1 style="color: blue;"></h1>
+
+            Internal Style CSS <!-- CSS ditulis di bagian atas HTML -->
+                <style>
+                    h1{
+                        color: blue;
+                    }
+                </style>
+            
+            External Style CSS <!-- CSS ditulis di luar HTML -->
+                <link rel="stylesheet" href="style.css">
+                <!-- Pada bagian style.css -->
+                 h1{
+                    color : blue;
+                 }
+
+            Selektor Style CSS 
+                Tag Selector 
+                    h1{
+                        color: blue;
+                    }
+                
+                Class selector                  <!-- Utk beberapa elemen sekaligus, biasanya utk suatu group -->
+                    <div class="judul">         <!-- Bisa ditempa dengan id Selector, berarti lebih rendah dari id-->
+                        <h1>Hello World</h1>
+                    </div>
+
+                    .judul{
+                        color:blue;
+                    }
+
+                id selector                  <!-- Utk satu elemen saja, spesifik -->
+                    <h1 id="judul">Hello World</h1>
+
+                    #judul{                  <!-- Tidak bisa ditempa Selector lain -->
+                        color:blue;
+                    }
+
+                Group selector               <!-- Utk beberapa elemen sekaligus -->
+                    h1, p { 
+                        color : blue;
+                    }
+
+                Specific elemen selector    <!-- Utk satu elemen saja dan spesifik -->
+                    p b { 
+                        color : blue;
+                    }
+                
+            Style Link 
+                .link-style :link{                 <!-- Link ketika muncul pada web -->
+                    color: blue;
+                    text-decoration: none;
+                }
+
+                .link-style :visited{             <!-- Link ketika telah dikunjungi -->
+                    color: purple;
+                }
+
+                .link-style :hover{               <!-- Link ketika kursor berada di atas -->
+                    color: red;
+                }
+
+                .link-style :active{               <!-- Link ketika diklik -->
+                    color: green;
+                }
+
+            Style Text
+                .text-style {
+                    font-family: Arial, sans-serif;                     /* Mengatur jenis font */
+                    font-size: 20px;                                    /* Mengatur ukuran teks */
+                    font-weight: bold;                                  /* Mengatur ketebalan teks */
+                    font-style: italic;                                 /* Mengatur gaya teks (miring) */
+                    text-transform: uppercase;                          /* Mengubah kapitalisasi teks */
+                    color: blue;                                        /* Mengubah warna teks */
+                    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);        /* Menambahkan bayangan pada teks, horizontal vertical blur color */ 
+                    text-align: center;                                 /* Mengatur perataan teks */
+                    vertical-align: middle;                             /* Posisi teks dalam elemen inline atau tabel */
+                    line-height: 1.5;                                   /* Jarak antar baris */
+                    letter-spacing: 2px;                                /* Jarak antar huruf */
+                    word-spacing: 5px;                                  /* Jarak antar kata */
+                    text-decoration: underline;                         /* Bisa diganti dengan none, overline, line-through */
+                    text-overflow: ellipsis;                            /* Jika teks terlalu panjang, akan diganti dengan "..." */
+                    white-space: nowrap;                                /* Mencegah teks pindah ke baris baru */
+                    text-indent: 40px;                                  /* Menambahkan indentasi/tab di awal paragraf */
+                    text-overflow : auto;                               /* Mengatur apa yg terjadi jika teks melebihi div*/
+                }
+
+            Style Container 
+                .card {
+                    width: 80%;                                         /* Lebar container 80% dari parent */
+                    height: 200px;                                      /* Tinggi container 200px */
+                    
+                    padding: 20px;                                      /* Menambahkan ruang di dalam container */
+                    margin: 20px auto;                                  /* Memberikan jarak dengan elemen lain (menambah ruang di luar container) & posisi tengah *
+                }
+
+            Style Line/Division
+                digunakan pada hr/div border
+                .hr {
+                    border: 3px solid blue;                             /* Ketebalan, bentuk border, warna  */
+                }
+
+                .div-border {
+                    border-width: 3px;                            
+                    border-style: solid;
+                    border-color: blue;  
+                    radius: 50px;                                       /* Kelengkungan box Division  */
+                }
+            
+            Style Image 
+                .img {
+                    float : left                                         /* Mengatur gambar ditaruh dimana */
+                }
+        </body> 
 </html>

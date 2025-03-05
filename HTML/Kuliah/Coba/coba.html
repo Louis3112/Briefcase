@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Tabel HTML</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        tfoot {
+            font-weight: bold;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <caption>Daftar Produk</caption>
+        
+        <colgroup>
+            <col style="background-color: blueviolet;">
+            <col style="background-color: cyan; width: 300px;">
+        </colgroup>
+
+        <thead>
+            <tr>
+                <th>Produk</th>
+                <th>Harga</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>Laptop</td>
+                <td>Rp 10.000.000</td>
+            </tr>
+            <tr>
+                <td>Mouse</td>
+                <td>Rp 250.000</td>
+            </tr>
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td>Total Produk</td>
+                <td>2 Item</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <figure>
+        <img src="https://via.placeholder.com/300" alt="Contoh Gambar">
+        <figcaption>Gambar ini adalah contoh placeholder.</figcaption>
+    </figure>
+
+    <object data="lampiran/surat.pdf" type="application/pdf" width="600px" height="800px">
+        <p>File tidak bisa ditampilkan. <a href="lampiran/surat.pdf">Unduh PDF</a></p>
+    </object>
+
+    <object data="https://www.wikipedia.org" type="text/html" width="600px" height="800px"></object>
+
+    <p>Harga lama <del>Rp.45000</del></p>
+    <p>Diskon menjadi <ins>Rp.30000</ins></p>
+
+    <p>Nama saya adalah rifqi atau <em>The Boss</em></p>    <!-- em memberikan makna semantik -->
+    <p>Nama saya adalah rifqi atau <i>The Boss</i></p>      <!-- i hanya memberikan gaya italic -->
+
+    <p>kecepatan = jarak dibagi waktu</p>
+            <p><var>v</var> = <var>s</var> / <var>t</var></p>
+</body>
+</html>

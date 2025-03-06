@@ -1,0 +1,153 @@
+JavaScript != Java
+Javascript bisa digunakan utk menambah elemen pada JS 
+
+Cara Penggunaan JS
+    Inline Style CSS   <!-- ditulis satu bagian pada selector -->
+        <button onclick='console.log("Button Click")'>Klik disini</button>
+    Internal Style CSS
+        <script>
+            console.log("Hello World")
+        </script>
+    External Style CSS
+        <script src="script.js"></script>
+
+        console.log("Hello World")
+
+Variabel JS
+    let
+        variabel yg dapat diubah nilainya, memiliki scope blok, nilai let hanya berlaku disitu saja 
+    var 
+        variabel yg dapat diubah nilainya, memiliki scope fungsi, dapat diakses sebelum deklarasi karena hoisting
+    const 
+        variabel yg tidak dapat diubah nilainya setelah dideklarasikan, memiliki scope blok 
+
+Tipe Data JS 
+    let dataString = "Budi";
+    console.log(dataString);
+    console.log(typeof dataString);
+
+    let dataNumber = 12.34;
+    console.log(dataNumber);
+    console.log(typeof dataNumber);
+
+    let dataBoolean = true;
+    console.log(dataBoolean);
+    console.log(typeof dataBoolean);
+
+    undefined (jadi belum diisi nilai)
+String 
+    Escaping Characters
+        console.log('He said "hy"');
+        console.log("He said \"hy\"");
+
+    Literal String 
+        let namaDepan = "Louis"
+        let namaBelakang = "Nathan"
+
+        namaLengkap = namaDepan + " " + namaBelakang;
+        console.log(namaLengkap);
+
+        let namaFull = '${namaDepan} ${namaBelakang} adalah nama saya';
+        console.log(namaFull)
+
+    Index
+        let dataString = "abcdef";
+        let dataNol = dataString.charAt(0);
+        console.log(dataNol);               // a
+
+    Concatenation (menggabungkan)
+        let dataConcat = dataString.concat("ghijk");
+        console.log(dataConcat);            // abcdefghijk
+    
+    Index address
+        console.log(dataString.indexOf("b"));     // 1
+    
+    Substring                                           // Mengambil sebagian string, tidak bisa pakai indeks negatif
+        let text = "Hello World";
+        console.log(text.substring(0, 5));              // Hello
+    
+    Slice                                               // Mengambil string, bisa pakai indeks negatif
+        let text = "Hello World";
+        console.log(text.slice(0, 5));                  // Hello
+        console.log(text.slice(-5));                    // World
+    
+    Replace                                             // mengganti suatu kata 
+        let text = "Hello World, Hello Everyone!";
+        console.log(text.replace("Hello", "Hi"));       // Hi World, Hello Everyone (hanya 1 kata pertama)
+    
+    ToLowerCase
+        let text = "Hello World";
+        console.log(text.toLowerCase());  
+    
+    ToUpperCase
+        let text = "Hello World";
+        console.log(text.toUpperCase());  
+
+Number  
+    ParseInt(String, radix)                  // Mengubah string menjadi int, dengan opsi radix (angka) untuk menentukan sistem bilangan (misalnya basis 10 untuk desimal, 2 untuk biner, dll.)
+        console.log(parseInt("42"));         // Output: 42 (integer)
+        console.log(parseInt("1010", 2));    // Output: 10 (biner ke desimal)
+        console.log(parseInt("7F", 16));     // Output: 127 (heksadesimal ke desimal)
+        console.log(parseInt("50px"));       // Output: 50 (mengabaikan "px")
+        console.log(parseInt("abc"));        // Output: NaN (karena tidak ada angka valid)
+
+    ParseFloat(String, radix)                // Mengubah string menjadi float, dengan opsi radix (angka) 
+        console.log(parseFloat("3.14"));     // Output: 3.14
+        console.log(parseFloat("10.99px"));  // Output: 10.99 (mengabaikan "px")
+        console.log(parseFloat("5"));        // Output: 5 (tetap angka, tapi dalam tipe float)
+        console.log(parseFloat("abc"));      // Output: NaN (karena tidak ada angka valid)
+
+Manipulasi DOM (Document Object Model)
+    Mengambil tag 
+    document.getElementById("id_tag");
+        <p id="Intro">Hello</p>
+
+        <script>
+            let element = document.getElementById("myText");
+            console.log(element); // <p id="Intro">Hello</p>
+        </script>
+
+    Mengambil nilai dari Form 
+    document.getElementById("id_tag").value;
+        <input type="text" id="username" value="Cornelius">
+        <button onclick="showValue()">Show Value</button>               
+
+        <script>
+        function showValue() {                                          // fungsi utk mengambil nilai dari form  
+            let inputValue = document.getElementById("username").value; 
+            alert("Input Value: " + inputValue);                        // akan ditampilkan pada alert 
+        }
+        </script>
+
+    Menulis tag kedalam div 
+    document.getElementById("container").innerHTML = `<p>Hello</p>`;
+        <div id="container"></div>
+        <button onclick="changeContent()">Change Content</button>
+
+        <script>
+            function changeContent() {                                               // fungsi utk mengambil nilai dari form  
+              document.getElementById("container").innerHTML = `<p>Hello</p>`;       // akan memasukkan p Hello pada id container
+            }
+         </script>
+
+Contoh Penerapan 
+
+    <form action="" onsubmit="hitungUmur">
+    <script>
+        function hitungUmur(event){
+            event.preventDefault; // tidak akan mereload website
+            let umur = parseInt(document.getElementById("umur").value;)
+            let output = document.getElementById("output");
+
+            if(umur > 18){
+                console.log("cukup umur");
+                output.InnerText = "Sudah Cukup Umur";
+                output.style.color = "Green";
+            }
+            else{
+                console.log("belum cukup umur");
+                output.InnerText = "Belum Cukup Umur";
+                output.style.color = "Red";
+            }
+        }
+    </script>   

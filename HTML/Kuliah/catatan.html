@@ -327,28 +327,28 @@
             <h1 style="color: blue;"></h1>
 
             Cara penggunaan CSS
-            Inline Style CSS   <!-- Declaration (style = "property: value;") ditulis satu bagian pada selector -->
-                <h1 style="color: blue;"></h1>
+                Inline Style CSS   <!-- Declaration (style = "property: value;") ditulis satu bagian pada selector -->
+                    <h1 style="color: blue;"></h1>
 
-            Internal Style CSS <!-- CSS ditulis di bagian atas HTML -->
-                <style>
+                Internal Style CSS <!-- CSS ditulis di bagian atas HTML -->
+                    <style>
+                        h1{
+                            color: blue;
+                        }
+                    </style>
+                
+                External Style CSS <!-- CSS ditulis di luar HTML -->
+                    <link rel="stylesheet" href="style.css">
+                    <!-- Pada bagian style.css -->
                     h1{
-                        color: blue;
+                        color : blue;
                     }
-                </style>
-            
-            External Style CSS <!-- CSS ditulis di luar HTML -->
-                <link rel="stylesheet" href="style.css">
-                <!-- Pada bagian style.css -->
-                 h1{
-                    color : blue;
-                 }
 
-            Selektor Style CSS 
-                Tag Selector 
-                    h1{
-                        color: blue;
-                    }
+                Selektor Style CSS 
+                    Tag Selector 
+                        h1{
+                            color: blue;
+                        }
                 
                 Class selector                  <!-- Utk beberapa elemen sekaligus, biasanya utk suatu group -->
                     <div class="judul">         <!-- Bisa ditempa dengan id Selector, berarti lebih rendah dari id-->

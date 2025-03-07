@@ -201,15 +201,18 @@ UML
                 use case anak/khusus ____________________> use case induk
 
             include 
-                hubungan antara use case include memiliki perilaku sama sprti use case induk 
+                hubungan antara use case induk yg membutuhkan use case include (wajib)
+                Use case yang di-include adalah bagian yang wajib dilakukan
                 digambarkan dengan garis putus" dengan panah yg menunjuk ke use case include, dengan tulisan <<include>>
                 use case induk --------------------> use case include
+                pay order -------------------------> login
                                     <<include>>
             extend 
-                hubungan utk menambah perilaku ke base use case 
-                base use case merupakan extension point untuk menentukan fungsionalitas tambahan bisa terjadi
+                hubungan antara use case induk yg bisa ditambahkan use case extended (opsional)
+                Use case yang di-extend adalah bagian yang opsional
                 digambar kan dengan garis putus" dengan panah yg menujuk base case
                 extented use case ---------------> base use case
+                register  ------------------> place order
                                     <<extend>>
 
         Class Diagram   
@@ -295,7 +298,7 @@ UML
                     Lebih ringkas dan memberikan gambaran struktur hubungan antar objek
 
         State Diagram
-            menunjukkan urutan state yg dilalui object dlm menerima input dan mengeluarkan outputq
+            menunjukkan urutan state yg dilalui object dlm menerima input dan mengeluarkan output
                 bersama dengan reaction dan response 
             cth :
                 Start ---------> Belum Dibayar -------------> Dibayar -------------------> Finish 

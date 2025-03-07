@@ -1,0 +1,29 @@
+Internet memiliki potensi besar dalam menciptakan bisnis baru, mengurangi biaya penjualan, dan meningkatkan layanan pelanggan.
+Namun, Internet juga meningkatkan risiko terhadap informasi dan sistem organisasi.
+
+Tujuan Internet Security 
+    Kerahasiaan (Confidental)
+        Menjaga isi pesan dari pihak yang tidak berhak
+        Memastikan informasi hanya dapat diakses oleh pihak yang berhak
+        Contoh: Pihak yang tidak berhak bisa menerima pesan, tetapi tidak dapat mengerti isinya
+        Cyber attack : Interception, Sniffing, Snooping
+
+    Integritas Data (Integrity)
+        Menjamin bahwa pesan yang dikirim masih asli/utuh dan tidak dimanipulasi selama pengiriman
+        Contoh: "Apakah pesan yang diterima masih asli atau telah mengalami perubahan?
+        Cyber attack : Modification (mengubah tujuan transfer)
+
+    Otentikasi (Authentication)
+        Memastikan user authentication dan sumber pesan (data origin authentication)
+        Pertanyaan kunci: "Apakah pesan yang diterima benar-benar berasal dari pengirim yang benar?"
+        Cyber attack : Fabrication (seseorang mengklaim bahwa dia mengirimkan uang kepada apa)
+
+    Nirpenyangkalan (Non-Repudiation)
+        Mencegah pihak yang berkomunikasi untuk menyangkal tindakan mereka, 
+            seperti sender menyangkal telah mengirim pesan atau receiver menyangkal telah menerima pesan.
+        Implementasi: Menggunakan tanda tangan digital atau ciri unik yang tidak dapat ditiru.
+        Cyber attack : Mengaku tidak mengirim uang padahal aslinya mengirimkan
+
+Availability & Access Control:
+    Availability (Ketersediaan): Mencegah penahanan informasi atau sumber daya oleh pihak yang tidak berhak.
+    Access Control: Mekanisme untuk mengatur siapa yang boleh melakukan apa dan dari mana ke mana.

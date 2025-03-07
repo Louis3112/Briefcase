@@ -1,0 +1,181 @@
+{
+  "main": {
+    "id": "743018dee3264b6c",
+    "type": "split",
+    "children": [
+      {
+        "id": "d35662ba63e3306e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "367015f97b3accc7",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cc218903dc71723c",
+    "type": "split",
+    "children": [
+      {
+        "id": "713c31674cb6844d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ac9b005cf6c2c999",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5768c14f2ed8ecd6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "bbb576025a8dc19a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "01f1c3dabfef9673",
+    "type": "split",
+    "children": [
+      {
+        "id": "581b45e98fafd2d8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2c2d3e800611a533",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "AI/Sign-Language-To-Text-and-Speech-Conversion/README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for README"
+            }
+          },
+          {
+            "id": "d21c33791958e625",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "AI/Sign-Language-To-Text-and-Speech-Conversion/README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from README"
+            }
+          },
+          {
+            "id": "b97fbc4e7a3eff27",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7578e278b787d707",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "AI/Sign-Language-To-Text-and-Speech-Conversion/README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "367015f97b3accc7",
+  "lastOpenFiles": [
+    "AI/Sign-Language-To-Text-and-Speech-Conversion/README.md",
+    "Untitled.md",
+    "AI/Sign-Language-To-Text-and-Speech-Conversion/white.jpg",
+    "AI/Sign-Language-To-Text-and-Speech-Conversion/G18_Poster.pdf",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "2025-03-07.md",
+    "Image Processing/ImageProcess/23051204085_Cornelius Louis Nathan_Tugas 4.pdf",
+    "Image Processing/ImageProcess/image.jpg",
+    "Image Processing/ImageProcess/README.md",
+    "bio/README.md"
+  ]
+}

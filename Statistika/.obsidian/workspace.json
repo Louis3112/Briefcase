@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "762e934e4ae7ec86",
+    "id": "51424cb0cd0d248d",
     "type": "split",
     "children": [
       {
-        "id": "1e56148c8a4acd02",
+        "id": "6ba7a59ec5ec0361",
         "type": "tabs",
         "children": [
           {
-            "id": "0291ed24c70451c5",
+            "id": "0f54614aa192e33b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Software Architecture.md",
+                "file": "Angka Indeks dan Time-Series Analysis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Software Architecture"
+              "title": "Angka Indeks dan Time-Series Analysis"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "5786fab3f8233a18",
+    "id": "0f87d6f36a5bdf07",
     "type": "split",
     "children": [
       {
-        "id": "de1967d6ee798896",
+        "id": "8869990df77499d2",
         "type": "tabs",
         "children": [
           {
-            "id": "3468bcd8c02c2e14",
+            "id": "75f6847740527b50",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "5bb488bad04fab18",
+            "id": "644cadbb1bba6896",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "12434defe8548092",
+            "id": "58f5691d44a5ec33",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,23 +78,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "right": {
-    "id": "0e5f347c01964a12",
+    "id": "e0527abfcf128c04",
     "type": "split",
     "children": [
       {
-        "id": "0f135e5013d2409c",
+        "id": "a8f1ce3e7c69c4f5",
         "type": "tabs",
         "children": [
           {
-            "id": "fbd4f433188eaeae",
+            "id": "9ebbfd8a70614172",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Software Architecture.md",
+                "file": "Angka Indeks dan Time-Series Analysis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Software Architecture"
+              "title": "Backlinks for Angka Indeks dan Time-Series Analysis"
             }
           },
           {
-            "id": "6b102ced8f03c63c",
+            "id": "8e526b058586b714",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Software Architecture.md",
+                "file": "Angka Indeks dan Time-Series Analysis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Software Architecture"
+              "title": "Outgoing links from Angka Indeks dan Time-Series Analysis"
             }
           },
           {
-            "id": "2f261f7b8d51efac",
+            "id": "200a5d7529ffb4c0",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,18 +137,18 @@
             }
           },
           {
-            "id": "cc4c3aa2c7090273",
+            "id": "8ea1abd38a6e08e3",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Software Architecture.md",
+                "file": "Angka Indeks dan Time-Series Analysis.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Software Architecture"
+              "title": "Outline of Angka Indeks dan Time-Series Analysis"
             }
           }
         ]
@@ -168,6 +168,8 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0291ed24c70451c5",
-  "lastOpenFiles": []
+  "active": "0f54614aa192e33b",
+  "lastOpenFiles": [
+    "Angka Indeks dan Time-Series Analysis.md"
+  ]
 }
